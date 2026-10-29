@@ -159,20 +159,22 @@ The official site says: "Do not begin work on your projects until the hackathon 
 
 ## PART D: Phases from now to the hackathon
 
-### Phases 0 + 1: Learn and build together (29 Oct – 6 Nov, practice repo `wise-blink-practice`)
-Every day = **one lesson + one feature** of a practice tool that does what the hackathon tool will do, but on **WISE/NEOWISE data** (never SPHEREx). Kripas types his own code; the AI explains each step and reviews it. Each session ends with 3 lines in `notes/LEARNING_LOG.md` and a commit.
+### Phase 1: 4-day learn-and-build sprint (Thu 29 Oct – Sun 1 Nov, practice repo `wise-blink-practice`)
+The whole practice tool is built in **4 days**, on **WISE/NEOWISE data** (never SPHEREx). That means **about 7 hours a day each**, in three blocks: morning, afternoon, evening. Kripas types his own code; the AI explains each step and reviews it. Each day ends with the learning log, a pull request into `main`, and a 15-minute call.
 
-| Day | Kripas: learn → build | [Friend's name]: build | Done when |
+| Day | Kripas (learn → build) | [Friend's name] (learn → build) | End-of-day check |
 |---|---|---|---|
-| 1, Thu 29 Oct | Lessons 1–2 → repo, venv, `coords.py` (sexagesimal/degrees parsing, date → MJD) | Search box, field of view, `?ra&dec&fov` fills the box | WISE 0855 gives the right degrees |
-| 2, Fri 30 Oct | Lessons 3–4 → `resolve.py` (SIMBAD), `archive.py` (NEOWISE images covering Teegarden's Star) | Aladin Lite moves to RA/Dec; click fills the box | Image count matches IRSA's web search |
-| 3, Sat 31 Oct | Lesson 5 → one cutout, header, pixel ↔ sky, PNG with percentile stretch | Canvas flipbook on 5 dummy PNGs | Star sits where the WCS says |
-| 4, Sun 1 Nov | Lessons 6–7 → WISE mask, % masked, `MJD_OBS`, frames for every visit, same stretch | Frame label, W1/W2 buttons, mask toggle | About 20 visit PNGs with date and % masked |
-| 5, Mon 2 Nov | Proper motion → `gaia.py` (Gaia DR3 moved to each MJD) | Gaia markers on the flipbook | Gaia marker on the star in first and last frames |
-| 6, Tue 3 Nov | Variable stars, pick the Mira → FastAPI `/api/resolve`, `/api/coverage`, `/api/frames`, `/api/gaia`, cache | Frontend calls the real API | JSON for Teegarden's Star in the browser |
-| 7, Wed 4 Nov | `align.py` (`reproject`), 1/variance add-up per visit; API format call | End-to-end with Kripas | **Teegarden's Star walks in the browser** |
-| 8, Thu 5 Nov | `/api/diff` (sigma), `/api/lightcurve` | Difference mode, light-curve chart | Mira curve roughly matches AAVSO |
-| 9, Fri 6 Nov | Deploy and test list (both) | Deploy and test list (both) | Public link; lessons note; rehearsal checklist |
+| **1, Thu 29 Oct** | Lessons 1–4 → `coords.py` (tests pass), `resolve.py` (SIMBAD), `archive.py` (NEOWISE images covering Teegarden's Star: count and dates) | Lessons 1, 6 + story → `index.html` search box + URL; Aladin Lite moves to RA/Dec, click fills the box | Image count matches IRSA's web search; link opens Aladin at the right place |
+| **2, Fri 30 Oct** | Lessons 5, 7 → cutouts (image + mask), WCS, `MJD_OBS`, mask, % masked, `images.py` PNG frames for every visit with **one stretch for all** | Flipbook (play, pause, step, speed, blink), frame label, W1/W2 buttons, mask toggle, on dummy PNGs | About 20 real Teegarden PNGs; flipbook plays dummy frames |
+| **3, Sat 31 Oct** | Proper motion → `gaia.py` (Gaia DR3 moved to each MJD); `align.py` (`reproject`) + 1/variance add-up per visit; FastAPI `main.py` (`/api/resolve`, `/api/coverage`, `/api/frames`, `/api/gaia`) + disk cache | Gaia markers; `fetch` from the real API; honest error messages; agree API format with Kripas in the morning | **Teegarden's Star walks in the browser, on its Gaia markers** |
+| **4, Sun 1 Nov** | Variable stars, pick the Mira → `/api/diff` (sigma), `/api/lightcurve`; test list | Difference mode, Chart.js light curve; **deploy**; test list | **Public link works**; all tests in Part D 2.4 run once; lessons note written |
+
+**Mon 2 – Fri 6 Nov (buffer and extra practice):**
+- Mon 2: fix anything not finished in the 4 days.
+- Tue 3: Level 3 practice (W1 − W2 colour on click, measured motion vs Gaia, About page).
+- Wed 4: Kripas reads Supplement sections 2.2, 3.2.5, 3.2.9 and 3.4.3 and finishes `FACTS.md`. [Friend's name] makes a practice 30-second video from the practice tool.
+- Thu 5: a 3-hour from-memory drill (empty folder → search → one cutout → flipbook → deploy). Delete afterwards.
+- Fri 6: rest; rehearsal checklist (2.5).
 
 The practice repo is **not** copied into the rehearsal or the hackathon; it is archived on 9–10 Nov.
 

@@ -8,21 +8,40 @@ Partner: [Friend's name] (frontend and presentation). See [FRIEND_PLAN.md](FRIEN
 
 ---
 
-## Phases 0 + 1: Learn and build (29 Oct – 6 Nov), practice repo `wise-blink-practice`
+## Phase 1: 4-day learn-and-build sprint (Thu 29 Oct – Sun 1 Nov), practice repo `wise-blink-practice`
 
-**Each session (about 2.5 hours):** read the lesson (45 min) → the AI explains the step (15 min) → **I type the code myself** (60–90 min) → the AI reviews it (15 min) → 3 lines in `notes/LEARNING_LOG.md` → commit and push.
+**About 7 hours a day, in 3 blocks.** For each block: read the short lesson part → the AI explains the step → **I type the code myself** → the AI reviews it ("review Day N") → commit. End of day: learning log, pull request into `main`, a 15-minute call with [Friend's name].
 
-| Day | Learn | Build (I type it) | Done when |
-|---|---|---|---|
-| 1, Thu 29 Oct | Lessons 1–2 (sky coordinates, time) | Repo, venv, `requirements.txt`; `backend/app/coords.py`: parse `08h55m10.831s -7d14m42.53s` or degrees → (ra, dec); date → MJD | WISE 0855 gives RA ≈ 133.795°, Dec ≈ −7.245°; tests pass |
-| 2, Fri 30 Oct | Lessons 3–4 (light, FITS) | `resolve.py` (SIMBAD name → RA/Dec, clear error); `archive.py` lists NEOWISE images covering Teegarden's Star (find the collection name) | Count matches IRSA's web search |
-| 3, Sat 31 Oct | Lesson 5 (WCS) | One small cutout; print header; pixel ↔ sky; `images.py` saves a PNG with percentile stretch | The star sits where the WCS says |
-| 4, Sun 1 Nov | Lessons 6–7 (SPHEREx, noise and flags) | Apply WISE `-msk` mask; % masked; `MJD_OBS`; frames for every visit; one stretch for all frames | About 20 visit PNGs, each with date and % masked |
-| 5, Mon 2 Nov | Proper motion (Gaia `pmra`/`pmdec`, epoch 2016.0, `apply_space_motion`) | `gaia.py`: Gaia DR3 stars moved to each frame's MJD | Gaia marker on Teegarden's Star in first and last frames |
-| 6, Tue 3 Nov | Variable stars, Miras, AAVSO (pick the Mira) | FastAPI `main.py`: `/api/resolve`, `/api/coverage`, `/api/frames`, `/api/gaia`; disk cache | JSON for Teegarden's Star in the browser |
-| 7, Wed 4 Nov | Alignment and weighted means | `align.py` (`reproject`), 1/variance add-up per visit; API format call with [Friend's name] | **Teegarden's Star walks in the browser** |
-| 8, Thu 5 Nov | Noise and sigma | `/api/diff` (B − A in sigma), `/api/lightcurve` | Mira curve roughly matches AAVSO |
-| 9, Fri 6 Nov | — | Deploy; run the test list; lessons note; rehearsal checklist (Part D 2.5) | Public link works; note written |
+### Day 1, Thu 29 Oct: coordinates, names, archive search
+- **Block 1 (2.5 h):** lessons 1–2 → `backend/app/coords.py`. Done when the 12 tests in `backend/tests/test_coords.py` pass.
+- **Block 2 (2 h):** lessons 3–4 → `resolve.py`: SIMBAD name → (ra, dec), with a clear error when not found, never a guess. Done when "Teegarden's Star" gives about 43.25°, +16.88°, and "notastar123" gives an error.
+- **Block 3 (2.5 h):** `archive.py`: find the IRSA collection for NEOWISE single exposures; list images covering Teegarden's Star (count, dates, band). Done when the count matches IRSA's web search.
+
+### Day 2, Fri 30 Oct: images, WCS, mask, frames
+- **Block 1 (2 h):** lesson 5 → download one small cutout (image + mask); print the header; pixel ↔ sky.
+- **Block 2 (2.5 h):** lesson 7 → apply the mask; % masked; read `MJD_OBS`; group exposures into visits (about every 6 months).
+- **Block 3 (2.5 h):** `images.py`: one PNG per visit, with **the same stretch for every frame**. Send 5 PNGs + JSON to [Friend's name].
+- **Done when:** about 20 real Teegarden PNGs exist, each with date and % masked, and the star moves between first and last.
+
+### Day 3, Sat 31 Oct: Gaia, alignment, the API (integration day)
+- **Morning call:** fix the API format in `docs/plan/FACTS.md` section 7 with [Friend's name].
+- **Block 1 (2 h):** proper motion → `gaia.py`: Gaia DR3 stars near the target, moved from 2016.0 to each visit's MJD.
+- **Block 2 (2.5 h):** `align.py`: put every visit on one grid (`reproject`); 1/variance-weighted add-up per visit.
+- **Block 3 (2.5 h):** FastAPI `main.py`: `/api/resolve`, `/api/coverage`, `/api/frames`, `/api/gaia`, plus a disk cache.
+- **Done when:** **Teegarden's Star walks across the browser flipbook, sitting on its Gaia markers.**
+
+### Day 4, Sun 1 Nov: difference, light curve, deploy, test
+- **Block 1 (2 h):** variable stars; pick the Mira (W1 fainter than about 8 mag) → `/api/diff` (B − A in sigma).
+- **Block 2 (2 h):** `/api/lightcurve`; compare the Mira with AAVSO.
+- **Block 3 (3 h):** deploy with [Friend's name]; run the test list (HACKATHON_PLAN Part D 2.4); write the lessons note.
+- **Done when:** a public link works, Teegarden's Star and Luhman 16 move with Gaia, and the Mira curve roughly matches AAVSO.
+
+### Mon 2 – Fri 6 Nov
+- Mon 2: fix leftovers.
+- Tue 3: Level 3 practice (W1 − W2 colour on click, measured motion vs Gaia).
+- Wed 4: Supplement 2.2, 3.2.5, 3.2.9, 3.4.3; finish `FACTS.md`.
+- Thu 5: 3-hour from-memory drill.
+- Fri 6: rest; rehearsal checklist.
 
 The practice repo is never copied into the rehearsal or the hackathon.
 

@@ -10,21 +10,41 @@ Partner: Kripas Khatiwada (data and science). See [KRIPAS_PLAN.md](KRIPAS_PLAN.m
 
 ---
 
-## Phases 0 + 1: Learn and build (29 Oct – 6 Nov), practice repo `wise-blink-practice` (`frontend/` folder)
+## Phase 1: 4-day learn-and-build sprint (Thu 29 Oct – Sun 1 Nov), practice repo `wise-blink-practice` (`frontend/`, branch `friend-frontend`)
 
-Same repo as Kripas. You build the frontend while he builds the backend, so both halves meet on Day 7. Each session ends with 3 lines in `notes/LEARNING_LOG.md` and a commit.
+**About 7 hours a day, in 3 blocks.** You build the frontend while Kripas builds the backend; both halves meet on **Day 3**. End of day: learning log, pull request into `main`, a 15-minute call with Kripas.
 
-| Day | Learn | Build (you type it) | Done when |
-|---|---|---|---|
-| 1, Thu 29 Oct | Read HACKATHON_PLAN; lessons 1 and 6; story beats in your own words | `frontend/index.html`: search box (RA/Dec or name), field of view; `?ra&dec&fov` fills the box | Copy-pasted link fills the box |
-| 2, Fri 30 Oct | Aladin Lite v3: embed, `gotoRaDec`, survey, field of view, click event | Aladin moves to the typed RA/Dec; clicking the sky fills the box | Click gives correct coordinates |
-| 3, Sat 31 Oct | Canvas drawing and timers | Flipbook on 5 dummy PNGs: play, pause, step, speed, blink two frames | All controls work smoothly |
-| 4, Sun 1 Nov | Page state and buttons | Frame label (date, band, image count, % masked), W1/W2 buttons, mask toggle | Label changes with each frame |
-| 5, Mon 2 Nov | Drawing markers from sky coordinates | Gaia markers on the flipbook from a JSON list | Markers follow their positions per frame |
-| 6, Tue 3 Nov | `fetch`, JSON, error messages | Frontend calls Kripas's real API instead of dummy files; honest error messages | Teegarden's Star frames load from the API |
-| 7, Wed 4 Nov | Pick a host (Render, Railway or a VPS) | End-to-end with Kripas; API format call | **Teegarden's Star walks in the browser** |
-| 8, Thu 5 Nov | Chart.js | Difference mode; light-curve chart when a star is clicked | Chart shows real data |
-| 9, Fri 6 Nov | Deploying | Deploy; test list with Kripas; lessons note; rehearsal checklist (Part D 2.5) | Public link works |
+### Day 1, Thu 29 Oct: search page and sky view
+- **Block 1 (2 h):** read `docs/plan/HACKATHON_PLAN.md`, lessons 1 and 6; write the 5 story beats (Part F) in your own words.
+- **Block 2 (2.5 h):** `frontend/index.html`: search box (RA/Dec or name), field of view (arcmin, default 3), Go button; `?ra&dec&fov` fills the boxes; Go updates the URL (`URLSearchParams`, `history.replaceState`).
+- **Block 3 (2.5 h):** embed Aladin Lite v3; it moves to the typed RA/Dec with the chosen field of view; clicking the sky fills the box.
+- **Done when:** opening `index.html?ra=43.2537&dec=16.8814&fov=5` shows Aladin centred on Teegarden's Star.
+
+### Day 2, Fri 30 Oct: the flipbook
+- **Block 1 (2.5 h):** canvas flipbook on 5 dummy PNGs: play, pause, step back/forward, speed slider, loop.
+- **Block 2 (2 h):** blink mode (two chosen frames swap quickly).
+- **Block 3 (2.5 h):** frame label (date, band, number of images, % masked), W1/W2 buttons, mask toggle. Use Kripas's 5 real PNGs + JSON when he sends them.
+- **Done when:** the flipbook plays Kripas's real Teegarden frames from files.
+
+### Day 3, Sat 31 Oct: connect to the real API (integration day)
+- **Morning call:** fix the API format in `docs/plan/FACTS.md` section 7 with Kripas.
+- **Block 1 (2 h):** `fetch` from `/api/resolve`, `/api/coverage`, `/api/frames`; show honest error messages (no fake values, no defaults).
+- **Block 2 (2.5 h):** Gaia markers on top of the flipbook from `/api/gaia` (each marker moves to its position for that frame's date).
+- **Block 3 (2.5 h):** target buttons (Teegarden's Star, Luhman 16, Proxima, the Mira); pick the host (Render, Railway or a VPS) and test a deploy.
+- **Done when:** **Teegarden's Star walks across the browser flipbook, sitting on its Gaia markers.**
+
+### Day 4, Sun 1 Nov: difference, light curve, deploy, test
+- **Block 1 (2 h):** difference mode (show `/api/diff` images, colour scale in sigma).
+- **Block 2 (2 h):** Chart.js light curve when a star is clicked (`/api/lightcurve`).
+- **Block 3 (3 h):** **deploy** with Kripas; run the test list (HACKATHON_PLAN Part D 2.4); check on a phone; lessons note.
+- **Done when:** the public link works on laptop and phone.
+
+### Mon 2 – Fri 6 Nov
+- Mon 2: fix leftovers.
+- Tue 3: About page, polish, Level 3 practice (colour-on-click panel).
+- Wed 4: a practice 30-second video from the practice tool; pitch draft.
+- Thu 5: 3-hour from-memory drill.
+- Fri 6: rest; rehearsal checklist.
 
 The practice repo is never copied into the rehearsal or the hackathon.
 
