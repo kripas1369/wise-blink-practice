@@ -55,10 +55,10 @@
 - The 5 official test targets.
 
 ### A4. The rule that shapes everything
-The official site says: "Do not begin work on your projects until the hackathon begins." So:
-- **both repos stay as learning only and are never submitted**;
-- **all coding before 14 Nov uses WISE/NEOWISE data, never SPHEREx**;
-- on 14 Nov we start a **new, empty repo** and build everything fresh.
+The official site says: "Do not begin work on your projects until the hackathon begins." We decided (29 Oct) to practise the real SPHEREx tool anyway, so we keep these safeguards:
+- **Kripas asks the Nepal local lead in writing** whether practising with SPHEREx before the event is allowed, and we follow the answer.
+- **Practice and rehearsal repos are never submitted**, and we make them **private**.
+- On 14 Nov we start a **new, empty repo** and write the code again during the event. **No copying** from practice, rehearsal or old prototypes. Notes (`FACTS.md`, cheat sheets) are allowed.
 
 ---
 
@@ -159,98 +159,113 @@ The official site says: "Do not begin work on your projects until the hackathon 
 
 ## PART D: Phases from now to the hackathon
 
-### Phase 1: 4-day learn-and-build sprint (Thu 29 Oct – Sun 1 Nov, practice repo `wise-blink-practice`)
-The whole practice tool is built in **4 days**, on **WISE/NEOWISE data** (never SPHEREx). That means **about 7 hours a day each**, in three blocks: morning, afternoon, evening. Kripas types his own code; the AI explains each step and reviews it. Each day ends with the learning log, a pull request into `main`, and a 15-minute call.
+**Team decision (29 Oct):** we practise the **real hackathon project**: the same SPHEREx data, the same 5 official targets, the same features (Part C), the same split of work. Then at the hackathon we build it again, fast, from memory.
 
-| Day | Kripas (learn → build) | [Friend's name] (learn → build) | End-of-day check |
-|---|---|---|---|
-| **1, Thu 29 Oct** | Lessons 1–4 → `coords.py` (tests pass), `resolve.py` (SIMBAD), `archive.py` (NEOWISE images covering Teegarden's Star: count and dates) | Lessons 1, 6 + story → `index.html` search box + URL; Aladin Lite moves to RA/Dec, click fills the box | Image count matches IRSA's web search; link opens Aladin at the right place |
-| **2, Fri 30 Oct** | Lessons 5, 7 → cutouts (image + mask), WCS, `MJD_OBS`, mask, % masked, `images.py` PNG frames for every visit with **one stretch for all** | Flipbook (play, pause, step, speed, blink), frame label, W1/W2 buttons, mask toggle, on dummy PNGs | About 20 real Teegarden PNGs; flipbook plays dummy frames |
-| **3, Sat 31 Oct** | Proper motion → `gaia.py` (Gaia DR3 moved to each MJD); `align.py` (`reproject`) + 1/variance add-up per visit; FastAPI `main.py` (`/api/resolve`, `/api/coverage`, `/api/frames`, `/api/gaia`) + disk cache | Gaia markers; `fetch` from the real API; honest error messages; agree API format with Kripas in the morning | **Teegarden's Star walks in the browser, on its Gaia markers** |
-| **4, Sun 1 Nov** | Variable stars, pick the Mira → `/api/diff` (sigma), `/api/lightcurve`; test list | Difference mode, Chart.js light curve; **deploy**; test list | **Public link works**; all tests in Part D 2.4 run once; lessons note written |
+### Phase 1: 4-day practice build of the real tool (Thu 29 Oct – Sun 1 Nov, repo `wise-blink-practice`, to be renamed `spherex-blink-practice`)
+About **7 hours a day each**, in 3 blocks. Kripas types his own code; the AI explains each step and reviews it. Each day ends with the learning log, a pull request into `main`, and a 15-minute call.
 
-**Mon 2 – Fri 6 Nov (buffer and extra practice):**
-- Mon 2: fix anything not finished in the 4 days.
-- Tue 3: Level 3 practice (W1 − W2 colour on click, measured motion vs Gaia, About page).
-- Wed 4: Kripas reads Supplement sections 2.2, 3.2.5, 3.2.9 and 3.4.3 and finishes `FACTS.md`. [Friend's name] makes a practice 30-second video from the practice tool.
-- Thu 5: a 3-hour from-memory drill (empty folder → search → one cutout → flipbook → deploy). Delete afterwards.
-- Fri 6: rest; rehearsal checklist (2.5).
+```mermaid
+flowchart LR
+    step1["Day 1: Step 1, find and get the data"] --> step2a["Day 2: Step 2a, clean and line up epochs"]
+    step2a --> step2b["Day 3: Step 2b, compare epochs with proof"]
+    step2b --> wrap["Day 4: connect, online, test 5 targets"]
+```
 
-The practice repo is **not** copied into the rehearsal or the hackathon; it is archived on 9–10 Nov.
+#### Day 1, Thu 29 Oct: Step 1, find and get the data
+- **Both together (block 1, 2 h):** revise how to query datasets and get cutouts: IRSA TAP, `spherex.obscore`, the `s_region` condition, the columns, the IRSA SPHEREx cutout tutorial, what is inside a cutout (IMAGE, FLAGS, VARIANCE, ZODI, header `MJD-AVG`), Gaia DR3 at IRSA (`gaia_dr3_source`), SIMBAD and its mirror.
+- **Kripas (blocks 2 – 3):**
+  - `coords.py` (12 tests pass).
+  - `resolve.py`: name → position via SIMBAD, with the Harvard mirror as backup; clear error, never a guess.
+  - `archive.py`: SPHEREx images covering a point (position moved to today with its proper motion first); count, dates, detectors D1 – D6 for all 5 targets.
+  - Download one cutout for Barnard's Star; print every extension and the header.
+- **[Friend's name] (blocks 2 – 3):**
+  - `index.html`: search box (RA/Dec or name), field of view, `?ra&dec&fov&det` in the URL.
+  - Aladin Lite v3: moves to the position; clicking fills the box.
+  - 5 official target buttons with one-line explanations.
+- **Done when:** for each of the 5 targets we know how many SPHEREx images exist, their dates and detectors (written in `FACTS.md`), and one Barnard's Star cutout opens correctly.
 
-### Phase 2: Full rehearsal "WISE Blink" (Sat 7 – Sun 8 Nov, timed 48 hours)
-**Goal:** one complete fake hackathon with the same tool type, schedule, roles and submission, so that on 14 Nov nothing is new except the data.
+#### Day 2, Fri 30 Oct: Step 2a, clean and line up the epochs
+- **Kripas:**
+  - Group images into epochs (`MJD-AVG`, gaps of months), per detector.
+  - Clean each cutout: official flag mask (SOURCE is a label only), IMAGE − ZODI, sigma = sqrt(VARIANCE), % flagged.
+  - Line up every cutout on one sky grid (`reproject`); check background stars stay on the same pixel.
+  - One PNG per epoch per detector with **the same brightness scale**; send PNGs + JSON to [Friend's name].
+- **[Friend's name]:**
+  - Flipbook player: play, pause, step, speed, loop, blink two epochs.
+  - Frame label: date, detector, wavelength range, number of images, % flagged.
+  - Detector buttons D1 – D6; flags overlay toggle.
+- **Done when:** Barnard's Star frames from different epochs play in the flipbook, lined up, with labels.
 
-#### 2.1 Why WISE is the right practice data
-- Also NASA data, also at IRSA, same file type (FITS + WCS + mask), same tools (pyvo, astroquery, cutouts).
-- Same sky rhythm: WISE/NEOWISE visits each patch about every 6 months (2010 – 2024), like SPHEREx.
-- Similar pixels (WISE 2.75″, SPHEREx 6.15″), so motions look similar.
-- It's what Backyard Worlds uses, so we can compare our flipbook with a known working tool.
+#### Day 3, Sat 31 Oct: Step 2b, compare epochs with proof (integration day)
+- **Morning call (both):** fix the API format (`FACTS.md` section 7).
+- **Kripas:**
+  - Add-up per epoch and detector (1/variance weighted).
+  - Gaia: stars near the target from `gaia_dr3_source`, moved from 2016.0 to each epoch's date.
+  - Difference: epoch B − epoch A in sigma.
+  - FastAPI: `/api/resolve`, `/api/coverage`, `/api/frames`, `/api/gaia`, `/api/diff`, plus a disk cache.
+- **[Friend's name]:**
+  - Call the real API; honest error messages (no fake values).
+  - Gaia markers on the flipbook (move per epoch).
+  - Difference mode with a sigma colour scale.
+- **Done when:** **Barnard's Star walks across the browser flipbook onto its Gaia markers.**
 
-#### 2.2 Feature mapping (rehearsal → hackathon)
-- WISE bands W1 (3.4 µm) and W2 (4.6 µm) → SPHEREx detectors D1 – D6.
-- WISE mask image (`-msk`) bits → SPHEREx FLAGS bits (official list).
-- `MJD_OBS` per exposure → `MJD-AVG`.
-- Per-visit add-up of about 12 exposures → add-up per epoch and detector.
-- W1 − W2 colour (two-point "spectrum") → spectrum on click.
-- Teegarden's Star / Luhman 16 motion vs Gaia → Barnard's Star / Epsilon Indi B vs Gaia.
-- Luhman 16 bright in W2, fainter in W1 (cold) → WISE 0855 only in D5 – D6.
-- A Mira variable light curve vs AAVSO → R Dra / RW Aur vs AAVSO.
+#### Day 4, Sun 1 Nov: connect, online, test
+- **Kripas:**
+  - `/api/lightcurve` (brightness at one position across epochs).
+  - Pre-cache the 5 targets; run the C4 acceptance tests and write the results.
+- **[Friend's name]:**
+  - Light-curve chart when a star is clicked.
+  - **Deploy** (Render, Railway or a VPS); check on a phone.
+- **Both:** lessons note (planned vs actual hours, blockers).
+- **Done when:** a public link works and the C4 tests are run on all 5 targets (Barnard's Star moves with Gaia; WISE 0855 shows in D5 – D6 only; R Dra and RW Aur change brightness).
 
-#### 2.3 Mock challenge statement (print it, treat it as the official text)
-"Build a public web tool. The user enters RA/Dec or a name and sees WISE/NEOWISE images of that patch from 2010 – 2024 as a flipbook, making moving and changing objects easy to spot. Bonus: choose band, add or subtract epochs, field of view, Gaia overlay, coordinates in the URL, show bad pixels, light curve, colour on click, use Astropy and Aladin."
+#### Mon 2 – Fri 6 Nov
+- **Mon 2 (both):** fix whatever did not pass on Day 4.
+- **Tue 3:** Level 3. Kripas: `/api/spectrum` (brightness vs wavelength across detectors) and measured motion vs Gaia. [Friend's name]: spectrum panel, About page.
+- **Wed 4:** Kripas reads Supplement 2.2, 3.2.5, 3.2.9, 3.4.3 and finishes `FACTS.md`. [Friend's name] makes a draft 30-second video from the practice tool and a pitch draft.
+- **Thu 5 (both):** speed drill. In an empty folder, rebuild search → coverage → one cutout → flipbook in 3 hours from memory. Delete afterwards.
+- **Fri 6:** rest; rehearsal checklist.
 
-#### 2.4 Rehearsal test targets and pass/fail
-- **Teegarden's Star** (RA 02h53m00.9s, Dec +16°52′53″, about 5.1″/yr): about 70″ (about 25 px) over 14 years. Pass: track within about 1 px of Gaia.
-- **Luhman 16** (RA 10h49m15.6s, Dec −53°19′06″, about 2.8″/yr): about 40″ (about 14 px). Pass: motion matches Gaia; W1 − W2 colour is red (cold brown dwarf).
-- **Proxima Centauri** (about 3.9″/yr): may saturate. Pass: the tool shows saturation or mask honestly instead of crashing.
-- **One Mira variable** (Kripas picks it from AAVSO; W1 fainter than about 8 mag). Pass: light-curve shape roughly matches AAVSO.
-- **Edge cases:** an invalid name gives a clear error (no guess); a far-off RA/Dec still loads; a slow archive call shows a timeout message.
+### Phase 2: Timed rehearsal of the real hackathon (Sat 7 – Sun 8 Nov, 48 hours)
+**Goal:** do the real hackathon once, exactly as on 14 – 15 Nov: same challenge text, same SPHEREx data, same 5 targets, same Part E schedule, same submission. Start from an **empty repo** and build from memory and notes (do not copy the practice repo). This tells us how fast we really are.
 
-#### 2.5 Before the clock starts (Fri 6 Nov evening)
-- Mock statement printed; this plan and `FACTS.md` open.
-- Both laptops: Python 3.11 venv, Node, Git, hosting account logged in.
-- Empty private GitHub repo `wise-blink-rehearsal`.
+#### 2.1 Before the clock starts (Fri 6 Nov evening)
+- Challenge text printed; this plan and `FACTS.md` open.
+- Both laptops: Python venv, Git, hosting account logged in.
+- Empty private repo `spherex-rehearsal`.
 - **Time log sheet:** planned hours vs actual hours vs blocker, for each task.
 - Phone hotspot tested; food and sleep shifts agreed.
 
-#### 2.6 Hour-by-hour (identical to Part E, so the timings transfer)
-- **0 – 2 (both):** read the mock statement; write the API format; split the work.
-- **2 – 10:** Kripas: resolve, coverage, cutouts, mask and clean, PNG frames, `/api/frames`. [Friend's name]: layout, search, URL, Aladin, flipbook on sample PNGs.
-- **Checkpoint hour 10:** Teegarden's Star plays end to end. If not, stop and fix together.
-- **10 – 14:** pre-cache all rehearsal targets; first deploy.
-- **14 – 22:** Kripas: alignment, per-visit add-up, `/api/gaia`. [Friend's name]: band buttons, frame labels, mask toggle, target buttons, deploy again.
-- **Checkpoint hour 22 (Level 1):** run the 2.4 test list; write down results. Sleep in shifts.
-- **22 – 34:** Kripas: `/api/diff` in sigma, `/api/lightcurve`. [Friend's name]: difference mode, Gaia markers, light-curve panel, Aladin overlays.
-- **Checkpoint hour 34 (Level 2).**
-- **34 – 40:** Level 3 only if Level 2 passes: W1 − W2 colour on click, measured motion vs Gaia, About page.
-- **40 – 46:** Kripas: limitations, references, credits. [Friend's name]: 30-second video, project page. **Mock submission by hour 46.**
-- **46 – 48:** pitch twice, timed; record a backup demo video.
+#### 2.2 Hour-by-hour
+Follow **Part E** exactly. Checkpoints:
+- **Hour 10:** Barnard's Star plays end to end.
+- **Hour 22 (Level 1):** run the C4 tests.
+- **Hour 34 (Level 2).**
+- **Hour 46:** mock submission (fill a copy of the Part G form fields in a document).
 
-#### 2.7 Mock judging (Sun 8 Nov evening, 1 hour)
-- 1 – 2 people watch the video and a 3-minute live demo, score 1 – 5 on the 5 criteria, and ask 3 questions each.
+#### 2.3 Mock judging (Sun 8 Nov evening, 1 hour)
+- 1 – 2 people watch the 30-second video and a 3-minute live demo, score 1 – 5 on the 5 criteria, and ask 3 questions each.
 - Write down every question we could not answer well.
 
-#### 2.8 Lessons learned and archive (Mon 9 – Tue 10 Nov)
-- Lessons-learned note: planned vs actual hours, top 5 blockers and fixes, slow libraries or archive calls, deploy problems, what to cut or move earlier.
+#### 2.4 Lessons learned (Mon 9 – Tue 10 Nov)
+- Planned vs actual hours, top 5 blockers and fixes, slow archive calls, deploy problems, what to cut or move earlier.
 - Update Part E timings with the real numbers.
-- A **1-page command cheat sheet** (library names, IRSA endpoints, deploy steps). Notes, not code.
-- **Archive the rehearsal repo; do not open or copy it again.**
+- A **1-page cheat sheet each** (Kripas: query, cutout, cleaning, Gaia, API steps; [Friend's name]: Aladin, flipbook, URL, deploy steps). Notes, not code.
 
-#### 2.9 Rehearsal "done" means
-- Public link works; Teegarden's Star and Luhman 16 visibly move and match Gaia; 30-second video exists; mock form filled; lessons-learned note written.
-- If Level 1 is not reached by hour 22 in the rehearsal, the real plan cuts Level 3 and moves the deploy earlier.
+#### 2.5 Rehearsal "done" means
+- Public link works; all 5 targets pass C4; 30-second video exists; mock form filled; lessons note written.
+- If Level 1 is not reached by hour 22, the real plan cuts Level 3 and moves the deploy earlier.
 
 ### Phase 3: Final preparation (11 – 13 Nov)
 - Part E adjusted with the rehearsal timings.
-- **From-memory drill (12 Nov, 3 hours, WISE again):** in a new empty folder, rebuild the Level 1 skeleton (search, one cutout, flipbook, deploy) without looking at the rehearsal code. Then delete the folder.
-- Pitch script (3–5 minutes) and the 30-second video storyboard.
-- Laptops ready; accounts ready; IRSA reachable from the venue network or a phone hotspot.
+- **Speed drill (12 Nov, 3 hours):** from an empty folder, rebuild Level 1 from memory. Delete afterwards.
+- Pitch script (3 – 5 minutes) and the 30-second video storyboard.
+- Laptops ready; IRSA and the SIMBAD mirror reachable from the venue network or a phone hotspot.
 - Team and local event registered on spaceappschallenge.org.
 - **13 Nov evening:** read the challenge Resources tab and the Project Submission Guide together; adjust the plan.
 
 ### Phase 4: The hackathon (14 – 15 Nov), a fresh build
-- New empty repo at the start. Commit often (the history shows the code was written during the event).
+- New empty repo at the start; write the code again (fast, because we have done it twice). **Do not copy the practice or rehearsal code.** Commit often (the history shows the code was written during the event).
 - Follow Part E.
 
 ### Phase 5: After the hackathon
@@ -307,5 +322,6 @@ The practice repo is **not** copied into the rehearsal or the hackathon; it is a
 - **Venue internet:** phone hotspot; cached demo.
 - **Scope creep:** Level 1 first; nothing new after hour 40.
 - **Demo failure during judging:** a backup video, and the page pre-loaded before the pitch.
-- **Rule risk:** fresh repo, all pre-hackathon coding on WISE data (never SPHEREx), no reuse of rehearsal or prototype code.
-- **WISE practice surprises** (unknown collection names, saturated stars): solved in Phase 1, before the rehearsal clock starts.
+- **Rule risk (we practise on SPHEREx):** written answer from the local lead; private practice repos; fresh repo on 14 Nov; no copied code.
+- **SIMBAD down** (the main CDS server failed on 29 Oct): use the Harvard mirror `simbad.harvard.edu`; target buttons carry fixed positions as a backup.
+- **Fast stars not found:** move the position to today with proper motion before searching (Barnard's Star moved about 4.5′ since 2000).

@@ -34,4 +34,4 @@ git push
 - Tests for finished days must pass before merging into `main` (`python -m pytest backend/tests`). Tests for a day not yet done are expected to fail.
 - Small commits with clear messages ("Day 3: flipbook play/pause").
 - No fake values; every number on screen comes from data.
-- WISE/NEOWISE only, never SPHEREx code before 14 Nov.
+- Practice code is never copied into the hackathon repo; on 14 Nov we write it again from memory.

@@ -1,15 +1,21 @@
-# WISE Blink (practice)
+# SPHEREx Blink (practice)
 
-Learn-and-build practice for NASA Space Apps 2026, challenge "Planet X and SPHEREx".
+Practice build of our NASA Space Apps 2026 project, challenge **"Planet X and SPHEREx"**.
 **Team Not42:** Kripas Khatiwada and [Friend's name] (`lazylog00`).
 
-A small web tool: type RA/Dec or a star name, and see WISE/NEOWISE images of that patch of sky from 2010 to 2024 as a flipbook, so moving and changing objects are easy to spot.
+A public web tool: type RA/Dec or a star name, and see **real SPHEREx images of that patch of sky from different dates as a flipbook**, so moving and changing objects are easy to spot, with Gaia markers, a difference view and light curves as proof.
 
-**Practice only.** This repo uses WISE/NEOWISE data, not SPHEREx. Nothing here is copied into the hackathon build on 14 Nov.
+**Practice only.** Same data (SPHEREx), same 5 official targets and same features as the hackathon. On 14 Nov we write it again from memory in a new repo; nothing here is copied or submitted.
 
 ## Roles
-- **Kripas (data side, `backend/`):** archive search, cleaning images, star motion from Gaia, the API.
-- **[Friend's name] (website side, `frontend/`):** search box, Aladin sky view, flipbook, buttons, charts, deploy, the 30-second video and the pitch.
+- **Kripas (data side, `backend/`, branch `kripas-backend`):** archive search, cutouts, cleaning images, lining up epochs, star motion from Gaia, the API.
+- **[Friend's name] (website side, `frontend/`, branch `friend-frontend`):** search box, Aladin sky view, flipbook, buttons, charts, deploy, the 30-second video and the pitch.
+
+## The 4 days (29 Oct – 1 Nov)
+1. **Day 1:** find and get the data (query SPHEREx, cutouts, the 5 targets).
+2. **Day 2:** clean and line up the epochs; flipbook.
+3. **Day 3:** compare epochs with proof (add-up, Gaia, difference); connect website and API.
+4. **Day 4:** light curve, online, test the 5 targets.
 
 ## Read first
 - Team plan: [docs/plan/HACKATHON_PLAN.md](docs/plan/HACKATHON_PLAN.md)
@@ -17,15 +23,14 @@ A small web tool: type RA/Dec or a star name, and see WISE/NEOWISE images of tha
 - Friend's plan: [docs/plan/FRIEND_PLAN.md](docs/plan/FRIEND_PLAN.md)
 - Facts sheet: [docs/plan/FACTS.md](docs/plan/FACTS.md)
 - Lessons: [docs/learn/LEARN.md](docs/learn/LEARN.md)
-- How we work with branches: [CONTRIBUTING.md](CONTRIBUTING.md)
-- Today's task: `notes/DAY<N>_GUIDE.md`; daily notes in [notes/LEARNING_LOG.md](notes/LEARNING_LOG.md)
+- Branches: [CONTRIBUTING.md](CONTRIBUTING.md)
+- Today's task: `notes/DAY<N>_GUIDE.md`; daily notes: [notes/LEARNING_LOG.md](notes/LEARNING_LOG.md)
 
 ## Layout
-- `backend/app/`: Python (FastAPI) code for coordinates, archive queries, images, Gaia and the API.
+- `backend/app/`: Python (FastAPI) code.
 - `backend/tests/`: pytest tests.
 - `frontend/`: plain HTML/JS page with Aladin Lite and the flipbook.
-- `docs/`: plans, facts sheet, lessons.
-- `notes/`: daily guides and the learning log.
+- `docs/`: plans, facts sheet, lessons. `notes/`: daily guides and the learning log.
 
 ## Setup (backend)
 ```bash
@@ -35,8 +40,5 @@ pip install -r requirements.txt
 python -m pytest backend/tests -v
 ```
 
-## Frontend
-Open `frontend/index.html` in a browser (later it will be served by the backend).
-
 ## Data credits
-NASA/IPAC Infrared Science Archive (WISE/NEOWISE), ESA Gaia DR3, CDS SIMBAD and Aladin, AAVSO.
+NASA/IPAC Infrared Science Archive (SPHEREx), ESA Gaia DR3, CDS SIMBAD and Aladin, AAVSO.

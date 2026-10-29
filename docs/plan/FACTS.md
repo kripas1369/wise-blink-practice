@@ -55,14 +55,20 @@ Notes only. No code from this file goes into the hackathon repo.
   `CONTAINS(POINT('ICRS', <ra>, <dec>), s_region) = 1` on the IRSA table `spherex.obscore`.
 - **Check:** our count must equal IRSA's own web search count for the same point.
 - **Get:** IRSA cutouts only (small squares around the target), never the full ~70 MB file.
-- **Column names** (`obs_id`, `s_region`, `t_min`, `em_min`, `em_max`, `access_url`) **(verify on 14 Nov)**.
+- **Checked 29 Oct 2026** at IRSA TAP `https://irsa.ipac.caltech.edu/TAP`:
+  - SPHEREx tables: `spherex.obscore` (one row per image), plus `spherex.observation`, `spherex.plane`, `spherex.artifact`.
+  - Useful `spherex.obscore` columns: `obs_id`, `s_region`, `s_ra`, `s_dec`, `t_min`, `t_max` (MJD), `energy_bandpassname`, `em_min`, `em_max` (metres), `access_url`, `access_estsize`, `obs_release_date`.
+  - Gaia DR3 is also at IRSA: table `gaia_dr3_source` (not `gaia.gaiadr3_source`).
+- **Fast stars:** move the position to today with proper motion **before** searching. Barnard's Star has moved about 4.5′ since 2000.
+- **SIMBAD:** the main CDS server (`simbad.cds.unistra.fr`) did not respond on 29 Oct; the mirror `simbad.harvard.edu` worked. Always have the mirror as backup (astroquery: `astroquery.simbad.conf.server`).
+- **Cutout method:** from the IRSA SPHEREx cutout tutorial **(Kripas fills in on Day 1)**.
 
 ---
 
 ## 4. Motion maths
 - Gaia DR3 positions are for the date **2016.0**. To know where a star "should be" on an image date, move it with its proper motion (`pmra`, `pmdec`, in mas/yr) from 2016.0 to that image's MJD (astropy `SkyCoord.apply_space_motion`).
 - **Shift in pixels** = proper motion (″/yr) × years between images ÷ pixel size (″).
-  - SPHEREx: 6.15″ per pixel. WISE: 2.75″ per pixel.
+  - SPHEREx: 6.15″ per pixel.
 - A shift smaller than about 1 pixel is **not** a reliable detection by eye.
 
 ---
@@ -82,22 +88,21 @@ Comparison data: Gaia DR3 (motion), AAVSO (variable-star light curves).
 
 ---
 
-## 6. Rehearsal facts (WISE / NEOWISE, used only before 14 Nov)
-- **Bands:** W1 3.4 µm, W2 4.6 µm (NEOWISE 2013 – 2024 has only W1 and W2). W3 12 µm and W4 22 µm only in 2010.
-- **Pixel size:** 2.75″. Visits each patch about every 6 months, about 12 exposures per visit.
-- **Time keyword:** `MJD_OBS`. **Mask:** separate `-msk` file per exposure.
-- **Collection name** for single exposures at IRSA: Kripas finds it in Phase 1 **(to fill in)**.
+## 6. SPHEREx coverage of the 5 targets (Kripas fills in on Day 1)
 
-| Rehearsal target | RA, Dec | Motion | Expected over 2010 – 2024 |
-|---|---|---|---|
-| Teegarden's Star | 02h53m00.9s, +16°52′53″ **(verify)** | about 5.1″/yr | about 70″ ≈ 25 px |
-| Luhman 16 | 10h49m15.6s, −53°19′06″ **(verify)** | about 2.8″/yr | about 40″ ≈ 14 px; red W1 − W2 |
-| Proxima Centauri | 14h29m43.0s, −62°40′46″ **(verify)** | about 3.9″/yr | may saturate; show it honestly |
-| Mira variable | Kripas picks on 3 Nov **(to fill in)** | — | light curve vs AAVSO |
+| Target | Images | First date | Last date | Epochs | Images per detector D1 – D6 |
+|---|---|---|---|---|---|
+| Barnard's Star | | | | | |
+| Epsilon Indi B | | | | | |
+| WISE 0855 | | | | | |
+| RW Aurigae | | | | | |
+| R Draconis | | | | | |
+
+Our count must match IRSA's own SPHEREx search for the same position.
 
 ---
 
-## 7. API format (draft, finalise together on 4 Nov)
+## 7. API format (draft, finalise together on the Day 3 morning call, Sat 31 Oct)
 - `GET /api/resolve?name=` → `{ "ra": deg, "dec": deg, "source": "SIMBAD" }` or `{ "error": "not found" }`.
 - `GET /api/coverage?ra=&dec=` → `[ { "obs_id", "band", "mjd", "wl_min_um", "wl_max_um", "release" } ]`.
 - `GET /api/frames?ra=&dec=&fov_arcmin=&band=&mode=single|coadd` → `[ { "png_url", "mjd", "date_iso", "epoch_id", "band", "n_images", "pct_flagged" } ]`.
