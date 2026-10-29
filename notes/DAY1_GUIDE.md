@@ -3,8 +3,8 @@
 ## Kripas
 
 ### 1. Read (about 45 min)
-- `~/nasa/learn/01_sky_coordinates.md`
-- `~/nasa/learn/02_time.md`
+- `docs/learn/01_sky_coordinates.md`
+- `docs/learn/02_time.md`
 
 You should be able to answer:
 - What are RA and Dec? Why is RA written in hours (1h = 15°)?
@@ -54,7 +54,7 @@ Tell the AI "review Day 1". It will read your `coords.py` and point out bugs, as
 ## [Friend's name]
 
 ### 1. Read
-- `~/nasa/hackathon/HACKATHON_PLAN.md`, lessons 1 and 6.
+- `docs/plan/HACKATHON_PLAN.md` and `docs/plan/FRIEND_PLAN.md`; lessons `docs/learn/01_sky_coordinates.md` and `docs/learn/06_spherex.md`.
 - Write the 5 story beats (Part F) in your own words.
 
 ### 2. Build `frontend/index.html` (plain HTML + JS, no framework)
