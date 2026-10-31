@@ -125,7 +125,7 @@ Position moved with proper motion to 2026.0, then `CONTAINS ... s_region`, 4 sci
 ---
 
 ## 7. API format (built 31 Oct, `backend/app/main.py`; run `uvicorn backend.app.main:app --port 8000`)
-Built (tested in `backend/tests/test_day3.py`):
+Built (tested in `backend/tests/test_day3.py`, `test_day4.py`, `test_day5.py`):
 - `GET /api/health` → `{ "ok": true }` (the website uses it to decide between the API and the static files).
 - `GET /api/resolve?name=` → SIMBAD's answer (`name`, `simbad_id`, `ra`, `dec`, `pmra`, `pmdec`, `epoch`, `server`) plus `"source": "SIMBAD (<server>)"` and `position_now` (`{ra, dec, year: 2026.0, moved_arcsec}`, or `null` without a proper motion). Not found → 404; SIMBAD down → 503.
 - `GET /api/coverage?ra=&dec=[&band=]` → `{ ra, dec, band, asked_at, summary, images: [ { "obs_id", "band", "mjd", "wl_min_um", "wl_max_um", "release", "release_date" } ] }`, cached 1 hour. IRSA down → 502.
@@ -133,6 +133,8 @@ Built (tested in `backend/tests/test_day3.py`):
 - `GET /api/gaia` (same location parameters) → `gaia.json` (FRAMES_FORMAT §6): per star `source_id` (text), `g_mag`, `xy` per frame.
 - `GET /api/diff` (same location parameters) → `diff.json` (FRAMES_FORMAT §7): every visit pair with `png_url`, `days`, `wl_gap_um`, `scatter_sigma`, `max_sigma`, `min_sigma`, `z`; plus `default_pair`.
 - `GET /api/lightcurve` (same location parameters) → `lightcurve.json` (FRAMES_FORMAT §10): the target's brightness in every single exposure, each with its own wavelength, plus same-wavelength visit comparisons, the field-star floor and Gaia neighbours inside the circle. Add `&x=&y=` (PNG pixels, 0 to size − 1, both or neither) to measure a clicked pixel instead. Built on Day 4 (tested in `backend/tests/test_day4.py`).
+- `GET /api/proof` (same location parameters) → `proof.json` (FRAMES_FORMAT §11): the target's measured shift against Gaia DR3 with a verdict (`agrees`, `disagrees`, `too_small`, `not_measurable`, `no_gaia_target`, `one_visit`) and the data it rests on (visits, exposures used / taken, % flagged, data releases from IRSA). Built on Day 5.
+- `GET /api/known-objects` (same location parameters) `&a=&b=&spot=` → `{ "spot": {ra, dec, peak_sigma, frame}, "outcome", "match_radius_arcsec", "match_rule", "asked_at", ... }`: NASA JPL's known asteroids and comets near spot `spot` of the difference of visits `a` and `b` (`spots.json`, FRAMES_FORMAT §12), seen from SPHEREx. `outcome` is `match` (with `matches`: `name`, `distance_arcsec`, `v_mag`, `rate_arcsec_per_h`, `est_error_arcsec`), `no_match` (never "new object") or `unavailable` (with `reason`; not cached). Also `pass_used`, `n_in_box`, `nearby`, `notes`. Unknown spot → 404. Slow: JPL takes 15–40 s; on 31 Oct its accurate second pass failed for every request, so the labelled first pass is used. Built on Day 5 (tested in `backend/tests/test_day5.py`; Ceres in `test_network.py`).
 - Unknown `/api/...` path → 404. Interactive docs: `/api/docs`.
 
 Changed from the draft, and why: `/api/frames` returns the whole manifest (labels need every field); `/api/diff` returns all pairs at once (the view switches pairs without waiting); `/api/gaia` gives pixel positions per frame (the website does not need its own WCS code).

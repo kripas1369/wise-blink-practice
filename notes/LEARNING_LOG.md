@@ -48,6 +48,12 @@ One entry per session. Keep it short: 3 lines plus the time. This becomes our le
 - **Broke / confused me:** a ring 6–9 px around Barnard's saturated core gave a fake 0.62 ratio (now: no light curve when the hole reaches beyond 3 px); WISE 0855's D2 "brightening" was the moving circle sliding over a fixed Gaia star (now a warning); one flagged D6 exposure measured 520 mJy and squashed the chart (now drawn as ▲ and named); flagged-only scaling would have pushed most RW Aur points off the chart (now only flagged points 3× above the clean ones); AAVSO and VizieR were unreachable, so no AAVSO check.
 - **Time:** planned 7 h (without the deploy), actual __ h. Re-type `measure()` in `lightcurve.py` myself.
 
+### Day 5 (the plan's Wed 4 Level 3, done early, Sat 31 Oct), Kripas (proof, spots, JPL check, About page)
+- **Built:** `proof.py` (`proof.json`, `/api/proof`), `spots.py` (`spots.json`), `known_objects.py` (`/api/known-objects`), `measure.py` (shared centroid code); website proof panel, spot list with numbered marks and detail card, +/− visit buttons, `about.html`; black-and-white UI; 11 backend tests (+ 1 network test, Ceres) and 6 website tests. Explained in [`learning/13_day5_proof_spots_jpl.md`](../learning/13_day5_proof_spots_jpl.md).
+- **Learned:** a verdict needs more than pass / fail ("too small to test" when the expected motion is below our error); every SPHEREx exposure header has the spacecraft's position and velocity, which JPL needs because it refuses Earth's centre as observer; JPL's second pass failed for every request on 31 Oct (even its own example), the first pass works with a Julian date and whole seconds; a check that never says "match" could be broken, so I tested it on Ceres (found, 10.1″, JPL error 13.2″).
+- **Broke / confused me:** the spot's "nearest Gaia star" blamed a G 20.6 star for Barnard's −174σ spot (now the brightest star within 1.5 px); several edits were applied twice by the editor (duplicate imports and HTML blocks, found with grep); tests started in parallel with file writes ran on the old files; checking the About page against the code found two of my own errors (WISE 0855 D6 adds up to 21 exposures, not 8; `scipy` missing from `requirements.txt`).
+- **Time:** planned 7 h, actual __ h. Re-type `spots_for_pair()` in `spots.py` myself.
+
 ### [Friend's name] (validation and research, from 31 Oct)
 Write findings in [`REVIEW_NOTES.md`](REVIEW_NOTES.md); this log is for what you learned.
 - **Learned:**

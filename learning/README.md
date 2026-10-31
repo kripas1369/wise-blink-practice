@@ -19,6 +19,7 @@ researches: see [`docs/plan/FRIEND_REVIEW_GUIDE.md`](../docs/plan/FRIEND_REVIEW_
 | 10 | [10_day2_pipeline.md](10_day2_pipeline.md) | Day 2 data pipeline (Kripas): clean, line up, add up, render; why each choice; how we know it works | 20 min |
 | 11 | [11_day3_gaia_diff_api.md](11_day3_gaia_diff_api.md) | Day 3 (Kripas): Gaia markers, the difference in σ, the API, and how we proved Barnard's Star moves the way Gaia says | 25 min |
 | 12 | [12_day4_lightcurve.md](12_day4_lightcurve.md) | Day 4 (Kripas): the light curve from single exposures, comparing only at the same wavelength, the field-star floor, R Dra's asinh scale, and the C4 tests (WISE 0855 moves like WISE 0855) | 25 min |
+| 13 | [13_day5_proof_spots_jpl.md](13_day5_proof_spots_jpl.md) | Day 5 (Kripas): the proof panel (measured motion vs Gaia, what the data rests on), spots above 5σ with artifact flags, the known-object check with NASA JPL (tested on Ceres), the About page | 20 min |
 
 **The astronomy basics** (coordinates, time, light, FITS files, WCS, SPHEREx, noise and flags) are
 already in [`docs/learn/`](../docs/learn/LEARN.md). This folder links to them instead of repeating them.

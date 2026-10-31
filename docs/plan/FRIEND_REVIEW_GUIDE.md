@@ -93,6 +93,22 @@ SPHEREx is a NASA space telescope that photographs the whole sky again and again
 - **Barnard's Star and R Dra:** no light curve (saturated core), with the reason on the page.
 - **Not done:** AAVSO comparison (AAVSO and VizieR unreachable on 31 Oct); putting it online.
 
+### Day 5 (done 31 Oct)
+| What | In simple words | Where |
+|---|---|---|
+| Proof panel | The target's measured shift against Gaia's prediction, with a verdict, and what the data rests on (visits, exposures used of those taken, % flagged, which NASA data release) | `backend/app/proof.py`, `frontend/js/proof.js` |
+| Spots above 5σ | Places in the difference that changed by more than 5σ, numbered on the picture, each with possible-artifact flags, the Gaia star behind it, and "what else could explain it / what would confirm it" | `backend/app/spots.py`, `frontend/js/spots.js` |
+| Known-object check | A button that asks NASA JPL which known asteroids and comets were near a spot at that time, seen from SPHEREx: "matches X", "no match" (never "new object") or "check unavailable" | `backend/app/known_objects.py`, `/api/known-objects` |
+| +/− buttons | Step the Before and After visits one at a time | `frontend/js/diffview.js` |
+| About page | How we clean the data, what it cannot tell you, credits | `frontend/about.html` |
+
+**Findings** (all numbers in [`notes/DAY5_FINDINGS.md`](../../notes/DAY5_FINDINGS.md)):
+- Barnard's Star and Epsilon Indi B **agree** with Gaia (0.18 px apart in both). R Dra and RW Aur move less than 0.3 px according to Gaia, so the panel says **too small to test** instead of passing them. WISE 0855 is not in Gaia.
+- The JPL check found **Ceres** at a test spot 7.2″ from Ceres's position (JPL: 10.1″, its error 13.2″). JPL's accurate "second pass" failed for every request on 31 Oct, so the site uses the rougher first pass and says so.
+- **Not verified:** the sign of JPL's offsets (we assume east and north positive), and that SPHEREx's position in the file headers uses ICRF axes.
+
+![Spot detail card](../../notes/screenshots/day5_spot_detail.png)
+
 ---
 
 ## Part B. Run it yourself (15 min)
@@ -109,8 +125,8 @@ Optional (to run the data code, the API and the tests; Python 3.11+):
 cd wise-blink-practice
 python3 -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-python -m pytest -q                  # expect: 68 passed, 3 skipped
-cd frontend && npm test              # expect: 35 pass (Node 20+)
+python -m pytest -q                  # expect: 79 passed, 4 skipped
+cd frontend && npm test              # expect: 41 pass (Node 20+)
 cd .. && uvicorn backend.app.main:app --port 8000      # website + API; API docs at http://localhost:8000/api/docs
 ```
 With the API running you can type any position (e.g. `133.8 -7.2`); the first time, it takes a few minutes to download the pictures.
@@ -161,6 +177,15 @@ Pick one visit, e.g. Barnard D2 visit 1:
 - [ ] **Coverage counts:** open the C1 link with two other positions (e.g. `200.0, -30.0` and `10.0, 60.0`); on 31 Oct IRSA said 378 and 410, the same as our search.
 - [ ] **Honest "no light curve":** Barnard's Star and R Dra say why there is none. Does the reason make sense to you?
 
+### C8. Proof panel, spots and the JPL check (Day 5)
+- [ ] **Proof numbers:** the Barnard's Star proof panel says expected 1.67 px, measured 1.59 px. Compare with the C4 table in `notes/DAY4_FINDINGS.md` §3; they must be the same.
+- [ ] **Data releases:** the panel says Barnard's 24 exposures come from `spherex_qr2` (16, released 2026-04-21) and `spherex_qr3` (8, released 2026-09-30). Check one exposure id from `frontend/frames/barnard/d2/exposures.fits` (or the flipbook label) at IRSA.
+- [ ] **"Too small to test" is fair:** R Dra and RW Aur do not get a pass. Read `motion()` in `backend/app/proof.py`. Is 0.3 px a sensible floor? (Our alignment error is about 0.11 px; pixel phase adds more.)
+- [ ] **Spot texts:** open three spots on different targets. Does any text say more than the data shows? Does any spot near a bright star blame a faint one?
+- [ ] **JPL by hand (one case):** take Barnard's spot 1 (RA 17h57m47.10s, Dec +04°45′53.2″, 2025-08-26 11:57 UTC) and ask JPL yourself ([sb_ident docs](https://ssd-api.jpl.nasa.gov/doc/sb_ident.html)). Do you also get no known object within 12.3″?
+- [ ] **JPL offset sign:** in JPL's documentation, is "Dist. from center RA" positive to the east? (Open item; we assumed yes.)
+- [ ] **Spacecraft axes:** in the Explanatory Supplement, what frame are `X_SC`, `Y_SC`, `Z_SC` in when `XYZ_SC_SYSTEM = 'GEOCENTER'`? (We assumed ICRF.)
+
 ---
 
 ## Part D. Research questions (most important first)
@@ -172,7 +197,7 @@ Pick one visit, e.g. Barnard D2 visit 1:
 5. **D2 wavelength range:** the files say 1.103–1.650 µm, our `config.DETECTORS` says 1.10–1.62. Which is right? (Explanatory Supplement, detector table.)
 6. **Noise:** the file's own noise (from VARIANCE) gives smaller σ values than the pixel scatter (e.g. 11.1 vs 14.7). Lining up the pictures smooths neighbouring pixels, which lowers the scatter. Which should we quote? Is VARIANCE known to be over- or under-estimated?
 7. **Is our "wavelength at the star" allowed?** Kripas's older prototype notes say the Explanatory Supplement calls the WCS-WAVE table "display-only". We use it for the wavelength in every label and will use it to pick visit pairs for the Difference view. Find the exact sentence (Supplement section and page) and what SPHEREx recommends instead, if anything.
-8. **Known asteroids in the Difference view:** NASA JPL's Small-Body Identification API (`ssd-api.jpl.nasa.gov/sb_ident.api`) lists known asteroids and comets near a position at a time. Check whether it works for SPHEREx (Earth-orbiting telescope: which observer location code to use?) and how big a search box we need for 6.15″ pixels.
+8. **Known asteroids in the Difference view:** NASA JPL's Small-Body Identification API (`ssd-api.jpl.nasa.gov/sb_ident.api`) lists known asteroids and comets near a position at a time. Check whether it works for SPHEREx (Earth-orbiting telescope: which observer location code to use?) and how big a search box we need for 6.15″ pixels. *Day 5: built. SPHEREx's own position from the file headers is sent as the observer (JPL refuses the geocentre); tested on Ceres. Still open: the offset sign and the header axes (C8), and why JPL's second pass failed on 31 Oct.*
 9. **Why does a star that does not move leave a pair in the difference?** RW Aurigae D2: −52σ / +71σ around the star, although Gaia says it moved 0.004 px and we measured 0.07 px. Candidates: a tiny alignment shift on a very bright star, the PSF changing across the detector, the wavelength changing between visits. Is there a SPHEREx document on PSF variation (Explanatory Supplement)? This decides how strongly we may say "this pair is motion".
 10. **Display scale for very bright stars (R Draconis):** a linear scale makes everything but the core black. What do astronomers use for web previews (asinh, log, square root)? Is asinh "honest" if the scale is written next to the picture? *Day 4: we now use asinh (softening 0.002) for R Dra, with the formula in the manifest and a warning on the page. Is 0.002 a sensible choice?*
 12. **AAVSO light curves for RW Aur and R Dra** (C4): AAVSO VSX and VizieR were unreachable from our machine on 31 Oct. Can you download AAVSO's light curves (J or H band if any, otherwise V) for Jun 2025 – Oct 2026 by hand? Did RW Aur brighten from Sep 2025 to Sep 2026? Where was R Dra in its 245-day cycle on our visit dates (Jun 2025, Dec 2025, Jun 2026)?
@@ -204,4 +229,5 @@ Features, checks or explanations that would help a student, a citizen scientist 
 | Day 3 (done 31 Oct) | Gaia markers, synced Before / After / Difference view, the API, motion measurements (Part A, Day 3) | Part C6; research questions 9 and 10 |
 | Day 4 (done 31 Oct, except deploy) | Light curve per exposure, click a pixel, R Dra asinh scale, WISE 0855 position fit, C4 tests on the 5 targets (Part A, Day 4) | Part C7; research questions 1, 2, 10 and 12 |
 | Day 4 leftovers | Deploy and phone check; PSF-fit positions; field-star floor outside the Barnard frame | Compare brightness with IRSA's Spectrophotometry Tool; test the public link on your phone |
-| Later | Spectrum panel, proof panel, About page, spot evidence panel with known-object check (JPL), video, pitch | Each spot's evidence text; known-object matches against JPL by hand for one case; science text, references, limitations |
+| Day 5 (done 31 Oct) | Proof panel, spots above 5σ with known-object check (JPL), +/− visit buttons, About page (Part A, Day 5) | Part C8; research question 8 |
+| Later | Spectrum panel (needs frames for the other detectors), video, pitch | Science text, references, limitations |

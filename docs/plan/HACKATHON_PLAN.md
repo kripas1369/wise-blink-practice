@@ -231,6 +231,7 @@ flowchart LR
 #### Wed 4 – Fri 6 Nov
 - **Wed 4 morning (both):** fix whatever did not pass on Day 4.
 - **Wed 4 afternoon:** Level 3. [Friend's name]: `/api/spectrum` (brightness vs wavelength, per epoch) and measured motion vs Gaia. Kripas: spectrum panel, epoch picker (+/−), proof panel, About page; spot evidence panel and known-object check (JPL Small-Body Identification API) for the Difference view (C5 Level 3).
+- **Status (31 Oct): done early by Kripas, except the spectrum panel and `/api/spectrum`** (they need frames for the other detectors). Measured motion vs Gaia is in the proof panel (Barnard and Eps Ind B agree; R Dra and RW Aur "too small to test"; WISE 0855 not in Gaia). The JPL check finds Ceres in a test; JPL's accurate second pass failed on 31 Oct, so the labelled first pass is used. Details: [`notes/DAY5_FINDINGS.md`](../../notes/DAY5_FINDINGS.md).
 - **Thu 5:** [Friend's name] reads Supplement 2.2, 3.2.5, 3.2.9, 3.4.3 and finishes `FACTS.md`; one cross-check against IRSA's Spectrophotometry Tool. Kripas makes a draft 30-second video from the practice tool and a pitch draft. Evening (both): speed drill. In an empty folder, rebuild search → coverage → one cutout → flipbook in 3 hours from memory. Delete afterwards.
 - **Fri 6:** rest; rehearsal checklist.
 

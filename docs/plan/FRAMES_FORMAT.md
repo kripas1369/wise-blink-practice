@@ -4,6 +4,7 @@ The contract between the data pipeline (`backend/app/render.py`) and the website
 Whoever makes the frames (`render.py` for the prepared targets, the `/api/frames` background job for any other position) writes **exactly this**, and the website shows it without changing any value.
 Day 3 added three files next to each manifest: the per-visit data (`epoch<i>.fits`, section 8), the Gaia markers (`gaia.json`, section 6) and the difference maps (`diff.json`, section 7).
 Day 4 added the asinh brightness scale (section 3), every single exposure on the grid (`exposures.fits`, section 9) and the light curve (`lightcurve.json`, section 10).
+Day 5 added the proof panel (`proof.json`, section 11) and the spots above 5σ (`spots.json`, section 12).
 
 The website refuses a manifest that breaks these rules (`frontend/js/frames.js`, `checkManifest`) and says why, instead of showing frames it cannot label honestly.
 
@@ -23,6 +24,8 @@ frontend/frames/
     diff.json, diff_<a>_<b>.png  difference of every visit pair (section 7; backend/app/diff.py)
     exposures.fits               every single exposure behind the frames (section 9; backend/app/lightcurve.py)
     lightcurve.json              the target's brightness in every exposure (section 10)
+    proof.json                   measured motion vs Gaia, and the data it rests on (section 11; backend/app/proof.py)
+    spots.json                   spots above 5σ in every difference, SPHEREx's position per visit (section 12; backend/app/spots.py)
 ```
 
 - `<target>` is the key from `backend/app/targets.py`: `barnard`, `eps_ind_b`, `wise0855`, `rw_aur`, `r_dra`.
@@ -206,3 +209,29 @@ Top level: `format`, `target`, `label`, `band`, `unit` (`"mJy"`), `position_rule
 - `neighbours`: Gaia stars inside the circle (up to 3 mag fainter than the target): `source_id`, `g_mag`, `distance_px`. Their light is in every point.
 
 `GET /api/lightcurve` (same location parameters as `/api/frames`) returns this file; with `&x=&y=` (PNG pixels, both or neither) it measures that fixed position the same way instead.
+
+---
+
+## 11. `proof.json` (`spherex-blink-proof/1`, made by `backend/app/proof.py`)
+
+Top level: `format`, `target`, `band`, `pixel_arcsec`, `motion`, `data`, `method` (in words), `made_by`, `made_at`.
+
+- `motion.status`: `agrees`, `disagrees`, `too_small` (Gaia's motion below `limits.min_testable_px`), `not_measurable`, `no_gaia_target` (no Gaia star within 3″), `one_visit`. With `reason` in words whenever it is not `agrees` / `disagrees`.
+- When Gaia has the target: `gaia_source_id` (text), `visits` (first and last date), `expected_px` (PNG x, y) and `expected_size_px`. When measured: `method` (`centroid` or `saturated-core centre`), `measured_px`, `measured_size_px`, `difference_px`, `direction_difference_deg` (`null` when the expected shift is too small for a direction).
+- `motion.limits`: `max_error_px` 0.5 with `max_error_source` `"HACKATHON_PLAN C4"`; `max_direction_deg` 30 and `min_testable_px` 0.3 with `direction_and_min_source` `"ours"`.
+- `data`: `n_visits`, `span_days`, `n_exposures_used`, `n_exposures_taken`, `pct_flagged_range` ([min, max] per visit), `visits` (per visit `date`, `n_images`, `n_images_in_epoch`, `pct_flagged`, `pct_no_value`), `frames_made_at`, `newest_exposure`.
+- `data.releases` (made with `--online`): per collection `n_exposures` and `release_date` (the latest IRSA `release_date` of those exposures), plus `asked_irsa_at`. When missing or incomplete: `releases_reason` in words.
+
+`GET /api/proof` returns this file.
+
+---
+
+## 12. `spots.json` (`spherex-blink-spots/1`, made by `backend/app/spots.py`)
+
+Top level: `format`, `target`, `band`, `limit_sigma` (5), `rules` (`max_spots_per_pair`, `near_gaia_px`, `long_thin_ratio`, `large_px`, with `source: "ours"`), `observers`, `pairs`, `made_by`, `made_at`.
+
+- `observers`: one per visit: `epoch_id`, `obs_id` (the exposure nearest the visit's mean time), `exposures_mjd_range`, `exposures_span_hours`, `available`, `mjd`, `xyz_km`, `vxyz_kms` (SPHEREx's geocentric position and velocity from the exposure header `X_SC` … `VZ_SC`), `system` (`"GEOCENTER (axes assumed ICRF)"`). `available: false` comes with a `reason`.
+- `pairs`: one per visit pair `a` < `b`: `n_spots` (all found) and `spots` (up to 10, strongest |z| first).
+- Each spot: `sign` (+1 brighter in B, −1 fainter), `peak_sigma`, `peak_xy`, `xy` (|z|-weighted centre, PNG pixels), `ra`, `dec`, `n_pixels`, `axis_ratio` (`null` below 3 pixels), `frame` (the visit it belongs to: B for +, A for −), `artifact_flags` (texts: long and thin, very large, next to flagged or no-value pixels, touches the frame edge), `gaia_star` (`source_id`, `g_mag`, `distance_px`, `target`, `chosen`: the brightest Gaia star within 1.5 px, else the nearest; `null` without Gaia), and the texts `why`, `what_else` (list), `confirm` (list).
+
+The website reads this file directly (no endpoint); `GET /api/known-objects?…&a=&b=&spot=` uses it to check one spot against NASA JPL (FACTS §7).

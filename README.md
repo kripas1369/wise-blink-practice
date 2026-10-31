@@ -16,6 +16,7 @@ A public web tool: type RA/Dec or a star name, and see **real SPHEREx images of 
 2. **Day 2:** clean and line up the epochs; flipbook. Done: flipbook in `frontend/`, pipeline `python -m backend.app.render <target> <detector>`, findings in [notes/DAY2_FINDINGS.md](notes/DAY2_FINDINGS.md).
 3. **Day 3:** compare epochs with proof (add-up, Gaia, difference); connect website and API. Done: Gaia markers, Before / After / Difference view, FastAPI (`backend/app/main.py`), findings in [notes/DAY3_FINDINGS.md](notes/DAY3_FINDINGS.md).
 4. **Day 4:** light curve, online, test the 5 targets. Done (except online, skipped for now): light curve per exposure (`backend/app/lightcurve.py`, `/api/lightcurve`, website panel), asinh scale for R Dra, C4 acceptance tests (`scripts/acceptance.py`), findings in [notes/DAY4_FINDINGS.md](notes/DAY4_FINDINGS.md).
+5. **Day 5 (the plan's Wed 4 Level 3, done early):** proof panel (`backend/app/proof.py`, `/api/proof`), spots above 5σ (`backend/app/spots.py`) with a NASA JPL known-object check (`backend/app/known_objects.py`, `/api/known-objects`), +/− visit picker, About page (`frontend/about.html`). Spectrum panel not built yet. Findings in [notes/DAY5_FINDINGS.md](notes/DAY5_FINDINGS.md).
 
 ## Read first
 - **[Friend's name], start here: [docs/plan/FRIEND_REVIEW_GUIDE.md](docs/plan/FRIEND_REVIEW_GUIDE.md)** (what we built, how to check it, what to research). The old build guides (`FRIEND_DAY1_STEPS.md`, `FRIEND_DAY2_STEPS.md`) are reference only.
@@ -30,7 +31,7 @@ A public web tool: type RA/Dec or a star name, and see **real SPHEREx images of 
 - Today's task: `notes/DAY<N>_GUIDE.md`; daily notes: [notes/LEARNING_LOG.md](notes/LEARNING_LOG.md)
 
 ## Layout
-- `backend/app/`: Python code (archive search, cutouts, flags, star motion, clean, align, add-up, render, Gaia, difference, FastAPI `main.py`).
+- `backend/app/`: Python code (archive search, cutouts, flags, star motion, clean, align, add-up, render, Gaia, difference, light curve, proof, spots, known objects, FastAPI `main.py`).
 - `scripts/measure_ring.py`, `scripts/measure_motion.py`: offline measurements behind the findings notes.
 - `backend/tests/`: pytest tests (`RUN_NETWORK=1` for the ones that call real servers).
 - `scripts/day1_report.py`: coverage report for the 5 targets (`python -m scripts.day1_report`).

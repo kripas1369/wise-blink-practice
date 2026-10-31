@@ -69,6 +69,7 @@ About 7 hours a day, in 3 blocks. For each block: the AI explains → **I type t
 ### Wed 4 – Fri 6 Nov
 - **Wed 4 morning:** fix anything that failed on Day 4.
 - **Wed 4 afternoon:** Level 3: spectrum panel (per epoch); **epoch picker (+/−)**; **proof panel** (expected vs measured motion, % flagged, images/epochs, "data as of"); About page (how we clean data, limitations, credits); **spot evidence panel** for marked residuals in the Difference view, with a **known-object check** (NASA JPL Small-Body Identification API: "matches X" / "no match found" / "check unavailable", never "new object").
+- **Status (31 Oct, done early except the spectrum panel):** proof panel, +/− visit picker, spots above 5σ with the JPL known-object check (tested on Ceres), About page. The spectrum panel needs frames for the other detectors first. Findings: [`notes/DAY5_FINDINGS.md`](../../notes/DAY5_FINDINGS.md); explained from the basics: [`learning/13_day5_proof_spots_jpl.md`](../../learning/13_day5_proof_spots_jpl.md).
 - **Thu 5:** draft 30-second video from the practice tool (Part F storyboard); pitch draft; find a public-domain Pluto discovery plate image. Evening: speed drill: empty folder → search → Aladin → flipbook on sample PNGs → deploy in 3 hours, from memory. Delete afterwards.
 - **Fri 6:** rest; rehearsal checklist.
 
