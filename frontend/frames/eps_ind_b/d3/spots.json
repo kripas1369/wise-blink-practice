@@ -1,0 +1,1429 @@
+{
+ "format": "spherex-blink-spots/1",
+ "target": "eps_ind_b",
+ "band": 3,
+ "limit_sigma": 5.0,
+ "rules": {
+  "max_spots_per_pair": 10,
+  "near_gaia_px": 1.5,
+  "long_thin_ratio": 3.0,
+  "large_px": 20,
+  "source": "ours"
+ },
+ "observers": [
+  {
+   "epoch_id": 0,
+   "obs_id": "2025W18_2B_0042_1",
+   "exposures_mjd_range": [
+    60795.90218,
+    60802.22039
+   ],
+   "exposures_span_hours": 151.64,
+   "available": true,
+   "mjd": 60796.781344476,
+   "xyz_km": [
+    2727.236,
+    -1986.204,
+    -6182.782
+   ],
+   "vxyz_kms": [
+    3.844791,
+    -5.449811,
+    3.454919
+   ],
+   "system": "GEOCENTER (axes assumed ICRF)"
+  },
+  {
+   "epoch_id": 1,
+   "obs_id": "2025W40_1A_0559_1",
+   "exposures_mjd_range": [
+    60949.00144,
+    60954.22961
+   ],
+   "exposures_span_hours": 125.48,
+   "available": true,
+   "mjd": 60949.54314502,
+   "xyz_km": [
+    -220.157,
+    -3927.538,
+    -5831.109
+   ],
+   "vxyz_kms": [
+    -1.554126,
+    6.133966,
+    -4.066246
+   ],
+   "system": "GEOCENTER (axes assumed ICRF)"
+  },
+  {
+   "epoch_id": 2,
+   "obs_id": "2026W18_1A_0490_2",
+   "exposures_mjd_range": [
+    61159.23281,
+    61159.56871
+   ],
+   "exposures_span_hours": 8.06,
+   "available": true,
+   "mjd": 61159.368106803,
+   "xyz_km": [
+    3023.937,
+    -3009.121,
+    -5586.65
+   ],
+   "vxyz_kms": [
+    2.935407,
+    -5.306772,
+    4.456642
+   ],
+   "system": "GEOCENTER (axes assumed ICRF)"
+  },
+  {
+   "epoch_id": 3,
+   "obs_id": "2026W39_2A_0169_2",
+   "exposures_mjd_range": [
+    61308.21514,
+    61309.36794
+   ],
+   "exposures_span_hours": 27.67,
+   "available": true,
+   "mjd": 61308.283443828,
+   "xyz_km": [
+    -885.08,
+    -2520.945,
+    -6499.165
+   ],
+   "vxyz_kms": [
+    -0.495439,
+    7.022362,
+    -2.660116
+   ],
+   "system": "GEOCENTER (axes assumed ICRF)"
+  }
+ ],
+ "pairs": [
+  {
+   "a": 0,
+   "b": 1,
+   "n_spots": 6,
+   "spots": [
+    {
+     "sign": -1,
+     "peak_sigma": -77.0,
+     "peak_xy": [
+      15,
+      13
+     ],
+     "xy": [
+      14.6,
+      13.06
+     ],
+     "ra": 331.094771,
+     "dec": -56.799046,
+     "n_pixels": 9,
+     "axis_ratio": 1.62,
+     "frame": 0,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412596012146801152",
+      "g_mag": 18.03,
+      "distance_px": 0.7,
+      "target": true,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "9 pixels at -77.0σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.7 px from Gaia DR3 6412596012146801152 (G 18.03, the target; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 28.2,
+     "peak_xy": [
+      14,
+      15
+     ],
+     "xy": [
+      13.73,
+      14.8
+     ],
+     "ra": 331.097476,
+     "dec": -56.802026,
+     "n_pixels": 7,
+     "axis_ratio": 1.76,
+     "frame": 1,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412596012146801152",
+      "g_mag": 18.03,
+      "distance_px": 0.99,
+      "target": true,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "7 pixels at +28.2σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.99 px from Gaia DR3 6412596012146801152 (G 18.03, the target; brightest of 1 within 1.5 px) on visit B's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -27.0,
+     "peak_xy": [
+      3,
+      0
+     ],
+     "xy": [
+      2.81,
+      0.0
+     ],
+     "ra": 331.13152,
+     "dec": -56.776739,
+     "n_pixels": 2,
+     "axis_ratio": null,
+     "frame": 0,
+     "artifact_flags": [
+      "touches the frame edge"
+     ],
+     "gaia_star": {
+      "source_id": "6412596458823395328",
+      "g_mag": 12.95,
+      "distance_px": 1.32,
+      "target": false,
+      "chosen": "brightest of 2 within 1.5 px"
+     },
+     "why": "2 pixels at -27.0σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 1.32 px from Gaia DR3 6412596458823395328 (G 12.95; brightest of 2 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -8.2,
+     "peak_xy": [
+      26,
+      14
+     ],
+     "xy": [
+      26.0,
+      13.59
+     ],
+     "ra": 331.059205,
+     "dec": -56.799961,
+     "n_pixels": 2,
+     "axis_ratio": null,
+     "frame": 0,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412595973491218944",
+      "g_mag": 15.81,
+      "distance_px": 0.8,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "2 pixels at -8.2σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.8 px from Gaia DR3 6412595973491218944 (G 15.81; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 7.2,
+     "peak_xy": [
+      4,
+      1
+     ],
+     "xy": [
+      4.0,
+      1.0
+     ],
+     "ra": 331.127825,
+     "dec": -56.778448,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 1,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412596458823395456",
+      "g_mag": 17.11,
+      "distance_px": 1.17,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "1 pixel at +7.2σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 1.17 px from Gaia DR3 6412596458823395456 (G 17.11; brightest of 1 within 1.5 px) on visit B's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -7.1,
+     "peak_xy": [
+      24,
+      13
+     ],
+     "xy": [
+      24.0,
+      13.0
+     ],
+     "ra": 331.065446,
+     "dec": -56.798948,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 0,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412595973491218944",
+      "g_mag": 15.81,
+      "distance_px": 1.37,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "1 pixel at -7.1σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 1.37 px from Gaia DR3 6412595973491218944 (G 15.81; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    }
+   ]
+  },
+  {
+   "a": 0,
+   "b": 2,
+   "n_spots": 6,
+   "spots": [
+    {
+     "sign": 1,
+     "peak_sigma": 119.4,
+     "peak_xy": [
+      13,
+      14
+     ],
+     "xy": [
+      13.18,
+      14.55
+     ],
+     "ra": 331.099191,
+     "dec": -56.8016,
+     "n_pixels": 10,
+     "axis_ratio": 1.34,
+     "frame": 2,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412596012146801152",
+      "g_mag": 18.03,
+      "distance_px": 0.73,
+      "target": true,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "10 pixels at +119.4σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.73 px from Gaia DR3 6412596012146801152 (G 18.03, the target; brightest of 1 within 1.5 px) on visit B's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -110.4,
+     "peak_xy": [
+      15,
+      14
+     ],
+     "xy": [
+      14.87,
+      13.44
+     ],
+     "ra": 331.093923,
+     "dec": -56.799702,
+     "n_pixels": 8,
+     "axis_ratio": 1.48,
+     "frame": 0,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412596012146801152",
+      "g_mag": 18.03,
+      "distance_px": 0.53,
+      "target": true,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "8 pixels at -110.4σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.53 px from Gaia DR3 6412596012146801152 (G 18.03, the target; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -22.6,
+     "peak_xy": [
+      3,
+      0
+     ],
+     "xy": [
+      3.27,
+      0.0
+     ],
+     "ra": 331.130097,
+     "dec": -56.776739,
+     "n_pixels": 2,
+     "axis_ratio": null,
+     "frame": 0,
+     "artifact_flags": [
+      "touches the frame edge"
+     ],
+     "gaia_star": {
+      "source_id": "6412596458823395328",
+      "g_mag": 12.95,
+      "distance_px": 1.15,
+      "target": false,
+      "chosen": "brightest of 2 within 1.5 px"
+     },
+     "why": "2 pixels at -22.6σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 1.15 px from Gaia DR3 6412596458823395328 (G 12.95; brightest of 2 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -8.2,
+     "peak_xy": [
+      26,
+      13
+     ],
+     "xy": [
+      26.0,
+      13.0
+     ],
+     "ra": 331.059206,
+     "dec": -56.798946,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 0,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412595973491218944",
+      "g_mag": 15.81,
+      "distance_px": 1.03,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "1 pixel at -8.2σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 1.03 px from Gaia DR3 6412595973491218944 (G 15.81; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 7.2,
+     "peak_xy": [
+      16,
+      25
+     ],
+     "xy": [
+      16.0,
+      25.0
+     ],
+     "ra": 331.090401,
+     "dec": -56.819452,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 2,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412595909067585024",
+      "g_mag": 18.0,
+      "distance_px": 2.69,
+      "target": false,
+      "chosen": "nearest"
+     },
+     "why": "1 pixel at +7.2σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "No Gaia DR3 star within 1.5 px on visit B's date.",
+      "It could be a solar-system object, a source too faint or too red for Gaia that changed, a cosmic ray or detector artifact that survived the add-up, or noise."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit.",
+      "For a solar-system object: a known object at this place and time (check below), and a shift between the exposures of one visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -5.0,
+     "peak_xy": [
+      24,
+      13
+     ],
+     "xy": [
+      24.0,
+      13.0
+     ],
+     "ra": 331.065446,
+     "dec": -56.798948,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 0,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412595973491218944",
+      "g_mag": 15.81,
+      "distance_px": 1.37,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "1 pixel at -5.0σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 1.37 px from Gaia DR3 6412595973491218944 (G 15.81; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    }
+   ]
+  },
+  {
+   "a": 0,
+   "b": 3,
+   "n_spots": 6,
+   "spots": [
+    {
+     "sign": -1,
+     "peak_sigma": -139.7,
+     "peak_xy": [
+      15,
+      14
+     ],
+     "xy": [
+      14.63,
+      13.44
+     ],
+     "ra": 331.094685,
+     "dec": -56.799695,
+     "n_pixels": 11,
+     "axis_ratio": 1.33,
+     "frame": 0,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412596012146801152",
+      "g_mag": 18.03,
+      "distance_px": 0.36,
+      "target": true,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "11 pixels at -139.7σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.36 px from Gaia DR3 6412596012146801152 (G 18.03, the target; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 117.9,
+     "peak_xy": [
+      13,
+      15
+     ],
+     "xy": [
+      13.03,
+      14.75
+     ],
+     "ra": 331.09966,
+     "dec": -56.801937,
+     "n_pixels": 7,
+     "axis_ratio": 1.42,
+     "frame": 3,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412596012146801152",
+      "g_mag": 18.03,
+      "distance_px": 0.67,
+      "target": true,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "7 pixels at +117.9σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.67 px from Gaia DR3 6412596012146801152 (G 18.03, the target; brightest of 1 within 1.5 px) on visit B's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 19.9,
+     "peak_xy": [
+      4,
+      0
+     ],
+     "xy": [
+      4.21,
+      0.21
+     ],
+     "ra": 331.127176,
+     "dec": -56.777095,
+     "n_pixels": 2,
+     "axis_ratio": null,
+     "frame": 3,
+     "artifact_flags": [
+      "touches the frame edge"
+     ],
+     "gaia_star": {
+      "source_id": "6412596458823395456",
+      "g_mag": 17.11,
+      "distance_px": 0.49,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "2 pixels at +19.9σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.49 px from Gaia DR3 6412596458823395456 (G 17.11; brightest of 1 within 1.5 px) on visit B's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -13.4,
+     "peak_xy": [
+      3,
+      0
+     ],
+     "xy": [
+      2.62,
+      0.0
+     ],
+     "ra": 331.132112,
+     "dec": -56.776739,
+     "n_pixels": 2,
+     "axis_ratio": null,
+     "frame": 0,
+     "artifact_flags": [
+      "touches the frame edge"
+     ],
+     "gaia_star": {
+      "source_id": "6412596458823395328",
+      "g_mag": 12.95,
+      "distance_px": 1.42,
+      "target": false,
+      "chosen": "brightest of 2 within 1.5 px"
+     },
+     "why": "2 pixels at -13.4σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 1.42 px from Gaia DR3 6412596458823395328 (G 12.95; brightest of 2 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -7.8,
+     "peak_xy": [
+      25,
+      14
+     ],
+     "xy": [
+      25.0,
+      14.0
+     ],
+     "ra": 331.062325,
+     "dec": -56.800655,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 0,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412595973491218944",
+      "g_mag": 15.81,
+      "distance_px": 0.4,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "1 pixel at -7.8σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.4 px from Gaia DR3 6412595973491218944 (G 15.81; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -5.4,
+     "peak_xy": [
+      11,
+      23
+     ],
+     "xy": [
+      11.0,
+      23.0
+     ],
+     "ra": 331.106008,
+     "dec": -56.816035,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 0,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412592984193970560",
+      "g_mag": 19.58,
+      "distance_px": 0.44,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "1 pixel at -5.4σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.44 px from Gaia DR3 6412592984193970560 (G 19.58; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    }
+   ]
+  },
+  {
+   "a": 1,
+   "b": 2,
+   "n_spots": 6,
+   "spots": [
+    {
+     "sign": 1,
+     "peak_sigma": 98.5,
+     "peak_xy": [
+      13,
+      14
+     ],
+     "xy": [
+      13.09,
+      14.43
+     ],
+     "ra": 331.099497,
+     "dec": -56.801389,
+     "n_pixels": 9,
+     "axis_ratio": 1.34,
+     "frame": 2,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412596012146801152",
+      "g_mag": 18.03,
+      "distance_px": 0.76,
+      "target": true,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "9 pixels at +98.5σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.76 px from Gaia DR3 6412596012146801152 (G 18.03, the target; brightest of 1 within 1.5 px) on visit B's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -83.2,
+     "peak_xy": [
+      15,
+      14
+     ],
+     "xy": [
+      15.04,
+      13.92
+     ],
+     "ra": 331.093396,
+     "dec": -56.800531,
+     "n_pixels": 7,
+     "axis_ratio": 1.49,
+     "frame": 1,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412596012146801152",
+      "g_mag": 18.03,
+      "distance_px": 0.88,
+      "target": true,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "7 pixels at -83.2σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.88 px from Gaia DR3 6412596012146801152 (G 18.03, the target; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -7.0,
+     "peak_xy": [
+      4,
+      0
+     ],
+     "xy": [
+      4.0,
+      0.47
+     ],
+     "ra": 331.127824,
+     "dec": -56.77754,
+     "n_pixels": 2,
+     "axis_ratio": null,
+     "frame": 1,
+     "artifact_flags": [
+      "touches the frame edge"
+     ],
+     "gaia_star": {
+      "source_id": "6412596458823395456",
+      "g_mag": 17.11,
+      "distance_px": 0.64,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "2 pixels at -7.0σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.64 px from Gaia DR3 6412596458823395456 (G 17.11; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 5.8,
+     "peak_xy": [
+      16,
+      25
+     ],
+     "xy": [
+      16.0,
+      25.0
+     ],
+     "ra": 331.090401,
+     "dec": -56.819452,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 2,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412595909067585024",
+      "g_mag": 18.0,
+      "distance_px": 2.69,
+      "target": false,
+      "chosen": "nearest"
+     },
+     "why": "1 pixel at +5.8σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "No Gaia DR3 star within 1.5 px on visit B's date.",
+      "It could be a solar-system object, a source too faint or too red for Gaia that changed, a cosmic ray or detector artifact that survived the add-up, or noise."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit.",
+      "For a solar-system object: a known object at this place and time (check below), and a shift between the exposures of one visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 5.7,
+     "peak_xy": [
+      2,
+      0
+     ],
+     "xy": [
+      2.0,
+      0.0
+     ],
+     "ra": 331.134059,
+     "dec": -56.776738,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 2,
+     "artifact_flags": [
+      "touches the frame edge"
+     ],
+     "gaia_star": {
+      "source_id": "6412596458823395328",
+      "g_mag": 12.95,
+      "distance_px": 1.87,
+      "target": false,
+      "chosen": "nearest"
+     },
+     "why": "1 pixel at +5.7σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "No Gaia DR3 star within 1.5 px on visit B's date.",
+      "It could be a solar-system object, a source too faint or too red for Gaia that changed, a cosmic ray or detector artifact that survived the add-up, or noise."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit.",
+      "For a solar-system object: a known object at this place and time (check below), and a shift between the exposures of one visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -5.4,
+     "peak_xy": [
+      5,
+      6
+     ],
+     "xy": [
+      5.0,
+      6.0
+     ],
+     "ra": 331.124713,
+     "dec": -56.78699,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 1,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412596076570445184",
+      "g_mag": 18.84,
+      "distance_px": 0.75,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "1 pixel at -5.4σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.75 px from Gaia DR3 6412596076570445184 (G 18.84; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    }
+   ]
+  },
+  {
+   "a": 1,
+   "b": 3,
+   "n_spots": 5,
+   "spots": [
+    {
+     "sign": -1,
+     "peak_sigma": -115.8,
+     "peak_xy": [
+      15,
+      14
+     ],
+     "xy": [
+      14.66,
+      13.8
+     ],
+     "ra": 331.094574,
+     "dec": -56.80032,
+     "n_pixels": 10,
+     "axis_ratio": 1.36,
+     "frame": 1,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412596012146801152",
+      "g_mag": 18.03,
+      "distance_px": 0.51,
+      "target": true,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "10 pixels at -115.8σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.51 px from Gaia DR3 6412596012146801152 (G 18.03, the target; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 109.1,
+     "peak_xy": [
+      13,
+      15
+     ],
+     "xy": [
+      12.89,
+      14.72
+     ],
+     "ra": 331.100096,
+     "dec": -56.801891,
+     "n_pixels": 6,
+     "axis_ratio": 1.53,
+     "frame": 3,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412596012146801152",
+      "g_mag": 18.03,
+      "distance_px": 0.76,
+      "target": true,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "6 pixels at +109.1σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.76 px from Gaia DR3 6412596012146801152 (G 18.03, the target; brightest of 1 within 1.5 px) on visit B's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 21.4,
+     "peak_xy": [
+      4,
+      0
+     ],
+     "xy": [
+      3.62,
+      0.0
+     ],
+     "ra": 331.129021,
+     "dec": -56.776739,
+     "n_pixels": 2,
+     "axis_ratio": null,
+     "frame": 3,
+     "artifact_flags": [
+      "touches the frame edge"
+     ],
+     "gaia_star": {
+      "source_id": "6412596458823395328",
+      "g_mag": 12.95,
+      "distance_px": 1.14,
+      "target": false,
+      "chosen": "brightest of 2 within 1.5 px"
+     },
+     "why": "2 pixels at +21.4σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 1.14 px from Gaia DR3 6412596458823395328 (G 12.95; brightest of 2 within 1.5 px) on visit B's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -9.2,
+     "peak_xy": [
+      25,
+      14
+     ],
+     "xy": [
+      25.0,
+      14.0
+     ],
+     "ra": 331.062325,
+     "dec": -56.800655,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 1,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412595973491218944",
+      "g_mag": 15.81,
+      "distance_px": 0.4,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "1 pixel at -9.2σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.4 px from Gaia DR3 6412595973491218944 (G 15.81; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 6.8,
+     "peak_xy": [
+      26,
+      13
+     ],
+     "xy": [
+      26.0,
+      13.48
+     ],
+     "ra": 331.059205,
+     "dec": -56.799766,
+     "n_pixels": 2,
+     "axis_ratio": null,
+     "frame": 3,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412595973491218944",
+      "g_mag": 15.81,
+      "distance_px": 0.81,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "2 pixels at +6.8σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.81 px from Gaia DR3 6412595973491218944 (G 15.81; brightest of 1 within 1.5 px) on visit B's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    }
+   ]
+  },
+  {
+   "a": 2,
+   "b": 3,
+   "n_spots": 8,
+   "spots": [
+    {
+     "sign": -1,
+     "peak_sigma": -84.5,
+     "peak_xy": [
+      14,
+      14
+     ],
+     "xy": [
+      13.95,
+      13.83
+     ],
+     "ra": 331.096797,
+     "dec": -56.800375,
+     "n_pixels": 8,
+     "axis_ratio": 1.2,
+     "frame": 2,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412596012146801152",
+      "g_mag": 18.03,
+      "distance_px": 0.34,
+      "target": true,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "8 pixels at -84.5σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.34 px from Gaia DR3 6412596012146801152 (G 18.03, the target; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 50.1,
+     "peak_xy": [
+      13,
+      15
+     ],
+     "xy": [
+      13.17,
+      15.17
+     ],
+     "ra": 331.099248,
+     "dec": -56.802651,
+     "n_pixels": 2,
+     "axis_ratio": null,
+     "frame": 3,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412596012146801152",
+      "g_mag": 18.03,
+      "distance_px": 0.94,
+      "target": true,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "2 pixels at +50.1σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.94 px from Gaia DR3 6412596012146801152 (G 18.03, the target; brightest of 1 within 1.5 px) on visit B's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 28.6,
+     "peak_xy": [
+      4,
+      0
+     ],
+     "xy": [
+      3.76,
+      0.0
+     ],
+     "ra": 331.128559,
+     "dec": -56.776739,
+     "n_pixels": 2,
+     "axis_ratio": null,
+     "frame": 3,
+     "artifact_flags": [
+      "touches the frame edge"
+     ],
+     "gaia_star": {
+      "source_id": "6412596458823395328",
+      "g_mag": 12.95,
+      "distance_px": 1.16,
+      "target": false,
+      "chosen": "brightest of 2 within 1.5 px"
+     },
+     "why": "2 pixels at +28.6σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 1.16 px from Gaia DR3 6412596458823395328 (G 12.95; brightest of 2 within 1.5 px) on visit B's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -10.2,
+     "peak_xy": [
+      25,
+      14
+     ],
+     "xy": [
+      25.0,
+      14.0
+     ],
+     "ra": 331.062325,
+     "dec": -56.800655,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 2,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412595973491218944",
+      "g_mag": 15.81,
+      "distance_px": 0.4,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "1 pixel at -10.2σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.4 px from Gaia DR3 6412595973491218944 (G 15.81; brightest of 1 within 1.5 px) on visit A's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 9.4,
+     "peak_xy": [
+      26,
+      13
+     ],
+     "xy": [
+      26.0,
+      13.0
+     ],
+     "ra": 331.059206,
+     "dec": -56.798946,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 3,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412595973491218944",
+      "g_mag": 15.81,
+      "distance_px": 1.03,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "1 pixel at +9.4σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 1.03 px from Gaia DR3 6412595973491218944 (G 15.81; brightest of 1 within 1.5 px) on visit B's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": -1,
+     "peak_sigma": -7.6,
+     "peak_xy": [
+      2,
+      0
+     ],
+     "xy": [
+      2.0,
+      0.0
+     ],
+     "ra": 331.134059,
+     "dec": -56.776738,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 2,
+     "artifact_flags": [
+      "touches the frame edge"
+     ],
+     "gaia_star": {
+      "source_id": "6412596458823395328",
+      "g_mag": 12.95,
+      "distance_px": 1.87,
+      "target": false,
+      "chosen": "nearest"
+     },
+     "why": "1 pixel at -7.6σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "No Gaia DR3 star within 1.5 px on visit A's date.",
+      "It could be a solar-system object, a source too faint or too red for Gaia that changed, a cosmic ray or detector artifact that survived the add-up, or noise."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit.",
+      "For a solar-system object: a known object at this place and time (check below), and a shift between the exposures of one visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 5.6,
+     "peak_xy": [
+      25,
+      15
+     ],
+     "xy": [
+      25.0,
+      15.0
+     ],
+     "ra": 331.062323,
+     "dec": -56.802364,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 3,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412595973491218944",
+      "g_mag": 15.81,
+      "distance_px": 1.36,
+      "target": false,
+      "chosen": "brightest of 2 within 1.5 px"
+     },
+     "why": "1 pixel at +5.6σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 1.36 px from Gaia DR3 6412595973491218944 (G 15.81; brightest of 2 within 1.5 px) on visit B's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 5.0,
+     "peak_xy": [
+      5,
+      6
+     ],
+     "xy": [
+      5.0,
+      6.0
+     ],
+     "ra": 331.124713,
+     "dec": -56.78699,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 3,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "6412596076570445184",
+      "g_mag": 18.84,
+      "distance_px": 0.74,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "1 pixel at +5.0σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.74 px from Gaia DR3 6412596076570445184 (G 18.84; brightest of 1 within 1.5 px) on visit B's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    }
+   ]
+  }
+ ],
+ "made_by": "backend/app/spots.py",
+ "made_at": "2026-10-31 16:30 UTC"
+}

@@ -52,7 +52,7 @@ export function offChart(points) {
   return points.filter((p) => p.flux_mjy > hi || p.flux_mjy < lo);
 }
 
-function chart({ points, xRange, xTicks, xLabel, lines = [] }) {
+export function chart({ points, xRange, xTicks, xLabel, lines = [], vlines = [] }) {
   const [x0, x1] = xRange;
   const [y0, y1] = yRange(points);
   const sx = (v) => PAD.left + ((v - x0) / (x1 - x0 || 1)) * (SVG_W - PAD.left - PAD.right);
@@ -68,6 +68,14 @@ function chart({ points, xRange, xTicks, xLabel, lines = [] }) {
   }
   parts.push(`<text x="${(PAD.left + SVG_W - PAD.right) / 2}" y="${SVG_H - 4}" class="lc-axis" text-anchor="middle">${esc(xLabel)}</text>`,
     `<text x="12" y="${SVG_H / 2}" class="lc-axis" text-anchor="middle" transform="rotate(-90 12 ${SVG_H / 2})">mJy</text>`);
+  for (const { x, label } of vlines) {
+    if (x > x0 && x < x1) {
+      parts.push(`<line x1="${sx(x)}" x2="${sx(x)}" y1="${PAD.top}" y2="${SVG_H - PAD.bottom}" class="lc-band"/>`);
+    }
+    if (label) {
+      parts.push(`<text x="${sx(x) + 4}" y="${PAD.top + 12}" class="lc-tick">${esc(label)}</text>`);
+    }
+  }
   for (const line of lines) {
     const d = line.points.map((p, i) => `${i ? "L" : "M"}${sx(p.x).toFixed(1)},${sy(p.y).toFixed(1)}`).join("");
     parts.push(`<path d="${d}" class="lc-line" stroke="${line.colour}"/>`);

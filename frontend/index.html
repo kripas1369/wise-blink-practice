@@ -283,6 +283,33 @@
           <p id="lc-method" class="help"></p>
         </div>
       </section>
+
+      <section id="spec-view" class="diffview" aria-labelledby="spec-title" hidden>
+        <div class="flip-head">
+          <h3 id="spec-title">Spectrum</h3>
+          <span id="spec-summary" class="flip-summary"></span>
+        </div>
+        <p id="spec-message" class="help" hidden></p>
+        <div id="spec-body" hidden>
+          <figure class="lc-figure">
+            <figcaption>Brightness against wavelength from every detector with frames, one colour per visit.
+              SPHEREx's six detectors see the same sky at the same time, so one visit spans their whole range.
+              Dashed lines: where one detector ends and the next begins. Hollow = a flagged pixel in the
+              circle or fainter than 5σ.</figcaption>
+            <div id="spec-chart"></div>
+            <div id="spec-legend" class="diff-legend"></div>
+          </figure>
+          <div id="spec-detectors" class="lc-list">
+            <strong>Detectors</strong>
+            <ul></ul>
+          </div>
+          <div id="spec-warnings" class="flip-cautions" hidden>
+            <strong>Before you read the shape</strong>
+            <ul></ul>
+          </div>
+          <p id="spec-method" class="help"></p>
+        </div>
+      </section>
     </section>
   </main>
 

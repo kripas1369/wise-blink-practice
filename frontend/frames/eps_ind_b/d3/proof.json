@@ -1,0 +1,90 @@
+{
+ "format": "spherex-blink-proof/1",
+ "target": "eps_ind_b",
+ "band": 3,
+ "pixel_arcsec": 6.15,
+ "motion": {
+  "gaia_source_id": "6412596012146801152",
+  "visits": [
+   "2025-05-03",
+   "2026-09-25"
+  ],
+  "expected_px": [
+   -0.904,
+   0.56
+  ],
+  "expected_size_px": 1.06,
+  "limits": {
+   "max_error_px": 0.5,
+   "max_error_source": "HACKATHON_PLAN C4",
+   "max_direction_deg": 30.0,
+   "min_testable_px": 0.3,
+   "direction_and_min_source": "ours"
+  },
+  "method": "centroid",
+  "measured_px": [
+   -0.798,
+   0.631
+  ],
+  "measured_size_px": 1.02,
+  "difference_px": 0.13,
+  "direction_difference_deg": 6.5,
+  "status": "agrees"
+ },
+ "data": {
+  "n_visits": 4,
+  "span_days": 509.9,
+  "n_exposures_used": 32,
+  "n_exposures_taken": 95,
+  "pct_flagged_range": [
+   0.0,
+   0.0
+  ],
+  "visits": [
+   {
+    "date": "2025-05-03 13:49 UTC",
+    "n_images": 8,
+    "n_images_in_epoch": 25,
+    "pct_flagged": 0.0,
+    "pct_no_value": 0.0
+   },
+   {
+    "date": "2025-10-01 18:59 UTC",
+    "n_images": 8,
+    "n_images_in_epoch": 22,
+    "pct_flagged": 0.0,
+    "pct_no_value": 0.0
+   },
+   {
+    "date": "2026-04-29 09:13 UTC",
+    "n_images": 8,
+    "n_images_in_epoch": 12,
+    "pct_flagged": 0.0,
+    "pct_no_value": 0.0
+   },
+   {
+    "date": "2026-09-25 11:18 UTC",
+    "n_images": 8,
+    "n_images_in_epoch": 36,
+    "pct_flagged": 0.0,
+    "pct_no_value": 0.0
+   }
+  ],
+  "frames_made_at": "2026-10-31 16:29 UTC",
+  "newest_exposure": "2026-09-26",
+  "releases": {
+   "spherex_qr2": {
+    "n_exposures": 24,
+    "release_date": "2026-06-08 22:41:45"
+   },
+   "spherex_qr3": {
+    "n_exposures": 8,
+    "release_date": "2026-10-28 22:18:56"
+   }
+  },
+  "asked_irsa_at": "2026-10-31 16:30 UTC"
+ },
+ "method": "motion: first to last visit, PNG pixels (+x west, +y south); centroid of the 5 × 5 pixels around Gaia's position, or the centre of the saturated core when the box is not fully usable; rough, because SPHEREx's PSF is about one 6.15″ pixel wide (pixel phase)",
+ "made_by": "backend/app/proof.py",
+ "made_at": "2026-10-31 16:30 UTC"
+}

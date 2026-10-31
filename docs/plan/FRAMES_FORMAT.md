@@ -4,7 +4,7 @@ The contract between the data pipeline (`backend/app/render.py`) and the website
 Whoever makes the frames (`render.py` for the prepared targets, the `/api/frames` background job for any other position) writes **exactly this**, and the website shows it without changing any value.
 Day 3 added three files next to each manifest: the per-visit data (`epoch<i>.fits`, section 8), the Gaia markers (`gaia.json`, section 6) and the difference maps (`diff.json`, section 7).
 Day 4 added the asinh brightness scale (section 3), every single exposure on the grid (`exposures.fits`, section 9) and the light curve (`lightcurve.json`, section 10).
-Day 5 added the proof panel (`proof.json`, section 11) and the spots above 5σ (`spots.json`, section 12).
+Day 5 added the proof panel (`proof.json`, section 11), the spots above 5σ (`spots.json`, section 12) and the spectrum across detectors (`spectrum.json` in the target's folder, section 13).
 
 The website refuses a manifest that breaks these rules (`frontend/js/frames.js`, `checkManifest`) and says why, instead of showing frames it cannot label honestly.
 
@@ -15,6 +15,7 @@ The website refuses a manifest that breaks these rules (`frontend/js/frames.js`,
 ```
 frontend/frames/
   index.json                     which targets and detectors exist
+  <target>/spectrum.json         brightness against wavelength per visit, all detectors (section 13; backend/app/spectrum.py)
   <target>/d<detector>/
     manifest.json                one per target and detector
     epoch<i>.png                 the picture of visit i
@@ -235,3 +236,18 @@ Top level: `format`, `target`, `band`, `limit_sigma` (5), `rules` (`max_spots_pe
 - Each spot: `sign` (+1 brighter in B, −1 fainter), `peak_sigma`, `peak_xy`, `xy` (|z|-weighted centre, PNG pixels), `ra`, `dec`, `n_pixels`, `axis_ratio` (`null` below 3 pixels), `frame` (the visit it belongs to: B for +, A for −), `artifact_flags` (texts: long and thin, very large, next to flagged or no-value pixels, touches the frame edge), `gaia_star` (`source_id`, `g_mag`, `distance_px`, `target`, `chosen`: the brightest Gaia star within 1.5 px, else the nearest; `null` without Gaia), and the texts `why`, `what_else` (list), `confirm` (list).
 
 The website reads this file directly (no endpoint); `GET /api/known-objects?…&a=&b=&spot=` uses it to check one spot against NASA JPL (FACTS §7).
+
+---
+
+## 13. `spectrum.json` (`spherex-blink-spectrum/1`, made by `backend/app/spectrum.py`)
+
+One per **target**, in the target's folder (`frontend/frames/<target>/spectrum.json`, next to the `d<n>/` folders), because it uses every detector.
+
+Top level: `format`, `target`, `label`, `unit` (`"mJy"`), `detectors`, `visits`, `visit_rule`, `warnings`, `method`, `made_by`, `made_at`, `data_credit`.
+
+- `detectors`: one per `d<n>/` folder with a `lightcurve.json`: `band`, `band_range_um`, `method` (`core` or `none`), `n_exposures`, `position_rule`; with `core` also `n_measured`, `r_out_px`, `neighbours` (Gaia stars inside the circle), `floor_pct` (the field-star floor, `null` if unknown), `psf_fwhm` (`median_arcsec`, `min_arcsec`, `max_arcsec`, `n_exposures`: the `PSF_FWHM` header keyword of the cached exposures, or `null`); with `none` a `reason`.
+- `visits`: the measured points of all detectors grouped by time with the archive's rule (`visit_rule`): `visit` (0, 1, …), `date`, `mjd_range`, `bands`, `n_points`, `points` (sorted by wavelength).
+- Each point is copied from one `lightcurve.json` (nothing is measured again): `band`, `obs_id`, `mjd`, `date_iso`, `wl_um`, `bw_um`, `flux_mjy`, `err_mjy`, `n_flagged`.
+- `warnings`: no aperture correction while the PSF width differs between detectors; detectors do not overlap; detectors without frames; detectors without points (with the reason); Gaia stars inside the circle.
+
+`GET /api/spectrum` (same location parameters as `/api/frames`; any `band` of the target) returns this file. A typed position's job writes one too, from the detectors made so far.

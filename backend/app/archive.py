@@ -140,8 +140,12 @@ def attach_paths(images: list[SpherexImage], chunk: int = 200) -> list[SpherexIm
     return images
 
 
+EPOCH_GAP_DAYS = 30.0
+EPOCH_MAX_SPAN_DAYS = 60.0
+
+
 def group_epochs(
-    images: list[SpherexImage], gap_days: float = 30.0, max_span_days: float = 60.0
+    images: list[SpherexImage], gap_days: float = EPOCH_GAP_DAYS, max_span_days: float = EPOCH_MAX_SPAN_DAYS
 ) -> list[dict]:
     """Group images into epochs (visits).
 

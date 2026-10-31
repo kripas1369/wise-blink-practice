@@ -4,6 +4,7 @@ import { createFlipbook } from "./flipbook.js";
 import { createLightCurve } from "./lightcurve.js";
 import { positionAt, separationArcsec, VIEW_EPOCH } from "./motion.js";
 import { createProof } from "./proof.js";
+import { createSpectrum } from "./spectrum.js";
 import { createSpotList } from "./spots.js";
 import { NameNotFound, resolveName } from "./resolve.js";
 import { TARGETS } from "./targets.js";
@@ -343,9 +344,12 @@ function start() {
   diffView = createDiffView({ onPair: (loaded, a, b) => spotList.show(loaded, a, b) });
   const lightCurve = createLightCurve();
   const proofView = createProof();
+  const spectrumView = createSpectrum();
   flipbook = createFlipbook({
     onDetector: setDetector,
-    onFrames: (loaded) => { proofView.show(loaded); diffView.show(loaded); lightCurve.show(loaded); },
+    onFrames: (loaded) => {
+      proofView.show(loaded); diffView.show(loaded); lightCurve.show(loaded); spectrumView.show(loaded);
+    },
     onPixel: (p) => lightCurve.showPixel(p),
   });
   if (fromUrl.ra !== null) {

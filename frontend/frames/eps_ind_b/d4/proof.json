@@ -1,0 +1,79 @@
+{
+ "format": "spherex-blink-proof/1",
+ "target": "eps_ind_b",
+ "band": 4,
+ "pixel_arcsec": 6.15,
+ "motion": {
+  "gaia_source_id": "6412596012146801152",
+  "visits": [
+   "2025-04-26",
+   "2026-04-21"
+  ],
+  "expected_px": [
+   -0.637,
+   0.395
+  ],
+  "expected_size_px": 0.75,
+  "limits": {
+   "max_error_px": 0.5,
+   "max_error_source": "HACKATHON_PLAN C4",
+   "max_direction_deg": 30.0,
+   "min_testable_px": 0.3,
+   "direction_and_min_source": "ours"
+  },
+  "method": "centroid",
+  "measured_px": [
+   -0.567,
+   0.331
+  ],
+  "measured_size_px": 0.66,
+  "difference_px": 0.1,
+  "direction_difference_deg": 1.5,
+  "status": "agrees"
+ },
+ "data": {
+  "n_visits": 3,
+  "span_days": 359.7,
+  "n_exposures_used": 19,
+  "n_exposures_taken": 43,
+  "pct_flagged_range": [
+   0.0,
+   0.0
+  ],
+  "visits": [
+   {
+    "date": "2025-04-26 23:35 UTC",
+    "n_images": 3,
+    "n_images_in_epoch": 4,
+    "pct_flagged": 0.0,
+    "pct_no_value": 0.0
+   },
+   {
+    "date": "2025-10-12 16:12 UTC",
+    "n_images": 8,
+    "n_images_in_epoch": 20,
+    "pct_flagged": 0.0,
+    "pct_no_value": 0.0
+   },
+   {
+    "date": "2026-04-21 17:07 UTC",
+    "n_images": 8,
+    "n_images_in_epoch": 19,
+    "pct_flagged": 0.0,
+    "pct_no_value": 0.0
+   }
+  ],
+  "frames_made_at": "2026-10-31 16:34 UTC",
+  "newest_exposure": "2026-04-21",
+  "releases": {
+   "spherex_qr2": {
+    "n_exposures": 19,
+    "release_date": "2026-06-02 06:01:33"
+   }
+  },
+  "asked_irsa_at": "2026-10-31 16:34 UTC"
+ },
+ "method": "motion: first to last visit, PNG pixels (+x west, +y south); centroid of the 5 × 5 pixels around Gaia's position, or the centre of the saturated core when the box is not fully usable; rough, because SPHEREx's PSF is about one 6.15″ pixel wide (pixel phase)",
+ "made_by": "backend/app/proof.py",
+ "made_at": "2026-10-31 16:34 UTC"
+}

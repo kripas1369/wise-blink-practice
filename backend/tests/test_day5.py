@@ -1,4 +1,5 @@
-"""Offline tests for Day 5: the proof panel (proof.json), spot evidence (spots.json), the known-object check."""
+"""Offline tests for Day 5: the proof panel (proof.json), spot evidence (spots.json), the known-object check,
+the spectrum (spectrum.json)."""
 import json
 import math
 from pathlib import Path
@@ -7,7 +8,9 @@ import pytest
 from fastapi.testclient import TestClient
 
 from backend.app import known_objects, main
+from backend.app.archive import EPOCH_GAP_DAYS, EPOCH_MAX_SPAN_DAYS
 from backend.app.proof import MAX_MOTION_ERROR_PX, build_proof
+from backend.app.spectrum import build_spectrum
 from backend.app.spots import MAX_SPOTS, build_spots
 
 FRAMES = Path("frontend/frames")
@@ -126,3 +129,40 @@ def test_known_objects_endpoint_never_fakes_an_answer(monkeypatch):
     assert body["outcome"] == "unavailable" and "HTTP 500" in body["reason"]
     assert client.get("/api/known-objects", params={"target": "wise0855", "band": 6, "a": 1, "b": 2,
                                                     "spot": 99}).status_code == 404
+
+
+def test_spectrum_points_are_exactly_the_light_curve_points():
+    spec = build_spectrum(FRAMES / "wise0855")
+    got = {(p["band"], p["obs_id"], p["flux_mjy"]) for v in spec["visits"] for p in v["points"]}
+    want = set()
+    for d in spec["detectors"]:
+        lc = json.loads((prepared("wise0855", d["band"]) / "lightcurve.json").read_text())
+        want |= {(d["band"], p["obs_id"], p["flux_mjy"]) for p in lc["points"]
+                 if p["flux_mjy"] is not None and p["wl_um"] is not None}
+    assert got == want and len(got) > 0
+    assert [d["band"] for d in spec["detectors"]] == [2, 6]
+
+
+def test_spectrum_visits_follow_the_archive_rule():
+    for target in ("wise0855", "eps_ind_b"):
+        visits = build_spectrum(FRAMES / target)["visits"]
+        for v in visits:
+            assert v["mjd_range"][1] - v["mjd_range"][0] <= EPOCH_MAX_SPAN_DAYS
+        for a, b in zip(visits, visits[1:]):
+            assert b["mjd_range"][0] - a["mjd_range"][1] > EPOCH_GAP_DAYS \
+                or b["mjd_range"][0] - a["mjd_range"][0] > EPOCH_MAX_SPAN_DAYS
+
+
+def test_spectrum_says_what_can_bias_its_shape():
+    warnings = build_spectrum(FRAMES / "wise0855")["warnings"]
+    assert any("no aperture correction" in w and "not from the star" in w for w in warnings)
+    assert any(w.startswith("D2: inside the circle as well: Gaia DR3 5756956644387831296") for w in warnings)
+    barnard = build_spectrum(FRAMES / "barnard")
+    assert barnard["visits"] == [] and any(w.startswith("D2: no points.") for w in barnard["warnings"])
+
+
+def test_spectrum_endpoint():
+    client = TestClient(main.app)
+    r = client.get("/api/spectrum", params={"target": "wise0855", "band": 6})
+    assert r.status_code == 200 and r.json()["format"] == "spherex-blink-spectrum/1"
+    assert client.get("/api/spectrum", params={"target": "barnard", "band": 5}).status_code == 404

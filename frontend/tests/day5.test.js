@@ -4,6 +4,7 @@ import { test } from "node:test";
 
 import { stepPair } from "../js/diffview.js";
 import { dataLines, motionText } from "../js/proof.js";
+import { detectorLines, spectrumChart, spectrumSummary, targetBase } from "../js/spectrum.js";
 import { knownText, spotLine } from "../js/spots.js";
 
 const FRAMES = new URL("../frames/", import.meta.url);
@@ -68,4 +69,29 @@ test("visit stepper keeps A before B and stops at the ends", () => {
   assert.deepEqual(stepPair(ids, 0, 2, "b", 1), [0, 3]);
   assert.equal(stepPair(ids, 0, 3, "b", 1), null);
   assert.equal(stepPair(ids, 0, 1, "b", -1), null);
+});
+
+test("spectrum: file sits above the detector folders; every point drawn, one line per visit and detector", () => {
+  assert.equal(targetBase("frames/wise0855/d6"), "frames/wise0855");
+  assert.equal(targetBase("/jobframes/ra133.8_dec-7.2/d2"), "/jobframes/ra133.8_dec-7.2");
+  const spec = JSON.parse(readFileSync(new URL("wise0855/spectrum.json", FRAMES), "utf8"));
+  const svg = spectrumChart(spec);
+  const n = spec.visits.reduce((s, v) => s + v.n_points, 0);
+  assert.equal((svg.match(/class="lc-point/g) || []).length, n);
+  const segments = spec.visits.reduce((s, v) => s + v.bands.filter(
+    (b) => v.points.filter((p) => p.band === b).length > 1).length, 0);
+  assert.ok((svg.match(/class="lc-line"/g) || []).length <= segments);
+  assert.ok(svg.includes(">D6</text>") && svg.includes('class="lc-band"'));
+});
+
+test("spectrum: detector lines and summary come from the file", () => {
+  const spec = JSON.parse(readFileSync(new URL("wise0855/spectrum.json", FRAMES), "utf8"));
+  const lines = detectorLines(spec);
+  assert.match(lines[0], /^D2 \(1\.10–1\.62 µm\): \d+ of \d+ exposures measured · PSF 5\.15″ wide/);
+  assert.match(lines[1], /^D6 \(4\.42–5\.00 µm\): \d+ of \d+ exposures measured · PSF 6\.61″ wide/);
+  assert.match(spectrumSummary(spec), /^WISE 0855 · D2, D6 · 3 visits · \d+ points$/);
+  const none = { label: "Barnard's Star", visits: [], detectors: [{ band: 2, band_range_um: [1.1, 1.62], method: "none",
+    reason: "Saturated core." }] };
+  assert.deepEqual(detectorLines(none), ["D2 (1.10–1.62 µm): no points. Saturated core."]);
+  assert.equal(spectrumSummary(none), "Barnard's Star · no detector · 0 visits · 0 points");
 });

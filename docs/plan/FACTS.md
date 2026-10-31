@@ -141,8 +141,9 @@ Changed from the draft, and why: `/api/frames` returns the whole manifest (label
 
 `/api/lightcurve` returns an object, not the draft's bare list, because a point means nothing without its wavelength, the comparison rule and the warnings.
 
-Still to build (later):
-- `GET /api/spectrum?ra=&dec=&epoch=` → `[ { "wl_um", "flux", "flux_err" } ]`.
+- `GET /api/spectrum` (same location parameters; any `band` of the target) → `spectrum.json` (FRAMES_FORMAT §13): the light-curve points of every detector with frames, grouped into visits, with per-detector PSF width and the warnings about the shape. Built on Day 5. Changed from the draft (`?epoch=`, bare list): all visits at once, and an object, because a spectrum without its detectors, PSF widths and warnings would read as more certain than it is.
+
+Conventions:
 - **Units:** degrees for RA/Dec, arcminutes for field of view, micrometres for wavelength, MJD for time.
 - **Errors:** always `{ "error": "<plain message>" }` with a non-200 status (400 bad input, 404 nothing there, 502/503 IRSA or SIMBAD down). The frontend shows the message; it never invents a value.
 

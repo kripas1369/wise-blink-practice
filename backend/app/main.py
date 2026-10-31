@@ -13,6 +13,7 @@ non-200 status; nothing is ever filled in with a default value.
     /api/gaia, /api/diff                       the same location parameters; Gaia markers and difference maps
     /api/lightcurve[&x=&y=]                    the target's light curve, or one measured at a clicked pixel
     /api/proof                                 measured motion vs Gaia, exposures used, data releases
+    /api/spectrum                              brightness against wavelength per visit, all detectors with frames
     /api/known-objects&a=&b=&spot=             JPL known asteroids/comets near one spot of a difference map
 """
 import json
@@ -37,6 +38,7 @@ from backend.app.lightcurve import lightcurve_at, write_lightcurve
 from backend.app.motion import position_at, separation_arcsec
 from backend.app.known_objects import check as check_known
 from backend.app.proof import write_proof
+from backend.app.spectrum import write_spectrum
 from backend.app.spots import write_spots
 from backend.app.render import POSITION_YEAR, NoImages, render_frames
 from backend.app.resolve import ResolverUnavailable, resolve_name
@@ -140,7 +142,8 @@ def _run_job(loc: dict) -> None:
         for stage, step in [("Gaia DR3 markers", write_gaia), ("difference maps", write_diff),
                             ("light curve", write_lightcurve),
                             ("proof panel", lambda folder: write_proof(folder, online=True)),
-                            ("spot list", write_spots)]:
+                            ("spot list", write_spots),
+                            ("spectrum", lambda folder: write_spectrum(folder.parent))]:
             job["stage"] = stage
             try:
                 step(loc["folder"])
@@ -290,6 +293,14 @@ def lightcurve(loc: dict = Depends(location), x: float | None = None, y: float |
 @app.get("/api/proof")
 def proof(loc: dict = Depends(location)):
     return _read(loc, "proof.json", "proof panel data")
+
+
+@app.get("/api/spectrum")
+def spectrum(loc: dict = Depends(location)):
+    path = loc["folder"].parent / "spectrum.json"
+    if not path.exists():
+        raise ApiError(404, "No spectrum for this position yet")
+    return json.loads(path.read_text())
 
 
 @app.get("/api/known-objects")

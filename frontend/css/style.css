@@ -354,7 +354,8 @@ input[type="range"] { width: 100%; accent-color: var(--text); min-height: 32px; 
 }
 
 /* Light curve: SVG charts drawn by js/lightcurve.js. */
-#lc-body { display: grid; gap: 0.9rem; }
+#lc-body, #spec-body { display: grid; gap: 0.9rem; }
+#spec-view .help { margin: 0; }
 #lc-view .help, #lc-where { margin: 0; }
 .lc-figure { margin: 0; display: grid; gap: 0.4rem; }
 .lc-figure figcaption { font-size: 0.78rem; color: var(--muted); }
@@ -364,6 +365,7 @@ input[type="range"] { width: 100%; accent-color: var(--text); min-height: 32px; 
 .lc-tick { fill: var(--faint); font-size: 11px; font-family: var(--font); }
 .lc-axis { fill: var(--muted); font-size: 12px; font-family: var(--font); }
 .lc-line { fill: none; stroke-width: 1.2; opacity: 0.5; }
+.lc-band { stroke: var(--line-strong); stroke-dasharray: 5 4; }
 .lc-point line { stroke-width: 1.5; }
 .lc-point circle { stroke-width: 1.8; }
 .lc-blue { color: hsl(260, 85%, 72%); font-weight: 600; }

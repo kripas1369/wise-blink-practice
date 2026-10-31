@@ -1,0 +1,98 @@
+{
+  "format": "spherex-blink-frames/1",
+  "target": "eps_ind_b",
+  "label": "Epsilon Indi B",
+  "ra": 331.09664385226796,
+  "dec": -56.80066020400499,
+  "position_source": "SIMBAD (simbad.harvard.edu) * eps Ind B, moved to 2026.0",
+  "fov_arcmin": 3.0,
+  "pixel_arcsec": 6.15,
+  "size_px": 29,
+  "orientation": "north up, east left",
+  "band": 1,
+  "band_range_um": [
+    0.75,
+    1.09
+  ],
+  "mode": "coadd",
+  "scale": {
+    "vmin": 0.1326,
+    "vmax": 2.3733,
+    "unit": "MJy/sr",
+    "stretch": "linear",
+    "method": "linear, 1.0-99.5 percentile of good pixels of all frames (same scale for every frame)"
+  },
+  "method": "up to 8 exposures per visit (closest to the visit's mean time), each IMAGE - ZODI with the official flag mask, reprojected onto this grid and added up with 1/variance weights",
+  "made_by": "backend/app/render.py",
+  "made_at": "2026-10-31 16:23 UTC",
+  "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx",
+  "notes": [],
+  "frames": [
+    {
+      "png": "epoch0.png",
+      "flags_png": "epoch0_flags.png",
+      "fits": "epoch0.fits",
+      "epoch_id": 0,
+      "mjd": 60791.98277,
+      "date_iso": "2025-04-26 23:35 UTC",
+      "band": 1,
+      "wl_min_um": 0.746,
+      "wl_max_um": 1.117,
+      "wl_target_um": 0.9701,
+      "bw_target_um": 0.0252,
+      "wl_target_range_um": [
+        0.752,
+        1.0921
+      ],
+      "n_images": 3,
+      "n_images_in_epoch": 3,
+      "pct_flagged": 0.0,
+      "pct_no_value": 0.0,
+      "pct_covered": 100.0
+    },
+    {
+      "png": "epoch1.png",
+      "flags_png": "epoch1_flags.png",
+      "fits": "epoch1.fits",
+      "epoch_id": 1,
+      "mjd": 60960.5819,
+      "date_iso": "2025-10-12 13:57 UTC",
+      "band": 1,
+      "wl_min_um": 0.746,
+      "wl_max_um": 1.117,
+      "wl_target_um": 0.8566,
+      "bw_target_um": 0.0214,
+      "wl_target_range_um": [
+        0.7482,
+        1.052
+      ],
+      "n_images": 8,
+      "n_images_in_epoch": 21,
+      "pct_flagged": 0.0,
+      "pct_no_value": 0.0,
+      "pct_covered": 100.0
+    },
+    {
+      "png": "epoch2.png",
+      "flags_png": "epoch2_flags.png",
+      "fits": "epoch2.fits",
+      "epoch_id": 2,
+      "mjd": 61151.71388,
+      "date_iso": "2026-04-21 17:07 UTC",
+      "band": 1,
+      "wl_min_um": 0.746,
+      "wl_max_um": 1.117,
+      "wl_target_um": 0.9639,
+      "bw_target_um": 0.025,
+      "wl_target_range_um": [
+        0.8864,
+        1.0454
+      ],
+      "n_images": 8,
+      "n_images_in_epoch": 19,
+      "pct_flagged": 0.0,
+      "pct_no_value": 0.0,
+      "pct_covered": 100.0
+    }
+  ]
+}

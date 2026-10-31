@@ -13,7 +13,8 @@ const readJson = (url) => JSON.parse(readFileSync(url, "utf8"));
 const load = (t, b, name) => readJson(new URL(`${t}/d${b}/${name}`, FRAMES));
 const folders = () => readdirSync(FRAMES, { withFileTypes: true })
   .filter((d) => d.isDirectory())
-  .flatMap((d) => readdirSync(new URL(`${d.name}/`, FRAMES)).map((b) => [d.name, Number(b.slice(1))]));
+  .flatMap((d) => readdirSync(new URL(`${d.name}/`, FRAMES)).filter((b) => /^d[1-6]$/.test(b))
+    .map((b) => [d.name, Number(b.slice(1))]));
 
 test("every prepared folder has a light curve that matches its manifest", () => {
   const all = folders();
