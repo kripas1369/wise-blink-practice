@@ -280,6 +280,7 @@ async function startMap() {
     fov: state.ra !== null ? viewFovDegrees() : 0.5,
     cooFrame: "ICRS",
     showReticle: true,
+    reticleColor: "#ffffff",
     showZoomControl: true,
     showFullscreenControl: true,
     showLayersControl: false,
@@ -290,7 +291,7 @@ async function startMap() {
     showCooGrid: false,
     showFrame: true,
   });
-  fovOverlay = A.graphicOverlay({ color: "#ffc04d", lineWidth: 2 });
+  fovOverlay = A.graphicOverlay({ color: "#ffffff", lineWidth: 2 });
   aladin.addOverlay(fovOverlay);
   // Aladin sometimes reports the end of a pan as a click; only a still press picks a position.
   const mapBox = $("aladin");

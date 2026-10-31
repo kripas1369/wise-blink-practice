@@ -47,7 +47,7 @@ export function gaiaNote(gaia, pixelArcsec) {
     "with its proper motion; parallax not applied). ";
   if (!t) return `${base}Gaia DR3 lists no star within 3″ of the frame centre, so there is no target marker.`;
   const shift = expectedShift(gaia, 0, gaia.frames.length - 1, pixelArcsec);
-  return `${base}Yellow: the target, Gaia DR3 ${t.source_id}` + (t.g_mag !== null ? ` (G ${t.g_mag})` : "") +
+  return `${base}Thick circle: the target, Gaia DR3 ${t.source_id}` + (t.g_mag !== null ? ` (G ${t.g_mag})` : "") +
     `; dots are its predicted places on the other visits. Gaia: it moves ${shift.px.toFixed(2)} px ` +
     `(${shift.arcsec.toFixed(1)}″) from the first to the last visit` +
     (shift.px >= 0.05 ? `, toward the ${directionText(shift.dx, shift.dy)}.` : ".");
