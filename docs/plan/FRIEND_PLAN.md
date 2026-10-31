@@ -10,10 +10,10 @@ GitHub: `lazylog00`. Branch: `friend-frontend`. Folder: `frontend/`.
 
 ---
 
-## Phase 1: 4-day practice build (Thu 29 Oct – Sun 1 Nov)
-About 7 hours a day, in 3 blocks. End of day: learning log, pull request `friend-frontend` → `main`, 15-minute call with Kripas.
+## Phase 1: 4-day practice build (Sat 31 Oct – Tue 3 Nov)
+About 7 hours a day, in 3 blocks. End of day: learning log, pull request `friend-frontend` → `main`, 15-minute call with Kripas. Read first: [`learning/00_big_picture.md`](../../learning/00_big_picture.md), [`05_nasa_tools_review.md`](../../learning/05_nasa_tools_review.md), [`06_how_to_win.md`](../../learning/06_how_to_win.md).
 
-### Day 1, Thu 29 Oct: Step 1, find the data (website side)
+### Day 1, Sat 31 Oct: Step 1, find the data (website side)
 - **Block 1 (2 h, with Kripas):** revise how SPHEREx data is queried and cut out (IRSA, `spherex.obscore`, cutouts, what is inside a file). You need this to explain it in the pitch and to design the screens.
 - **Block 2 (2.5 h):** `frontend/index.html` (plain HTML + JS):
   - search box (RA/Dec or a name), field of view (arcmin, default 3), Go button;
@@ -24,7 +24,7 @@ About 7 hours a day, in 3 blocks. End of day: learning log, pull request `friend
   - Write the 5 story beats (Part F) in `notes/STORY.md`.
 - **Done when:** clicking "Barnard's Star" centres Aladin on it and the URL can be shared.
 
-### Day 2, Fri 30 Oct: Step 2a, the flipbook
+### Day 2, Sun 1 Nov: Step 2a, the flipbook
 - **Block 1 (2.5 h):** canvas flipbook: play, pause, step back/forward, speed, loop.
 - **Block 2 (2 h):** blink mode (two chosen epochs swap quickly).
 - **Block 3 (2.5 h):**
@@ -33,24 +33,23 @@ About 7 hours a day, in 3 blocks. End of day: learning log, pull request `friend
   - load Kripas's real Barnard's Star PNGs + JSON.
 - **Done when:** Barnard's Star frames play with correct labels.
 
-### Day 3, Sat 31 Oct: Step 2b, compare with proof (integration day)
+### Day 3, Mon 2 Nov: Step 2b, compare with proof (integration day)
 - **Morning call:** fix the API format with Kripas (`docs/plan/FACTS.md` section 7).
 - **Block 1 (2 h):** `fetch` from `/api/resolve`, `/api/coverage`, `/api/frames`; honest error messages (no fake values, no defaults, "no SPHEREx data here yet" when empty).
 - **Block 2 (2.5 h):** Gaia markers on the flipbook from `/api/gaia` (each marker moves to its position for that epoch).
 - **Block 3 (2.5 h):** difference mode (`/api/diff`) with a sigma colour scale and legend.
 - **Done when:** **Barnard's Star walks across the browser flipbook onto its Gaia markers.**
 
-### Day 4, Sun 1 Nov: connect, online, test
-- **Block 1 (2 h):** click a star → light-curve chart (Chart.js) from `/api/lightcurve`.
+### Day 4, Tue 3 Nov: connect, online, test
+- **Block 1 (2 h):** click a star → light-curve chart (Chart.js) from `/api/lightcurve`, points coloured by wavelength.
 - **Block 2 (3 h):** **deploy** (Render, Railway or a VPS) with Kripas; check on a phone.
 - **Block 3 (2 h):** run the C4 tests together on the 5 targets; lessons note.
 - **Done when:** the public link works on laptop and phone, and all 5 target buttons load.
 
-### Mon 2 – Fri 6 Nov
-- **Mon 2:** fix anything that failed on Day 4.
-- **Tue 3:** Level 3: spectrum panel (brightness vs wavelength); About page (how we clean data, limitations, credits).
-- **Wed 4:** draft 30-second video from the practice tool (Part F storyboard); pitch draft; find a public-domain Pluto discovery plate image.
-- **Thu 5:** speed drill: empty folder → search → Aladin → flipbook on sample PNGs → deploy in 3 hours, from memory. Delete afterwards.
+### Wed 4 – Fri 6 Nov
+- **Wed 4 morning:** fix anything that failed on Day 4.
+- **Wed 4 afternoon:** Level 3: spectrum panel (per epoch); **epoch picker (+/−)**; **proof panel** (expected vs measured motion, % flagged, images/epochs, "data as of"); About page (how we clean data, limitations, credits).
+- **Thu 5:** draft 30-second video from the practice tool (Part F storyboard); pitch draft; find a public-domain Pluto discovery plate image. Evening: speed drill: empty folder → search → Aladin → flipbook on sample PNGs → deploy in 3 hours, from memory. Delete afterwards.
 - **Fri 6:** rest; rehearsal checklist.
 
 ---

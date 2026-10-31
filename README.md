@@ -11,13 +11,14 @@ A public web tool: type RA/Dec or a star name, and see **real SPHEREx images of 
 - **Kripas (data side, `backend/`, branch `kripas-backend`):** archive search, cutouts, cleaning images, lining up epochs, star motion from Gaia, the API.
 - **[Friend's name] (website side, `frontend/`, branch `friend-frontend`):** search box, Aladin sky view, flipbook, buttons, charts, deploy, the 30-second video and the pitch.
 
-## The 4 days (29 Oct – 1 Nov)
-1. **Day 1:** find and get the data (query SPHEREx, cutouts, the 5 targets).
+## The 4 days (Sat 31 Oct – Tue 3 Nov)
+1. **Day 1:** find and get the data (query SPHEREx, cutouts, the 5 targets). Backend done: [notes/DAY1_REPORT.md](notes/DAY1_REPORT.md).
 2. **Day 2:** clean and line up the epochs; flipbook.
 3. **Day 3:** compare epochs with proof (add-up, Gaia, difference); connect website and API.
 4. **Day 4:** light curve, online, test the 5 targets.
 
 ## Read first
+- **What we built and why, from the basics: [learning/README.md](learning/README.md)**
 - Team plan: [docs/plan/HACKATHON_PLAN.md](docs/plan/HACKATHON_PLAN.md)
 - Kripas's plan: [docs/plan/KRIPAS_PLAN.md](docs/plan/KRIPAS_PLAN.md)
 - Friend's plan: [docs/plan/FRIEND_PLAN.md](docs/plan/FRIEND_PLAN.md)
@@ -27,8 +28,10 @@ A public web tool: type RA/Dec or a star name, and see **real SPHEREx images of 
 - Today's task: `notes/DAY<N>_GUIDE.md`; daily notes: [notes/LEARNING_LOG.md](notes/LEARNING_LOG.md)
 
 ## Layout
-- `backend/app/`: Python (FastAPI) code.
-- `backend/tests/`: pytest tests.
+- `backend/app/`: Python code (archive search, cutouts, flags, star motion; FastAPI later).
+- `backend/tests/`: pytest tests (`RUN_NETWORK=1` for the ones that call real servers).
+- `scripts/day1_report.py`: coverage report for the 5 targets (`python -m scripts.day1_report`).
+- `learning/`: explanations of everything we built, what comes next, NASA tools review, how to win.
 - `frontend/`: plain HTML/JS page with Aladin Lite and the flipbook.
 - `docs/`: plans, facts sheet, lessons. `notes/`: daily guides and the learning log.
 

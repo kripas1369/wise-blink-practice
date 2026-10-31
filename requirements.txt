@@ -4,6 +4,7 @@ pyvo
 reproject
 numpy
 Pillow
+requests
 fastapi
 uvicorn
 pytest

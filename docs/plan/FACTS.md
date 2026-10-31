@@ -27,8 +27,13 @@ Notes only. No code from this file goes into the hackathon repo.
 - `FLAGS`: one number per pixel; each bit is a yes/no warning.
 - `VARIANCE`: noise squared. sigma = sqrt(VARIANCE).
 - `ZODI`: model of the zodiacal light background. Clean image = IMAGE − ZODI.
-- `PSF`: the shape of a star image.
+- `PSF`: the shape of a star image. **QR2:** `PSF` cube 121×101×101. **QR3:** replaced by an `EPSF` table (441 rows) (checked 31 Oct).
 - `WCS-WAVE`: wavelength of each pixel. **Display only, not for science** (Supplement v2.0).
+
+### Data releases (checked 31 Oct 2026, `spherex.obscore`)
+- **QR2** (observations ~Apr 2025 – Apr 2026) and **QR3** (from ~Aug 2026) are both live. An exposure is in only one release (no double counting).
+- Collections: `spherex_qr2`, `spherex_qr2_deep`, `spherex_qr3`, `spherex_qr3_deep` (science) and `spherex_qr2_cal`, `spherex_qr3_cal` (**skip**).
+- New data arrives weekly (newest seen: released 28–29 Oct 2026). SIA2 lags TAP by ~1 day.
 
 ### Time
 - **Use `MJD-AVG`** (middle of the exposure, Modified Julian Date).
@@ -37,7 +42,10 @@ Notes only. No code from this file goes into the hackathon repo.
 ---
 
 ## 2. SPHEREx flags (Explanatory Supplement v2.0)
-- **Bit positions:** read them from the `MP_*` keywords in the FLAGS header. Do not hard-code them.
+- **Bit positions:** read them from the FLAGS header. Do not hard-code them. The format differs by release (checked 31 Oct):
+  - **QR2:** `MP_<NAME> = <bit>`, e.g. `MP_HOT = 10`. Defines TRANSIENT 0, OVERFLOW 1, SUR_ERROR 2, PHANTOM 4, REFERENCE 5, NONFUNC 6, DICHROIC 7, MISSING_DATA 9, HOT 10, COLD 11, FULLSAMPLE 12, PHANMISS 14, NONLINEAR 15, PERSIST 17, OUTLIER 19, SOURCE 21. (No CROSSTALK/GHOST/STREAK/BLOOM/HALO.)
+  - **QR3:** `MSKN<nnnn> = '<NAME>'`, `MSKM<nnnn> = 1<<nnnn`. Adds CROSSTALK 20, GHOST 22, GHOST_FPA 23, GHOST_EXT 24, STREAK 25, BLOOM 26, HALO 28; drops PHANTOM and REFERENCE.
+  - Code: `backend/app/flags.py` reads both, and **raises an error if a header defines no flags** (never "keep everything").
 - **SOURCE = bit 21:** "a known object is here" (from the reference catalogue and known Solar System objects). **It is a label, not a problem.** Sources fainter than 19 AB are not marked. The mask circle can be too big or too small (Supplement §3.2.9).
 - **Bad-pixel list we mask (Mosaic Tool list, §3.4.3):**
   TRANSIENT, SUR_ERROR, NONFUNC, DICHROIC, MISSING_DATA, HOT, COLD, PHANMISS, NONLINEAR, PERSIST, CROSSTALK, GHOST, GHOST_FPA, GHOST_EXT, STREAK, BLOOM, SNOWBALL, HALO, SATELLITE_HALO.
@@ -47,6 +55,10 @@ Notes only. No code from this file goes into the hackathon repo.
 ### What we measured in Kripas's 4 files (D1, near the Galactic plane)
 - SOURCE was set on **86 – 95%** of pixels; only 4 – 13% of pixels had no flag at all.
 - With the old `preserve_sources` logic, **55 – 86% of truly bad pixels survived**. That is why SOURCE is a label only.
+
+### What we measured in 0.05° cutouts centred on the 5 targets (31 Oct)
+- SOURCE covers **98 – 100%** of pixels around the bright targets (22% around faint WISE 0855 in D6). Masking SOURCE would erase the target itself.
+- Bad pixels (official list): **0.4 – 7.3%** per cutout.
 
 ---
 
@@ -61,7 +73,12 @@ Notes only. No code from this file goes into the hackathon repo.
   - Gaia DR3 is also at IRSA: table `gaia_dr3_source` (not `gaia.gaiadr3_source`).
 - **Fast stars:** move the position to today with proper motion **before** searching. Barnard's Star has moved about 4.5′ since 2000.
 - **SIMBAD:** the main CDS server (`simbad.cds.unistra.fr`) did not respond on 29 Oct; the mirror `simbad.harvard.edu` worked. Always have the mirror as backup (astroquery: `astroquery.simbad.conf.server`).
-- **Cutout method:** from the IRSA SPHEREx cutout tutorial **(Kripas fills in on Day 1)**.
+- **Cutout method (tested 31 Oct):**
+  1. Find images: the `CONTAINS ... s_region` query above, filtered to the 4 science collections.
+  2. File path: a second query, `spherex.plane p JOIN spherex.artifact a ON a.planeid = p.planeid WHERE a.producttype = 'science' AND p.obs_publisher_did IN (...)` (a JOIN inside the `CONTAINS` query fails with "st_covers does not exist"). Remove the leading `ibe/data/` from `a.uri`.
+  3. Cutout: `https://irsa.ipac.caltech.edu/ibe/cutout?ra=<deg>&dec=<deg>&size=<deg>&path=<path>`. (The docs also show appending `?center=ra,dec&size=0.1` to the file URL.)
+  4. A 0.05° cutout = 29×29 pixels but **~5 MB (QR2) / ~4 MB (QR3)**, because the PSF/EPSF comes along. Keep all extensions; cutout axes follow the detector (**not north-up**).
+  5. HTTP 404 = position not in that image. HTTP 503 = too many requests: **max 3 at a time**, retry with backoff. Check the reply starts with `SIMPLE`.
 
 ---
 
@@ -76,11 +93,13 @@ Notes only. No code from this file goes into the hackathon repo.
 ## 5. Official hackathon targets (SPHEREx)
 Coordinates are J2000 positions. **Re-check all of them with SIMBAD on 14 Nov.**
 
-| Target | RA, Dec | What it is | Expected in SPHEREx (about 1.5 years) |
+| Target | RA, Dec | What it is | Expected shift, first → last epoch released by 31 Oct |
 |---|---|---|---|
-| Barnard's Star | 17h57m48.5s, +04°41′36″ **(verify)** | nearest single red dwarf, fastest-moving star (about 10.4″/yr) | about 15″ ≈ 2.5 px shift; clearest mover |
-| Epsilon Indi B | near 22h04m, −56°47′ **(verify)** | brown-dwarf pair, about 4.7″/yr; companion of Epsilon Indi A | about 1 px; subtle |
-| WISE 0855 | 08h55m10.831s, −07°14′42.53″ (from the challenge text) | coldest known brown dwarf, about 8″/yr | about 2 px; invisible in D1–D3, visible in D5–D6 |
+| Barnard's Star | 17h57m48.5s, +04°41′36″ **(verify)** | nearest single red dwarf, fastest-moving star (10.39″/yr, SIMBAD) | 0.99 yr → 10.3″ ≈ **1.7 px**; clearest mover |
+| Epsilon Indi B | near 22h04m, −56°47′ **(verify)** | brown-dwarf pair, 4.68″/yr; companion of Epsilon Indi A | 1.36 yr → 6.4″ ≈ **1.0 px**; subtle |
+| WISE 0855 | 08h55m10.831s, −07°14′42.53″ (from the challenge text) | coldest known brown dwarf, 8.15″/yr | 0.99 yr → 8.1″ ≈ **1.3 px**; invisible in D1–D3, visible in D5–D6 |
+
+Shifts are small (1–2 px), so alignment quality decides whether motion is visible. Re-check on 13 Nov: a new visit (for example WISE 0855, ~Nov 2026) may be released and make the shifts larger.
 | RW Aurigae | 05h07m49.5s, +30°24′05″ **(verify)** | young star with dimming events | brightness changes |
 | R Draconis | 16h32m40.2s, +66°45′18″ **(verify)** | Mira variable, period about 245 days | strong brightening and fading |
 
@@ -88,21 +107,24 @@ Comparison data: Gaia DR3 (motion), AAVSO (variable-star light curves).
 
 ---
 
-## 6. SPHEREx coverage of the 5 targets (Kripas fills in on Day 1)
+## 6. SPHEREx coverage of the 5 targets (measured 31 Oct 2026, `notes/DAY1_REPORT.md`)
+Position moved with proper motion to 2026.0, then `CONTAINS ... s_region`, 4 science collections.
 
-| Target | Images | First date | Last date | Epochs | Images per detector D1 – D6 |
-|---|---|---|---|---|---|
-| Barnard's Star | | | | | |
-| Epsilon Indi B | | | | | |
-| WISE 0855 | | | | | |
-| RW Aurigae | | | | | |
-| R Draconis | | | | | |
+| Target | Images | First date | Last date | Epochs (dates) | Images per detector D1 – D6 | Releases |
+|---|---|---|---|---|---|---|
+| Barnard's Star | 359 | 2025-08-15 | 2026-09-22 | 3 (2025-08-29, 2026-03-20, 2026-08-22) | 60 / 61 / 59 / 59 / 61 / 59 | qr2 240, qr3 119 |
+| Epsilon Indi B | 445 | 2025-04-24 | 2026-10-02 | 4 (2025-05-09, 2025-10-11, 2026-04-25, 2026-09-27) | 43 / 92 / 95 / 43 / 80 / 92 | qr2 325, qr3 120 |
+| WISE 0855 | 256 | 2025-05-05 | 2026-05-14 | 3 (2025-05-06, 2025-11-12, 2026-05-01) | 36 / 48 / 45 / 36 / 48 / 43 | qr2 256 |
+| RW Aurigae | 333 | 2025-09-01 | 2026-09-16 | 3 (2025-09-10, 2026-03-03, 2026-09-11) | 56 / 55 / 56 / 56 / 56 / 54 | qr2 224, qr3 109 |
+| R Draconis | 2483 | 2025-04-24 | 2026-09-27 | 9 (split at 60 days; near the north ecliptic pole, seen almost all year) | 584 / 89 / 575 / 581 / 89 / 565 | qr2 536, qr2_deep 1224, qr3_deep 723 |
 
-Our count must match IRSA's own SPHEREx search for the same position.
+- Each exposure gives 2 images (paired detectors), so exposures = images ÷ 2 (Barnard 181, Eps Ind B 235, WISE 0855 129, RW Aur 168, R Dra 1257).
+- R Dra is in the deep-field area: most of its images are `_deep`. D2 and D5 have far fewer images there (89).
+- **To do:** compare one count with IRSA's own SPHEREx Data Explorer search for the same position.
 
 ---
 
-## 7. API format (draft, finalise together on the Day 3 morning call, Sat 31 Oct)
+## 7. API format (draft, finalise together on the Day 3 morning call, Mon 2 Nov)
 - `GET /api/resolve?name=` → `{ "ra": deg, "dec": deg, "source": "SIMBAD" }` or `{ "error": "not found" }`.
 - `GET /api/coverage?ra=&dec=` → `[ { "obs_id", "band", "mjd", "wl_min_um", "wl_max_um", "release" } ]`.
 - `GET /api/frames?ra=&dec=&fov_arcmin=&band=&mode=single|coadd` → `[ { "png_url", "mjd", "date_iso", "epoch_id", "band", "n_images", "pct_flagged" } ]`.

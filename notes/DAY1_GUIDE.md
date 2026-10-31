@@ -1,4 +1,4 @@
-# Day 1 guide (Thu 29 Oct): Step 1, find and get the SPHEREx data
+# Day 1 guide (Sat 31 Oct): Step 1, find and get the SPHEREx data
 
 Day 1 of 4. About 7 hours each, in 3 blocks. After each block say "review Day 1 block N" to the AI, then commit.
 

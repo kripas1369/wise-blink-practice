@@ -117,7 +117,7 @@ The official site says: "Do not begin work on your projects until the hackathon 
 2. **Get:** IRSA cutouts only (never 70 MB full files).
 3. **Time:** `MJD-AVG`. Never `DATE`.
 4. **Flags, the official Mosaic Tool list** (Supplement v2.0, Section 3.4.3): TRANSIENT, SUR_ERROR, NONFUNC, DICHROIC, MISSING_DATA, HOT, COLD, PHANMISS, NONLINEAR, PERSIST, CROSSTALK, GHOST, GHOST_FPA, GHOST_EXT, STREAK, BLOOM, SNOWBALL, HALO, SATELLITE_HALO.
-   - Read bit positions from the `MP_*` header keywords.
+   - Read bit positions from the FLAGS header: `MP_*` keywords in QR2, `MSKN*`/`MSKM*` in QR3. If neither is present, stop with an error (never "keep everything").
    - **SOURCE (bit 21) = a known star, galaxy or asteroid. It's a label only:** never mask on it, and never let it cancel a bad flag.
 5. **Background:** IMAGE − ZODI.
 6. **Noise:** sigma = sqrt(VARIANCE). Differences are shown in sigma.
@@ -137,17 +137,18 @@ The official site says: "Do not begin work on your projects until the hackathon 
 
 | Target | What must be visible | Check |
 |---|---|---|
-| Barnard's Star | Moves about 2.5 px (about 15″) from first to last epoch | Measured shift within about 1 px of the Gaia prediction |
-| WISE 0855 | Faint or invisible in D1–D3, visible in D5–D6, small motion | Position consistent with the published proper motion (about 8″/yr) |
+| Barnard's Star | Moves about 1.7 px (10.3″) from first to last epoch (data released by 31 Oct; `FACTS.md` §5) | Measured shift within about 0.5 px of the Gaia prediction |
+| WISE 0855 | Faint or invisible in D1–D3, visible in D5–D6, about 1.3 px motion | Position consistent with the published proper motion (8.15″/yr) |
 | Epsilon Indi B | About 1 px shift (subtle); visible near Epsilon Indi A | Gaia or catalogue motion direction agrees |
 | RW Aur | Brightness changes between epochs | Light curve trend roughly consistent with AAVSO |
 | R Dra | Clear brightening and fading (Mira variable, period about 245 days) | Light curve shape consistent with AAVSO |
 | Any RA/Dec | No crash; "no SPHEREx data here yet" shown honestly if empty | Coverage count = IRSA count |
 
 ### C5. Feature levels
-- **Level 1, a complete entry (by hour ~22):** search, name lookup, field of view, URL; cutouts and cleaning; flipbook with frame labels; detector buttons; 5 target buttons; flags toggle; deployed link.
-- **Level 2, a strong contender (by hour ~34):** add-up per epoch and detector; difference in sigma; Gaia markers; light curve; Aladin with Gaia and WISE overlays.
-- **Level 3, winner level (only if Level 2 is solid):** spectrum on click; measured motion compared with Gaia; latest-release querying; a "mark interesting" share link; a small Planet X explainer.
+- **Level 1, a complete entry (by hour ~22):** search, name lookup, field of view, URL; cutouts and cleaning; **north-up aligned** flipbook with frame labels; detector buttons; 5 target buttons; flags toggle; honest empty/error states; "data as of" line (newest release date); deployed link.
+- **Level 2, a strong contender (by hour ~34):** add-up per epoch and detector; difference in sigma; Gaia markers; light curve (points coloured by wavelength, because of the LVF); Aladin with Gaia and WISE overlays; **epoch picker (+/−)**; **proof panel** per target (expected vs measured motion, % flagged, images/epochs, release); coverage timeline.
+- **Level 3, winner level (only if Level 2 is solid):** spectrum on click and **spectrum per epoch** (R Dra two dates); measured motion compared with Gaia; GIF download + links to the original files at IRSA; one cross-check against IRSA's Spectrophotometry Tool; Nepali language toggle; a small Planet X explainer.
+- **Why these:** they fill the gaps in IRSA's own tools (no time view, not north-up, expert-only, queued jobs). See [`learning/05_nasa_tools_review.md`](../../learning/05_nasa_tools_review.md) and [`learning/06_how_to_win.md`](../../learning/06_how_to_win.md).
 - **Not building:** a custom Three.js globe, Rust, freehand lasso, Django, a database, accounts, Planet X detection claims.
 
 ### C6. Stack
@@ -161,7 +162,8 @@ The official site says: "Do not begin work on your projects until the hackathon 
 
 **Team decision (29 Oct):** we practise the **real hackathon project**: the same SPHEREx data, the same 5 official targets, the same features (Part C), the same split of work. Then at the hackathon we build it again, fast, from memory.
 
-### Phase 1: 4-day practice build of the real tool (Thu 29 Oct – Sun 1 Nov, repo `wise-blink-practice`, to be renamed `spherex-blink-practice`)
+### Phase 1: 4-day practice build of the real tool (Sat 31 Oct – Tue 3 Nov, repo `wise-blink-practice`, to be renamed `spherex-blink-practice`)
+(Moved from 29 Oct – 1 Nov on 31 Oct: 29–30 Oct went to checking the real archive. Learning notes for every step: [`learning/`](../../learning/README.md).)
 About **7 hours a day each**, in 3 blocks. Kripas types his own code; the AI explains each step and reviews it. Each day ends with the learning log, a pull request into `main`, and a 15-minute call.
 
 ```mermaid
@@ -171,7 +173,8 @@ flowchart LR
     step2b --> wrap["Day 4: connect, online, test 5 targets"]
 ```
 
-#### Day 1, Thu 29 Oct: Step 1, find and get the data
+#### Day 1, Sat 31 Oct: Step 1, find and get the data
+**Status (31 Oct): Kripas's part is done** (code in `backend/app/`, results in `notes/DAY1_REPORT.md`, 20 offline + 3 network tests pass). Found on the way: the archive mixes releases QR2 + QR3 and calibration rows (we filter to 4 science collections); each cutout is ~5 MB because of the PSF cube; SIMBAD's main server was down (mirror works).
 - **Both together (block 1, 2 h):** revise how to query datasets and get cutouts: IRSA TAP, `spherex.obscore`, the `s_region` condition, the columns, the IRSA SPHEREx cutout tutorial, what is inside a cutout (IMAGE, FLAGS, VARIANCE, ZODI, header `MJD-AVG`), Gaia DR3 at IRSA (`gaia_dr3_source`), SIMBAD and its mirror.
 - **Kripas (blocks 2 – 3):**
   - `coords.py` (12 tests pass).
@@ -184,7 +187,7 @@ flowchart LR
   - 5 official target buttons with one-line explanations.
 - **Done when:** for each of the 5 targets we know how many SPHEREx images exist, their dates and detectors (written in `FACTS.md`), and one Barnard's Star cutout opens correctly.
 
-#### Day 2, Fri 30 Oct: Step 2a, clean and line up the epochs
+#### Day 2, Sun 1 Nov: Step 2a, clean and line up the epochs
 - **Kripas:**
   - Group images into epochs (`MJD-AVG`, gaps of months), per detector.
   - Clean each cutout: official flag mask (SOURCE is a label only), IMAGE − ZODI, sigma = sqrt(VARIANCE), % flagged.
@@ -196,7 +199,7 @@ flowchart LR
   - Detector buttons D1 – D6; flags overlay toggle.
 - **Done when:** Barnard's Star frames from different epochs play in the flipbook, lined up, with labels.
 
-#### Day 3, Sat 31 Oct: Step 2b, compare epochs with proof (integration day)
+#### Day 3, Mon 2 Nov: Step 2b, compare epochs with proof (integration day)
 - **Morning call (both):** fix the API format (`FACTS.md` section 7).
 - **Kripas:**
   - Add-up per epoch and detector (1/variance weighted).
@@ -209,7 +212,7 @@ flowchart LR
   - Difference mode with a sigma colour scale.
 - **Done when:** **Barnard's Star walks across the browser flipbook onto its Gaia markers.**
 
-#### Day 4, Sun 1 Nov: connect, online, test
+#### Day 4, Tue 3 Nov: connect, online, test
 - **Kripas:**
   - `/api/lightcurve` (brightness at one position across epochs).
   - Pre-cache the 5 targets; run the C4 acceptance tests and write the results.
@@ -219,11 +222,10 @@ flowchart LR
 - **Both:** lessons note (planned vs actual hours, blockers).
 - **Done when:** a public link works and the C4 tests are run on all 5 targets (Barnard's Star moves with Gaia; WISE 0855 shows in D5 – D6 only; R Dra and RW Aur change brightness).
 
-#### Mon 2 – Fri 6 Nov
-- **Mon 2 (both):** fix whatever did not pass on Day 4.
-- **Tue 3:** Level 3. Kripas: `/api/spectrum` (brightness vs wavelength across detectors) and measured motion vs Gaia. [Friend's name]: spectrum panel, About page.
-- **Wed 4:** Kripas reads Supplement 2.2, 3.2.5, 3.2.9, 3.4.3 and finishes `FACTS.md`. [Friend's name] makes a draft 30-second video from the practice tool and a pitch draft.
-- **Thu 5 (both):** speed drill. In an empty folder, rebuild search → coverage → one cutout → flipbook in 3 hours from memory. Delete afterwards.
+#### Wed 4 – Fri 6 Nov
+- **Wed 4 morning (both):** fix whatever did not pass on Day 4.
+- **Wed 4 afternoon:** Level 3. Kripas: `/api/spectrum` (brightness vs wavelength, per epoch) and measured motion vs Gaia. [Friend's name]: spectrum panel, epoch picker (+/−), proof panel, About page.
+- **Thu 5:** Kripas reads Supplement 2.2, 3.2.5, 3.2.9, 3.4.3 and finishes `FACTS.md`; one cross-check against IRSA's Spectrophotometry Tool. [Friend's name] makes a draft 30-second video from the practice tool and a pitch draft. Evening (both): speed drill. In an empty folder, rebuild search → coverage → one cutout → flipbook in 3 hours from memory. Delete afterwards.
 - **Fri 6:** rest; rehearsal checklist.
 
 ### Phase 2: Timed rehearsal of the real hackathon (Sat 7 – Sun 8 Nov, 48 hours)
@@ -325,3 +327,6 @@ Follow **Part E** exactly. Checkpoints:
 - **Rule risk (we practise on SPHEREx):** written answer from the local lead; private practice repos; fresh repo on 14 Nov; no copied code.
 - **SIMBAD down** (the main CDS server failed on 29 Oct): use the Harvard mirror `simbad.harvard.edu`; target buttons carry fixed positions as a backup.
 - **Fast stars not found:** move the position to today with proper motion before searching (Barnard's Star moved about 4.5′ since 2000).
+- **New data releases:** QR2 and QR3 are both live and new data arrives weekly. Query all science collections (`config.COLLECTIONS`), never one hard-coded release; skip the `_cal` rows. Read flag bits from each file's header (they can differ by release).
+- **IRSA rate limits:** "503 busy" with 4+ parallel cutouts; max 3 at a time, retries, disk cache; each cutout is ~5 MB, so pre-cache the 5 targets.
+- **Brightness vs wavelength confusion (LVF):** each measurement has its own wavelength; light curves keep it, spectra compare per epoch.

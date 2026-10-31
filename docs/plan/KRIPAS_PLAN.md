@@ -8,10 +8,11 @@
 
 ---
 
-## Phase 1: 4-day practice build (Thu 29 Oct – Sun 1 Nov)
-About 7 hours a day, in 3 blocks. For each block: the AI explains → **I type the code** → "review Day N block M" → commit. End of day: learning log, pull request `kripas-backend` → `main`, 15-minute call.
+## Phase 1: 4-day practice build (Sat 31 Oct – Tue 3 Nov)
+About 7 hours a day, in 3 blocks. For each block: the AI explains → **I type the code** → "review Day N block M" → commit. End of day: learning log, pull request `kripas-backend` → `main`, 15-minute call. Explanations of everything built: [`learning/`](../../learning/README.md).
 
-### Day 1, Thu 29 Oct: Step 1, find and get the data
+### Day 1, Sat 31 Oct: Step 1, find and get the data
+**Status: done (31 Oct).** `backend/app/` config, coords, motion, resolve, targets, flags, archive; `scripts/day1_report.py`; 24 offline + 3 network tests pass; results in `notes/DAY1_REPORT.md` and `FACTS.md` §6. Walkthrough: [`learning/02_code_walkthrough.md`](../../learning/02_code_walkthrough.md). **Re-type it yourself** before Day 2 (the speed drill depends on it).
 - **Block 1 (2 h, with [Friend's name]):** revise how to query and get cutouts.
   - IRSA TAP `https://irsa.ipac.caltech.edu/TAP`; table `spherex.obscore`; condition `CONTAINS(POINT('ICRS', ra, dec), s_region) = 1`.
   - Columns: `obs_id`, `t_min`, `energy_bandpassname`, `em_min`, `em_max`, `access_url`, `access_estsize`.
@@ -25,10 +26,10 @@ About 7 hours a day, in 3 blocks. For each block: the AI explains → **I type t
   - Download one Barnard's Star cutout; print every extension and the header.
 - **Done when:** a table of the 5 targets (count, dates, detectors) is in `FACTS.md`, and one cutout opens with all its parts.
 
-### Day 2, Fri 30 Oct: Step 2a, clean and line up the epochs
-- **Block 1 (2 h):** `epochs.py`: group images by `MJD-AVG` into epochs (gaps of weeks to months), separately for each detector.
+### Day 2, Sun 1 Nov: Step 2a, clean and line up the epochs
+- **Block 1 (2 h):** epochs: `archive.group_epochs` already exists (30-day gap, 60-day maximum). Add per-detector frames and use `MJD-AVG` from each cutout header.
 - **Block 2 (2.5 h):** `clean.py`:
-  - official flag mask (read bits from `MP_*` header keywords; SOURCE is a label only, never cancels a bad bit);
+  - official flag mask with `flags.bad_pixel_bitmask(header)` (reads QR2 `MP_*` and QR3 `MSKN*`; SOURCE is a label only, never cancels a bad bit);
   - IMAGE − ZODI; sigma = sqrt(VARIANCE); % flagged.
 - **Block 3 (2.5 h):** `align.py` + `render.py`:
   - every cutout onto one sky grid around the target (`reproject`); check background stars stay on the same pixel;
@@ -36,29 +37,28 @@ About 7 hours a day, in 3 blocks. For each block: the AI explains → **I type t
   - send PNGs + JSON to [Friend's name].
 - **Done when:** Barnard's Star frames from different epochs are lined up and the star is in a different place in the first and last.
 
-### Day 3, Sat 31 Oct: Step 2b, compare with proof (integration day)
+### Day 3, Mon 2 Nov: Step 2b, compare with proof (integration day)
 - **Morning call:** fix the API format in `docs/plan/FACTS.md` section 7.
 - **Block 1 (2 h):** `coadd.py`: 1/variance-weighted add-up per epoch and detector.
 - **Block 2 (2 h):** `gaia.py`: Gaia DR3 stars near the target, moved from 2016.0 to each epoch's date. `diff.py`: epoch B − A in sigma.
 - **Block 3 (3 h):** FastAPI `main.py`: `/api/resolve`, `/api/coverage`, `/api/frames`, `/api/gaia`, `/api/diff`; disk cache.
 - **Done when:** **Barnard's Star walks across the browser flipbook onto its Gaia markers.**
 
-### Day 4, Sun 1 Nov: connect, online, test
-- **Block 1 (2 h):** `/api/lightcurve` (brightness at one position, all epochs, with errors and flagged marks).
+### Day 4, Tue 3 Nov: connect, online, test
+- **Block 1 (2 h):** `/api/lightcurve` (brightness at one position, all epochs, with errors, flagged marks and the **wavelength** of each point, because of the LVF).
 - **Block 2 (2 h):** pre-cache the 5 targets; run the C4 acceptance tests; write results.
 - **Block 3 (3 h):** deploy with [Friend's name]; lessons note.
 - **Done when:**
-  - Barnard's Star shift within about 1 px of Gaia;
+  - Barnard's Star shift (expected ~1.7 px) within about 0.5 px of Gaia;
   - WISE 0855 visible in D5 – D6, not in D1 – D3;
   - R Dra and RW Aur change brightness;
   - an empty or bad position gives an honest message;
   - the public link works.
 
-### Mon 2 – Fri 6 Nov
-- **Mon 2:** fix anything that failed on Day 4.
-- **Tue 3:** Level 3: `/api/spectrum` (brightness vs wavelength across all detectors); measured motion vs Gaia.
-- **Wed 4:** Supplement 2.2, 3.2.5, 3.2.9, 3.4.3; finish `FACTS.md`.
-- **Thu 5:** speed drill: empty folder → resolve → coverage → one cutout → clean → PNG in 3 hours, from memory. Delete afterwards.
+### Wed 4 – Fri 6 Nov
+- **Wed 4 morning:** fix anything that failed on Day 4.
+- **Wed 4 afternoon:** Level 3: `/api/spectrum` (brightness vs wavelength, per epoch); measured motion vs Gaia; proof-panel numbers in the API.
+- **Thu 5:** Supplement 2.2, 3.2.5, 3.2.9, 3.4.3; finish `FACTS.md`; one cross-check against IRSA's Spectrophotometry Tool. Evening: speed drill: empty folder → resolve → coverage → one cutout → clean → PNG in 3 hours, from memory. Delete afterwards.
 - **Fri 6:** rest; rehearsal checklist.
 
 ---
