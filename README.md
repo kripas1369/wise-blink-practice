@@ -13,12 +13,13 @@ A public web tool: type RA/Dec or a star name, and see **real SPHEREx images of 
 - Roles swapped on 31 Oct. The Day 1 data code was made before the swap and now belongs to the data side.
 
 ## The 4 days (Sat 31 Oct – Tue 3 Nov)
-1. **Day 1:** find and get the data (query SPHEREx, cutouts, the 5 targets). Backend done: [notes/DAY1_REPORT.md](notes/DAY1_REPORT.md).
+1. **Day 1:** find and get the data (query SPHEREx, cutouts, the 5 targets). Backend done: [notes/DAY1_REPORT.md](notes/DAY1_REPORT.md). Website done: [frontend/README.md](frontend/README.md).
 2. **Day 2:** clean and line up the epochs; flipbook.
 3. **Day 3:** compare epochs with proof (add-up, Gaia, difference); connect website and API.
 4. **Day 4:** light curve, online, test the 5 targets.
 
 ## Read first
+- **[Friend's name], start here: [docs/plan/FRIEND_DAY1_STEPS.md](docs/plan/FRIEND_DAY1_STEPS.md)** (Day 1, step by step)
 - **What we built and why, from the basics: [learning/README.md](learning/README.md)**
 - Team plan: [docs/plan/HACKATHON_PLAN.md](docs/plan/HACKATHON_PLAN.md)
 - Kripas's plan: [docs/plan/KRIPAS_PLAN.md](docs/plan/KRIPAS_PLAN.md)
@@ -44,5 +45,12 @@ pip install -r requirements.txt
 python -m pytest backend/tests -v
 ```
 
+## Setup (website)
+```bash
+cd frontend
+python3 -m http.server 8000   # open http://localhost:8000
+npm test                      # 10 tests, needs Node 20+
+```
+
 ## Data credits
-NASA/IPAC Infrared Science Archive (SPHEREx), ESA Gaia DR3, CDS SIMBAD and Aladin, AAVSO.
+NASA/IPAC Infrared Science Archive (SPHEREx), ESA Gaia DR3, CDS SIMBAD and Aladin, ESA ESASky (background map tiles), AAVSO.

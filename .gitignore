@@ -5,5 +5,7 @@ __pycache__/
 .DS_Store
 cache/
 data/
+scratch/
+node_modules/
 *.fits
 *.fits.gz

@@ -23,6 +23,8 @@ Sit together (or call) and go through this. Both of you must be able to explain 
 
 ## [Friend's name] (data side, branch `friend-backend`)
 
+**Follow [`docs/plan/FRIEND_DAY1_STEPS.md`](../docs/plan/FRIEND_DAY1_STEPS.md) first**: it is the checked, step-by-step version of this section.
+
 **Status (31 Oct): this code already exists** (made by Kripas before the role swap). Your job today: run it, read `learning/02_code_walkthrough.md`, and re-type each piece below yourself from these steps, then check with the tests.
 
 ### Block 2 (about 2.5 h): `coords.py` and `resolve.py`

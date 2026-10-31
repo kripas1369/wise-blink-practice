@@ -16,6 +16,8 @@ GitHub: `lazylog00`. Branch: `friend-backend`. Folder: `backend/`.
 About 7 hours a day, in 3 blocks. For each block: the AI explains → **you type the code** → "review Day N block M" → commit. End of day: learning log, pull request `friend-backend` → `main`, 15-minute call with Kripas. Explanations of everything built: [`learning/`](../../learning/README.md).
 
 ### Day 1, Sat 31 Oct: Step 1, find and get the data (take over the existing code)
+**Start here: [FRIEND_DAY1_STEPS.md](FRIEND_DAY1_STEPS.md)**, every command with the result you should see (all checked on a fresh copy on 31 Oct).
+
 **Status: the code is done (31 Oct).** `backend/app/` config, coords, motion, resolve, targets, flags, archive; `scripts/day1_report.py`; 24 offline + 3 network tests pass; results in `notes/DAY1_REPORT.md` and `FACTS.md` §6. Your Day 1 is to **own** it:
 - **Block 1 (2 h, with Kripas):** Kripas walks you through it.
   - Read [`learning/00`](../../learning/00_big_picture.md), [`01`](../../learning/01_day1_what_we_built.md), [`03`](../../learning/03_archive_facts_and_mistakes.md).
