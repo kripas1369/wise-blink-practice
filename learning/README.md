@@ -14,6 +14,7 @@ project from the beginning. Read it in order. Each file is short and in plain En
 | 6 | [06_how_to_win.md](06_how_to_win.md) | How judges score, which features earn points, what to add, the pitch, hard questions | 20 min |
 | 7 | [07_glossary.md](07_glossary.md) | Every word you might not know (MJD, TAP, ADQL, cutout, epoch, proper motion, ...) | look up |
 | 8 | [08_day1_website.md](08_day1_website.md) | Day 1 website (Kripas): what the page does, how a search flows through the code, why each choice | 20 min |
+| 9 | [09_day2_flipbook.md](09_day2_flipbook.md) | Day 2 flipbook (Kripas): real SPHEREx frames, play and blink, honest labels, where the pictures come from | 15 min |
 
 **The astronomy basics** (coordinates, time, light, FITS files, WCS, SPHEREx, noise and flags) are
 already in [`docs/learn/`](../docs/learn/LEARN.md). This folder links to them instead of repeating them.

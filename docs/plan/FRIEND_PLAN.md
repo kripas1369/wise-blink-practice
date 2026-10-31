@@ -29,6 +29,7 @@ About 7 hours a day, in 3 blocks. For each block: the AI explains → **you type
 - **Done when:** you can explain each step of the pipeline, all tests pass on your laptop, and one coverage count matches IRSA's own SPHEREx Data Explorer search.
 
 ### Day 2, Sun 1 Nov: Step 2a, clean and line up the epochs
+**Step-by-step guide: [`FRIEND_DAY2_STEPS.md`](FRIEND_DAY2_STEPS.md)** (Kripas's flipbook and sample frames are ready; your frames replace the samples in the format of [`FRAMES_FORMAT.md`](FRAMES_FORMAT.md)).
 - **Block 1 (2 h):** epochs: `archive.group_epochs` already exists (30-day gap, 60-day maximum). Add per-detector frames and use `MJD-AVG` from each cutout header.
 - **Block 2 (2.5 h):** `clean.py`:
   - official flag mask with `flags.bad_pixel_bitmask(header)` (reads QR2 `MP_*` and QR3 `MSKN*`; SOURCE is a label only, never cancels a bad bit);

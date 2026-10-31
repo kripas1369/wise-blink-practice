@@ -1,0 +1,90 @@
+{
+  "format": "spherex-blink-frames/1",
+  "target": "rw_aur",
+  "label": "RW Aurigae",
+  "ra": 76.956587,
+  "dec": 30.401291,
+  "position_source": "SIMBAD (simbad.harvard.edu) V* RW Aur, moved to 2026.0",
+  "fov_arcmin": 3.0,
+  "pixel_arcsec": 6.15,
+  "size_px": 29,
+  "orientation": "north up, east left",
+  "band": 2,
+  "band_range_um": [
+    1.1,
+    1.62
+  ],
+  "mode": "single",
+  "scale": {
+    "vmin": 0.0481,
+    "vmax": 20.4967,
+    "unit": "MJy/sr",
+    "method": "linear, 1.0-99.5 percentile of good pixels of all frames (same scale for every frame)"
+  },
+  "method": "one exposure per epoch (closest to the epoch's mean time); IMAGE - ZODI; official flag mask; reprojected (reproject_interp) onto this grid",
+  "made_by": "scripts/sample_frames.py (Kripas's sample; the full pipeline replaces it)",
+  "made_at": "2026-10-31 07:38 UTC",
+  "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx",
+  "notes": [
+    "Each visit sees a different wavelength (1.179, 1.533 and 1.225 \u00b5m at the star), and a single pixel's brightness depends on where the star falls inside it, so these frames cannot say how much RW Aurigae itself changed. That needs measured brightness at matching wavelengths (light curve, Day 4)."
+  ],
+  "frames": [
+    {
+      "png": "epoch0.png",
+      "flags_png": "epoch0_flags.png",
+      "epoch_id": 0,
+      "mjd": 60927.83919,
+      "date_iso": "2025-09-09 20:08 UTC",
+      "band": 2,
+      "wl_min_um": 1.103,
+      "wl_max_um": 1.65,
+      "wl_target_um": 1.1787,
+      "bw_target_um": 0.0285,
+      "n_images": 1,
+      "n_images_in_epoch": 18,
+      "pct_flagged": 2.0,
+      "pct_no_value": 0.0,
+      "pct_covered": 100.0,
+      "obs_id": "2025W37_1A_0366_1",
+      "collection": "spherex_qr2"
+    },
+    {
+      "png": "epoch1.png",
+      "flags_png": "epoch1_flags.png",
+      "epoch_id": 1,
+      "mjd": 61104.21255,
+      "date_iso": "2026-03-05 05:06 UTC",
+      "band": 2,
+      "wl_min_um": 1.103,
+      "wl_max_um": 1.65,
+      "wl_target_um": 1.5329,
+      "bw_target_um": 0.0375,
+      "n_images": 1,
+      "n_images_in_epoch": 19,
+      "pct_flagged": 1.9,
+      "pct_no_value": 0.0,
+      "pct_covered": 100.0,
+      "obs_id": "2026W10_1A_0602_1",
+      "collection": "spherex_qr2"
+    },
+    {
+      "png": "epoch2.png",
+      "flags_png": "epoch2_flags.png",
+      "epoch_id": 2,
+      "mjd": 61295.96346,
+      "date_iso": "2026-09-12 23:07 UTC",
+      "band": 2,
+      "wl_min_um": 1.103,
+      "wl_max_um": 1.65,
+      "wl_target_um": 1.2247,
+      "bw_target_um": 0.0294,
+      "n_images": 1,
+      "n_images_in_epoch": 18,
+      "pct_flagged": 5.7,
+      "pct_no_value": 0.0,
+      "pct_covered": 100.0,
+      "obs_id": "2026W37_2A_0516_4",
+      "collection": "spherex_qr3"
+    }
+  ]
+}

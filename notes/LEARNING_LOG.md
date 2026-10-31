@@ -25,7 +25,19 @@ One entry per session. Keep it short: 3 lines plus the time. This becomes our le
 - **Broke / confused me:** target buttons with `role="listitem"` stopped being buttons for screen readers (now `<li><button>`); a slow SIMBAD answer could overwrite a newer map click (fixed with a version counter); the end of a map drag counted as a click (fixed: ignore presses that moved > 5 px); "M31" was treated as numbers because "m" is a unit letter (now only after a digit).
 - **Time:** planned 5 h, actual __ h. Re-type `coords.js` and `urlstate.js` myself.
 
+### Day 2 (done early, Sat 31 Oct), Kripas (website flipbook)
+- **Learned:** a 29 × 29 picture needs `image-rendering: pixelated` or it turns to mush; each visit sees a different wavelength inside one detector (Barnard D2: 1.235, 1.314, 1.539 µm, from the file's spectral WCS), so brightness changes between visits are not automatically real; reproject's footprint is 0 both outside the image and at NaN pixels (a saturated star core), so I reproject an array of ones to tell them apart; WISE 0855 is not clearly seen in single D6 exposures (2–5 sigma), and a fixed background dot sits 9″ from it in D2, so the website now says so in an orange box.
+- **Broke / confused me:** NaN star cores showed as black "sky" (now striped and counted); `hidden` did nothing on elements whose CSS sets `display` (added `[hidden] { display: none !important }`); a zsh loop passed `"wise0855 6"` as one word; SIMBAD stopped answering midway through a batch (the script stops instead of guessing).
+- **Time:** planned 7 h, actual __ h. Re-type `player.js` and `frames.js` myself.
+
 ### Day 1, Sat 31 Oct, [Friend's name]
 - **Learned:**
 - **Broke / confused me:**
 - **Time:** planned 2.5 h, actual __ h
+
+### Day 2, Sun 1 Nov, [Friend's name]
+- **Learned:**
+- **Numbers:** MJD-AVG vs archive time (Step 3): __ s; Barnard Aug 2025 % flagged (Step 4): __; background star position per visit (Step 5): __; compare_frames result (Step 7): __
+- **Broke / confused me:**
+- **Open question answered (Step 10):**
+- **Time:** planned 7 h, actual __ h

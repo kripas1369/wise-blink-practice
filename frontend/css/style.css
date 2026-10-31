@@ -17,6 +17,7 @@
 }
 
 * { box-sizing: border-box; }
+[hidden] { display: none !important; }
 
 html, body { margin: 0; }
 
@@ -169,18 +170,70 @@ input[type="range"] { width: 100%; accent-color: var(--accent); min-height: 32px
 }
 .map-help { margin-top: 0.5rem; }
 
-.flipbook-placeholder {
-  margin-top: 1rem; padding: 0.9rem 1rem;
-  border: 1px dashed var(--line); border-radius: 10px; color: var(--muted);
+.flipbook { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.flip-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 1rem; margin-bottom: 0.7rem; }
+.flip-head h3 { margin: 0; font-size: 1rem; }
+.flip-summary { color: var(--muted); font-size: 0.85rem; }
+
+.flip-body { display: grid; grid-template-columns: minmax(240px, 380px) 1fr; gap: 1rem; align-items: start; }
+
+/* The frame is a few dozen pixels; scale it up without smoothing so each SPHEREx pixel stays a square. */
+/* Stripes show through transparent pixels: places where the SPHEREx file has no value. */
+.flip-stage {
+  position: relative; width: 100%; aspect-ratio: 1;
+  background: repeating-linear-gradient(45deg, #1d2a4a 0 4px, #0b1222 4px 8px);
+  border: 1px solid var(--line); border-radius: 10px; overflow: hidden;
 }
-.flipbook-placeholder h3 { margin: 0 0 0.3rem; color: var(--text); font-size: 1rem; }
-.flipbook-placeholder p { margin: 0; font-size: 0.88rem; }
+.flip-stage:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
+.flip-layer { position: absolute; inset: 0; width: 100%; height: 100%; image-rendering: pixelated; }
+.flip-target {
+  position: absolute; left: 50%; top: 50%; width: 18%; aspect-ratio: 1;
+  transform: translate(-50%, -50%); border: 2px dashed #ffc04dcc; border-radius: 50%; pointer-events: none;
+}
+.flip-compass, .flip-scale {
+  position: absolute; bottom: 0.4rem; font-size: 0.75rem; font-weight: 700; color: var(--text);
+  background: #070b16bb; border-radius: 6px; padding: 0.1rem 0.4rem;
+}
+.flip-compass { left: 0.4rem; }
+/* JS sets the width to exactly 1 arcminute of the frame; no side padding so the bar stays exact. */
+.flip-scale { right: 0.4rem; display: grid; justify-items: center; gap: 0.15rem; padding: 0.15rem 0; line-height: 1; }
+.flip-scale-bar { display: block; width: 100%; height: 3px; background: var(--text); }
+.flip-message {
+  position: absolute; inset: 0; display: grid; place-content: center; gap: 0.5rem; margin: 0; padding: 1rem;
+  color: var(--muted); text-align: center; font-size: 0.9rem; background: #05080f;
+}
+.flip-message .btn { justify-self: center; }
+
+.flip-side { display: grid; gap: 0.7rem; min-width: 0; }
+.flip-label { margin: 0; font-size: 0.88rem; min-height: 2.6em; }
+.flip-modes { display: flex; gap: 0.4rem; }
+.tab {
+  font: inherit; font-size: 0.85rem; font-weight: 700; cursor: pointer; color: var(--muted);
+  background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 0.3rem 0.8rem; min-height: 36px;
+}
+.tab[aria-selected="true"] { color: var(--accent-text); background: var(--accent); border-color: var(--accent); }
+.flip-controls { display: grid; gap: 0.5rem; }
+.flip-controls .btn[disabled], .flip-side input[disabled] { cursor: not-allowed; }
+.button-row, .inline-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; }
+.check { display: flex; align-items: center; gap: 0.45rem; font-size: 0.85rem; cursor: pointer; }
+.check input { width: 18px; height: 18px; accent-color: var(--accent); }
+.flip-note { margin: 0; }
+.flip-cautions {
+  font-size: 0.83rem; padding: 0.6rem 0.75rem; border-radius: 8px;
+  border: 1px solid #ffb35c66; background: #ffb35c14;
+}
+.flip-cautions strong { color: var(--warn); }
+.flip-cautions ul { margin: 0.3rem 0 0; padding-left: 1.1rem; }
 
 .site-footer { padding: 1rem clamp(1rem, 3vw, 2rem) 2rem; color: var(--muted); font-size: 0.78rem; text-align: center; }
 
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; }
   .aladin { height: 52vh; }
+}
+
+@media (max-width: 640px) {
+  .flip-body { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 480px) {

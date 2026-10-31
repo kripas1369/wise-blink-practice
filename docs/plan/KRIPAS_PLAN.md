@@ -35,6 +35,11 @@ About 7 hours a day, in 3 blocks. For each block: the AI explains → **I type t
   - detector buttons D1 – D6; flags overlay toggle (bad pixels in red);
   - load [Friend's name]'s real Barnard's Star PNGs + JSON.
 - **Done when:** Barnard's Star frames play with correct labels.
+- **Status (31 Oct, done early): done** with real SPHEREx sample frames, so I did not wait for the pipeline.
+  - Flipbook (play, pause, step, slider, speed, loop, arrow keys), blink of two chosen visits, flags overlay, striped "no value" pixels, 1′ scale bar, N/E arrows, target ring, label from the data, orange "Before you trust your eyes" notes.
+  - Sample frames for all 5 targets (`scripts/sample_frames.py`, one exposure per visit); format fixed in [`FRAMES_FORMAT.md`](FRAMES_FORMAT.md); `scripts/compare_frames.py` checks the pipeline against them.
+  - 16 tests (`npm test`); checked in the browser; findings (incl. WISE 0855 not yet seen in single D6 exposures) in [`notes/DAY2_FINDINGS.md`](../../notes/DAY2_FINDINGS.md).
+  - [Friend's name]'s Day 2 guide: [`FRIEND_DAY2_STEPS.md`](FRIEND_DAY2_STEPS.md).
 
 ### Day 3, Mon 2 Nov: Step 2b, compare with proof (integration day)
 - **Morning call:** fix the API format with [Friend's name] (`docs/plan/FACTS.md` section 7).

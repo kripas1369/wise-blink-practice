@@ -1,0 +1,21 @@
+{
+  "format": "spherex-blink-frames-index/1",
+  "available": {
+    "barnard": [
+      2
+    ],
+    "eps_ind_b": [
+      2
+    ],
+    "r_dra": [
+      2
+    ],
+    "rw_aur": [
+      2
+    ],
+    "wise0855": [
+      2,
+      6
+    ]
+  }
+}

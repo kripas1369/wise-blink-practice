@@ -23,7 +23,7 @@ npm test        # node --test, needs Node 20+; no packages to install
 
 | File | What it does |
 |---|---|
-| `index.html` | Page layout: search panel, target buttons, sky map, flipbook placeholder |
+| `index.html` | Page layout: search panel, target buttons, sky map, SPHEREx flipbook |
 | `css/style.css` | Dark theme, phone layout under 900 px, focus outlines |
 | `js/app.js` | Wires everything: search, targets, URL, Aladin sky map |
 | `js/coords.js` | Reads `17h57m48s +04d41m36s`, `17:57:48 +04:41:36` or degrees |
@@ -31,6 +31,10 @@ npm test        # node --test, needs Node 20+; no packages to install
 | `js/targets.js` | The 5 official targets (SIMBAD positions and motions) |
 | `js/resolve.js` | Star name → position through SIMBAD (Harvard mirror first, CDS second) |
 | `js/urlstate.js` | `?ra=&dec=&fov=&det=` share links |
+| `js/flipbook.js` | The flipbook panel: play, step, blink, flags overlay, labels, honest messages |
+| `js/frames.js` | Loads and checks `frames/` (format: [`docs/plan/FRAMES_FORMAT.md`](../docs/plan/FRAMES_FORMAT.md)) |
+| `js/player.js` | Stepping, looping and speed rules (tested) |
+| `frames/` | Real SPHEREx sample frames per target and detector (made by `scripts/sample_frames.py`; the data pipeline replaces them) |
 
 ## Outside services (all free, no login)
 

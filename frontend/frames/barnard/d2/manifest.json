@@ -1,0 +1,90 @@
+{
+  "format": "spherex-blink-frames/1",
+  "target": "barnard",
+  "label": "Barnard's Star",
+  "ra": 269.446269,
+  "dec": 4.768204,
+  "position_source": "SIMBAD (simbad.harvard.edu) NAME Barnard's star, moved to 2026.0",
+  "fov_arcmin": 3.0,
+  "pixel_arcsec": 6.15,
+  "size_px": 29,
+  "orientation": "north up, east left",
+  "band": 2,
+  "band_range_um": [
+    1.1,
+    1.62
+  ],
+  "mode": "single",
+  "scale": {
+    "vmin": 0.2261,
+    "vmax": 11.5261,
+    "unit": "MJy/sr",
+    "method": "linear, 1.0-99.5 percentile of good pixels of all frames (same scale for every frame)"
+  },
+  "method": "one exposure per epoch (closest to the epoch's mean time); IMAGE - ZODI; official flag mask; reprojected (reproject_interp) onto this grid",
+  "made_by": "scripts/sample_frames.py (Kripas's sample; the full pipeline replaces it)",
+  "made_at": "2026-10-31 07:15 UTC",
+  "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx",
+  "notes": [
+    "From its known motion (10.4\u2033 a year, mostly north), Barnard's Star should move about 1.7 pixels between the first and last visit. Its centre is saturated (striped), so the shift is hard to judge by eye; measuring it against Gaia comes with the data pipeline (Day 3)."
+  ],
+  "frames": [
+    {
+      "png": "epoch0.png",
+      "flags_png": "epoch0_flags.png",
+      "epoch_id": 0,
+      "mjd": 60914.27694,
+      "date_iso": "2025-08-27 06:38 UTC",
+      "band": 2,
+      "wl_min_um": 1.103,
+      "wl_max_um": 1.65,
+      "wl_target_um": 1.2347,
+      "bw_target_um": 0.0297,
+      "n_images": 1,
+      "n_images_in_epoch": 18,
+      "pct_flagged": 4.0,
+      "pct_no_value": 0.7,
+      "pct_covered": 100.0,
+      "obs_id": "2025W35_1A_0444_1",
+      "collection": "spherex_qr2"
+    },
+    {
+      "png": "epoch1.png",
+      "flags_png": "epoch1_flags.png",
+      "epoch_id": 1,
+      "mjd": 61116.68082,
+      "date_iso": "2026-03-17 16:20 UTC",
+      "band": 2,
+      "wl_min_um": 1.103,
+      "wl_max_um": 1.65,
+      "wl_target_um": 1.3135,
+      "bw_target_um": 0.0316,
+      "n_images": 1,
+      "n_images_in_epoch": 18,
+      "pct_flagged": 8.8,
+      "pct_no_value": 1.2,
+      "pct_covered": 100.0,
+      "obs_id": "2026W12_1A_0311_1",
+      "collection": "spherex_qr2"
+    },
+    {
+      "png": "epoch2.png",
+      "flags_png": "epoch2_flags.png",
+      "epoch_id": 2,
+      "mjd": 61273.79038,
+      "date_iso": "2026-08-21 18:58 UTC",
+      "band": 2,
+      "wl_min_um": 1.103,
+      "wl_max_um": 1.65,
+      "wl_target_um": 1.539,
+      "bw_target_um": 0.0376,
+      "n_images": 1,
+      "n_images_in_epoch": 25,
+      "pct_flagged": 5.4,
+      "pct_no_value": 1.0,
+      "pct_covered": 100.0,
+      "obs_id": "2026W34_2A_0264_2",
+      "collection": "spherex_qr3"
+    }
+  ]
+}

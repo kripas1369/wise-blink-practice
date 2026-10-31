@@ -1,0 +1,90 @@
+{
+  "format": "spherex-blink-frames/1",
+  "target": "wise0855",
+  "label": "WISE 0855",
+  "ra": 133.759765,
+  "dec": -7.242186,
+  "position_source": "SIMBAD (simbad.harvard.edu) WISEA J085510.74-071442.5, moved to 2026.0",
+  "fov_arcmin": 3.0,
+  "pixel_arcsec": 6.15,
+  "size_px": 29,
+  "orientation": "north up, east left",
+  "band": 6,
+  "band_range_um": [
+    4.42,
+    5.0
+  ],
+  "mode": "single",
+  "scale": {
+    "vmin": 0.023,
+    "vmax": 0.4385,
+    "unit": "MJy/sr",
+    "method": "linear, 1.0-99.5 percentile of good pixels of all frames (same scale for every frame)"
+  },
+  "method": "one exposure per epoch (closest to the epoch's mean time); IMAGE - ZODI; official flag mask; reprojected (reproject_interp) onto this grid",
+  "made_by": "scripts/sample_frames.py (Kripas's sample; the full pipeline replaces it)",
+  "made_at": "2026-10-31 07:33 UTC",
+  "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx",
+  "notes": [
+    "WISE 0855 is not clearly seen in these single exposures (2 to 5 sigma at the ring, not at the same spot each time). Adding up all exposures of a visit is needed before we can call it a detection."
+  ],
+  "frames": [
+    {
+      "png": "epoch0.png",
+      "flags_png": "epoch0_flags.png",
+      "epoch_id": 0,
+      "mjd": 60800.70219,
+      "date_iso": "2025-05-05 16:51 UTC",
+      "band": 6,
+      "wl_min_um": 4.412,
+      "wl_max_um": 5.01,
+      "wl_target_um": 4.997,
+      "bw_target_um": 0.0376,
+      "n_images": 1,
+      "n_images_in_epoch": 3,
+      "pct_flagged": 0.6,
+      "pct_no_value": 0.0,
+      "pct_covered": 100.0,
+      "obs_id": "2025W19_1B_0116_2",
+      "collection": "spherex_qr2"
+    },
+    {
+      "png": "epoch1.png",
+      "flags_png": "epoch1_flags.png",
+      "epoch_id": 1,
+      "mjd": 60993.91355,
+      "date_iso": "2025-11-14 21:55 UTC",
+      "band": 6,
+      "wl_min_um": 4.412,
+      "wl_max_um": 5.01,
+      "wl_target_um": 4.9724,
+      "bw_target_um": 0.0374,
+      "n_images": 1,
+      "n_images_in_epoch": 19,
+      "pct_flagged": 0.1,
+      "pct_no_value": 0.6,
+      "pct_covered": 100.0,
+      "obs_id": "2025W46_2A_0289_1",
+      "collection": "spherex_qr2"
+    },
+    {
+      "png": "epoch2.png",
+      "flags_png": "epoch2_flags.png",
+      "epoch_id": 2,
+      "mjd": 61156.49534,
+      "date_iso": "2026-04-26 11:53 UTC",
+      "band": 6,
+      "wl_min_um": 4.412,
+      "wl_max_um": 5.01,
+      "wl_target_um": 4.9245,
+      "bw_target_um": 0.0369,
+      "n_images": 1,
+      "n_images_in_epoch": 21,
+      "pct_flagged": 0.7,
+      "pct_no_value": 0.0,
+      "pct_covered": 100.0,
+      "obs_id": "2026W17_2A_0692_2",
+      "collection": "spherex_qr2"
+    }
+  ]
+}

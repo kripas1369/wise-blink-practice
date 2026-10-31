@@ -128,6 +128,8 @@ Position moved with proper motion to 2026.0, then `CONTAINS ... s_region`, 4 sci
 - `GET /api/resolve?name=` → `{ "ra": deg, "dec": deg, "source": "SIMBAD" }` or `{ "error": "not found" }`.
 - `GET /api/coverage?ra=&dec=` → `[ { "obs_id", "band", "mjd", "wl_min_um", "wl_max_um", "release" } ]`.
 - `GET /api/frames?ra=&dec=&fov_arcmin=&band=&mode=single|coadd` → `[ { "png_url", "mjd", "date_iso", "epoch_id", "band", "n_images", "pct_flagged" } ]`.
+  - Day 2 (31 Oct): the flipbook already reads a fuller version of this from files: [`FRAMES_FORMAT.md`](FRAMES_FORMAT.md). Proposal: the API returns that manifest.
+  - Day 2 (31 Oct): the flipbook already reads a fuller version of this from files: [`FRAMES_FORMAT.md`](FRAMES_FORMAT.md). Proposal: the API returns that manifest.
 - `GET /api/diff?...&epochA=&epochB=` → `{ "png_url", "max_sigma", "min_sigma" }`.
 - `GET /api/gaia?ra=&dec=&fov_arcmin=&mjds=` → `[ { "source_id", "g_mag", "positions": [ { "mjd", "ra", "dec" } ] } ]`.
 - `GET /api/lightcurve?ra=&dec=&band=` → `[ { "mjd", "flux", "flux_err", "flagged" } ]`.

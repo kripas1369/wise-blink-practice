@@ -19,7 +19,8 @@ A public web tool: type RA/Dec or a star name, and see **real SPHEREx images of 
 4. **Day 4:** light curve, online, test the 5 targets.
 
 ## Read first
-- **[Friend's name], start here: [docs/plan/FRIEND_DAY1_STEPS.md](docs/plan/FRIEND_DAY1_STEPS.md)** (Day 1, step by step)
+- **[Friend's name], start here: [docs/plan/FRIEND_DAY1_STEPS.md](docs/plan/FRIEND_DAY1_STEPS.md)** (Day 1, step by step), then **[docs/plan/FRIEND_DAY2_STEPS.md](docs/plan/FRIEND_DAY2_STEPS.md)** (Day 2: clean, align, render)
+- Frames format (data side ↔ website): [docs/plan/FRAMES_FORMAT.md](docs/plan/FRAMES_FORMAT.md)
 - **What we built and why, from the basics: [learning/README.md](learning/README.md)**
 - Team plan: [docs/plan/HACKATHON_PLAN.md](docs/plan/HACKATHON_PLAN.md)
 - Kripas's plan: [docs/plan/KRIPAS_PLAN.md](docs/plan/KRIPAS_PLAN.md)

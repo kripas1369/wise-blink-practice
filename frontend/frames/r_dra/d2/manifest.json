@@ -1,0 +1,90 @@
+{
+  "format": "spherex-blink-frames/1",
+  "target": "r_dra",
+  "label": "R Draconis",
+  "ra": 248.167233,
+  "dec": 66.755024,
+  "position_source": "SIMBAD (simbad.harvard.edu) V* R Dra, moved to 2026.0",
+  "fov_arcmin": 3.0,
+  "pixel_arcsec": 6.15,
+  "size_px": 29,
+  "orientation": "north up, east left",
+  "band": 2,
+  "band_range_um": [
+    1.1,
+    1.62
+  ],
+  "mode": "single",
+  "scale": {
+    "vmin": 0.3792,
+    "vmax": 21.5965,
+    "unit": "MJy/sr",
+    "method": "linear, 1.0-99.5 percentile of good pixels of all frames (same scale for every frame)"
+  },
+  "method": "one exposure per epoch (closest to the epoch's mean time); IMAGE - ZODI; official flag mask; reprojected (reproject_interp) onto this grid",
+  "made_by": "scripts/sample_frames.py (Kripas's sample; the full pipeline replaces it)",
+  "made_at": "2026-10-31 07:42 UTC",
+  "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx",
+  "notes": [
+    "R Draconis is so bright that its centre is saturated (striped) in all 3 visits, so its brightness cannot be measured from these D2 frames."
+  ],
+  "frames": [
+    {
+      "png": "epoch0.png",
+      "flags_png": "epoch0_flags.png",
+      "epoch_id": 0,
+      "mjd": 60848.64921,
+      "date_iso": "2025-06-22 15:34 UTC",
+      "band": 2,
+      "wl_min_um": 1.103,
+      "wl_max_um": 1.65,
+      "wl_target_um": 1.1041,
+      "bw_target_um": 0.0258,
+      "n_images": 1,
+      "n_images_in_epoch": 33,
+      "pct_flagged": 14.1,
+      "pct_no_value": 3.1,
+      "pct_covered": 100.0,
+      "obs_id": "2025W25_2A_0633_2",
+      "collection": "spherex_qr2"
+    },
+    {
+      "png": "epoch1.png",
+      "flags_png": "epoch1_flags.png",
+      "epoch_id": 1,
+      "mjd": 61012.1324,
+      "date_iso": "2025-12-03 03:10 UTC",
+      "band": 2,
+      "wl_min_um": 1.103,
+      "wl_max_um": 1.65,
+      "wl_target_um": 1.4002,
+      "bw_target_um": 0.0336,
+      "n_images": 1,
+      "n_images_in_epoch": 37,
+      "pct_flagged": 12.1,
+      "pct_no_value": 2.4,
+      "pct_covered": 100.0,
+      "obs_id": "2025W49_1A_0473_1",
+      "collection": "spherex_qr2"
+    },
+    {
+      "png": "epoch2.png",
+      "flags_png": "epoch2_flags.png",
+      "epoch_id": 2,
+      "mjd": 61213.22972,
+      "date_iso": "2026-06-22 05:30 UTC",
+      "band": 2,
+      "wl_min_um": 1.103,
+      "wl_max_um": 1.65,
+      "wl_target_um": 1.3844,
+      "bw_target_um": 0.0334,
+      "n_images": 1,
+      "n_images_in_epoch": 19,
+      "pct_flagged": 4.5,
+      "pct_no_value": 1.4,
+      "pct_covered": 100.0,
+      "obs_id": "2026W26_1A_0047_1",
+      "collection": "spherex_qr2"
+    }
+  ]
+}

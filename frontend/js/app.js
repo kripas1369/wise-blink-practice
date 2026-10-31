@@ -1,4 +1,5 @@
 import { formatDec, formatRa, looksLikeName, parseCoordinates } from "./coords.js";
+import { createFlipbook } from "./flipbook.js";
 import { positionAt, separationArcsec, VIEW_EPOCH } from "./motion.js";
 import { NameNotFound, resolveName } from "./resolve.js";
 import { TARGETS } from "./targets.js";
@@ -37,6 +38,7 @@ let aladin = null;
 let fovOverlay = null;
 // Bumped on every new position, so a slow SIMBAD answer cannot overwrite a newer choice.
 let positionVersion = 0;
+let flipbook = null;
 
 function setStatus(message, kind = "info") {
   statusBox.textContent = message;
@@ -53,6 +55,28 @@ function oldMapWarning(movedSince2000Arcsec) {
 
 function targetPosition(target) {
   return positionAt(target.ra, target.dec, target.pmra, target.pmdec, 2000.0, VIEW_EPOCH);
+}
+
+/** The official target within 5″ of a position, so a typed or shared position still gets its frames. */
+function officialTargetAt(ra, dec) {
+  return TARGETS.find((t) => {
+    const p = targetPosition(t);
+    return separationArcsec(p.ra, p.dec, ra, dec) < 5;
+  }) || null;
+}
+
+function refreshFlipbook() {
+  if (!flipbook || state.ra === null) return;
+  const target = TARGETS.find((t) => t.key === state.targetKey);
+  flipbook.show({ targetKey: state.targetKey, label: target ? target.label : "", det: state.det, fov: state.fov });
+}
+
+function setDetector(det) {
+  state.det = det;
+  detSelect.value = String(det);
+  writeUrl();
+  renderSelection();
+  refreshFlipbook();
 }
 
 // ---------- rendering ----------
@@ -141,11 +165,13 @@ function moveMap() {
 
 function applyPosition({ ra, dec, source, note = "", targetKey = null, queryText = null }) {
   positionVersion += 1;
+  if (targetKey === null) targetKey = officialTargetAt(ra, dec)?.key ?? null;
   Object.assign(state, { ra, dec, source, note, targetKey });
   if (queryText !== null) query.value = queryText;
   writeUrl();
   renderSelection();
   moveMap();
+  refreshFlipbook();
 }
 
 function chooseTarget(target) {
@@ -305,11 +331,9 @@ function start() {
   fovValue.textContent = String(state.fov);
   detSelect.value = String(state.det);
   if (fromUrl.problems.length) setStatus(fromUrl.problems.join(" "), "warn");
+  flipbook = createFlipbook({ onDetector: setDetector });
   if (fromUrl.ra !== null) {
-    const target = TARGETS.find((t) => {
-      const p = targetPosition(t);
-      return separationArcsec(p.ra, p.dec, fromUrl.ra, fromUrl.dec) < 5;
-    });
+    const target = officialTargetAt(fromUrl.ra, fromUrl.dec);
     applyPosition({
       ra: fromUrl.ra,
       dec: fromUrl.dec,
@@ -332,12 +356,9 @@ function start() {
     writeUrl();
     renderSelection();
     moveMap();
+    refreshFlipbook();
   });
-  detSelect.addEventListener("change", () => {
-    state.det = Number(detSelect.value);
-    writeUrl();
-    renderSelection();
-  });
+  detSelect.addEventListener("change", () => setDetector(Number(detSelect.value)));
   surveySelect.addEventListener("change", changeSurvey);
 
   startMap();
