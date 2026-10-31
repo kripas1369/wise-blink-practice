@@ -42,6 +42,12 @@ One entry per session. Keep it short: 3 lines plus the time. This becomes our le
 - **Broke / confused me:** rebuilt pictures differed from the website's by 9 grey levels on one pixel, because the manifest position was rounded to 6 decimals (now stored exactly); the R Dra add-up keeps core pixels up to 2,870 MJy/sr, so a linear scale makes everything else black (not installed; Day 4); I wrote "west" for Eps Ind B's motion in a note when PNG x −0.93 means east (caught by re-reading the sign rule: +x = west).
 - **Time:** planned 7 h, actual __ h. Re-type `difference()` in `diff.py` myself.
 
+### Day 4 (done early, Sat 31 Oct), Kripas (light curve, asinh scale, C4 tests; not online yet)
+- **Built:** `lightcurve.py` (`exposures.fits`, `lightcurve.json`), `/api/lightcurve` (+ clicked pixel), `render.py`/`rebuild.py --stretch asinh`, `scripts/acceptance.py`; website light-curve panel (`lightcurve.js`, SVG charts); 15 backend + 10 website tests. Explained in [`learning/12_day4_lightcurve.md`](../learning/12_day4_lightcurve.md).
+- **Learned:** a light curve must be made from single exposures, because each one sees a different wavelength (Eps Ind B is 7× fainter at 1.38 than at 1.27 µm); compare visits only at the same wavelength; a steady field star changes by 4.5% measured this way, so smaller changes are not evidence; the WISE 0855 D6 source moves 0.58 ± 0.12 px where WISE 0855 should move 0.72 px (motion + parallax) and a fixed star 0; the D2 dot is a Gaia star (G 16.31).
+- **Broke / confused me:** a ring 6–9 px around Barnard's saturated core gave a fake 0.62 ratio (now: no light curve when the hole reaches beyond 3 px); WISE 0855's D2 "brightening" was the moving circle sliding over a fixed Gaia star (now a warning); one flagged D6 exposure measured 520 mJy and squashed the chart (now drawn as ▲ and named); flagged-only scaling would have pushed most RW Aur points off the chart (now only flagged points 3× above the clean ones); AAVSO and VizieR were unreachable, so no AAVSO check.
+- **Time:** planned 7 h (without the deploy), actual __ h. Re-type `measure()` in `lightcurve.py` myself.
+
 ### [Friend's name] (validation and research, from 31 Oct)
 Write findings in [`REVIEW_NOTES.md`](REVIEW_NOTES.md); this log is for what you learned.
 - **Learned:**

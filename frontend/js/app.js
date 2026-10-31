@@ -1,6 +1,7 @@
 import { formatDec, formatRa, looksLikeName, parseCoordinates } from "./coords.js";
 import { createDiffView } from "./diffview.js";
 import { createFlipbook } from "./flipbook.js";
+import { createLightCurve } from "./lightcurve.js";
 import { positionAt, separationArcsec, VIEW_EPOCH } from "./motion.js";
 import { NameNotFound, resolveName } from "./resolve.js";
 import { TARGETS } from "./targets.js";
@@ -335,7 +336,12 @@ function start() {
   detSelect.value = String(state.det);
   if (fromUrl.problems.length) setStatus(fromUrl.problems.join(" "), "warn");
   const diffView = createDiffView();
-  flipbook = createFlipbook({ onDetector: setDetector, onFrames: (loaded) => diffView.show(loaded) });
+  const lightCurve = createLightCurve();
+  flipbook = createFlipbook({
+    onDetector: setDetector,
+    onFrames: (loaded) => { diffView.show(loaded); lightCurve.show(loaded); },
+    onPixel: (p) => lightCurve.showPixel(p),
+  });
   if (fromUrl.ra !== null) {
     const target = officialTargetAt(fromUrl.ra, fromUrl.dec);
     applyPosition({

@@ -16,7 +16,7 @@
         <p class="tagline">See the infrared sky change over time</p>
       </div>
     </div>
-    <span class="badge" title="Practice build, not the hackathon submission">Practice build · Day 3</span>
+    <span class="badge" title="Practice build, not the hackathon submission">Practice build · Day 4</span>
   </header>
 
   <main class="layout">
@@ -193,6 +193,43 @@
             (B − A − sky change) / √(σ<sub>A</sub>² + σ<sub>B</sub>²), with σ from the SPHEREx VARIANCE
             maps, made by <code>backend/app/diff.py</code>. Blink (above) is the honest animation;
             there is no fade between the visits.</p>
+        </div>
+      </section>
+
+      <section id="lc-view" class="diffview" aria-labelledby="lc-title" hidden>
+        <div class="flip-head">
+          <h3 id="lc-title">Light curve</h3>
+          <span id="lc-summary" class="flip-summary"></span>
+        </div>
+        <div class="inline-row">
+          <p id="lc-where" class="help" aria-live="polite"></p>
+          <button type="button" id="lc-target" class="btn btn-small" hidden>Back to the target</button>
+        </div>
+        <p id="lc-message" class="help" hidden></p>
+        <div id="lc-body" hidden>
+          <p class="help">Click any pixel of the flipbook to measure it instead (needs the data API).</p>
+          <figure class="lc-figure">
+            <figcaption>Brightness of every exposure over time. Colour = the wavelength that exposure saw at
+              this position (<span class="lc-blue">short</span> to <span class="lc-red">long</span>); hollow =
+              a flagged pixel in the circle or fainter than 5σ. Points of one visit spread up and down mostly
+              because they see different wavelengths, not because the star changed.</figcaption>
+            <div id="lc-time"></div>
+          </figure>
+          <figure class="lc-figure">
+            <figcaption>The same exposures against wavelength, one colour per visit. Where two visits overlap
+              in wavelength, a gap between their colours is a change in brightness.</figcaption>
+            <div id="lc-wl"></div>
+            <div id="lc-legend" class="diff-legend"></div>
+          </figure>
+          <div id="lc-comparisons" class="lc-list">
+            <strong>Visits compared at the same wavelength</strong>
+            <ul></ul>
+          </div>
+          <div id="lc-warnings" class="flip-cautions" hidden>
+            <strong>Before you trust a change</strong>
+            <ul></ul>
+          </div>
+          <p id="lc-method" class="help"></p>
         </div>
       </section>
     </section>

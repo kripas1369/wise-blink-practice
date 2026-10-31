@@ -11,6 +11,7 @@ non-200 status; nothing is ever filled in with a default value.
     /api/frames?ra=&dec=&band=[&fov_arcmin=]   any position: starts a background job (HTTP 202 and
                                                {"status": "working", "message"} meanwhile), then the same manifest
     /api/gaia, /api/diff                       the same location parameters; Gaia markers and difference maps
+    /api/lightcurve[&x=&y=]                    the target's light curve, or one measured at a clicked pixel
 """
 import json
 import math
@@ -30,6 +31,7 @@ from backend.app import archive
 from backend.app.config import CACHE_DIR, DETECTORS, REPO_ROOT
 from backend.app.diff import write_diff
 from backend.app.gaia import write_gaia
+from backend.app.lightcurve import lightcurve_at, write_lightcurve
 from backend.app.motion import position_at, separation_arcsec
 from backend.app.render import POSITION_YEAR, NoImages, render_frames
 from backend.app.resolve import ResolverUnavailable, resolve_name
@@ -130,7 +132,8 @@ def _run_job(loc: dict) -> None:
         render_frames(loc["ra"], loc["dec"], loc["key"], f"RA {loc['ra']:.4f}° Dec {loc['dec']:+.4f}°",
                       "typed position, rounded to 0.0001° (not moved for proper motion)", loc["band"],
                       "coadd", JOB_EXPOSURES_PER_VISIT, loc["fov"], JOBS_DIR)
-        for stage, step in [("Gaia DR3 markers", write_gaia), ("difference maps", write_diff)]:
+        for stage, step in [("Gaia DR3 markers", write_gaia), ("difference maps", write_diff),
+                            ("light curve", write_lightcurve)]:
             job["stage"] = stage
             try:
                 step(loc["folder"])
@@ -261,6 +264,20 @@ def diff(loc: dict = Depends(location)):
     for p in d["pairs"]:
         p["png_url"] = loc["url"] + p["png"]
     return {**d, "base_url": loc["url"]}
+
+
+@app.get("/api/lightcurve")
+def lightcurve(loc: dict = Depends(location), x: float | None = None, y: float | None = None):
+    if x is None and y is None:
+        return _read(loc, "lightcurve.json", "light curve")
+    if x is None or y is None:
+        raise ApiError(400, "Give both x= and y= (pixels of the frame, 0 = first pixel), or neither")
+    size = _read(loc, "manifest.json", "frames")["size_px"]
+    if not (0 <= x <= size - 1 and 0 <= y <= size - 1):
+        raise ApiError(400, f"x and y must be 0-{size - 1}")
+    if not (loc["folder"] / "exposures.fits").exists():
+        raise ApiError(404, "No per-exposure data for this position and detector")
+    return lightcurve_at(loc["folder"], x, y)
 
 
 @app.get("/api/{rest:path}")

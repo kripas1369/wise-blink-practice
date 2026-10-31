@@ -71,7 +71,27 @@ SPHEREx is a NASA space telescope that photographs the whole sky again and again
 - A bright star leaves a bright/dark pair in the difference **even when it does not move** (RW Aur). So we call a pair "motion" only when it matches Gaia in direction and size.
 - Barnard's difference scatters 7.9× more than the file noise predicts; the website warns about it.
 - WISE 0855 is not in Gaia (too faint in visible light), so it has no Gaia marker.
-- The R Dra add-up is made but not shown: its bright core makes the one linear brightness scale useless (Day 4: non-linear scale).
+- The R Dra add-up is made but not shown: its bright core makes the one linear brightness scale useless (Day 4: non-linear scale). *Day 4: now shown with an asinh scale.*
+
+### Day 4 (done 31 Oct, not online yet)
+| What | In simple words | Where |
+|---|---|---|
+| Light curve | The target's brightness in **every single exposure** (not the add-ups), each with its own wavelength: a 2-pixel circle that follows the star, minus the sky. Visits are compared only at the same wavelength. | `backend/app/lightcurve.py`, `frontend/js/lightcurve.js` |
+| Field-star floor | Stars that should not change, measured the same way: how big a change must be before we believe it | same |
+| Click a pixel | With the API running, click any flipbook pixel to get its light curve | `/api/lightcurve?…&x=&y=` |
+| asinh scale | R Dra's add-up shown so that both the faint halo and the bright core are visible; grey is then not proportional to brightness (the page says so) | `render.py --stretch asinh` |
+| C4 tests | The plan's acceptance tests run on all 5 targets | `scripts/acceptance.py`, `notes/acceptance_c4.json` |
+
+![RW Aur: brightness against wavelength, one colour per visit](../../notes/screenshots/day4_rw_aur_wavelength.png)
+
+**Findings** (all numbers and method in [`notes/DAY4_FINDINGS.md`](../../notes/DAY4_FINDINGS.md)):
+- **WISE 0855:** the D6 source moved 0.58 ± 0.12 px between Nov 2025 and Apr 2026; WISE 0855 should move 0.72 px (proper motion + parallax), a fixed star 0. In D2 nothing is at WISE 0855's position. So the D6 source moves like WISE 0855 (research question 1, see below).
+- **The D2 dot** next to WISE 0855 is Gaia DR3 5756956644387831296 (G 16.31) (research question 2, answered).
+- **Epsilon Indi B** is about 7× fainter at 1.36–1.40 µm than at 1.27 µm (its spectrum); at the same wavelength its visits agree within about 15%.
+- **RW Aur** was 24% fainter in Sep 2025 than Sep 2026 at the same wavelength (one clean pair; 24–83% including pairs with flagged pixels).
+- **Floor:** a steady star in the Barnard frame changes by 4.5% measured this way. Other frames have no such star.
+- **Barnard's Star and R Dra:** no light curve (saturated core), with the reason on the page.
+- **Not done:** AAVSO comparison (AAVSO and VizieR unreachable on 31 Oct); putting it online.
 
 ---
 
@@ -89,8 +109,8 @@ Optional (to run the data code, the API and the tests; Python 3.11+):
 cd wise-blink-practice
 python3 -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-python -m pytest -q                  # expect: 52 passed, 3 skipped
-cd frontend && npm test              # expect: 25 pass (Node 20+)
+python -m pytest -q                  # expect: 68 passed, 3 skipped
+cd frontend && npm test              # expect: 35 pass (Node 20+)
 cd .. && uvicorn backend.app.main:app --port 8000      # website + API; API docs at http://localhost:8000/api/docs
 ```
 With the API running you can type any position (e.g. `133.8 -7.2`); the first time, it takes a few minutes to download the pictures.
@@ -133,12 +153,20 @@ Pick one visit, e.g. Barnard D2 visit 1:
 - [ ] **Default pair:** the website picks the two visits with the closest wavelength. Check one by hand from the `wl_target_um` values in a manifest.
 - [ ] **Errors:** with the API running, try `/api/frames?band=2` (no position), `/api/frames?target=pluto&band=2`, `/api/frames?ra=400&dec=0&band=2`. Each should give a plain `{"error": ...}` message, never made-up data.
 
+### C7. The light curve and the C4 tests (Day 4)
+- [ ] **Photometry maths:** read `measure()` in `backend/app/lightcurve.py` (about 18 lines). Is "sum inside a 2-pixel circle minus the median sky 10–14 px away" a fair method? Is 1 MJy/sr over one 6.15″ pixel = 0.889 mJy right? (Pixel solid angle in steradians × 10⁹.)
+- [ ] **Same-wavelength rule:** pick two RW Aur exposures from `frontend/frames/rw_aur/d2/lightcurve.json` with nearly the same `wl_um` in different visits; divide their `flux_mjy` by hand and find the ratio in `same_wavelength.pairs`.
+- [ ] **Eps Ind B spectrum:** on the website's brightness-against-wavelength chart, is it faintest near 1.36–1.40 µm? Is that where a T dwarf should be faint (water/methane bands; any brown-dwarf spectrum paper)?
+- [ ] **WISE 0855 fit:** run `python -m scripts.acceptance` (offline) and compare the `wise0855` part with the table in `notes/DAY4_FINDINGS.md`. Check the proper motion (−8123.7, +673.2 mas/yr) and parallax (439.0 mas) against SIMBAD and Kirkpatrick et al. 2021 (ApJS 253, 7).
+- [ ] **Coverage counts:** open the C1 link with two other positions (e.g. `200.0, -30.0` and `10.0, 60.0`); on 31 Oct IRSA said 378 and 410, the same as our search.
+- [ ] **Honest "no light curve":** Barnard's Star and R Dra say why there is none. Does the reason make sense to you?
+
 ---
 
 ## Part D. Research questions (most important first)
 
-1. **Is the D6 source at the WISE 0855 ring really WISE 0855?** In the add-ups it is 11 and 13σ in Nov 2025 and Apr 2026 (file noise; 15σ by the scatter method), and its brightest pixel moved 1 pixel **west** between those visits; WISE 0855 should move about 0.6 pixel west (8.1″ a year). That fits, but a brightest pixel is only a ±0.5 pixel position, and the D2 background object (question 2) is just 1 pixel away. Please find: WISE 0855's exact proper motion and parallax (SIMBAD and papers, e.g. Luhman 2014), what brightness SPHEREx should see at 4.4–5.0 µm (its Spitzer [4.5] / WISE W2 brightness), and whether the D2 background object is also bright at 4–5 µm (AllWISE W2 in Aladin).
-2. **The fixed dot inside the WISE 0855 ring in D2:** about **RA 133.7580°, Dec −7.2405°** (1 pixel west and 1 pixel north of the ring centre 133.759765°, −7.242186°). What is it? Try Gaia DR3 (IRSA table `gaia_dr3_source`, or the [ESA Gaia archive](https://gea.esac.esa.int/archive/)), 2MASS, WISE (in Aladin: add the catalogues). Note: our earlier note gave the ring centre as the dot's position; this is the corrected one.
+1. **Is the D6 source at the WISE 0855 ring really WISE 0855?** In the add-ups it is 11 and 13σ in Nov 2025 and Apr 2026 (file noise; 15σ by the scatter method), and its brightest pixel moved 1 pixel **west** between those visits; WISE 0855 should move about 0.6 pixel west (8.1″ a year). That fits, but a brightest pixel is only a ±0.5 pixel position, and the D2 background object (question 2) is just 1 pixel away. Please find: WISE 0855's exact proper motion and parallax (SIMBAD and papers, e.g. Luhman 2014), what brightness SPHEREx should see at 4.4–5.0 µm (its Spitzer [4.5] / WISE W2 brightness), and whether the D2 background object is also bright at 4–5 µm (AllWISE W2 in Aladin). *Day 4: a Gaussian position fit shows the D6 source moves like WISE 0855 (0.58 ± 0.12 px against 0.72 px predicted with SIMBAD's motion and parallax; a fixed star would show 0). Still open: the expected [4.5] / W2 brightness, and whether the Gaia star adds light in D6 (a two-source fit gives it about a quarter of the flux at only 2.7–2.8σ).*
+2. **The fixed dot inside the WISE 0855 ring in D2:** about **RA 133.7580°, Dec −7.2405°** (1 pixel west and 1 pixel north of the ring centre 133.759765°, −7.242186°). What is it? Try Gaia DR3 (IRSA table `gaia_dr3_source`, or the [ESA Gaia archive](https://gea.esac.esa.int/archive/)), 2MASS, WISE (in Aladin: add the catalogues). Note: our earlier note gave the ring centre as the dot's position; this is the corrected one. *Answered on Day 4: Gaia DR3 5756956644387831296, G 16.31, proper motion 6 mas/yr, 7″ west-north-west of the ring centre. Please confirm it in the ESA Gaia archive and say what kind of star it is if you can (colour, 2MASS/WISE brightness).*
 3. **Epsilon Indi B, Apr 2026 visit (`2026W17_2A_0403_1`, D2): 30% of pixels flagged** in that exposure. Which flags (bits)? Is something wrong with that exposure, or is it normal (e.g. a nearby bright star, Epsilon Indi A)? (The add-up fills those pixels from the other 6 exposures, so the website frame is fine; the question is why it happened.)
 4. **R Draconis:** the Day 1 report found 9 visits (all detectors together), the flipbook shows 3 in D2. Is that right? (Hint: the `_deep` collections near the ecliptic pole.) Also: IRSA's position search for R Dra (2,483 images) kept timing out on 31 Oct while smaller targets worked. Is there a faster way to ask (e.g. one detector at a time)?
 5. **D2 wavelength range:** the files say 1.103–1.650 µm, our `config.DETECTORS` says 1.10–1.62. Which is right? (Explanatory Supplement, detector table.)
@@ -146,7 +174,8 @@ Pick one visit, e.g. Barnard D2 visit 1:
 7. **Is our "wavelength at the star" allowed?** Kripas's older prototype notes say the Explanatory Supplement calls the WCS-WAVE table "display-only". We use it for the wavelength in every label and will use it to pick visit pairs for the Difference view. Find the exact sentence (Supplement section and page) and what SPHEREx recommends instead, if anything.
 8. **Known asteroids in the Difference view:** NASA JPL's Small-Body Identification API (`ssd-api.jpl.nasa.gov/sb_ident.api`) lists known asteroids and comets near a position at a time. Check whether it works for SPHEREx (Earth-orbiting telescope: which observer location code to use?) and how big a search box we need for 6.15″ pixels.
 9. **Why does a star that does not move leave a pair in the difference?** RW Aurigae D2: −52σ / +71σ around the star, although Gaia says it moved 0.004 px and we measured 0.07 px. Candidates: a tiny alignment shift on a very bright star, the PSF changing across the detector, the wavelength changing between visits. Is there a SPHEREx document on PSF variation (Explanatory Supplement)? This decides how strongly we may say "this pair is motion".
-10. **Display scale for very bright stars (R Draconis):** a linear scale makes everything but the core black. What do astronomers use for web previews (asinh, log, square root)? Is asinh "honest" if the scale is written next to the picture?
+10. **Display scale for very bright stars (R Draconis):** a linear scale makes everything but the core black. What do astronomers use for web previews (asinh, log, square root)? Is asinh "honest" if the scale is written next to the picture? *Day 4: we now use asinh (softening 0.002) for R Dra, with the formula in the manifest and a warning on the page. Is 0.002 a sensible choice?*
+12. **AAVSO light curves for RW Aur and R Dra** (C4): AAVSO VSX and VizieR were unreachable from our machine on 31 Oct. Can you download AAVSO's light curves (J or H band if any, otherwise V) for Jun 2025 – Oct 2026 by hand? Did RW Aur brighten from Sep 2025 to Sep 2026? Where was R Dra in its 245-day cycle on our visit dates (Jun 2025, Dec 2025, Jun 2026)?
 11. **NASA's own tools:** what can IRSA's SPHEREx tools already do that we also do? What can they **not** do that we do? (Start: [`learning/05_nasa_tools_review.md`](../../learning/05_nasa_tools_review.md).) This becomes a judge slide.
 
 ## Part E. Find problems (where to look)
@@ -173,6 +202,6 @@ Features, checks or explanations that would help a student, a citizen scientist 
 | Day | Kripas builds | You check |
 |---|---|---|
 | Day 3 (done 31 Oct) | Gaia markers, synced Before / After / Difference view, the API, motion measurements (Part A, Day 3) | Part C6; research questions 9 and 10 |
-| Day 3 leftovers | WISE 0855 position fit (is it moving like WISE 0855?), PSF-fit positions | Question 1 |
-| Day 4 | Light curve (brightness per visit with error bars and wavelength), deploy, tests on the 5 targets, R Dra add-up with a non-linear scale | Compare brightness with IRSA's Spectrophotometry Tool; test the public link on your phone |
+| Day 4 (done 31 Oct, except deploy) | Light curve per exposure, click a pixel, R Dra asinh scale, WISE 0855 position fit, C4 tests on the 5 targets (Part A, Day 4) | Part C7; research questions 1, 2, 10 and 12 |
+| Day 4 leftovers | Deploy and phone check; PSF-fit positions; field-star floor outside the Barnard frame | Compare brightness with IRSA's Spectrophotometry Tool; test the public link on your phone |
 | Later | Spectrum panel, proof panel, About page, spot evidence panel with known-object check (JPL), video, pitch | Each spot's evidence text; known-object matches against JPL by hand for one case; science text, references, limitations |

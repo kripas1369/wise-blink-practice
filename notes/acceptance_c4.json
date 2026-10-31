@@ -1,0 +1,281 @@
+{
+ "barnard": {
+  "method": "hole",
+  "visits": [
+   "2025-08-26",
+   "2026-08-21"
+  ],
+  "gaia_shift_px": [
+   0.128,
+   -1.662
+  ],
+  "gaia_px": 1.67,
+  "measured_shift_px": [
+   -0.032,
+   -1.587
+  ],
+  "measured_px": 1.59,
+  "difference_px": 0.18,
+  "direction_difference_deg": 5.5
+ },
+ "eps_ind_b": {
+  "method": "centroid",
+  "visits": [
+   "2025-04-27",
+   "2026-10-01"
+  ],
+  "gaia_shift_px": [
+   -0.925,
+   0.573
+  ],
+  "gaia_px": 1.09,
+  "measured_shift_px": [
+   -0.758,
+   0.631
+  ],
+  "measured_px": 0.99,
+  "difference_px": 0.18,
+  "direction_difference_deg": 8.0
+ },
+ "wise0855": {
+  "d6_neighbour": {
+   "source_id": "5756956644387831296",
+   "g_mag": 16.31,
+   "xy": [
+    14.928,
+    13.394
+   ]
+  },
+  "d6_visits": [
+   {
+    "date": "2025-05-05",
+    "mjd": 60800.746,
+    "n_images": 3,
+    "predicted_xy": [
+     13.201,
+     14.052
+    ],
+    "fit_xy": [
+     13.379,
+     13.985
+    ],
+    "fit_err_px": [
+     0.29,
+     0.34
+    ],
+    "fit_snr": 2.2,
+    "fit_width_px": 0.67,
+    "fit_chi2": 0.33,
+    "offset_from_wise_px": 0.19,
+    "offset_from_gaia_star_px": 1.66,
+    "two_source_fit": {
+     "wise_flux_snr": 2.3,
+     "gaia_star_flux_snr": -0.0,
+     "gaia_over_wise_flux": -0.01,
+     "chi2": 0.33
+    }
+   },
+   {
+    "date": "2025-11-17",
+    "mjd": 60996.27924,
+    "n_images": 19,
+    "predicted_xy": [
+     13.773,
+     14.037
+    ],
+    "fit_xy": [
+     13.983,
+     13.976
+    ],
+    "fit_err_px": [
+     0.07,
+     0.071
+    ],
+    "fit_snr": 12.8,
+    "fit_width_px": 0.92,
+    "fit_chi2": 0.62,
+    "offset_from_wise_px": 0.22,
+    "offset_from_gaia_star_px": 1.11,
+    "two_source_fit": {
+     "wise_flux_snr": 10.7,
+     "gaia_star_flux_snr": 2.7,
+     "gaia_over_wise_flux": 0.23,
+     "chi2": 0.65
+    }
+   },
+   {
+    "date": "2026-04-27",
+    "mjd": 61157.93003,
+    "n_images": 21,
+    "predicted_xy": [
+     14.492,
+     13.949
+    ],
+    "fit_xy": [
+     14.544,
+     13.82
+    ],
+    "fit_err_px": [
+     0.044,
+     0.048
+    ],
+    "fit_snr": 14.0,
+    "fit_width_px": 0.71,
+    "fit_chi2": 0.49,
+    "offset_from_wise_px": 0.14,
+    "offset_from_gaia_star_px": 0.57,
+    "two_source_fit": {
+     "wise_flux_snr": 10.4,
+     "gaia_star_flux_snr": 2.8,
+     "gaia_over_wise_flux": 0.26,
+     "chi2": 0.48
+    }
+   }
+  ],
+  "d6_shift": {
+   "visits": [
+    "2025-11-17",
+    "2026-04-27"
+   ],
+   "measured_px": [
+    0.561,
+    -0.156
+   ],
+   "predicted_px": [
+    0.719,
+    -0.088
+   ],
+   "difference_px": 0.17,
+   "fixed_star_would_be_px": 0.0,
+   "measured_size_px": 0.58,
+   "error_px": 0.12,
+   "difference_sigma": 1.4,
+   "against_fixed_star_sigma": 4.9
+  },
+  "d6_absolute": [
+   {
+    "date": "2025-11-17",
+    "offset_from_wise_px": 0.22,
+    "offset_from_gaia_star_px": 1.11,
+    "error_px": 0.18
+   },
+   {
+    "date": "2026-04-27",
+    "offset_from_wise_px": 0.14,
+    "offset_from_gaia_star_px": 0.57,
+    "error_px": 0.17
+   }
+  ],
+  "d2_visits": [
+   {
+    "date": "2025-05-06",
+    "wise_flux_snr": -2.4,
+    "gaia_star_flux_snr": 41.3,
+    "chi2": 0.65
+   },
+   {
+    "date": "2025-11-07",
+    "wise_flux_snr": 0.8,
+    "gaia_star_flux_snr": 38.6,
+    "chi2": 0.7
+   },
+   {
+    "date": "2025-12-12",
+    "wise_flux_snr": 1.7,
+    "gaia_star_flux_snr": 28.1,
+    "chi2": 1.54
+   },
+   {
+    "date": "2026-05-02",
+    "wise_flux_snr": -0.4,
+    "gaia_star_flux_snr": 21.1,
+    "chi2": 3.67
+   }
+  ],
+  "d5": "not checked: no D5 frames are prepared (only D2 and D6)"
+ },
+ "rw_aur": {
+  "method": "core",
+  "same_wavelength": {
+   "rule": "two exposures of different visits are compared only if their wavelengths at the target differ by less than 0.5 x their bandwidth and both are at least 5 sigma; 'pairs' also needs no flagged pixel in either aperture",
+   "n_excluded": 16,
+   "n_excluded_incl_flagged": 0,
+   "pairs": [
+    {
+     "a": 0,
+     "b": 2,
+     "n": 1,
+     "median_ratio": 1.235,
+     "min_ratio": 1.235,
+     "max_ratio": 1.235,
+     "max_wl_gap_um": 0.0119
+    }
+   ],
+   "pairs_incl_flagged": [
+    {
+     "a": 0,
+     "b": 2,
+     "n": 4,
+     "median_ratio": 1.446,
+     "min_ratio": 1.235,
+     "max_ratio": 1.826,
+     "max_wl_gap_um": 0.0125
+    },
+    {
+     "a": 1,
+     "b": 2,
+     "n": 3,
+     "median_ratio": 0.985,
+     "min_ratio": 0.889,
+     "max_ratio": 1.027,
+     "max_wl_gap_um": 0.0072
+    }
+   ]
+  },
+  "comparison": {
+   "rule": "Gaia DR3 stars with G <= 17, no Gaia star less than 3 mag fainter within 4 px, measured like the target (radius 2 px, sky 5-8 px) with the same comparison rule",
+   "n_stars": 0,
+   "n_pairs": 0,
+   "scatter_pct": null,
+   "median_ratio": null,
+   "n_pairs_incl_flagged": 0,
+   "scatter_pct_incl_flagged": null,
+   "median_ratio_incl_flagged": null,
+   "stars": []
+  }
+ },
+ "r_dra": {
+  "reason": "The star's saturated (no-value) core reaches 6.2 px from its centre in at least one exposure. Measuring the light around it would need a ring starting at 7 px, and only rings starting at most 3 px out were checked to follow a star's brightness (RW Aur, 3-6 px: about 10%). So no light curve is given."
+ },
+ "thresholds": {
+  "max_motion_error_px": 0.5,
+  "max_direction_error_deg (ours)": 30.0,
+  "alignment_px": 0.11
+ },
+ "coverage": [
+  {
+   "position": "Barnard's Star",
+   "ra": 269.446269,
+   "dec": 4.768204,
+   "ours": 359,
+   "irsa_count": 359,
+   "equal": true
+  },
+  {
+   "position": "RA 200, Dec -30 (picked by us, nothing special)",
+   "ra": 200.0,
+   "dec": -30.0,
+   "ours": 378,
+   "irsa_count": 378,
+   "equal": true
+  },
+  {
+   "position": "RA 10, Dec +60 (picked by us, nothing special)",
+   "ra": 10.0,
+   "dec": 60.0,
+   "ours": 410,
+   "irsa_count": 410,
+   "equal": true
+  }
+ ]
+}

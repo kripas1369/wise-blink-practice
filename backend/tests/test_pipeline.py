@@ -9,7 +9,7 @@ from backend.app.align import align, target_grid
 from backend.app.clean import clean_cutout
 from backend.app.coadd import coadd
 from backend.app.config import PIXEL_SCALE_ARCSEC
-from backend.app.render import save_flags_png, save_png
+from backend.app.render import brightness_scale, save_flags_png, save_png, to_grey
 
 RA, DEC = 150.0, 20.0
 SCALE = PIXEL_SCALE_ARCSEC / 3600
@@ -127,7 +127,7 @@ def test_png_has_north_at_top_and_is_transparent_without_value(tmp_path):
     values[2, :] = 1.0  # last array row = north
     has_value = np.ones((3, 3), bool)
     has_value[0, 0] = False
-    save_png(values, has_value, 0.0, 1.0, tmp_path / "f.png")
+    save_png(values, has_value, {"vmin": 0.0, "vmax": 1.0}, tmp_path / "f.png")
     rgba = np.array(Image.open(tmp_path / "f.png"))
     assert (rgba[0, :, 0] == 255).all() and (rgba[2, 1:, 0] == 0).all()
     assert rgba[2, 0, 3] == 0 and rgba[2, 1, 3] == 255  # south-east corner had no value
@@ -135,3 +135,17 @@ def test_png_has_north_at_top_and_is_transparent_without_value(tmp_path):
     bad[2, 2] = True
     save_flags_png(bad, tmp_path / "b.png")
     assert np.array(Image.open(tmp_path / "b.png"))[0, 2, 3] > 0
+
+
+def test_asinh_scale_keeps_ends_and_lifts_faint_values():
+    picture = {"image": np.array([[0.0, 1.0, 10.0, 1000.0]]), "covered": np.ones((1, 4), bool),
+               "bad": np.zeros((1, 4), bool)}
+    linear = brightness_scale([picture], "linear")
+    asinh = brightness_scale([picture], "asinh")
+    assert asinh["vmax"] == 1000.0 and asinh["stretch"] == "asinh" and "not proportional" in asinh["method"]
+    grey = to_grey(picture["image"], asinh)
+    assert grey[0, 0] == 0 and grey[0, -1] == pytest.approx(1)
+    assert grey[0, 2] > 0.3 > to_grey(picture["image"], linear)[0, 2]   # 1% of the range: visible only with asinh
+    assert np.all(np.diff(grey[0]) > 0)                                  # order of brightness kept
+    with pytest.raises(ValueError):
+        brightness_scale([picture], "log")

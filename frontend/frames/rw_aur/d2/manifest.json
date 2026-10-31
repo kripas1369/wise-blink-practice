@@ -26,7 +26,10 @@
   "made_at": "2026-10-31 09:57 UTC",
   "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx",
   "notes": [
-    "Each add-up mixes exposures at different wavelengths (at the star 1.18–1.39, 1.12–1.65 and 1.11–1.64 µm), and the star's brightness depends on wavelength, so these frames cannot say how much RW Aurigae itself changed. That needs brightness measured at matching wavelengths (light curve, Day 4).",
+    "Each add-up mixes exposures at different wavelengths (at the star 1.18–1.39, 1.12–1.65 and 1.11–1.64 µm), so the frames alone cannot say how much RW Aurigae changed; the light curve below compares single exposures at matching wavelengths instead.",
+    "At matching wavelengths (1.2-1.27 µm) it was fainter in Sep 2025 than in Sep 2026: 24% in the one pair with no flagged pixels, 24-83% in the 4 pairs that include flagged pixels. Mar and Sep 2026 agree (ratios 0.89-1.03 at 1.11 and 1.6 µm). A star in the Barnard field, measured the same way, changes by about 5%.",
+    "The Sep 2025 exposures also differ by 10-20% from each other within 2 hours; whether the star or the measurement causes this is not checked.",
+    "Gaia DR3 lists a second star 1.5″ away (G 12.18; RW Aurigae is a known double star). Both are inside the measuring circle.",
     "Gaia says RW Aurigae moves 0.004 pixels over the year, yet the difference view shows a small bright-dark pair at the star: that is the size of pair that alignment and PSF differences alone make."
   ],
   "frames": [

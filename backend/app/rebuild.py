@@ -24,7 +24,8 @@ from backend.app.align import align, cutout_size_deg, target_grid
 from backend.app.clean import clean_cutout
 from backend.app.coadd import coadd
 from backend.app.config import CACHE_DIR
-from backend.app.render import MIN_COVERED_PCT, save_frame_fits, target_position
+from backend.app.render import (MIN_COVERED_PCT, brightness_scale, save_frame_fits, save_png, target_position,
+                                to_grey)
 from backend.app.targets import OFFICIAL_TARGETS
 
 SAME_VISIT_DAYS = 60
@@ -42,6 +43,7 @@ def cached_visits(manifest: dict) -> list[list[tuple[dict, dict]]]:
     usable = []
     for path in sorted((CACHE_DIR / "cutouts").glob(pattern)):
         cleaned = clean_cutout(path, ra, dec)
+        cleaned["obs_id"] = path.name.split(f"_D{det}_")[0]
         aligned = align(cleaned, grid, size)
         if aligned["pct_covered"] >= MIN_COVERED_PCT:
             usable.append((cleaned, aligned))
@@ -76,7 +78,7 @@ def png_matches(picture: dict, scale: dict, png_path: Path) -> tuple[bool, str]:
     has_value = picture["covered"] & np.isfinite(values)
     if not np.array_equal(shown[..., 3] > 0, has_value):
         return False, "different 'no value' pixels"
-    grey = np.clip((values - scale["vmin"]) / (scale["vmax"] - scale["vmin"]), 0, 1) * 255
+    grey = to_grey(values, scale) * 255
     worst = float(np.max(np.abs(np.where(has_value, grey, 0).astype(np.uint8).astype(int)
                                 - shown[..., 0].astype(int))[has_value], initial=0))
     return worst <= 1, f"largest grey difference {worst:.0f}"
@@ -91,14 +93,18 @@ def exact_position(manifest: dict) -> tuple[float, float]:
     return ra, dec
 
 
-def rebuild_folder(folder: Path, fix_position: bool = False) -> list[str]:
-    """Write epoch<i>.fits for every frame of a folder; returns one line per frame."""
+def rebuild_folder(folder: Path, fix_position: bool = False, stretch: str | None = None) -> list[str]:
+    """Write epoch<i>.fits for every frame of a folder; returns one line per frame.
+
+    stretch: afterwards, draw the PNGs again with a new scale (render.brightness_scale), only once every
+    rebuilt picture has been checked against the old PNG.
+    """
     manifest_path = folder / "manifest.json"
     manifest = json.loads(manifest_path.read_text())
     if fix_position:
         manifest["ra"], manifest["dec"] = exact_position(manifest)
     grid, _ = target_grid(manifest["ra"], manifest["dec"], manifest["fov_arcmin"])
-    report = []
+    report, pictures = [], []
     for frame, visit in zip(manifest["frames"], cached_visits(manifest)):
         picture = frame_picture(manifest, frame, visit)
         ok, detail = png_matches(picture, manifest["scale"], folder / frame["png"])
@@ -107,7 +113,13 @@ def rebuild_folder(folder: Path, fix_position: bool = False) -> list[str]:
         frame["fits"] = frame["png"].replace(".png", ".fits")
         save_frame_fits(picture, grid, frame["mjd"], frame["n_images"], manifest["band"], manifest["mode"],
                         folder / frame["fits"])
+        pictures.append(picture)
         report.append(f"  {frame['fits']}: {frame['n_images']} exposures, PNG matches ({detail})")
+    if stretch:
+        manifest["scale"] = brightness_scale(pictures, stretch)
+        for frame, picture in zip(manifest["frames"], pictures):
+            save_png(picture["image"], picture["covered"], manifest["scale"], folder / frame["png"])
+        report.append(f"  PNGs drawn again: {manifest['scale']['method']}")
     manifest_path.write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n")
     return report
 
@@ -116,10 +128,11 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     parser.add_argument("folders", type=Path, nargs="+", help="e.g. frontend/frames/barnard/d2")
     parser.add_argument("--exact-position", action="store_true", help="see the module docstring")
+    parser.add_argument("--stretch", choices=["linear", "asinh"], help="draw the PNGs again with this scale")
     args = parser.parse_args()
     for folder in args.folders:
         print(folder)
-        for line in rebuild_folder(folder, args.exact_position):
+        for line in rebuild_folder(folder, args.exact_position, args.stretch):
             print(line)
 
 

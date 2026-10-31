@@ -29,6 +29,7 @@ from backend.app.targets import OFFICIAL_TARGETS
 FORMAT = "spherex-blink-frames/1"
 POSITION_YEAR = 2026.0
 SCALE_PERCENTILES = (1.0, 99.5)
+ASINH_SOFTENING = 0.002   # fraction of the range where asinh turns from linear to logarithmic
 MIN_COVERED_PCT = 90.0
 DEFAULT_OUT = REPO_ROOT / "frontend" / "frames"
 
@@ -102,9 +103,19 @@ def frame_for_visit(exposures: list[tuple], mode: str) -> dict:
     return frame
 
 
-def save_png(values: np.ndarray, has_value: np.ndarray, vmin: float, vmax: float, path: Path) -> None:
+def to_grey(values: np.ndarray, scale: dict) -> np.ndarray:
+    """0-1 grey from MJy/sr with the manifest's scale (FRAMES_FORMAT.md, "PNG rules")."""
+    with np.errstate(invalid="ignore"):
+        t = np.clip((values - scale["vmin"]) / (scale["vmax"] - scale["vmin"]), 0, 1)
+    if scale.get("stretch", "linear") == "asinh":
+        a = scale["asinh_softening"]
+        t = np.arcsinh(t / a) / np.arcsinh(1 / a)
+    return t
+
+
+def save_png(values: np.ndarray, has_value: np.ndarray, scale: dict, path: Path) -> None:
     """Grey PNG, north at the top (array row 0 is south, so flip), transparent where there is no value."""
-    grey = np.clip((values - vmin) / (vmax - vmin), 0, 1)
+    grey = to_grey(values, scale)
     rgba = np.zeros(values.shape + (4,), dtype=np.uint8)
     rgba[..., :3] = np.nan_to_num(grey * 255)[..., None].astype(np.uint8)
     rgba[..., 3] = np.where(has_value & np.isfinite(values), 255, 0)
@@ -139,11 +150,30 @@ def save_frame_fits(picture: dict, grid, mjd: float, n_images: int, detector: in
     fits.HDUList(hdus).writeto(path, overwrite=True)
 
 
-def brightness_scale(pictures: list[dict]) -> tuple[float, float]:
-    """One linear scale for every frame: percentiles of the good pixels of all frames together."""
+def brightness_scale(pictures: list[dict], stretch: str = "linear") -> dict:
+    """One scale for every frame, from the good pixels of all frames together.
+
+    linear: 1st-99.5th percentile, the default.
+    asinh: 1st percentile to the brightest good pixel, compressed so that a star thousands of times
+    brighter than the sky (R Dra's core) and the faint sky both stay visible.
+    """
     good = np.concatenate([p["image"][p["covered"] & ~p["bad"]] for p in pictures])
-    vmin, vmax = (float(v) for v in np.nanpercentile(good, SCALE_PERCENTILES))
-    return vmin, vmax
+    good = good[np.isfinite(good)]
+    if stretch == "linear":
+        vmin, vmax = (float(v) for v in np.percentile(good, SCALE_PERCENTILES))
+        return {"vmin": round(vmin, 4), "vmax": round(vmax, 4), "unit": "MJy/sr", "stretch": "linear",
+                "method": f"linear, {SCALE_PERCENTILES[0]}-{SCALE_PERCENTILES[1]} percentile of good pixels "
+                          "of all frames (same scale for every frame)"}
+    if stretch != "asinh":
+        raise ValueError(f"unknown stretch {stretch!r}")
+    vmin, vmax = float(np.percentile(good, SCALE_PERCENTILES[0])), float(good.max())
+    a = ASINH_SOFTENING
+    return {"vmin": round(vmin, 4), "vmax": round(vmax, 4), "unit": "MJy/sr", "stretch": "asinh",
+            "asinh_softening": a,
+            "method": f"asinh: grey = asinh(t/{a}) / asinh(1/{a}), t = (value - vmin)/(vmax - vmin); vmin = "
+                      f"{SCALE_PERCENTILES[0]} percentile, vmax = brightest good pixel of all frames (same scale "
+                      "for every frame). Faint parts are brightened, so grey levels are not proportional to "
+                      "brightness"}
 
 
 METHODS = {
@@ -159,17 +189,18 @@ class NoImages(LookupError):
 
 
 def make_frames(key: str, detector: int, mode: str = "coadd", max_per_visit: int = 8,
-                fov_arcmin: float = 3.0, out_root: Path = DEFAULT_OUT) -> dict:
+                fov_arcmin: float = 3.0, out_root: Path = DEFAULT_OUT, stretch: str = "linear") -> dict:
     """Frames for one of the 5 official targets (position from SIMBAD, moved to 2026.0)."""
     target = next(t for t in OFFICIAL_TARGETS if t["key"] == key)
     ra, dec, position_source = target_position(target)
     return render_frames(ra, dec, key, target["label"], position_source, detector, mode, max_per_visit,
-                         fov_arcmin, out_root, NOTES.get((key, detector), []))
+                         fov_arcmin, out_root, NOTES.get((key, detector), []), stretch)
 
 
 def render_frames(ra: float, dec: float, key: str, label: str, position_source: str, detector: int,
                   mode: str = "coadd", max_per_visit: int = 8, fov_arcmin: float = 3.0,
-                  out_root: Path = DEFAULT_OUT, notes: list[str] | None = None) -> dict:
+                  out_root: Path = DEFAULT_OUT, notes: list[str] | None = None,
+                  stretch: str = "linear") -> dict:
     """Frames for any position; writes <out_root>/<key>/d<detector>/ and returns the manifest."""
     grid, size = target_grid(ra, dec, fov_arcmin)
     size_deg = cutout_size_deg(fov_arcmin)
@@ -193,7 +224,7 @@ def render_frames(ra: float, dec: float, key: str, label: str, position_source: 
     if not frames:
         raise NoImages(f"{len(images)} SPHEREx images of {label} in D{detector}, but none covers the whole frame")
 
-    vmin, vmax = brightness_scale([f["picture"] for f in frames])
+    scale = brightness_scale([f["picture"] for f in frames], stretch)
     out_dir = Path(out_root) / key / f"d{detector}"
     out_dir.mkdir(parents=True, exist_ok=True)
     for old in [*out_dir.glob("epoch*.png"), *out_dir.glob("epoch*.fits"), *out_dir.glob("diff*")]:
@@ -203,7 +234,7 @@ def render_frames(ra: float, dec: float, key: str, label: str, position_source: 
     for f in frames:
         p = f.pop("picture")
         png, flags_png = f"epoch{f['epoch_id']}.png", f"epoch{f['epoch_id']}_flags.png"
-        save_png(p["image"], p["covered"], vmin, vmax, out_dir / png)
+        save_png(p["image"], p["covered"], scale, out_dir / png)
         save_flags_png(p["bad"], out_dir / flags_png)
         save_frame_fits(p, grid, round(f["mjd"], 5), f["n_images"], detector, mode,
                         out_dir / f"epoch{f['epoch_id']}.fits")
@@ -242,11 +273,7 @@ def render_frames(ra: float, dec: float, key: str, label: str, position_source: 
         "band": detector,
         "band_range_um": list(DETECTORS[detector]),
         "mode": mode,
-        "scale": {
-            "vmin": round(vmin, 4), "vmax": round(vmax, 4), "unit": "MJy/sr",
-            "method": f"linear, {SCALE_PERCENTILES[0]}-{SCALE_PERCENTILES[1]} percentile of good pixels "
-                      "of all frames (same scale for every frame)",
-        },
+        "scale": scale,
         "method": METHODS[mode].format(max=max_per_visit),
         "made_by": "backend/app/render.py",
         "made_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
@@ -277,9 +304,11 @@ def main() -> None:
     parser.add_argument("--max-per-visit", type=int, default=8, help="exposures added per visit (coadd)")
     parser.add_argument("--fov", type=float, default=3.0, help="field of view in arcmin (default 3)")
     parser.add_argument("--out", type=Path, default=DEFAULT_OUT)
+    parser.add_argument("--stretch", choices=["linear", "asinh"], default="linear",
+                        help="asinh for very bright stars (brightness_scale)")
     args = parser.parse_args()
     print(f"{args.target} D{args.detector} ({args.mode})")
-    make_frames(args.target, args.detector, args.mode, args.max_per_visit, args.fov, args.out)
+    make_frames(args.target, args.detector, args.mode, args.max_per_visit, args.fov, args.out, args.stretch)
 
 
 if __name__ == "__main__":

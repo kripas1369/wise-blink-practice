@@ -1,0 +1,32 @@
+{
+ "format": "spherex-blink-lightcurve/1",
+ "target": "barnard",
+ "label": "Barnard's Star",
+ "band": 2,
+ "unit": "mJy",
+ "position_rule": "follows Gaia DR3 4472832130942575872 (proper motion, straight line)",
+ "made_by": "backend/app/lightcurve.py",
+ "made_at": "2026-10-31 14:41 UTC",
+ "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx, ESA Gaia DR3",
+ "method": "none",
+ "reason": "The star's saturated (no-value) core reaches 5.2 px from its centre in at least one exposure. Measuring the light around it would need a ring starting at 6 px, and only rings starting at most 3 px out were checked to follow a star's brightness (RW Aur, 3-6 px: about 10%). So no light curve is given.",
+ "points": [],
+ "comparison": {
+  "rule": "Gaia DR3 stars with G <= 17, no Gaia star less than 3 mag fainter within 4 px, measured like the target (radius 2 px, sky 5-8 px) with the same comparison rule",
+  "n_stars": 1,
+  "n_pairs": 10,
+  "scatter_pct": 4.5,
+  "median_ratio": 1.004,
+  "n_pairs_incl_flagged": 13,
+  "scatter_pct_incl_flagged": 4.9,
+  "median_ratio_incl_flagged": 0.996,
+  "stars": [
+   {
+    "source_id": "4472836047939582592",
+    "g_mag": 13.6,
+    "n_pairs": 10,
+    "n_pairs_incl_flagged": 13
+   }
+  ]
+ }
+}

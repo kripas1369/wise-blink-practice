@@ -3,6 +3,7 @@
 The contract between the data pipeline (`backend/app/render.py`) and the website (`frontend/`).
 Whoever makes the frames (`render.py` for the prepared targets, the `/api/frames` background job for any other position) writes **exactly this**, and the website shows it without changing any value.
 Day 3 added three files next to each manifest: the per-visit data (`epoch<i>.fits`, section 8), the Gaia markers (`gaia.json`, section 6) and the difference maps (`diff.json`, section 7).
+Day 4 added the asinh brightness scale (section 3), every single exposure on the grid (`exposures.fits`, section 9) and the light curve (`lightcurve.json`, section 10).
 
 The website refuses a manifest that breaks these rules (`frontend/js/frames.js`, `checkManifest`) and says why, instead of showing frames it cannot label honestly.
 
@@ -20,6 +21,8 @@ frontend/frames/
     epoch<i>.fits                the values behind the picture (section 8)
     gaia.json                    Gaia DR3 stars moved to each visit (section 6; backend/app/gaia.py)
     diff.json, diff_<a>_<b>.png  difference of every visit pair (section 7; backend/app/diff.py)
+    exposures.fits               every single exposure behind the frames (section 9; backend/app/lightcurve.py)
+    lightcurve.json              the target's brightness in every exposure (section 10)
 ```
 
 - `<target>` is the key from `backend/app/targets.py`: `barnard`, `eps_ind_b`, `wise0855`, `rw_aur`, `r_dra`.
@@ -68,7 +71,7 @@ Real example: `frontend/frames/barnard/d2/manifest.json`.
 | `band` | number | detector 1–6 | yes |
 | `band_range_um` | [min, max] | detector range from `config.DETECTORS` | yes |
 | `mode` | text | `"single"` (one exposure per visit) or `"coadd"` (several exposures of the visit added with 1/variance weights; how many is in each frame's `n_images`) | yes |
-| `scale` | object | `{vmin, vmax, unit: "MJy/sr", method}`: **one** linear scale for every frame; `vmin < vmax` | yes |
+| `scale` | object | `{vmin, vmax, unit: "MJy/sr", method, stretch, asinh_softening}`: **one** scale for every frame; `vmin < vmax`; `stretch` is `"linear"` (or missing: linear) or `"asinh"`, which needs `asinh_softening > 0` | yes |
 | `method` | text | one sentence: how the pictures were made | yes |
 | `made_by`, `made_at` | text | which script, and when (UTC) | yes |
 | `data_credit` | text | `"NASA/IPAC Infrared Science Archive (IRSA), SPHEREx"` | yes |
@@ -99,7 +102,8 @@ Real example: `frontend/frames/barnard/d2/manifest.json`.
 ### PNG rules
 
 - Grey RGBA, size `size_px × size_px`, north up.
-- Grey = `clip((value − vmin) / (vmax − vmin), 0, 1) × 255`, with the manifest's one scale.
+- Grey = `t × 255` with `t = clip((value − vmin) / (vmax − vmin), 0, 1)` and the manifest's one scale.
+- `stretch: "asinh"` (R Dra, Day 4): grey = `asinh(t / a) / asinh(1 / a) × 255`, `a = asinh_softening` (0.002), so faint light shows next to a very bright core. Grey levels are then **not proportional** to brightness; `method` and the website say so. Make it with `render.py --stretch asinh` or `rebuild.py --stretch asinh`.
 - **Alpha 0** where there is no value (outside the exposure or NaN). The website shows those pixels striped, never as dark sky.
 - Flags PNG: `(255, 40, 40, 200)` on flagged pixels, alpha 0 elsewhere.
 
@@ -125,7 +129,7 @@ python -m scripts.compare_frames frontend/frames/barnard/d2 scratch/frames/barna
 cd frontend && npm test        # every manifest in frontend/frames must pass checkManifest
 ```
 
-After installing new frames, make the Day 3 files again: `python -m backend.app.gaia <folder>` (internet) and `python -m backend.app.diff <folder>` (offline), then `python -m backend.app.frame_notes frontend/frames`.
+After installing new frames, make the Day 3 and Day 4 files again: `python -m backend.app.gaia <folder>` (internet), `python -m backend.app.diff <folder>` (offline), `python -m backend.app.lightcurve <folder> --rebuild-exposures` (offline, from the cached cutouts), then `python -m backend.app.frame_notes frontend/frames`.
 
 ---
 
@@ -171,3 +175,34 @@ Primary HDU empty, then 4 image extensions on the grid of section 2 (FITS rows: 
 
 Each header has the grid WCS plus `BUNIT`, `MJD-AVG`, `NIMAGES`, `DETECTOR`, `MODE`.
 Written by `render.py`; `python -m backend.app.rebuild <folders>` writes them for existing frames from the cached cutouts and stops if a rebuilt PNG differs from the installed one by more than 1 grey level.
+
+---
+
+## 9. `exposures.fits` (every exposure behind the frames, Day 4)
+
+Same grid and row order as section 8, but one plane per **single exposure** (all exposures the frames used, in time order), so each keeps its own wavelength:
+
+| Extension | Type | Meaning |
+|---|---|---|
+| `IMAGE` | float32 cube, MJy/sr | IMAGE − ZODI of each exposure, reprojected onto the grid |
+| `SIGMA` | float32 cube | 1σ from VARIANCE |
+| `FLAGGED` | uint8 cube | 1 = flagged bad (official mask) |
+| `HAS_VALUE` | uint8 cube | 1 = has a value |
+| `EXPOSURES` | table | `OBS_ID`, `MJD`, `WL_UM` and `BW_UM` (wavelength and bandwidth at the grid centre; NaN if unknown), `FRAME` (which visit, index into `frames`) |
+
+Written by `python -m backend.app.lightcurve <folder> --rebuild-exposures` from the cached cutouts (no download).
+
+---
+
+## 10. `lightcurve.json` (`spherex-blink-lightcurve/1`, made by `backend/app/lightcurve.py`)
+
+Top level: `format`, `target`, `label`, `band`, `unit` (`"mJy"`), `position_rule` (how the measuring circle follows the target: Gaia, SIMBAD proper motion, or fixed), `made_by`, `made_at`, `data_credit`, `method`.
+
+- **`method: "core"`**: a circle of `r_out_px` (2 px) around the target, minus the median sky in `sky_annulus_px` (10–14 px). `method_text` and `error_text` say this in words. No aperture correction: compare points with each other, not with catalogues.
+- **`method: "none"`**: no light curve; `reason` says why (e.g. Barnard's Star and R Dra: the saturated core reaches 5–6 px, and only rings starting at most 3 px out were checked). `points` is `[]`.
+- `points`: one per exposure: `obs_id`, `mjd`, `date_iso`, `frame`, `epoch_id`, `wl_um`, `bw_um`, `x`, `y` (PNG pixels of the circle's centre), `flux_mjy`, `err_mjy` (`null` when the circle has no value), `n_flagged` (flagged pixels inside the circle), `no_value`, `sky`.
+- `same_wavelength`: `rule` (two exposures of different visits are compared only when their wavelengths differ by less than half the bandwidth and both are ≥ 5σ), `n_excluded`, and `pairs` / `pairs_incl_flagged`: per visit pair `a`, `b`, `n`, `median_ratio`, `min_ratio`, `max_ratio` (b / a), `max_wl_gap_um`. `pairs` needs no flagged pixel in either circle.
+- `comparison`: field stars measured the same way (Gaia G ≤ 17, isolated within 4 px, sky 5–8 px): `n_stars`, `n_pairs`, `scatter_pct` (the change a steady star seems to show), `median_ratio`, the same `_incl_flagged`, and `stars`. `n_pairs: 0` means the floor is unknown in this frame.
+- `neighbours`: Gaia stars inside the circle (up to 3 mag fainter than the target): `source_id`, `g_mag`, `distance_px`. Their light is in every point.
+
+`GET /api/lightcurve` (same location parameters as `/api/frames`) returns this file; with `&x=&y=` (PNG pixels, both or neither) it measures that fixed position the same way instead.

@@ -226,6 +226,7 @@ flowchart LR
   - **Deploy** (Render, Railway or a VPS); check on a phone.
 - **Both:** lessons note (planned vs actual hours, blockers).
 - **Done when:** a public link works and the C4 tests are run on all 5 targets (Barnard's Star moves with Gaia; WISE 0855 shows in D5 – D6 only; R Dra and RW Aur change brightness).
+- **Status (31 Oct): done early by Kripas, except the public link (skipped by choice).** `/api/lightcurve` and the light-curve panel are built; C4 run on all 5 targets: Barnard, WISE 0855 (D2 and D6), Eps Ind B and the coverage counts pass; RW Aur's light curve shows it 24% fainter in Sep 2025 at the same wavelength but is not compared with AAVSO (unreachable); R Dra has no light curve (saturated core), so its C4 check cannot be done with these images. Details: [`notes/DAY4_FINDINGS.md`](../../notes/DAY4_FINDINGS.md).
 
 #### Wed 4 – Fri 6 Nov
 - **Wed 4 morning (both):** fix whatever did not pass on Day 4.

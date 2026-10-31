@@ -41,8 +41,9 @@ npm test        # node --test, needs Node 20+; no packages to install
 | `js/resolve.js` | Star name → position through SIMBAD (Harvard mirror first, CDS second) |
 | `js/urlstate.js` | `?ra=&dec=&fov=&det=` share links |
 | `js/flipbook.js` | The flipbook panel: play, step, blink, flags overlay, Gaia markers, labels, honest messages; asks again every 10 s while the API prepares a new position |
-| `js/frames.js` | Loads and checks the manifest from the API or from `frames/` (format: [`docs/plan/FRAMES_FORMAT.md`](../docs/plan/FRAMES_FORMAT.md)); also `gaia.json` and `diff.json` |
+| `js/frames.js` | Loads and checks the manifest from the API or from `frames/` (format: [`docs/plan/FRAMES_FORMAT.md`](../docs/plan/FRAMES_FORMAT.md)); also `gaia.json`, `diff.json` and `lightcurve.json` |
 | `js/diffview.js` | Before / After / Difference: visit pickers, same-pixel cursor in all three panels, read-out, warnings |
+| `js/lightcurve.js` | Light curve: brightness over time (coloured by wavelength) and against wavelength (one colour per visit) as SVG, same-wavelength comparisons, warnings; a clicked flipbook pixel via `/api/lightcurve?…&x=&y=` (API only) |
 | `js/sky.js` | Pixel ↔ sky maths, which Gaia stars to show, the target's expected shift and its compass direction |
 | `js/player.js` | Stepping, looping and speed rules (tested) |
 | `frames/` | Real SPHEREx frames per target and detector, made by `backend/app/render.py`, plus `gaia.json`, `diff.json` and `epoch<i>.fits` (format: `docs/plan/FRAMES_FORMAT.md`) |

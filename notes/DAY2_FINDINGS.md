@@ -24,12 +24,12 @@ The two σ disagree (the scatter is lowered by the smoothing of the line-up step
 | WISE 0855, D2 | 8, 8, 6, 8 | 1.28–1.63, 1.25–1.51, 1.28–1.44, 1.16–1.48 | 0% / 0% | The background dot: offset (+1 W, +1 N) in 3 visits, (+1 W, 0) in Dec 2025; σ (file) 30–42. Does not follow WISE 0855's 1.3 px/yr westward motion. |
 | WISE 0855, D6 | 3, 19, 21 (all) | 4.85–5.00, 4.41–4.97, 4.41–4.96 | 0% / 0% | **May 2025:** σ (file) 2.4, scatter 3.6: nothing clear. **Nov 2025:** σ (file) 11.1, scatter 14.7, offset (0, 0). **Apr 2026:** σ (file) 12.6, scatter 15.4, offset (+1 W, 0). |
 | RW Aurigae, D2 | 8, 8, 8 | 1.18–1.39, 1.12–1.65, 1.11–1.64 | 0% / 0% | Bright, at the ring centre in all visits. |
-| R Draconis, D2 | — | — | — | Add-up not made yet: IRSA's search for its 2,483 images kept timing out on 31 Oct. The website still shows the single exposures. *Update (Day 3):* made with one detector at a time, but not installed: its bright core needs a non-linear scale ([`DAY3_FINDINGS.md`](DAY3_FINDINGS.md) §4). |
+| R Draconis, D2 | — | — | — | Add-up not made yet: IRSA's search for its 2,483 images kept timing out on 31 Oct. The website still shows the single exposures. *Update (Day 3):* made with one detector at a time, but not installed: its bright core needs a non-linear scale ([`DAY3_FINDINGS.md`](DAY3_FINDINGS.md) §4). *Update (Day 4):* installed with an asinh scale ([`DAY4_FINDINGS.md`](DAY4_FINDINGS.md) §2). |
 
 **WISE 0855 D6 checks (Nov 2025 and Apr 2026):**
 - **Not one odd exposure:** leaving out any single exposure keeps σ (file) at 10.1–11.4 and 12.0–12.6; each half of the exposures alone gives 9.2 / 6.4 and 8.4 / 9.4.
 - **Motion:** the brightest pixel moved 1 px west between the visits. WISE 0855's proper motion (about 8.1″/yr west) predicts about 0.6 px west over those 0.44 years. Same direction; a brightest pixel is only a ±0.5 px position, so this is **consistent, not a measurement**.
-- **Not proven to be WISE 0855:** the D2 background object is 1 px away (offset +1 W, +1 N). Whether it adds light in D6 is unknown. Needs a proper position fit (Day 3) and its identity (open question 2).
+- **Not proven to be WISE 0855:** the D2 background object is 1 px away (offset +1 W, +1 N). Whether it adds light in D6 is unknown. Needs a proper position fit (Day 3) and its identity (open question 2). *Update (Day 4):* the position fit shows the D6 source moves like WISE 0855 (0.58 ± 0.12 px against 0.72 px predicted; a fixed star would show 0), and the D2 object is Gaia DR3 5756956644387831296 ([`DAY4_FINDINGS.md`](DAY4_FINDINGS.md) §3).
 - **May 2025 sky:** 0.14 MJy/sr against 0.09 in the other visits (after ZODI subtraction) and noise 0.029 against 0.011 (only 3 exposures). Cause of the brighter sky not checked.
 - One Nov 2025 exposure has a very bright, very noisy pixel at the ring (VARIANCE says σ about 2.6 MJy/sr, so its weight in the add-up is tiny). Cause not checked.
 
@@ -55,7 +55,7 @@ Checks: `scripts/compare_frames.py` against the morning frames: same grid and vi
 
 ## What this means (and does not mean)
 
-1. **WISE 0855 in D2:** the dot inside the ring does not move in a year, while WISE 0855 moves about 8″ a year (about 1.3 px). So it is a **background object, not WISE 0855**. It is not in SIMBAD (nothing within 29″). What it is: **unknown** (Gaia check not done: ESA timed out, IRSA answered 502 on 31 Oct).
+1. **WISE 0855 in D2:** the dot inside the ring does not move in a year, while WISE 0855 moves about 8″ a year (about 1.3 px). So it is a **background object, not WISE 0855**. It is not in SIMBAD (nothing within 29″). What it is: **unknown** (Gaia check not done: ESA timed out, IRSA answered 502 on 31 Oct). *Update (Day 4):* it is the Gaia DR3 star 5756956644387831296 (G 16.31, proper motion 6 mas/yr), 7″ west-north-west of the ring centre; "about 9″" above was the distance to the pixel centre, not the star.
 2. **WISE 0855 in D6:** in single exposures we **cannot yet say it is seen**. The challenge says it appears at 4–5 µm; an add-up of each visit's exposures (3, 19 and 21 D6 exposures in the three visits) is the honest test. Until then the website says "not clearly seen".
 3. **Wavelength changes between visits** inside one detector (SPHEREx's LVF filter): Barnard D2 goes from 1.235 to 1.539 µm. Brightness differences between frames can come from that, so **no brightness claim** for RW Aur or R Dra from these frames.
 4. **Saturated centres** (Barnard, R Dra) have no value. They are shown striped and counted (`pct_no_value`), never painted black.

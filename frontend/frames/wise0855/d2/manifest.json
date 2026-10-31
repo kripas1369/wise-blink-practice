@@ -26,7 +26,7 @@
   "made_at": "2026-10-31 09:49 UTC",
   "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx",
   "notes": [
-    "The bright dot inside the ring is NOT WISE 0855. It sits about 9″ north-west of the ring's centre and stays there for a year (same pixel in 3 of 4 visits, one pixel lower in Dec 2025), while WISE 0855 moves about 1.3 pixels a year to the west. It is not in SIMBAD; what it is has not been checked yet."
+    "The bright dot inside the ring is NOT WISE 0855. It is the Gaia DR3 star 5756956644387831296 (G 16.31), 1.1 pixels (7″) west-north-west of the ring's centre; its Gaia marker shows with \"brighter than G = 18\". Gaia gives it a proper motion of 6 mas a year, so it stays on the same pixel, while WISE 0855 moves about 1.3 pixels a year to the west."
   ],
   "frames": [
     {

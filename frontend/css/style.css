@@ -264,6 +264,28 @@ input[type="range"] { width: 100%; accent-color: var(--accent); min-height: 32px
   .diff-grid { grid-template-columns: 1fr; }
 }
 
+/* Light curve: SVG charts drawn by js/lightcurve.js. */
+#lc-body { display: grid; gap: 0.7rem; }
+#lc-view .help, #lc-where { margin: 0; }
+.lc-figure { margin: 0; display: grid; gap: 0.3rem; }
+.lc-figure figcaption { font-size: 0.78rem; color: var(--muted); }
+.lc-svg { width: 100%; height: auto; display: block; background: #05080f; border-radius: 8px; }
+.lc-frame { fill: none; stroke: var(--line); }
+.lc-grid { stroke: var(--line); stroke-dasharray: 2 4; }
+.lc-tick { fill: var(--muted); font-size: 11px; }
+.lc-axis { fill: var(--muted); font-size: 12px; }
+.lc-line { fill: none; stroke-width: 1.2; opacity: 0.5; }
+.lc-point line { stroke-width: 1.5; }
+.lc-point circle { stroke-width: 1.8; }
+.lc-blue { color: hsl(260, 85%, 72%); font-weight: 700; }
+.lc-red { color: hsl(0, 85%, 66%); font-weight: 700; }
+.lc-key::before {
+  content: ""; display: inline-block; width: 10px; height: 10px; border-radius: 50%;
+  margin-right: 0.3rem; background: var(--key);
+}
+.lc-list { font-size: 0.83rem; }
+.lc-list ul { margin: 0.3rem 0 0; padding-left: 1.1rem; }
+
 .site-footer { padding: 1rem clamp(1rem, 3vw, 2rem) 2rem; color: var(--muted); font-size: 0.78rem; text-align: center; }
 
 @media (max-width: 900px) {

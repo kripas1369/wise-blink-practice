@@ -5,7 +5,7 @@
  "query": {
   "ra": 248.16723307280128,
   "dec": 66.75502382666444,
-  "radius_deg": 0.06906,
+  "radius_deg": 0.069056,
   "n_returned": 95
  },
  "method": "each Gaia DR3 position (epoch 2016.0) moved in a straight line with its proper motion to the frame's MJD; parallax not applied; stars without a Gaia proper motion stay at their 2016.0 position",
@@ -18,18 +18,18 @@
  "frames": [
   {
    "epoch_id": 0,
-   "mjd": 60848.64921,
-   "year": 2025.4734
+   "mjd": 60845.98348,
+   "year": 2025.4661
   },
   {
    "epoch_id": 1,
-   "mjd": 61012.1324,
-   "year": 2025.921
+   "mjd": 61010.90067,
+   "year": 2025.9176
   },
   {
    "epoch_id": 2,
-   "mjd": 61213.22972,
-   "year": 2026.4715
+   "mjd": 61212.79001,
+   "year": 2026.4703
   }
  ],
  "stars": [
@@ -476,6 +476,6 @@
   }
  ],
  "made_by": "backend/app/gaia.py",
- "made_at": "2026-10-31 12:37 UTC",
+ "made_at": "2026-10-31 14:34 UTC",
  "data_credit": "ESA Gaia DR3, via NASA/IPAC IRSA"
 }

@@ -22,6 +22,12 @@ export function checkManifest(m) {
   if (!m.scale || !isNumber(m.scale.vmin) || !isNumber(m.scale.vmax) || m.scale.vmin >= m.scale.vmax) {
     throw new Error("Manifest brightness scale is missing or invalid");
   }
+  if (![undefined, "linear", "asinh"].includes(m.scale.stretch)) {
+    throw new Error(`Unknown brightness stretch: ${m.scale.stretch}`);
+  }
+  if (m.scale.stretch === "asinh" && !(isNumber(m.scale.asinh_softening) && m.scale.asinh_softening > 0)) {
+    throw new Error("An asinh brightness scale needs a positive asinh_softening");
+  }
   if (m.notes !== undefined && !(Array.isArray(m.notes) && m.notes.every((n) => typeof n === "string"))) {
     throw new Error("Manifest notes must be a list of sentences");
   }

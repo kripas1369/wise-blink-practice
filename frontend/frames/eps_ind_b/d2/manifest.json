@@ -28,7 +28,7 @@
   "notes": [
     "The two brown dwarfs are far closer together than one SPHEREx pixel (6.15″), so they show as one dot.",
     "Measured centre of the dot: it moved 0.99 pixels from Apr 2025 to Oct 2026, toward the south-east; Gaia says 1.09 pixels in the same direction. RW Aurigae, which Gaia says does not move, shifts by only 0.04–0.07 pixels measured the same way.",
-    "Its brightness in the add-ups changes by a factor of 2 between visits, and not in step with the mean wavelength; each add-up mixes exposures from about 1.1 to 1.6 µm, where brown dwarfs change brightness steeply. The cause is not checked, so this is not evidence that it varies.",
+    "Its brightness in the add-ups changes by a factor of 2 between visits because each add-up mixes wavelengths. Measured exposure by exposure (light curve below), it is brightest near 1.27 and 1.58 µm and about 7 times fainter at 1.36-1.40 µm, where water and methane in a cool brown dwarf absorb. Exposures of different visits at the same wavelength agree within about 15% (ratios 0.86-1.05), so there is no clear sign that it varies.",
     "One exposure of the Apr 2026 visit had 30% of its pixels flagged; the add-up leaves those pixels out and fills them from the other 6 exposures."
   ],
   "frames": [

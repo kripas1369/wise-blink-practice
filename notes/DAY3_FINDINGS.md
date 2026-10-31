@@ -73,6 +73,8 @@ Default pair = the two visits with the closest mean wavelength at the target (th
 
 ## 4. Not done / open
 
+*Update (Day 4): items 1, 2 and 5 are answered in [`DAY4_FINDINGS.md`](DAY4_FINDINGS.md): the R Dra add-up is installed with an asinh scale, the D6 source moves like WISE 0855, and Eps Ind B's factor of 2 comes from its spectrum. The "fixed D2 object" in section 2 is the Gaia DR3 star 5756956644387831296 (G 16.31).*
+
 1. **R Draconis add-up: made but not installed.** In the add-up the core pixels survive at up to 2,870 MJy/sr (single exposures had no value there), so one linear scale for all frames becomes 0.65–1,290 MJy/sr and the rest of the picture is black. Needs a non-linear display scale (e.g. asinh) with the scale written in the manifest. Day 4. The website keeps the single exposures.
 2. **WISE 0855 position fit** (is the D6 source moving like WISE 0855?): still to do. Section 2 only shows that the difference agrees with the Day 2 finding.
 3. **PSF-fit positions** instead of 5 × 5 centroids.

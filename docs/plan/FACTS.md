@@ -132,12 +132,14 @@ Built (tested in `backend/tests/test_day3.py`):
 - `GET /api/frames?target=&band=` or `?ra=&dec=&band=[&fov_arcmin=3]` → the frames manifest ([`FRAMES_FORMAT.md`](FRAMES_FORMAT.md)) with `png_url`, `flags_png_url`, `base_url`, `source`, `warnings`. A typed position (not within 5″ of a prepared target) starts a background job: **HTTP 202** `{ "status": "working", "message" }` until ready; no SPHEREx images → 404.
 - `GET /api/gaia` (same location parameters) → `gaia.json` (FRAMES_FORMAT §6): per star `source_id` (text), `g_mag`, `xy` per frame.
 - `GET /api/diff` (same location parameters) → `diff.json` (FRAMES_FORMAT §7): every visit pair with `png_url`, `days`, `wl_gap_um`, `scatter_sigma`, `max_sigma`, `min_sigma`, `z`; plus `default_pair`.
+- `GET /api/lightcurve` (same location parameters) → `lightcurve.json` (FRAMES_FORMAT §10): the target's brightness in every single exposure, each with its own wavelength, plus same-wavelength visit comparisons, the field-star floor and Gaia neighbours inside the circle. Add `&x=&y=` (PNG pixels, 0 to size − 1, both or neither) to measure a clicked pixel instead. Built on Day 4 (tested in `backend/tests/test_day4.py`).
 - Unknown `/api/...` path → 404. Interactive docs: `/api/docs`.
 
 Changed from the draft, and why: `/api/frames` returns the whole manifest (labels need every field); `/api/diff` returns all pairs at once (the view switches pairs without waiting); `/api/gaia` gives pixel positions per frame (the website does not need its own WCS code).
 
-Still to build (Day 4 and later):
-- `GET /api/lightcurve?ra=&dec=&band=` → `[ { "mjd", "flux", "flux_err", "flagged" } ]`.
+`/api/lightcurve` returns an object, not the draft's bare list, because a point means nothing without its wavelength, the comparison rule and the warnings.
+
+Still to build (later):
 - `GET /api/spectrum?ra=&dec=&epoch=` → `[ { "wl_um", "flux", "flux_err" } ]`.
 - **Units:** degrees for RA/Dec, arcminutes for field of view, micrometres for wavelength, MJD for time.
 - **Errors:** always `{ "error": "<plain message>" }` with a non-200 status (400 bad input, 404 nothing there, 502/503 IRSA or SIMBAD down). The frontend shows the message; it never invents a value.

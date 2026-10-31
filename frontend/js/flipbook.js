@@ -3,7 +3,7 @@ import { frameLabel, loadExtra, loadFrames, loadIndex, spanDays } from "./frames
 import {
   BLINK_SPEEDS, DEFAULT_BLINK_SPEED, DEFAULT_SPEED, SPEEDS, defaultBlinkPair, intervalMs, nextIndex, prevIndex,
 } from "./player.js";
-import { directionText, expectedShift, gaiaTarget, percentAt, visibleStars } from "./sky.js";
+import { directionText, expectedShift, gaiaTarget, percentAt, pixelUnder, visibleStars } from "./sky.js";
 
 const $ = (id) => document.getElementById(id);
 const POLL_MS = 10000;
@@ -53,6 +53,14 @@ export function gaiaNote(gaia, pixelArcsec) {
     (shift.px >= 0.05 ? `, toward the ${directionText(shift.dx, shift.dy)}.` : ".");
 }
 
+/** How the grey levels relate to brightness (manifest `scale`). */
+export function scaleText(scale) {
+  return scale.stretch === "asinh"
+    ? "Every frame uses the same brightness scale, stretched (asinh) so faint light and bright stars both show; " +
+      "grey levels are not proportional to brightness, so do not judge brightness changes by eye."
+    : "Every frame uses the same brightness scale.";
+}
+
 function loadImage(src) {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -70,8 +78,9 @@ function fillSpeeds(select, speeds, chosen) {
 /**
  * `onDetector(n)`: the user picked a detector that has prepared frames.
  * `onFrames(loaded | null)`: frames were shown ({ manifest, base, gaia, where }) or cleared.
+ * `onPixel({ x, y })`: the user clicked a pixel of the frame (PNG pixels, 0 = first).
  */
-export function createFlipbook({ onDetector, onFrames = () => {} }) {
+export function createFlipbook({ onDetector, onFrames = () => {}, onPixel = () => {} }) {
   const el = {
     gaia: $("flip-gaia"), showGaia: $("flip-show-gaia"), gaiaMag: $("flip-gaia-mag"), gaiaNoteBox: $("flip-gaia-note"),
     stage: $("flip-stage"), img: $("flip-img"), flags: $("flip-flags"), message: $("flip-message"),
@@ -233,8 +242,8 @@ export function createFlipbook({ onDetector, onFrames = () => {} }) {
       : "Each frame adds up several exposures of one visit, weighted by their noise, so faint things show " +
         "better; flagged pixels are left out of the add-up. ";
     el.note.textContent = `Real SPHEREx data from NASA IRSA, lined up north-up on ${m.size_px} × ${m.size_px} ` +
-      `pixels of ${m.pixel_arcsec}″. ${howMade}Every frame uses the same brightness scale, but each exposure ` +
-      `sees a slightly different wavelength (shown in the label), so brightness can differ for that reason too. ` +
+      `pixels of ${m.pixel_arcsec}″. ${howMade}${scaleText(m.scale)} Each exposure also sees a slightly ` +
+      `different wavelength (shown in the label), so brightness can differ for that reason too. ` +
       (m.mode === "single"
         ? "Striped pixels have no value in the SPHEREx file (for example a saturated star core). "
         : "Striped pixels have no usable value: the files have none there (for example a saturated star " +
@@ -330,6 +339,11 @@ export function createFlipbook({ onDetector, onFrames = () => {} }) {
   el.showFlags.addEventListener("change", () => { if (manifest) render(index); });
   el.showGaia.addEventListener("change", renderGaia);
   el.gaiaMag.addEventListener("change", renderGaia);
+  el.stage.addEventListener("click", (e) => {
+    if (!manifest) return;
+    const p = pixelUnder(e.clientX, e.clientY, el.img.getBoundingClientRect(), manifest.size_px);
+    if (p) onPixel(p);
+  });
   el.stage.tabIndex = 0;
   el.stage.addEventListener("keydown", (e) => {
     if (!manifest) return;

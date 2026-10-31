@@ -1,0 +1,25 @@
+{
+ "format": "spherex-blink-lightcurve/1",
+ "target": "r_dra",
+ "label": "R Draconis",
+ "band": 2,
+ "unit": "mJy",
+ "position_rule": "follows Gaia DR3 1648328016354496384 (proper motion, straight line)",
+ "made_by": "backend/app/lightcurve.py",
+ "made_at": "2026-10-31 14:41 UTC",
+ "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx, ESA Gaia DR3",
+ "method": "none",
+ "reason": "The star's saturated (no-value) core reaches 6.2 px from its centre in at least one exposure. Measuring the light around it would need a ring starting at 7 px, and only rings starting at most 3 px out were checked to follow a star's brightness (RW Aur, 3-6 px: about 10%). So no light curve is given.",
+ "points": [],
+ "comparison": {
+  "rule": "Gaia DR3 stars with G <= 17, no Gaia star less than 3 mag fainter within 4 px, measured like the target (radius 2 px, sky 5-8 px) with the same comparison rule",
+  "n_stars": 0,
+  "n_pairs": 0,
+  "scatter_pct": null,
+  "median_ratio": null,
+  "n_pairs_incl_flagged": 0,
+  "scatter_pct_incl_flagged": null,
+  "median_ratio_incl_flagged": null,
+  "stars": []
+ }
+}

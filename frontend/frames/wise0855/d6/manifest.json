@@ -26,7 +26,8 @@
   "made_at": "2026-10-31 10:56 UTC",
   "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx",
   "notes": [
-    "In the two visits with many exposures (19 and 21 added), a faint source sits at the ring: about 11 and 13 times the noise, and still 6 to 9 times in each half of the exposures, so it is not one odd exposure. Its brightest pixel moved 1 pixel west from Nov 2025 to Apr 2026, the way WISE 0855 moves (about 0.6 pixel expected). That fits WISE 0855 but is not proven yet: the background object seen in D2 is only 1 pixel away, and WISE 0855 is not in Gaia, so there is no Gaia marker to compare with; a proper position fit is still to do.",
+    "In the two visits with many exposures (19 and 21 added), a faint source sits at the ring: about 11 and 13 times the noise, and still 6 to 9 times in each half of the exposures, so it is not one odd exposure.",
+    "Position fit (scripts/acceptance.py): from Nov 2025 to Apr 2026 the source moved 0.58 ± 0.12 pixels, mostly west. WISE 0855's published motion and parallax (SIMBAD, Kirkpatrick et al. 2021) predict 0.72 pixels in that direction; a star that does not move would show 0. In both visits the source sits within 0.22 pixels of where WISE 0855 should be, and 1.11 and 0.57 pixels from the Gaia star seen in D2 (G 16.31). In D2 nothing is found at WISE 0855's position (below 3 times the noise in all 4 visits). So the D6 source moves like WISE 0855. The Gaia star may add some light in D6 (a fit with both gives it about a quarter of the flux, at only 2.7–2.8 times the noise; not proven).",
     "The May 2025 visit adds only 3 exposures: nothing clear at the ring (2.4 times the noise), and its sky is brighter (0.14 against 0.09 MJy/sr after removing the zodiacal glow; cause not checked)."
   ],
   "frames": [

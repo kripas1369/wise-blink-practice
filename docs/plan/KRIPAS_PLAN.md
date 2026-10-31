@@ -60,6 +60,11 @@ About 7 hours a day, in 3 blocks. For each block: the AI explains → **I type t
 - **Block 2 (3 h):** **deploy** (Render, Railway or a VPS) with [Friend's name]; check on a phone.
 - **Block 3 (2 h):** run the C4 tests together on the 5 targets; lessons note.
 - **Done when:** the public link works on laptop and phone, and all 5 target buttons load.
+- **Status (31 Oct, done early, except the deploy, which was skipped by choice):** findings and the C4 results: [`notes/DAY4_FINDINGS.md`](../../notes/DAY4_FINDINGS.md); explained from the basics: [`learning/12_day4_lightcurve.md`](../../learning/12_day4_lightcurve.md).
+  - Data: `lightcurve.py` (every single exposure on the grid → `exposures.fits`; 2 px circle following the target → `lightcurve.json`; same-wavelength comparisons; field-star floor; Gaia neighbours in the circle; "no light curve" with the reason for saturated stars), `/api/lightcurve` (+ any clicked pixel), asinh scale for R Dra, `scripts/acceptance.py`.
+  - Website: light-curve panel (own SVG charts instead of Chart.js: brightness over time coloured by wavelength; brightness against wavelength, one colour per visit; hollow = flagged or faint; ▲ = off the chart), comparisons and warnings, click a flipbook pixel to measure it.
+  - C4: Barnard 0.18 px from Gaia (pass); WISE 0855 D6 source moves 0.58 ± 0.12 px against 0.72 px predicted, absent in D2 (pass for D2/D6); Eps Ind B direction within 8° (pass); coverage counts equal IRSA's at 3 positions (pass); RW Aur and R Dra against AAVSO not checked (AAVSO and VizieR unreachable; R Dra has no light curve). 68 backend tests passed (3 skipped), 35 website tests passed.
+  - Open: deploy and phone check; AAVSO comparison; field-star floor outside the Barnard frame.
 
 ### Wed 4 – Fri 6 Nov
 - **Wed 4 morning:** fix anything that failed on Day 4.

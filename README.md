@@ -15,7 +15,7 @@ A public web tool: type RA/Dec or a star name, and see **real SPHEREx images of 
 1. **Day 1:** find and get the data (query SPHEREx, cutouts, the 5 targets). Backend done: [notes/DAY1_REPORT.md](notes/DAY1_REPORT.md). Website done: [frontend/README.md](frontend/README.md).
 2. **Day 2:** clean and line up the epochs; flipbook. Done: flipbook in `frontend/`, pipeline `python -m backend.app.render <target> <detector>`, findings in [notes/DAY2_FINDINGS.md](notes/DAY2_FINDINGS.md).
 3. **Day 3:** compare epochs with proof (add-up, Gaia, difference); connect website and API. Done: Gaia markers, Before / After / Difference view, FastAPI (`backend/app/main.py`), findings in [notes/DAY3_FINDINGS.md](notes/DAY3_FINDINGS.md).
-4. **Day 4:** light curve, online, test the 5 targets.
+4. **Day 4:** light curve, online, test the 5 targets. Done (except online, skipped for now): light curve per exposure (`backend/app/lightcurve.py`, `/api/lightcurve`, website panel), asinh scale for R Dra, C4 acceptance tests (`scripts/acceptance.py`), findings in [notes/DAY4_FINDINGS.md](notes/DAY4_FINDINGS.md).
 
 ## Read first
 - **[Friend's name], start here: [docs/plan/FRIEND_REVIEW_GUIDE.md](docs/plan/FRIEND_REVIEW_GUIDE.md)** (what we built, how to check it, what to research). The old build guides (`FRIEND_DAY1_STEPS.md`, `FRIEND_DAY2_STEPS.md`) are reference only.
