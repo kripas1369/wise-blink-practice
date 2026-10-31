@@ -13,7 +13,7 @@ Sit together (or call) and go through this. Both of you must be able to explain 
 3. **The question "which images cover this point?":**
    `CONTAINS(POINT('ICRS', ra, dec), s_region) = 1`
    This checks the outline, not the centre. (The old prototype checked the centre and missed images.)
-4. **Cutouts.** A full SPHEREx file is about 70 MB. Read IRSA's SPHEREx cutout tutorial (in [Friend's name]'s resources folder or on the IRSA website) and find how to ask for a small square around a position. Write the method in `docs/plan/FACTS.md` section 3.
+4. **Cutouts.** A full SPHEREx file is about 70 MB, so we ask IRSA for a small square around a position. The tested method is in `docs/plan/FACTS.md` section 3.
 5. **What is inside a cutout:** IMAGE, FLAGS, VARIANCE, ZODI, PSF, WCS-WAVE, and the header keyword `MJD-AVG` (the real observation time; never use `DATE`). See `docs/plan/FACTS.md` sections 1 – 2.
 6. **Gaia** (for proof later): also at IRSA, table `gaia_dr3_source`.
 7. **SIMBAD** (names → positions): main server `simbad.cds.unistra.fr`; it was down on 29 Oct, the mirror `simbad.harvard.edu` worked.
@@ -21,7 +21,9 @@ Sit together (or call) and go through this. Both of you must be able to explain 
 
 ---
 
-## Kripas (branch `kripas-backend`)
+## [Friend's name] (data side, branch `friend-backend`)
+
+**Status (31 Oct): this code already exists** (made by Kripas before the role swap). Your job today: run it, read `learning/02_code_walkthrough.md`, and re-type each piece below yourself from these steps, then check with the tests.
 
 ### Block 2 (about 2.5 h): `coords.py` and `resolve.py`
 
@@ -48,7 +50,7 @@ Sit together (or call) and go through this. Both of you must be able to explain 
 
 ---
 
-## [Friend's name] (branch `friend-frontend`)
+## Kripas (website side, branch `kripas-frontend`)
 
 ### Block 2 (about 2.5 h): `frontend/index.html` (plain HTML + JS)
 - Search box (RA/Dec or a name), field of view (arcmin, default 3), Go button.
@@ -72,4 +74,4 @@ Sit together (or call) and go through this. Both of you must be able to explain 
 ## End of day (both)
 - `notes/LEARNING_LOG.md`: Day 1 entry.
 - Commit and push your branch; open a pull request into `main`.
-- 15-minute call: show each other what works; agree what Kripas sends tomorrow (PNG frames + JSON).
+- 15-minute call: show each other what works; agree what [Friend's name] sends tomorrow (PNG frames + JSON).

@@ -1,6 +1,6 @@
 # NASA Space Apps 2026: "Planet X and SPHEREx" team plan
 
-**Team Not42:** Kripas Khatiwada (data and science lead) and [Friend's name] (web and presentation lead, GitHub `lazylog00`).
+**Team Not42:** Kripas Khatiwada (web and presentation lead) and [Friend's name] (data and science lead, GitHub `lazylog00`). Roles swapped on 31 Oct.
 
 **Working name:** "Blink: SPHEREx for Everyone" (or "SPHEREx TimeLens"; decide together).
 
@@ -164,7 +164,7 @@ The official site says: "Do not begin work on your projects until the hackathon 
 
 ### Phase 1: 4-day practice build of the real tool (Sat 31 Oct – Tue 3 Nov, repo `wise-blink-practice`, to be renamed `spherex-blink-practice`)
 (Moved from 29 Oct – 1 Nov on 31 Oct: 29–30 Oct went to checking the real archive. Learning notes for every step: [`learning/`](../../learning/README.md).)
-About **7 hours a day each**, in 3 blocks. Kripas types his own code; the AI explains each step and reviews it. Each day ends with the learning log, a pull request into `main`, and a 15-minute call.
+About **7 hours a day each**, in 3 blocks. Each of us types our own code; the AI explains each step and reviews it. Each day ends with the learning log, a pull request into `main`, and a 15-minute call.
 
 ```mermaid
 flowchart LR
@@ -174,26 +174,22 @@ flowchart LR
 ```
 
 #### Day 1, Sat 31 Oct: Step 1, find and get the data
-**Status (31 Oct): Kripas's part is done** (code in `backend/app/`, results in `notes/DAY1_REPORT.md`, 20 offline + 3 network tests pass). Found on the way: the archive mixes releases QR2 + QR3 and calibration rows (we filter to 4 science collections); each cutout is ~5 MB because of the PSF cube; SIMBAD's main server was down (mirror works).
-- **Both together (block 1, 2 h):** revise how to query datasets and get cutouts: IRSA TAP, `spherex.obscore`, the `s_region` condition, the columns, the IRSA SPHEREx cutout tutorial, what is inside a cutout (IMAGE, FLAGS, VARIANCE, ZODI, header `MJD-AVG`), Gaia DR3 at IRSA (`gaia_dr3_source`), SIMBAD and its mirror.
+**Status (31 Oct): the data part is done** (code in `backend/app/`, results in `notes/DAY1_REPORT.md`, 24 offline + 3 network tests pass), made before the role swap and now owned by [Friend's name]. Found on the way: the archive mixes releases QR2 + QR3 and calibration rows (we filter to 4 science collections); each cutout is ~4–5 MB because of the PSF; SIMBAD's main server was down (mirror works).
+- **Both together (block 1, 2 h):** Kripas walks [Friend's name] through the Day 1 data code and results (`learning/01`–`03`): IRSA TAP, `spherex.obscore`, the `s_region` condition, collections, cutouts, what is inside a cutout (IMAGE, FLAGS, VARIANCE, ZODI, header `MJD-AVG`), Gaia DR3 at IRSA (`gaia_dr3_source`), SIMBAD and its mirror.
+- **[Friend's name] (blocks 2 – 3):** take over the data code: run the tests and `scripts/day1_report.py`; read `learning/02_code_walkthrough.md`; re-type `coords`, `motion`, `resolve`, `flags`, `archive.find_images` from the walkthrough; check one count against IRSA's own SPHEREx search.
 - **Kripas (blocks 2 – 3):**
-  - `coords.py` (12 tests pass).
-  - `resolve.py`: name → position via SIMBAD, with the Harvard mirror as backup; clear error, never a guess.
-  - `archive.py`: SPHEREx images covering a point (position moved to today with its proper motion first); count, dates, detectors D1 – D6 for all 5 targets.
-  - Download one cutout for Barnard's Star; print every extension and the header.
-- **[Friend's name] (blocks 2 – 3):**
   - `index.html`: search box (RA/Dec or name), field of view, `?ra&dec&fov&det` in the URL.
   - Aladin Lite v3: moves to the position; clicking fills the box.
   - 5 official target buttons with one-line explanations.
-- **Done when:** for each of the 5 targets we know how many SPHEREx images exist, their dates and detectors (written in `FACTS.md`), and one Barnard's Star cutout opens correctly.
+- **Done when:** the coverage table of the 5 targets is in `FACTS.md` (done), [Friend's name] can explain and run the data code, and clicking "Barnard's Star" centres Aladin on it with a shareable URL.
 
 #### Day 2, Sun 1 Nov: Step 2a, clean and line up the epochs
-- **Kripas:**
+- **[Friend's name]:**
   - Group images into epochs (`MJD-AVG`, gaps of months), per detector.
   - Clean each cutout: official flag mask (SOURCE is a label only), IMAGE − ZODI, sigma = sqrt(VARIANCE), % flagged.
   - Line up every cutout on one sky grid (`reproject`); check background stars stay on the same pixel.
-  - One PNG per epoch per detector with **the same brightness scale**; send PNGs + JSON to [Friend's name].
-- **[Friend's name]:**
+  - One PNG per epoch per detector with **the same brightness scale**; send PNGs + JSON to Kripas.
+- **Kripas:**
   - Flipbook player: play, pause, step, speed, loop, blink two epochs.
   - Frame label: date, detector, wavelength range, number of images, % flagged.
   - Detector buttons D1 – D6; flags overlay toggle.
@@ -201,22 +197,22 @@ flowchart LR
 
 #### Day 3, Mon 2 Nov: Step 2b, compare epochs with proof (integration day)
 - **Morning call (both):** fix the API format (`FACTS.md` section 7).
-- **Kripas:**
+- **[Friend's name]:**
   - Add-up per epoch and detector (1/variance weighted).
   - Gaia: stars near the target from `gaia_dr3_source`, moved from 2016.0 to each epoch's date.
   - Difference: epoch B − epoch A in sigma.
   - FastAPI: `/api/resolve`, `/api/coverage`, `/api/frames`, `/api/gaia`, `/api/diff`, plus a disk cache.
-- **[Friend's name]:**
+- **Kripas:**
   - Call the real API; honest error messages (no fake values).
   - Gaia markers on the flipbook (move per epoch).
   - Difference mode with a sigma colour scale.
 - **Done when:** **Barnard's Star walks across the browser flipbook onto its Gaia markers.**
 
 #### Day 4, Tue 3 Nov: connect, online, test
-- **Kripas:**
+- **[Friend's name]:**
   - `/api/lightcurve` (brightness at one position across epochs).
   - Pre-cache the 5 targets; run the C4 acceptance tests and write the results.
-- **[Friend's name]:**
+- **Kripas:**
   - Light-curve chart when a star is clicked.
   - **Deploy** (Render, Railway or a VPS); check on a phone.
 - **Both:** lessons note (planned vs actual hours, blockers).
@@ -224,8 +220,8 @@ flowchart LR
 
 #### Wed 4 – Fri 6 Nov
 - **Wed 4 morning (both):** fix whatever did not pass on Day 4.
-- **Wed 4 afternoon:** Level 3. Kripas: `/api/spectrum` (brightness vs wavelength, per epoch) and measured motion vs Gaia. [Friend's name]: spectrum panel, epoch picker (+/−), proof panel, About page.
-- **Thu 5:** Kripas reads Supplement 2.2, 3.2.5, 3.2.9, 3.4.3 and finishes `FACTS.md`; one cross-check against IRSA's Spectrophotometry Tool. [Friend's name] makes a draft 30-second video from the practice tool and a pitch draft. Evening (both): speed drill. In an empty folder, rebuild search → coverage → one cutout → flipbook in 3 hours from memory. Delete afterwards.
+- **Wed 4 afternoon:** Level 3. [Friend's name]: `/api/spectrum` (brightness vs wavelength, per epoch) and measured motion vs Gaia. Kripas: spectrum panel, epoch picker (+/−), proof panel, About page.
+- **Thu 5:** [Friend's name] reads Supplement 2.2, 3.2.5, 3.2.9, 3.4.3 and finishes `FACTS.md`; one cross-check against IRSA's Spectrophotometry Tool. Kripas makes a draft 30-second video from the practice tool and a pitch draft. Evening (both): speed drill. In an empty folder, rebuild search → coverage → one cutout → flipbook in 3 hours from memory. Delete afterwards.
 - **Fri 6:** rest; rehearsal checklist.
 
 ### Phase 2: Timed rehearsal of the real hackathon (Sat 7 – Sun 8 Nov, 48 hours)
@@ -252,7 +248,7 @@ Follow **Part E** exactly. Checkpoints:
 #### 2.4 Lessons learned (Mon 9 – Tue 10 Nov)
 - Planned vs actual hours, top 5 blockers and fixes, slow archive calls, deploy problems, what to cut or move earlier.
 - Update Part E timings with the real numbers.
-- A **1-page cheat sheet each** (Kripas: query, cutout, cleaning, Gaia, API steps; [Friend's name]: Aladin, flipbook, URL, deploy steps). Notes, not code.
+- A **1-page cheat sheet each** ([Friend's name]: query, cutout, cleaning, Gaia, API steps; Kripas: Aladin, flipbook, URL, deploy steps). Notes, not code.
 
 #### 2.5 Rehearsal "done" means
 - Public link works; all 5 targets pass C4; 30-second video exists; mock form filled; lessons note written.
@@ -277,7 +273,7 @@ Follow **Part E** exactly. Checkpoints:
 
 ## PART E: 48-hour build schedule
 
-| Hours | Kripas (backend and science) | [Friend's name] (frontend and presentation) |
+| Hours | [Friend's name] (backend and science) | Kripas (frontend and presentation) |
 |---|---|---|
 | 0–2 | Read the statement and resources together; create the repo; agree on the API format | Same |
 | 2–10 | `/api/resolve`, `/api/coverage`, cutouts, cleaning, PNG frames, `/api/frames` | Layout, search, URL, Aladin, flipbook using sample frames |

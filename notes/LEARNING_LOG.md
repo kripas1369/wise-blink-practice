@@ -15,7 +15,7 @@ One entry per session. Keep it short: 3 lines plus the time. This becomes our le
 - **Learned:** checked the real archive: the `s_region` query works for all 5 targets; Gaia table is `gaia_dr3_source`; SIMBAD main server down, Harvard mirror works.
 - **Broke / confused me:** the 4-day plan slipped by 2 days (moved to Sat 31 Oct – Tue 3 Nov).
 
-### Day 1, Sat 31 Oct, Kripas
+### Day 1, Sat 31 Oct, Kripas (data code, made before the role swap)
 - **Learned:** a `CONTAINS` query cannot JOIN the file table (2-step query); cutout path = `a.uri` minus `ibe/data/`; cutouts are ~4–5 MB because the PSF comes along; IRSA says 503 above ~3 parallel downloads; the archive mixes QR2 + QR3 + calibration rows; QR3 writes flag bits as `MSKN*` instead of `MP_*`; SOURCE covers 98–100% of pixels around bright targets; Barnard's Star moves only ~1.7 px in the data so far.
 - **Broke / confused me:** R Dra became one year-long "epoch" (fixed with a 60-day maximum); SIMBAD timeouts made the report take 10 minutes (fixed: remember the server that works).
 - **Time:** planned 7 h, actual __ h. Read `learning/` 01–03 and re-type the code.

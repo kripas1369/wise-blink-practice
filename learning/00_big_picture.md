@@ -47,11 +47,13 @@ flowchart LR
 
 ## Who does what
 
-| | Kripas (data and backend) | [Friend's name] (website and presentation) |
+Roles were swapped on 31 Oct: Kripas now does the website, [Friend's name] the data.
+
+| | [Friend's name] (data and backend) | Kripas (website and presentation) |
 |---|---|---|
 | Language | Python (astropy, pyvo, astroquery, FastAPI) | HTML/JS, Aladin Lite, Chart.js |
 | Owns | boxes 1–8 and the API | box 9, deploy, video, pitch |
-| Branch | `kripas-backend` | `friend-frontend` |
+| Branch | `friend-backend` | `kripas-frontend` |
 | Meeting point | the API format (`docs/plan/FACTS.md` section 7) | same |
 
 ## Why practise the full tool before the hackathon?
@@ -68,7 +70,7 @@ write the code again, without copying. Notes (like this folder) are allowed.
 
 | Date | What |
 |---|---|
-| Sat 31 Oct | Day 1, Step 1: find and get the data (done for Kripas's part) |
+| Sat 31 Oct | Day 1, Step 1: find and get the data (data code done; [Friend's name] takes it over; Kripas builds the search page) |
 | Sun 1 Nov | Day 2, Step 2a: clean and line up the epochs |
 | Mon 2 Nov | Day 3, Step 2b: compare with proof (Gaia, difference), API |
 | Tue 3 Nov | Day 4: connect, online, test the 5 targets |

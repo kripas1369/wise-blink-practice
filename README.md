@@ -8,8 +8,9 @@ A public web tool: type RA/Dec or a star name, and see **real SPHEREx images of 
 **Practice only.** Same data (SPHEREx), same 5 official targets and same features as the hackathon. On 14 Nov we write it again from memory in a new repo; nothing here is copied or submitted.
 
 ## Roles
-- **Kripas (data side, `backend/`, branch `kripas-backend`):** archive search, cutouts, cleaning images, lining up epochs, star motion from Gaia, the API.
-- **[Friend's name] (website side, `frontend/`, branch `friend-frontend`):** search box, Aladin sky view, flipbook, buttons, charts, deploy, the 30-second video and the pitch.
+- **Kripas (website side, `frontend/`, branch `kripas-frontend`):** design, search box, Aladin sky view, flipbook, buttons, charts, deploy, the 30-second video and the pitch.
+- **[Friend's name] (data side, `backend/`, branch `friend-backend`):** archive search, cutouts, cleaning images, lining up epochs, star motion from Gaia, the API.
+- Roles swapped on 31 Oct. The Day 1 data code was made before the swap and now belongs to the data side.
 
 ## The 4 days (Sat 31 Oct – Tue 3 Nov)
 1. **Day 1:** find and get the data (query SPHEREx, cutouts, the 5 targets). Backend done: [notes/DAY1_REPORT.md](notes/DAY1_REPORT.md).

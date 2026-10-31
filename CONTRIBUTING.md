@@ -2,8 +2,9 @@
 
 ## Branches
 - `main`: always working. Only merged code goes here.
-- `kripas-backend`: Kripas works here (`backend/`).
-- `friend-frontend`: [Friend's name] works here (`frontend/`).
+- `kripas-frontend`: Kripas works here (`frontend/`).
+- `friend-backend`: [Friend's name] works here (`backend/`). It starts with the Day 1 data code.
+- `kripas-backend` and `friend-frontend` are the old branches from before the role swap (31 Oct). Do not use them.
 
 Each person mostly touches only their own folder, so merges are easy. Shared files (`notes/LEARNING_LOG.md`, `docs/`) can be edited by both. Pull before editing them.
 
@@ -11,8 +12,8 @@ Each person mostly touches only their own folder, so merges are easy. Shared fil
 ```bash
 git clone https://github.com/kripas1369/wise-blink-practice.git
 cd wise-blink-practice
-git checkout kripas-backend      # Kripas
-git checkout friend-frontend     # friend
+git checkout kripas-frontend     # Kripas
+git checkout friend-backend      # friend
 ```
 
 ## Every session

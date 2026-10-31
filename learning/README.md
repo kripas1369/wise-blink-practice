@@ -1,6 +1,6 @@
 # Learning folder: what we built, why, and what comes next
 
-This folder is for **Kripas (and [Friend's name])** to read later and understand the whole
+This folder is for **Kripas and [Friend's name]** to read later and understand the whole
 project from the beginning. Read it in order. Each file is short and in plain English.
 
 | # | File | What you learn | Time |
