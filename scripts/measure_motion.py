@@ -1,13 +1,8 @@
 """Measured position of the target in each visit, compared with Gaia. Works offline on a frames folder.
 
-Needs epoch<i>.fits (rebuild.py / render.py) and gaia.json (gaia.py). For each visit it measures:
-    centroid  = brightness-weighted centre of the 5 × 5 pixels around Gaia's predicted position,
-                after removing the median sky of the frame; only if all 25 pixels are usable
-    hole      = centre of the flagged / no-value pixels within 3 px of the prediction (a saturated core
-                is centred on the star, so this is a rough position for very bright stars)
-and prints the shift from the first visit next to Gaia's shift, in pixels (+x = west, +y = south,
-PNG convention). SPHEREx pixels are 6.15″ and the PSF is about one pixel wide, so a centroid moves by
-less than the star when the star is not centred on a pixel (pixel phase); treat these as rough.
+Needs epoch<i>.fits (rebuild.py / render.py) and gaia.json (gaia.py). For each visit it measures the
+centroid and the saturated-core ("hole") centre (backend/app/measure.py) and prints the shift from the
+first visit next to Gaia's shift, in pixels (+x = west, +y = south, PNG convention).
 
     python -m scripts.measure_motion frontend/frames/eps_ind_b/d2
 """
@@ -16,39 +11,8 @@ import json
 import math
 from pathlib import Path
 
-import numpy as np
-
 from backend.app.diff import load_frame
-
-BOX = 2      # 5 × 5 box
-HOLE_RADIUS = 3
-
-
-def north_up(a: np.ndarray) -> np.ndarray:
-    return a[::-1]
-
-
-def centroid(frame: dict, x0: float, y0: float):
-    image, usable = north_up(frame["image"]), north_up(frame["usable"])
-    cx, cy = int(round(x0)), int(round(y0))
-    box = (slice(cy - BOX, cy + BOX + 1), slice(cx - BOX, cx + BOX + 1))
-    if not usable[box].all():
-        return None
-    sky = float(np.median(image[usable]))
-    w = np.clip(image[box] - sky, 0, None)
-    if w.sum() <= 0:
-        return None
-    ys, xs = np.mgrid[box]
-    return float((w * xs).sum() / w.sum()), float((w * ys).sum() / w.sum())
-
-
-def hole_centre(frame: dict, x0: float, y0: float):
-    unusable = ~north_up(frame["usable"])
-    ys, xs = np.nonzero(unusable)
-    near = np.hypot(xs - x0, ys - y0) <= HOLE_RADIUS
-    if near.sum() < 3:
-        return None
-    return float(xs[near].mean()), float(ys[near].mean()), int(near.sum())
+from backend.app.measure import centroid, hole_centre
 
 
 def main() -> None:

@@ -12,6 +12,14 @@ export function findPair(diff, a, b) {
   return diff.pairs.find((p) => p.a === a && p.b === b) || null;
 }
 
+/** Visit A or B one step earlier (−1) or later (+1), keeping A before B; null when it cannot move. */
+export function stepPair(ids, a, b, which, delta) {
+  const ia = ids.indexOf(a) + (which === "a" ? delta : 0);
+  const ib = ids.indexOf(b) + (which === "b" ? delta : 0);
+  if (ia < 0 || ib >= ids.length || ia >= ib) return null;
+  return [ids[ia], ids[ib]];
+}
+
 /** The line above the panels. */
 export function pairFacts(pair, fa, fb) {
   const wl = pair.wl_gap_um === null
@@ -67,7 +75,7 @@ export function pixelText(diff, pair, ia, ib, x, y, manifest) {
     `B ${valueText(diff.frames[ib], x, y)} MJy/sr · (B − A)/σ ${z === null ? "none (striped)" : `${z >= 0 ? "+" : ""}${z.toFixed(1)}`}`;
 }
 
-export function createDiffView() {
+export function createDiffView({ onPair = () => {} } = {}) {
   const el = {
     box: $("diff-view"), summary: $("diff-summary"), a: $("diff-a"), b: $("diff-b"), reset: $("diff-default"),
     reason: $("diff-reason"), facts: $("diff-facts"), warnings: $("diff-warnings"), shift: $("diff-shift"),
@@ -76,6 +84,7 @@ export function createDiffView() {
     imgs: { a: $("diff-img-a"), b: $("diff-img-b"), d: $("diff-img-d") },
     caps: { a: $("diff-cap-a"), b: $("diff-cap-b"), d: $("diff-cap-d") },
     marks: { a: $("diff-marks-a"), b: $("diff-marks-b"), d: $("diff-marks-d") },
+    steps: [...document.querySelectorAll("[data-step]")],
   };
   let state = null; // { manifest, base, gaia, diff }
   let version = 0;
@@ -84,6 +93,7 @@ export function createDiffView() {
 
   function hide(message = "") {
     state = null;
+    onPair(null);
     el.box.hidden = !message;
     el.panels.hidden = true;
     el.message.hidden = !message;
@@ -153,6 +163,21 @@ export function createDiffView() {
     }
     cursor(null, null);
     el.readout.textContent = "Point at (or tap) a pixel to compare it in all three panels.";
+    const ids = manifest.frames.map((f) => f.epoch_id);
+    for (const button of el.steps) {
+      const [which, delta] = button.dataset.step.split(":");
+      button.disabled = stepPair(ids, a, b, which, Number(delta)) === null;
+    }
+    onPair(state, a, b);
+  }
+
+  /** Put the shared cursor on a pixel, as if pointed at. */
+  function pointAt([x, y]) {
+    if (!state) return;
+    cursor(x, y);
+    const a = Number(el.a.value);
+    const b = Number(el.b.value);
+    el.readout.textContent = pixelText(state.diff, findPair(state.diff, a, b), indexOf(a), indexOf(b), x, y, state.manifest);
   }
 
   function fillChoices() {
@@ -218,10 +243,19 @@ export function createDiffView() {
   el.a.addEventListener("change", () => onPick("a"));
   el.b.addEventListener("change", () => onPick("b"));
   el.reset.addEventListener("click", () => { if (state) choose(state.diff.default_pair.a, state.diff.default_pair.b); });
+  for (const button of el.steps) {
+    button.addEventListener("click", () => {
+      if (!state) return;
+      const [which, delta] = button.dataset.step.split(":");
+      const next = stepPair(state.manifest.frames.map((f) => f.epoch_id), Number(el.a.value), Number(el.b.value),
+        which, Number(delta));
+      if (next) choose(...next);
+    });
+  }
   for (const stage of el.stages) {
     stage.addEventListener("pointermove", onPointer);
     stage.addEventListener("pointerdown", onPointer);
   }
   hide();
-  return { show };
+  return { show, pointAt };
 }

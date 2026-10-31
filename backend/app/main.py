@@ -12,6 +12,8 @@ non-200 status; nothing is ever filled in with a default value.
                                                {"status": "working", "message"} meanwhile), then the same manifest
     /api/gaia, /api/diff                       the same location parameters; Gaia markers and difference maps
     /api/lightcurve[&x=&y=]                    the target's light curve, or one measured at a clicked pixel
+    /api/proof                                 measured motion vs Gaia, exposures used, data releases
+    /api/known-objects&a=&b=&spot=             JPL known asteroids/comets near one spot of a difference map
 """
 import json
 import math
@@ -33,6 +35,9 @@ from backend.app.diff import write_diff
 from backend.app.gaia import write_gaia
 from backend.app.lightcurve import lightcurve_at, write_lightcurve
 from backend.app.motion import position_at, separation_arcsec
+from backend.app.known_objects import check as check_known
+from backend.app.proof import write_proof
+from backend.app.spots import write_spots
 from backend.app.render import POSITION_YEAR, NoImages, render_frames
 from backend.app.resolve import ResolverUnavailable, resolve_name
 from backend.app.targets import OFFICIAL_TARGETS
@@ -133,7 +138,9 @@ def _run_job(loc: dict) -> None:
                       "typed position, rounded to 0.0001° (not moved for proper motion)", loc["band"],
                       "coadd", JOB_EXPOSURES_PER_VISIT, loc["fov"], JOBS_DIR)
         for stage, step in [("Gaia DR3 markers", write_gaia), ("difference maps", write_diff),
-                            ("light curve", write_lightcurve)]:
+                            ("light curve", write_lightcurve),
+                            ("proof panel", lambda folder: write_proof(folder, online=True)),
+                            ("spot list", write_spots)]:
             job["stage"] = stage
             try:
                 step(loc["folder"])
@@ -278,6 +285,24 @@ def lightcurve(loc: dict = Depends(location), x: float | None = None, y: float |
     if not (loc["folder"] / "exposures.fits").exists():
         raise ApiError(404, "No per-exposure data for this position and detector")
     return lightcurve_at(loc["folder"], x, y)
+
+
+@app.get("/api/proof")
+def proof(loc: dict = Depends(location)):
+    return _read(loc, "proof.json", "proof panel data")
+
+
+@app.get("/api/known-objects")
+def known(loc: dict = Depends(location), a: int = Query(..., ge=0), b: int = Query(..., ge=0),
+          spot: int = Query(..., ge=0)):
+    spots = _read(loc, "spots.json", "spot list")
+    pair = next((p for p in spots["pairs"] if p["a"] == a and p["b"] == b), None)
+    if pair is None or spot >= len(pair["spots"]):
+        raise ApiError(404, f"No spot {spot} in the difference of visits {a} and {b}")
+    s = pair["spots"][spot]
+    obs = next(o for o in spots["observers"] if o["epoch_id"] == s["frame"])
+    pixel = _read(loc, "manifest.json", "frames")["pixel_arcsec"]
+    return {"spot": {k: s[k] for k in ("ra", "dec", "peak_sigma", "frame")}, **check_known(s, obs, pixel)}
 
 
 @app.get("/api/{rest:path}")

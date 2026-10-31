@@ -13,7 +13,7 @@
       <span class="brand-mark" aria-hidden="true"></span>
       <span class="brand-name">SPHEREx Blink</span>
     </div>
-    <span class="badge" title="Practice build, not the hackathon submission">Practice build · Day 4</span>
+    <span class="badge" title="Practice build, not the hackathon submission">Practice build · Day 5</span>
   </header>
 
   <section class="hero" aria-labelledby="hero-title">
@@ -142,6 +142,26 @@
         </div>
       </section>
 
+      <section id="proof-view" class="diffview" aria-labelledby="proof-title" hidden>
+        <div class="flip-head">
+          <h3 id="proof-title">Proof</h3>
+          <span id="proof-summary" class="flip-summary"></span>
+        </div>
+        <p id="proof-message" class="help" hidden></p>
+        <div id="proof-body" class="proof-grid" hidden>
+          <div class="proof-card">
+            <h4>Motion against Gaia DR3</h4>
+            <p id="proof-verdict" class="proof-verdict"></p>
+            <ul id="proof-motion"></ul>
+          </div>
+          <div class="proof-card">
+            <h4>What it rests on</h4>
+            <ul id="proof-data"></ul>
+          </div>
+        </div>
+        <p id="proof-method" class="help"></p>
+      </section>
+
       <section id="diff-view" class="diffview" aria-labelledby="diff-title" hidden>
         <div class="flip-head">
           <h3 id="diff-title">Before / After / Difference</h3>
@@ -150,8 +170,16 @@
         <p id="diff-message" class="help" hidden></p>
         <div id="diff-panels">
           <div class="inline-row">
-            <label class="inline-label" for="diff-a">Before (A) <select id="diff-a"></select></label>
-            <label class="inline-label" for="diff-b">After (B) <select id="diff-b"></select></label>
+            <div class="stepper">
+              <label class="inline-label" for="diff-a">Before (A) <select id="diff-a"></select></label>
+              <button type="button" class="btn btn-small btn-step" data-step="a:-1" aria-label="Visit A one earlier">−</button>
+              <button type="button" class="btn btn-small btn-step" data-step="a:1" aria-label="Visit A one later">+</button>
+            </div>
+            <div class="stepper">
+              <label class="inline-label" for="diff-b">After (B) <select id="diff-b"></select></label>
+              <button type="button" class="btn btn-small btn-step" data-step="b:-1" aria-label="Visit B one earlier">−</button>
+              <button type="button" class="btn btn-small btn-step" data-step="b:1" aria-label="Visit B one later">+</button>
+            </div>
             <button type="button" id="diff-default" class="btn btn-small">Closest wavelengths</button>
           </div>
           <p id="diff-reason" class="help"></p>
@@ -191,6 +219,22 @@
           <div id="diff-warnings" class="flip-cautions" hidden>
             <strong>Before you trust a coloured spot</strong>
             <ul></ul>
+          </div>
+          <div id="spot-view" class="spot-view" hidden>
+            <h4 class="spot-title">Spots above 5σ <span id="spot-count" class="flip-summary"></span></h4>
+            <p class="help">Groups of pixels that changed by more than 5σ between A and B, strongest first, numbered
+              on the difference panel. A spot is a place to look, not a discovery: most come from stars, artifacts or noise.</p>
+            <ol id="spot-list" class="spot-list"></ol>
+            <div id="spot-detail" class="proof-card" hidden>
+              <h4 id="spot-detail-title"></h4>
+              <p id="spot-why" class="spot-why"></p>
+              <strong class="spot-sub">What else could explain it</strong>
+              <ul id="spot-else"></ul>
+              <strong class="spot-sub">What would confirm it</strong>
+              <ul id="spot-confirm"></ul>
+              <button type="button" id="spot-jpl" class="btn btn-small">Check known asteroids and comets (NASA JPL)</button>
+              <div id="spot-jpl-result" class="spot-jpl-result" aria-live="polite"></div>
+            </div>
           </div>
           <p class="help">Both photo panels use the flipbook's one brightness scale. The difference is
             (B − A − sky change) / √(σ<sub>A</sub>² + σ<sub>B</sub>²), with σ from the SPHEREx VARIANCE

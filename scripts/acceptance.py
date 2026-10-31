@@ -26,7 +26,7 @@ from astropy.time import Time
 from scipy.optimize import least_squares
 
 from backend.app.diff import load_frame
-from scripts.measure_motion import centroid, hole_centre
+from backend.app.measure import centroid, hole_centre
 
 FRAMES = Path("frontend/frames")
 MAX_MOTION_ERROR_PX = 0.5          # HACKATHON_PLAN C4 (Barnard)

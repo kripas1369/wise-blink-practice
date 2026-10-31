@@ -1,0 +1,97 @@
+{
+ "format": "spherex-blink-proof/1",
+ "target": "eps_ind_b",
+ "band": 2,
+ "pixel_arcsec": 6.15,
+ "motion": {
+  "gaia_source_id": "6412596012146801152",
+  "visits": [
+   "2025-04-27",
+   "2026-10-01"
+  ],
+  "expected_px": [
+   -0.925,
+   0.573
+  ],
+  "expected_size_px": 1.09,
+  "limits": {
+   "max_error_px": 0.5,
+   "max_error_source": "HACKATHON_PLAN C4",
+   "max_direction_deg": 30.0,
+   "min_testable_px": 0.3,
+   "direction_and_min_source": "ours"
+  },
+  "method": "centroid",
+  "measured_px": [
+   -0.758,
+   0.631
+  ],
+  "measured_size_px": 0.99,
+  "difference_px": 0.18,
+  "direction_difference_deg": 8.0,
+  "status": "agrees"
+ },
+ "data": {
+  "n_visits": 5,
+  "span_days": 521.9,
+  "n_exposures_used": 39,
+  "n_exposures_taken": 92,
+  "pct_flagged_range": [
+   0.0,
+   0.0
+  ],
+  "visits": [
+   {
+    "date": "2025-04-27 04:33 UTC",
+    "n_images": 8,
+    "n_images_in_epoch": 19,
+    "pct_flagged": 0.0,
+    "pct_no_value": 0.0
+   },
+   {
+    "date": "2025-06-06 18:21 UTC",
+    "n_images": 8,
+    "n_images_in_epoch": 13,
+    "pct_flagged": 0.0,
+    "pct_no_value": 0.0
+   },
+   {
+    "date": "2025-10-11 06:45 UTC",
+    "n_images": 8,
+    "n_images_in_epoch": 29,
+    "pct_flagged": 0.0,
+    "pct_no_value": 0.0
+   },
+   {
+    "date": "2026-04-25 21:04 UTC",
+    "n_images": 7,
+    "n_images_in_epoch": 7,
+    "pct_flagged": 0.0,
+    "pct_no_value": 0.0
+   },
+   {
+    "date": "2026-10-01 03:18 UTC",
+    "n_images": 8,
+    "n_images_in_epoch": 24,
+    "pct_flagged": 0.0,
+    "pct_no_value": 0.0
+   }
+  ],
+  "frames_made_at": "2026-10-31 09:26 UTC",
+  "newest_exposure": "2026-10-01",
+  "releases": {
+   "spherex_qr2": {
+    "n_exposures": 31,
+    "release_date": "2026-06-08 22:41:45"
+   },
+   "spherex_qr3": {
+    "n_exposures": 8,
+    "release_date": "2026-10-29 00:18:29"
+   }
+  },
+  "asked_irsa_at": "2026-10-31 15:16 UTC"
+ },
+ "method": "motion: first to last visit, PNG pixels (+x west, +y south); centroid of the 5 × 5 pixels around Gaia's position, or the centre of the saturated core when the box is not fully usable; rough, because SPHEREx's PSF is about one 6.15″ pixel wide (pixel phase)",
+ "made_by": "backend/app/proof.py",
+ "made_at": "2026-10-31 15:16 UTC"
+}

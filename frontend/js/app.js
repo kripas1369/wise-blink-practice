@@ -3,6 +3,8 @@ import { createDiffView } from "./diffview.js";
 import { createFlipbook } from "./flipbook.js";
 import { createLightCurve } from "./lightcurve.js";
 import { positionAt, separationArcsec, VIEW_EPOCH } from "./motion.js";
+import { createProof } from "./proof.js";
+import { createSpotList } from "./spots.js";
 import { NameNotFound, resolveName } from "./resolve.js";
 import { TARGETS } from "./targets.js";
 import { buildUrlState, DETECTORS, readUrlState } from "./urlstate.js";
@@ -336,11 +338,14 @@ function start() {
   fovValue.textContent = String(state.fov);
   detSelect.value = String(state.det);
   if (fromUrl.problems.length) setStatus(fromUrl.problems.join(" "), "warn");
-  const diffView = createDiffView();
+  let diffView = null;
+  const spotList = createSpotList({ onPick: (xy) => diffView.pointAt(xy) });
+  diffView = createDiffView({ onPair: (loaded, a, b) => spotList.show(loaded, a, b) });
   const lightCurve = createLightCurve();
+  const proofView = createProof();
   flipbook = createFlipbook({
     onDetector: setDetector,
-    onFrames: (loaded) => { diffView.show(loaded); lightCurve.show(loaded); },
+    onFrames: (loaded) => { proofView.show(loaded); diffView.show(loaded); lightCurve.show(loaded); },
     onPixel: (p) => lightCurve.showPixel(p),
   });
   if (fromUrl.ra !== null) {

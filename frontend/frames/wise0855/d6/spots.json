@@ -1,0 +1,175 @@
+{
+ "format": "spherex-blink-spots/1",
+ "target": "wise0855",
+ "band": 6,
+ "limit_sigma": 5.0,
+ "rules": {
+  "max_spots_per_pair": 10,
+  "near_gaia_px": 1.5,
+  "long_thin_ratio": 3.0,
+  "large_px": 20,
+  "source": "ours"
+ },
+ "observers": [
+  {
+   "epoch_id": 0,
+   "obs_id": "2025W19_1B_0116_2",
+   "exposures_mjd_range": [
+    60800.70069,
+    60800.8351
+   ],
+   "exposures_span_hours": 3.23,
+   "available": true,
+   "mjd": 60800.702186907,
+   "xyz_km": [
+    -4483.018,
+    5138.445,
+    -1751.362
+   ],
+   "vxyz_kms": [
+    2.008703,
+    -0.689219,
+    -7.215502
+   ],
+   "system": "GEOCENTER (axes assumed ICRF)"
+  },
+  {
+   "epoch_id": 1,
+   "obs_id": "2025W46_2A_0289_1",
+   "exposures_mjd_range": [
+    60989.29747,
+    61022.0298
+   ],
+   "exposures_span_hours": 785.58,
+   "available": true,
+   "mjd": 60993.913551328,
+   "xyz_km": [
+    -5615.655,
+    4176.256,
+    -759.479
+   ],
+   "vxyz_kms": [
+    -0.005576,
+    1.322552,
+    7.405009
+   ],
+   "system": "GEOCENTER (axes assumed ICRF)"
+  },
+  {
+   "epoch_id": 2,
+   "obs_id": "2026W17_2A_0692_2",
+   "exposures_mjd_range": [
+    61151.1986,
+    61171.09702
+   ],
+   "exposures_span_hours": 477.56,
+   "available": true,
+   "mjd": 61156.495339106,
+   "xyz_km": [
+    -3458.321,
+    5941.65,
+    -1508.503
+   ],
+   "vxyz_kms": [
+    1.706475,
+    -0.847413,
+    -7.276677
+   ],
+   "system": "GEOCENTER (axes assumed ICRF)"
+  }
+ ],
+ "pairs": [
+  {
+   "a": 0,
+   "b": 1,
+   "n_spots": 0,
+   "spots": []
+  },
+  {
+   "a": 0,
+   "b": 2,
+   "n_spots": 0,
+   "spots": []
+  },
+  {
+   "a": 1,
+   "b": 2,
+   "n_spots": 2,
+   "spots": [
+    {
+     "sign": -1,
+     "peak_sigma": -8.3,
+     "peak_xy": [
+      0,
+      2
+     ],
+     "xy": [
+      0.0,
+      2.43
+     ],
+     "ra": 133.783873,
+     "dec": -7.222423,
+     "n_pixels": 2,
+     "axis_ratio": null,
+     "frame": 1,
+     "artifact_flags": [
+      "touches the frame edge"
+     ],
+     "gaia_star": {
+      "source_id": "5756956777531014528",
+      "g_mag": 19.02,
+      "distance_px": 6.17,
+      "target": false,
+      "chosen": "nearest"
+     },
+     "why": "2 pixels at -8.3σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "No Gaia DR3 star within 1.5 px on visit A's date.",
+      "It could be a solar-system object, a source too faint or too red for Gaia that changed, a cosmic ray or detector artifact that survived the add-up, or noise."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit A (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit.",
+      "For a solar-system object: a known object at this place and time (check below), and a shift between the exposures of one visit."
+     ]
+    },
+    {
+     "sign": 1,
+     "peak_sigma": 5.2,
+     "peak_xy": [
+      15,
+      14
+     ],
+     "xy": [
+      15.0,
+      14.0
+     ],
+     "ra": 133.758043,
+     "dec": -7.242186,
+     "n_pixels": 1,
+     "axis_ratio": null,
+     "frame": 2,
+     "artifact_flags": [],
+     "gaia_star": {
+      "source_id": "5756956644387831296",
+      "g_mag": 16.31,
+      "distance_px": 0.61,
+      "target": false,
+      "chosen": "brightest of 1 within 1.5 px"
+     },
+     "why": "1 pixel at +5.2σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "It sits 0.61 px from Gaia DR3 5756956644387831296 (G 16.31; brightest of 1 within 1.5 px) on visit B's date.",
+      "A star leaves spots like this when it moves, changes brightness, or when the two visits see different wavelengths or PSF shapes (worse for bright stars)."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit."
+     ]
+    }
+   ]
+  }
+ ],
+ "made_by": "backend/app/spots.py",
+ "made_at": "2026-10-31 15:58 UTC"
+}
