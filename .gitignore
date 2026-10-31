@@ -9,3 +9,5 @@ scratch/
 node_modules/
 *.fits
 *.fits.gz
+# the small per-visit data files the website and API serve (about 32 KB each)
+!frontend/frames/**/*.fits

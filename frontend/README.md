@@ -4,12 +4,21 @@ Plain HTML, CSS and JavaScript modules. No build step.
 
 ## Run
 
+With the API (any typed position works; from the repo root, venv active):
+
 ```bash
-cd frontend
-python3 -m http.server 8000
+uvicorn backend.app.main:app --port 8000
 # open http://localhost:8000
 ```
 
+Without the API (the 5 prepared targets only):
+
+```bash
+cd frontend
+python3 -m http.server 8000
+```
+
+The page asks `/api/health` once: if the API answers it uses `/api/frames`, `/api/gaia` and `/api/diff`, otherwise it reads the same files from `frames/`.
 Opening `index.html` directly from the file system does not work (browsers block JavaScript modules there).
 
 ## Test
@@ -23,7 +32,7 @@ npm test        # node --test, needs Node 20+; no packages to install
 
 | File | What it does |
 |---|---|
-| `index.html` | Page layout: search panel, target buttons, sky map, SPHEREx flipbook |
+| `index.html` | Page layout: search panel, target buttons, sky map, SPHEREx flipbook, Before / After / Difference |
 | `css/style.css` | Dark theme, phone layout under 900 px, focus outlines |
 | `js/app.js` | Wires everything: search, targets, URL, Aladin sky map |
 | `js/coords.js` | Reads `17h57m48s +04d41m36s`, `17:57:48 +04:41:36` or degrees |
@@ -31,10 +40,12 @@ npm test        # node --test, needs Node 20+; no packages to install
 | `js/targets.js` | The 5 official targets (SIMBAD positions and motions) |
 | `js/resolve.js` | Star name → position through SIMBAD (Harvard mirror first, CDS second) |
 | `js/urlstate.js` | `?ra=&dec=&fov=&det=` share links |
-| `js/flipbook.js` | The flipbook panel: play, step, blink, flags overlay, labels, honest messages |
-| `js/frames.js` | Loads and checks `frames/` (format: [`docs/plan/FRAMES_FORMAT.md`](../docs/plan/FRAMES_FORMAT.md)) |
+| `js/flipbook.js` | The flipbook panel: play, step, blink, flags overlay, Gaia markers, labels, honest messages; asks again every 10 s while the API prepares a new position |
+| `js/frames.js` | Loads and checks the manifest from the API or from `frames/` (format: [`docs/plan/FRAMES_FORMAT.md`](../docs/plan/FRAMES_FORMAT.md)); also `gaia.json` and `diff.json` |
+| `js/diffview.js` | Before / After / Difference: visit pickers, same-pixel cursor in all three panels, read-out, warnings |
+| `js/sky.js` | Pixel ↔ sky maths, which Gaia stars to show, the target's expected shift and its compass direction |
 | `js/player.js` | Stepping, looping and speed rules (tested) |
-| `frames/` | Real SPHEREx frames per target and detector, made by `backend/app/render.py` (format: `docs/plan/FRAMES_FORMAT.md`) |
+| `frames/` | Real SPHEREx frames per target and detector, made by `backend/app/render.py`, plus `gaia.json`, `diff.json` and `epoch<i>.fits` (format: `docs/plan/FRAMES_FORMAT.md`) |
 
 ## Outside services (all free, no login)
 

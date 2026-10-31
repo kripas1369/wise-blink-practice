@@ -14,7 +14,7 @@ A public web tool: type RA/Dec or a star name, and see **real SPHEREx images of 
 ## The 4 days (Sat 31 Oct – Tue 3 Nov)
 1. **Day 1:** find and get the data (query SPHEREx, cutouts, the 5 targets). Backend done: [notes/DAY1_REPORT.md](notes/DAY1_REPORT.md). Website done: [frontend/README.md](frontend/README.md).
 2. **Day 2:** clean and line up the epochs; flipbook. Done: flipbook in `frontend/`, pipeline `python -m backend.app.render <target> <detector>`, findings in [notes/DAY2_FINDINGS.md](notes/DAY2_FINDINGS.md).
-3. **Day 3:** compare epochs with proof (add-up, Gaia, difference); connect website and API.
+3. **Day 3:** compare epochs with proof (add-up, Gaia, difference); connect website and API. Done: Gaia markers, Before / After / Difference view, FastAPI (`backend/app/main.py`), findings in [notes/DAY3_FINDINGS.md](notes/DAY3_FINDINGS.md).
 4. **Day 4:** light curve, online, test the 5 targets.
 
 ## Read first
@@ -30,7 +30,8 @@ A public web tool: type RA/Dec or a star name, and see **real SPHEREx images of 
 - Today's task: `notes/DAY<N>_GUIDE.md`; daily notes: [notes/LEARNING_LOG.md](notes/LEARNING_LOG.md)
 
 ## Layout
-- `backend/app/`: Python code (archive search, cutouts, flags, star motion, clean, align, add-up, render; FastAPI later).
+- `backend/app/`: Python code (archive search, cutouts, flags, star motion, clean, align, add-up, render, Gaia, difference, FastAPI `main.py`).
+- `scripts/measure_ring.py`, `scripts/measure_motion.py`: offline measurements behind the findings notes.
 - `backend/tests/`: pytest tests (`RUN_NETWORK=1` for the ones that call real servers).
 - `scripts/day1_report.py`: coverage report for the 5 targets (`python -m scripts.day1_report`).
 - `learning/`: explanations of everything we built, what comes next, NASA tools review, how to win.
@@ -45,10 +46,16 @@ pip install -r requirements.txt
 python -m pytest backend/tests -v
 ```
 
-## Setup (website)
+## Run (website + API, one server)
+```bash
+source .venv/bin/activate
+uvicorn backend.app.main:app --port 8000    # open http://localhost:8000; API docs at /api/docs
+```
+Without the API (`cd frontend && python3 -m http.server 8000`) the website still shows the 5 prepared targets.
+
+## Test (website)
 ```bash
 cd frontend
-python3 -m http.server 8000   # open http://localhost:8000
 npm test                      # needs Node 20+
 ```
 

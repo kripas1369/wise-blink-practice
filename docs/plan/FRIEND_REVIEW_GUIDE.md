@@ -53,6 +53,26 @@ SPHEREx is a NASA space telescope that photographs the whole sky again and again
 - Saturated star centres (Barnard, R Dra) have no value; shown striped, never as dark sky.
 - Each exposure sees a slightly different wavelength (SPHEREx's filter changes across the detector), so **brightness changes between frames are not claimed**.
 
+### Day 3 (done, 31 Oct)
+| What | In simple words | Where |
+|---|---|---|
+| Gaia markers | Circles where ESA's Gaia catalogue says each star should be on each visit's date (moved from 2016 with its proper motion). The target is yellow, with dots for its other visits. | `backend/app/gaia.py`, `frontend/js/flipbook.js` |
+| Before / After / Difference | Two visits side by side and their difference in σ (orange = brighter, blue = fainter). The pair with the closest wavelength is chosen first. Hovering shows the same sky pixel in all three panels, with its value, noise and σ. | `backend/app/diff.py`, `frontend/js/diffview.js` |
+| Data files | The real values behind each picture (`epoch<i>.fits`), so the difference is not computed from 8-bit PNGs | `backend/app/rebuild.py` |
+| API | One server for the website and the data: name lookup, coverage, frames, Gaia, difference. Any typed position starts a job that downloads and adds up the pictures (a few minutes). | `backend/app/main.py`, [`FACTS.md`](FACTS.md) §7 |
+| Motion check | Measures where the target is in each visit and prints it next to Gaia | `scripts/measure_motion.py` |
+
+![Barnard's Star, last visit: on its Gaia marker](../../notes/screenshots/day3_barnard_gaia_visit3.png)
+
+![Barnard's Star: Before / After / Difference](../../notes/screenshots/day3_barnard_before_after_difference.png)
+
+**Findings** (all numbers and method in [`notes/DAY3_FINDINGS.md`](../../notes/DAY3_FINDINGS.md)):
+- Barnard's Star: its saturated (striped) centre moved **1.59 px north**; Gaia says 1.67 px. Epsilon Indi B moved **0.99 px south-east**; Gaia says 1.09. RW Aurigae (does not move) moved 0.07 px: our alignment is good to under 0.1 px.
+- A bright star leaves a bright/dark pair in the difference **even when it does not move** (RW Aur). So we call a pair "motion" only when it matches Gaia in direction and size.
+- Barnard's difference scatters 7.9× more than the file noise predicts; the website warns about it.
+- WISE 0855 is not in Gaia (too faint in visible light), so it has no Gaia marker.
+- The R Dra add-up is made but not shown: its bright core makes the one linear brightness scale useless (Day 4: non-linear scale).
+
 ---
 
 ## Part B. Run it yourself (15 min)
@@ -62,16 +82,18 @@ git clone https://github.com/kripas1369/wise-blink-practice.git   # or: git pull
 cd wise-blink-practice/frontend
 python3 -m http.server 8000          # then open http://localhost:8000
 ```
-Click **Barnard's Star**, scroll to **SPHEREx flipbook**, press Play, try Blink and "Show flagged pixels".
+Click **Barnard's Star**, scroll to **SPHEREx flipbook**, press Play, try Blink, "Show flagged pixels" and the Gaia markers, then scroll to **Before / After / Difference** and hover over the panels.
 
-Optional (to run the data code and tests; Python 3.11+):
+Optional (to run the data code, the API and the tests; Python 3.11+):
 ```bash
 cd wise-blink-practice
 python3 -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-python -m pytest -q                  # expect: 33 passed, 3 skipped
-cd frontend && npm test              # expect: all pass (Node 20+)
+python -m pytest -q                  # expect: 52 passed, 3 skipped
+cd frontend && npm test              # expect: 25 pass (Node 20+)
+cd .. && uvicorn backend.app.main:app --port 8000      # website + API; API docs at http://localhost:8000/api/docs
 ```
+With the API running you can type any position (e.g. `133.8 -7.2`); the first time, it takes a few minutes to download the pictures.
 
 ---
 
@@ -104,6 +126,13 @@ Pick one visit, e.g. Barnard D2 visit 1:
 - [ ] `python -m scripts.compare_frames <folder A> <folder B>` compares two runs. Single-exposure mode gives exactly the old sample pictures (checked 31 Oct: grey difference 0, correlation 1.000).
 - [ ] `python -m scripts.measure_ring frontend/frames/wise0855/d6` re-measures the WISE 0855 numbers in [`DAY2_FINDINGS.md`](../../notes/DAY2_FINDINGS.md) (offline, but only after the cutouts are in `cache/`, i.e. after running `python -m backend.app.render wise0855 6 --max-per-visit 21` once; that needs the internet and about 5 minutes).
 
+### C6. Gaia markers and the difference (Day 3)
+- [ ] **Gaia positions:** for Barnard's Star, open its [Gaia DR3 entry](https://gea.esac.esa.int/archive/) (source_id `4472832130942575872`) and compare `pmra`, `pmdec` with `frontend/frames/barnard/d2/gaia.json` (−801.55 and 10362.39 mas/yr). Do the same for Epsilon Indi B (`6412596012146801152`). Is Gaia's motion for Eps Ind B the brown-dwarf pair's motion, or only one of them?
+- [ ] **Does the motion match?** Run `python -m scripts.measure_motion frontend/frames/eps_ind_b/d2` (offline) and compare with the table in `notes/DAY3_FINDINGS.md`. On the website, step through Barnard's visits with the Gaia markers on: does the striped centre sit on the yellow circle in each visit?
+- [ ] **Difference maths:** read `difference()` in `backend/app/diff.py` (about 25 lines). z = (B − A − sky change) / √(σA² + σB²). Is subtracting the median sky change fair? Is 1.4826 × MAD the right "robust σ"?
+- [ ] **Default pair:** the website picks the two visits with the closest wavelength. Check one by hand from the `wl_target_um` values in a manifest.
+- [ ] **Errors:** with the API running, try `/api/frames?band=2` (no position), `/api/frames?target=pluto&band=2`, `/api/frames?ra=400&dec=0&band=2`. Each should give a plain `{"error": ...}` message, never made-up data.
+
 ---
 
 ## Part D. Research questions (most important first)
@@ -116,7 +145,9 @@ Pick one visit, e.g. Barnard D2 visit 1:
 6. **Noise:** the file's own noise (from VARIANCE) gives smaller σ values than the pixel scatter (e.g. 11.1 vs 14.7). Lining up the pictures smooths neighbouring pixels, which lowers the scatter. Which should we quote? Is VARIANCE known to be over- or under-estimated?
 7. **Is our "wavelength at the star" allowed?** Kripas's older prototype notes say the Explanatory Supplement calls the WCS-WAVE table "display-only". We use it for the wavelength in every label and will use it to pick visit pairs for the Difference view. Find the exact sentence (Supplement section and page) and what SPHEREx recommends instead, if anything.
 8. **Known asteroids in the Difference view:** NASA JPL's Small-Body Identification API (`ssd-api.jpl.nasa.gov/sb_ident.api`) lists known asteroids and comets near a position at a time. Check whether it works for SPHEREx (Earth-orbiting telescope: which observer location code to use?) and how big a search box we need for 6.15″ pixels.
-9. **NASA's own tools:** what can IRSA's SPHEREx tools already do that we also do? What can they **not** do that we do? (Start: [`learning/05_nasa_tools_review.md`](../../learning/05_nasa_tools_review.md).) This becomes a judge slide.
+9. **Why does a star that does not move leave a pair in the difference?** RW Aurigae D2: −52σ / +71σ around the star, although Gaia says it moved 0.004 px and we measured 0.07 px. Candidates: a tiny alignment shift on a very bright star, the PSF changing across the detector, the wavelength changing between visits. Is there a SPHEREx document on PSF variation (Explanatory Supplement)? This decides how strongly we may say "this pair is motion".
+10. **Display scale for very bright stars (R Draconis):** a linear scale makes everything but the core black. What do astronomers use for web previews (asinh, log, square root)? Is asinh "honest" if the scale is written next to the picture?
+11. **NASA's own tools:** what can IRSA's SPHEREx tools already do that we also do? What can they **not** do that we do? (Start: [`learning/05_nasa_tools_review.md`](../../learning/05_nasa_tools_review.md).) This becomes a judge slide.
 
 ## Part E. Find problems (where to look)
 - **Overclaiming:** any sentence on the website or in the docs that says more than the data shows. The orange notes on the website and `DAY2_FINDINGS.md` are the first place to look.
@@ -141,6 +172,7 @@ Features, checks or explanations that would help a student, a citizen scientist 
 ## Part H. What comes next (Kripas builds, you check)
 | Day | Kripas builds | You check |
 |---|---|---|
-| Day 3 | Gaia markers on the flipbook, **synced Before / After / Difference view** (visit A, visit B, (B − A) in σ, side by side; rules in [HACKATHON_PLAN.md](HACKATHON_PLAN.md) C1), the API (`/api/frames` etc.), centre fits for moving objects | Gaia positions of the 5 targets; does Barnard's Star land on its Gaia markers? Is WISE 0855 moving the right way (D question 1)? In the Difference view: are residuals explained (motion, wavelength change, alignment) before anything is called a change? |
-| Day 4 | Light curve (brightness per visit with error bars and wavelength), deploy, tests on the 5 targets | Compare brightness with IRSA's Spectrophotometry Tool; test the public link on your phone |
+| Day 3 (done 31 Oct) | Gaia markers, synced Before / After / Difference view, the API, motion measurements (Part A, Day 3) | Part C6; research questions 9 and 10 |
+| Day 3 leftovers | WISE 0855 position fit (is it moving like WISE 0855?), PSF-fit positions | Question 1 |
+| Day 4 | Light curve (brightness per visit with error bars and wavelength), deploy, tests on the 5 targets, R Dra add-up with a non-linear scale | Compare brightness with IRSA's Spectrophotometry Tool; test the public link on your phone |
 | Later | Spectrum panel, proof panel, About page, spot evidence panel with known-object check (JPL), video, pitch | Each spot's evidence text; known-object matches against JPL by hand for one case; science text, references, limitations |

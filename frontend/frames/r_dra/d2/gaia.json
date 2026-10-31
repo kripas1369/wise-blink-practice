@@ -1,0 +1,481 @@
+{
+ "format": "spherex-blink-gaia/1",
+ "catalogue": "Gaia DR3 (gaia_dr3_source at NASA/IPAC IRSA)",
+ "catalogue_epoch": 2016.0,
+ "query": {
+  "ra": 248.16723307280128,
+  "dec": 66.75502382666444,
+  "radius_deg": 0.06906,
+  "n_returned": 95
+ },
+ "method": "each Gaia DR3 position (epoch 2016.0) moved in a straight line with its proper motion to the frame's MJD; parallax not applied; stars without a Gaia proper motion stay at their 2016.0 position",
+ "pixel_convention": "PNG pixels: x to the right (west), y down (south), 0 = centre of the first pixel",
+ "target_match_rule": "the Gaia star nearest the grid centre at 2026.0, if within 3.0″",
+ "target_match": {
+  "source_id": "1648328016354496384",
+  "sep_arcsec": 0.0
+ },
+ "frames": [
+  {
+   "epoch_id": 0,
+   "mjd": 60848.64921,
+   "year": 2025.4734
+  },
+  {
+   "epoch_id": 1,
+   "mjd": 61012.1324,
+   "year": 2025.921
+  },
+  {
+   "epoch_id": 2,
+   "mjd": 61213.22972,
+   "year": 2026.4715
+  }
+ ],
+ "stars": [
+  {
+   "source_id": "1648328016354496384",
+   "g_mag": 6.37,
+   "pmra": -20.64,
+   "pmdec": 6.15,
+   "parallax": 1.25,
+   "has_motion": true,
+   "xy": [
+    [
+     13.998,
+     14.001
+    ],
+    [
+     14.0,
+     14.0
+    ],
+    [
+     14.002,
+     14.0
+    ]
+   ],
+   "target": true
+  },
+  {
+   "source_id": "1648328119433021824",
+   "g_mag": 14.29,
+   "pmra": -64.11,
+   "pmdec": 21.49,
+   "parallax": 1.75,
+   "has_motion": true,
+   "xy": [
+    [
+     7.523,
+     0.461
+    ],
+    [
+     7.527,
+     0.46
+    ],
+    [
+     7.533,
+     0.458
+    ]
+   ]
+  },
+  {
+   "source_id": "1648328119433021184",
+   "g_mag": 16.18,
+   "pmra": 4.67,
+   "pmdec": -0.8,
+   "parallax": 1.11,
+   "has_motion": true,
+   "xy": [
+    [
+     9.609,
+     7.156
+    ],
+    [
+     9.608,
+     7.156
+    ],
+    [
+     9.608,
+     7.156
+    ]
+   ]
+  },
+  {
+   "source_id": "1648328222512233088",
+   "g_mag": 16.83,
+   "pmra": -5.02,
+   "pmdec": 4.31,
+   "parallax": 0.31,
+   "has_motion": true,
+   "xy": [
+    [
+     18.694,
+     1.248
+    ],
+    [
+     18.694,
+     1.248
+    ],
+    [
+     18.695,
+     1.247
+    ]
+   ]
+  },
+  {
+   "source_id": "1648327226079825280",
+   "g_mag": 17.2,
+   "pmra": -0.47,
+   "pmdec": 2.53,
+   "parallax": 0.27,
+   "has_motion": true,
+   "xy": [
+    [
+     1.21,
+     27.183
+    ],
+    [
+     1.21,
+     27.183
+    ],
+    [
+     1.21,
+     27.183
+    ]
+   ]
+  },
+  {
+   "source_id": "1648327187423664000",
+   "g_mag": 17.88,
+   "pmra": -4.27,
+   "pmdec": -3.27,
+   "parallax": 0.25,
+   "has_motion": true,
+   "xy": [
+    [
+     10.087,
+     21.823
+    ],
+    [
+     10.088,
+     21.823
+    ],
+    [
+     10.088,
+     21.823
+    ]
+   ]
+  },
+  {
+   "source_id": "1648327221783398016",
+   "g_mag": 17.91,
+   "pmra": 0.14,
+   "pmdec": 5.58,
+   "parallax": 1.5,
+   "has_motion": true,
+   "xy": [
+    [
+     -0.178,
+     27.516
+    ],
+    [
+     -0.178,
+     27.515
+    ],
+    [
+     -0.178,
+     27.515
+    ]
+   ]
+  },
+  {
+   "source_id": "1648328050713545856",
+   "g_mag": 18.66,
+   "pmra": -9.81,
+   "pmdec": 2.45,
+   "parallax": 1.14,
+   "has_motion": true,
+   "xy": [
+    [
+     3.99,
+     7.204
+    ],
+    [
+     3.99,
+     7.204
+    ],
+    [
+     3.991,
+     7.204
+    ]
+   ]
+  },
+  {
+   "source_id": "1648328183856084992",
+   "g_mag": 18.68,
+   "pmra": 1.71,
+   "pmdec": -4.16,
+   "parallax": 0.3,
+   "has_motion": true,
+   "xy": [
+    [
+     23.289,
+     12.067
+    ],
+    [
+     23.289,
+     12.067
+    ],
+    [
+     23.289,
+     12.068
+    ]
+   ]
+  },
+  {
+   "source_id": "1648327294799302400",
+   "g_mag": 18.88,
+   "pmra": null,
+   "pmdec": null,
+   "parallax": null,
+   "has_motion": false,
+   "xy": [
+    [
+     2.408,
+     14.836
+    ],
+    [
+     2.408,
+     14.836
+    ],
+    [
+     2.408,
+     14.836
+    ]
+   ]
+  },
+  {
+   "source_id": "1648328286935313408",
+   "g_mag": 18.92,
+   "pmra": 11.65,
+   "pmdec": -18.23,
+   "parallax": 1.78,
+   "has_motion": true,
+   "xy": [
+    [
+     22.298,
+     -1.064
+    ],
+    [
+     22.297,
+     -1.063
+    ],
+    [
+     22.296,
+     -1.061
+    ]
+   ]
+  },
+  {
+   "source_id": "1648328016354500352",
+   "g_mag": 19.24,
+   "pmra": null,
+   "pmdec": null,
+   "parallax": null,
+   "has_motion": false,
+   "xy": [
+    [
+     13.407,
+     13.684
+    ],
+    [
+     13.407,
+     13.684
+    ],
+    [
+     13.407,
+     13.684
+    ]
+   ]
+  },
+  {
+   "source_id": "1648327226079826432",
+   "g_mag": 19.35,
+   "pmra": -1.53,
+   "pmdec": 0.0,
+   "parallax": -0.04,
+   "has_motion": true,
+   "xy": [
+    [
+     -0.872,
+     22.549
+    ],
+    [
+     -0.872,
+     22.549
+    ],
+    [
+     -0.872,
+     22.549
+    ]
+   ]
+  },
+  {
+   "source_id": "1648328016354504064",
+   "g_mag": 19.44,
+   "pmra": null,
+   "pmdec": null,
+   "parallax": null,
+   "has_motion": false,
+   "xy": [
+    [
+     13.839,
+     13.327
+    ],
+    [
+     13.839,
+     13.327
+    ],
+    [
+     13.839,
+     13.327
+    ]
+   ]
+  },
+  {
+   "source_id": "1648327290502883456",
+   "g_mag": 19.45,
+   "pmra": -6.69,
+   "pmdec": 3.11,
+   "parallax": 0.58,
+   "has_motion": true,
+   "xy": [
+    [
+     3.115,
+     18.614
+    ],
+    [
+     3.116,
+     18.614
+    ],
+    [
+     3.116,
+     18.614
+    ]
+   ]
+  },
+  {
+   "source_id": "1648328149496356480",
+   "g_mag": 19.72,
+   "pmra": -4.51,
+   "pmdec": -7.58,
+   "parallax": -0.26,
+   "has_motion": true,
+   "xy": [
+    [
+     2.687,
+     4.257
+    ],
+    [
+     2.687,
+     4.258
+    ],
+    [
+     2.688,
+     4.259
+    ]
+   ]
+  },
+  {
+   "source_id": "1648328325592152448",
+   "g_mag": 19.75,
+   "pmra": -7.8,
+   "pmdec": -1.92,
+   "parallax": 0.34,
+   "has_motion": true,
+   "xy": [
+    [
+     12.939,
+     3.868
+    ],
+    [
+     12.94,
+     3.868
+    ],
+    [
+     12.941,
+     3.868
+    ]
+   ]
+  },
+  {
+   "source_id": "1648327187423661312",
+   "g_mag": 20.12,
+   "pmra": -1.68,
+   "pmdec": -0.84,
+   "parallax": 0.62,
+   "has_motion": true,
+   "xy": [
+    [
+     8.07,
+     24.157
+    ],
+    [
+     8.07,
+     24.157
+    ],
+    [
+     8.07,
+     24.157
+    ]
+   ]
+  },
+  {
+   "source_id": "1648328222511049088",
+   "g_mag": 20.18,
+   "pmra": -3.43,
+   "pmdec": -1.94,
+   "parallax": -0.1,
+   "has_motion": true,
+   "xy": [
+    [
+     16.884,
+     2.628
+    ],
+    [
+     16.884,
+     2.628
+    ],
+    [
+     16.884,
+     2.628
+    ]
+   ]
+  },
+  {
+   "source_id": "1648328218215831552",
+   "g_mag": 20.86,
+   "pmra": -2.73,
+   "pmdec": -6.97,
+   "parallax": 0.45,
+   "has_motion": true,
+   "xy": [
+    [
+     18.859,
+     4.796
+    ],
+    [
+     18.86,
+     4.796
+    ],
+    [
+     18.86,
+     4.797
+    ]
+   ]
+  }
+ ],
+ "made_by": "backend/app/gaia.py",
+ "made_at": "2026-10-31 12:37 UTC",
+ "data_credit": "ESA Gaia DR3, via NASA/IPAC IRSA"
+}

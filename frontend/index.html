@@ -16,7 +16,7 @@
         <p class="tagline">See the infrared sky change over time</p>
       </div>
     </div>
-    <span class="badge" title="Practice build, not the hackathon submission">Practice build · Day 2</span>
+    <span class="badge" title="Practice build, not the hackathon submission">Practice build · Day 3</span>
   </header>
 
   <main class="layout">
@@ -83,6 +83,7 @@
           <div id="flip-stage" class="flip-stage">
             <img id="flip-img" class="flip-layer" alt="" hidden>
             <img id="flip-flags" class="flip-layer flip-flags" alt="" hidden>
+            <div id="flip-gaia" class="gaia-layer" aria-hidden="true" hidden></div>
             <span class="flip-target" aria-hidden="true" hidden></span>
             <span class="flip-compass" aria-hidden="true" hidden>N ↑ &nbsp;E ←</span>
             <span class="flip-scale" aria-hidden="true" hidden><span>1′</span><span class="flip-scale-bar"></span></span>
@@ -128,15 +129,77 @@
             </div>
 
             <label class="check"><input type="checkbox" id="flip-show-flags"> Show flagged pixels in red</label>
+            <div class="inline-row">
+              <label class="check"><input type="checkbox" id="flip-show-gaia" checked> Gaia DR3 markers</label>
+              <label class="inline-label" for="flip-gaia-mag">Stars <select id="flip-gaia-mag"></select></label>
+            </div>
+            <p id="flip-gaia-note" class="help"></p>
             <p id="flip-note" class="help flip-note"></p>
           </div>
+        </div>
+      </section>
+
+      <section id="diff-view" class="diffview" aria-labelledby="diff-title" hidden>
+        <div class="flip-head">
+          <h3 id="diff-title">Before / After / Difference</h3>
+          <span id="diff-summary" class="flip-summary"></span>
+        </div>
+        <p id="diff-message" class="help" hidden></p>
+        <div id="diff-panels">
+          <div class="inline-row">
+            <label class="inline-label" for="diff-a">Before (A) <select id="diff-a"></select></label>
+            <label class="inline-label" for="diff-b">After (B) <select id="diff-b"></select></label>
+            <button type="button" id="diff-default" class="btn btn-small">Closest wavelengths</button>
+          </div>
+          <p id="diff-reason" class="help"></p>
+          <p id="diff-facts" class="help"></p>
+          <div class="diff-grid">
+            <figure class="diff-panel">
+              <div class="flip-stage diff-stage">
+                <img id="diff-img-a" class="flip-layer" alt="">
+                <div id="diff-marks-a" class="gaia-layer" aria-hidden="true"></div>
+                <span class="diff-cursor" hidden></span>
+              </div>
+              <figcaption id="diff-cap-a"></figcaption>
+            </figure>
+            <figure class="diff-panel">
+              <div class="flip-stage diff-stage">
+                <img id="diff-img-b" class="flip-layer" alt="">
+                <div id="diff-marks-b" class="gaia-layer" aria-hidden="true"></div>
+                <span class="diff-cursor" hidden></span>
+              </div>
+              <figcaption id="diff-cap-b"></figcaption>
+            </figure>
+            <figure class="diff-panel">
+              <div class="flip-stage diff-stage">
+                <img id="diff-img-d" class="flip-layer" alt="">
+                <div id="diff-marks-d" class="gaia-layer" aria-hidden="true"></div>
+                <span class="diff-cursor" hidden></span>
+              </div>
+              <figcaption id="diff-cap-d"></figcaption>
+            </figure>
+          </div>
+          <div class="diff-legend" aria-label="Difference colours">
+            <span>−5σ fainter in B</span><span class="diff-bar" aria-hidden="true"></span><span>+5σ brighter in B</span>
+            <span class="diff-stripes" aria-hidden="true"></span><span>flagged or no value in either visit</span>
+          </div>
+          <p id="diff-readout" class="diff-readout" aria-live="polite"></p>
+          <p id="diff-shift" class="help"></p>
+          <div id="diff-warnings" class="flip-cautions" hidden>
+            <strong>Before you trust a coloured spot</strong>
+            <ul></ul>
+          </div>
+          <p class="help">Both photo panels use the flipbook's one brightness scale. The difference is
+            (B − A − sky change) / √(σ<sub>A</sub>² + σ<sub>B</sub>²), with σ from the SPHEREx VARIANCE
+            maps, made by <code>backend/app/diff.py</code>. Blink (above) is the honest animation;
+            there is no fade between the visits.</p>
         </div>
       </section>
     </section>
   </main>
 
   <footer class="site-footer">
-    <p>Data: SPHEREx images from NASA/IPAC Infrared Science Archive (IRSA). Background maps: 2MASS, AllWISE and DSS2 (CDS HiPS, served by ESA ESASky). Names: CDS SIMBAD (Harvard mirror). Map: Aladin Lite (CDS).
+    <p>Data: SPHEREx images from NASA/IPAC Infrared Science Archive (IRSA). Star positions and motions: ESA Gaia DR3 (via IRSA). Background maps: 2MASS, AllWISE and DSS2 (CDS HiPS, served by ESA ESASky). Names: CDS SIMBAD (Harvard mirror). Map: Aladin Lite (CDS).
       Team Not42 · NASA Space Apps 2026 practice.</p>
   </footer>
 

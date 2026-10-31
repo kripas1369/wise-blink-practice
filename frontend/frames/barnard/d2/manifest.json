@@ -2,8 +2,8 @@
   "format": "spherex-blink-frames/1",
   "target": "barnard",
   "label": "Barnard's Star",
-  "ra": 269.446269,
-  "dec": 4.768204,
+  "ra": 269.4462685026598,
+  "dec": 4.768204478798888,
   "position_source": "SIMBAD (simbad.harvard.edu) NAME Barnard's star, moved to 2026.0",
   "fov_arcmin": 3.0,
   "pixel_arcsec": 6.15,
@@ -26,7 +26,7 @@
   "made_at": "2026-10-31 09:08 UTC",
   "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx",
   "notes": [
-    "From its known motion (10.4″ a year, mostly north), Barnard's Star should move about 1.7 pixels between the first and last visit. Its centre is saturated or flagged in every exposure (striped), so the shift is hard to judge by eye; measuring it against Gaia comes on Day 3."
+    "Gaia DR3 says Barnard's Star moves 1.67 pixels north from the first to the last visit (yellow markers). Its centre is saturated or flagged in every exposure (striped), so we measured the middle of that striped hole instead: it moved 1.59 pixels north (and 0.03 east, where Gaia says 0.12 west). The hole is a rough position, but it walks with the Gaia markers."
   ],
   "frames": [
     {
@@ -48,7 +48,8 @@
       "n_images_in_epoch": 18,
       "pct_flagged": 2.6,
       "pct_no_value": 0.2,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "fits": "epoch0.fits"
     },
     {
       "png": "epoch1.png",
@@ -69,7 +70,8 @@
       "n_images_in_epoch": 18,
       "pct_flagged": 2.6,
       "pct_no_value": 0.5,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "fits": "epoch1.fits"
     },
     {
       "png": "epoch2.png",
@@ -90,7 +92,8 @@
       "n_images_in_epoch": 25,
       "pct_flagged": 3.6,
       "pct_no_value": 0.4,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "fits": "epoch2.fits"
     }
   ]
 }

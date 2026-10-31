@@ -225,6 +225,45 @@ input[type="range"] { width: 100%; accent-color: var(--accent); min-height: 32px
 .flip-cautions strong { color: var(--warn); }
 .flip-cautions ul { margin: 0.3rem 0 0; padding-left: 1.1rem; }
 
+/* Gaia markers: positioned in percent of the frame by js/flipbook.js and js/diffview.js. */
+.gaia-layer { position: absolute; inset: 0; pointer-events: none; }
+.gaia-mark, .gaia-trail, .diff-ring {
+  position: absolute; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%;
+}
+.gaia-mark { border: 1.5px solid #6fe3ff; box-shadow: 0 0 0 1px #000a; }
+.gaia-target { border: 2px solid var(--accent); }
+.gaia-trail { width: 5px; height: 5px; background: var(--accent); opacity: 0.75; box-shadow: 0 0 0 1px #000a; }
+
+.diffview { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+#diff-panels { display: grid; gap: 0.6rem; }
+#diff-panels .help { margin: 0; }
+.diff-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.6rem; }
+.diff-panel { margin: 0; display: grid; gap: 0.3rem; }
+.diff-panel figcaption { font-size: 0.78rem; color: var(--muted); }
+.diff-stage { cursor: crosshair; touch-action: none; }
+.diff-cursor { position: absolute; outline: 2px solid #fff; box-shadow: 0 0 0 3px #000c; pointer-events: none; }
+.diff-ring { border: 2px dashed; }
+.diff-ring::after {
+  content: attr(data-label); position: absolute; left: 50%; bottom: 100%; transform: translateX(-50%);
+  font-size: 0.7rem; font-weight: 800; line-height: 1.2; color: inherit; text-shadow: 0 0 3px #000, 0 0 3px #000;
+}
+.ring-a { border-color: #8fb8ff; color: #8fb8ff; }
+.ring-b { border-color: #ffb36b; color: #ffb36b; }
+.diff-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; font-size: 0.78rem; color: var(--muted); }
+.diff-bar {
+  width: 140px; height: 10px; border-radius: 3px;
+  background: linear-gradient(90deg, #468cff, #12141a 50%, #ff6e28);
+}
+.diff-stripes {
+  width: 18px; height: 10px; border-radius: 3px; margin-left: 0.6rem;
+  background: repeating-linear-gradient(45deg, #1d2a4a 0 3px, #0b1222 3px 6px);
+}
+.diff-readout { margin: 0; font-family: var(--mono); font-size: 0.8rem; min-height: 2.4em; overflow-wrap: anywhere; }
+
+@media (max-width: 640px) {
+  .diff-grid { grid-template-columns: 1fr; }
+}
+
 .site-footer { padding: 1rem clamp(1rem, 3vw, 2rem) 2rem; color: var(--muted); font-size: 0.78rem; text-align: center; }
 
 @media (max-width: 900px) {

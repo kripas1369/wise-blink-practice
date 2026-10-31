@@ -124,18 +124,23 @@ Position moved with proper motion to 2026.0, then `CONTAINS ... s_region`, 4 sci
 
 ---
 
-## 7. API format (draft, finalise together on the Day 3 morning call, Mon 2 Nov)
-- `GET /api/resolve?name=` → `{ "ra": deg, "dec": deg, "source": "SIMBAD" }` or `{ "error": "not found" }`.
-- `GET /api/coverage?ra=&dec=` → `[ { "obs_id", "band", "mjd", "wl_min_um", "wl_max_um", "release" } ]`.
-- `GET /api/frames?ra=&dec=&fov_arcmin=&band=&mode=single|coadd` → `[ { "png_url", "mjd", "date_iso", "epoch_id", "band", "n_images", "pct_flagged" } ]`.
-  - Day 2 (31 Oct): the flipbook already reads a fuller version of this from files: [`FRAMES_FORMAT.md`](FRAMES_FORMAT.md). Proposal: the API returns that manifest.
-  - Day 2 (31 Oct): the flipbook already reads a fuller version of this from files: [`FRAMES_FORMAT.md`](FRAMES_FORMAT.md). Proposal: the API returns that manifest.
-- `GET /api/diff?...&epochA=&epochB=` → `{ "png_url", "max_sigma", "min_sigma" }`.
-- `GET /api/gaia?ra=&dec=&fov_arcmin=&mjds=` → `[ { "source_id", "g_mag", "positions": [ { "mjd", "ra", "dec" } ] } ]`.
+## 7. API format (built 31 Oct, `backend/app/main.py`; run `uvicorn backend.app.main:app --port 8000`)
+Built (tested in `backend/tests/test_day3.py`):
+- `GET /api/health` → `{ "ok": true }` (the website uses it to decide between the API and the static files).
+- `GET /api/resolve?name=` → SIMBAD's answer (`name`, `simbad_id`, `ra`, `dec`, `pmra`, `pmdec`, `epoch`, `server`) plus `"source": "SIMBAD (<server>)"` and `position_now` (`{ra, dec, year: 2026.0, moved_arcsec}`, or `null` without a proper motion). Not found → 404; SIMBAD down → 503.
+- `GET /api/coverage?ra=&dec=[&band=]` → `{ ra, dec, band, asked_at, summary, images: [ { "obs_id", "band", "mjd", "wl_min_um", "wl_max_um", "release", "release_date" } ] }`, cached 1 hour. IRSA down → 502.
+- `GET /api/frames?target=&band=` or `?ra=&dec=&band=[&fov_arcmin=3]` → the frames manifest ([`FRAMES_FORMAT.md`](FRAMES_FORMAT.md)) with `png_url`, `flags_png_url`, `base_url`, `source`, `warnings`. A typed position (not within 5″ of a prepared target) starts a background job: **HTTP 202** `{ "status": "working", "message" }` until ready; no SPHEREx images → 404.
+- `GET /api/gaia` (same location parameters) → `gaia.json` (FRAMES_FORMAT §6): per star `source_id` (text), `g_mag`, `xy` per frame.
+- `GET /api/diff` (same location parameters) → `diff.json` (FRAMES_FORMAT §7): every visit pair with `png_url`, `days`, `wl_gap_um`, `scatter_sigma`, `max_sigma`, `min_sigma`, `z`; plus `default_pair`.
+- Unknown `/api/...` path → 404. Interactive docs: `/api/docs`.
+
+Changed from the draft, and why: `/api/frames` returns the whole manifest (labels need every field); `/api/diff` returns all pairs at once (the view switches pairs without waiting); `/api/gaia` gives pixel positions per frame (the website does not need its own WCS code).
+
+Still to build (Day 4 and later):
 - `GET /api/lightcurve?ra=&dec=&band=` → `[ { "mjd", "flux", "flux_err", "flagged" } ]`.
 - `GET /api/spectrum?ra=&dec=&epoch=` → `[ { "wl_um", "flux", "flux_err" } ]`.
 - **Units:** degrees for RA/Dec, arcminutes for field of view, micrometres for wavelength, MJD for time.
-- **Errors:** always `{ "error": "<plain message>" }` with a non-200 status. The frontend shows the message; it never invents a value.
+- **Errors:** always `{ "error": "<plain message>" }` with a non-200 status (400 bad input, 404 nothing there, 502/503 IRSA or SIMBAD down). The frontend shows the message; it never invents a value.
 
 ---
 

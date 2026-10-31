@@ -215,6 +215,7 @@ flowchart LR
   - Gaia markers on the flipbook (move per epoch).
   - Difference mode with a sigma colour scale, shown as the **synced Before / After / Difference view** (C1): pair with the closest wavelengths chosen by default, hover shows the same sky pixel in all three panels.
 - **Done when:** **Barnard's Star walks across the browser flipbook onto its Gaia markers**, and the Before / After / Difference view of Barnard's Star is checked against its Gaia positions (expected: a bright-dark pair about 1.7 px apart; if the saturated centre hides it, the view says so instead of pretending).
+- **Status (31 Oct): done early, all by Kripas** (roles changed on 31 Oct; [Friend's name] checks it). Barnard's saturated core moved 1.59 px north (Gaia: 1.67 px); its difference shows the north–south pair, with a warning that the scatter is 7.9× the file noise. Epsilon Indi B: 0.99 px south-east (Gaia 1.09). Numbers, method and open items: [`notes/DAY3_FINDINGS.md`](../../notes/DAY3_FINDINGS.md).
 
 #### Day 4, Tue 3 Nov: connect, online, test
 - **[Friend's name]:**

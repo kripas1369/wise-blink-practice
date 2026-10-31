@@ -1,8 +1,9 @@
-// Load and check prepared SPHEREx frames (format: docs/plan/FRAMES_FORMAT.md).
-// Day 2 reads files from frontend/frames/; Day 3 swaps this for the /api/frames call.
+// Load and check SPHEREx frames (format: docs/plan/FRAMES_FORMAT.md): from the data API
+// (backend/app/main.py) when the site is served by it, otherwise the prepared files in frontend/frames/.
 
 export const FRAMES_ROOT = "frames";
 export const FORMAT = "spherex-blink-frames/1";
+export const PREPARED_FOV = 3;
 
 export class FramesUnavailable extends Error {}
 
@@ -88,4 +89,67 @@ export async function loadIndex(fetchFn = fetch, root = FRAMES_ROOT) {
 export async function loadManifest(target, band, fetchFn = fetch, root = FRAMES_ROOT) {
   const manifest = await getJson(manifestUrl(target, band, root), fetchFn);
   return manifest === null ? null : checkManifest(manifest);
+}
+
+/** gaia.json / diff.json next to a manifest, or null when that folder has none. */
+export async function loadExtra(base, name, fetchFn = fetch) {
+  return getJson(`${base}/${name}`, fetchFn);
+}
+
+let apiAnswered = null;
+
+/** Is the site served by the data API? Asked once. */
+export async function hasApi(fetchFn = fetch) {
+  if (apiAnswered === null) {
+    try {
+      const resp = await fetchFn("/api/health", { cache: "no-cache" });
+      apiAnswered = resp.ok && (await resp.json()).ok === true;
+    } catch {
+      apiAnswered = false;
+    }
+  }
+  return apiAnswered;
+}
+
+export function resetApiCheck() {
+  apiAnswered = null;
+}
+
+export function framesQuery({ targetKey, ra, dec, det, fov }) {
+  const params = targetKey && fov === PREPARED_FOV
+    ? { target: targetKey, band: det }
+    : { ra: ra.toFixed(6), dec: dec.toFixed(6), band: det, fov_arcmin: fov };
+  return `/api/frames?${new URLSearchParams(params)}`;
+}
+
+/**
+ * Frames for a position and detector:
+ *   { status: "ready", manifest, base, warnings }  base = folder URL without the trailing slash
+ *   { status: "working", message }                 the API is preparing them; ask again later
+ *   { status: "none", message }                    there are none (the message says why)
+ * Throws FramesUnavailable when a server fails.
+ */
+export async function loadFrames(where, fetchFn = fetch) {
+  const { targetKey, det, fov } = where;
+  if (await hasApi(fetchFn)) {
+    let resp;
+    try {
+      resp = await fetchFn(framesQuery(where), { cache: "no-cache" });
+    } catch {
+      throw new FramesUnavailable("Could not reach the data API");
+    }
+    const body = await resp.json().catch(() => ({}));
+    if (resp.status === 202) return { status: "working", message: body.message || "Preparing the frames…" };
+    if (resp.status === 404) return { status: "none", message: body.error || "No SPHEREx frames here" };
+    if (!resp.ok) throw new FramesUnavailable(body.error || `The data API answered HTTP ${resp.status}`);
+    return {
+      status: "ready", manifest: checkManifest(body), base: body.base_url.replace(/\/$/, ""), warnings: body.warnings || [],
+    };
+  }
+  if (!targetKey) {
+    return { status: "none", message: "SPHEREx frames for any position need the data API (uvicorn backend.app.main:app). This server only has the 5 prepared targets." };
+  }
+  const manifest = await loadManifest(targetKey, det, fetchFn);
+  if (manifest === null) return { status: "none", message: `No prepared SPHEREx frames for this target in D${det}.` };
+  return { status: "ready", manifest, base: `${FRAMES_ROOT}/${targetKey}/d${det}`, warnings: [] };
 }

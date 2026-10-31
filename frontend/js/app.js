@@ -1,4 +1,5 @@
 import { formatDec, formatRa, looksLikeName, parseCoordinates } from "./coords.js";
+import { createDiffView } from "./diffview.js";
 import { createFlipbook } from "./flipbook.js";
 import { positionAt, separationArcsec, VIEW_EPOCH } from "./motion.js";
 import { NameNotFound, resolveName } from "./resolve.js";
@@ -68,7 +69,9 @@ function officialTargetAt(ra, dec) {
 function refreshFlipbook() {
   if (!flipbook || state.ra === null) return;
   const target = TARGETS.find((t) => t.key === state.targetKey);
-  flipbook.show({ targetKey: state.targetKey, label: target ? target.label : "", det: state.det, fov: state.fov });
+  flipbook.show({
+    targetKey: state.targetKey, label: target ? target.label : "", ra: state.ra, dec: state.dec, det: state.det, fov: state.fov,
+  });
 }
 
 function setDetector(det) {
@@ -331,7 +334,8 @@ function start() {
   fovValue.textContent = String(state.fov);
   detSelect.value = String(state.det);
   if (fromUrl.problems.length) setStatus(fromUrl.problems.join(" "), "warn");
-  flipbook = createFlipbook({ onDetector: setDetector });
+  const diffView = createDiffView();
+  flipbook = createFlipbook({ onDetector: setDetector, onFrames: (loaded) => diffView.show(loaded) });
   if (fromUrl.ra !== null) {
     const target = officialTargetAt(fromUrl.ra, fromUrl.dec);
     applyPosition({

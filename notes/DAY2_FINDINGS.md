@@ -24,7 +24,7 @@ The two σ disagree (the scatter is lowered by the smoothing of the line-up step
 | WISE 0855, D2 | 8, 8, 6, 8 | 1.28–1.63, 1.25–1.51, 1.28–1.44, 1.16–1.48 | 0% / 0% | The background dot: offset (+1 W, +1 N) in 3 visits, (+1 W, 0) in Dec 2025; σ (file) 30–42. Does not follow WISE 0855's 1.3 px/yr westward motion. |
 | WISE 0855, D6 | 3, 19, 21 (all) | 4.85–5.00, 4.41–4.97, 4.41–4.96 | 0% / 0% | **May 2025:** σ (file) 2.4, scatter 3.6: nothing clear. **Nov 2025:** σ (file) 11.1, scatter 14.7, offset (0, 0). **Apr 2026:** σ (file) 12.6, scatter 15.4, offset (+1 W, 0). |
 | RW Aurigae, D2 | 8, 8, 8 | 1.18–1.39, 1.12–1.65, 1.11–1.64 | 0% / 0% | Bright, at the ring centre in all visits. |
-| R Draconis, D2 | — | — | — | Add-up not made yet: IRSA's search for its 2,483 images kept timing out on 31 Oct. The website still shows the single exposures. |
+| R Draconis, D2 | — | — | — | Add-up not made yet: IRSA's search for its 2,483 images kept timing out on 31 Oct. The website still shows the single exposures. *Update (Day 3):* made with one detector at a time, but not installed: its bright core needs a non-linear scale ([`DAY3_FINDINGS.md`](DAY3_FINDINGS.md) §4). |
 
 **WISE 0855 D6 checks (Nov 2025 and Apr 2026):**
 - **Not one odd exposure:** leaving out any single exposure keeps σ (file) at 10.1–11.4 and 12.0–12.6; each half of the exposures alone gives 9.2 / 6.4 and 8.4 / 9.4.

@@ -12,6 +12,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import numpy as np
+from astropy.io import fits
 from PIL import Image
 
 from backend.app import archive
@@ -116,6 +117,28 @@ def save_flags_png(bad: np.ndarray, path: Path) -> None:
     Image.fromarray(np.flipud(rgba), "RGBA").save(path)
 
 
+def save_frame_fits(picture: dict, grid, mjd: float, n_images: int, detector: int, mode: str,
+                    path: Path) -> None:
+    """Value, sigma, flagged and has-value maps on the frames grid (FITS rows: south first)."""
+    header = grid.to_header()
+    header["BUNIT"] = "MJy/sr"
+    header["MJD-AVG"] = (mjd, "mean MJD-AVG of the exposures in this picture")
+    header["NIMAGES"] = (n_images, "exposures added")
+    header["DETECTOR"] = detector
+    header["MODE"] = mode
+    hdus = [fits.PrimaryHDU()]
+    for name, data, comment in [
+        ("IMAGE", picture["image"].astype(np.float32), "IMAGE - ZODI, NaN where no usable value"),
+        ("SIGMA", picture["sigma"].astype(np.float32), "1 sigma noise from VARIANCE"),
+        ("FLAGGED", picture["bad"].astype(np.uint8), "1 = flagged bad (official mask)"),
+        ("HAS_VALUE", picture["covered"].astype(np.uint8), "1 = has a usable value"),
+    ]:
+        hdu = fits.ImageHDU(data, header=header.copy(), name=name)
+        hdu.header["COMMENT"] = comment
+        hdus.append(hdu)
+    fits.HDUList(hdus).writeto(path, overwrite=True)
+
+
 def brightness_scale(pictures: list[dict]) -> tuple[float, float]:
     """One linear scale for every frame: percentiles of the good pixels of all frames together."""
     good = np.concatenate([p["image"][p["covered"] & ~p["bad"]] for p in pictures])
@@ -131,17 +154,30 @@ METHODS = {
 }
 
 
+class NoImages(LookupError):
+    """SPHEREx has no usable image of this position in this detector (yet)."""
+
+
 def make_frames(key: str, detector: int, mode: str = "coadd", max_per_visit: int = 8,
                 fov_arcmin: float = 3.0, out_root: Path = DEFAULT_OUT) -> dict:
+    """Frames for one of the 5 official targets (position from SIMBAD, moved to 2026.0)."""
     target = next(t for t in OFFICIAL_TARGETS if t["key"] == key)
     ra, dec, position_source = target_position(target)
+    return render_frames(ra, dec, key, target["label"], position_source, detector, mode, max_per_visit,
+                         fov_arcmin, out_root, NOTES.get((key, detector), []))
+
+
+def render_frames(ra: float, dec: float, key: str, label: str, position_source: str, detector: int,
+                  mode: str = "coadd", max_per_visit: int = 8, fov_arcmin: float = 3.0,
+                  out_root: Path = DEFAULT_OUT, notes: list[str] | None = None) -> dict:
+    """Frames for any position; writes <out_root>/<key>/d<detector>/ and returns the manifest."""
     grid, size = target_grid(ra, dec, fov_arcmin)
     size_deg = cutout_size_deg(fov_arcmin)
     wanted = 1 if mode == "single" else max_per_visit
 
     images = [im for im in archive.find_images(ra, dec, detector=detector) if im.detector == detector]
     if not images:
-        raise SystemExit(f"No SPHEREx images of {target['label']} in D{detector}")
+        raise NoImages(f"No SPHEREx images of {label} in D{detector}")
     frames = []
     for epoch in archive.group_epochs(images):
         exposures = visit_exposures(epoch, ra, dec, grid, size, size_deg, wanted)
@@ -154,11 +190,13 @@ def make_frames(key: str, detector: int, mode: str = "coadd", max_per_visit: int
         p = frame["picture"]
         print(f"  visit {epoch['id']} {epoch['date']}: {frame['n_images']} of {epoch['n_images']} exposures, "
               f"{p['pct_flagged']}% flagged, {p['pct_no_value']}% no value, {frame['wl_target_um']} µm")
+    if not frames:
+        raise NoImages(f"{len(images)} SPHEREx images of {label} in D{detector}, but none covers the whole frame")
 
     vmin, vmax = brightness_scale([f["picture"] for f in frames])
     out_dir = Path(out_root) / key / f"d{detector}"
     out_dir.mkdir(parents=True, exist_ok=True)
-    for old in out_dir.glob("epoch*.png"):
+    for old in [*out_dir.glob("epoch*.png"), *out_dir.glob("epoch*.fits"), *out_dir.glob("diff*")]:
         old.unlink()
 
     manifest_frames = []
@@ -167,9 +205,12 @@ def make_frames(key: str, detector: int, mode: str = "coadd", max_per_visit: int
         png, flags_png = f"epoch{f['epoch_id']}.png", f"epoch{f['epoch_id']}_flags.png"
         save_png(p["image"], p["covered"], vmin, vmax, out_dir / png)
         save_flags_png(p["bad"], out_dir / flags_png)
+        save_frame_fits(p, grid, round(f["mjd"], 5), f["n_images"], detector, mode,
+                        out_dir / f"epoch{f['epoch_id']}.fits")
         manifest_frames.append({
             "png": png,
             "flags_png": flags_png,
+            "fits": f"epoch{f['epoch_id']}.fits",
             "epoch_id": f["epoch_id"],
             "mjd": round(f["mjd"], 5),
             "date_iso": mjd_to_date(f["mjd"])[:16].replace("T", " ") + " UTC",
@@ -190,9 +231,9 @@ def make_frames(key: str, detector: int, mode: str = "coadd", max_per_visit: int
     manifest = {
         "format": FORMAT,
         "target": key,
-        "label": target["label"],
-        "ra": round(ra, 6),
-        "dec": round(dec, 6),
+        "label": label,
+        "ra": ra,  # not rounded: the grid must be rebuilt exactly (rebuild.py, diff.py)
+        "dec": dec,
         "position_source": position_source,
         "fov_arcmin": fov_arcmin,
         "pixel_arcsec": PIXEL_SCALE_ARCSEC,
@@ -210,7 +251,7 @@ def make_frames(key: str, detector: int, mode: str = "coadd", max_per_visit: int
         "made_by": "backend/app/render.py",
         "made_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
         "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx",
-        "notes": NOTES.get((key, detector), []),
+        "notes": notes or [],
         "frames": manifest_frames,
     }
     (out_dir / "manifest.json").write_text(json.dumps(manifest, indent=2, ensure_ascii=False) + "\n")

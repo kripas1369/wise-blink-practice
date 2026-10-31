@@ -48,6 +48,11 @@ About 7 hours a day, in 3 blocks. For each block: the AI explains → **I type t
 - **Block 2 (2.5 h):** Gaia markers on the flipbook from `/api/gaia` (each marker moves to its position for that epoch).
 - **Block 3 (2.5 h):** difference mode (`/api/diff`) as a **synced Before / After / Difference view**: three panels for two chosen visits, (B − A) / sigma with a colour legend, hover shows the same sky pixel in all three, each panel labelled with date, detector and wavelength; the visit pair with the closest wavelengths is the default. Rules: [HACKATHON_PLAN.md](HACKATHON_PLAN.md) C1 (no cross-fade animation; flagged and no-value pixels stay marked).
 - **Done when:** **Barnard's Star walks across the browser flipbook onto its Gaia markers.**
+- **Status (31 Oct, done early): done.** Findings, numbers and screenshots: [`notes/DAY3_FINDINGS.md`](../../notes/DAY3_FINDINGS.md); explained from the basics: [`learning/11_day3_gaia_diff_api.md`](../../learning/11_day3_gaia_diff_api.md).
+  - Data: `epoch<i>.fits` per visit (`rebuild.py` made them from the cached cutouts, every PNG matched), `gaia.py` → `gaia.json`, `diff.py` → `diff.json` + difference PNGs, FastAPI `main.py` (all 5 endpoints, background job for any typed position, one server for API and website). Formats: [`FRAMES_FORMAT.md`](FRAMES_FORMAT.md) §4, §6–8; API: [`FACTS.md`](FACTS.md) §7.
+  - Website: Gaia markers (magnitude limit, target circled, "Gaia says it should move X px north-west" note), synced Before / After / Difference view (closest-wavelength default pair, same-pixel cursor in all three, hover read-out of value, σ and z, scatter and mixed-wavelength warnings), API or static files automatically.
+  - Checked: Barnard's saturated hole moved 1.59 px north (Gaia 1.67); Eps Ind B moved 0.99 px south-east (Gaia 1.09); RW Aur (does not move) 0.07 px. 52 backend tests passed (3 network tests skipped), 25 website tests passed.
+  - Open: R Dra add-up needs a non-linear scale (Day 4); WISE 0855 position fit; PSF-fit positions.
 
 ### Day 4, Tue 3 Nov: connect, online, test
 - **Data (mine):** `/api/lightcurve` (brightness at one position, every visit, with errors, flagged marks and the wavelength of each point); pre-cache the 5 targets.

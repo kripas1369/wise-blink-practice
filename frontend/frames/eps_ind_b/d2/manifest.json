@@ -2,8 +2,8 @@
   "format": "spherex-blink-frames/1",
   "target": "eps_ind_b",
   "label": "Epsilon Indi B",
-  "ra": 331.096644,
-  "dec": -56.80066,
+  "ra": 331.09664385226796,
+  "dec": -56.80066020400499,
   "position_source": "SIMBAD (simbad.harvard.edu) * eps Ind B, moved to 2026.0",
   "fov_arcmin": 3.0,
   "pixel_arcsec": 6.15,
@@ -27,6 +27,8 @@
   "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx",
   "notes": [
     "The two brown dwarfs are far closer together than one SPHEREx pixel (6.15″), so they show as one dot.",
+    "Measured centre of the dot: it moved 0.99 pixels from Apr 2025 to Oct 2026, toward the south-east; Gaia says 1.09 pixels in the same direction. RW Aurigae, which Gaia says does not move, shifts by only 0.04–0.07 pixels measured the same way.",
+    "Its brightness in the add-ups changes by a factor of 2 between visits, and not in step with the mean wavelength; each add-up mixes exposures from about 1.1 to 1.6 µm, where brown dwarfs change brightness steeply. The cause is not checked, so this is not evidence that it varies.",
     "One exposure of the Apr 2026 visit had 30% of its pixels flagged; the add-up leaves those pixels out and fills them from the other 6 exposures."
   ],
   "frames": [
@@ -49,7 +51,8 @@
       "n_images_in_epoch": 19,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "fits": "epoch0.fits"
     },
     {
       "png": "epoch1.png",
@@ -70,7 +73,8 @@
       "n_images_in_epoch": 13,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "fits": "epoch1.fits"
     },
     {
       "png": "epoch2.png",
@@ -91,7 +95,8 @@
       "n_images_in_epoch": 29,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "fits": "epoch2.fits"
     },
     {
       "png": "epoch3.png",
@@ -112,7 +117,8 @@
       "n_images_in_epoch": 7,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "fits": "epoch3.fits"
     },
     {
       "png": "epoch4.png",
@@ -133,7 +139,8 @@
       "n_images_in_epoch": 24,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "fits": "epoch4.fits"
     }
   ]
 }

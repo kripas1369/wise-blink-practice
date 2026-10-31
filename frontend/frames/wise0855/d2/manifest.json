@@ -2,8 +2,8 @@
   "format": "spherex-blink-frames/1",
   "target": "wise0855",
   "label": "WISE 0855",
-  "ra": 133.759765,
-  "dec": -7.242186,
+  "ra": 133.75976461144327,
+  "dec": -7.242186000000001,
   "position_source": "SIMBAD (simbad.harvard.edu) WISEA J085510.74-071442.5, moved to 2026.0",
   "fov_arcmin": 3.0,
   "pixel_arcsec": 6.15,
@@ -48,7 +48,8 @@
       "n_images_in_epoch": 8,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "fits": "epoch0.fits"
     },
     {
       "png": "epoch1.png",
@@ -69,7 +70,8 @@
       "n_images_in_epoch": 19,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "fits": "epoch1.fits"
     },
     {
       "png": "epoch2.png",
@@ -90,7 +92,8 @@
       "n_images_in_epoch": 6,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "fits": "epoch2.fits"
     },
     {
       "png": "epoch3.png",
@@ -111,7 +114,8 @@
       "n_images_in_epoch": 15,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "fits": "epoch3.fits"
     }
   ]
 }

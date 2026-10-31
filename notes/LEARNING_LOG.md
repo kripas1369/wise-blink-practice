@@ -36,6 +36,12 @@ One entry per session. Keep it short: 3 lines plus the time. This becomes our le
 - **Broke / confused me:** a failed download was silently treated as "not in image" and an add-up used 17 instead of 21 exposures (now it stops and retries); pyvo has no timeout, so a dropped IRSA connection hung for 55 minutes (now 300 s, then retry); R Dra's full search kept timing out (now one detector at a time); running a script in parallel with editing it gave me results from the old code twice: once a wrong motion direction for WISE 0855 D6 (east instead of west), once a wrong grouping of close visits. Lesson: edit, then run.
 - **Time:** planned (friend's Day 2) 7 h, actual __ h. Re-type `coadd.py` myself.
 
+### Day 3 (done early, Sat 31 Oct), Kripas (Gaia, difference, API, website)
+- **Built:** `rebuild.py` (per-visit `epoch<i>.fits`), `gaia.py`, `diff.py`, FastAPI `main.py`, `scripts/measure_motion.py`; Gaia markers and the Before / After / Difference view on the website; 19 backend + 9 website tests. Explained in [`learning/11_day3_gaia_diff_api.md`](../learning/11_day3_gaia_diff_api.md).
+- **Learned:** Barnard's Star moves the way Gaia says (1.59 px vs 1.67 px north), Eps Ind B too (0.99 vs 1.09 px south-east); a bright star leaves a blue/orange pair in the difference even when it does not move (RW Aur), so a pair is motion only when it matches Gaia; scatter of z far above 1 (Barnard 7.9) means σ is too small for that picture; Gaia ids do not fit in a JavaScript number (store as text); WISE 0855 is not in Gaia.
+- **Broke / confused me:** rebuilt pictures differed from the website's by 9 grey levels on one pixel, because the manifest position was rounded to 6 decimals (now stored exactly); the R Dra add-up keeps core pixels up to 2,870 MJy/sr, so a linear scale makes everything else black (not installed; Day 4); I wrote "west" for Eps Ind B's motion in a note when PNG x −0.93 means east (caught by re-reading the sign rule: +x = west).
+- **Time:** planned 7 h, actual __ h. Re-type `difference()` in `diff.py` myself.
+
 ### [Friend's name] (validation and research, from 31 Oct)
 Write findings in [`REVIEW_NOTES.md`](REVIEW_NOTES.md); this log is for what you learned.
 - **Learned:**

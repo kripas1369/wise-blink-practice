@@ -18,6 +18,10 @@ COLLECTIONS = ("spherex_qr2", "spherex_qr2_deep", "spherex_qr3", "spherex_qr3_de
 
 PIXEL_SCALE_ARCSEC = 6.15
 
+# Gaia DR3 at IRSA (table name checked 29 Oct 2026); every position is for epoch 2016.0 (ref_epoch).
+GAIA_TABLE = "gaia_dr3_source"
+GAIA_EPOCH = 2016.0
+
 # Wavelength range of each detector in micrometres (SPHEREx Explanatory Supplement).
 DETECTORS = {
     1: (0.75, 1.09),

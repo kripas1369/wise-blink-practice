@@ -2,8 +2,8 @@
   "format": "spherex-blink-frames/1",
   "target": "r_dra",
   "label": "R Draconis",
-  "ra": 248.167233,
-  "dec": 66.755024,
+  "ra": 248.16723307280128,
+  "dec": 66.75502382666444,
   "position_source": "SIMBAD (simbad.harvard.edu) V* R Dra, moved to 2026.0",
   "fov_arcmin": 3.0,
   "pixel_arcsec": 6.15,
@@ -46,7 +46,8 @@
       "pct_no_value": 3.1,
       "pct_covered": 100.0,
       "obs_id": "2025W25_2A_0633_2",
-      "collection": "spherex_qr2"
+      "collection": "spherex_qr2",
+      "fits": "epoch0.fits"
     },
     {
       "png": "epoch1.png",
@@ -65,7 +66,8 @@
       "pct_no_value": 2.4,
       "pct_covered": 100.0,
       "obs_id": "2025W49_1A_0473_1",
-      "collection": "spherex_qr2"
+      "collection": "spherex_qr2",
+      "fits": "epoch1.fits"
     },
     {
       "png": "epoch2.png",
@@ -84,7 +86,8 @@
       "pct_no_value": 1.4,
       "pct_covered": 100.0,
       "obs_id": "2026W26_1A_0047_1",
-      "collection": "spherex_qr2"
+      "collection": "spherex_qr2",
+      "fits": "epoch2.fits"
     }
   ]
 }

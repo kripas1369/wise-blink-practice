@@ -12,12 +12,19 @@ from pathlib import Path
 
 NOTES: dict[tuple[str, int], list[str]] = {
     ("barnard", 2): [
-        "From its known motion (10.4″ a year, mostly north), Barnard's Star should move about 1.7 pixels "
-        "between the first and last visit. Its centre is saturated or flagged in every exposure (striped), so "
-        "the shift is hard to judge by eye; measuring it against Gaia comes on Day 3.",
+        "Gaia DR3 says Barnard's Star moves 1.67 pixels north from the first to the last visit (yellow markers). "
+        "Its centre is saturated or flagged in every exposure (striped), so we measured the middle of that "
+        "striped hole instead: it moved 1.59 pixels north (and 0.03 east, where Gaia says 0.12 west). The hole "
+        "is a rough position, but it walks with the Gaia markers.",
     ],
     ("eps_ind_b", 2): [
         "The two brown dwarfs are far closer together than one SPHEREx pixel (6.15″), so they show as one dot.",
+        "Measured centre of the dot: it moved 0.99 pixels from Apr 2025 to Oct 2026, toward the south-east; "
+        "Gaia says 1.09 pixels in the same direction. RW Aurigae, which Gaia says does not move, shifts by "
+        "only 0.04–0.07 pixels measured the same way.",
+        "Its brightness in the add-ups changes by a factor of 2 between visits, and not in step with the mean "
+        "wavelength; each add-up mixes exposures from about 1.1 to 1.6 µm, where brown dwarfs change "
+        "brightness steeply. The cause is not checked, so this is not evidence that it varies.",
         "One exposure of the Apr 2026 visit had 30% of its pixels flagged; the add-up leaves those pixels out "
         "and fills them from the other 6 exposures.",
     ],
@@ -25,6 +32,8 @@ NOTES: dict[tuple[str, int], list[str]] = {
         "Each add-up mixes exposures at different wavelengths (at the star 1.18–1.39, 1.12–1.65 and "
         "1.11–1.64 µm), and the star's brightness depends on wavelength, so these frames cannot say how much "
         "RW Aurigae itself changed. That needs brightness measured at matching wavelengths (light curve, Day 4).",
+        "Gaia says RW Aurigae moves 0.004 pixels over the year, yet the difference view shows a small "
+        "bright-dark pair at the star: that is the size of pair that alignment and PSF differences alone make.",
     ],
     ("r_dra", 2): [
         "R Draconis is so bright that its centre is saturated (striped) in all 3 visits, so its brightness "
@@ -40,7 +49,8 @@ NOTES: dict[tuple[str, int], list[str]] = {
         "and 13 times the noise, and still 6 to 9 times in each half of the exposures, so it is not one odd "
         "exposure. Its brightest pixel moved 1 pixel west from Nov 2025 to Apr 2026, the way WISE 0855 moves "
         "(about 0.6 pixel expected). That fits WISE 0855 but is not proven yet: the background object seen in "
-        "D2 is only 1 pixel away, and a proper position fit comes on Day 3.",
+        "D2 is only 1 pixel away, and WISE 0855 is not in Gaia, so there is no Gaia marker to compare with; "
+        "a proper position fit is still to do.",
         "The May 2025 visit adds only 3 exposures: nothing clear at the ring (2.4 times the noise), and its "
         "sky is brighter (0.14 against 0.09 MJy/sr after removing the zodiacal glow; cause not checked).",
     ],

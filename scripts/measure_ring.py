@@ -16,13 +16,8 @@ from pathlib import Path
 
 import numpy as np
 
-from backend.app.align import align, cutout_size_deg, target_grid
-from backend.app.clean import clean_cutout
 from backend.app.coadd import coadd
-from backend.app.config import CACHE_DIR
-from backend.app.render import MIN_COVERED_PCT
-
-SAME_VISIT_DAYS = 60
+from backend.app.rebuild import cached_visits
 
 
 def ring_stats(picture: dict) -> dict:
@@ -51,22 +46,9 @@ def main() -> None:
     args = parser.parse_args()
 
     m = json.loads((args.folder / "manifest.json").read_text())
-    ra, dec, det = m["ra"], m["dec"], m["band"]
-    grid, size = target_grid(ra, dec, m["fov_arcmin"])
-    pattern = f"*_D{det}_{ra:.5f}_{dec:+.5f}_{cutout_size_deg(m['fov_arcmin']):.4f}.fits"
-    usable = []
-    for path in sorted((CACHE_DIR / "cutouts").glob(pattern)):
-        cleaned = clean_cutout(path, ra, dec)
-        aligned = align(cleaned, grid, size)
-        if aligned["pct_covered"] >= MIN_COVERED_PCT:
-            usable.append((cleaned, aligned))
-
-    print(f"{m['label']} D{det} ({m['mode']}, {len(usable)} usable cached exposures)")
-    times = np.array([f["mjd"] for f in m["frames"]])
-    nearest = [int(np.argmin(np.abs(times - c["mjd"]))) for c, _ in usable]  # visits can be < 60 days apart
-    for i, f in enumerate(m["frames"]):
-        visit = [(c, a) for (c, a), n in zip(usable, nearest)
-                 if n == i and abs(c["mjd"] - f["mjd"]) < SAME_VISIT_DAYS]
+    visits = cached_visits(m)
+    print(f"{m['label']} D{m['band']} ({m['mode']}, {sum(map(len, visits))} usable cached exposures)")
+    for f, visit in zip(m["frames"], visits):
         if not visit:
             print(f"  {f['date_iso']}: no cached exposures")
             continue

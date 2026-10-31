@@ -72,6 +72,11 @@ def _run(adql: str):
     raise ArchiveError(f"IRSA TAP did not answer after {RETRIES} tries: {last}")
 
 
+def run_query(adql: str):
+    """Any ADQL query on IRSA TAP (e.g. Gaia DR3), with the same retries and timeout."""
+    return _run(adql)
+
+
 def _detector_number(bandpass: str) -> int:
     """"SPHEREx-D3" -> 3."""
     return int(str(bandpass).rsplit("D", 1)[-1])
