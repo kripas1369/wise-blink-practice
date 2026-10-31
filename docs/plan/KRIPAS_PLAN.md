@@ -25,6 +25,7 @@ About 7 hours a day, in 3 blocks. For each block: the AI explains → **I type t
   - 5 official target buttons (Barnard's Star, Epsilon Indi B, WISE 0855, RW Aurigae, R Draconis), each with one line on what to look for (texts in `backend/app/targets.py`).
   - Write the 5 story beats (Part F) in `notes/STORY.md`.
 - **Done when:** clicking "Barnard's Star" centres Aladin on it and the URL can be shared.
+- **Status (31 Oct): done**, checked in the browser (laptop and phone width). Code in `frontend/` ([README](../../frontend/README.md)), 10 tests (`npm test`), story in [`notes/STORY.md`](../../notes/STORY.md), screenshots in `notes/screenshots/`. Block 1 (walking [Friend's name] through the data code) happens on our call.
 
 ### Day 2, Sun 1 Nov: Step 2a, the flipbook
 - **Block 1 (2.5 h):** canvas flipbook: play, pause, step back/forward, speed, loop.

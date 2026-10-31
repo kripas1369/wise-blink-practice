@@ -20,6 +20,11 @@ One entry per session. Keep it short: 3 lines plus the time. This becomes our le
 - **Broke / confused me:** R Dra became one year-long "epoch" (fixed with a 60-day maximum); SIMBAD timeouts made the report take 10 minutes (fixed: remember the server that works).
 - **Time:** planned 7 h, actual __ h. Read `learning/` 01–03 and re-type the code.
 
+### Day 1, Sat 31 Oct, Kripas (website, after the role swap)
+- **Learned:** npm Aladin Lite 3.8 is an ES module, so `<script src>` gives no `window.A` (use `import()`); the WebGL map needs CORS on the image tiles: IRSA's HiPS copies have none, ESA ESASky's do; on the old 2MASS map Barnard's Star sits ~4.5′ from today's position, so moving it with proper motion is visible by eye; SIMBAD TAP works from the browser (CORS `*`) and returns ids like `M  31` with double spaces.
+- **Broke / confused me:** target buttons with `role="listitem"` stopped being buttons for screen readers (now `<li><button>`); a slow SIMBAD answer could overwrite a newer map click (fixed with a version counter); the end of a map drag counted as a click (fixed: ignore presses that moved > 5 px); "M31" was treated as numbers because "m" is a unit letter (now only after a digit).
+- **Time:** planned 5 h, actual __ h. Re-type `coords.js` and `urlstate.js` myself.
+
 ### Day 1, Sat 31 Oct, [Friend's name]
 - **Learned:**
 - **Broke / confused me:**

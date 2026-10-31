@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SPHEREx Blink: see the infrared sky change</title>
+  <meta name="description" content="Type a star name or a sky position and see NASA SPHEREx images of that patch of sky over time.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div>
+        <h1>SPHEREx Blink</h1>
+        <p class="tagline">See the infrared sky change over time</p>
+      </div>
+    </div>
+    <span class="badge" title="Practice build, not the hackathon submission">Practice build · Day 1</span>
+  </header>
+
+  <main class="layout">
+    <section class="panel controls" aria-labelledby="search-title">
+      <h2 id="search-title" class="panel-title">1. Choose a patch of sky</h2>
+
+      <form id="search-form" class="search" autocomplete="off" novalidate>
+        <label for="query" class="label">Star name or position (RA, Dec)</label>
+        <div class="search-row">
+          <input id="query" name="query" type="text" inputmode="text" spellcheck="false"
+                 placeholder="Barnard's Star  or  17h57m47s +04d46m06s"
+                 aria-describedby="query-help status">
+          <button id="go" type="submit" class="btn btn-primary">Go</button>
+        </div>
+        <p id="query-help" class="help">
+          Accepts a name (looked up in SIMBAD), <code>17h57m47s +04d46m06s</code>,
+          <code>17:57:47 +04:46:06</code> or degrees <code>269.446 4.768</code>.
+        </p>
+
+        <div class="field-grid">
+          <div class="field">
+            <label for="fov" class="label">Field of view: <output id="fov-value" for="fov">3</output>′</label>
+            <input id="fov" name="fov" type="range" min="1" max="15" step="1" value="3">
+            <p class="help">Size of the square shown by the flipbook (1–15 arcminutes).</p>
+          </div>
+          <div class="field">
+            <label for="det" class="label">SPHEREx detector</label>
+            <select id="det" name="det"></select>
+            <p class="help">Which wavelength range the flipbook will show.</p>
+          </div>
+        </div>
+      </form>
+
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+
+      <h2 class="panel-title">2. Or start with an official target</h2>
+      <ul id="targets" class="targets"></ul>
+
+      <h2 class="panel-title">3. Your position</h2>
+      <div id="selection" class="selection">
+        <p class="muted">No position chosen yet. Type one, pick a target, or click the sky map.</p>
+      </div>
+    </section>
+
+    <section class="panel sky" aria-labelledby="map-title">
+      <div class="sky-header">
+        <h2 id="map-title" class="panel-title">Sky map</h2>
+        <label class="inline-label" for="survey">Background
+          <select id="survey"></select>
+        </label>
+      </div>
+      <div id="aladin" class="aladin" aria-label="Interactive sky map. Click to choose a position.">
+        <p class="map-message" id="map-message">Loading the sky map…</p>
+      </div>
+      <p class="help map-help">Drag to pan, scroll to zoom, click to choose a position. The yellow square is the field of view.</p>
+
+      <div class="flipbook-placeholder">
+        <h3>SPHEREx flipbook</h3>
+        <p>Next step (Day 2): the real SPHEREx images of this square, one frame per visit, lined up north-up so
+          moving and changing objects stand out.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Data: SPHEREx images from NASA/IPAC Infrared Science Archive (IRSA). Background maps: 2MASS, AllWISE and DSS2 (CDS HiPS, served by ESA ESASky). Names: CDS SIMBAD (Harvard mirror). Map: Aladin Lite (CDS).
+      Team Not42 · NASA Space Apps 2026 practice.</p>
+  </footer>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
