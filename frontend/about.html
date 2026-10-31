@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>About · SPHEREx Blink</title>
+  <meta name="description" content="How SPHEREx Blink cleans NASA SPHEREx images, what it cannot tell you, and whose data it uses.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">SPHEREx Blink</span>
+    </a>
+    <nav class="site-nav" aria-label="Pages">
+      <a href="./">Explore</a>
+      <a href="about.html" aria-current="page">About</a>
+      <span class="badge" title="Practice build, not the hackathon submission">Practice build · Day 5</span>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <p class="eyebrow">About</p>
+    <h1 id="hero-title" class="hero-title">What you see, and how.</h1>
+    <p class="hero-sub">Every picture on this site is real SPHEREx data. Here is each step between the archive and your screen, what it cannot tell you, and whose work it rests on.</p>
+  </section>
+
+  <main class="about">
+    <section class="panel" aria-labelledby="steps-title">
+      <h2 id="steps-title" class="panel-title">How we clean the data</h2>
+      <ol class="about-steps">
+        <li><strong>Find the exposures.</strong> We ask NASA IRSA's SPHEREx table (<code>spherex.obscore</code>) for every
+          exposure that covers the position, in the four science collections <code>spherex_qr2</code>,
+          <code>spherex_qr2_deep</code>, <code>spherex_qr3</code> and <code>spherex_qr3_deep</code>. Calibration collections are skipped.
+          Exposures taken close together in time form one <em>visit</em>.</li>
+        <li><strong>Cut out a small square.</strong> IRSA's cutout service returns about 3′ × 3′ around the target from each
+          exposure, with all its layers: the image, the flags, the variance (noise), the zodiacal-light model and the PSF.</li>
+        <li><strong>Clean each exposure.</strong> Image minus the file's own zodiacal-light model. Noise σ = √variance.
+          Bad pixels come from the official flag bits, read from each file's header because the two releases write them
+          differently; the list of bad flags is in <code>backend/app/config.py</code>. The SOURCE flag is not treated as bad:
+          it marks a known object, not a defect. Pixels with no value in the file (for example a saturated star core) stay empty.</li>
+        <li><strong>Line them up.</strong> Every exposure is reprojected (<code>reproject_interp</code>) onto one shared grid:
+          north up, 6.15″ pixels, 29 × 29 pixels for 3′. Only then does "the same pixel" mean "the same place in the sky".</li>
+        <li><strong>Add up each visit.</strong> Up to 8 exposures per visit, closest to the visit's mean time (all of them,
+          up to 21, for faint WISE 0855 at D6), weighted by 1 / σ² so noisier pixels count less. Flagged pixels are left out
+          of the add-up. The flipbook label says how many were used.</li>
+        <li><strong>Show them fairly.</strong> All frames of one target share one brightness scale (1st to 99.5th percentile of
+          the good pixels, or an asinh stretch for very bright stars), so a change in the picture is a change in the sky,
+          not in the display.</li>
+        <li><strong>Difference.</strong> z = (B − A − sky change) / √(σ<sub>A</sub>² + σ<sub>B</sub>²), where the sky change is
+          the median of B − A. Groups of pixels beyond 5σ are listed as <em>spots</em>, each with the reasons it may be an
+          artifact.</li>
+        <li><strong>Check against Gaia.</strong> Gaia DR3 positions (epoch 2016.0) are moved to each visit's date with their
+          proper motion. The proof panel compares the target's measured shift with Gaia's prediction.</li>
+        <li><strong>Light curve.</strong> Brightness inside a 2-pixel radius minus the median sky 10–14 pixels away, for each
+          exposure. Visits are only compared at the same wavelength, because each exposure sees a slightly different colour.</li>
+      </ol>
+      <p class="help">The code for each step is in <code>backend/app/</code>: <code>archive.py</code>, <code>clean.py</code>,
+        <code>align.py</code>, <code>coadd.py</code>, <code>render.py</code>, <code>diff.py</code>, <code>spots.py</code>,
+        <code>gaia.py</code>, <code>proof.py</code>, <code>lightcurve.py</code>.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="limits-title">
+      <h2 id="limits-title" class="panel-title">What it cannot tell you</h2>
+      <ul class="about-list">
+        <li><strong>Pixels are big.</strong> One SPHEREx pixel is 6.15″, and its PSF is about one pixel wide. A shift smaller
+          than about one pixel is not reliable by eye; our own measurements are rough (pixel phase).</li>
+        <li><strong>The data are young.</strong> Public SPHEREx data so far cover about April 2025 to October 2026, so most
+          targets have only a few visits, about six months apart.</li>
+        <li><strong>Colour changes look like brightness changes.</strong> Each exposure sees a slightly different wavelength,
+          so two visits can differ in brightness for that reason alone.</li>
+        <li><strong>Gaia markers skip parallax.</strong> They use proper motion only. For nearby stars the yearly parallax
+          wobble can shift them a little.</li>
+        <li><strong>A spot is not a discovery.</strong> Most come from moving or variable stars, artifacts, or noise. When a
+          pair of visits scatters more than the noise files predict, the site says so.</li>
+        <li><strong>The known-object check is limited.</strong> It asks NASA JPL's Small-Body Identification service.
+          On 31 Oct 2026 JPL's accurate second pass failed for every request, so the site uses the rougher first pass and labels
+          it. Whether JPL's offsets are east- and north-positive is not yet confirmed. "No match" never means "new object".</li>
+        <li><strong>Our choices are marked as ours.</strong> Some limits come from our plan (0.5 px for motion), others are our
+          own choices (30° in direction, 1.5 px for a nearby Gaia star, 2 px for a known-object match). The panels say which is which.</li>
+        <li><strong>Prepared targets.</strong> The five official targets have ready-made frames for detector D2 (and D6 for
+          WISE 0855). Other positions and detectors are made on request and need the data API.</li>
+      </ul>
+    </section>
+
+    <section class="panel" aria-labelledby="credits-title">
+      <h2 id="credits-title" class="panel-title">Credits</h2>
+      <ul class="about-list">
+        <li><strong>SPHEREx images:</strong> NASA / JPL-Caltech SPHEREx mission, served by the
+          <a href="https://irsa.ipac.caltech.edu/Missions/spherex.html">NASA/IPAC Infrared Science Archive (IRSA)</a>.</li>
+        <li><strong>Star positions and motions:</strong> ESA <a href="https://www.cosmos.esa.int/web/gaia/dr3">Gaia DR3</a>,
+          queried at IRSA.</li>
+        <li><strong>Names:</strong> <a href="https://simbad.cds.unistra.fr/simbad/">SIMBAD</a> (CDS, Strasbourg), with the Harvard mirror.</li>
+        <li><strong>Known asteroids and comets:</strong> NASA JPL
+          <a href="https://ssd-api.jpl.nasa.gov/doc/sb_ident.html">Small-Body Identification API</a>.</li>
+        <li><strong>Sky map:</strong> <a href="https://aladin.cds.unistra.fr/AladinLite/">Aladin Lite</a> (CDS), with 2MASS,
+          AllWISE and DSS2 backgrounds served by ESA ESASky.</li>
+        <li><strong>Software:</strong> Astropy, astroquery, PyVO, reproject, NumPy, SciPy, Pillow, FastAPI.</li>
+      </ul>
+      <p class="help">Team Not42 · NASA Space Apps 2026 practice build. Not the hackathon submission.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Data: SPHEREx images from NASA/IPAC Infrared Science Archive (IRSA). Star positions and motions: ESA Gaia DR3 (via IRSA). Background maps: 2MASS, AllWISE and DSS2 (CDS HiPS, served by ESA ESASky). Names: CDS SIMBAD (Harvard mirror). Map: Aladin Lite (CDS).
+      Team Not42 · NASA Space Apps 2026 practice.</p>
+  </footer>
+</body>
+</html>

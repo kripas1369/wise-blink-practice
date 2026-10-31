@@ -54,7 +54,10 @@ code {
   border-bottom: 1px solid #ffffff14;
 }
 
-.brand { display: flex; align-items: center; gap: 0.6rem; }
+.brand { display: flex; align-items: center; gap: 0.6rem; color: inherit; text-decoration: none; }
+.site-nav { display: flex; align-items: center; gap: 1.25rem; font-size: 0.8rem; }
+.site-nav a { color: var(--muted); text-decoration: none; transition: color 0.2s var(--ease); }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--text); }
 .brand-mark {
   width: 20px; height: 20px; border-radius: 50%;
   background: radial-gradient(circle, var(--text) 0 22%, transparent 23% 52%, var(--text) 53% 64%, transparent 65%);
@@ -372,6 +375,15 @@ input[type="range"] { width: 100%; accent-color: var(--text); min-height: 32px; 
 .lc-list { font-size: 0.83rem; }
 .lc-list strong { font-weight: 600; }
 .lc-list ul { margin: 0.35rem 0 0; padding-left: 1.1rem; color: #d2d2d7; }
+
+/* About page */
+.about {
+  display: grid; gap: 1.25rem;
+  max-width: 860px; margin: 0 auto; padding: 0 clamp(1rem, 4vw, 2.5rem) 2rem;
+}
+.about-steps, .about-list { margin: 0 0 1rem; padding-left: 1.25rem; display: grid; gap: 0.75rem; color: var(--muted); }
+.about-steps strong, .about-list strong { color: var(--text); font-weight: 600; }
+.about a { color: var(--text); text-underline-offset: 2px; }
 
 .site-footer {
   max-width: 980px; margin: 0 auto;

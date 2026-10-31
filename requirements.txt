@@ -3,6 +3,7 @@ astroquery
 pyvo
 reproject
 numpy
+scipy
 Pillow
 requests
 fastapi
