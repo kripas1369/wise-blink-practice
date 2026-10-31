@@ -39,6 +39,10 @@ export function checkManifest(m) {
 export function wavelengthText(frame) {
   const band = `band ${frame.wl_min_um.toFixed(2)}–${frame.wl_max_um.toFixed(2)} µm`;
   if (!isNumber(frame.wl_target_um)) return `wavelength at the star unknown (${band})`;
+  const range = frame.wl_target_range_um;
+  if (Array.isArray(range) && range.length === 2 && range.every(isNumber) && range[0] !== range[1]) {
+    return `${range[0].toFixed(3)}–${range[1].toFixed(3)} µm at the star (${band})`;
+  }
   return `${frame.wl_target_um.toFixed(3)} µm at the star (${band})`;
 }
 

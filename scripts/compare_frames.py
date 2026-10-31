@@ -1,6 +1,6 @@
 """Compare two frame folders that follow docs/plan/FRAMES_FORMAT.md.
 
-Used to check the data pipeline against Kripas's sample frames (or any two runs):
+Used to check a new pipeline run against the frames the website shows now (or any two runs):
     python -m scripts.compare_frames frontend/frames/barnard/d2 scratch/frames/barnard/d2
 
 Checks: same sky grid (centre, pixel size, image size, orientation); the same visits (by time);

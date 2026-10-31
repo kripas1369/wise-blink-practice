@@ -1,112 +1,46 @@
-# [Friend's name]'s personal plan (data and science lead)
+# [Friend's name]'s personal plan (validator and researcher)
 
-GitHub: `lazylog00`. Branch: `friend-backend`. Folder: `backend/`.
+GitHub: `lazylog00`. Branch: `friend-backend` (for review notes only).
 
-**Your job:** everything that touches the data. Finding SPHEREx images, downloading cutouts, cleaning, lining up epochs, adding up, Gaia positions, difference images, light curves, spectra, the API, and the science text. You hand Kripas clean JSON and PNGs in the API format of [HACKATHON_PLAN.md](HACKATHON_PLAN.md) Part C2.
+**Your job (from 31 Oct): check, research, suggest.** Kripas builds everything (website and data code, Day 1 to Day 4 and later). You:
+1. **Validate:** check that every number and picture we show is true, using NASA's own tools and the files themselves.
+2. **Research:** answer the open science questions and read the official SPHEREx documents for things we may have wrong.
+3. **Find problems:** anything wrong, unclear, overclaimed or fragile in the website, the data code or the docs.
+4. **Suggest new things:** features or checks that would make the tool more useful or more convincing to the judges.
 
-**Partner:** Kripas Khatiwada (website and presentation). See [KRIPAS_PLAN.md](KRIPAS_PLAN.md).
+**Your first stop: [FRIEND_REVIEW_GUIDE.md](FRIEND_REVIEW_GUIDE.md)**: what we built in simple words, how to check each claim, and the research list.
 
-**Roles swapped on 31 Oct:** you now do the data side; Kripas does the website. The Day 1 data code already exists (made on 31 Oct before the swap); it is yours now. Read it and re-type it so you can rebuild it from memory.
+**Partner:** Kripas Khatiwada (builds everything). See [KRIPAS_PLAN.md](KRIPAS_PLAN.md).
 
-**We practise the real hackathon project:** SPHEREx data, the 5 official targets, the same features. On 14 Nov you write it again from memory in a new repo (no copying).
+**Your rule (you set it):** no fake, no hype, only ground truth. If something cannot be proven from the data or an official source, it must be marked "not checked yet" or removed.
 
----
-
-## Phase 1: 4-day practice build (Sat 31 Oct – Tue 3 Nov)
-About 7 hours a day, in 3 blocks. For each block: the AI explains → **you type the code** → "review Day N block M" → commit. End of day: learning log, pull request `friend-backend` → `main`, 15-minute call with Kripas. Explanations of everything built: [`learning/`](../../learning/README.md).
-
-### Day 1, Sat 31 Oct: Step 1, find and get the data (take over the existing code)
-**Start here: [FRIEND_DAY1_STEPS.md](FRIEND_DAY1_STEPS.md)**, every command with the result you should see (all checked on a fresh copy on 31 Oct).
-
-**Status: the code is done (31 Oct).** `backend/app/` config, coords, motion, resolve, targets, flags, archive; `scripts/day1_report.py`; 24 offline + 3 network tests pass; results in `notes/DAY1_REPORT.md` and `FACTS.md` §6. Your Day 1 is to **own** it:
-- **Block 1 (2 h, with Kripas):** Kripas walks you through it.
-  - Read [`learning/00`](../../learning/00_big_picture.md), [`01`](../../learning/01_day1_what_we_built.md), [`03`](../../learning/03_archive_facts_and_mistakes.md).
-  - IRSA TAP `https://irsa.ipac.caltech.edu/TAP`; table `spherex.obscore`; condition `CONTAINS(POINT('ICRS', ra, dec), s_region) = 1`; the 4 science collections (QR2, QR3, and their `_deep`).
-  - Inside a cutout: IMAGE, FLAGS, VARIANCE, ZODI, PSF (QR2) or EPSF (QR3), WCS-WAVE; header `MJD-AVG`.
-  - Gaia DR3 at IRSA: `gaia_dr3_source`. SIMBAD: main CDS server, backup `simbad.harvard.edu`.
-- **Block 2 (2.5 h):** set up the venv (`pip install -r requirements.txt`), run the tests and `python -m scripts.day1_report`. Read [`learning/02_code_walkthrough.md`](../../learning/02_code_walkthrough.md) next to the code.
-- **Block 3 (2.5 h):** re-type `coords.py`, `motion.py`, `resolve.py`, `flags.py` and `archive.find_images` in a scratch folder from the walkthrough, without copying; run the tests against your version. Do the 4 exercises at the end of `learning/02`.
-- **Done when:** you can explain each step of the pipeline, all tests pass on your laptop, and one coverage count matches IRSA's own SPHEREx Data Explorer search.
-
-### Day 2, Sun 1 Nov: Step 2a, clean and line up the epochs
-**Step-by-step guide: [`FRIEND_DAY2_STEPS.md`](FRIEND_DAY2_STEPS.md)** (Kripas's flipbook and sample frames are ready; your frames replace the samples in the format of [`FRAMES_FORMAT.md`](FRAMES_FORMAT.md)).
-- **Block 1 (2 h):** epochs: `archive.group_epochs` already exists (30-day gap, 60-day maximum). Add per-detector frames and use `MJD-AVG` from each cutout header.
-- **Block 2 (2.5 h):** `clean.py`:
-  - official flag mask with `flags.bad_pixel_bitmask(header)` (reads QR2 `MP_*` and QR3 `MSKN*`; SOURCE is a label only, never cancels a bad bit);
-  - IMAGE − ZODI; sigma = sqrt(VARIANCE); % flagged.
-- **Block 3 (2.5 h):** `align.py` + `render.py`:
-  - every cutout onto one north-up sky grid around the target (`reproject`); check background stars stay on the same pixel;
-  - one PNG per epoch and detector, **same brightness scale for all**;
-  - send PNGs + JSON to Kripas.
-- **Done when:** Barnard's Star frames from different epochs are lined up and the star is in a different place in the first and last.
-
-### Day 3, Mon 2 Nov: Step 2b, compare with proof (integration day)
-- **Morning call:** fix the API format in `docs/plan/FACTS.md` section 7.
-- **Block 1 (2 h):** `coadd.py`: 1/variance-weighted add-up per epoch and detector.
-- **Block 2 (2 h):** `gaia.py`: Gaia DR3 stars near the target, moved from 2016.0 to each epoch's date. `diff.py`: epoch B − A in sigma.
-- **Block 3 (3 h):** FastAPI `main.py`: `/api/resolve`, `/api/coverage`, `/api/frames`, `/api/gaia`, `/api/diff`; disk cache.
-- **Done when:** **Barnard's Star walks across the browser flipbook onto its Gaia markers.**
-
-### Day 4, Tue 3 Nov: connect, online, test
-- **Block 1 (2 h):** `/api/lightcurve` (brightness at one position, all epochs, with errors, flagged marks and the **wavelength** of each point, because of the LVF).
-- **Block 2 (2 h):** pre-cache the 5 targets; run the C4 acceptance tests; write results.
-- **Block 3 (3 h):** deploy with Kripas; lessons note.
-- **Done when:**
-  - Barnard's Star shift (expected ~1.7 px) within about 0.5 px of Gaia;
-  - WISE 0855 visible in D5 – D6, not in D1 – D3;
-  - R Dra and RW Aur change brightness;
-  - an empty or bad position gives an honest message;
-  - the public link works.
-
-### Wed 4 – Fri 6 Nov
-- **Wed 4 morning:** fix anything that failed on Day 4.
-- **Wed 4 afternoon:** Level 3: `/api/spectrum` (brightness vs wavelength, per epoch); measured motion vs Gaia; proof-panel numbers in the API.
-- **Thu 5:** Supplement 2.2, 3.2.5, 3.2.9, 3.4.3; finish `FACTS.md`; one cross-check against IRSA's Spectrophotometry Tool. Evening: speed drill: empty folder → resolve → coverage → one cutout → clean → PNG in 3 hours, from memory. Delete afterwards.
-- **Fri 6:** rest; rehearsal checklist.
+**History:** on 31 Oct morning you were planned as the data lead, with step-by-step build guides ([FRIEND_DAY1_STEPS.md](FRIEND_DAY1_STEPS.md), [FRIEND_DAY2_STEPS.md](FRIEND_DAY2_STEPS.md)). Those are now **reference only**: their commands are still a good way to check the Day 1 and Day 2 numbers yourself.
 
 ---
 
-## Phase 2: Timed rehearsal of the real hackathon (Sat 7 – Sun 8 Nov, 48 hours), your column
-Empty private repo `spherex-rehearsal`; build from memory and notes.
+## How you report
+- **Problems and research answers:** add them to [`notes/REVIEW_NOTES.md`](../../notes/REVIEW_NOTES.md) (template inside) on your branch `friend-backend`, then open a pull request to `main`, or simply send them to Kripas.
+- Each entry: what you checked, how (link, command, page of a document), what you found, and how sure you are.
+- Kripas fixes the code and the website; you re-check the fix.
 
-| Hours | Your task | You give to Kripas | You need from Kripas |
-|---|---|---|---|
-| 0–2 | Read the challenge together; write the API format | API format | Screen sketch |
-| 2–10 | resolve, coverage, cutouts, clean, PNG frames, `/api/frames` | Sample PNGs + JSON by hour 4 | — |
-| 10 | **Checkpoint:** Barnard's Star plays end to end | Working `/api/frames` | Flipbook calling it |
-| 10–14 | Pre-cache the 5 targets; help first deploy | Cache | Deploy link |
-| 14–22 | Align, add-up per epoch and detector, `/api/gaia` | Gaia JSON | Labels showing your numbers |
-| 22–26 | C4 tests on all 5 targets; sleep shift | Results | — |
-| 26–34 | `/api/diff` (sigma), `/api/lightcurve` | Diff PNGs, light-curve JSON | Diff mode, chart |
-| 34–40 | `/api/spectrum`, measured motion vs Gaia (only if Level 2 passes) | Spectrum JSON | Spectrum panel |
-| 40–46 | Limitations, references, NASA data text; mock submission | Project page text | Video draft to check |
-| 46–48 | Pitch practice (you explain the science) | — | — |
+## Phase 1: practice week (Sat 31 Oct – Fri 6 Nov)
+| Day | Kripas builds | You check and research |
+|---|---|---|
+| Sat 31 Oct – Sun 1 Nov (Day 1 + 2, built early) | Search, Aladin sky view, flipbook, data pipeline (clean, align, add-up) | The review guide: Parts A–C; the research questions (Part D) |
+| Mon 2 Nov (Day 3) | Gaia markers, synced Before / After / Difference view, the API | Gaia positions and motions of the 5 targets; is the Difference view honest (residuals explained by motion, wavelength or alignment first)? |
+| Tue 3 Nov (Day 4) | Light curve, deploy, tests on the 5 targets | Brightness numbers vs IRSA's Spectrophotometry Tool; test the public link on your phone |
+| Wed 4 – Thu 5 Nov | Level 3 features (proof panel, spot evidence panel with known-object check, About page) | Read the Explanatory Supplement (2.2, 3.2.5, 3.2.9, 3.4.3); finish `FACTS.md` checks |
+| Fri 6 Nov | Rest | Rest |
 
-## Phase 2.4: Review (Mon 9 – Tue 10 Nov)
-- Your half of the lessons note (planned vs actual hours per backend task).
-- **1-page backend cheat sheet:** table names, columns, query shape, cutout method, cleaning steps, Gaia steps, deploy command. Notes only.
-- Update Part E backend timings.
+## Phase 2: timed rehearsal (Sat 7 – Sun 8 Nov)
+Kripas builds from memory in an empty repo. You act as the **judge and tester**: every 6 hours, check the newest build against the C4 acceptance tests in [HACKATHON_PLAN.md](HACKATHON_PLAN.md), look for wrong numbers, and write the science text (limitations, references, NASA data section) for the project page.
 
----
+## Phase 3 – 4: final prep and hackathon (Wed 11 – Sun 15 Nov)
+- Before: re-check `FACTS.md` against the Supplement and IRSA; check IRSA and the SIMBAD mirror work from the venue.
+- During: test every new build; check each number on the project page; science text; explain the science part of the pitch.
 
-## Phase 3: Final prep (Wed 11 – Fri 13 Nov)
-- **Wed 11:** check `FACTS.md` once more against the Supplement and IRSA.
-- **Thu 12:** speed drill (3 hours) from an empty folder. Delete afterwards.
-- **Fri 13:** read the Resources tab and Submission Guide with Kripas; check IRSA and the SIMBAD mirror work from the venue or a hotspot; sleep early.
-
----
-
-## Phase 4: Hackathon (Sat 14 – Sun 15 Nov), your tasks
-New empty repo; write it again (no copying). Follow HACKATHON_PLAN Part E, backend column:
-- **0–2:** read the statement and resources; create the repo; API format.
-- **2–10:** resolve, coverage (`s_region`), cutouts, official flag mask, IMAGE − ZODI, PNG frames with `MJD-AVG`, `/api/frames`. Sample frames to Kripas by hour 4.
-- **10–14:** Barnard's Star end to end; pre-cache the 5 targets.
-- **14–22:** alignment, add-up per epoch and detector, `/api/gaia`.
-- **22–26:** C4 acceptance tests on all 5 targets.
-- **26–34:** `/api/diff` (sigma), `/api/lightcurve`.
-- **34–40:** `/api/spectrum`, measured motion vs Gaia (only if Level 2 passes).
-- **40–46:** limitations, references, NASA data section. **Submit by hour 46.**
-- **46–48:** pitch practice.
-
-## What you must never do
-- Use `DATE` for time. Mask on SOURCE. Let SOURCE cancel a bad flag. Show a made-up value when something fails. Claim a discovery. Copy practice code into the hackathon repo.
+## What you watch for (the mistakes that would be "fake")
+- Time from `DATE` instead of `MJD-AVG`. Masking on SOURCE, or SOURCE cancelling a bad flag.
+- A brightness change claimed when the wavelength changed (SPHEREx's filter gives each exposure its own wavelength).
+- A dot called "the target" when it is a background object (see WISE 0855 D2).
+- A made-up value shown when something failed. A "discovery" claim.

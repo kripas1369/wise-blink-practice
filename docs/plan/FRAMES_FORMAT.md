@@ -1,7 +1,7 @@
 # Frames format: what the flipbook reads (`spherex-blink-frames/1`)
 
-The contract between the data side ([Friend's name]) and the website (Kripas).
-Whoever makes the frames (Kripas's sample script today, the data pipeline next, the `/api/frames` call on Day 3) writes **exactly this**, and the website shows it without changing any value.
+The contract between the data pipeline (`backend/app/render.py`) and the website (`frontend/`).
+Whoever makes the frames (the pipeline today, the `/api/frames` call on Day 3) writes **exactly this**, and the website shows it without changing any value.
 
 The website refuses a manifest that breaks these rules (`frontend/js/frames.js`, `checkManifest`) and says why, instead of showing frames it cannot label honestly.
 
@@ -28,7 +28,7 @@ frontend/frames/
 { "format": "spherex-blink-frames-index/1", "available": { "barnard": [2], "wise0855": [2, 6] } }
 ```
 
-`scripts/sample_frames.py` has a `write_index()` that rebuilds it from the folders; call it (or copy the idea) after writing frames.
+`backend/app/render.py` rebuilds it from the folders (`write_index()`) every time it writes frames.
 
 ---
 
@@ -43,7 +43,7 @@ frontend/frames/
 | Reference pixel | `CRPIX = (size + 1) / 2` on both axes, so the target is the centre of the middle pixel |
 | PNG rows | **north at the top**: FITS row 0 is south, so flip (`np.flipud`) before saving |
 
-Code for this grid: `target_grid()` in `scripts/sample_frames.py`.
+Code for this grid: `target_grid()` in `backend/app/align.py`.
 
 ---
 
@@ -63,7 +63,7 @@ Real example: `frontend/frames/barnard/d2/manifest.json`.
 | `orientation` | text | `"north up, east left"` | yes |
 | `band` | number | detector 1–6 | yes |
 | `band_range_um` | [min, max] | detector range from `config.DETECTORS` | yes |
-| `mode` | text | `"single"` (one exposure per visit) or `"coadd"` (all exposures of the visit added) | yes |
+| `mode` | text | `"single"` (one exposure per visit) or `"coadd"` (several exposures of the visit added with 1/variance weights; how many is in each frame's `n_images`) | yes |
 | `scale` | object | `{vmin, vmax, unit: "MJy/sr", method}`: **one** linear scale for every frame; `vmin < vmax` | yes |
 | `method` | text | one sentence: how the pictures were made | yes |
 | `made_by`, `made_at` | text | which script, and when (UTC) | yes |
@@ -81,12 +81,13 @@ Real example: `frontend/frames/barnard/d2/manifest.json`.
 | `mjd` | number | observation time: `MJD-AVG` from the header (never `DATE`). For an add-up: the mean of the exposures' `MJD-AVG`. | yes |
 | `date_iso` | text | the same time as `"YYYY-MM-DD HH:MM UTC"` | yes |
 | `band` | number | must equal the manifest's `band` | yes |
-| `wl_min_um`, `wl_max_um` | number | wavelength range of the exposure (obscore `em_min`/`em_max`) | yes |
-| `wl_target_um`, `bw_target_um` | number or null | wavelength and bandwidth **at the target pixel** from the file's spectral WCS (`key="W"`). `null` if unknown; never guess. | yes |
+| `wl_min_um`, `wl_max_um` | number | wavelength range of the exposure(s) (obscore `em_min`/`em_max`; for an add-up the lowest min and highest max) | yes |
+| `wl_target_um`, `bw_target_um` | number or null | wavelength and bandwidth **at the target pixel** from the file's spectral WCS (`key="W"`); for an add-up the mean over its exposures. `null` if unknown for any exposure; never guess. | yes |
+| `wl_target_range_um` | [min, max] | add-ups only: lowest and highest wavelength at the target among the exposures (the LVF gives each exposure its own). The label shows this range. | no |
 | `n_images` | number | exposures in this picture (1 for `single`) | yes |
 | `n_images_in_epoch` | number | exposures of this detector in the visit | no |
-| `pct_flagged` | number | % of grid pixels flagged bad (official mask, `flags.bad_pixel_bitmask`) | yes |
-| `pct_no_value` | number | % of pixels inside the image with no value (NaN, e.g. a saturated star core); shown striped | no |
+| `pct_flagged` | number | % of grid pixels flagged bad (official mask, `flags.bad_pixel_bitmask`). For an add-up: pixels where every exposure that had a value was flagged. | yes |
+| `pct_no_value` | number | % of pixels inside the image with no value (NaN, e.g. a saturated star core; for an add-up: NaN in every exposure); shown striped | no |
 | `pct_covered` | number | % of the grid inside the exposure | no |
 | `obs_id`, `collection` | text | which exposure (single mode) | no |
 
@@ -106,9 +107,10 @@ Proposal for the Day 3 call: return **this manifest** instead (the top-level fie
 
 ---
 
-## 5. Check your frames before sending them
+## 5. Check frames before replacing the website's
 
 ```bash
+python -m backend.app.render barnard 2 --out scratch/frames      # write to scratch first
 python -m scripts.compare_frames frontend/frames/barnard/d2 scratch/frames/barnard/d2
 cd frontend && npm test        # every manifest in frontend/frames must pass checkManifest
 ```

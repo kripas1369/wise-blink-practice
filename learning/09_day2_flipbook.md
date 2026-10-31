@@ -1,6 +1,6 @@
 # 09. Day 2 flipbook: real SPHEREx pictures, played over time
 
-Code: `frontend/js/flipbook.js`, `frames.js`, `player.js`; sample frames from `scripts/sample_frames.py`. Run the site as in [08](08_day1_website.md) and click a target, then scroll to **SPHEREx flipbook**.
+Code: `frontend/js/flipbook.js`, `frames.js`, `player.js`; frames from `backend/app/render.py` ([10](10_day2_pipeline.md)). Run the site as in [08](08_day1_website.md) and click a target, then scroll to **SPHEREx flipbook**.
 
 ## What the flipbook does
 1. **Play:** shows each SPHEREx visit of the 3′ square in time order (0.5–4 per second, loop on or off, ◀ ▶ buttons, slider, arrow keys, space bar).
@@ -10,16 +10,16 @@ Code: `frontend/js/flipbook.js`, `frames.js`, `player.js`; sample frames from `s
 5. **Orange box "Before you trust your eyes":** measured warnings for this target (for example the dot next to WISE 0855).
 6. **Honest messages** when there is nothing to show: any non-target position ("arrives with the data API, Day 3"), a detector with no frames (with buttons for the ones we have), a broken file (names the problem).
 
-## Where the pictures come from (`scripts/sample_frames.py`)
+## Where the pictures come from (`backend/app/render.py`)
 ```
 SIMBAD position, moved to 2026.0          (same rule as the website's ring)
 → IRSA: every SPHEREx image of that spot in detector N, grouped into visits
-→ per visit: ONE exposure (the one closest to the visit's middle)
+→ per visit: up to 8 exposures closest to the visit's middle (all 21 for WISE 0855 D6)
 → cutout → IMAGE − ZODI, official bad-pixel mask
-→ reproject onto one north-up 29 × 29 grid of 6.15″ pixels
+→ reproject onto one north-up 29 × 29 grid of 6.15″ pixels → add up with 1/variance weights
 → one brightness scale for all visits → PNG + manifest.json
 ```
-This is a **sample**: one exposure per visit, so it is noisy. [Friend's name]'s pipeline adds up all exposures of a visit and replaces these files in the same format ([`FRAMES_FORMAT.md`](../docs/plan/FRAMES_FORMAT.md)).
+The first version (morning of 31 Oct) showed **one exposure per visit**; the add-ups are less noisy. Format: [`FRAMES_FORMAT.md`](../docs/plan/FRAMES_FORMAT.md); details: [10](10_day2_pipeline.md).
 
 ## Why each choice
 | Choice | Reason |

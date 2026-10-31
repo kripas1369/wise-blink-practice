@@ -40,26 +40,31 @@ test("every prepared manifest passes the check and its images exist", () => {
   }
 });
 
-test("Barnard D2 sample: real values give the expected label", () => {
+test("Barnard D2 add-up: real values give the expected label", () => {
   const m = checkManifest(barnard());
+  assert.equal(m.mode, "coadd");
   assert.equal(m.frames.length, 3);
   assert.equal(m.size_px, 29);
   const f = m.frames[0];
   assert.equal(
     frameLabel(f, 0, 3),
-    `Visit 1 of 3 · ${f.date_iso} · D2, 1.235 µm at the star (band 1.10–1.65 µm) · ` +
-      `1 exposure of ${f.n_images_in_epoch} in this visit · ${f.pct_flagged.toFixed(1)}% pixels flagged · ` +
-      `${f.pct_no_value.toFixed(1)}% with no value (striped)`,
+    "Visit 1 of 3 · 2025-08-26 11:57 UTC · D2, 1.235–1.629 µm at the star (band 1.10–1.65 µm) · " +
+      "8 exposures added of 18 in this visit · 2.6% pixels flagged · 0.2% with no value (striped)",
   );
   assert.ok(f.pct_no_value > 0, "Barnard's core is saturated, so some pixels have no value");
   assert.doesNotMatch(frameLabel({ ...f, pct_no_value: 0 }, 0, 3), /no value/);
   assert.ok(spanDays(m.frames) > 300 && spanDays(m.frames) < 400);
 });
 
-test("label wording for add-ups and unknown wavelength", () => {
+test("label wording for single exposures, add-ups and unknown wavelength", () => {
+  const single = { ...barnard().frames[0], n_images: 1, wl_target_range_um: undefined };
+  assert.match(frameLabel(single, 0, 3), / · 1 exposure of 18 in this visit · /);
   const frame = { ...barnard().frames[0], n_images: 7, n_images_in_epoch: undefined, wl_target_um: null };
   assert.match(frameLabel(frame, 1, 3), /^Visit 2 of 3 · .* · 7 exposures added · /);
   assert.match(wavelengthText(frame), /^wavelength at the star unknown \(band /);
+  const mixed = { ...frame, wl_target_um: 1.2, wl_target_range_um: [1.18, 1.25] };
+  assert.match(wavelengthText(mixed), /^1\.180–1\.250 µm at the star \(band /);
+  assert.match(wavelengthText({ ...mixed, wl_target_range_um: [1.2, 1.2] }), /^1\.200 µm at the star/);
 });
 
 test("bad manifests are refused, not shown", () => {

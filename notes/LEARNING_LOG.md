@@ -30,14 +30,15 @@ One entry per session. Keep it short: 3 lines plus the time. This becomes our le
 - **Broke / confused me:** NaN star cores showed as black "sky" (now striped and counted); `hidden` did nothing on elements whose CSS sets `display` (added `[hidden] { display: none !important }`); a zsh loop passed `"wise0855 6"` as one word; SIMBAD stopped answering midway through a batch (the script stops instead of guessing).
 - **Time:** planned 7 h, actual __ h. Re-type `player.js` and `frames.js` myself.
 
-### Day 1, Sat 31 Oct, [Friend's name]
-- **Learned:**
-- **Broke / confused me:**
-- **Time:** planned 2.5 h, actual __ h
+### Day 2 (Sat 31 Oct afternoon), Kripas (data pipeline, after [Friend's name] moved to validation and research)
+- **Built:** `clean.py`, `align.py`, `coadd.py`, `render.py`, `frame_notes.py`; 9 offline tests; `scripts/measure_ring.py`. The website now shows add-ups (R Dra still single exposures).
+- **Learned:** `render --mode single` gave exactly the morning frames (grey difference 0), a good first check; adding up exposures fills flagged pixels from the other exposures (Eps Ind B Apr 2026: 30% → 0%); an add-up mixes wavelengths across most of the detector, so it shows *where*, not *how bright*; WISE 0855 shows up in the D6 add-ups (11 and 13σ, still 6–9σ in each half), not yet proven to be WISE 0855.
+- **Broke / confused me:** a failed download was silently treated as "not in image" and an add-up used 17 instead of 21 exposures (now it stops and retries); pyvo has no timeout, so a dropped IRSA connection hung for 55 minutes (now 300 s, then retry); R Dra's full search kept timing out (now one detector at a time); running a script in parallel with editing it gave me results from the old code twice: once a wrong motion direction for WISE 0855 D6 (east instead of west), once a wrong grouping of close visits. Lesson: edit, then run.
+- **Time:** planned (friend's Day 2) 7 h, actual __ h. Re-type `coadd.py` myself.
 
-### Day 2, Sun 1 Nov, [Friend's name]
+### [Friend's name] (validation and research, from 31 Oct)
+Write findings in [`REVIEW_NOTES.md`](REVIEW_NOTES.md); this log is for what you learned.
 - **Learned:**
-- **Numbers:** MJD-AVG vs archive time (Step 3): __ s; Barnard Aug 2025 % flagged (Step 4): __; background star position per visit (Step 5): __; compare_frames result (Step 7): __
-- **Broke / confused me:**
-- **Open question answered (Step 10):**
-- **Time:** planned 7 h, actual __ h
+- **Checked (Part C of the review guide):**
+- **Research answered (Part D):**
+- **Time:** __ h

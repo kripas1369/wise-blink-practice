@@ -34,7 +34,7 @@ npm test        # node --test, needs Node 20+; no packages to install
 | `js/flipbook.js` | The flipbook panel: play, step, blink, flags overlay, labels, honest messages |
 | `js/frames.js` | Loads and checks `frames/` (format: [`docs/plan/FRAMES_FORMAT.md`](../docs/plan/FRAMES_FORMAT.md)) |
 | `js/player.js` | Stepping, looping and speed rules (tested) |
-| `frames/` | Real SPHEREx sample frames per target and detector (made by `scripts/sample_frames.py`; the data pipeline replaces them) |
+| `frames/` | Real SPHEREx frames per target and detector, made by `backend/app/render.py` (format: `docs/plan/FRAMES_FORMAT.md`) |
 
 ## Outside services (all free, no login)
 

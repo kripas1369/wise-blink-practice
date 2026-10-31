@@ -1,5 +1,7 @@
 # [Friend's name]: Day 2 step by step (data side)
 
+> **Reference only (roles changed on 31 Oct).** Kripas built this pipeline himself (`backend/app/clean.py`, `align.py`, `coadd.py`, `render.py`). [Friend's name] validates and researches instead: start with **[FRIEND_REVIEW_GUIDE.md](FRIEND_REVIEW_GUIDE.md)**. The steps below explain what the pipeline must do and are useful for checking it. `scripts/sample_frames.py` mentioned below was removed: `python -m backend.app.render <target> <det> --mode single` makes the same frames (checked pixel for pixel with `compare_frames`).
+
 **Your role:** data and science. **Your branch:** `friend-backend`. **Your folder:** `backend/`.
 **Today's goal:** turn raw SPHEREx cutouts into clean, lined-up pictures, one per visit, that the website's flipbook can play. You write the real pipeline: `clean.py`, `align.py`, `render.py`.
 

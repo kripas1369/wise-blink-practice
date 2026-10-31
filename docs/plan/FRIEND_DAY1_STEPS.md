@@ -1,5 +1,7 @@
 # [Friend's name]: Day 1 step by step (data side)
 
+> **Reference only (roles changed on 31 Oct).** Kripas now builds everything, including the data side. [Friend's name] validates and researches instead: start with **[FRIEND_REVIEW_GUIDE.md](FRIEND_REVIEW_GUIDE.md)**. The commands below still work and are a good way to check the Day 1 numbers yourself.
+
 **Your role:** data and science. **Your branch:** `friend-backend`. **Your folder:** `backend/`.
 **Today's goal:** the Day 1 data code already works (Kripas wrote it before we swapped roles). Today you make it *yours*: run it, understand it, type it again yourself, and check it against NASA's archive with your own eyes.
 

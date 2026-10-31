@@ -161,12 +161,17 @@ export function createFlipbook({ onDetector }) {
       (n > 1 ? ` over ${spanDays(m.frames)} days` : "");
     const sizeNote = fov !== m.fov_arcmin
       ? ` These prepared frames are ${m.fov_arcmin}′ wide; other sizes come with the data API (Day 3).` : "";
-    const single = m.mode === "single"
-      ? "Each frame is one SPHEREx exposure (not yet an add-up of the whole visit). " : "";
+    const howMade = m.mode === "single"
+      ? "Each frame is one SPHEREx exposure (not an add-up of the whole visit). "
+      : "Each frame adds up several exposures of one visit, weighted by their noise, so faint things show " +
+        "better; flagged pixels are left out of the add-up. ";
     el.note.textContent = `Real SPHEREx data from NASA IRSA, lined up north-up on ${m.size_px} × ${m.size_px} ` +
-      `pixels of ${m.pixel_arcsec}″. ${single}Every frame uses the same brightness scale, but each visit ` +
+      `pixels of ${m.pixel_arcsec}″. ${howMade}Every frame uses the same brightness scale, but each exposure ` +
       `sees a slightly different wavelength (shown in the label), so brightness can differ for that reason too. ` +
-      `Striped pixels have no value in the SPHEREx file (for example a saturated star core). ` +
+      (m.mode === "single"
+        ? "Striped pixels have no value in the SPHEREx file (for example a saturated star core). "
+        : "Striped pixels have no usable value: the files have none there (for example a saturated star " +
+          "core), or every exposure flagged that pixel (turn on the flagged-pixel overlay to see which). ") +
       `The ring marks the target's ${m.position_source.includes("2026") ? "2026" : "catalogue"} position. ` +
       `Made by ${m.made_by}, ${m.made_at}.${sizeNote}`;
     el.scale.style.width = `${(60 / m.pixel_arcsec / m.size_px) * 100}%`;

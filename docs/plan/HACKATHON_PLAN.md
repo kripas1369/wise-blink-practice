@@ -1,6 +1,8 @@
 # NASA Space Apps 2026: "Planet X and SPHEREx" team plan
 
-**Team Not42:** Kripas Khatiwada (web and presentation lead) and [Friend's name] (data and science lead, GitHub `lazylog00`). Roles swapped on 31 Oct.
+**Team Not42:** Kripas Khatiwada (builds everything: website, data code, deploy, presentation) and [Friend's name] (validation and research, GitHub `lazylog00`).
+
+> **Roles changed on 31 Oct.** [Friend's name] chose to validate and research instead of building. Wherever this plan gives [Friend's name] a coding task (backend, API, pipeline), **Kripas does it**; [Friend's name] checks the result, researches the science and writes the science text. His guide: [FRIEND_REVIEW_GUIDE.md](FRIEND_REVIEW_GUIDE.md). The per-person plans ([KRIPAS_PLAN.md](KRIPAS_PLAN.md), [FRIEND_PLAN.md](FRIEND_PLAN.md)) are up to date; the tables below still show the old split.
 
 **Working name:** "Blink: SPHEREx for Everyone" (or "SPHEREx TimeLens"; decide together).
 
@@ -98,6 +100,12 @@ The official site says: "Do not begin work on your projects until the hackathon 
    - **Detector buttons D1–D6** (short to long wavelength), plus "all bands" mode.
    - **Toggles:** flags overlay (bad pixels in red), Gaia markers, SOURCE label layer.
    - **Modes:** single frames / add-up per epoch / difference (B − A in sigma).
+   - **Before / After / Difference view (added 31 Oct, from an outside suggestion we reviewed):** three panels side by side for two chosen visits: Before (visit A), After (visit B), Difference ((B − A) / sigma, blue = fainter, red = brighter, with a legend). The panels move together: hovering one shows the same sky pixel in all three, with its RA/Dec and values. Each panel says its date, detector and wavelength at the star. Marked spots only from measurements (Gaia "should be here" markers, or a measured residual), never drawn by hand. Honest rules:
+     - pick the visit pair with the **closest wavelengths at the target** (the LVF gives every exposure its own wavelength, otherwise every star leaves a residual); show the wavelength difference above the panels;
+     - noise from VARIANCE, with the pixel-scatter (MAD) value shown next to it as a cross-check;
+     - saturated cores and flagged pixels stay striped / red in the Difference panel, never turned into residuals;
+     - a bright-dark pair next to a star is first explained by its known motion (Gaia) or by a small alignment offset (6.15″ pixels) before anything is called a change;
+     - no cross-fade "reveal" animation (it would show pictures SPHEREx never took); blink is the honest animation.
    - **Side panel:** target info, image count, date range, data release, links to IRSA.
    - **Click a pixel** to see its light curve (brightness over time) and its spectrum (brightness versus wavelength).
 3. **About the data:** how we clean the data (each step plus the official sources), limitations (6.15″ pixels, about 1.5 years of data, subtle motions), credits (NASA/IPAC IRSA, ESA Gaia, AAVSO, CDS Aladin).
@@ -146,8 +154,8 @@ The official site says: "Do not begin work on your projects until the hackathon 
 
 ### C5. Feature levels
 - **Level 1, a complete entry (by hour ~22):** search, name lookup, field of view, URL; cutouts and cleaning; **north-up aligned** flipbook with frame labels; detector buttons; 5 target buttons; flags toggle; honest empty/error states; "data as of" line (newest release date); deployed link.
-- **Level 2, a strong contender (by hour ~34):** add-up per epoch and detector; difference in sigma; Gaia markers; light curve (points coloured by wavelength, because of the LVF); Aladin with Gaia and WISE overlays; **epoch picker (+/−)**; **proof panel** per target (expected vs measured motion, % flagged, images/epochs, release); coverage timeline.
-- **Level 3, winner level (only if Level 2 is solid):** spectrum on click and **spectrum per epoch** (R Dra two dates); measured motion compared with Gaia; GIF download + links to the original files at IRSA; one cross-check against IRSA's Spectrophotometry Tool; Nepali language toggle; a small Planet X explainer.
+- **Level 2, a strong contender (by hour ~34):** add-up per epoch and detector; difference in sigma shown as the **synced Before / After / Difference view** (C1); Gaia markers; light curve (points coloured by wavelength, because of the LVF); Aladin with Gaia and WISE overlays; **epoch picker (+/−)**; **proof panel** per target (expected vs measured motion, % flagged, images/epochs, release); coverage timeline.
+- **Level 3, winner level (only if Level 2 is solid):** **spot evidence panel** for each marked residual in the Difference view (position, dates, significance, size in pixels, "possible artifact" flags for long thin or very large residuals, a short "why selected / what else could explain it / what would confirm it" note) and a **known-object check** with NASA JPL's Small-Body Identification API at the real observation time and position (shown as "matches known object X", "no match found" or "check unavailable"; never "new object", never Planet X); spectrum on click and **spectrum per epoch** (R Dra two dates); measured motion compared with Gaia; GIF download + links to the original files at IRSA; one cross-check against IRSA's Spectrophotometry Tool; Nepali language toggle; a small Planet X explainer.
 - **Why these:** they fill the gaps in IRSA's own tools (no time view, not north-up, expert-only, queued jobs). See [`learning/05_nasa_tools_review.md`](../../learning/05_nasa_tools_review.md) and [`learning/06_how_to_win.md`](../../learning/06_how_to_win.md).
 - **Not building:** a custom Three.js globe, Rust, freehand lasso, Django, a database, accounts, Planet X detection claims.
 
@@ -205,8 +213,8 @@ flowchart LR
 - **Kripas:**
   - Call the real API; honest error messages (no fake values).
   - Gaia markers on the flipbook (move per epoch).
-  - Difference mode with a sigma colour scale.
-- **Done when:** **Barnard's Star walks across the browser flipbook onto its Gaia markers.**
+  - Difference mode with a sigma colour scale, shown as the **synced Before / After / Difference view** (C1): pair with the closest wavelengths chosen by default, hover shows the same sky pixel in all three panels.
+- **Done when:** **Barnard's Star walks across the browser flipbook onto its Gaia markers**, and the Before / After / Difference view of Barnard's Star is checked against its Gaia positions (expected: a bright-dark pair about 1.7 px apart; if the saturated centre hides it, the view says so instead of pretending).
 
 #### Day 4, Tue 3 Nov: connect, online, test
 - **[Friend's name]:**
@@ -220,7 +228,7 @@ flowchart LR
 
 #### Wed 4 – Fri 6 Nov
 - **Wed 4 morning (both):** fix whatever did not pass on Day 4.
-- **Wed 4 afternoon:** Level 3. [Friend's name]: `/api/spectrum` (brightness vs wavelength, per epoch) and measured motion vs Gaia. Kripas: spectrum panel, epoch picker (+/−), proof panel, About page.
+- **Wed 4 afternoon:** Level 3. [Friend's name]: `/api/spectrum` (brightness vs wavelength, per epoch) and measured motion vs Gaia. Kripas: spectrum panel, epoch picker (+/−), proof panel, About page; spot evidence panel and known-object check (JPL Small-Body Identification API) for the Difference view (C5 Level 3).
 - **Thu 5:** [Friend's name] reads Supplement 2.2, 3.2.5, 3.2.9, 3.4.3 and finishes `FACTS.md`; one cross-check against IRSA's Spectrophotometry Tool. Kripas makes a draft 30-second video from the practice tool and a pitch draft. Evening (both): speed drill. In an empty folder, rebuild search → coverage → one cutout → flipbook in 3 hours from memory. Delete afterwards.
 - **Fri 6:** rest; rehearsal checklist.
 

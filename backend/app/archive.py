@@ -43,18 +43,30 @@ class SpherexImage:
         return (self.mjd_start + self.mjd_end) / 2
 
 
+TAP_TIMEOUT_SECONDS = 300
+
+
+class _TimedSession(requests.Session):
+    """pyvo sets no timeout, so a silently dropped connection would wait forever."""
+
+    def request(self, *args, **kwargs):
+        kwargs.setdefault("timeout", TAP_TIMEOUT_SECONDS)
+        return super().request(*args, **kwargs)
+
+
 @lru_cache(maxsize=1)
 def _tap() -> pyvo.dal.TAPService:
-    return pyvo.dal.TAPService(TAP_URL)
+    return pyvo.dal.TAPService(TAP_URL, session=_TimedSession())
 
 
 def _run(adql: str):
-    """Run an ADQL query, retrying when IRSA drops the connection."""
+    """Run an ADQL query, retrying when IRSA drops the connection or times out."""
     last = None
     for attempt in range(RETRIES):
         try:
             return _tap().run_sync(adql, maxrec=200_000).to_table()
-        except (pyvo.dal.DALFormatError, pyvo.dal.DALServiceError, requests.ConnectionError) as exc:
+        except (pyvo.dal.DALFormatError, pyvo.dal.DALServiceError, requests.ConnectionError,
+                requests.Timeout) as exc:
             last = exc
             time.sleep(2 ** attempt)
     raise ArchiveError(f"IRSA TAP did not answer after {RETRIES} tries: {last}")
@@ -66,16 +78,22 @@ def _detector_number(bandpass: str) -> int:
 
 
 def find_images(
-    ra: float, dec: float, collections: tuple[str, ...] = COLLECTIONS
+    ra: float, dec: float, collections: tuple[str, ...] = COLLECTIONS, detector: int | None = None
 ) -> list[SpherexImage]:
-    """Every SPHEREx image whose footprint (s_region) contains the point, sorted by time."""
+    """Every SPHEREx image whose footprint (s_region) contains the point, sorted by time.
+
+    `detector` limits the search to one detector; for crowded deep fields (R Dra: 2,483 images)
+    the full search timed out on 31 Oct while the one-detector search answered in 13 s.
+    """
     in_list = ",".join(f"'{c}'" for c in collections)
+    one_detector = f"AND energy_bandpassname = 'SPHEREx-D{int(detector)}'" if detector else ""
     adql = f"""
         SELECT obs_id, obs_publisher_did, obs_collection, energy_bandpassname, t_min, t_max,
                em_min, em_max, obs_release_date
         FROM spherex.obscore
         WHERE CONTAINS(POINT('ICRS', {ra:.8f}, {dec:.8f}), s_region) = 1
           AND obs_collection IN ({in_list})
+          {one_detector}
     """
     table = _run(adql)
     images = [

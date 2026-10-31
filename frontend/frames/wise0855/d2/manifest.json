@@ -14,96 +14,104 @@
     1.1,
     1.62
   ],
-  "mode": "single",
+  "mode": "coadd",
   "scale": {
-    "vmin": 0.0046,
-    "vmax": 0.3647,
+    "vmin": 0.0284,
+    "vmax": 0.368,
     "unit": "MJy/sr",
     "method": "linear, 1.0-99.5 percentile of good pixels of all frames (same scale for every frame)"
   },
-  "method": "one exposure per epoch (closest to the epoch's mean time); IMAGE - ZODI; official flag mask; reprojected (reproject_interp) onto this grid",
-  "made_by": "scripts/sample_frames.py (Kripas's sample; the full pipeline replaces it)",
-  "made_at": "2026-10-31 07:35 UTC",
+  "method": "up to 8 exposures per visit (closest to the visit's mean time), each IMAGE - ZODI with the official flag mask, reprojected onto this grid and added up with 1/variance weights",
+  "made_by": "backend/app/render.py",
+  "made_at": "2026-10-31 09:49 UTC",
   "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx",
   "notes": [
-    "The bright dot inside the ring is NOT WISE 0855. It sits about 9\u2033 north-west of the ring's centre, on the same pixel in all 4 visits, so it is a background object (WISE 0855 moves about 1.3 pixels a year). It is not in SIMBAD; what it is has not been checked yet."
+    "The bright dot inside the ring is NOT WISE 0855. It sits about 9″ north-west of the ring's centre and stays there for a year (same pixel in 3 of 4 visits, one pixel lower in Dec 2025), while WISE 0855 moves about 1.3 pixels a year to the west. It is not in SIMBAD; what it is has not been checked yet."
   ],
   "frames": [
     {
       "png": "epoch0.png",
       "flags_png": "epoch0_flags.png",
       "epoch_id": 0,
-      "mjd": 60801.11174,
-      "date_iso": "2025-05-06 02:40 UTC",
+      "mjd": 60801.27902,
+      "date_iso": "2025-05-06 06:41 UTC",
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.6274,
-      "bw_target_um": 0.0393,
-      "n_images": 1,
+      "wl_target_um": 1.4479,
+      "bw_target_um": 0.0351,
+      "wl_target_range_um": [
+        1.2784,
+        1.6274
+      ],
+      "n_images": 8,
       "n_images_in_epoch": 8,
-      "pct_flagged": 0.4,
+      "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0,
-      "obs_id": "2025W19_1B_0181_4",
-      "collection": "spherex_qr2"
+      "pct_covered": 100.0
     },
     {
       "png": "epoch1.png",
       "flags_png": "epoch1_flags.png",
       "epoch_id": 1,
-      "mjd": 60986.85435,
-      "date_iso": "2025-11-07 20:30 UTC",
+      "mjd": 60986.82903,
+      "date_iso": "2025-11-07 19:53 UTC",
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.3746,
-      "bw_target_um": 0.0331,
-      "n_images": 1,
+      "wl_target_um": 1.3652,
+      "bw_target_um": 0.0329,
+      "wl_target_range_um": [
+        1.2511,
+        1.5121
+      ],
+      "n_images": 8,
       "n_images_in_epoch": 19,
-      "pct_flagged": 0.6,
+      "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0,
-      "obs_id": "2025W45_2A_0292_1",
-      "collection": "spherex_qr2"
+      "pct_covered": 100.0
     },
     {
       "png": "epoch2.png",
       "flags_png": "epoch2_flags.png",
       "epoch_id": 2,
-      "mjd": 61021.82419,
-      "date_iso": "2025-12-12 19:46 UTC",
+      "mjd": 61021.69967,
+      "date_iso": "2025-12-12 16:47 UTC",
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.3423,
-      "bw_target_um": 0.0322,
-      "n_images": 1,
+      "wl_target_um": 1.3599,
+      "bw_target_um": 0.0328,
+      "wl_target_range_um": [
+        1.2804,
+        1.4416
+      ],
+      "n_images": 6,
       "n_images_in_epoch": 6,
-      "pct_flagged": 2.4,
+      "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0,
-      "obs_id": "2025W50_2A_0374_1",
-      "collection": "spherex_qr2"
+      "pct_covered": 100.0
     },
     {
       "png": "epoch3.png",
       "flags_png": "epoch3_flags.png",
       "epoch_id": 3,
-      "mjd": 61163.21788,
-      "date_iso": "2026-05-03 05:13 UTC",
+      "mjd": 61162.4716,
+      "date_iso": "2026-05-02 11:19 UTC",
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.4384,
-      "bw_target_um": 0.0351,
-      "n_images": 1,
+      "wl_target_um": 1.3232,
+      "bw_target_um": 0.0322,
+      "wl_target_range_um": [
+        1.1626,
+        1.4784
+      ],
+      "n_images": 8,
       "n_images_in_epoch": 15,
-      "pct_flagged": 1.5,
+      "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0,
-      "obs_id": "2026W18_2A_0663_2",
-      "collection": "spherex_qr2"
+      "pct_covered": 100.0
     }
   ]
 }

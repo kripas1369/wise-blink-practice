@@ -1,7 +1,9 @@
 # Learning folder: what we built, why, and what comes next
 
 This folder is for **Kripas and [Friend's name]** to read later and understand the whole
-project from the beginning. Read it in order. Each file is short and in plain English.
+project from the beginning. (From 31 Oct Kripas builds everything and [Friend's name] validates and
+researches: see [`docs/plan/FRIEND_REVIEW_GUIDE.md`](../docs/plan/FRIEND_REVIEW_GUIDE.md).) (From 31 Oct Kripas builds everything and [Friend's name] validates and
+researches: see [`docs/plan/FRIEND_REVIEW_GUIDE.md`](../docs/plan/FRIEND_REVIEW_GUIDE.md).) Read it in order. Each file is short and in plain English.
 
 | # | File | What you learn | Time |
 |---|---|---|---|
@@ -15,6 +17,8 @@ project from the beginning. Read it in order. Each file is short and in plain En
 | 7 | [07_glossary.md](07_glossary.md) | Every word you might not know (MJD, TAP, ADQL, cutout, epoch, proper motion, ...) | look up |
 | 8 | [08_day1_website.md](08_day1_website.md) | Day 1 website (Kripas): what the page does, how a search flows through the code, why each choice | 20 min |
 | 9 | [09_day2_flipbook.md](09_day2_flipbook.md) | Day 2 flipbook (Kripas): real SPHEREx frames, play and blink, honest labels, where the pictures come from | 15 min |
+| 10 | [10_day2_pipeline.md](10_day2_pipeline.md) | Day 2 data pipeline (Kripas): clean, line up, add up, render; why each choice; how we know it works | 20 min |
+| 10 | [10_day2_pipeline.md](10_day2_pipeline.md) | Day 2 data pipeline (Kripas): clean, line up, add up, render; why each choice; how we know it works | 20 min |
 
 **The astronomy basics** (coordinates, time, light, FITS files, WCS, SPHEREx, noise and flags) are
 already in [`docs/learn/`](../docs/learn/LEARN.md). This folder links to them instead of repeating them.

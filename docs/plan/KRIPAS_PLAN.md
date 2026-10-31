@@ -1,12 +1,12 @@
-# Kripas's personal plan (website and presentation lead)
+# Kripas's personal plan (builds everything: website and data)
 
-Branch: `kripas-frontend`. Folder: `frontend/`.
+Branch: `kripas-frontend`. Folders: `frontend/` and `backend/`.
 
-**My job:** everything the user and the judges see. The website (search, Aladin sky view, flipbook, buttons, Gaia markers, difference view, charts, URL), the design, the deploy, the 30-second video, the project page and the pitch. Data comes from [Friend's name]'s API in the format of [HACKATHON_PLAN.md](HACKATHON_PLAN.md) Part C2.
+**My job (from 31 Oct): all the building.** The website (search, Aladin sky view, flipbook, buttons, Gaia markers, difference view, charts, URL), **and the data code** (archive search, cutouts, cleaning, alignment, add-ups, Gaia, difference images, light curves, the API), the deploy, the 30-second video, the project page and the pitch.
 
-**Partner:** [Friend's name] (GitHub `lazylog00`, data and science). See [FRIEND_PLAN.md](FRIEND_PLAN.md).
+**Partner:** [Friend's name] (GitHub `lazylog00`) **validates and researches**: checks our numbers against NASA's tools and documents, answers the open science questions, finds problems and suggests features. See [FRIEND_PLAN.md](FRIEND_PLAN.md) and [FRIEND_REVIEW_GUIDE.md](FRIEND_REVIEW_GUIDE.md). His findings arrive in [`notes/REVIEW_NOTES.md`](../../notes/REVIEW_NOTES.md); I fix and answer each one.
 
-**Roles swapped on 31 Oct:** I now do the website; [Friend's name] does the data side. The Day 1 data code (made on 31 Oct before the swap) is handed to [Friend's name]; I still understand it well enough to explain it in the pitch ([`learning/01`](../../learning/01_day1_what_we_built.md) – [`03`](../../learning/03_archive_facts_and_mistakes.md)).
+**Roles changed twice on 31 Oct:** first I moved to the website and the data code went to [Friend's name]; then he chose to validate and research instead, so all data tasks below (marked **data:**) are mine too.
 
 **We practise the real hackathon project:** SPHEREx data, the 5 official targets, the same features. On 14 Nov I write it again from memory in a new repo (no copying). I ask the Nepal local lead in writing whether this practice is allowed.
 
@@ -37,18 +37,20 @@ About 7 hours a day, in 3 blocks. For each block: the AI explains → **I type t
 - **Done when:** Barnard's Star frames play with correct labels.
 - **Status (31 Oct, done early): done** with real SPHEREx sample frames, so I did not wait for the pipeline.
   - Flipbook (play, pause, step, slider, speed, loop, arrow keys), blink of two chosen visits, flags overlay, striped "no value" pixels, 1′ scale bar, N/E arrows, target ring, label from the data, orange "Before you trust your eyes" notes.
-  - Sample frames for all 5 targets (`scripts/sample_frames.py`, one exposure per visit); format fixed in [`FRAMES_FORMAT.md`](FRAMES_FORMAT.md); `scripts/compare_frames.py` checks the pipeline against them.
+  - Sample frames for all 5 targets (first one exposure per visit, now made by `backend/app/render.py`); format fixed in [`FRAMES_FORMAT.md`](FRAMES_FORMAT.md); `scripts/compare_frames.py` compares two runs.
   - 16 tests (`npm test`); checked in the browser; findings (incl. WISE 0855 not yet seen in single D6 exposures) in [`notes/DAY2_FINDINGS.md`](../../notes/DAY2_FINDINGS.md).
-  - [Friend's name]'s Day 2 guide: [`FRIEND_DAY2_STEPS.md`](FRIEND_DAY2_STEPS.md).
+- **Data: the Day 2 pipeline (31 Oct, done by me after the role change):** `backend/app/clean.py` (IMAGE − ZODI, sigma, official mask, `MJD-AVG`, wavelength at the star), `align.py` (one north-up grid), `coadd.py` (1/variance add-up), `render.py` (PNGs + manifest, `--mode single|coadd`), `frame_notes.py`; 9 offline tests in `backend/tests/test_pipeline.py` (33 passed, 3 skipped in total); `scripts/measure_ring.py` measures the frames offline. Single mode matches the old sample frames pixel for pixel; the website now shows add-ups for Barnard, Eps Ind B, WISE 0855 D2 + D6 and RW Aur (R Dra: see [`DAY2_FINDINGS.md`](../../notes/DAY2_FINDINGS.md)). The old sample script was removed. Findings: WISE 0855 seen at the ring in the D6 add-ups (not yet proven to be WISE 0855).
 
 ### Day 3, Mon 2 Nov: Step 2b, compare with proof (integration day)
-- **Morning call:** fix the API format with [Friend's name] (`docs/plan/FACTS.md` section 7).
+- **Data (mine):** `gaia.py` (Gaia DR3 near the target, moved to each visit's date), `diff.py` (visit B − A in sigma), FastAPI `main.py` (`/api/resolve`, `/api/coverage`, `/api/frames` returning the manifest, `/api/gaia`, `/api/diff`), disk cache.
+- **Morning:** fix the API format (`docs/plan/FACTS.md` section 7); [Friend's name] checks the Gaia positions of the 5 targets.
 - **Block 1 (2 h):** `fetch` from `/api/resolve`, `/api/coverage`, `/api/frames`; honest error messages (no fake values, no defaults, "no SPHEREx data here yet" when empty).
 - **Block 2 (2.5 h):** Gaia markers on the flipbook from `/api/gaia` (each marker moves to its position for that epoch).
-- **Block 3 (2.5 h):** difference mode (`/api/diff`) with a sigma colour scale and legend.
+- **Block 3 (2.5 h):** difference mode (`/api/diff`) as a **synced Before / After / Difference view**: three panels for two chosen visits, (B − A) / sigma with a colour legend, hover shows the same sky pixel in all three, each panel labelled with date, detector and wavelength; the visit pair with the closest wavelengths is the default. Rules: [HACKATHON_PLAN.md](HACKATHON_PLAN.md) C1 (no cross-fade animation; flagged and no-value pixels stay marked).
 - **Done when:** **Barnard's Star walks across the browser flipbook onto its Gaia markers.**
 
 ### Day 4, Tue 3 Nov: connect, online, test
+- **Data (mine):** `/api/lightcurve` (brightness at one position, every visit, with errors, flagged marks and the wavelength of each point); pre-cache the 5 targets.
 - **Block 1 (2 h):** click a star → light-curve chart (Chart.js) from `/api/lightcurve`, points coloured by wavelength.
 - **Block 2 (3 h):** **deploy** (Render, Railway or a VPS) with [Friend's name]; check on a phone.
 - **Block 3 (2 h):** run the C4 tests together on the 5 targets; lessons note.
@@ -56,7 +58,7 @@ About 7 hours a day, in 3 blocks. For each block: the AI explains → **I type t
 
 ### Wed 4 – Fri 6 Nov
 - **Wed 4 morning:** fix anything that failed on Day 4.
-- **Wed 4 afternoon:** Level 3: spectrum panel (per epoch); **epoch picker (+/−)**; **proof panel** (expected vs measured motion, % flagged, images/epochs, "data as of"); About page (how we clean data, limitations, credits).
+- **Wed 4 afternoon:** Level 3: spectrum panel (per epoch); **epoch picker (+/−)**; **proof panel** (expected vs measured motion, % flagged, images/epochs, "data as of"); About page (how we clean data, limitations, credits); **spot evidence panel** for marked residuals in the Difference view, with a **known-object check** (NASA JPL Small-Body Identification API: "matches X" / "no match found" / "check unavailable", never "new object").
 - **Thu 5:** draft 30-second video from the practice tool (Part F storyboard); pitch draft; find a public-domain Pluto discovery plate image. Evening: speed drill: empty folder → search → Aladin → flipbook on sample PNGs → deploy in 3 hours, from memory. Delete afterwards.
 - **Fri 6:** rest; rehearsal checklist.
 

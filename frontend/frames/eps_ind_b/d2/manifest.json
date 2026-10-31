@@ -14,116 +14,126 @@
     1.1,
     1.62
   ],
-  "mode": "single",
+  "mode": "coadd",
   "scale": {
-    "vmin": 0.0498,
-    "vmax": 2.6839,
+    "vmin": 0.0643,
+    "vmax": 2.0381,
     "unit": "MJy/sr",
     "method": "linear, 1.0-99.5 percentile of good pixels of all frames (same scale for every frame)"
   },
-  "method": "one exposure per epoch (closest to the epoch's mean time); IMAGE - ZODI; official flag mask; reprojected (reproject_interp) onto this grid",
-  "made_by": "scripts/sample_frames.py (Kripas's sample; the full pipeline replaces it)",
-  "made_at": "2026-10-31 07:40 UTC",
+  "method": "up to 8 exposures per visit (closest to the visit's mean time), each IMAGE - ZODI with the official flag mask, reprojected onto this grid and added up with 1/variance weights",
+  "made_by": "backend/app/render.py",
+  "made_at": "2026-10-31 09:26 UTC",
   "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx",
   "notes": [
-    "The Apr 2026 visit has 30% of its pixels flagged (the other visits 1\u20139%); treat that frame with care.",
-    "The two brown dwarfs are far closer together than one SPHEREx pixel (6.15\u2033), so they show as one dot."
+    "The two brown dwarfs are far closer together than one SPHEREx pixel (6.15″), so they show as one dot.",
+    "One exposure of the Apr 2026 visit had 30% of its pixels flagged; the add-up leaves those pixels out and fills them from the other 6 exposures."
   ],
   "frames": [
     {
       "png": "epoch0.png",
       "flags_png": "epoch0_flags.png",
       "epoch_id": 0,
-      "mjd": 60792.70518,
-      "date_iso": "2025-04-27 16:55 UTC",
+      "mjd": 60792.18972,
+      "date_iso": "2025-04-27 04:33 UTC",
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.2704,
-      "bw_target_um": 0.0307,
-      "n_images": 1,
+      "wl_target_um": 1.416,
+      "bw_target_um": 0.0341,
+      "wl_target_range_um": [
+        1.2417,
+        1.6435
+      ],
+      "n_images": 8,
       "n_images_in_epoch": 19,
-      "pct_flagged": 1.9,
+      "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0,
-      "obs_id": "2025W17_4B_0447_1",
-      "collection": "spherex_qr2"
+      "pct_covered": 100.0
     },
     {
       "png": "epoch1.png",
       "flags_png": "epoch1_flags.png",
       "epoch_id": 1,
-      "mjd": 60832.85836,
-      "date_iso": "2025-06-06 20:36 UTC",
+      "mjd": 60832.7651,
+      "date_iso": "2025-06-06 18:21 UTC",
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.6383,
-      "bw_target_um": 0.0396,
-      "n_images": 1,
+      "wl_target_um": 1.3581,
+      "bw_target_um": 0.0328,
+      "wl_target_range_um": [
+        1.1553,
+        1.6383
+      ],
+      "n_images": 8,
       "n_images_in_epoch": 13,
-      "pct_flagged": 1.0,
+      "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0,
-      "obs_id": "2025W23_2B_0285_3",
-      "collection": "spherex_qr2"
+      "pct_covered": 100.0
     },
     {
       "png": "epoch2.png",
       "flags_png": "epoch2_flags.png",
       "epoch_id": 2,
-      "mjd": 60958.24065,
-      "date_iso": "2025-10-10 05:46 UTC",
+      "mjd": 60959.28191,
+      "date_iso": "2025-10-11 06:45 UTC",
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.1595,
-      "bw_target_um": 0.028,
-      "n_images": 1,
+      "wl_target_um": 1.3053,
+      "bw_target_um": 0.0316,
+      "wl_target_range_um": [
+        1.1066,
+        1.578
+      ],
+      "n_images": 8,
       "n_images_in_epoch": 29,
-      "pct_flagged": 0.7,
+      "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0,
-      "obs_id": "2025W41_2B_0173_3",
-      "collection": "spherex_qr2"
+      "pct_covered": 100.0
     },
     {
       "png": "epoch3.png",
       "flags_png": "epoch3_flags.png",
       "epoch_id": 3,
-      "mjd": 61155.29221,
-      "date_iso": "2026-04-25 07:00 UTC",
+      "mjd": 61155.87822,
+      "date_iso": "2026-04-25 21:04 UTC",
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.5372,
-      "bw_target_um": 0.0377,
-      "n_images": 1,
+      "wl_target_um": 1.3676,
+      "bw_target_um": 0.0329,
+      "wl_target_range_um": [
+        1.1019,
+        1.5376
+      ],
+      "n_images": 7,
       "n_images_in_epoch": 7,
-      "pct_flagged": 30.1,
+      "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0,
-      "obs_id": "2026W17_2A_0403_1",
-      "collection": "spherex_qr2"
+      "pct_covered": 100.0
     },
     {
       "png": "epoch4.png",
       "flags_png": "epoch4_flags.png",
       "epoch_id": 4,
-      "mjd": 61314.05305,
-      "date_iso": "2026-10-01 01:16 UTC",
+      "mjd": 61314.13816,
+      "date_iso": "2026-10-01 03:18 UTC",
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.3356,
-      "bw_target_um": 0.0322,
-      "n_images": 1,
+      "wl_target_um": 1.3304,
+      "bw_target_um": 0.0323,
+      "wl_target_range_um": [
+        1.1451,
+        1.5611
+      ],
+      "n_images": 8,
       "n_images_in_epoch": 24,
-      "pct_flagged": 9.2,
+      "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0,
-      "obs_id": "2026W40_1A_0692_1",
-      "collection": "spherex_qr3"
+      "pct_covered": 100.0
     }
   ]
 }
