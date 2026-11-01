@@ -76,6 +76,19 @@ def visit_exposures(epoch: dict, ra, dec, grid, size, size_deg, wanted: int) -> 
     return chosen
 
 
+def target_wavelengths(cleaned: list[dict]) -> dict:
+    """Mean wavelength and bandwidth at the target over the exposures of one frame (None if any is unknown)."""
+    wls = [c["wl_um"] for c in cleaned if c["wl_um"] is not None]
+    bws = [c["bw_um"] for c in cleaned if c["bw_um"] is not None]
+    out = {
+        "wl_target_um": round(float(np.mean(wls)), 4) if len(wls) == len(cleaned) else None,
+        "bw_target_um": round(float(np.mean(bws)), 4) if len(bws) == len(cleaned) else None,
+    }
+    if len(wls) == len(cleaned) and len(cleaned) > 1:
+        out["wl_target_range_um"] = [round(min(wls), 4), round(max(wls), 4)]
+    return out
+
+
 def frame_for_visit(exposures: list[tuple], mode: str) -> dict:
     """The picture and its numbers for one visit."""
     if mode == "single":
@@ -83,20 +96,15 @@ def frame_for_visit(exposures: list[tuple], mode: str) -> dict:
         picture = aligned
     else:
         picture = coadd([a for _, _, a in exposures])
-    wls = [c["wl_um"] for _, c, _ in exposures if c["wl_um"] is not None]
-    bws = [c["bw_um"] for _, c, _ in exposures if c["bw_um"] is not None]
     images = [im for im, _, _ in exposures]
     frame = {
         "picture": picture,
         "mjd": float(np.mean([c["mjd"] for _, c, _ in exposures])),
-        "wl_target_um": round(float(np.mean(wls)), 4) if len(wls) == len(exposures) else None,
-        "bw_target_um": round(float(np.mean(bws)), 4) if len(bws) == len(exposures) else None,
+        **target_wavelengths([c for _, c, _ in exposures]),
         "wl_min_um": round(min(im.wl_min_um for im in images), 3),
         "wl_max_um": round(max(im.wl_max_um for im in images), 3),
         "n_images": len(exposures),
     }
-    if len(wls) == len(exposures) and len(exposures) > 1:
-        frame["wl_target_range_um"] = [round(min(wls), 4), round(max(wls), 4)]
     if mode == "single":
         frame["obs_id"] = images[0].obs_id
         frame["collection"] = images[0].collection

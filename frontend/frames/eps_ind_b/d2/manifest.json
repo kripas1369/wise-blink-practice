@@ -41,18 +41,18 @@
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.416,
-      "bw_target_um": 0.0341,
-      "wl_target_range_um": [
-        1.2417,
-        1.6435
-      ],
+      "wl_target_um": 1.4212,
+      "bw_target_um": 0.0342,
       "n_images": 8,
       "n_images_in_epoch": 19,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
       "pct_covered": 100.0,
-      "fits": "epoch0.fits"
+      "fits": "epoch0.fits",
+      "wl_target_range_um": [
+        1.2451,
+        1.6515
+      ]
     },
     {
       "png": "epoch1.png",
@@ -63,18 +63,18 @@
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.3581,
-      "bw_target_um": 0.0328,
-      "wl_target_range_um": [
-        1.1553,
-        1.6383
-      ],
+      "wl_target_um": 1.3606,
+      "bw_target_um": 0.0329,
       "n_images": 8,
       "n_images_in_epoch": 13,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
       "pct_covered": 100.0,
-      "fits": "epoch1.fits"
+      "fits": "epoch1.fits",
+      "wl_target_range_um": [
+        1.1602,
+        1.638
+      ]
     },
     {
       "png": "epoch2.png",
@@ -85,18 +85,18 @@
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.3053,
+      "wl_target_um": 1.307,
       "bw_target_um": 0.0316,
-      "wl_target_range_um": [
-        1.1066,
-        1.578
-      ],
       "n_images": 8,
       "n_images_in_epoch": 29,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
       "pct_covered": 100.0,
-      "fits": "epoch2.fits"
+      "fits": "epoch2.fits",
+      "wl_target_range_um": [
+        1.1087,
+        1.5794
+      ]
     },
     {
       "png": "epoch3.png",
@@ -107,18 +107,18 @@
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.3676,
+      "wl_target_um": 1.371,
       "bw_target_um": 0.0329,
-      "wl_target_range_um": [
-        1.1019,
-        1.5376
-      ],
       "n_images": 7,
       "n_images_in_epoch": 7,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
       "pct_covered": 100.0,
-      "fits": "epoch3.fits"
+      "fits": "epoch3.fits",
+      "wl_target_range_um": [
+        1.1069,
+        1.5406
+      ]
     },
     {
       "png": "epoch4.png",
@@ -129,18 +129,18 @@
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.3304,
+      "wl_target_um": 1.3318,
       "bw_target_um": 0.0323,
-      "wl_target_range_um": [
-        1.1451,
-        1.5611
-      ],
       "n_images": 8,
       "n_images_in_epoch": 24,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
       "pct_covered": 100.0,
-      "fits": "epoch4.fits"
+      "fits": "epoch4.fits",
+      "wl_target_range_um": [
+        1.1477,
+        1.5615
+      ]
     }
   ]
 }

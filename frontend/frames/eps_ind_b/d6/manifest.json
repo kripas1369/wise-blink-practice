@@ -38,17 +38,17 @@
       "band": 6,
       "wl_min_um": 4.412,
       "wl_max_um": 5.01,
-      "wl_target_um": 4.6078,
+      "wl_target_um": 4.6128,
       "bw_target_um": 0.0362,
-      "wl_target_range_um": [
-        4.4202,
-        4.9653
-      ],
       "n_images": 21,
       "n_images_in_epoch": 24,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "wl_target_range_um": [
+        4.4246,
+        4.9692
+      ]
     },
     {
       "png": "epoch1.png",
@@ -60,17 +60,17 @@
       "band": 6,
       "wl_min_um": 4.412,
       "wl_max_um": 5.01,
-      "wl_target_um": 4.6488,
+      "wl_target_um": 4.6531,
       "bw_target_um": 0.0364,
-      "wl_target_range_um": [
-        4.4031,
-        4.9461
-      ],
       "n_images": 21,
       "n_images_in_epoch": 21,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "wl_target_range_um": [
+        4.417,
+        4.9474
+      ]
     },
     {
       "png": "epoch2.png",
@@ -82,17 +82,17 @@
       "band": 6,
       "wl_min_um": 4.412,
       "wl_max_um": 5.01,
-      "wl_target_um": 4.7501,
+      "wl_target_um": 4.7528,
       "bw_target_um": 0.0364,
-      "wl_target_range_um": [
-        4.4116,
-        4.932
-      ],
       "n_images": 11,
       "n_images_in_epoch": 11,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "wl_target_range_um": [
+        4.4216,
+        4.9334
+      ]
     },
     {
       "png": "epoch3.png",
@@ -104,17 +104,17 @@
       "band": 6,
       "wl_min_um": 4.412,
       "wl_max_um": 5.01,
-      "wl_target_um": 4.7712,
+      "wl_target_um": 4.7749,
       "bw_target_um": 0.037,
-      "wl_target_range_um": [
-        4.4013,
-        5.0116
-      ],
       "n_images": 21,
       "n_images_in_epoch": 36,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "wl_target_range_um": [
+        4.4077,
+        5.0113
+      ]
     }
   ]
 }

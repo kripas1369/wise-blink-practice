@@ -48,7 +48,7 @@ test("Barnard D2 add-up: real values give the expected label", () => {
   const f = m.frames[0];
   assert.equal(
     frameLabel(f, 0, 3),
-    "Visit 1 of 3 · 2025-08-26 11:57 UTC · D2, 1.235–1.629 µm at the star (band 1.10–1.65 µm) · " +
+    "Visit 1 of 3 · 2025-08-26 11:57 UTC · D2, 1.238–1.629 µm at the star (band 1.10–1.65 µm) · " +
       "8 exposures added of 18 in this visit · 2.6% pixels flagged · 0.2% with no value (striped)",
   );
   assert.ok(f.pct_no_value > 0, "Barnard's core is saturated, so some pixels have no value");

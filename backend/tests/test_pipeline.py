@@ -61,6 +61,44 @@ def test_clean_subtracts_zodi_and_reads_noise_flags_and_time(tmp_path):
     assert c["wl_um"] is None and c["bw_um"] is None  # no spectral WCS in this file: unknown, not a guess
 
 
+def test_wavelength_ignores_sip_distortion(tmp_path):
+    """IRSA: SIP must be off for WCS 'W'. A 1.35 px SIP shift along y must not move the wavelength."""
+    size = 21
+    header = sky_wcs(size).to_header()
+    header["CTYPE1"], header["CTYPE2"] = "RA---TAN-SIP", "DEC--TAN-SIP"
+    header["A_ORDER"] = header["B_ORDER"] = 2  # astropy ignores SIP of order 1
+    header["B_0_0"] = -1.35
+    header["MJD-AVG"] = 61000.25
+    header.update({"WCSAXESW": 2, "CTYPE1W": "WAVE-TAB", "CTYPE2W": "WAVE-TAB", "CUNIT1W": "um",
+                   "CUNIT2W": "um", "CRPIX1W": 0.0, "CRPIX2W": 0.0, "CDELT1W": 1, "CDELT2W": 1,
+                   "CRVAL1W": 1, "CRVAL2W": 1, "PV1_3W": 1, "PV2_3W": 2, "PS1_0W": "WCS-WAVE",
+                   "PS2_0W": "WCS-WAVE", "PS1_1W": "VALUES", "PS2_1W": "VALUES", "PS1_2W": "X", "PS2_2W": "Y"})
+    grid = np.array([1, 11, 21], np.int32)
+    values = np.zeros((1, 3, 3, 2), np.float32)
+    values[0, :, :, 0] = (1.2 + 0.01 * grid)[:, None]   # wavelength rises 0.01 µm per pixel in y
+    values[0, :, :, 1] = 0.03
+    table = fits.BinTableHDU.from_columns([
+        fits.Column("X", "3J", dim="(3)", array=grid[None]),
+        fits.Column("Y", "3J", dim="(3)", array=grid[None]),
+        fits.Column("VALUES", "18E", dim="(2,3,3)", array=values),
+    ], name="WCS-WAVE")
+    flags_header = fits.Header()
+    flags_header["HIERARCH MP_HOT"] = HOT
+    path = tmp_path / "w.fits"
+    fits.HDUList([fits.PrimaryHDU(), fits.ImageHDU(np.ones((size, size), np.float32), header, name="IMAGE"),
+                  fits.ImageHDU(np.zeros((size, size), np.float32), header, name="ZODI"),
+                  fits.ImageHDU(np.ones((size, size), np.float32), header, name="VARIANCE"),
+                  fits.ImageHDU(np.zeros((size, size), np.int32), flags_header, name="FLAGS"), table]).writeto(path)
+    with fits.open(path) as hdul:
+        x, y = WCS(hdul["IMAGE"].header).world_to_pixel_values(RA, DEC)
+        official = WCS(hdul["IMAGE"].header, fobj=hdul, key="W")
+        official.sip = None
+        expected = float(official.pixel_to_world_values(x, y)[0])
+        with_sip = float(WCS(hdul["IMAGE"].header, fobj=hdul, key="W").pixel_to_world_values(x, y)[0])
+    assert abs(with_sip - expected) > 0.005   # the test file really has the problem
+    assert clean_cutout(path, RA, DEC)["wl_um"] == pytest.approx(expected, abs=1e-4)
+
+
 def test_target_grid_is_odd_north_up_and_centred():
     grid, size = target_grid(RA, DEC, 3.0)
     assert size == 29

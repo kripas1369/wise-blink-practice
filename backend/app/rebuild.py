@@ -4,6 +4,7 @@ render.py caches every cutout it downloads (cache/cutouts/), so the exposures be
 be found again by position, detector and time. The rebuilt picture is accepted only if it gives the
 same PNG as the one the website shows; then its numbers (value, sigma, flags) are saved next to it
 as epoch<i>.fits (render.py now writes these itself), which the difference images (diff.py) need.
+The wavelength at the target is measured again too, so a fix in clean.wavelength_at reaches the manifest.
 
     python -m backend.app.rebuild frontend/frames/barnard/d2
     python -m backend.app.rebuild frontend/frames/*/d* --exact-position
@@ -25,7 +26,7 @@ from backend.app.clean import clean_cutout
 from backend.app.coadd import coadd
 from backend.app.config import CACHE_DIR
 from backend.app.render import (MIN_COVERED_PCT, brightness_scale, save_frame_fits, save_png, target_position,
-                                to_grey)
+                                target_wavelengths, to_grey)
 from backend.app.targets import OFFICIAL_TARGETS
 
 SAME_VISIT_DAYS = 60
@@ -110,6 +111,9 @@ def rebuild_folder(folder: Path, fix_position: bool = False, stretch: str | None
         ok, detail = png_matches(picture, manifest["scale"], folder / frame["png"])
         if not ok:
             raise RebuildError(f"{folder}/{frame['png']}: rebuilt picture differs from the PNG ({detail})")
+        used = [c for c, _ in visit if manifest["mode"] != "single" or abs(c["mjd"] - frame["mjd"]) < 1e-4]
+        frame.pop("wl_target_range_um", None)
+        frame.update(target_wavelengths(used))
         frame["fits"] = frame["png"].replace(".png", ".fits")
         save_frame_fits(picture, grid, frame["mjd"], frame["n_images"], manifest["band"], manifest["mode"],
                         folder / frame["fits"])

@@ -29,6 +29,9 @@ Notes only. No code from this file goes into the hackathon repo.
 - `ZODI`: model of the zodiacal light background. Clean image = IMAGE − ZODI.
 - `PSF`: the shape of a star image. **QR2:** `PSF` cube 121×101×101. **QR3:** replaced by an `EPSF` table (441 rows) (checked 31 Oct).
 - `WCS-WAVE`: wavelength of each pixel. **Display only, not for science** (Supplement v2.0).
+  - Read it with `WCS(header, fobj=hdul, key="W")` and **`.sip = None`** (IRSA spherex_intro §8b). With SIP left on, our wavelengths were off by up to 8.1 nm (0.27 × bandwidth); with it off, within 0.83 nm (0.03 × bandwidth) of the science map `CWAVE` (D2, 146 exposures, 1 Nov; `notes/PIPELINE_ALIGNMENT.md`).
+- **Pixel area:** 37.4–38.4 arcsec² per detector pixel (IRSA solid angle pixel map, D2 and D6). The file's sky WCS gives the same areas (within 0.05%), so on our resampled 6.15″ grid one constant, 37.82 arcsec², is exact.
+- **Cutout pixel → detector pixel:** x_det = 1 + x − `CRPIX1A`, y_det = 1 + y − `CRPIX2A` (0-based; IRSA PSF tutorial §4.3).
 
 ### Data releases (checked 31 Oct 2026, `spherex.obscore`)
 - **QR2** (observations ~Apr 2025 – Apr 2026) and **QR3** (from ~Aug 2026) are both live. An exposure is in only one release (no double counting).

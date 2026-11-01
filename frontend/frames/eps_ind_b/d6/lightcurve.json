@@ -6,7 +6,7 @@
  "unit": "mJy",
  "position_rule": "follows Gaia DR3 6412596012146801152 (proper motion, straight line)",
  "made_by": "backend/app/lightcurve.py",
- "made_at": "2026-11-01 04:38 UTC",
+ "made_at": "2026-11-01 04:57 UTC",
  "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx, ESA Gaia DR3",
  "method": "none",
  "reason": "The star's saturated (no-value) core reaches 7.2 px from its centre in at least one exposure. Measuring the light around it would need a ring starting at 8 px, and only rings starting at most 3 px out were checked to follow a star's brightness (RW Aur, 3-6 px: about 10%). So no light curve is given.",

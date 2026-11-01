@@ -16,10 +16,13 @@ def wavelength_at(hdul: fits.HDUList, ra: float, dec: float) -> tuple[float | No
     """Wavelength and bandwidth (µm) at the sky position, from the file's spectral WCS (key "W").
 
     SPHEREx's filter (LVF) changes wavelength across the detector, so this differs per exposure.
+    Astropy copies the image's SIP distortion into WCS "W"; it must be turned off there, because the
+    filter's wavelength map is not optically distorted (IRSA spherex_intro tutorial, section 8b).
     """
     try:
         sky = WCS(hdul["IMAGE"].header)
         spec = WCS(hdul["IMAGE"].header, fobj=hdul, key="W")
+        spec.sip = None
         x, y = sky.world_to_pixel_values(ra, dec)
         wl, bw = spec.pixel_to_world_values(x, y)
         wl, bw = float(wl), float(bw)

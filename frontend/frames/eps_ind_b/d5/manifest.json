@@ -38,17 +38,17 @@
       "band": 5,
       "wl_min_um": 3.811,
       "wl_max_um": 4.43,
-      "wl_target_um": 4.1749,
+      "wl_target_um": 4.1824,
       "bw_target_um": 0.037,
-      "wl_target_range_um": [
-        3.9793,
-        4.4093
-      ],
       "n_images": 8,
       "n_images_in_epoch": 16,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "wl_target_range_um": [
+        3.9918,
+        4.4173
+      ]
     },
     {
       "png": "epoch1.png",
@@ -60,17 +60,17 @@
       "band": 5,
       "wl_min_um": 3.811,
       "wl_max_um": 4.43,
-      "wl_target_um": 4.1442,
+      "wl_target_um": 4.1484,
       "bw_target_um": 0.0367,
-      "wl_target_range_um": [
-        3.8867,
-        4.4105
-      ],
       "n_images": 8,
       "n_images_in_epoch": 10,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "wl_target_range_um": [
+        3.8895,
+        4.4093
+      ]
     },
     {
       "png": "epoch2.png",
@@ -82,17 +82,17 @@
       "band": 5,
       "wl_min_um": 3.811,
       "wl_max_um": 4.43,
-      "wl_target_um": 3.9651,
+      "wl_target_um": 3.9706,
       "bw_target_um": 0.0362,
-      "wl_target_range_um": [
-        3.822,
-        4.3471
-      ],
       "n_images": 8,
       "n_images_in_epoch": 24,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "wl_target_range_um": [
+        3.8249,
+        4.3522
+      ]
     },
     {
       "png": "epoch3.png",
@@ -104,17 +104,17 @@
       "band": 5,
       "wl_min_um": 3.811,
       "wl_max_um": 4.43,
-      "wl_target_um": 4.0957,
+      "wl_target_um": 4.0994,
       "bw_target_um": 0.0365,
-      "wl_target_range_um": [
-        3.8161,
-        4.3118
-      ],
       "n_images": 6,
       "n_images_in_epoch": 6,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "wl_target_range_um": [
+        3.8225,
+        4.3137
+      ]
     },
     {
       "png": "epoch4.png",
@@ -126,17 +126,17 @@
       "band": 5,
       "wl_min_um": 3.811,
       "wl_max_um": 4.43,
-      "wl_target_um": 4.0891,
-      "bw_target_um": 0.0367,
-      "wl_target_range_um": [
-        3.8781,
-        4.3406
-      ],
+      "wl_target_um": 4.0907,
+      "bw_target_um": 0.0368,
       "n_images": 8,
       "n_images_in_epoch": 24,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "wl_target_range_um": [
+        3.8806,
+        4.3409
+      ]
     }
   ]
 }

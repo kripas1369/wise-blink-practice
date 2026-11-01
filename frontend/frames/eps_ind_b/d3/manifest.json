@@ -38,17 +38,17 @@
       "band": 3,
       "wl_min_um": 1.63,
       "wl_max_um": 2.435,
-      "wl_target_um": 1.9438,
-      "bw_target_um": 0.0473,
-      "wl_target_range_um": [
-        1.6414,
-        2.37
-      ],
+      "wl_target_um": 1.9493,
+      "bw_target_um": 0.0476,
       "n_images": 8,
       "n_images_in_epoch": 25,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "wl_target_range_um": [
+        1.6472,
+        2.3762
+      ]
     },
     {
       "png": "epoch1.png",
@@ -60,17 +60,17 @@
       "band": 3,
       "wl_min_um": 1.63,
       "wl_max_um": 2.435,
-      "wl_target_um": 2.1364,
+      "wl_target_um": 2.1378,
       "bw_target_um": 0.0527,
-      "wl_target_range_um": [
-        1.7067,
-        2.3963
-      ],
       "n_images": 8,
       "n_images_in_epoch": 22,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "wl_target_range_um": [
+        1.7144,
+        2.3961
+      ]
     },
     {
       "png": "epoch2.png",
@@ -82,17 +82,17 @@
       "band": 3,
       "wl_min_um": 1.63,
       "wl_max_um": 2.435,
-      "wl_target_um": 2.1691,
-      "bw_target_um": 0.0542,
-      "wl_target_range_um": [
-        2.0223,
-        2.3217
-      ],
+      "wl_target_um": 2.1709,
+      "bw_target_um": 0.0543,
       "n_images": 8,
       "n_images_in_epoch": 12,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "wl_target_range_um": [
+        2.0245,
+        2.3231
+      ]
     },
     {
       "png": "epoch3.png",
@@ -104,17 +104,17 @@
       "band": 3,
       "wl_min_um": 1.63,
       "wl_max_um": 2.435,
-      "wl_target_um": 2.0912,
-      "bw_target_um": 0.0507,
-      "wl_target_range_um": [
-        1.6505,
-        2.4063
-      ],
+      "wl_target_um": 2.1006,
+      "bw_target_um": 0.0502,
       "n_images": 8,
       "n_images_in_epoch": 36,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
-      "pct_covered": 100.0
+      "pct_covered": 100.0,
+      "wl_target_range_um": [
+        1.6571,
+        2.4146
+      ]
     }
   ]
 }

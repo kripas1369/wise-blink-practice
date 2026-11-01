@@ -38,18 +38,18 @@
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.4479,
+      "wl_target_um": 1.4486,
       "bw_target_um": 0.0351,
-      "wl_target_range_um": [
-        1.2784,
-        1.6274
-      ],
       "n_images": 8,
       "n_images_in_epoch": 8,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
       "pct_covered": 100.0,
-      "fits": "epoch0.fits"
+      "fits": "epoch0.fits",
+      "wl_target_range_um": [
+        1.2796,
+        1.6281
+      ]
     },
     {
       "png": "epoch1.png",
@@ -60,18 +60,18 @@
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.3652,
-      "bw_target_um": 0.0329,
-      "wl_target_range_um": [
-        1.2511,
-        1.5121
-      ],
+      "wl_target_um": 1.3711,
+      "bw_target_um": 0.0331,
       "n_images": 8,
       "n_images_in_epoch": 19,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
       "pct_covered": 100.0,
-      "fits": "epoch1.fits"
+      "fits": "epoch1.fits",
+      "wl_target_range_um": [
+        1.2572,
+        1.5176
+      ]
     },
     {
       "png": "epoch2.png",
@@ -82,18 +82,18 @@
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.3599,
-      "bw_target_um": 0.0328,
-      "wl_target_range_um": [
-        1.2804,
-        1.4416
-      ],
+      "wl_target_um": 1.3655,
+      "bw_target_um": 0.033,
       "n_images": 6,
       "n_images_in_epoch": 6,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
       "pct_covered": 100.0,
-      "fits": "epoch2.fits"
+      "fits": "epoch2.fits",
+      "wl_target_range_um": [
+        1.2868,
+        1.447
+      ]
     },
     {
       "png": "epoch3.png",
@@ -104,18 +104,18 @@
       "band": 2,
       "wl_min_um": 1.103,
       "wl_max_um": 1.65,
-      "wl_target_um": 1.3232,
+      "wl_target_um": 1.3243,
       "bw_target_um": 0.0322,
-      "wl_target_range_um": [
-        1.1626,
-        1.4784
-      ],
       "n_images": 8,
       "n_images_in_epoch": 15,
       "pct_flagged": 0.0,
       "pct_no_value": 0.0,
       "pct_covered": 100.0,
-      "fits": "epoch3.fits"
+      "fits": "epoch3.fits",
+      "wl_target_range_um": [
+        1.1644,
+        1.4793
+      ]
     }
   ]
 }

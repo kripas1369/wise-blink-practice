@@ -109,6 +109,12 @@ Barnard's two biggest spots (222 and 194 pixels) are mostly the glow around the 
 
 ---
 
+## 6b. Pipeline checked against IRSA's official tools (1 Nov)
+
+Full write-up: [`PIPELINE_ALIGNMENT.md`](PIPELINE_ALIGNMENT.md). Wavelengths are now read with SIP off, as IRSA does. Before, they were off by up to 8.1 nm (0.27 × bandwidth); now they are within 0.83 nm of IRSA's science map CWAVE. Every folder was rebuilt from the cache, and the PNGs are unchanged. Kept after measuring: one constant pixel area (IRSA's solid angle map equals the WCS area to 0.05%), `reproject_interp`, and the 2 px circle with a 10–14 px sky ring. Tests: 84 backend passed, 5 skipped (4 network tests, and the D6 download test because D6 is now prepared); 43 website tests passed.
+
+---
+
 ## 7. Not done / open
 
 1. **JPL offset sign** (see §3).
