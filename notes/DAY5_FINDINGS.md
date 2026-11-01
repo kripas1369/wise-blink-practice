@@ -89,17 +89,31 @@ Barnard's two biggest spots (222 and 194 pixels) are mostly the glow around the 
 
 ## 5. Tests and checks
 
-- 79 backend tests passed (4 network tests skipped); 41 website tests passed.
+- 84 backend tests passed (4 network tests skipped); 43 website tests passed.
 - New: `backend/tests/test_day5.py` (proof verdicts and counts, release dates for every exposure, spots match the difference maps, spacecraft position for every visit, the WISE 0855 D6 spot next to its Gaia star, JPL whole-second text, the distance correction, and the endpoint never inventing an answer when JPL is down) and `frontend/tests/day5.test.js` (proof texts, spot lines, the three JPL outcomes, the +/− stepping).
 - In the browser (API on port 8011): Barnard's Star proof panel, spot list with 9 numbered marks, spot detail card, JPL button, About page.
 
 ---
 
-## 6. Not done / open
+## 6. Spectrum panel (`backend/app/spectrum.py`, `spectrum.json`, `frontend/js/spectrum.js`, `/api/spectrum`)
 
-1. **Spectrum panel** (brightness against wavelength per visit, across detectors): needs frames for D1, D3–D6, which are not prepared.
-2. **JPL offset sign:** test with a spot whose rounding offset is several arcseconds, or compare with Horizons for a known asteroid away from the box centre.
-3. **JPL second pass:** try again; if it still fails, ask JPL (the error text says to notify the webmaster).
-4. **Spacecraft axes:** confirm `XYZ_SC_SYSTEM = 'GEOCENTER'` means ICRF axes (Explanatory Supplement).
-5. **Spot "Gaia star" for huge spots** (Barnard's 222 and 194 pixels): the centre of a big patch is not where its cause is. They are flagged; a better rule would look at the peak, not the centre.
-6. Still open from Day 4: AAVSO comparison, field-star floor in other frames, WISE 0855 in D1/D3/D5, the 520.6 mJy D6 exposure, RW Aur's spread within 2 hours.
+**What it shows.** For one official target, every light-curve point from each prepared detector folder, grouped into visits by time (same rule as `archive.group_epochs`: gap > 30 days or span > 60 days). One chart: wavelength (µm) vs brightness (mJy), one colour per visit, dashed lines at detector boundaries.
+
+**Epsilon Indi B (practice target for full spectrum).** Detectors **D1–D6** prepared (D6 finished 1 Nov 2026 after IRSA succeeded). Spectrum file spans all six bands. The brown-dwarf absorption dip near **1.36–1.40 µm** appears in the chart (same physics as Day 4 light-curve note).
+
+**D1 proof note.** `proof.json` for Eps Ind B **D1 alone** can read **disagrees** with Gaia (measured 0.96 px vs expected 0.75 px): the star is very faint at 0.75 µm and the first visit add-up mixes wavelengths across D1; the proof panel is correct to warn, not to pass blindly.
+
+**API (commit b74225e).** With `uvicorn`, the site loads spectrum from `/api/spectrum`. If an official target has **≥ 2** prepared detectors but not the chosen band, `/api/frames` returns **202** and downloads that band from **NASA IRSA** into `frontend/frames/` (then Gaia, diff, light curve, proof, spots, spectrum).
+
+**Warnings in the file (honest).** No aperture correction; PSF width differs by detector (e.g. WISE 0855 D2 5.15″ vs D6 6.61″); detector ranges do not overlap; missing detectors listed explicitly.
+
+---
+
+## 7. Not done / open
+
+1. **JPL offset sign** (see §3).
+2. **JPL second pass** still failing on 31 Oct.
+3. **Spacecraft axes** in headers (unverified).
+4. **Huge spot Gaia label** (Barnard 222/194 px patches).
+5. Day 4 leftovers: **AAVSO**, field-star floor, WISE in other detectors, 520 mJy D6 exposure, RW Aur intra-visit spread.
+6. **Hackathon submission:** this repo is practice only — see [`HACKATHON_READINESS.md`](HACKATHON_READINESS.md) (video, deploy, empty-repo rehearsal, global nomination).

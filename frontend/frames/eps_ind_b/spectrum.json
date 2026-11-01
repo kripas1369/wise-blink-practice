@@ -103,6 +103,17 @@
     "max_arcsec": 8.63,
     "n_exposures": 38
    }
+  },
+  {
+   "band": 6,
+   "band_range_um": [
+    4.42,
+    5.0
+   ],
+   "method": "none",
+   "n_exposures": 0,
+   "position_rule": "follows Gaia DR3 6412596012146801152 (proper motion, straight line)",
+   "reason": "The star's saturated (no-value) core reaches 7.2 px from its centre in at least one exposure. Measuring the light around it would need a ring starting at 8 px, and only rings starting at most 3 px out were checked to follow a star's brightness (RW Aur, 3-6 px: about 10%). So no light curve is given."
   }
  ],
  "visits": [
@@ -1802,10 +1813,10 @@
  "warnings": [
   "Each point is one exposure: a 2.0 px circle around the target minus the sky, with no aperture correction. The PSF is not equally wide in every detector (median FWHM 5.15–6.1″ here), so the circle catches a different share of the light in each one: a step where two detectors meet can come from that, not from the star.",
   "The detectors' ranges do not overlap, so no wavelength is measured by two detectors to check them against each other.",
-  "No frames prepared for D6, so those wavelengths are missing."
+  "D6: no points. The star's saturated (no-value) core reaches 7.2 px from its centre in at least one exposure. Measuring the light around it would need a ring starting at 8 px, and only rings starting at most 3 px out were checked to follow a star's brightness (RW Aur, 3-6 px: about 10%). So no light curve is given."
  ],
  "method": "every point comes from one detector's lightcurve.json (backend/app/lightcurve.py); points of all detectors grouped into visits by time",
  "made_by": "backend/app/spectrum.py",
- "made_at": "2026-11-01 04:22 UTC",
+ "made_at": "2026-11-01 04:38 UTC",
  "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx"
 }

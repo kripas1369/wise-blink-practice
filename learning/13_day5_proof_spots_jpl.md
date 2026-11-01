@@ -54,4 +54,4 @@ The card also gives the add-up's time span. WISE 0855 D6 visits span 478–786 h
 - JPL's offset sign (east and north positive) is assumed, not tested.
 - `XYZ_SC_SYSTEM = 'GEOCENTER'`: we assume ICRF axes.
 - For huge spots (hundreds of pixels), the "Gaia star" is chosen from the patch's centre, which is not where its cause is.
-- The spectrum panel is not built: it needs frames for the other detectors.
+- The spectrum panel merges light curves across prepared detectors (`backend/app/spectrum.py`, `/api/spectrum`, `frontend/js/spectrum.js`). Eps Ind B has **D1–D5** in practice; **D6** depends on IRSA. Warnings in the file: no aperture correction, PSF width differs by band.

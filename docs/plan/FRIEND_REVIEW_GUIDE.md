@@ -101,13 +101,17 @@ SPHEREx is a NASA space telescope that photographs the whole sky again and again
 | Known-object check | A button that asks NASA JPL which known asteroids and comets were near a spot at that time, seen from SPHEREx: "matches X", "no match" (never "new object") or "check unavailable" | `backend/app/known_objects.py`, `/api/known-objects` |
 | +/− buttons | Step the Before and After visits one at a time | `frontend/js/diffview.js` |
 | About page | How we clean the data, what it cannot tell you, credits | `frontend/about.html` |
+| Spectrum | Brightness vs wavelength per visit, all prepared detectors; warnings (PSF, no aperture correction) | `backend/app/spectrum.py`, `frontend/js/spectrum.js`, `/api/spectrum` |
+| IRSA auto-download | Missing detector for a target that already has ≥2 bands: API downloads from NASA IRSA | `backend/app/main.py` (202 then poll) |
 
-**Findings** (all numbers in [`notes/DAY5_FINDINGS.md`](../../notes/DAY5_FINDINGS.md)):
+**Findings** (numbers in [`notes/DAY5_FINDINGS.md`](../../notes/DAY5_FINDINGS.md) §6; hackathon: [`notes/HACKATHON_READINESS.md`](../../notes/HACKATHON_READINESS.md)):
 - Barnard's Star and Epsilon Indi B **agree** with Gaia (0.18 px apart in both). R Dra and RW Aur move less than 0.3 px according to Gaia, so the panel says **too small to test** instead of passing them. WISE 0855 is not in Gaia.
 - The JPL check found **Ceres** at a test spot 7.2″ from Ceres's position (JPL: 10.1″, its error 13.2″). JPL's accurate "second pass" failed for every request on 31 Oct, so the site uses the rougher first pass and says so.
 - **Not verified:** the sign of JPL's offsets (we assume east and north positive), and that SPHEREx's position in the file headers uses ICRF axes.
 
 ![Spot detail card](../../notes/screenshots/day5_spot_detail.png)
+
+![Spectrum, Epsilon Indi B D1–D5](../../notes/screenshots/day5_spectrum_eps.png)
 
 ---
 
@@ -125,8 +129,8 @@ Optional (to run the data code, the API and the tests; Python 3.11+):
 cd wise-blink-practice
 python3 -m venv .venv && source .venv/bin/activate     # Windows: .venv\Scripts\Activate.ps1
 pip install -r requirements.txt
-python -m pytest -q                  # expect: 79 passed, 4 skipped
-cd frontend && npm test              # expect: 41 pass (Node 20+)
+python -m pytest -q                  # expect: 84 passed, 4 skipped
+cd frontend && npm test              # expect: 43 pass (Node 20+)
 cd .. && uvicorn backend.app.main:app --port 8000      # website + API; API docs at http://localhost:8000/api/docs
 ```
 With the API running you can type any position (e.g. `133.8 -7.2`); the first time, it takes a few minutes to download the pictures.
@@ -186,6 +190,11 @@ Pick one visit, e.g. Barnard D2 visit 1:
 - [ ] **JPL offset sign:** in JPL's documentation, is "Dist. from center RA" positive to the east? (Open item; we assumed yes.)
 - [ ] **Spacecraft axes:** in the Explanatory Supplement, what frame are `X_SC`, `Y_SC`, `Z_SC` in when `XYZ_SC_SYSTEM = 'GEOCENTER'`? (We assumed ICRF.)
 
+### C9. Spectrum and IRSA download (Day 5)
+- [ ] **Spectrum shape:** Epsilon Indi B → scroll to **Spectrum**. Is it faintest near **1.36–1.40 µm**? (Cool brown dwarf: water/methane bands.)
+- [ ] **Detector list:** does the panel list D1–D5 (or D6 when prepared) with PSF width from the headers?
+- [ ] **Missing D6:** with the API running, pick **D6** once; does the site say it is preparing frames from IRSA (202), then reload?
+
 ---
 
 ## Part D. Research questions (most important first)
@@ -229,5 +238,5 @@ Features, checks or explanations that would help a student, a citizen scientist 
 | Day 3 (done 31 Oct) | Gaia markers, synced Before / After / Difference view, the API, motion measurements (Part A, Day 3) | Part C6; research questions 9 and 10 |
 | Day 4 (done 31 Oct, except deploy) | Light curve per exposure, click a pixel, R Dra asinh scale, WISE 0855 position fit, C4 tests on the 5 targets (Part A, Day 4) | Part C7; research questions 1, 2, 10 and 12 |
 | Day 4 leftovers | Deploy and phone check; PSF-fit positions; field-star floor outside the Barnard frame | Compare brightness with IRSA's Spectrophotometry Tool; test the public link on your phone |
-| Day 5 (done 31 Oct) | Proof panel, spots above 5σ with known-object check (JPL), +/− visit buttons, About page (Part A, Day 5) | Part C8; research question 8 |
-| Later | Spectrum panel (needs frames for the other detectors), video, pitch | Science text, references, limitations |
+| Day 5 (done 31 Oct) | Proof panel, spots, JPL check, +/−, About, spectrum (Eps Ind B D1–D5), IRSA auto-download | Part C8–C9; research Q8 |
+| Later | **30 s video**, **public deploy**, mock judging, **empty-repo rehearsal** (14 Nov = fresh submission) | [`notes/HACKATHON_READINESS.md`](../../notes/HACKATHON_READINESS.md) |
