@@ -18,7 +18,7 @@ cd frontend
 python3 -m http.server 8000
 ```
 
-The page asks `/api/health` once: if the API answers it uses `/api/frames`, `/api/gaia` and `/api/diff`, otherwise it reads the same files from `frames/`.
+The page asks `/api/health` once: if the API answers it uses `/api/frames`, `/api/gaia`, `/api/diff`, `/api/proof`, `/api/spectrum`, and the rest — including **downloading missing detectors from NASA IRSA** when you pick a band that is not prepared yet (official targets with at least two detectors already on disk). Otherwise it reads the same files from `frames/`.
 Opening `index.html` directly from the file system does not work (browsers block JavaScript modules there).
 
 ## Test

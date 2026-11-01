@@ -1,6 +1,6 @@
 // Spectrum panel: the target's brightness against wavelength, one colour per visit, across every detector
 // that has frames (spectrum.json, made by backend/app/spectrum.py). Every point is one exposure of a light curve.
-import { loadExtra } from "./frames.js";
+import { framesQuery, hasApi, loadExtra } from "./frames.js";
 import { VISIT_COLOURS, chart, offChart, pointTitle, ticks } from "./lightcurve.js";
 
 const $ = (id) => document.getElementById(id);
@@ -52,6 +52,24 @@ export function spectrumSummary(spec) {
   return `${spec.label} · ${bands || "no detector"} · ${spec.visits.length} visit${spec.visits.length === 1 ? "" : "s"} · ${n} points`;
 }
 
+async function loadSpectrum(loaded, fetchFn = fetch) {
+  if (await hasApi(fetchFn)) {
+    const url = framesQuery(loaded.where).replace("/api/frames?", "/api/spectrum?");
+    let resp;
+    try {
+      resp = await fetchFn(url, { cache: "no-cache" });
+    } catch {
+      throw new Error("Could not reach the data API");
+    }
+    const body = await resp.json().catch(() => ({}));
+    if (resp.status === 202) throw new Error(body.message || "Preparing detectors from NASA IRSA…");
+    if (resp.status === 404) return null;
+    if (!resp.ok) throw new Error(body.error || `The data API answered HTTP ${resp.status}`);
+    return body;
+  }
+  return loadExtra(targetBase(loaded.base), "spectrum.json", fetchFn);
+}
+
 export function createSpectrum() {
   const el = {
     box: $("spec-view"), message: $("spec-message"), body: $("spec-body"), summary: $("spec-summary"),
@@ -82,9 +100,9 @@ export function createSpectrum() {
     if (!frames) return hide();
     let spec;
     try {
-      spec = await loadExtra(targetBase(frames.base), "spectrum.json");
+      spec = await loadSpectrum(frames);
     } catch (err) {
-      if (v === version) hide(`Could not load the spectrum: ${err.message}`);
+      if (v === version) hide(String(err.message));
       return;
     }
     if (v !== version) return;

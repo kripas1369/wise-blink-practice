@@ -161,6 +161,20 @@ def test_spectrum_says_what_can_bias_its_shape():
     assert barnard["visits"] == [] and any(w.startswith("D2: no points.") for w in barnard["warnings"])
 
 
+def test_missing_official_detector_can_prepare_from_irsa(monkeypatch):
+    """Eps Ind B has D1–D5 prepared; D6 missing → HTTP 202 while IRSA job runs (not a fake 404)."""
+    d6 = main.PREPARED_DIR / "eps_ind_b" / "d6" / "manifest.json"
+    had = d6.exists()
+    if had:
+        pytest.skip("d6 already prepared")
+    monkeypatch.setattr(main, "_pool", type("Later", (), {"submit": staticmethod(lambda f, *a: None)})())
+    monkeypatch.setattr(main, "_jobs", {})
+    client = TestClient(main.app)
+    r = client.get("/api/frames", params={"target": "eps_ind_b", "band": 6})
+    assert r.status_code == 202 and r.json()["status"] == "working"
+    assert "IRSA" in r.json()["message"] or "Preparing" in r.json()["message"]
+
+
 def test_spectrum_endpoint():
     client = TestClient(main.app)
     r = client.get("/api/spectrum", params={"target": "wise0855", "band": 6})

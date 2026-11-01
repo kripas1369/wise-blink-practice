@@ -2,8 +2,8 @@
 
     uvicorn backend.app.main:app --port 8000        # then open http://localhost:8000
 
-Endpoints (docs/plan/FACTS.md, section 7). Every error is {"error": "<plain message>"} with a
-non-200 status; nothing is ever filled in with a default value.
+Endpoints (docs/plan/FACTS.md, section 7). SPHEREx images come from NASA IRSA (TAP + cutout service), not
+from api.nasa.gov; the API here downloads through IRSA when a folder is not prepared yet.
     /api/health
     /api/resolve?name=                         SIMBAD position and proper motion
     /api/coverage?ra=&dec=[&band=]             SPHEREx images whose footprint contains the point
@@ -40,7 +40,7 @@ from backend.app.known_objects import check as check_known
 from backend.app.proof import write_proof
 from backend.app.spectrum import write_spectrum
 from backend.app.spots import write_spots
-from backend.app.render import POSITION_YEAR, NoImages, render_frames
+from backend.app.render import POSITION_YEAR, NoImages, make_frames, render_frames, write_index
 from backend.app.resolve import ResolverUnavailable, resolve_name
 from backend.app.targets import OFFICIAL_TARGETS
 
@@ -107,8 +107,13 @@ def locate(target: str | None, ra: float | None, dec: float | None, band: int, f
         folder = PREPARED_DIR / target / f"d{band}"
         if not (folder / "manifest.json").exists():
             prepared = sorted(int(p.name[1:]) for p in (PREPARED_DIR / target).glob("d*") if (p / "manifest.json").exists())
+            if len(prepared) >= 2:
+                return {"kind": "official_prepare", "key": target, "band": band, "folder": folder,
+                        "url": f"/frames/{target}/d{band}/"}
             raise ApiError(404, f"No prepared frames for {target} in D{band}; prepared detectors: "
-                                + (", ".join(f"D{d}" for d in prepared) or "none"))
+                                + (", ".join(f"D{d}" for d in prepared) or "none")
+                                + ". Start the data API and pick this detector again to download from NASA IRSA, "
+                                "or run: python -m backend.app.render " + target + f" {band}")
         return {"kind": "prepared", "key": target, "folder": folder, "url": f"/frames/{target}/d{band}/"}
     if ra is None or dec is None:
         raise ApiError(400, "Give either target= or both ra= and dec=")
@@ -132,6 +137,23 @@ _jobs: dict[str, dict] = {}
 _jobs_lock = threading.Lock()
 
 
+def _pipeline_after_render(folder: Path, target_dir: Path | None = None) -> list[str]:
+    """Gaia, diff, light curve, proof, spots, spectrum; return warnings for any step that failed."""
+    warnings: list[str] = []
+    steps = [("Gaia DR3 markers", write_gaia), ("difference maps", write_diff),
+             ("light curve", write_lightcurve),
+             ("proof panel", lambda f: write_proof(f, online=True)),
+             ("spot list", write_spots)]
+    if target_dir is not None:
+        steps.append(("spectrum", lambda _f: write_spectrum(target_dir)))
+    for stage, step in steps:
+        try:
+            step(folder)
+        except Exception as exc:
+            warnings.append(f"{stage} failed: {exc}")
+    return warnings
+
+
 def _run_job(loc: dict) -> None:
     job = _jobs[str(loc["folder"])]
     try:
@@ -139,16 +161,27 @@ def _run_job(loc: dict) -> None:
         render_frames(loc["ra"], loc["dec"], loc["key"], f"RA {loc['ra']:.4f}° Dec {loc['dec']:+.4f}°",
                       "typed position, rounded to 0.0001° (not moved for proper motion)", loc["band"],
                       "coadd", JOB_EXPOSURES_PER_VISIT, loc["fov"], JOBS_DIR)
-        for stage, step in [("Gaia DR3 markers", write_gaia), ("difference maps", write_diff),
-                            ("light curve", write_lightcurve),
-                            ("proof panel", lambda folder: write_proof(folder, online=True)),
-                            ("spot list", write_spots),
-                            ("spectrum", lambda folder: write_spectrum(folder.parent))]:
-            job["stage"] = stage
-            try:
-                step(loc["folder"])
-            except Exception as exc:  # the frames are still worth showing; say what is missing
-                job["warnings"].append(f"{stage} failed: {exc}")
+        job["stage"] = "Gaia DR3 markers"
+        job["warnings"].extend(_pipeline_after_render(loc["folder"], loc["folder"].parent))
+        job.update(status="ready", stage="done")
+    except NoImages as exc:
+        job.update(status="none", error=str(exc))
+    except Exception as exc:
+        job.update(status="failed", error=f"{exc.__class__.__name__}: {exc}", failed_at=time.time())
+        traceback.print_exc()
+
+
+def _run_official_prepare(loc: dict) -> None:
+    """Download one missing detector for an official target from NASA IRSA into frontend/frames/."""
+    job = _jobs[str(loc["folder"])]
+    try:
+        job["stage"] = f"asking NASA IRSA for SPHEREx images ({loc['key']} D{loc['band']})"
+        folder = loc["folder"]
+        folder.parent.mkdir(parents=True, exist_ok=True)
+        make_frames(loc["key"], loc["band"])
+        job["stage"] = "Gaia DR3 markers"
+        job["warnings"].extend(_pipeline_after_render(folder, folder.parent))
+        write_index(PREPARED_DIR)
         job.update(status="ready", stage="done")
     except NoImages as exc:
         job.update(status="none", error=str(exc))
@@ -170,7 +203,7 @@ def job_status(loc: dict) -> dict:
             job = {"status": "working", "stage": "waiting for the previous job", "warnings": [],
                    "started_at": datetime.now(timezone.utc).strftime("%H:%M UTC")}
             _jobs[str(folder)] = job
-            _pool.submit(_run_job, loc)
+            _pool.submit(_run_official_prepare if loc["kind"] == "official_prepare" else _run_job, loc)
         return job
 
 
@@ -297,9 +330,13 @@ def proof(loc: dict = Depends(location)):
 
 @app.get("/api/spectrum")
 def spectrum(loc: dict = Depends(location)):
-    path = loc["folder"].parent / "spectrum.json"
+    target_dir = loc["folder"].parent
+    path = target_dir / "spectrum.json"
     if not path.exists():
-        raise ApiError(404, "No spectrum for this position yet")
+        if any((target_dir / f"d{i}" / "lightcurve.json").exists() for i in DETECTORS):
+            write_spectrum(target_dir)
+        else:
+            raise ApiError(404, "No spectrum yet: need light curves from at least one detector")
     return json.loads(path.read_text())
 
 
