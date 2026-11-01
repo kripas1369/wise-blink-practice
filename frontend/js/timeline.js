@@ -2,7 +2,7 @@
 // prepared frames/<target>/coverage.json, made by backend/app/coverage.py). Each tick is one image; each bar
 // is one visit, grouped per detector with the same rule as backend/app/archive.group_epochs, so a row's bars
 // are the visits the flipbook can show for that detector.
-import { hasApi, loadExtra, FRAMES_ROOT } from "./frames.js";
+import { hasApi, loadExtra, remember, FRAMES_ROOT } from "./frames.js";
 import { DETECTORS } from "./urlstate.js";
 
 const $ = (id) => document.getElementById(id);
@@ -123,15 +123,18 @@ export function timelineSummary(coverage, det = null, nFrames = null) {
 async function loadCoverage(where, fetchFn = fetch) {
   if (await hasApi(fetchFn)) {
     const params = new URLSearchParams({ ra: where.ra.toFixed(6), dec: where.dec.toFixed(6) });
-    let resp;
-    try {
-      resp = await fetchFn(`/api/coverage?${params}`, { cache: "no-cache" });
-    } catch {
-      throw new Error("Could not reach the data API");
-    }
-    const body = await resp.json().catch(() => ({}));
-    if (!resp.ok) throw new Error(body.error || `The data API answered HTTP ${resp.status}`);
-    return body;
+    const url = `/api/coverage?${params}`;
+    return remember(fetchFn, `coverage:${url}`, async () => {
+      let resp;
+      try {
+        resp = await fetchFn(url, { cache: "no-cache" });
+      } catch {
+        throw new Error("Could not reach the data API");
+      }
+      const body = await resp.json().catch(() => ({}));
+      if (!resp.ok) throw new Error(body.error || `The data API answered HTTP ${resp.status}`);
+      return body;
+    });
   }
   if (!where.targetKey) throw new Error("The timeline for any position needs the data API; this server only has the 5 prepared targets.");
   const prepared = await loadExtra(`${FRAMES_ROOT}/${where.targetKey}`, "coverage.json", fetchFn);

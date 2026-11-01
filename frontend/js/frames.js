@@ -73,7 +73,31 @@ export function spanDays(frames) {
   return Math.round(frames[frames.length - 1].mjd - frames[0].mjd);
 }
 
-async function getJson(url, fetchFn) {
+// Answers kept for the rest of the visit, one store per fetch function, so switching back to a target shows it at
+// once. Prepared files and finished API answers do not change while the page is open; failures are not kept.
+const stores = new WeakMap();
+
+function storeFor(fetchFn) {
+  if (!stores.has(fetchFn)) stores.set(fetchFn, new Map());
+  return stores.get(fetchFn);
+}
+
+/** `make()` once per key; a rejected promise is forgotten so the next call tries again. */
+export function remember(fetchFn, key, make) {
+  const store = storeFor(fetchFn);
+  if (!store.has(key)) {
+    const p = make();
+    store.set(key, p);
+    p.catch(() => { if (store.get(key) === p) store.delete(key); });
+  }
+  return store.get(key);
+}
+
+export function forget(fetchFn, key) {
+  storeFor(fetchFn).delete(key);
+}
+
+async function fetchJson(url, fetchFn) {
   let resp;
   try {
     resp = await fetchFn(url, { cache: "no-cache" });
@@ -83,6 +107,20 @@ async function getJson(url, fetchFn) {
   if (resp.status === 404) return null;
   if (!resp.ok) throw new FramesUnavailable(`${url} answered HTTP ${resp.status}`);
   return resp.json();
+}
+
+function getJson(url, fetchFn) {
+  return remember(fetchFn, `json:${url}`, () => fetchJson(url, fetchFn));
+}
+
+/** An image, downloaded and decoded once per page visit. */
+export function loadImage(src) {
+  return remember(fetch, `img:${src}`, () => new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error(`could not load ${src}`));
+    img.src = src;
+  }));
 }
 
 /** { target: [bands...] } for the frames that exist, from frames/index.json. */
@@ -128,6 +166,22 @@ export function framesQuery({ targetKey, ra, dec, det, fov }) {
   return `/api/frames?${new URLSearchParams(params)}`;
 }
 
+async function askFrames(url, fetchFn) {
+  let resp;
+  try {
+    resp = await fetchFn(url, { cache: "no-cache" });
+  } catch {
+    throw new FramesUnavailable("Could not reach the data API");
+  }
+  const body = await resp.json().catch(() => ({}));
+  if (resp.status === 202) return { status: "working", message: body.message || "Preparing the frames…" };
+  if (resp.status === 404) return { status: "none", message: body.error || "No SPHEREx frames here" };
+  if (!resp.ok) throw new FramesUnavailable(body.error || `The data API answered HTTP ${resp.status}`);
+  return {
+    status: "ready", manifest: checkManifest(body), base: body.base_url.replace(/\/$/, ""), warnings: body.warnings || [],
+  };
+}
+
 /**
  * Frames for a position and detector:
  *   { status: "ready", manifest, base, warnings }  base = folder URL without the trailing slash
@@ -138,19 +192,10 @@ export function framesQuery({ targetKey, ra, dec, det, fov }) {
 export async function loadFrames(where, fetchFn = fetch) {
   const { targetKey, det, fov } = where;
   if (await hasApi(fetchFn)) {
-    let resp;
-    try {
-      resp = await fetchFn(framesQuery(where), { cache: "no-cache" });
-    } catch {
-      throw new FramesUnavailable("Could not reach the data API");
-    }
-    const body = await resp.json().catch(() => ({}));
-    if (resp.status === 202) return { status: "working", message: body.message || "Preparing the frames…" };
-    if (resp.status === 404) return { status: "none", message: body.error || "No SPHEREx frames here" };
-    if (!resp.ok) throw new FramesUnavailable(body.error || `The data API answered HTTP ${resp.status}`);
-    return {
-      status: "ready", manifest: checkManifest(body), base: body.base_url.replace(/\/$/, ""), warnings: body.warnings || [],
-    };
+    const url = framesQuery(where);
+    const result = await remember(fetchFn, `frames:${url}`, () => askFrames(url, fetchFn));
+    if (result.status !== "ready") forget(fetchFn, `frames:${url}`);
+    return result;
   }
   if (!targetKey) {
     return { status: "none", message: "SPHEREx frames for any position need the data API (uvicorn backend.app.main:app). This server only has the 5 prepared targets." };

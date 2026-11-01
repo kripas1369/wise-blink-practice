@@ -3,7 +3,8 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { test } from "node:test";
 
 import {
-  FramesUnavailable, checkManifest, frameLabel, loadIndex, loadManifest, manifestUrl, spanDays, wavelengthText,
+  FramesUnavailable, checkManifest, forget, frameLabel, loadFrames, loadIndex, loadManifest, manifestUrl, remember,
+  resetApiCheck, spanDays, wavelengthText,
 } from "../js/frames.js";
 import { defaultBlinkPair, intervalMs, nextIndex, prevIndex } from "../js/player.js";
 
@@ -100,6 +101,50 @@ test("loading: missing files mean 'not prepared', server errors are reported", a
   await assert.rejects(loadManifest("barnard", 2, broken), FramesUnavailable);
   const offline = async () => { throw new TypeError("network"); };
   await assert.rejects(loadIndex(offline), FramesUnavailable);
+});
+
+test("cache: a target loaded once is not downloaded again; failures and 'still preparing' are asked again", async () => {
+  const asked = [];
+  const files = fakeFetch({ [manifestUrl("barnard", 2)]: barnard() });
+  const counting = async (url, opts) => { asked.push(url); return files(url, opts); };
+  const [a, b] = await Promise.all([loadManifest("barnard", 2, counting), loadManifest("barnard", 2, counting)]);
+  assert.equal(await loadManifest("barnard", 2, counting), a);
+  assert.equal(a, b);
+  assert.deepEqual(asked, [manifestUrl("barnard", 2)]);
+
+  let up = false;
+  const flaky = async (url) => {
+    if (!up) return { ok: false, status: 500 };
+    return { ok: true, status: 200, json: async () => barnard() };
+  };
+  await assert.rejects(loadManifest("barnard", 2, flaky), FramesUnavailable);
+  up = true;
+  assert.equal((await loadManifest("barnard", 2, flaky)).frames.length, 3);
+
+  let calls = 0;
+  const later = await remember(counting, "k", async () => ++calls);
+  assert.equal(await remember(counting, "k", async () => ++calls), later);
+  forget(counting, "k");
+  assert.equal(await remember(counting, "k", async () => ++calls), 2);
+});
+
+test("cache: the API's 'preparing' answer is not kept, its finished frames are", async () => {
+  resetApiCheck();
+  let ready = false;
+  let framesAsked = 0;
+  const api = async (url) => {
+    if (url === "/api/health") return { ok: true, status: 200, json: async () => ({ ok: true }) };
+    framesAsked += 1;
+    if (!ready) return { ok: false, status: 202, json: async () => ({ message: "Preparing" }) };
+    return { ok: true, status: 200, json: async () => ({ ...barnard(), base_url: "frames/barnard/d2/" }) };
+  };
+  const where = { targetKey: "barnard", ra: 269.45, dec: 4.69, det: 2, fov: 3 };
+  assert.equal((await loadFrames(where, api)).status, "working");
+  ready = true;
+  assert.equal((await loadFrames(where, api)).status, "ready");
+  assert.equal((await loadFrames(where, api)).status, "ready");
+  assert.equal(framesAsked, 2);
+  resetApiCheck();
 });
 
 test("player: stepping, looping, blink pair and speed", () => {

@@ -1,6 +1,6 @@
 // Under the flipbook: the frames as a GIF (flipbook.gif, backend/app/gif.py) and links to the original SPHEREx
 // files of every visit at NASA IRSA (originals.json, backend/app/originals.py).
-import { loadExtra } from "./frames.js";
+import { loadExtra, remember } from "./frames.js";
 
 const $ = (id) => document.getElementById(id);
 const RELEASE = (r) => String(r || "").replace("spherex_", "").toUpperCase();
@@ -37,12 +37,14 @@ export function createFiles() {
     note: $("flip-originals-note"), list: $("flip-originals-list") };
   let version = 0;
 
-  async function gifExists(url) {
-    try {
-      return (await fetch(url, { method: "HEAD", cache: "no-cache" })).ok;
-    } catch {
-      return false;
-    }
+  function gifExists(url) {
+    return remember(fetch, `head:${url}`, async () => {
+      try {
+        return (await fetch(url, { method: "HEAD", cache: "no-cache" })).ok;
+      } catch {
+        return false;
+      }
+    });
   }
 
   /** Frames were shown ({ manifest, base }) or cleared (null). */

@@ -1,7 +1,7 @@
 // Light curve panel: the brightness of one position in every exposure (backend/app/lightcurve.py).
 // Rule: every point keeps its own wavelength (SPHEREx's filter gives each exposure a different one), so
 // visits are compared only at the same wavelength, and a change is claimed only above the measured floor.
-import { framesQuery, hasApi, loadExtra } from "./frames.js";
+import { forget, framesQuery, hasApi, loadExtra, remember } from "./frames.js";
 
 const $ = (id) => document.getElementById(id);
 const SVG_W = 640;
@@ -299,21 +299,23 @@ export function createLightCurve() {
     }
     el.where.textContent = `Measuring pixel (${x}, ${y}) in every exposure…`;
     const url = framesQuery(loaded.where).replace("/api/frames?", "/api/lightcurve?") + `&x=${x}&y=${y}`;
-    let body;
-    let resp;
+    let answer;
     try {
-      resp = await fetch(url, { cache: "no-cache" });
-      body = await resp.json();
+      answer = await remember(fetch, `pixel:${url}`, async () => {
+        const resp = await fetch(url, { cache: "no-cache" });
+        return { ok: resp.ok, status: resp.status, body: await resp.json() };
+      });
     } catch {
       if (v === version) el.where.textContent = "Could not reach the data API.";
       return;
     }
+    if (!answer.ok) forget(fetch, `pixel:${url}`);
     if (v !== version) return;
-    if (!resp.ok) {
-      el.where.textContent = body.error || `The data API answered HTTP ${resp.status}`;
+    if (!answer.ok) {
+      el.where.textContent = answer.body.error || `The data API answered HTTP ${answer.status}`;
       return;
     }
-    render(body, true);
+    render(answer.body, true);
   }
 
   el.target.addEventListener("click", () => show(loaded));

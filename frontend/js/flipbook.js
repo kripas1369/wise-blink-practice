@@ -1,5 +1,5 @@
 // The SPHEREx flipbook panel: play through visits, or blink two of them, with Gaia markers.
-import { frameLabel, loadExtra, loadFrames, loadIndex, spanDays } from "./frames.js";
+import { frameLabel, loadExtra, loadFrames, loadImage, loadIndex, spanDays } from "./frames.js";
 import {
   BLINK_SPEEDS, DEFAULT_BLINK_SPEED, DEFAULT_SPEED, SPEEDS, defaultBlinkPair, intervalMs, nextIndex, prevIndex,
 } from "./player.js";
@@ -59,15 +59,6 @@ export function scaleText(scale) {
     ? "Every frame uses the same brightness scale, stretched (asinh) so faint light and bright stars both show; " +
       "grey levels are not proportional to brightness, so do not judge brightness changes by eye."
     : "Every frame uses the same brightness scale.";
-}
-
-function loadImage(src) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error(`could not load ${src}`));
-    img.src = src;
-  });
 }
 
 function fillSpeeds(select, speeds, chosen) {
