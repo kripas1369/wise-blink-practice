@@ -16,7 +16,7 @@
     <nav class="site-nav" aria-label="Pages">
       <a href="./">Explore</a>
       <a href="about.html" aria-current="page">About</a>
-      <span class="badge" title="Practice build, not the hackathon submission">Practice build · Day 5</span>
+      <span class="badge" title="Practice build, not the hackathon submission">Practice build · Day 6</span>
     </nav>
   </header>
 
@@ -76,12 +76,41 @@
           pair of visits scatters more than the noise files predict, the site says so.</li>
         <li><strong>The known-object check is limited.</strong> It asks NASA JPL's Small-Body Identification service.
           On 31 Oct 2026 JPL's accurate second pass failed for every request, so the site uses the rougher first pass and labels
-          it. Whether JPL's offsets are east- and north-positive is not yet confirmed. "No match" never means "new object".</li>
+          it. JPL's offsets are east- and north-positive (we checked with the asteroid Ceres and a box moved off it on
+          purpose). "No match" never means "new object".</li>
         <li><strong>Our choices are marked as ours.</strong> Some limits come from our plan (0.5 px for motion), others are our
           own choices (30° in direction, 1.5 px for a nearby Gaia star, 2 px for a known-object match). The panels say which is which.</li>
-        <li><strong>Prepared targets.</strong> The five official targets have ready-made frames for detector D2 (and D6 for
-          WISE 0855). Other positions and detectors are made on request and need the data API.</li>
+        <li><strong>Prepared targets.</strong> The five official targets have ready-made frames for detector D2; Eps Ind B
+          and RW Aur also for D1–D6, WISE 0855 also for D5 and D6. Other positions and detectors are made on request and
+          need the data API.</li>
       </ul>
+    </section>
+
+    <section class="panel" aria-labelledby="px-title">
+      <h2 id="px-title" class="panel-title">Could this find a Planet X?</h2>
+      <p>Probably not, and here is why, from geometry alone. A planet far beyond Neptune barely moves along its own
+        orbit, but SPHEREx watches it from Earth, which goes round the Sun every year. That makes a distant planet seem
+        to swing back and forth across the sky, more the closer it is.</p>
+      <label class="inline-label" for="px-distance">Distance from the Sun
+        <select id="px-distance">
+          <option value="100">100 AU</option>
+          <option value="250">250 AU</option>
+          <option value="500" selected>500 AU</option>
+          <option value="1000">1000 AU</option>
+        </select>
+      </label>
+      <ul id="px-lines" class="about-list"></ul>
+      <p class="help">How these are worked out: Earth's move along its orbit (a chord of a 1 AU circle) divided by the
+        distance, plus a circular orbit with Kepler's third law (period = distance<sup>1.5</sup> years). "Up to" because the
+        shift is largest when we look at right angles to Earth's motion. One SPHEREx pixel is 6.15″. Brightness: a planet
+        the size and albedo of Neptune (about V 7.8 at 30 AU), with reflected sunlight falling as 1/(distance from the Sun ×
+        distance from Earth)². A cold planet's own heat glows at about 70 µm, far beyond SPHEREx's 5 µm.</p>
+      <p class="help">So a Planet X would not stay put in a 3′ flipbook square between visits: it would be in one visit
+        and missing from the next. The way to look for one is a source that is present in only one visit and shifts a
+        little between the exposures of that visit. The spot list points to the first clue, its "what would confirm it"
+        notes ask for the second, and the known-object check rules out asteroids and comets that are already known. A
+        spot is still never called a new object.</p>
+      <script type="module">import { initPlanetX } from "./js/planetx.js"; initPlanetX();</script>
     </section>
 
     <section class="panel" aria-labelledby="credits-title">

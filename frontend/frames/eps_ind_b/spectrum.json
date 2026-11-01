@@ -1817,6 +1817,6 @@
  ],
  "method": "every point comes from one detector's lightcurve.json (backend/app/lightcurve.py); points of all detectors grouped into visits by time",
  "made_by": "backend/app/spectrum.py",
- "made_at": "2026-11-01 04:59 UTC",
+ "made_at": "2026-11-01 07:28 UTC",
  "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx"
 }

@@ -74,20 +74,38 @@ def shape(z: np.ndarray, mask: np.ndarray) -> float | None:
     return round(float(math.sqrt(hi / lo)), 2)
 
 
-def gaia_star(gaia: dict | None, frame_index: int, xy: tuple[float, float]) -> dict | None:
-    """The brightest Gaia star within NEAR_GAIA_PX (a faint neighbour cannot explain a big spot), else the nearest."""
+def _brightest(candidates: list) -> tuple:
+    return min(candidates, key=lambda ds: (ds[1]["g_mag"] is None, ds[1]["g_mag"] or 0, ds[0]))
+
+
+def gaia_star(gaia: dict | None, frame_index: int, xy: tuple[float, float],
+              mask: np.ndarray | None = None) -> dict | None:
+    """The brightest Gaia star within NEAR_GAIA_PX (a faint neighbour cannot explain a big spot), else the nearest.
+    A spot of LARGE_PX pixels or more is a bright star's residual whose centre says little: the brightest star
+    inside it (or touching it) is taken instead."""
     if not gaia or not gaia["stars"]:
         return None
     dist = [(math.hypot(s["xy"][frame_index][0] - xy[0], s["xy"][frame_index][1] - xy[1]), s) for s in gaia["stars"]]
+    if mask is not None and mask.sum() >= LARGE_PX:
+        grown = ndimage.binary_dilation(mask, structure=np.ones((3, 3)))
+        h, w = grown.shape
+        inside = [(d, s) for d, s in dist
+                  if 0 <= round(s["xy"][frame_index][1]) < h and 0 <= round(s["xy"][frame_index][0]) < w
+                  and grown[round(s["xy"][frame_index][1]), round(s["xy"][frame_index][0])]]
+        if inside:
+            d, best = _brightest(inside)
+            return {"source_id": best["source_id"], "g_mag": best["g_mag"], "distance_px": round(d, 2),
+                    "target": bool(best.get("target")), "inside": True,
+                    "chosen": f"brightest of {len(inside)} inside the spot"}
     near = [(d, s) for d, s in dist if d <= NEAR_GAIA_PX]
     if near:
-        d, best = min(near, key=lambda ds: (ds[1]["g_mag"] is None, ds[1]["g_mag"] or 0, ds[0]))
+        d, best = _brightest(near)
         chosen = f"brightest of {len(near)} within {NEAR_GAIA_PX} px"
     else:
         d, best = min(dist, key=lambda ds: ds[0])
         chosen = "nearest"
     return {"source_id": best["source_id"], "g_mag": best["g_mag"], "distance_px": round(d, 2),
-            "target": bool(best.get("target")), "chosen": chosen}
+            "target": bool(best.get("target")), "inside": d <= NEAR_GAIA_PX, "chosen": chosen}
 
 
 def notes(spot: dict, pair: dict, star: dict | None) -> dict:
@@ -95,10 +113,12 @@ def notes(spot: dict, pair: dict, star: dict | None) -> dict:
     visit = "B" if spot["sign"] > 0 else "A"
     why = (f"{spot['n_pixels']} pixel{'s' if spot['n_pixels'] > 1 else ''} at {spot['peak_sigma']:+.1f}σ: "
            f"{sign} in B than in A by more than 5σ of the noise the files give (VARIANCE).")
-    near = star is not None and star["distance_px"] <= NEAR_GAIA_PX
+    near = star is not None and (star.get("inside") or star["distance_px"] <= NEAR_GAIA_PX)
     if near:
         g = f"G {star['g_mag']}" if star["g_mag"] is not None else "no G magnitude"
-        else_ = [f"It sits {star['distance_px']} px from Gaia DR3 {star['source_id']} ({g}"
+        where = ("It covers" if star["distance_px"] > NEAR_GAIA_PX
+                 else f"It sits {star['distance_px']} px from")
+        else_ = [f"{where} Gaia DR3 {star['source_id']} ({g}"
                  + (", the target" if star["target"] else "") + f"; {star['chosen']}) on visit " + visit + "'s date.",
                  "A star leaves spots like this when it moves, changes brightness, or when the two visits see "
                  "different wavelengths or PSF shapes (worse for bright stars)."]
@@ -147,7 +167,7 @@ def spots_for_pair(pair: dict, gaia: dict | None, grid, size: int, limit: float)
                     "peak_xy": [int(xs[peak]), int(ys[peak])], "xy": [round(cx, 2), round(cy, 2)],
                     "ra": round(float(sky.ra.deg), 6), "dec": round(float(sky.dec.deg), 6),
                     "n_pixels": int(mask.sum()), "axis_ratio": ratio, "frame": frame, "artifact_flags": flags}
-            star = gaia_star(gaia, _index(gaia, frame), (cx, cy)) if gaia else None
+            star = gaia_star(gaia, _index(gaia, frame), (cx, cy), mask) if gaia else None
             spot["gaia_star"] = star
             spot.update(notes(spot, pair, star))
             found.append(spot)

@@ -74,8 +74,9 @@ def _number(text):
 
 def rows(body: dict, which: str, spot_offset: tuple[float, float]) -> list[dict]:
     """Objects with their distance from the spot. JPL gives offsets (″) from the box centre we sent; the
-    spot is `spot_offset` (″, east and north) from that centre. We assume JPL's offsets are object minus
-    centre, east and north positive (the documentation does not say)."""
+    spot is `spot_offset` (″, east and north) from that centre. JPL's offsets are object minus centre, east
+    and north positive: the documentation does not say, scripts/check_jpl_offsets.py checked it with Ceres
+    on 1 Nov 2026 (within 3.4″ of the offsets worked out from JPL's own RA/Dec)."""
     fields = body.get(f"fields_{which}") or []
     data = body.get(f"data_{which}_pass") or []
 
@@ -121,7 +122,8 @@ def check(spot: dict, observer: dict, pixel_arcsec: float) -> dict:
         return json.loads(cached.read_text())
     notes = [f"Observer: SPHEREx at the time of exposure {observer['obs_id']} ({observer['system']}).",
              f"Box centre sent to JPL rounded to whole seconds ({ra_sent}, {dec_sent}); distances are corrected "
-             "back to the spot, assuming JPL's offsets are east and north positive.",
+             "back to the spot (JPL's offsets are east and north positive; checked with Ceres, "
+             "scripts/check_jpl_offsets.py).",
              f"The add-up of this visit spans {observer['exposures_span_hours']} h; an object moving faster than "
              f"{match_arcsec / max(observer['exposures_span_hours'], 0.01):.2f}″/h moves more than the match radius in that time."]
     try:

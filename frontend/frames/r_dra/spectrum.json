@@ -1,0 +1,29 @@
+{
+ "format": "spherex-blink-spectrum/1",
+ "target": "r_dra",
+ "label": "R Draconis",
+ "unit": "mJy",
+ "detectors": [
+  {
+   "band": 2,
+   "band_range_um": [
+    1.1,
+    1.62
+   ],
+   "method": "none",
+   "n_exposures": 0,
+   "position_rule": "follows Gaia DR3 1648328016354496384 (proper motion, straight line)",
+   "reason": "The star's saturated (no-value) core reaches 6.2 px from its centre in at least one exposure. Measuring the light around it would need a ring starting at 7 px, and only rings starting at most 3 px out were checked to follow a star's brightness (RW Aur, 3-6 px: about 10%). So no light curve is given."
+  }
+ ],
+ "visits": [],
+ "visit_rule": "exposures closer than 30 days in a row, at most 60 days per visit (archive.group_epochs)",
+ "warnings": [
+  "No frames prepared for D1, D3, D4, D5, D6, so those wavelengths are missing.",
+  "D2: no points. The star's saturated (no-value) core reaches 6.2 px from its centre in at least one exposure. Measuring the light around it would need a ring starting at 7 px, and only rings starting at most 3 px out were checked to follow a star's brightness (RW Aur, 3-6 px: about 10%). So no light curve is given."
+ ],
+ "method": "every point comes from one detector's lightcurve.json (backend/app/lightcurve.py); points of all detectors grouped into visits by time",
+ "made_by": "backend/app/spectrum.py",
+ "made_at": "2026-11-01 07:28 UTC",
+ "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx"
+}

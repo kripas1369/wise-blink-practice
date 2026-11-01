@@ -31,7 +31,7 @@ Not done today on purpose: putting the site online (the user's choice: "skip put
 | Epsilon Indi B, D2 | 39 exposures, all above 59σ | Brightest near 1.27 and 1.58 µm and about 7× fainter at 1.36–1.40 µm (water and methane absorption in a cool brown dwarf). This explains the factor-2 changes between the add-ups (Day 3, open item 5). Same wavelength, different visits: ratios **0.86–1.05** (7 visit pairs, clean). No clear sign of variability; the floor in this frame is unknown. |
 | RW Aurigae, D2 | 24 exposures, 16 with flagged pixels in the circle | Sep 2025 → Sep 2026 at 1.2–1.27 µm: **1.235** (1 clean pair), 1.235–1.826 including flagged pairs (4). Mar → Sep 2026: 0.889–1.027 (3 pairs, all including flagged pixels). So it was fainter in Sep 2025, by 24% in the one clean pair. The Gaia star 1.5″ away (G 12.18, a known companion) is inside the circle. Not compared with AAVSO (section 3). |
 | WISE 0855, D2 | 30 exposures | **Not WISE 0855's light.** The circle follows WISE 0855's motion across a fixed Gaia star (G 16.31, 1.3 px away), so it takes in more or less of that star: visit 1 → 2 ratio 1.86. The website warns that the moving circle alone makes this. |
-| WISE 0855, D6 | 43 exposures, most below 5σ each | No same-wavelength pair passes the 5σ rule, so no change between visits is measured. Nov 2025 and Apr 2026 overlap at about 0.5–0.7 mJy. One exposure (2025W46_1A_0076_2) measures 520.6 mJy with 2 flagged pixels in the circle (probably a cosmic-ray hit; not checked); the chart draws it as ▲ at the edge and names it. |
+| WISE 0855, D6 | 43 exposures, most below 5σ each | No same-wavelength pair passes the 5σ rule, so no change between visits is measured. Nov 2025 and Apr 2026 overlap at about 0.5–0.7 mJy. One exposure (2025W46_1A_0076_2) measures 520.6 mJy with 2 flagged pixels in the circle (one pixel flagged TRANSIENT, SUR_ERROR, NONFUNC and PERSIST reads 618 MJy/sr: a detector defect, see item 5 below); the chart draws it as ▲ at the edge and names it. |
 | Barnard's Star, D2 | none (saturated core to 5.2 px) | field-star floor 4.5% (above) |
 | R Draconis, D2 | none (saturated core to 6.2 px) | — |
 
@@ -104,7 +104,7 @@ The R Dra add-up keeps core pixels up to 2,870 MJy/sr (the exposures where they 
 1. **Online deploy and phone check**: skipped today by choice.
 2. **AAVSO comparison** for RW Aur and R Dra: AAVSO VSX and VizieR unreachable on 31 Oct. Try again, or ask [Friend's name] to download the AAVSO light curves by hand.
 3. **Field-star floor in the other frames**: a 3′ frame rarely has an isolated Gaia star bright enough. A wider field only for the comparison stars would help.
-4. **WISE 0855 in D5** and D1/D3: no frames prepared.
-5. **The 520.6 mJy D6 exposure**: which flag, and is it a cosmic ray? Not checked.
+4. **WISE 0855 in D5** and D1/D3: no frames prepared. *(1 Nov: D5 prepared, 4 visits; D1/D3 still not.)*
+5. **The 520.6 mJy D6 exposure**: which flag, and is it a cosmic ray? *(Checked 1 Nov: one pixel next to the target reads 618 MJy/sr against a 0.5 MJy/sr background, and its FLAGS value 2228293 = TRANSIENT + SUR_ERROR + NONFUNC + PERSIST + SOURCE. A pixel the file marks non-functional, with a readout transient: a detector defect in this one exposure, not WISE 0855. The other 7 pixels in the circle read 0.4–0.9. The point stays in lightcurve.json, drawn hollow and off the chart's range.)*
 6. **Is the Gaia star really in the D6 light** (2.7–2.8σ)? Needs more exposures or a PSF model.
 7. **RW Aur's 10–20% spread within 2 hours** in Sep 2025 (Day 3): still not explained; 16 of 24 exposures have flagged pixels in the circle (persistence, transient, SUR_ERROR).

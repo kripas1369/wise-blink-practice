@@ -107,7 +107,8 @@ SPHEREx is a NASA space telescope that photographs the whole sky again and again
 **Findings** (numbers in [`notes/DAY5_FINDINGS.md`](../../notes/DAY5_FINDINGS.md) §6; hackathon: [`notes/HACKATHON_READINESS.md`](../../notes/HACKATHON_READINESS.md)):
 - Barnard's Star and Epsilon Indi B **agree** with Gaia (0.18 px apart in both). R Dra and RW Aur move less than 0.3 px according to Gaia, so the panel says **too small to test** instead of passing them. WISE 0855 is not in Gaia.
 - The JPL check found **Ceres** at a test spot 7.2″ from Ceres's position (JPL: 10.1″, its error 13.2″). JPL's accurate "second pass" failed for every request on 31 Oct, so the site uses the rougher first pass and says so.
-- **Not verified:** the sign of JPL's offsets (we assume east and north positive), and that SPHEREx's position in the file headers uses ICRF axes.
+- **Verified 1 Nov:** JPL's offsets are east and north positive (`scripts/check_jpl_offsets.py`: Ceres with a box moved 60″ east and 40″ north of it comes out at −55.7″, −36.2″; JPL's own RA/Dec give −59.1″, −36.0″).
+- **Not verified:** that SPHEREx's position in the file headers uses ICRF axes.
 
 ![Spot detail card](../../notes/screenshots/day5_spot_detail.png)
 

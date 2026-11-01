@@ -11,8 +11,10 @@ export function spotLine(spot, index) {
   const sign = spot.sign > 0 ? "brighter in B" : "fainter in B";
   const parts = [`${index + 1}`, `${spot.peak_sigma > 0 ? "+" : ""}${spot.peak_sigma}σ ${sign}`, `${spot.n_pixels} px`];
   const g = spot.gaia_star;
-  if (g && g.distance_px <= 1.5) {
-    parts.push(`Gaia ${g.g_mag === null ? "star" : `G ${g.g_mag}`} at ${g.distance_px} px${g.target ? " (target)" : ""}`);
+  if (g && (g.inside || g.distance_px <= 1.5)) {
+    const star = `Gaia ${g.g_mag === null ? "star" : `G ${g.g_mag}`}`;
+    const where = g.distance_px > 1.5 ? `${star} inside` : `${star} at ${g.distance_px} px`;
+    parts.push(`${where}${g.target ? " (target)" : ""}`);
   } else {
     parts.push("no Gaia star within 1.5 px");
   }

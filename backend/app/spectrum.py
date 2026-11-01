@@ -91,17 +91,18 @@ def build_spectrum(target_dir: Path) -> dict:
         raise FileNotFoundError(f"No detector folder with a light curve in {target_dir}")
     with_points = [d for d in detectors if d["method"] != "none"]
     fwhms = [d["psf_fwhm"]["median_arcsec"] for d in with_points if d.get("psf_fwhm")]
-    radii = sorted({d["r_out_px"] for d in with_points}) or ["?"]
-    warnings = [
-        f"Each point is one exposure: a {'/'.join(map(str, radii))} px circle around the target minus the sky, "
-        "with no aperture "
-        "correction. The PSF is not equally wide in every detector"
-        + (f" (median FWHM {min(fwhms)}–{max(fwhms)}″ here)" if len(fwhms) > 1 else "")
-        + ", so the circle catches a different share of the light in each one: a step where two detectors "
-        "meet can come from that, not from the star.",
-        "The detectors' ranges do not overlap, so no wavelength is measured by two detectors to check them "
-        "against each other.",
-    ]
+    radii = sorted({d["r_out_px"] for d in with_points})
+    warnings = []
+    if radii:
+        warnings.append(
+            f"Each point is one exposure: a {'/'.join(map(str, radii))} px circle around the target minus the "
+            "sky, with no aperture correction. The PSF is not equally wide in every detector"
+            + (f" (median FWHM {min(fwhms)}–{max(fwhms)}″ here)" if len(fwhms) > 1 else "")
+            + ", so the circle catches a different share of the light in each one: a step where two detectors "
+            "meet can come from that, not from the star.")
+    if len(with_points) > 1:
+        warnings.append("The detectors' ranges do not overlap, so no wavelength is measured by two detectors to "
+                        "check them against each other.")
     missing = sorted(set(range(1, 7)) - {d["band"] for d in detectors})
     if missing:
         warnings.append("No frames prepared for " + ", ".join(f"D{b}" for b in missing) + ", so those "

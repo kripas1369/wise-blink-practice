@@ -1,6 +1,8 @@
 import { formatDec, formatRa, looksLikeName, parseCoordinates } from "./coords.js";
 import { createDiffView } from "./diffview.js";
+import { createFiles } from "./files.js";
 import { createFlipbook } from "./flipbook.js";
+import { createLanguageToggle } from "./i18n.js";
 import { createLightCurve } from "./lightcurve.js";
 import { positionAt, separationArcsec, VIEW_EPOCH } from "./motion.js";
 import { createProof } from "./proof.js";
@@ -8,6 +10,7 @@ import { createSpectrum } from "./spectrum.js";
 import { createSpotList } from "./spots.js";
 import { NameNotFound, resolveName } from "./resolve.js";
 import { TARGETS } from "./targets.js";
+import { createTimeline } from "./timeline.js";
 import { buildUrlState, DETECTORS, readUrlState } from "./urlstate.js";
 
 // Aladin Lite from two CDNs: the CDS server was unreachable on 31 Oct 2026, jsDelivr worked.
@@ -44,6 +47,7 @@ let fovOverlay = null;
 // Bumped on every new position, so a slow SIMBAD answer cannot overwrite a newer choice.
 let positionVersion = 0;
 let flipbook = null;
+let timeline = null;
 
 function setStatus(message, kind = "info") {
   statusBox.textContent = message;
@@ -73,9 +77,11 @@ function officialTargetAt(ra, dec) {
 function refreshFlipbook() {
   if (!flipbook || state.ra === null) return;
   const target = TARGETS.find((t) => t.key === state.targetKey);
-  flipbook.show({
+  const where = {
     targetKey: state.targetKey, label: target ? target.label : "", ra: state.ra, dec: state.dec, det: state.det, fov: state.fov,
-  });
+  };
+  flipbook.show(where);
+  timeline.show(where);
 }
 
 function setDetector(det) {
@@ -345,9 +351,14 @@ function start() {
   const lightCurve = createLightCurve();
   const proofView = createProof();
   const spectrumView = createSpectrum();
+  createLanguageToggle(document.getElementById("lang-toggle"));
+  timeline = createTimeline({ onDetector: setDetector });
+  const files = createFiles();
   flipbook = createFlipbook({
     onDetector: setDetector,
     onFrames: (loaded) => {
+      timeline.markFrames(loaded);
+      files.show(loaded);
       proofView.show(loaded); diffView.show(loaded); lightCurve.show(loaded); spectrumView.show(loaded);
     },
     onPixel: (p) => lightCurve.showPixel(p),

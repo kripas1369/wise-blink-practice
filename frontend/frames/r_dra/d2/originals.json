@@ -1,0 +1,198 @@
+{
+ "format": "spherex-blink-originals/1",
+ "target": "r_dra",
+ "band": 2,
+ "frames": [
+  {
+   "epoch_id": 0,
+   "date_iso": "2025-06-19 23:36 UTC",
+   "exposures": [
+    {
+     "obs_id": "2025W24_2D_0534_1",
+     "mjd": 60841.44653,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W24_2D_0534_1/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W24_2D/l2b-v20-2025-252/2/level2_2025W24_2D_0534_1D2_spx_l2b-v20-2025-252.fits"
+    },
+    {
+     "obs_id": "2025W24_2D_0534_2",
+     "mjd": 60841.44802,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W24_2D_0534_2/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W24_2D/l2b-v20-2025-252/2/level2_2025W24_2D_0534_2D2_spx_l2b-v20-2025-252.fits"
+    },
+    {
+     "obs_id": "2025W24_2D_0534_3",
+     "mjd": 60841.44952,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W24_2D_0534_3/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W24_2D/l2b-v20-2025-252/2/level2_2025W24_2D_0534_3D2_spx_l2b-v20-2025-252.fits"
+    },
+    {
+     "obs_id": "2025W24_2D_0534_4",
+     "mjd": 60841.45101,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W24_2D_0534_4/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W24_2D/l2b-v20-2025-252/2/level2_2025W24_2D_0534_4D2_spx_l2b-v20-2025-252.fits"
+    },
+    {
+     "obs_id": "2025W25_2A_0633_2",
+     "mjd": 60848.64921,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W25_2A_0633_2/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W25_2A/l2b-v20-2025-254/2/level2_2025W25_2A_0633_2D2_spx_l2b-v20-2025-254.fits"
+    },
+    {
+     "obs_id": "2025W25_2A_0633_3",
+     "mjd": 60848.65071,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W25_2A_0633_3/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W25_2A/l2b-v20-2025-254/2/level2_2025W25_2A_0633_3D2_spx_l2b-v20-2025-254.fits"
+    },
+    {
+     "obs_id": "2025W26_1A_0506_1",
+     "mjd": 60851.5689,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W26_1A_0506_1/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W26_1A/l2b-v20-2025-257/2/level2_2025W26_1A_0506_1D2_spx_l2b-v20-2025-257.fits"
+    },
+    {
+     "obs_id": "2025W26_2A_0170_4",
+     "mjd": 60853.20394,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W26_2A_0170_4/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W26_2A/l2b-v20-2025-257/2/level2_2025W26_2A_0170_4D2_spx_l2b-v20-2025-257.fits"
+    }
+   ]
+  },
+  {
+   "epoch_id": 1,
+   "date_iso": "2025-12-01 21:36 UTC",
+   "exposures": [
+    {
+     "obs_id": "2025W49_1A_0009_2",
+     "mjd": 61010.02475,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W49_1A_0009_2/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W49_1A/l2b-v20-2025-339/2/level2_2025W49_1A_0009_2D2_spx_l2b-v20-2025-339.fits"
+    },
+    {
+     "obs_id": "2025W49_1A_0009_3",
+     "mjd": 61010.02624,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W49_1A_0009_3/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W49_1A/l2b-v20-2025-339/2/level2_2025W49_1A_0009_3D2_spx_l2b-v20-2025-339.fits"
+    },
+    {
+     "obs_id": "2025W49_1A_0009_4",
+     "mjd": 61010.02774,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W49_1A_0009_4/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W49_1A/l2b-v20-2025-339/2/level2_2025W49_1A_0009_4D2_spx_l2b-v20-2025-339.fits"
+    },
+    {
+     "obs_id": "2025W49_1A_0280_1",
+     "mjd": 61011.24632,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W49_1A_0280_1/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W49_1A/l2b-v20-2025-339/2/level2_2025W49_1A_0280_1D2_spx_l2b-v20-2025-339.fits"
+    },
+    {
+     "obs_id": "2025W49_1A_0280_2",
+     "mjd": 61011.24781,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W49_1A_0280_2/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W49_1A/l2b-v20-2025-339/2/level2_2025W49_1A_0280_2D2_spx_l2b-v20-2025-339.fits"
+    },
+    {
+     "obs_id": "2025W49_1A_0280_3",
+     "mjd": 61011.24931,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W49_1A_0280_3/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W49_1A/l2b-v20-2025-339/2/level2_2025W49_1A_0280_3D2_spx_l2b-v20-2025-339.fits"
+    },
+    {
+     "obs_id": "2025W49_1A_0280_4",
+     "mjd": 61011.2508,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W49_1A_0280_4/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W49_1A/l2b-v20-2025-339/2/level2_2025W49_1A_0280_4D2_spx_l2b-v20-2025-339.fits"
+    },
+    {
+     "obs_id": "2025W49_1A_0473_1",
+     "mjd": 61012.1324,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2025W49_1A_0473_1/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2025W49_1A/l2b-v20-2025-339/2/level2_2025W49_1A_0473_1D2_spx_l2b-v20-2025-339.fits"
+    }
+   ]
+  },
+  {
+   "epoch_id": 2,
+   "date_iso": "2026-06-21 18:57 UTC",
+   "exposures": [
+    {
+     "obs_id": "2026W25_2A_0661_1",
+     "mjd": 61212.61894,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2026W25_2A_0661_1/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2026W25_2A/l2b-v25-2026-174/2/level2_2026W25_2A_0661_1D2_spx_l2b-v25-2026-174.fits"
+    },
+    {
+     "obs_id": "2026W25_2A_0661_2",
+     "mjd": 61212.62043,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2026W25_2A_0661_2/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2026W25_2A/l2b-v25-2026-174/2/level2_2026W25_2A_0661_2D2_spx_l2b-v25-2026-174.fits"
+    },
+    {
+     "obs_id": "2026W25_2A_0661_3",
+     "mjd": 61212.62192,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2026W25_2A_0661_3/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2026W25_2A/l2b-v25-2026-174/2/level2_2026W25_2A_0661_3D2_spx_l2b-v25-2026-174.fits"
+    },
+    {
+     "obs_id": "2026W25_2A_0661_4",
+     "mjd": 61212.62342,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2026W25_2A_0661_4/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2026W25_2A/l2b-v25-2026-174/2/level2_2026W25_2A_0661_4D2_spx_l2b-v25-2026-174.fits"
+    },
+    {
+     "obs_id": "2026W25_2A_0674_1",
+     "mjd": 61212.68645,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2026W25_2A_0674_1/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2026W25_2A/l2b-v25-2026-174/2/level2_2026W25_2A_0674_1D2_spx_l2b-v25-2026-174.fits"
+    },
+    {
+     "obs_id": "2026W25_2A_0674_2",
+     "mjd": 61212.68796,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2026W25_2A_0674_2/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2026W25_2A/l2b-v25-2026-174/2/level2_2026W25_2A_0674_2D2_spx_l2b-v25-2026-174.fits"
+    },
+    {
+     "obs_id": "2026W26_1A_0047_1",
+     "mjd": 61213.22972,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2026W26_1A_0047_1/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2026W26_1A/l2b-v25-2026-180/2/level2_2026W26_1A_0047_1D2_spx_l2b-v25-2026-180.fits"
+    },
+    {
+     "obs_id": "2026W26_1A_0047_2",
+     "mjd": 61213.23121,
+     "release": "spherex_qr2",
+     "datalink_url": "https://irsa.ipac.caltech.edu/datalink/links/spherex?ID=ivo://irsa.ipac/spherex_qr2?2026W26_1A_0047_2/D2",
+     "file_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr2/level2/2026W26_1A/l2b-v25-2026-180/2/level2_2026W26_1A_0047_2D2_spx_l2b-v25-2026-180.fits"
+    }
+   ]
+  }
+ ],
+ "missing": [],
+ "note": "datalink_url: IRSA's list of every product of the image (VOTable); file_url: the full Level 2 file (several tens of MB; IMAGE, FLAGS, VARIANCE, ZODI, PSF, WCS-WAVE).",
+ "made_by": "backend/app/originals.py",
+ "made_at": "2026-11-01 07:50 UTC",
+ "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx"
+}

@@ -140,7 +140,28 @@ def test_spectrum_points_are_exactly_the_light_curve_points():
         want |= {(d["band"], p["obs_id"], p["flux_mjy"]) for p in lc["points"]
                  if p["flux_mjy"] is not None and p["wl_um"] is not None}
     assert got == want and len(got) > 0
-    assert [d["band"] for d in spec["detectors"]] == [2, 6]
+    assert [d["band"] for d in spec["detectors"]] == [2, 5, 6]
+
+
+def test_large_spot_names_the_bright_star_it_covers_not_a_faint_one_at_its_centre():
+    for pair in build_spots(prepared("barnard", 2))["pairs"]:
+        for s in pair["spots"]:
+            if s["n_pixels"] >= 20:
+                assert s["gaia_star"]["inside"] and "inside the spot" in s["gaia_star"]["chosen"]
+                assert s["gaia_star"]["g_mag"] < 17
+                assert s["what_else"][0].startswith(("It covers", "It sits"))
+
+
+def test_spectrum_without_points_has_no_aperture_warning():
+    warnings = build_spectrum(FRAMES / "barnard")["warnings"]
+    assert not any("? px" in w or "no aperture correction" in w for w in warnings)
+
+
+def test_website_files_are_revalidated():
+    client = TestClient(main.app)
+    for path in ("/", "/js/app.js", "/js/timeline.js"):
+        r = client.get(path)
+        assert r.status_code == 200 and r.headers["cache-control"] == "no-cache" and "etag" in r.headers
 
 
 def test_spectrum_visits_follow_the_archive_rule():

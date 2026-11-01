@@ -44,6 +44,8 @@ test("spot lines: sign, size, Gaia neighbour and artifact flags", () => {
   assert.equal(spotLine(pair.spots[0], 0),
     "1 · -8.3σ fainter in B · 2 px · no Gaia star within 1.5 px · possible artifact: touches the frame edge");
   assert.equal(spotLine(pair.spots[1], 1), "2 · +5.2σ brighter in B · 1 px · Gaia G 16.31 at 0.61 px");
+  const big = load("barnard", 2, "spots.json").pairs[0].spots.find((s) => s.n_pixels >= 20 && s.gaia_star.distance_px > 1.5);
+  assert.match(spotLine(big, 0), /· Gaia G 1[0-6]\.\d+ inside ·/);
 });
 
 test("known-object answers: three outcomes, never a new object", () => {
@@ -88,8 +90,9 @@ test("spectrum: detector lines and summary come from the file", () => {
   const spec = JSON.parse(readFileSync(new URL("wise0855/spectrum.json", FRAMES), "utf8"));
   const lines = detectorLines(spec);
   assert.match(lines[0], /^D2 \(1\.10–1\.62 µm\): \d+ of \d+ exposures measured · PSF 5\.15″ wide/);
-  assert.match(lines[1], /^D6 \(4\.42–5\.00 µm\): \d+ of \d+ exposures measured · PSF 6\.61″ wide/);
-  assert.match(spectrumSummary(spec), /^WISE 0855 · D2, D6 · 3 visits · \d+ points$/);
+  assert.match(lines[1], /^D5 \(3\.83–4\.41 µm\): \d+ of \d+ exposures measured · PSF 6\.06″ wide/);
+  assert.match(lines[2], /^D6 \(4\.42–5\.00 µm\): \d+ of \d+ exposures measured · PSF 6\.61″ wide/);
+  assert.match(spectrumSummary(spec), /^WISE 0855 · D2, D5, D6 · 3 visits · \d+ points$/);
   const none = { label: "Barnard's Star", visits: [], detectors: [{ band: 2, band_range_um: [1.1, 1.62], method: "none",
     reason: "Saturated core." }] };
   assert.deepEqual(detectorLines(none), ["D2 (1.10–1.62 µm): no points. Saturated core."]);

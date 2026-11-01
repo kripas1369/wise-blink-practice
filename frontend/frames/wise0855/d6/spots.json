@@ -120,6 +120,7 @@
       "g_mag": 19.02,
       "distance_px": 6.17,
       "target": false,
+      "inside": false,
       "chosen": "nearest"
      },
      "why": "2 pixels at -8.3σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -155,6 +156,7 @@
       "g_mag": 16.31,
       "distance_px": 0.61,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "1 pixel at +5.2σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -171,5 +173,5 @@
   }
  ],
  "made_by": "backend/app/spots.py",
- "made_at": "2026-10-31 15:58 UTC"
+ "made_at": "2026-11-01 07:27 UTC"
 }

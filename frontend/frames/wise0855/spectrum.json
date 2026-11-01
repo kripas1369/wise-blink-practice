@@ -31,6 +31,32 @@
    }
   },
   {
+   "band": 5,
+   "band_range_um": [
+    3.83,
+    4.41
+   ],
+   "method": "core",
+   "n_exposures": 30,
+   "position_rule": "follows SIMBAD WISEA J085510.74-071442.5 proper motion (not in Gaia DR3)",
+   "n_measured": 30,
+   "r_out_px": 2.0,
+   "neighbours": [
+    {
+     "source_id": "5756956644387831296",
+     "g_mag": 16.31,
+     "distance_px": 1.28
+    }
+   ],
+   "floor_pct": null,
+   "psf_fwhm": {
+    "median_arcsec": 6.06,
+    "min_arcsec": 6.06,
+    "max_arcsec": 6.06,
+    "n_exposures": 30
+   }
+  },
+  {
    "band": 6,
    "band_range_um": [
     4.42,
@@ -67,9 +93,10 @@
    ],
    "bands": [
     2,
+    5,
     6
    ],
-   "n_points": 11,
+   "n_points": 19,
    "points": [
     {
      "band": 2,
@@ -160,6 +187,94 @@
      "n_flagged": 0
     },
     {
+     "band": 5,
+     "obs_id": "2025W19_1B_0231_1",
+     "mjd": 60801.44631,
+     "date_iso": "2025-05-06 10:42 UTC",
+     "wl_um": 4.0322,
+     "bw_um": 0.0367,
+     "flux_mjy": 0.2071,
+     "err_mjy": 0.0971,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W19_1B_0231_2",
+     "mjd": 60801.4478,
+     "date_iso": "2025-05-06 10:44 UTC",
+     "wl_um": 4.0674,
+     "bw_um": 0.0368,
+     "flux_mjy": 0.3034,
+     "err_mjy": 0.0982,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W19_1B_0231_3",
+     "mjd": 60801.44929,
+     "date_iso": "2025-05-06 10:46 UTC",
+     "wl_um": 4.1027,
+     "bw_um": 0.0367,
+     "flux_mjy": 0.3207,
+     "err_mjy": 0.1013,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W19_1B_0231_4",
+     "mjd": 60801.45078,
+     "date_iso": "2025-05-06 10:49 UTC",
+     "wl_um": 4.1384,
+     "bw_um": 0.0368,
+     "flux_mjy": 0.5864,
+     "err_mjy": 0.1078,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W19_1B_0181_1",
+     "mjd": 60801.10726,
+     "date_iso": "2025-05-06 02:34 UTC",
+     "wl_um": 4.2886,
+     "bw_um": 0.0376,
+     "flux_mjy": 0.6244,
+     "err_mjy": 0.1212,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W19_1B_0181_2",
+     "mjd": 60801.10875,
+     "date_iso": "2025-05-06 02:36 UTC",
+     "wl_um": 4.3255,
+     "bw_um": 0.0378,
+     "flux_mjy": 0.6598,
+     "err_mjy": 0.132,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W19_1B_0181_3",
+     "mjd": 60801.11025,
+     "date_iso": "2025-05-06 02:38 UTC",
+     "wl_um": 4.3625,
+     "bw_um": 0.038,
+     "flux_mjy": 0.578,
+     "err_mjy": 0.1272,
+     "n_flagged": 2
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W19_1B_0181_4",
+     "mjd": 60801.11174,
+     "date_iso": "2025-05-06 02:40 UTC",
+     "wl_um": 4.3999,
+     "bw_um": 0.0381,
+     "flux_mjy": 0.6837,
+     "err_mjy": 0.1328,
+     "n_flagged": 0
+    },
+    {
      "band": 6,
      "obs_id": "2025W19_1B_0138_1",
      "mjd": 60800.8351,
@@ -196,16 +311,17 @@
   },
   {
    "visit": 1,
-   "date": "2025-11-19",
+   "date": "2025-11-20",
    "mjd_range": [
     60986.78347,
     61022.36877
    ],
    "bands": [
     2,
+    5,
     6
    ],
-   "n_points": 33,
+   "n_points": 47,
    "points": [
     {
      "band": 2,
@@ -359,6 +475,160 @@
      "bw_um": 0.037,
      "flux_mjy": 0.8577,
      "err_mjy": 0.0622,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W45_2A_0278_1",
+     "mjd": 60986.78347,
+     "date_iso": "2025-11-07 18:48 UTC",
+     "wl_um": 4.0058,
+     "bw_um": 0.0366,
+     "flux_mjy": 1.9911,
+     "err_mjy": 0.8539,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W50_2A_0086_1",
+     "mjd": 61020.80436,
+     "date_iso": "2025-12-11 19:18 UTC",
+     "wl_um": 4.0406,
+     "bw_um": 0.0368,
+     "flux_mjy": 0.1958,
+     "err_mjy": 0.164,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W45_2A_0278_2",
+     "mjd": 60986.78496,
+     "date_iso": "2025-11-07 18:50 UTC",
+     "wl_um": 4.0407,
+     "bw_um": 0.0369,
+     "flux_mjy": 0.309,
+     "err_mjy": 0.1038,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W50_2A_0164_1",
+     "mjd": 61021.07611,
+     "date_iso": "2025-12-12 01:49 UTC",
+     "wl_um": 4.0757,
+     "bw_um": 0.0367,
+     "flux_mjy": -0.2489,
+     "err_mjy": 0.318,
+     "n_flagged": 1
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W45_2A_0278_3",
+     "mjd": 60986.78645,
+     "date_iso": "2025-11-07 18:52 UTC",
+     "wl_um": 4.0759,
+     "bw_um": 0.0367,
+     "flux_mjy": 0.3036,
+     "err_mjy": 0.1064,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W50_2A_0374_1",
+     "mjd": 61021.82419,
+     "date_iso": "2025-12-12 19:46 UTC",
+     "wl_um": 4.111,
+     "bw_um": 0.0367,
+     "flux_mjy": 0.4069,
+     "err_mjy": 0.0955,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W45_2A_0278_4",
+     "mjd": 60986.78794,
+     "date_iso": "2025-11-07 18:54 UTC",
+     "wl_um": 4.1112,
+     "bw_um": 0.0367,
+     "flux_mjy": 0.5418,
+     "err_mjy": 0.1145,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W50_2A_0391_1",
+     "mjd": 61021.89287,
+     "date_iso": "2025-12-12 21:25 UTC",
+     "wl_um": 4.1467,
+     "bw_um": 0.0369,
+     "flux_mjy": 0.4599,
+     "err_mjy": 0.0993,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W45_2A_0292_1",
+     "mjd": 60986.85435,
+     "date_iso": "2025-11-07 20:30 UTC",
+     "wl_um": 4.1468,
+     "bw_um": 0.0368,
+     "flux_mjy": 0.4889,
+     "err_mjy": 0.1143,
+     "n_flagged": 1
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W50_2A_0479_1",
+     "mjd": 61022.23175,
+     "date_iso": "2025-12-13 05:33 UTC",
+     "wl_um": 4.1824,
+     "bw_um": 0.0369,
+     "flux_mjy": 0.6687,
+     "err_mjy": 0.1026,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W45_2A_0292_2",
+     "mjd": 60986.85584,
+     "date_iso": "2025-11-07 20:32 UTC",
+     "wl_um": 4.1826,
+     "bw_um": 0.0369,
+     "flux_mjy": 0.6484,
+     "err_mjy": 0.1193,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W50_2A_0512_1",
+     "mjd": 61022.36877,
+     "date_iso": "2025-12-13 08:51 UTC",
+     "wl_um": 4.2183,
+     "bw_um": 0.0368,
+     "flux_mjy": 0.4458,
+     "err_mjy": 0.101,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W45_2A_0292_3",
+     "mjd": 60986.85733,
+     "date_iso": "2025-11-07 20:34 UTC",
+     "wl_um": 4.2185,
+     "bw_um": 0.0368,
+     "flux_mjy": 0.5795,
+     "err_mjy": 0.1195,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2025W45_2A_0308_1",
+     "mjd": 60986.92191,
+     "date_iso": "2025-11-07 22:07 UTC",
+     "wl_um": 4.2908,
+     "bw_um": 0.0371,
+     "flux_mjy": 0.6086,
+     "err_mjy": 0.1264,
      "n_flagged": 0
     },
     {
@@ -581,9 +851,10 @@
    ],
    "bands": [
     2,
+    5,
     6
    ],
-   "n_points": 29,
+   "n_points": 37,
    "points": [
     {
      "band": 2,
@@ -671,6 +942,94 @@
      "bw_um": 0.0365,
      "flux_mjy": 0.9966,
      "err_mjy": 0.0635,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2026W18_2A_0247_3",
+     "mjd": 61161.59052,
+     "date_iso": "2026-05-01 14:10 UTC",
+     "wl_um": 3.8947,
+     "bw_um": 0.0359,
+     "flux_mjy": 0.2587,
+     "err_mjy": 0.0956,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2026W18_2A_0247_4",
+     "mjd": 61161.59201,
+     "date_iso": "2026-05-01 14:12 UTC",
+     "wl_um": 3.9284,
+     "bw_um": 0.0362,
+     "flux_mjy": 0.2582,
+     "err_mjy": 0.0893,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2026W18_2A_0441_1",
+     "mjd": 61162.4022,
+     "date_iso": "2026-05-02 09:39 UTC",
+     "wl_um": 3.9627,
+     "bw_um": 0.0363,
+     "flux_mjy": 51.6758,
+     "err_mjy": 1.257,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2026W18_2A_0441_2",
+     "mjd": 61162.40369,
+     "date_iso": "2026-05-02 09:41 UTC",
+     "wl_um": 3.9973,
+     "bw_um": 0.0365,
+     "flux_mjy": 0.3362,
+     "err_mjy": 0.1029,
+     "n_flagged": 3
+    },
+    {
+     "band": 5,
+     "obs_id": "2026W18_2A_0663_1",
+     "mjd": 61163.21638,
+     "date_iso": "2026-05-03 05:11 UTC",
+     "wl_um": 4.1739,
+     "bw_um": 0.0368,
+     "flux_mjy": 0.5923,
+     "err_mjy": 0.129,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2026W18_2A_0663_2",
+     "mjd": 61163.21788,
+     "date_iso": "2026-05-03 05:13 UTC",
+     "wl_um": 4.21,
+     "bw_um": 0.0368,
+     "flux_mjy": 0.5224,
+     "err_mjy": 0.109,
+     "n_flagged": 0
+    },
+    {
+     "band": 5,
+     "obs_id": "2026W18_2A_0519_1",
+     "mjd": 61162.67432,
+     "date_iso": "2026-05-02 16:11 UTC",
+     "wl_um": 4.2157,
+     "bw_um": 0.0367,
+     "flux_mjy": 0.2924,
+     "err_mjy": 0.1098,
+     "n_flagged": 1
+    },
+    {
+     "band": 5,
+     "obs_id": "2026W18_2A_0519_2",
+     "mjd": 61162.67581,
+     "date_iso": "2026-05-02 16:13 UTC",
+     "wl_um": 4.2521,
+     "bw_um": 0.0371,
+     "flux_mjy": 0.6382,
+     "err_mjy": 0.1138,
      "n_flagged": 0
     },
     {
@@ -911,12 +1270,13 @@
  "warnings": [
   "Each point is one exposure: a 2.0 px circle around the target minus the sky, with no aperture correction. The PSF is not equally wide in every detector (median FWHM 5.15–6.61″ here), so the circle catches a different share of the light in each one: a step where two detectors meet can come from that, not from the star.",
   "The detectors' ranges do not overlap, so no wavelength is measured by two detectors to check them against each other.",
-  "No frames prepared for D1, D3, D4, D5, so those wavelengths are missing.",
+  "No frames prepared for D1, D3, D4, so those wavelengths are missing.",
   "D2: inside the circle as well: Gaia DR3 5756956644387831296 (G 16.31) at 1.28 px; its light is in these points.",
+  "D5: inside the circle as well: Gaia DR3 5756956644387831296 (G 16.31) at 1.28 px; its light is in these points.",
   "D6: inside the circle as well: Gaia DR3 5756956644387831296 (G 16.31) at 1.17 px; its light is in these points."
  ],
  "method": "every point comes from one detector's lightcurve.json (backend/app/lightcurve.py); points of all detectors grouped into visits by time",
  "made_by": "backend/app/spectrum.py",
- "made_at": "2026-11-01 04:59 UTC",
+ "made_at": "2026-11-01 07:28 UTC",
  "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx"
 }

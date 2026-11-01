@@ -32,11 +32,14 @@ from fastapi.staticfiles import StaticFiles
 
 from backend.app import archive
 from backend.app.config import CACHE_DIR, DETECTORS, REPO_ROOT
+from backend.app.coverage import coverage_answer
 from backend.app.diff import write_diff
 from backend.app.gaia import write_gaia
+from backend.app.gif import write_gif
 from backend.app.lightcurve import lightcurve_at, write_lightcurve
 from backend.app.motion import position_at, separation_arcsec
 from backend.app.known_objects import check as check_known
+from backend.app.originals import write_originals
 from backend.app.proof import write_proof
 from backend.app.spectrum import write_spectrum
 from backend.app.spots import write_spots
@@ -138,12 +141,12 @@ _jobs_lock = threading.Lock()
 
 
 def _pipeline_after_render(folder: Path, target_dir: Path | None = None) -> list[str]:
-    """Gaia, diff, light curve, proof, spots, spectrum; return warnings for any step that failed."""
+    """Gaia, diff, light curve, proof, spots, GIF, IRSA links, spectrum; return warnings for any step that failed."""
     warnings: list[str] = []
     steps = [("Gaia DR3 markers", write_gaia), ("difference maps", write_diff),
              ("light curve", write_lightcurve),
              ("proof panel", lambda f: write_proof(f, online=True)),
-             ("spot list", write_spots)]
+             ("spot list", write_spots), ("GIF", write_gif), ("links to the original files", write_originals)]
     if target_dir is not None:
         steps.append(("spectrum", lambda _f: write_spectrum(target_dir)))
     for stage, step in steps:
@@ -263,17 +266,9 @@ def coverage(ra: float = Query(..., ge=0, lt=360), dec: float = Query(..., ge=-9
     if cached and time.time() - cached[0] < COVERAGE_CACHE_SECONDS:
         return cached[1]
     try:
-        images = archive.find_images(ra, dec, detector=band)
+        answer = coverage_answer(ra, dec, band)
     except archive.ArchiveError as exc:
         raise ApiError(502, f"IRSA did not answer: {exc}")
-    answer = {
-        "ra": ra, "dec": dec, "band": band,
-        "asked_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
-        "summary": archive.summarize(images),
-        "images": [{"obs_id": im.obs_id, "band": im.detector, "mjd": round(im.mjd, 5),
-                    "wl_min_um": round(im.wl_min_um, 4), "wl_max_um": round(im.wl_max_um, 4),
-                    "release": im.collection, "release_date": im.release_date} for im in images],
-    }
     _coverage_cache[key] = (time.time(), answer)
     return answer
 
@@ -358,6 +353,16 @@ def unknown(rest: str):
     raise ApiError(404, f"No such API endpoint: /api/{rest}")
 
 
+class RevalidatedFiles(StaticFiles):
+    """Browsers must check the ETag before reusing a file: otherwise a cached app.js keeps running after an
+    update while its new modules and data are already served."""
+
+    def file_response(self, *args, **kwargs):
+        response = super().file_response(*args, **kwargs)
+        response.headers["Cache-Control"] = "no-cache"
+        return response
+
+
 JOBS_DIR.mkdir(parents=True, exist_ok=True)
-app.mount("/jobframes", StaticFiles(directory=JOBS_DIR), name="jobframes")
-app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="site")
+app.mount("/jobframes", RevalidatedFiles(directory=JOBS_DIR), name="jobframes")
+app.mount("/", RevalidatedFiles(directory=FRONTEND_DIR, html=True), name="site")

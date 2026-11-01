@@ -34,7 +34,7 @@ const OFF_CHART_FACTOR = 3;
 /**
  * The y range: from 0 (or below, if a point is negative) to above the highest error bar. An exposure with
  * flagged pixels in the circle that measures more than 3× the highest clean one is left out of the range
- * (one cosmic-ray hit measured 520 mJy where WISE 0855 gives about 0.6).
+ * (one pixel flagged non-functional and transient measured 520 mJy where WISE 0855 gives about 0.6).
  */
 export function yRange(points) {
   const clean = points.filter((p) => !p.n_flagged);

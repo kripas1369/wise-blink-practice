@@ -264,6 +264,15 @@ input[type="range"] { width: 100%; accent-color: var(--text); min-height: 32px; 
 .check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; cursor: pointer; }
 .check input { width: 18px; height: 18px; accent-color: var(--text); }
 .flip-note { margin: 0; }
+.lang-toggle { font-size: 0.85rem; }
+.lang-note { max-width: 46rem; margin: 0 auto 0.8rem; }
+html[lang="ne"] body { line-height: 1.65; }
+.flip-files { display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-start; }
+.flip-files details { font-size: 0.83rem; width: 100%; }
+.flip-files summary { cursor: pointer; color: var(--text); }
+.files-visit { margin: 0.6rem 0 0.2rem; font-weight: 600; }
+.files-list { margin: 0; padding-left: 1.1rem; overflow-wrap: anywhere; }
+.files-list a { color: inherit; }
 .flip-cautions {
   font-size: 0.83rem; padding: 0.8rem 0.95rem; border-radius: var(--radius-sm);
   border: 1px solid var(--line-strong); background: #ffffff08;
@@ -366,6 +375,16 @@ input[type="range"] { width: 100%; accent-color: var(--text); min-height: 32px; 
 .lc-axis { fill: var(--muted); font-size: 12px; font-family: var(--font); }
 .lc-line { fill: none; stroke-width: 1.2; opacity: 0.5; }
 .lc-band { stroke: var(--line-strong); stroke-dasharray: 5 4; }
+.tl-row { cursor: pointer; }
+.tl-row:focus { outline: none; }
+.tl-hit { fill: transparent; }
+.tl-row:hover .tl-hit, .tl-row:focus .tl-hit { fill: #1c1c1e; }
+.tl-current .tl-hit { fill: #232325; }
+.tl-current .tl-label { fill: var(--text); font-weight: 600; }
+.tl-visit { fill: #3a3a3c; }
+.tl-current .tl-visit { fill: #636366; }
+.tl-image { stroke: var(--text); stroke-width: 1; opacity: 0.55; }
+.tl-frame { fill: var(--text); }
 .lc-point line { stroke-width: 1.5; }
 .lc-point circle { stroke-width: 1.8; }
 .lc-blue { color: hsl(260, 85%, 72%); font-weight: 600; }
@@ -405,6 +424,12 @@ input[type="range"] { width: 100%; accent-color: var(--text); min-height: 32px; 
 @media (max-width: 480px) {
   .field-grid { grid-template-columns: 1fr; }
   .badge { display: none; }
+  /* The 640-unit charts would shrink to half size: keep them readable and let them scroll sideways. */
+  #tl-chart, #lc-time, #lc-wl, #spec-chart { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .lc-svg { min-width: 560px; }
+  .files-list li { padding: 0.3rem 0; }
+  .files-list a { display: inline-block; padding: 0.35rem 0.2rem; }
+  .site-nav a { padding: 0.4rem 0.2rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

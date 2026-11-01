@@ -32,7 +32,13 @@ What you have here is a **rehearsal of the real tool** — most of Level 1–3 f
 | About page (cleaning, limits, credits) | Done |
 | Spectrum across detectors (Eps Ind B D1–D6) | Done |
 | Live IRSA when band missing (API) | Done (commit b74225e) |
-| C4-style tests (scripts + pytest) | Mostly pass; AAVSO not checked |
+| Coverage timeline (when SPHEREx looked, per detector) | Done 1 Nov (Day 6) |
+| GIF download + links to the original IRSA files | Done 1 Nov (Day 6) |
+| Nepali toggle (fixed page text; data notes stay English) | Done 1 Nov (Day 6) |
+| Planet X explainer (About, geometry only) | Done 1 Nov (Day 6) |
+| JPL offset sign | Verified 1 Nov (Ceres, `scripts/check_jpl_offsets.py`) |
+| Spectra: Eps Ind B D1–D6, RW Aur D1–D6, WISE 0855 D2/D5/D6 | Done 1 Nov |
+| C4-style tests (scripts + pytest) | 128 backend + 57 frontend pass; AAVSO not checked |
 
 ---
 
@@ -44,7 +50,7 @@ Global judges score **Impact, Creativity, Validity, Relevance, Presentation** fr
 |------|--------|------------|
 | **30-second video** (Pluto → Barnard → WISE → URL) | Not made | Kripas, before or during event |
 | **Public live URL** on submission form | Skipped in practice | Deploy hour 14–22 of Part E (real repo) |
-| **Phone layout check** | Partial CSS only | Test on real phone after deploy |
+| **Phone layout check** | Checked at 390 px in an emulated phone 1 Nov: no sideways overflow, charts scroll, links tappable | Test on a real phone after deploy |
 | **Project summary + NASA data section** on submission form | Draft from pitch in plan | Hour 40–46, real event |
 | **Friend cross-checks** (review guide Part C) | Pending | [Friend's name] |
 | **AAVSO** for RW Aur / R Dra (Validity beat) | Blocked 31 Oct | Friend retry or hand download |
@@ -57,7 +63,7 @@ Global judges score **Impact, Creativity, Validity, Relevance, Presentation** fr
 | **Register team** on spaceappschallenge.org | Check | Both |
 | **Repo private + add lazylog00** | User todo | Kripas |
 
-Optional extras that **help Creativity** but are not in practice yet: coverage timeline chart, Nepali toggle, GIF download, epoch add/subtract legend (WiseView-style), spectrum **per epoch** side-by-side for R Dra.
+Optional extras that **help Creativity** but are not in practice yet: epoch add/subtract legend (WiseView-style). (Coverage timeline, Nepali toggle, GIF download: done Day 6. R Dra is saturated in D2, so the multi-detector spectrum uses RW Aur instead.)
 
 ---
 

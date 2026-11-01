@@ -128,6 +128,7 @@
       "g_mag": 18.03,
       "distance_px": 0.7,
       "target": true,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "9 pixels at -77.0σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -162,6 +163,7 @@
       "g_mag": 18.03,
       "distance_px": 0.99,
       "target": true,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "7 pixels at +28.2σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -198,6 +200,7 @@
       "g_mag": 12.95,
       "distance_px": 1.32,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 2 within 1.5 px"
      },
      "why": "2 pixels at -27.0σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -232,6 +235,7 @@
       "g_mag": 15.81,
       "distance_px": 0.8,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "2 pixels at -8.2σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -266,6 +270,7 @@
       "g_mag": 17.11,
       "distance_px": 1.17,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "1 pixel at +7.2σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -300,6 +305,7 @@
       "g_mag": 15.81,
       "distance_px": 1.37,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "1 pixel at -7.1σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -341,6 +347,7 @@
       "g_mag": 18.03,
       "distance_px": 0.73,
       "target": true,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "10 pixels at +119.4σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -375,6 +382,7 @@
       "g_mag": 18.03,
       "distance_px": 0.53,
       "target": true,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "8 pixels at -110.4σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -411,6 +419,7 @@
       "g_mag": 12.95,
       "distance_px": 1.15,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 2 within 1.5 px"
      },
      "why": "2 pixels at -22.6σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -445,6 +454,7 @@
       "g_mag": 15.81,
       "distance_px": 1.03,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "1 pixel at -8.2σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -479,6 +489,7 @@
       "g_mag": 18.0,
       "distance_px": 2.69,
       "target": false,
+      "inside": false,
       "chosen": "nearest"
      },
      "why": "1 pixel at +7.2σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -514,6 +525,7 @@
       "g_mag": 15.81,
       "distance_px": 1.37,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "1 pixel at -5.0σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -555,6 +567,7 @@
       "g_mag": 18.03,
       "distance_px": 0.36,
       "target": true,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "11 pixels at -139.7σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -589,6 +602,7 @@
       "g_mag": 18.03,
       "distance_px": 0.67,
       "target": true,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "7 pixels at +117.9σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -625,6 +639,7 @@
       "g_mag": 17.11,
       "distance_px": 0.49,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "2 pixels at +19.9σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -661,6 +676,7 @@
       "g_mag": 12.95,
       "distance_px": 1.42,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 2 within 1.5 px"
      },
      "why": "2 pixels at -13.4σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -695,6 +711,7 @@
       "g_mag": 15.81,
       "distance_px": 0.4,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "1 pixel at -7.8σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -729,6 +746,7 @@
       "g_mag": 19.58,
       "distance_px": 0.44,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "1 pixel at -5.4σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -770,6 +788,7 @@
       "g_mag": 18.03,
       "distance_px": 0.76,
       "target": true,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "9 pixels at +98.5σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -804,6 +823,7 @@
       "g_mag": 18.03,
       "distance_px": 0.88,
       "target": true,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "7 pixels at -83.2σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -840,6 +860,7 @@
       "g_mag": 17.11,
       "distance_px": 0.64,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "2 pixels at -7.0σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -874,6 +895,7 @@
       "g_mag": 18.0,
       "distance_px": 2.69,
       "target": false,
+      "inside": false,
       "chosen": "nearest"
      },
      "why": "1 pixel at +5.8σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -911,6 +933,7 @@
       "g_mag": 12.95,
       "distance_px": 1.87,
       "target": false,
+      "inside": false,
       "chosen": "nearest"
      },
      "why": "1 pixel at +5.7σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -946,6 +969,7 @@
       "g_mag": 18.84,
       "distance_px": 0.75,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "1 pixel at -5.4σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -987,6 +1011,7 @@
       "g_mag": 18.03,
       "distance_px": 0.51,
       "target": true,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "10 pixels at -115.8σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -1021,6 +1046,7 @@
       "g_mag": 18.03,
       "distance_px": 0.76,
       "target": true,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "6 pixels at +109.1σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -1057,6 +1083,7 @@
       "g_mag": 12.95,
       "distance_px": 1.14,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 2 within 1.5 px"
      },
      "why": "2 pixels at +21.4σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -1091,6 +1118,7 @@
       "g_mag": 15.81,
       "distance_px": 0.4,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "1 pixel at -9.2σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -1125,6 +1153,7 @@
       "g_mag": 15.81,
       "distance_px": 0.81,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "2 pixels at +6.8σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -1166,6 +1195,7 @@
       "g_mag": 18.03,
       "distance_px": 0.34,
       "target": true,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "8 pixels at -84.5σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -1200,6 +1230,7 @@
       "g_mag": 18.03,
       "distance_px": 0.94,
       "target": true,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "2 pixels at +50.1σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -1236,6 +1267,7 @@
       "g_mag": 12.95,
       "distance_px": 1.16,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 2 within 1.5 px"
      },
      "why": "2 pixels at +28.6σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -1270,6 +1302,7 @@
       "g_mag": 15.81,
       "distance_px": 0.4,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "1 pixel at -10.2σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -1304,6 +1337,7 @@
       "g_mag": 15.81,
       "distance_px": 1.03,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "1 pixel at +9.4σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -1340,6 +1374,7 @@
       "g_mag": 12.95,
       "distance_px": 1.87,
       "target": false,
+      "inside": false,
       "chosen": "nearest"
      },
      "why": "1 pixel at -7.6σ: fainter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -1375,6 +1410,7 @@
       "g_mag": 15.81,
       "distance_px": 1.36,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 2 within 1.5 px"
      },
      "why": "1 pixel at +5.6σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -1409,6 +1445,7 @@
       "g_mag": 18.84,
       "distance_px": 0.74,
       "target": false,
+      "inside": true,
       "chosen": "brightest of 1 within 1.5 px"
      },
      "why": "1 pixel at +5.0σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
@@ -1425,5 +1462,5 @@
   }
  ],
  "made_by": "backend/app/spots.py",
- "made_at": "2026-10-31 16:30 UTC"
+ "made_at": "2026-11-01 07:27 UTC"
 }
