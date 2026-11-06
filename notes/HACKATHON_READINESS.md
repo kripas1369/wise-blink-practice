@@ -1,6 +1,6 @@
 # Hackathon readiness (Team Not42) — practice vs global nomination
 
-**Today:** 1 Nov 2026. **Event:** 14–15 Nov 2026. **Goal:** #1 in Nepal → **global nomination**.
+**Updated:** 6 Nov 2026. **Event:** 14–15 Nov 2026. **Goal:** #1 in Nepal → **global nomination**.
 
 ## Is `wise-blink-practice` the final project?
 
@@ -38,7 +38,12 @@ What you have here is a **rehearsal of the real tool** — most of Level 1–3 f
 | Planet X explainer (About, geometry only) | Done 1 Nov (Day 6) |
 | JPL offset sign | Verified 1 Nov (Ceres, `scripts/check_jpl_offsets.py`) |
 | Spectra: Eps Ind B D1–D6, RW Aur D1–D6, WISE 0855 D2/D5/D6 | Done 1 Nov |
-| C4-style tests (scripts + pytest) | 128 backend + 57 frontend pass; AAVSO not checked |
+| Revisit cache (switching back to a target downloads nothing again) | Done (checked in the browser: 0 requests on revisit) |
+| C4-style tests (scripts + pytest) | 128 backend + 59 frontend pass; AAVSO not checked |
+| 10 research papers (PDFs in `researchpdf/`) | Done 6 Nov |
+| Research gaps mapped to the tool (`RESEARCH_GAPS.md`) | Done 6 Nov: main gap, G1 and G2 covered; G3–G5 supporting |
+| Automatic "is it real?" check per spot (single-exposure count, moving-star pair) | Not built; manual "To confirm" text only (`RESEARCH_GAPS.md` §5, H1) |
+| "Why this tool exists" block citing the papers (About) | Not built; no paper is cited on the site yet (H2) |
 
 ---
 
@@ -53,6 +58,9 @@ Global judges score **Impact, Creativity, Validity, Relevance, Presentation** fr
 | **Phone layout check** | Checked at 390 px in an emulated phone 1 Nov: no sideways overflow, charts scroll, links tappable | Test on a real phone after deploy |
 | **Project summary + NASA data section** on submission form | Draft from pitch in plan | Hour 40–46, real event |
 | **Friend cross-checks** (review guide Part C) | Pending | [Friend's name] |
+| **Friend checks the 3 main gaps against the PDFs** (review guide Part D, questions 13–15) | Pending | [Friend's name], before Fri 13 Nov |
+| **Research line in the pitch** (main gap + G1 + G2, `HACKATHON_PLAN` Part F) | Written 6 Nov | Kripas practises it |
+| **User test** (5–10 people, Barnard's Star, real counts, time, one quote) | Not done | Both, hours 34–46 of the event (try once at the rehearsal) |
 | **AAVSO** for RW Aur / R Dra (Validity beat) | Blocked 31 Oct | Friend retry or hand download |
 | **IRSA Spectrophotometry Tool** cross-check (About) | Not done | Friend, Thu 5 plan |
 | **48 h rehearsal** from **empty repo** (Sat 7–8 Nov) | Not done | Both — critical for speed |
@@ -73,12 +81,15 @@ Optional extras that **help Creativity** but are not in practice yet: epoch add/
 2. **Docs** — `DAY5_FINDINGS.md` §6–7 updated; review guide **84 / 43**, C9; learning note 13 spectrum step; README + HACKATHON_PLAN status.
 3. **Screenshot** — `notes/screenshots/day5_spectrum_eps.png` (done 1 Nov; use a current `uvicorn` so `/api/spectrum` exists).
 4. **Optional:** deploy practice once to get a **demo URL** for the video storyboard (still not the submission repo).
+5. **Research-based additions (Mon 9 – Wed 11 Nov, after the rehearsal):** H1 automatic spot checks and H2 "Why this tool exists" block first, then H3 blend badge, H4 change-colour panel, H5 report download. Details, data and "done when" for each: `RESEARCH_GAPS.md` §5–6.
 
 ---
 
 ## What to do on 14–15 Nov (real submission path)
 
 Follow **HACKATHON_PLAN Part E** (48 h): empty repo → Level 1 by hour 22 (C4 tests) → Level 2 → Level 3 only if Level 2 passes → **no new features after hour 40** → video + submit by hour 46.
+
+Level 3 order (`HACKATHON_PLAN` C5): spectrum + "Why this tool exists" block → single-exposure count per spot → moving-star pair → the rest only if time is left.
 
 **Global nomination** comes from: a **working public link**, a **clear honest story**, **proof numbers on screen**, and a **strong 30-second video** — plus local judges picking you as Nepal’s nominee.
 
@@ -87,3 +98,5 @@ Follow **HACKATHON_PLAN Part E** (48 h): empty repo → Level 1 by hour 22 (C4 t
 ## One honest sentence for the pitch
 
 “We built a blink tool for SPHEREx that shows real IRSA data, checks motion against Gaia, and never claims a discovery — practice proved the pipeline; the hackathon submission will be a fresh build with the same honesty.”
+
+With the research (from `HACKATHON_PLAN` Part F): “NASA's SPHEREx paper calls the survey a reference every six months for time-domain science, but none of IRSA's SPHEREx tools compares visits. Ours does, and it checks each spot for the artifacts that the Backyard Worlds team called the main challenge.” (Say the second half only once the automatic check works.)

@@ -213,6 +213,12 @@ Pick one visit, e.g. Barnard D2 visit 1:
 12. **AAVSO light curves for RW Aur and R Dra** (C4): AAVSO VSX and VizieR were unreachable from our machine on 31 Oct. Can you download AAVSO's light curves (J or H band if any, otherwise V) for Jun 2025 – Oct 2026 by hand? Did RW Aur brighten from Sep 2025 to Sep 2026? Where was R Dra in its 245-day cycle on our visit dates (Jun 2025, Dec 2025, Jun 2026)?
 11. **NASA's own tools:** what can IRSA's SPHEREx tools already do that we also do? What can they **not** do that we do? (Start: [`learning/05_nasa_tools_review.md`](../../learning/05_nasa_tools_review.md).) This becomes a judge slide.
 
+**Research gaps (added 6 Nov).** Kripas read 10 papers (`researchpdf/`) and wrote [`notes/RESEARCH_GAPS.md`](../../notes/RESEARCH_GAPS.md). The pitch now rests on three gaps, so please check each quote against the PDF (page and section) before Fri 13 Nov:
+
+13. **Main gap: no SPHEREx tool compares visits.** `01_Bock2026` §2.4 ("a reference every 6 months"), §3.4.6 ("identify time-variable sources"), Table 5 (IRSA's tools) and Table 4 (catalogs in May 2028). Is there any IRSA or SPHEREx tool, released or announced, that compares visits? If yes, the main gap must be reworded.
+14. **G1: artifacts are the hardest part of searching by eye.** `02_Kuchner2017` §2 ("The primary challenge for users is distinguishing movers and dipoles from various artifacts") and `01_Bock2026` §5 (1.1% transient pixels; faint streaks "near the noise level"). Is the quote exact? For the planned automatic check (count of single exposures above 3σ per spot, `RESEARCH_GAPS.md` §5 H1): is 3σ per exposure a sensible cut, and how many exposures does one visit have for each of the 5 targets?
+15. **G2: motion and spectrum used to need two telescopes.** `02_Kuchner2017` §4 (IRTF spectrum) and `08_Luhman2014` (spectra not feasible before JWST). Also check the RW Aur reading (`10_Koutoulaki2019` §3.3–3.4): during the 2014–16 dimming, 4.6 µm got brighter; our D5/D6 ratios (0.633, 0.770) show it fainter. Is that comparison fair, given that SPHEREx cannot separate RW Aur A and B?
+
 ## Part E. Find problems (where to look)
 - **Overclaiming:** any sentence on the website or in the docs that says more than the data shows. The orange notes on the website and `DAY2_FINDINGS.md` are the first place to look.
 - **Numbers without a source:** any value you cannot trace to IRSA, SIMBAD, Gaia or a document.
@@ -240,4 +246,5 @@ Features, checks or explanations that would help a student, a citizen scientist 
 | Day 4 (done 31 Oct, except deploy) | Light curve per exposure, click a pixel, R Dra asinh scale, WISE 0855 position fit, C4 tests on the 5 targets (Part A, Day 4) | Part C7; research questions 1, 2, 10 and 12 |
 | Day 4 leftovers | Deploy and phone check; PSF-fit positions; field-star floor outside the Barnard frame | Compare brightness with IRSA's Spectrophotometry Tool; test the public link on your phone |
 | Day 5 (done 31 Oct) | Proof panel, spots, JPL check, +/−, About, spectrum (Eps Ind B D1–D5), IRSA auto-download | Part C8–C9; research Q8 |
+| Mon 9 – Wed 11 Nov (after the rehearsal) | Automatic spot checks (single-exposure count, moving-star pair), "Why this tool exists" block on About; then blend badge, change-colour panel, report download if time ([`notes/RESEARCH_GAPS.md`](../../notes/RESEARCH_GAPS.md) §5–6) | Research questions 13–15; the counts on Barnard's Star and RW Aur; every new number traced to a file |
 | Later | **30 s video**, **public deploy**, mock judging, **empty-repo rehearsal** (14 Nov = fresh submission) | [`notes/HACKATHON_READINESS.md`](../../notes/HACKATHON_READINESS.md) |

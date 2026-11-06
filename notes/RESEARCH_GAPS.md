@@ -18,6 +18,8 @@
 
 The pitch rests on the three rows in bold: SPHEREx has no tool for comparing visits (main gap), checking for artifacts is the hardest part of searching by eye (G1), and earlier searches needed a second telescope for the spectrum (G2). We already cover all three. G3–G5 are supporting points. Quotes and paper sections for every row are in sections 1 and 2.
 
+**What we add at the hackathon (section 5):** automatic "is it real?" checks on each spot (completes G1) and a short "Why this tool exists" block on the About page that cites the papers. Then, only if time: a blend badge, a change-colour panel, a report download.
+
 ---
 
 ## 1. The main gap
@@ -50,7 +52,7 @@ Papers `04_Batygin_Brown2016` and `09_GaiaCollab2023` are good references but ad
 
 ## 3. What to add (things that do not exist in our system yet)
 
-Each item says which gap it answers, what it shows, where the data comes from, and what "done" means. Ordered by value for effort.
+The full list of ideas. Each item says which gap it answers, what it shows, where the data comes from, and what "done" means. Which of these go into the hackathon, and in what order, is decided in section 5.
 
 ### F1. Change-colour panel ("how did the spectrum change?") — gap G4 · **highest value**
 - **Shows:** for a target with two visits, the ratio visit B / visit A against wavelength, one point per same-wavelength clean pair (the light curve's rule: within half a bandwidth, both ≥ 5σ, no flagged pixel), one colour per detector.
@@ -103,21 +105,96 @@ Replace the hand-check list with results:
 
 ---
 
-## 5. Plan
+## 5. What we add at the hackathon (decided 6 Nov)
+
+**In short:** the site already covers the main gap and most of G1 and G2. What we lack, measured against the papers: (1) the spot checks are still manual, (2) the site cites none of the research, (3) a few smaller things that make the science stronger. Checked in the practice code on 6 Nov: the spot "confirm" list in `backend/app/spots.py` is advice text only; `frontend/about.html` and `frontend/index.html` cite none of the 10 papers.
+
+**Before any of this:** the hackathon build must already have the spectrum (`/api/spectrum`, needed for G2) and the spot list (spots above 5σ with the nearest Gaia star and the "possible artifact" labels, needed for G1). The JPL known-object check is part of G1 too. F2 below is built on top of the spot list.
+
+### H1. Automatic "is it real?" checks on each spot (F2) · must add
+- **What the papers say:**
+  - `02_Kuchner2017` §2: "The primary challenge for users is distinguishing movers and dipoles from various artifacts", the most common being stars partly subtracted because of variability or small alignment errors, plus cosmic-ray hits, optical ghosts and latent images. Help was a tutorial and a "Field Guide"; volunteers looked objects up in SIMBAD and VizieR by hand.
+  - `01_Bock2026` §5: 1.1% of pixels are flagged as transients; satellite streaks are common and faint ones "near the noise level" are still being worked on, so some are not flagged.
+- **What we have now:** spots above 5σ, nearest Gaia star, "possible artifact" labels (very large, touches the edge, next to flagged pixels), JPL check. The "To confirm" list only tells the user what to do ("It appears in several single exposures of visit B…", "It appears in another detector on the same visit"). Nothing checks it.
+- **What to add:**
+  - **(a) Single-exposure count (the core).** For each spot, read the same pixel in every single exposure of that visit (background removed, divided by that exposure's noise) and count how many are above 3σ. Show "Seen in 6 of 8 exposures".
+    - Seen in 1 only → "likely a cosmic ray or satellite streak".
+    - Seen in most → "steady during the visit".
+    - Seen in none (only visible after adding up) → "too faint for single exposures".
+  - **(b) Moving-star pair (if time allows).** A fainter spot and a brighter spot within 3 px whose offset matches the Gaia motion between the two visits → "a moving star: Gaia DR3 …". A pair with no Gaia star → "a pair worth checking: a star too faint or too red for Gaia, or an artifact". Never "new object".
+  - **(c) Other-detector check (optional).** Whether the same sky position also has a spot in another detector on the same visit, when frames exist.
+- **Data:** the single-exposure cutouts the light curve already reads; the existing difference images; the Gaia file. Nothing new from IRSA.
+- **Where it shows:** each line of "Spots above 5σ" gets the result, e.g. "Seen in 6 of 8 exposures · moving-star pair with Gaia DR3 …". "To confirm" becomes "Checked: …".
+- **Done when:** Barnard's Star shows its blue/orange pair matched to Gaia; a 1-px spot next to flagged pixels shows a low count; tests check the counts against the files; no spot is called a discovery.
+- **Effort:** about 3–4 hours.
+- **Scores on:** Validity (checked against data), Impact (anyone can trust what they see), and the "automatic instead of manual" point of the 2025 Best Use of Data winner. Completes G1.
+
+### H2. The research behind the tool, on the site (text only) · must add
+- **What is missing:** a judge cannot see that the tool answers a gap named in NASA's own mission paper.
+- **What to add:** a short "Why this tool exists" block on the About page, about 5 lines with links:
+  - SPHEREx is meant for time-domain science, "a reference every 6 months" (Bock et al. 2026, ApJ 999, 139, §2.4).
+  - None of IRSA's SPHEREx tools compares visits (same paper, Table 5); the official brown-dwarf and solar-system catalogs come in May 2028 (Table 4).
+  - Spotting artifacts is the main difficulty when searching by eye (Kuchner et al. 2017, ApJL 841, L19).
+  - Earlier finds needed a second telescope for a spectrum (Kuchner 2017; Luhman 2014, ApJL 786, L18); SPHEREx gives motion and spectrum together.
+  - What the tool cannot do: detect Planet Nine (Batygin et al. 2019, Phys. Rep. 805, 1; Brown & Batygin 2021, AJ 162, 219).
+- **Effort:** 30 minutes. English only unless the Nepali keys are added.
+- **Scores on:** Validity and Relevance; judges read the site and project page, not this repo.
+
+### H3. Blend and "not in Gaia" badge on the proof panel (F4) · only after H1 works
+- **Papers:** `08_Luhman2014` §2.3 (WISE 0855 "dominated by a moving object in W2 and two stationary objects in W1"; Spitzer needed to separate them); `10_Koutoulaki2019` §3.4 (the WISE beam holds both RW Aur A and B).
+- **What we have:** a warning for Gaia stars inside the light-curve circle, only in the light-curve panel; the WISE 0855 blend note is hand-written text in that target's manifest.
+- **What to add:** on every target's proof panel: Gaia stars within 2 SPHEREx pixels (12.4″) with G magnitudes; a known close companion from SIMBAD (RW Aur B); when Gaia has no match, a "Not in Gaia DR3" badge ("too faint or too red in visible light") and the motion source used instead (WISE 0855: SIMBAD / Kirkpatrick 2021).
+- **Done when:** WISE 0855 shows the badge and the G 16.31 neighbour; RW Aur says SPHEREx cannot separate A and B.
+- **Effort:** about 1–2 hours.
+
+### H4. Change-colour panel (F1) · only after H3
+- **Papers:** `10_Koutoulaki2019` §2 and §5 (only "two epochs"; infrared "not simultaneous"; the cause of the dimming "is not clear"); §3.3–3.4 for how to read it (flat, grey drop = large grains; extra 4.6 µm light during dimming = hot dust).
+- **What we have:** spectra per visit (RW Aur D1–D6) and matched-wavelength pairs inside the light-curve data. No chart of the change; the D5 0.633 / D6 0.770 ratios live only in `notes/DAY6_FINDINGS.md`.
+- **What to add:** brightness in visit B ÷ visit A against wavelength, from matched pairs (within half a bandwidth, both ≥ 5σ, no flagged pixel), coloured by detector, with a 3-line reading guide citing Koutoulaki. RW Aur fits none of the known patterns yet, so the panel says "not explained here".
+- **Done when:** RW Aur shows the 0.633 and 0.770 medians; a target with no matched pairs says so.
+- **Effort:** about 2–3 hours.
+
+### H5. "Report this spot" download (F5) · only after H1
+- **Paper:** Backyard Worlds used a web form and volunteers looked up SIMBAD/VizieR themselves (`02_Kuchner2017` §2).
+- **What to add:** a button that downloads a plain report: position, visits, detectors, σ, the H1 results, Gaia and JPL results, IRSA file links, and "This is a place to look, not a discovery." No server storage.
+- **Effort:** about 1 hour once H1 exists.
+
+### Not at the hackathon
+- **F7 Planet Nine sky band, F8 motion inside one visit:** much of Planet Nine's predicted range sits near Rubin's single-image limit, r ∼ 24.3 (`06_Brown_Batygin2021`), far below SPHEREx's full-mission 5σ depth of 19.5–19.9 AB (17.8–18.8 AB beyond 3.8 µm; `01_Bock2026`). Only an extreme methane-poor atmosphere would be about 10× brighter at 3–4 µm (`05_Batygin2019`). These features invite claims we would have to soften.
+- **F6 AAVSO / ZTF:** depends on outside data that may not reach 2026. Check before the event; do not build during it.
+- **F3 field guide page:** useful, but curating examples takes time, and H1 does the same job inside the tool.
+
+### Missing, but not from the papers
+- **Real user evidence:** 5–10 people try "find the star that moved" (Barnard's Star) during the event; write down real counts, time and one quote. Never estimate.
+- **Public link and the 30-second video.**
+
+### Order for hours 34–40 (only if Level 2 passes; stop at hour 40 whatever is done)
+1. Spectrum (friend: `/api/spectrum`; Kripas: spectrum panel) and **H2** (Kripas, 30 min).
+2. **H1(a)** exposure count (friend: backend; Kripas: show it in the spot list).
+3. **H1(b)** moving-star pair.
+4. **H3** blend badge.
+5. **H4** change-colour panel.
+6. **H5** report download.
+
+Realistically items 1–3 fit in 6 hours; 4–6 are practice-repo work unless the build is ahead.
+
+---
+
+## 6. Plan
 
 ### Practice repo (after the rehearsal; nothing on Sat 7 – Sun 8 Nov, which is the empty-repo rehearsal)
 | Day | Work | Owner |
 |---|---|---|
-| Mon 9 Nov | F1 change-colour panel (backend ratios + panel + tests). F6 coverage check only (does AAVSO or ZTF reach 2026?) | Kripas (F1), friend (F6 check) |
-| Tue 10 Nov | F2 single-exposure count + moving-star pair; F4 blend / "not in Gaia" badge | Kripas |
-| Wed 11 Nov | F5 report export; F3 field guide from our frames; F6 only if the data exists | Kripas, friend reviews every number |
-| Thu 12 Nov | Speed drill as planned. F7 overlay only if time is left | Kripas |
-| Fri 13 Nov | Read the Resources tab; update the pitch with the main gap and G1–G4 | Both |
+| Mon 9 Nov | H1(a) exposure count and H1(b) moving-star pair (backend + spot list + tests); H2 About block | Kripas; friend checks the counts on Barnard and RW Aur |
+| Tue 10 Nov | H3 blend / "not in Gaia" badge; H4 change-colour panel (ratios + panel + tests); F6 coverage check only (does AAVSO or ZTF reach 2026?) | Kripas (H3, H4), friend (F6 check) |
+| Wed 11 Nov | H5 report download; H1(c) other-detector check if time; friend reviews every new number | Kripas, friend |
+| Thu 12 Nov | Speed drill as planned (include the H1(a) count from memory) | Kripas |
+| Fri 13 Nov | Read the Resources tab; pitch built on the main gap, G1 and G2 | Both |
 
 ### Hackathon build (14–15 Nov, fresh repo)
-- Follow `HACKATHON_PLAN` Part E unchanged: Level 1 by hour 22, Level 2 by hour 34.
-- Hours 34–40, in this order, only if Level 2 passes: **F1**, then **F4**, then **F5**, then the F2 exposure count. Nothing new after hour 40.
-- F3, F6, F7 and F8 stay out of the hackathon unless everything above is done and tested.
+- Follow `HACKATHON_PLAN` Part E: Level 1 by hour 22, Level 2 by hour 34.
+- Hours 34–40: the order in section 5. Nothing new after hour 40.
+- F3, F6, F7 and F8 stay out of the hackathon.
 
 ### Pitch line
 "SPHEREx's own mission paper calls its maps a reference every 6 months for time-domain science, yet none of IRSA's SPHEREx tools compares visits, and the official catalogs of moving objects come in 2028. SPHEREx Blink lets anyone compare visits today, checks every change against flags, Gaia and JPL, and shows the spectrum from the same data, so people see what really moved or changed instead of mistaking artifacts for discoveries."
