@@ -5,6 +5,21 @@
 
 ---
 
+## The main points (lead with these)
+
+| Gap | Fit | What already covers it |
+|---|---|---|
+| **Main: no SPHEREx visit-comparison tool** | **Strong** | **Flipbook, blink, difference, timeline** |
+| **G1. Artifacts in visual searches** | **Strong** | **Red flags, artifact labels, JPL check** |
+| **G2. Motion and spectrum from separate telescopes** | **Strong** | **Flipbook plus spectrum panel** |
+| G3. Blending at ~6″ | Medium | Gaia overlay; WISE 0855 notes |
+| G4. RW Aur infrared not simultaneous | Medium, possible science result | RW Aur D1–D6 spectrum per visit |
+| G5. Planet Nine coverage at 3–5 µm | Teaching only | Planet X explainer |
+
+The pitch rests on the three rows in bold: SPHEREx has no tool for comparing visits (main gap), checking for artifacts is the hardest part of searching by eye (G1), and earlier searches needed a second telescope for the spectrum (G2). We already cover all three. G3–G5 are supporting points. Quotes and paper sections for every row are in sections 1 and 2.
+
+---
+
 ## 1. The main gap
 
 **SPHEREx is promoted for time-domain science, but nothing official lets you compare its visits.**
