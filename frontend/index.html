@@ -138,6 +138,9 @@
             </div>
 
             <label class="check"><input type="checkbox" id="flip-show-flags"> <span data-i18n="flip.flags">Show flagged pixels in red</span></label>
+            <button type="button" id="sci-toggle" class="btn btn-small sci-toggle" aria-expanded="false" aria-controls="sci-view" disabled>
+              <span data-i18n="sci.toggle">Scientist view: raw pixels and flags</span>
+            </button>
             <div class="inline-row">
               <label class="check"><input type="checkbox" id="flip-show-gaia" checked> <span data-i18n="flip.gaia">Gaia DR3 markers</span></label>
               <label class="inline-label" for="flip-gaia-mag"><span data-i18n="flip.stars">Stars</span> <select id="flip-gaia-mag"></select></label>
@@ -153,6 +156,76 @@
               </details>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section id="sci-view" class="diffview sci-view" aria-labelledby="sci-title" hidden>
+        <div class="flip-head">
+          <h3 id="sci-title" data-i18n="sci.title">Scientist view: raw pixels and flags</h3>
+          <span id="sci-summary" class="flip-summary"></span>
+        </div>
+        <p class="help" data-i18n="sci.intro">Every detector pixel of one exposure behind the flipbook frame, exactly as NASA IRSA
+          delivers it, coloured by what its FLAGS value says. Point at a pixel (or use the arrow keys) to see its position,
+          value, wavelength and every flag bit.</p>
+        <p id="sci-message" class="help" hidden></p>
+        <div id="sci-body" class="sci-body" hidden>
+          <div class="inline-row">
+            <div class="stepper">
+              <label class="inline-label" for="sci-exposure"><span data-i18n="sci.exposure">Exposure</span> <select id="sci-exposure"></select></label>
+              <button type="button" class="btn btn-small btn-step" data-sci-step="-1" aria-label="Previous exposure">−</button>
+              <button type="button" class="btn btn-small btn-step" data-sci-step="1" aria-label="Next exposure">+</button>
+            </div>
+            <div class="flip-modes" role="group" aria-label="Colour the pixels by">
+              <button type="button" id="sci-mode-flags" class="tab" aria-pressed="true" data-i18n="sci.by_flags">Flag type</button>
+              <button type="button" id="sci-mode-bright" class="tab" aria-pressed="false" data-i18n="sci.by_brightness">Brightness</button>
+            </div>
+            <label class="check"><input type="checkbox" id="sci-grid" checked> <span data-i18n="sci.grid">Pixel grid</span></label>
+          </div>
+          <ul id="sci-legend" class="sci-legend" aria-label="Pixel types; click one to highlight it"></ul>
+          <div class="sci-layout">
+            <figure class="sci-figure">
+              <canvas id="sci-canvas" class="sci-canvas" tabindex="0" role="img"
+                      aria-label="Raw detector pixels of one exposure. Arrow keys move the chosen pixel; its details are shown beside the picture."></canvas>
+              <figcaption class="sci-caption-row">
+                <svg id="sci-compass" class="sci-compass" viewBox="-24 -24 48 48" role="img" aria-label="Directions on this detector"></svg>
+                <span id="sci-caption"></span>
+              </figcaption>
+            </figure>
+            <div id="sci-pixel" class="proof-card sci-pixel" aria-live="polite"></div>
+          </div>
+          <div class="sci-bits-wrap">
+            <h4 class="spot-title" data-i18n="sci.bits">Flag bits defined in this file</h4>
+            <p class="help" data-i18n="sci.bits_help">Each pixel's FLAGS value is one 32-bit integer: the sum of 2<sup>bit</sup> for
+              every bit that is set. Names and meanings come from the file's own header. Click a name to highlight its pixels.</p>
+            <div class="sci-table-wrap">
+              <table id="sci-bits" class="sci-table">
+                <thead><tr><th>Bit</th><th>Value</th><th>Name</th><th>Meaning (file header)</th><th>In the add-up</th><th>Pixels here</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </div>
+          <details class="sci-how">
+            <summary data-i18n="sci.how">How to read this</summary>
+            <ul class="about-list">
+              <li><strong>One square = one detector pixel of one exposure</strong>, before anything is lined up, rotated or
+                added. The flipbook frame of this visit is made from these exposures.</li>
+              <li><strong>FLAGS</strong> is one whole number per pixel. Written in binary, each of its 32 bits is a yes/no
+                answer, for example bit 21 (2<sup>21</sup> = 2097152) = SOURCE. A value of 2097153 = 2097152 + 1 means
+                SOURCE and TRANSIENT (bit 0).</li>
+              <li><strong>Kept or left out:</strong> the add-up keeps a pixel only if it has a value and none of the flags on
+                the official bad list (SPHEREx Explanatory Supplement v2.0, section 3.4.3). SOURCE, OVERFLOW, OUTLIER and
+                FULLSAMPLE never remove a pixel.</li>
+              <li><strong>Why so much blue?</strong> SOURCE marks pixels that a catalogued star or galaxy covers. In these
+                files it is set on most pixels, so blue is normal: it is a label, not a problem.</li>
+              <li><strong>Position:</strong> x counts columns to the right and y counts rows upwards, as in the FITS file.
+                The detector numbers come from the file's own coordinate system "A" (0-based active pixels), so the same
+                pixel can be found in the full IRSA file. North and east are drawn in the corner: the detector is not
+                north-up.</li>
+              <li><strong>Wavelength:</strong> SPHEREx's filter passes a different wavelength at every place on the detector,
+                so neighbouring pixels see slightly different colours of light.</li>
+            </ul>
+          </details>
+          <p id="sci-method" class="help"></p>
         </div>
       </section>
 

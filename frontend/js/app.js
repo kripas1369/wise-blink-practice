@@ -6,6 +6,7 @@ import { createLanguageToggle } from "./i18n.js";
 import { createLightCurve } from "./lightcurve.js";
 import { positionAt, separationArcsec, VIEW_EPOCH } from "./motion.js";
 import { createProof } from "./proof.js";
+import { createScientistView } from "./scientist.js";
 import { createSpectrum } from "./spectrum.js";
 import { createSpotList } from "./spots.js";
 import { NameNotFound, resolveName } from "./resolve.js";
@@ -354,14 +355,17 @@ function start() {
   createLanguageToggle(document.getElementById("lang-toggle"));
   timeline = createTimeline({ onDetector: setDetector });
   const files = createFiles();
+  const scientist = createScientistView();
   flipbook = createFlipbook({
     onDetector: setDetector,
     onFrames: (loaded) => {
       timeline.markFrames(loaded);
       files.show(loaded);
+      scientist.show(loaded);
       proofView.show(loaded); diffView.show(loaded); lightCurve.show(loaded); spectrumView.show(loaded);
     },
     onPixel: (p) => lightCurve.showPixel(p),
+    onVisit: (i) => scientist.visit(i),
   });
   if (fromUrl.ra !== null) {
     const target = officialTargetAt(fromUrl.ra, fromUrl.dec);

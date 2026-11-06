@@ -40,6 +40,7 @@ from backend.app.lightcurve import lightcurve_at, write_lightcurve
 from backend.app.motion import position_at, separation_arcsec
 from backend.app.known_objects import check as check_known
 from backend.app.originals import write_originals
+from backend.app.pixels import write_pixels
 from backend.app.proof import write_proof
 from backend.app.spectrum import write_spectrum
 from backend.app.spots import write_spots
@@ -141,12 +142,13 @@ _jobs_lock = threading.Lock()
 
 
 def _pipeline_after_render(folder: Path, target_dir: Path | None = None) -> list[str]:
-    """Gaia, diff, light curve, proof, spots, GIF, IRSA links, spectrum; return warnings for any step that failed."""
+    """Gaia, diff, light curve, proof, spots, GIF, IRSA links, raw pixels, spectrum; return warnings for failed steps."""
     warnings: list[str] = []
     steps = [("Gaia DR3 markers", write_gaia), ("difference maps", write_diff),
              ("light curve", write_lightcurve),
              ("proof panel", lambda f: write_proof(f, online=True)),
-             ("spot list", write_spots), ("GIF", write_gif), ("links to the original files", write_originals)]
+             ("spot list", write_spots), ("GIF", write_gif), ("links to the original files", write_originals),
+             ("scientist view (raw pixels)", write_pixels)]
     if target_dir is not None:
         steps.append(("spectrum", lambda _f: write_spectrum(target_dir)))
     for stage, step in steps:

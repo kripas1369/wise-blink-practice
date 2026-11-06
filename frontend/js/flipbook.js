@@ -70,8 +70,9 @@ function fillSpeeds(select, speeds, chosen) {
  * `onDetector(n)`: the user picked a detector that has prepared frames.
  * `onFrames(loaded | null)`: frames were shown ({ manifest, base, gaia, where }) or cleared.
  * `onPixel({ x, y })`: the user clicked a pixel of the frame (PNG pixels, 0 = first).
+ * `onVisit(i)`: frame `i` is now on screen.
  */
-export function createFlipbook({ onDetector, onFrames = () => {}, onPixel = () => {} }) {
+export function createFlipbook({ onDetector, onFrames = () => {}, onPixel = () => {}, onVisit = () => {} }) {
   const el = {
     gaia: $("flip-gaia"), showGaia: $("flip-show-gaia"), gaiaMag: $("flip-gaia-mag"), gaiaNoteBox: $("flip-gaia-note"),
     stage: $("flip-stage"), img: $("flip-img"), flags: $("flip-flags"), message: $("flip-message"),
@@ -161,6 +162,7 @@ export function createFlipbook({ onDetector, onFrames = () => {}, onPixel = () =
     el.slider.value = String(i);
     el.position.textContent = `${i + 1} of ${count()}`;
     renderGaia();
+    onVisit(i);
   }
 
   function step(direction) {
