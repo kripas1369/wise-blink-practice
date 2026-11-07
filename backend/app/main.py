@@ -15,6 +15,8 @@ from api.nasa.gov; the API here downloads through IRSA when a folder is not prep
     /api/proof                                 measured motion vs Gaia, exposures used, data releases
     /api/spectrum                              brightness against wavelength per visit, all detectors with frames
     /api/known-objects&a=&b=&spot=             JPL known asteroids/comets near one spot of a difference map
+    POST /api/ask (same location parameters)   Google Gemini explains the current view from our files only
+                                               (body {"question", "lang", "view"}; needs GEMINI_API_KEY)
 """
 import json
 import math
@@ -25,12 +27,14 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 
-from fastapi import Depends, FastAPI, Query
+from fastapi import Depends, FastAPI, Query, Request
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
+from pydantic import BaseModel
 
 from backend.app import archive
+from backend.app.ask import PER_MINUTE as ASK_PER_MINUTE, AskUnavailable, allow as allow_question, ask as ask_about
 from backend.app.config import CACHE_DIR, DETECTORS, REPO_ROOT
 from backend.app.coverage import coverage_answer
 from backend.app.diff import write_diff
@@ -352,6 +356,26 @@ def known(loc: dict = Depends(location), a: int = Query(..., ge=0), b: int = Que
     obs = next(o for o in spots["observers"] if o["epoch_id"] == s["frame"])
     pixel = _read(loc, "manifest.json", "frames")["pixel_arcsec"]
     return {"spot": {k: s[k] for k in ("ra", "dec", "peak_sigma", "frame")}, **check_known(s, obs, pixel)}
+
+
+class AskBody(BaseModel):
+    question: str
+    lang: str = "en"
+    view: dict = {}
+
+
+@app.post("/api/ask")
+def ask_view(body: AskBody, request: Request, loc: dict = Depends(location)):
+    if not allow_question(request.client.host if request.client else "unknown"):
+        raise ApiError(429, f"Too many questions: up to {ASK_PER_MINUTE} a minute")
+    if not (loc["folder"] / "manifest.json").exists():
+        raise ApiError(404, "No frames for this position and detector")
+    try:
+        return ask_about(loc["folder"], body.question, body.lang, body.view)
+    except ValueError as exc:
+        raise ApiError(400, str(exc))
+    except AskUnavailable as exc:
+        raise ApiError(503, f"The AI explainer is unavailable: {exc}.")
 
 
 @app.get("/api/{rest:path}")

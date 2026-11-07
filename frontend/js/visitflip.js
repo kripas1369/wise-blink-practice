@@ -51,7 +51,8 @@ export function spanText(visit) {
   return `${visit.n_exposures} exposure${visit.n_exposures === 1 ? "" : "s"} over ${sinceFirst(visit.span_hours).replace("+", "")}`;
 }
 
-export function createVisitFlip() {
+/** `onExposure(visit, k)`: single exposure `k` of `visit` is now on screen. */
+export function createVisitFlip({ onExposure = () => {} } = {}) {
   const el = {
     toggle: $("iv-toggle"), view: $("iv-view"), summary: $("iv-summary"), message: $("iv-message"), body: $("iv-body"),
     exposure: $("iv-exposure"), play: $("iv-play"), modePic: $("iv-mode-picture"), modeRes: $("iv-mode-residual"),
@@ -116,6 +117,7 @@ export function createVisitFlip() {
     el.jplTitle.textContent = headline;
     el.jplList.replaceChildren(...lines.map(li));
     drawMarks(e);
+    onExposure(visitIndex, k);
   }
 
   function renderVisit() {

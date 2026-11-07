@@ -1,3 +1,4 @@
+import { createAsk } from "./ask.js";
 import { formatDec, formatRa, looksLikeName, parseCoordinates } from "./coords.js";
 import { createDiffView } from "./diffview.js";
 import { createFiles } from "./files.js";
@@ -349,10 +350,11 @@ function start() {
   detSelect.value = String(state.det);
   if (fromUrl.problems.length) setStatus(fromUrl.problems.join(" "), "warn");
   let diffView = null;
-  const spotList = createSpotList({ onPick: (xy) => diffView.pointAt(xy) });
+  const askView = createAsk();
+  const spotList = createSpotList({ onPick: (xy, i) => { diffView.pointAt(xy); askView.spot(i); } });
   const recovery = createRecovery();
   diffView = createDiffView({
-    onPair: (loaded, a, b) => { spotList.show(loaded, a, b); recovery.show(loaded, a, b); },
+    onPair: (loaded, a, b) => { spotList.show(loaded, a, b); recovery.show(loaded, a, b); askView.pair(a, b); },
   });
   const lightCurve = createLightCurve();
   const proofView = createProof();
@@ -361,7 +363,7 @@ function start() {
   timeline = createTimeline({ onDetector: setDetector });
   const files = createFiles();
   const scientist = createScientistView();
-  const visitFlip = createVisitFlip();
+  const visitFlip = createVisitFlip({ onExposure: (i, k) => askView.exposure(i, k) });
   flipbook = createFlipbook({
     onDetector: setDetector,
     onFrames: (loaded) => {
@@ -369,10 +371,11 @@ function start() {
       files.show(loaded);
       scientist.show(loaded);
       visitFlip.show(loaded);
+      askView.show(loaded);
       proofView.show(loaded); diffView.show(loaded); lightCurve.show(loaded); spectrumView.show(loaded);
     },
     onPixel: (p) => lightCurve.showPixel(p),
-    onVisit: (i) => { scientist.visit(i); visitFlip.visit(i); },
+    onVisit: (i) => { scientist.visit(i); visitFlip.visit(i); askView.visit(i); },
   });
   if (fromUrl.ra !== null) {
     const target = officialTargetAt(fromUrl.ra, fromUrl.dec);

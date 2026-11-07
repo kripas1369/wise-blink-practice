@@ -81,7 +81,7 @@ export function createSpotList({ onPick }) {
     fill(el.confirm, spot.confirm);
     el.result.replaceChildren();
     el.jpl.disabled = false;
-    onPick(spot.peak_xy);
+    onPick(spot.peak_xy, index);
   }
 
   async function askJpl() {

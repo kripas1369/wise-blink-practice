@@ -283,3 +283,17 @@ Top level: `format`, `target`, `band`, `size_px`, `scale`, `residual` (`sigma_ra
 - `known.outcome`: `objects` (with `objects`: `name`, `x`, `y` in PNG pixels, `ra`, `dec`, `mag`, `rate_arcsec_per_h`, `rate_east_north`, `distance_au`; plus `n_candidates` and `problems`), `none`, `unavailable` (with `reason`) or `not_asked`. Positions: candidates from JPL's small-body search (first pass, one request per group of exposures within 12 h, reused within 6 h), then JPL Horizons at each exposure time, moved from the Earth's centre to SPHEREx (`X_SC` … in the exposure header). Never "new object".
 
 The website reads this file directly (`frontend/js/visitflip.js`, "Inside one visit" panel).
+
+---
+
+## 16. `POST /api/ask` answer (`spherex-blink-answer/1`, made by `backend/app/ask.py`)
+
+Not a file in the folder: an answer to one plain-words question about the view on screen. Same location parameters as `/api/frames`; body `{"question": "…" (up to 400 characters), "lang": "en" | "ne", "view": {"visit", "a", "b", "spot", "exposure"}}` (0-based; missing or impossible values are ignored).
+
+1. `build_facts()` turns the folder's own files into numbered facts `F1…Fn` (`id`, `source`, `text`): the official target text, `manifest.json` (every visit; the one on screen is "shown now"), `proof.json`, the pair of `diff.json` on screen (else `default_pair`), its `spots.json` spots (the 5 strongest plus the chosen one with its why / what else / confirm), `recovery.json`, `lightcurve.json`, the target's `spectrum.json`, `visits.json` (the visit and exposure on screen, JPL known objects), and fixed sentences on how the tool works (σ, spots, flags, the LVF, pixels, Gaia, JPL no-match ≠ new, Planet Nine, credits).
+2. Google Gemini (`gemini-3.5-flash`; when it is busy, too slow or out of quota it rests for 2 minutes and `gemini-3-flash-preview` answers; if both are missing for the key, the newest Flash model the key lists; low thinking, temperature 0.2, JSON schema) gets only those facts and rules: every number from the facts, list the facts used, never a new object / discovery / Planet X, say when the facts do not answer, plain `general` + student `details`, in English or Nepali.
+3. Our code then checks the answer: every number in it must be in the facts (rounding allowed; Devanagari digits read), and a sentence claiming a new object, a discovery or Planet X / Nine without a negation is flagged.
+
+Answer: `format`, `question`, `lang`, `general`, `details`, `answerable`, `sources` (the facts it named, unknown ids dropped), `suggested` (up to 3 follow-ups), `check` (`numbers_checked`, `numbers_not_found`, `claim_warning`), `n_facts`, `model`, `label` ("AI explanation by Google Gemini …, written from this view's data only"), `asked_at`, `cached` (same question, language and facts → the saved answer from `cache/ask/`).
+
+Errors: 400 (empty or long question, other language), 429 (more than 8 questions a minute from one address), 503 with a plain reason (no `GEMINI_API_KEY` on the server, quota used up, Gemini unreachable or refused). The key is read from the environment or a git-ignored `.env` at the repo root and sent only in the `x-goog-api-key` header. The website shows the answer in the "Ask about this view" panel (`frontend/js/ask.js`) with the label, the facts used and the checks; every other panel works without it.

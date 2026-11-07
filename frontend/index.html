@@ -280,6 +280,30 @@
         </div>
       </section>
 
+      <section id="ask-view" class="diffview ask-view" aria-labelledby="ask-title" hidden>
+        <div class="flip-head">
+          <h3 id="ask-title" data-i18n="ask.title">Ask about this view</h3>
+          <span class="ask-badge" data-i18n="ask.badge">AI explainer · Google Gemini</span>
+        </div>
+        <p class="help" data-i18n="ask.help">Ask in plain words about what this page shows. Gemini answers only from this view's own data
+          (the same files behind the panels below), names the facts it used, and this tool checks every number in its answer
+          against them. It cannot see the pictures, and a spot is never a discovery.</p>
+        <div class="ask-starters" role="group" aria-label="Example questions">
+          <button type="button" class="btn btn-small ask-starter" data-i18n="ask.q1">What am I looking at?</button>
+          <button type="button" class="btn btn-small ask-starter" data-i18n="ask.q2">Did this star really move?</button>
+          <button type="button" class="btn btn-small ask-starter" data-i18n="ask.q3">Are the spots real?</button>
+          <button type="button" class="btn btn-small ask-starter" data-i18n="ask.q4">How faint a moving object can be found here?</button>
+          <button type="button" class="btn btn-small ask-starter" data-i18n="ask.q5">Is this Planet X?</button>
+        </div>
+        <form id="ask-form" class="search-row ask-form" autocomplete="off">
+          <label for="ask-input" class="sr-only">Your question</label>
+          <input id="ask-input" type="text" maxlength="400" placeholder="Your question, in English or Nepali">
+          <button id="ask-submit" type="submit" class="btn btn-primary" data-i18n="ask.submit">Ask</button>
+        </form>
+        <p id="ask-status" class="help" role="status" aria-live="polite" hidden></p>
+        <div id="ask-answer" class="proof-card ask-answer" aria-live="polite" hidden></div>
+      </section>
+
       <section id="tl-view" class="diffview" aria-labelledby="tl-title" hidden>
         <div class="flip-head">
           <h3 id="tl-title" data-i18n="tl.title">When SPHEREx looked here</h3>

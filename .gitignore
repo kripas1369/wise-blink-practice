@@ -7,6 +7,8 @@ cache/
 data/
 scratch/
 node_modules/
+# API keys (GEMINI_API_KEY for /api/ask): never commit
+.env
 *.fits
 *.fits.gz
 # the small per-visit data files the website and API serve (about 32 KB each)

@@ -48,6 +48,7 @@ npm test        # node --test, needs Node 20+; no packages to install
 | `js/spots.js` | Spots above 5σ: numbered marks on the difference, list, detail card (why / what else / what would confirm), the NASA JPL known-object button via `/api/known-objects` (API only) |
 | `js/recovery.js` | Planted-mover card under the spot list (`recovery.json`): found share per brightness level, where half are found, the chance baseline |
 | `js/visitflip.js` | "Inside one visit": flip a visit's single exposures (`visits.json`), picture or minus the visit median, flags, JPL known-object squares |
+| `js/ask.js` | "Ask about this view": a plain-words question to `POST /api/ask` (Google Gemini, answers only from this view's files); shows the AI label, a general and a detailed answer, the facts used, our number check and any discovery-claim warning (API + `GEMINI_API_KEY` only) |
 | `js/lightcurve.js` | Light curve: brightness over time (coloured by wavelength) and against wavelength (one colour per visit) as SVG, same-wavelength comparisons, warnings; a clicked flipbook pixel via `/api/lightcurve?…&x=&y=` (API only) |
 | `js/sky.js` | Pixel ↔ sky maths, which Gaia stars to show, the target's expected shift and its compass direction |
 | `js/player.js` | Stepping, looping and speed rules (tested) |
