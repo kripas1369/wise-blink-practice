@@ -16,7 +16,7 @@ from api.nasa.gov; the API here downloads through IRSA when a folder is not prep
     /api/spectrum                              brightness against wavelength per visit, all detectors with frames
     /api/known-objects&a=&b=&spot=             JPL known asteroids/comets near one spot of a difference map
     POST /api/ask (same location parameters)   Google Gemini explains the current view from our files only
-                                               (body {"question", "lang", "view"}; needs GEMINI_API_KEY)
+                                               (body {"question", "view"}; needs GEMINI_API_KEY)
 """
 import json
 import math
@@ -360,7 +360,6 @@ def known(loc: dict = Depends(location), a: int = Query(..., ge=0), b: int = Que
 
 class AskBody(BaseModel):
     question: str
-    lang: str = "en"
     view: dict = {}
 
 
@@ -371,7 +370,7 @@ def ask_view(body: AskBody, request: Request, loc: dict = Depends(location)):
     if not (loc["folder"] / "manifest.json").exists():
         raise ApiError(404, "No frames for this position and detector")
     try:
-        return ask_about(loc["folder"], body.question, body.lang, body.view)
+        return ask_about(loc["folder"], body.question, body.view)
     except ValueError as exc:
         raise ApiError(400, str(exc))
     except AskUnavailable as exc:

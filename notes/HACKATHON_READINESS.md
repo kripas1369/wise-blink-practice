@@ -34,7 +34,7 @@ What you have here is a **rehearsal of the real tool** — most of Level 1–3 f
 | Live IRSA when band missing (API) | Done (commit b74225e) |
 | Coverage timeline (when SPHEREx looked, per detector) | Done 1 Nov (Day 6) |
 | GIF download + links to the original IRSA files | Done 1 Nov (Day 6) |
-| Nepali toggle (fixed page text; data notes stay English) | Done 1 Nov (Day 6) |
+| Nepali toggle (fixed page text; data notes stay English) | Done 1 Nov (Day 6); removed 7 Nov (not needed: English only) |
 | Planet X explainer (About, geometry only) | Done 1 Nov (Day 6) |
 | JPL offset sign | Verified 1 Nov (Ceres, `scripts/check_jpl_offsets.py`) |
 | Spectra: Eps Ind B D1–D6, RW Aur D1–D6, WISE 0855 D2/D5/D6 | Done 1 Nov |
@@ -71,7 +71,7 @@ Global judges score **Impact, Creativity, Validity, Relevance, Presentation** fr
 | **Register team** on spaceappschallenge.org | Check | Both |
 | **Repo private + add lazylog00** | User todo | Kripas |
 
-Optional extras that **help Creativity** but are not in practice yet: epoch add/subtract legend (WiseView-style). (Coverage timeline, Nepali toggle, GIF download: done Day 6. R Dra is saturated in D2, so the multi-detector spectrum uses RW Aur instead.)
+Optional extras that **help Creativity** but are not in practice yet: epoch add/subtract legend (WiseView-style). (Coverage timeline, GIF download: done Day 6; the Nepali toggle was removed 7 Nov. R Dra is saturated in D2, so the multi-detector spectrum uses RW Aur instead.)
 
 ---
 

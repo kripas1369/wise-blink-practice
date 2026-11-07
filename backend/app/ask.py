@@ -1,6 +1,6 @@
 """Ask about this view: Google Gemini explains what the screen shows, using only this tool's own files.
 
-    POST /api/ask?target=rw_aur&band=1   {"question": "...", "lang": "en" | "ne", "view": {"visit", "a", "b", "spot", "exposure"}}
+    POST /api/ask?target=rw_aur&band=1   {"question": "...", "view": {"visit", "a", "b", "spot", "exposure"}}
 
 1. build_facts() turns the files behind the current view (manifest, proof, difference, spots, planted-mover
    test, light curve, spectrum, single exposures) and a short fixed glossary into numbered facts F1, F2, ...
@@ -11,7 +11,7 @@
    "discovery" or "Planet X" claim without a "not" is flagged. Unknown fact ids are dropped.
 
 The key stays on the server (GEMINI_API_KEY in the environment or in .env at the repo root, never committed).
-Answers are cached per question, language and facts, so a demo gives the same answer twice and spends no quota.
+Answers are cached per question and facts, so a demo gives the same answer twice and spends no quota.
 """
 import hashlib
 import json
@@ -38,8 +38,6 @@ MAX_SPOTS = 5
 TIMEOUT_S = 30  # per model
 PER_MINUTE = 8             # ours: questions per client per minute, to protect the free quota
 CACHE = CACHE_DIR / "ask"
-LANGUAGES = {"en": "English", "ne": "Nepali (Devanagari script)"}
-
 
 class AskUnavailable(Exception):
     """Gemini cannot answer now (no key, quota, network); the message says why in plain words."""
@@ -247,7 +245,6 @@ def build_facts(folder: Path, view: dict) -> list[dict]:
 # ---------- our checks on the answer ----------
 
 NUMBER = re.compile(r"(?<![\w.])[-+−]?\d+(?:\.\d+)?")
-DEVANAGARI = str.maketrans("०१२३४५६७८९", "0123456789")
 CLAIMS = re.compile(r"\b(new|undiscovered|unknown)\s+(object|asteroid|planet|comet|star|brown dwarf)\b"
                     r"|\bdiscover(?:ed|y)\b"
                     r"|\b(?:is|be|found|detected|spotted|shows?)\s+(?:\S+\s+){0,2}?planet\s+(?:x|nine|9)\b", re.I)
@@ -256,7 +253,7 @@ NEGATION = re.compile(r"\b(not|no|never|cannot|can't|isn't|aren't|wasn't|doesn't
 
 
 def numbers_in(text: str) -> list[str]:
-    clean = re.sub(r"\bF\d+\b|\bD[1-6]\b", " ", text.translate(DEVANAGARI))
+    clean = re.sub(r"\bF\d+\b|\bD[1-6]\b", " ", text)
     return [n.replace("−", "-").lstrip("+") for n in NUMBER.findall(clean)]
 
 
@@ -295,7 +292,7 @@ SCHEMA = {
 }
 
 
-def instructions(lang: str) -> str:
+def instructions() -> str:
     return (
         "You explain a web tool that shows NASA SPHEREx sky images (visit by visit) to members of the public and "
         "to students. Answer ONLY from the numbered FACTS you are given. The QUESTION comes from a website "
@@ -319,7 +316,7 @@ def instructions(lang: str) -> str:
         "details: up to 6 short sentences for a curious student with the numbers that matter for this question "
         "(not every number you have) and where on the page they are shown (flipbook, proof panel, difference, "
         "spot list, planted-mover card, light curve, spectrum, inside one visit). Do not write fact ids in the text.\n"
-        f"7. Write general, details and suggested_questions in {LANGUAGES[lang]}. Keep digits 0-9, units "
+        "7. Write in English. Keep digits, units "
         "(σ, µm, px, ″), object names and file names exactly as in the FACTS.\n"
         "8. suggested_questions: up to 3 short follow-up questions this view's FACTS can answer."
     )
@@ -453,20 +450,18 @@ def allow(client: str, now: float | None = None) -> bool:
         return True
 
 
-def ask(folder: Path, question: str, lang: str = "en", view: dict | None = None) -> dict:
+def ask(folder: Path, question: str, view: dict | None = None) -> dict:
     question = " ".join(question.split())
     if not question:
         raise ValueError("Type a question first")
     if len(question) > MAX_QUESTION:
         raise ValueError(f"Keep the question under {MAX_QUESTION} characters")
-    if lang not in LANGUAGES:
-        raise ValueError("lang must be en or ne")
     view = view or {}
     facts = build_facts(folder, view)
     fact_text = "\n".join(f"{f['id']} [{f['source']}] {f['text']}" for f in facts)
     prompt = f"FACTS:\n{fact_text}\n\nQUESTION: {question}"
-    system = instructions(lang)
-    key = hashlib.sha1(f"{lang}|{question.lower()}|{fact_text}|{system}".encode()).hexdigest()[:20]
+    system = instructions()
+    key = hashlib.sha1(f"{question.lower()}|{fact_text}|{system}".encode()).hexdigest()[:20]
     cached = CACHE / f"{key}.json"
     if cached.exists():
         return {**json.loads(cached.read_text()), "cached": True}
@@ -476,7 +471,7 @@ def ask(folder: Path, question: str, lang: str = "en", view: dict | None = None)
     used = [by_id[i] for i in dict.fromkeys(raw.get("facts_used") or []) if i in by_id]
     general, details = str(raw.get("general", "")).strip(), str(raw.get("details", "")).strip()
     answer = {
-        "format": FORMAT, "question": question, "lang": lang,
+        "format": FORMAT, "question": question,
         "general": general, "details": details, "answerable": bool(raw.get("answerable", True)),
         "sources": used, "suggested": [str(q) for q in (raw.get("suggested_questions") or [])][:3],
         "check": check_answer(f"{general} {details}", facts),

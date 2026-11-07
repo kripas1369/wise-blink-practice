@@ -70,8 +70,8 @@ def test_no_match_with_jpl_is_never_written_as_new():
 
 # ---------- our checks on the answer ----------
 
-def test_numbers_in_skips_ids_and_detectors_and_reads_devanagari():
-    assert ask.numbers_in("F12 says D2 moved 1.59 px over ३६०.२ days, −173.7σ") == ["1.59", "360.2", "-173.7"]
+def test_numbers_in_skips_fact_ids_and_detectors():
+    assert ask.numbers_in("F12 says D2 moved 1.59 px over 360.2 days, −173.7σ") == ["1.59", "360.2", "-173.7"]
 
 
 def test_rounded_numbers_count_as_found_but_others_do_not():
@@ -106,7 +106,7 @@ ANSWER = {"general": "Barnard's Star moved 1.59 px, as Gaia predicts.", "details
 
 def test_answer_maps_facts_drops_unknown_ids_and_is_labelled(monkeypatch):
     monkeypatch.setattr(ask, "call_gemini", fake_gemini(ANSWER))
-    out = ask.ask(BARNARD, "  Did   it move? ", "en", {})
+    out = ask.ask(BARNARD, "  Did   it move? ", {})
     facts = ask.build_facts(BARNARD, {})
     assert out["format"] == ask.FORMAT and out["question"] == "Did it move?"
     assert [s["id"] for s in out["sources"]] == ["F6", "F2"]
@@ -123,19 +123,18 @@ def test_same_question_on_same_view_is_answered_from_the_cache(monkeypatch):
     first = ask.ask(BARNARD, "Did it move?")
     again = ask.ask(BARNARD, "did it  MOVE?")
     other_view = ask.ask(BARNARD, "Did it move?", view={"spot": 0})
-    nepali = ask.ask(BARNARD, "Did it move?", "ne")
-    assert len(calls) == 3 and again["cached"] is True
+    assert len(calls) == 2 and again["cached"] is True
     assert {k: v for k, v in again.items() if k != "cached"} == {k: v for k, v in first.items() if k != "cached"}
-    assert other_view["cached"] is False and nepali["cached"] is False
-    assert "Nepali" in calls[-1][0]
+    assert other_view["cached"] is False
+    assert "Write in English" in calls[0][0]
     assert "FACTS:\nF1 [official target list] Barnard's Star" in calls[0][1]
 
 
 def test_bad_questions_are_refused_before_gemini(monkeypatch):
     monkeypatch.setattr(ask, "call_gemini", lambda *a: pytest.fail("Gemini should not be called"))
-    for question, lang in (("   ", "en"), ("x" * 401, "en"), ("ok?", "fr")):
+    for question in ("   ", "x" * 401):
         with pytest.raises(ValueError):
-            ask.ask(BARNARD, question, lang)
+            ask.ask(BARNARD, question)
 
 
 # ---------- Gemini ----------
@@ -286,7 +285,7 @@ URL = "/api/ask?target=barnard&band=2"
 def test_endpoint_answers_with_the_view(monkeypatch):
     calls = []
     monkeypatch.setattr(ask, "call_gemini", fake_gemini(ANSWER, calls))
-    r = client.post(URL, json={"question": "Is this spot real?", "lang": "en", "view": {"a": 0, "b": 2, "spot": 0}})
+    r = client.post(URL, json={"question": "Is this spot real?", "view": {"a": 0, "b": 2, "spot": 0}})
     assert r.status_code == 200
     assert r.json()["sources"][0]["id"] == "F6"
     assert "Spot 1 (chosen now)" in calls[0][1]
@@ -294,7 +293,7 @@ def test_endpoint_answers_with_the_view(monkeypatch):
 
 def test_endpoint_errors(monkeypatch, tmp_path):
     assert client.post(URL, json={"question": " "}).status_code == 400
-    assert client.post(URL, json={"lang": "en"}).status_code == 400
+    assert client.post(URL, json={"view": {}}).status_code == 400
     assert client.post("/api/ask?target=nowhere&band=2", json={"question": "hi"}).status_code in (400, 404)
     monkeypatch.delenv("GEMINI_API_KEY", raising=False)
     monkeypatch.setattr(ask, "REPO_ROOT", tmp_path)

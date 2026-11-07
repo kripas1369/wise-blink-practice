@@ -137,7 +137,7 @@ Replace the hand-check list with results:
   - Spotting artifacts is the main difficulty when searching by eye (Kuchner et al. 2017, ApJL 841, L19).
   - Earlier finds needed a second telescope for a spectrum (Kuchner 2017; Luhman 2014, ApJL 786, L18); SPHEREx gives motion and spectrum together.
   - What the tool cannot do: detect Planet Nine (Batygin et al. 2019, Phys. Rep. 805, 1; Brown & Batygin 2021, AJ 162, 219).
-- **Effort:** 30 minutes. English only unless the Nepali keys are added.
+- **Effort:** 30 minutes. English only.
 - **Scores on:** Validity and Relevance; judges read the site and project page, not this repo.
 
 ### H3. Blend and "not in Gaia" badge on the proof panel (F4) · only after H1 works

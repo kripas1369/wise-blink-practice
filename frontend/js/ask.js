@@ -2,7 +2,6 @@
 // answers only from the facts behind the current view and our code checks every number in the answer.
 // Without the data API or a Gemini key the panel says so; the written panels below never depend on it.
 import { framesQuery, hasApi } from "./frames.js";
-import { savedLanguage } from "./i18n.js";
 
 const $ = (id) => document.getElementById(id);
 
@@ -117,7 +116,7 @@ export function createAsk() {
       resp = await fetch(askUrl(loaded.where), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ question, lang: savedLanguage(), view: state }),
+        body: JSON.stringify({ question, view: state }),
       });
       body = await resp.json();
     } catch {

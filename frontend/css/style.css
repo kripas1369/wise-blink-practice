@@ -264,9 +264,6 @@ input[type="range"] { width: 100%; accent-color: var(--text); min-height: 32px; 
 .check { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; cursor: pointer; }
 .check input { width: 18px; height: 18px; accent-color: var(--text); }
 .flip-note { margin: 0; }
-.lang-toggle { font-size: 0.85rem; }
-.lang-note { max-width: 46rem; margin: 0 auto 0.8rem; }
-html[lang="ne"] body { line-height: 1.65; }
 .flip-files { display: flex; flex-direction: column; gap: 0.6rem; align-items: flex-start; }
 .flip-files details { font-size: 0.83rem; width: 100%; }
 .flip-files summary { cursor: pointer; color: var(--text); }

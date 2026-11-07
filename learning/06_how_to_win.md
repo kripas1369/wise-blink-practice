@@ -60,7 +60,7 @@ These come from the gaps in [05](05_nasa_tools_review.md). Ordered by value for 
     page: "our brightness agrees with IRSA's official tool within X%".
 
 **Local and human touch (cheap, memorable):**
-11. **Nepali language toggle** for the main screen text (Local Impact; Global Connection).
+11. ~~**Nepali language toggle** for the main screen text~~ (dropped 7 Nov: the site stays English only).
 12. **Phone-friendly** layout (the official Data Explorer says it does not work on iPhone).
 13. **Keyboard controls** (space = play, arrows = step) and colour-blind-safe colours.
 14. **"What am I looking at?"** one-line explanation for each target (already in `targets.py`).

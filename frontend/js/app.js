@@ -3,7 +3,6 @@ import { formatDec, formatRa, looksLikeName, parseCoordinates } from "./coords.j
 import { createDiffView } from "./diffview.js";
 import { createFiles } from "./files.js";
 import { createFlipbook } from "./flipbook.js";
-import { createLanguageToggle } from "./i18n.js";
 import { createLightCurve } from "./lightcurve.js";
 import { positionAt, separationArcsec, VIEW_EPOCH } from "./motion.js";
 import { createProof } from "./proof.js";
@@ -359,7 +358,6 @@ function start() {
   const lightCurve = createLightCurve();
   const proofView = createProof();
   const spectrumView = createSpectrum();
-  createLanguageToggle(document.getElementById("lang-toggle"));
   timeline = createTimeline({ onDetector: setDetector });
   const files = createFiles();
   const scientist = createScientistView();
