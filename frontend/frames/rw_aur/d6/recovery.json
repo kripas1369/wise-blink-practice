@@ -1,0 +1,384 @@
+{
+ "format": "spherex-blink-recovery/1",
+ "target": "rw_aur",
+ "band": 6,
+ "limit_sigma": 5.0,
+ "rules": {
+  "levels_peak_sigma": [
+   0,
+   3,
+   4,
+   5,
+   6,
+   8,
+   12,
+   20
+  ],
+  "per_level": 200,
+  "step_px": 4.0,
+  "found_px": 1.5,
+  "fakes_per_map": 4,
+  "separation_px": 6.0,
+  "seed": 20261107,
+  "source": "ours"
+ },
+ "psf": {
+  "sigma_px": 0.612,
+  "fwhm_arcsec": 8.87,
+  "n_stars": 2,
+  "source": "median PSF_FWHM of the exposures' headers (6.61″), widened by the bilinear resampling onto this grid (+1/6 px² per axis); fewer than 5 clean stars to measure it here"
+ },
+ "method": "fake moving point sources (same brightness in A and B, 4 px apart) added to copies of the two frames; difference and 5σ spots made with the same code as the difference panel and spot list; found = a brighter-in-B spot centred within 1.5 px of the fake",
+ "limits": [
+  "The fakes are added after the exposures were lined up and added up, so they skip that smoothing.",
+  "The fakes have no photon noise of their own, so the faintest levels are slightly optimistic.",
+  "mJy and AB magnitude use the typical noise of the pair and the PSF width above; at one place the noise can be higher (bright stars) or lower.",
+  "Level 0 plants nothing: it is the chance that a real spot sits within 1.5 px of a random place anyway."
+ ],
+ "pairs": [
+  {
+   "a": 0,
+   "b": 1,
+   "wl_um": 4.672,
+   "levels": [
+    {
+     "peak_sigma": 0,
+     "n": 200,
+     "found_pct": 2.5,
+     "both_ends_pct": 0.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 0.0,
+      "too_faint_pct": 97.5
+     }
+    },
+    {
+     "peak_sigma": 3,
+     "n": 200,
+     "found_pct": 7.5,
+     "both_ends_pct": 1.5,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 1.0,
+      "too_faint_pct": 91.5
+     },
+     "flux_mjy": 0.2871,
+     "ab_mag": 17.75
+    },
+    {
+     "peak_sigma": 4,
+     "n": 200,
+     "found_pct": 24.5,
+     "both_ends_pct": 5.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 1.5,
+      "too_faint_pct": 74.0
+     },
+     "flux_mjy": 0.382,
+     "ab_mag": 17.44
+    },
+    {
+     "peak_sigma": 5,
+     "n": 200,
+     "found_pct": 50.0,
+     "both_ends_pct": 25.5,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 0.0,
+      "too_faint_pct": 50.0
+     },
+     "flux_mjy": 0.4812,
+     "ab_mag": 17.19
+    },
+    {
+     "peak_sigma": 6,
+     "n": 200,
+     "found_pct": 64.5,
+     "both_ends_pct": 38.5,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 2.0,
+      "too_faint_pct": 33.5
+     },
+     "flux_mjy": 0.5739,
+     "ab_mag": 17.0
+    },
+    {
+     "peak_sigma": 8,
+     "n": 200,
+     "found_pct": 85.5,
+     "both_ends_pct": 72.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 1.0,
+      "too_faint_pct": 13.5
+     },
+     "flux_mjy": 0.7919,
+     "ab_mag": 16.65
+    },
+    {
+     "peak_sigma": 12,
+     "n": 200,
+     "found_pct": 88.0,
+     "both_ends_pct": 72.5,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 1.5,
+      "too_faint_pct": 10.5
+     },
+     "flux_mjy": 1.1651,
+     "ab_mag": 16.23
+    },
+    {
+     "peak_sigma": 20,
+     "n": 200,
+     "found_pct": 94.0,
+     "both_ends_pct": 78.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 1.5,
+      "too_faint_pct": 4.5
+     },
+     "flux_mjy": 1.9166,
+     "ab_mag": 15.69
+    }
+   ],
+   "half_found": {
+    "peak_sigma": 5.0,
+    "flux_mjy": 0.4775,
+    "ab_mag": 17.2
+   }
+  },
+  {
+   "a": 0,
+   "b": 2,
+   "wl_um": 4.63,
+   "levels": [
+    {
+     "peak_sigma": 0,
+     "n": 200,
+     "found_pct": 0.5,
+     "both_ends_pct": 0.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 0.0,
+      "too_faint_pct": 99.5
+     }
+    },
+    {
+     "peak_sigma": 3,
+     "n": 200,
+     "found_pct": 8.5,
+     "both_ends_pct": 0.5,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 0.0,
+      "too_faint_pct": 91.5
+     },
+     "flux_mjy": 0.274,
+     "ab_mag": 17.81
+    },
+    {
+     "peak_sigma": 4,
+     "n": 200,
+     "found_pct": 25.5,
+     "both_ends_pct": 4.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 0.0,
+      "too_faint_pct": 74.5
+     },
+     "flux_mjy": 0.381,
+     "ab_mag": 17.45
+    },
+    {
+     "peak_sigma": 5,
+     "n": 200,
+     "found_pct": 52.0,
+     "both_ends_pct": 18.5,
+     "lost": {
+      "no_z_pct": 0.5,
+      "blended_pct": 0.0,
+      "too_faint_pct": 47.5
+     },
+     "flux_mjy": 0.4709,
+     "ab_mag": 17.22
+    },
+    {
+     "peak_sigma": 6,
+     "n": 200,
+     "found_pct": 60.5,
+     "both_ends_pct": 36.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 0.0,
+      "too_faint_pct": 39.5
+     },
+     "flux_mjy": 0.5485,
+     "ab_mag": 17.05
+    },
+    {
+     "peak_sigma": 8,
+     "n": 200,
+     "found_pct": 76.5,
+     "both_ends_pct": 63.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 0.0,
+      "too_faint_pct": 23.5
+     },
+     "flux_mjy": 0.7298,
+     "ab_mag": 16.74
+    },
+    {
+     "peak_sigma": 12,
+     "n": 200,
+     "found_pct": 89.5,
+     "both_ends_pct": 66.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 0.0,
+      "too_faint_pct": 10.5
+     },
+     "flux_mjy": 1.1124,
+     "ab_mag": 16.28
+    },
+    {
+     "peak_sigma": 20,
+     "n": 200,
+     "found_pct": 96.5,
+     "both_ends_pct": 74.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 0.0,
+      "too_faint_pct": 3.5
+     },
+     "flux_mjy": 1.9016,
+     "ab_mag": 15.7
+    }
+   ],
+   "half_found": {
+    "peak_sigma": 4.9,
+    "flux_mjy": 0.4691,
+    "ab_mag": 17.22
+   }
+  },
+  {
+   "a": 1,
+   "b": 2,
+   "wl_um": 4.623,
+   "levels": [
+    {
+     "peak_sigma": 0,
+     "n": 200,
+     "found_pct": 1.5,
+     "both_ends_pct": 0.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 0.0,
+      "too_faint_pct": 98.5
+     }
+    },
+    {
+     "peak_sigma": 3,
+     "n": 200,
+     "found_pct": 4.5,
+     "both_ends_pct": 1.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 3.5,
+      "too_faint_pct": 92.0
+     },
+     "flux_mjy": 0.2855,
+     "ab_mag": 17.76
+    },
+    {
+     "peak_sigma": 4,
+     "n": 200,
+     "found_pct": 16.0,
+     "both_ends_pct": 5.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 5.0,
+      "too_faint_pct": 79.0
+     },
+     "flux_mjy": 0.3763,
+     "ab_mag": 17.46
+    },
+    {
+     "peak_sigma": 5,
+     "n": 200,
+     "found_pct": 42.5,
+     "both_ends_pct": 23.5,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 3.5,
+      "too_faint_pct": 54.0
+     },
+     "flux_mjy": 0.4704,
+     "ab_mag": 17.22
+    },
+    {
+     "peak_sigma": 6,
+     "n": 200,
+     "found_pct": 69.5,
+     "both_ends_pct": 52.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 7.5,
+      "too_faint_pct": 23.0
+     },
+     "flux_mjy": 0.5803,
+     "ab_mag": 16.99
+    },
+    {
+     "peak_sigma": 8,
+     "n": 200,
+     "found_pct": 82.5,
+     "both_ends_pct": 75.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 6.0,
+      "too_faint_pct": 11.5
+     },
+     "flux_mjy": 0.7566,
+     "ab_mag": 16.7
+    },
+    {
+     "peak_sigma": 12,
+     "n": 200,
+     "found_pct": 91.5,
+     "both_ends_pct": 79.5,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 2.5,
+      "too_faint_pct": 6.0
+     },
+     "flux_mjy": 1.1257,
+     "ab_mag": 16.27
+    },
+    {
+     "peak_sigma": 20,
+     "n": 200,
+     "found_pct": 93.5,
+     "both_ends_pct": 80.0,
+     "lost": {
+      "no_z_pct": 0.0,
+      "blended_pct": 3.5,
+      "too_faint_pct": 3.0
+     },
+     "flux_mjy": 1.9307,
+     "ab_mag": 15.69
+    }
+   ],
+   "half_found": {
+    "peak_sigma": 5.3,
+    "flux_mjy": 0.4965,
+    "ab_mag": 17.16
+   }
+  }
+ ],
+ "made_by": "backend/app/recovery.py",
+ "made_at": "2026-11-07 10:26 UTC"
+}

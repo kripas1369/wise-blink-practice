@@ -46,6 +46,8 @@ npm test        # node --test, needs Node 20+; no packages to install
 | `js/diffview.js` | Before / After / Difference: visit pickers with +/− buttons (`stepPair`), same-pixel cursor in all three panels, read-out, warnings |
 | `js/proof.js` | Proof panel: measured motion against Gaia DR3 with its verdict, and the data it rests on (`proof.json`) |
 | `js/spots.js` | Spots above 5σ: numbered marks on the difference, list, detail card (why / what else / what would confirm), the NASA JPL known-object button via `/api/known-objects` (API only) |
+| `js/recovery.js` | Planted-mover card under the spot list (`recovery.json`): found share per brightness level, where half are found, the chance baseline |
+| `js/visitflip.js` | "Inside one visit": flip a visit's single exposures (`visits.json`), picture or minus the visit median, flags, JPL known-object squares |
 | `js/lightcurve.js` | Light curve: brightness over time (coloured by wavelength) and against wavelength (one colour per visit) as SVG, same-wavelength comparisons, warnings; a clicked flipbook pixel via `/api/lightcurve?…&x=&y=` (API only) |
 | `js/sky.js` | Pixel ↔ sky maths, which Gaia stars to show, the target's expected shift and its compass direction |
 | `js/player.js` | Stepping, looping and speed rules (tested) |

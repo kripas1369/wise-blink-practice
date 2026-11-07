@@ -141,6 +141,9 @@
             <button type="button" id="sci-toggle" class="btn btn-small sci-toggle" aria-expanded="false" aria-controls="sci-view" disabled>
               <span data-i18n="sci.toggle">Scientist view: raw pixels and flags</span>
             </button>
+            <button type="button" id="iv-toggle" class="btn btn-small sci-toggle" aria-expanded="false" aria-controls="iv-view" disabled>
+              <span data-i18n="iv.toggle">Inside one visit: single exposures (hours apart)</span>
+            </button>
             <div class="inline-row">
               <label class="check"><input type="checkbox" id="flip-show-gaia" checked> <span data-i18n="flip.gaia">Gaia DR3 markers</span></label>
               <label class="inline-label" for="flip-gaia-mag"><span data-i18n="flip.stars">Stars</span> <select id="flip-gaia-mag"></select></label>
@@ -226,6 +229,54 @@
             </ul>
           </details>
           <p id="sci-method" class="help"></p>
+        </div>
+      </section>
+
+      <section id="iv-view" class="diffview iv-view" aria-labelledby="iv-title" hidden>
+        <div class="flip-head">
+          <h3 id="iv-title" data-i18n="iv.title">Inside one visit: single exposures</h3>
+          <span id="iv-summary" class="flip-summary"></span>
+        </div>
+        <p class="help" data-i18n="iv.intro">The flipbook frame adds up several exposures that SPHEREx took hours to days apart.
+          Here they are one by one, lined up on the same grid: an asteroid moves visibly within a visit, a star does not.
+          Squares mark the known asteroids and comets NASA JPL puts in the frame at each exposure time.</p>
+        <p id="iv-message" class="help" hidden></p>
+        <div id="iv-body" class="iv-body" hidden>
+          <div class="inline-row">
+            <div class="stepper">
+              <label class="inline-label" for="iv-exposure"><span data-i18n="iv.exposure">Exposure</span> <select id="iv-exposure"></select></label>
+              <button type="button" class="btn btn-small btn-step" data-iv-step="-1" aria-label="Previous exposure">−</button>
+              <button type="button" class="btn btn-small btn-step" data-iv-step="1" aria-label="Next exposure">+</button>
+            </div>
+            <button type="button" id="iv-play" class="btn btn-small btn-primary" aria-label="Play the exposures">Play</button>
+            <div class="flip-modes" role="group" aria-label="Picture">
+              <button type="button" id="iv-mode-picture" class="tab" aria-pressed="true" data-i18n="iv.picture">Picture</button>
+              <button type="button" id="iv-mode-residual" class="tab" aria-pressed="false" data-i18n="iv.residual">Minus the visit median</button>
+            </div>
+            <label class="check"><input type="checkbox" id="iv-flags"> <span data-i18n="flip.flags">Show flagged pixels in red</span></label>
+            <label class="check"><input type="checkbox" id="iv-known" checked> <span data-i18n="iv.known">Known asteroids and comets (NASA JPL)</span></label>
+          </div>
+          <div class="iv-layout">
+            <figure class="iv-figure">
+              <div class="flip-stage">
+                <img id="iv-img" class="flip-layer" alt="">
+                <img id="iv-flags-img" class="flip-layer" alt="" hidden>
+                <div id="iv-marks" class="gaia-layer" aria-hidden="true"></div>
+              </div>
+              <figcaption id="iv-caption" class="help"></figcaption>
+            </figure>
+            <div class="iv-side">
+              <div class="proof-card" aria-live="polite">
+                <h4 id="iv-jpl-title"></h4>
+                <ul id="iv-jpl-list"></ul>
+              </div>
+              <div id="iv-cautions" class="flip-cautions" hidden>
+                <strong data-i18n="iv.cautions">Before you trust a moving spot</strong>
+                <ul></ul>
+              </div>
+            </div>
+          </div>
+          <p id="iv-method" class="help"></p>
         </div>
       </section>
 
@@ -337,6 +388,24 @@
               <button type="button" id="spot-jpl" class="btn btn-small" data-i18n="spot.jpl">Check known asteroids and comets (NASA JPL)</button>
               <div id="spot-jpl-result" class="spot-jpl-result" aria-live="polite"></div>
             </div>
+          </div>
+          <div id="rec-view" class="proof-card rec-view" hidden>
+            <h4 class="spot-title"><span data-i18n="rec.title">How good is the spot finder on these two visits?</span> <span id="rec-summary" class="flip-summary"></span></h4>
+            <p class="help" data-i18n="rec.help">Fake moving stars of known brightness were added to copies of these two real frames,
+              and the same difference and 5σ spot search were run again. This says how faint a mover can be and still be found here.</p>
+            <p id="rec-half" class="proof-verdict"></p>
+            <div class="sci-table-wrap">
+              <table id="rec-table" class="sci-table rec-table">
+                <thead><tr><th>Fake's peak</th><th>Found</th><th>Both ends</th><th>Lost: no value / blended / too faint</th><th>mJy</th><th>AB mag</th></tr></thead>
+                <tbody></tbody>
+              </table>
+            </div>
+            <p id="rec-chance" class="help"></p>
+            <details class="sci-how">
+              <summary data-i18n="rec.how">How it was measured, and its limits</summary>
+              <p id="rec-method" class="help"></p>
+              <ul id="rec-limits" class="about-list"></ul>
+            </details>
           </div>
           <p class="help" data-i18n="diff.help">Both photo panels use the flipbook's one brightness scale. The difference is
             (B − A − sky change) / √(σ<sub>A</sub>² + σ<sub>B</sub>²), with σ from the SPHEREx VARIANCE

@@ -42,11 +42,13 @@ from backend.app.known_objects import check as check_known
 from backend.app.originals import write_originals
 from backend.app.pixels import write_pixels
 from backend.app.proof import write_proof
+from backend.app.recovery import write_recovery
 from backend.app.spectrum import write_spectrum
 from backend.app.spots import write_spots
 from backend.app.render import POSITION_YEAR, NoImages, make_frames, render_frames, write_index
 from backend.app.resolve import ResolverUnavailable, resolve_name
 from backend.app.targets import OFFICIAL_TARGETS
+from backend.app.visit_frames import write_visits
 
 FRONTEND_DIR = REPO_ROOT / "frontend"
 PREPARED_DIR = FRONTEND_DIR / "frames"
@@ -142,13 +144,15 @@ _jobs_lock = threading.Lock()
 
 
 def _pipeline_after_render(folder: Path, target_dir: Path | None = None) -> list[str]:
-    """Gaia, diff, light curve, proof, spots, GIF, IRSA links, raw pixels, spectrum; return warnings for failed steps."""
+    """Gaia, diff, light curve, proof, spots, planted movers, GIF, IRSA links, raw pixels, single exposures,
+    spectrum; return warnings for failed steps."""
     warnings: list[str] = []
     steps = [("Gaia DR3 markers", write_gaia), ("difference maps", write_diff),
              ("light curve", write_lightcurve),
              ("proof panel", lambda f: write_proof(f, online=True)),
-             ("spot list", write_spots), ("GIF", write_gif), ("links to the original files", write_originals),
-             ("scientist view (raw pixels)", write_pixels)]
+             ("spot list", write_spots), ("planted-mover test", write_recovery),
+             ("GIF", write_gif), ("links to the original files", write_originals),
+             ("scientist view (raw pixels)", write_pixels), ("inside one visit", write_visits)]
     if target_dir is not None:
         steps.append(("spectrum", lambda _f: write_spectrum(target_dir)))
     for stage, step in steps:

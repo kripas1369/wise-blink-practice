@@ -6,6 +6,7 @@ import { createLanguageToggle } from "./i18n.js";
 import { createLightCurve } from "./lightcurve.js";
 import { positionAt, separationArcsec, VIEW_EPOCH } from "./motion.js";
 import { createProof } from "./proof.js";
+import { createRecovery } from "./recovery.js";
 import { createScientistView } from "./scientist.js";
 import { createSpectrum } from "./spectrum.js";
 import { createSpotList } from "./spots.js";
@@ -13,6 +14,7 @@ import { NameNotFound, resolveName } from "./resolve.js";
 import { TARGETS } from "./targets.js";
 import { createTimeline } from "./timeline.js";
 import { buildUrlState, DETECTORS, readUrlState } from "./urlstate.js";
+import { createVisitFlip } from "./visitflip.js";
 
 // Aladin Lite from two CDNs: the CDS server was unreachable on 31 Oct 2026, jsDelivr worked.
 const ALADIN_SCRIPTS = [
@@ -348,7 +350,10 @@ function start() {
   if (fromUrl.problems.length) setStatus(fromUrl.problems.join(" "), "warn");
   let diffView = null;
   const spotList = createSpotList({ onPick: (xy) => diffView.pointAt(xy) });
-  diffView = createDiffView({ onPair: (loaded, a, b) => spotList.show(loaded, a, b) });
+  const recovery = createRecovery();
+  diffView = createDiffView({
+    onPair: (loaded, a, b) => { spotList.show(loaded, a, b); recovery.show(loaded, a, b); },
+  });
   const lightCurve = createLightCurve();
   const proofView = createProof();
   const spectrumView = createSpectrum();
@@ -356,16 +361,18 @@ function start() {
   timeline = createTimeline({ onDetector: setDetector });
   const files = createFiles();
   const scientist = createScientistView();
+  const visitFlip = createVisitFlip();
   flipbook = createFlipbook({
     onDetector: setDetector,
     onFrames: (loaded) => {
       timeline.markFrames(loaded);
       files.show(loaded);
       scientist.show(loaded);
+      visitFlip.show(loaded);
       proofView.show(loaded); diffView.show(loaded); lightCurve.show(loaded); spectrumView.show(loaded);
     },
     onPixel: (p) => lightCurve.showPixel(p),
-    onVisit: (i) => scientist.visit(i),
+    onVisit: (i) => { scientist.visit(i); visitFlip.visit(i); },
   });
   if (fromUrl.ra !== null) {
     const target = officialTargetAt(fromUrl.ra, fromUrl.dec);

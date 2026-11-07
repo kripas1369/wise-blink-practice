@@ -50,13 +50,18 @@ def observer(folder: Path, manifest: dict, frame_index: int) -> dict:
     obs_id = str(ref["OBS_ID"]).strip()
     out = {"obs_id": obs_id, "exposures_mjd_range": [round(min(mjds), 5), round(max(mjds), 5)],
            "exposures_span_hours": round((max(mjds) - min(mjds)) * 24, 2)}
-    cutout = next((CACHE_DIR / "cutouts").glob(f"{obs_id}_D{manifest['band']}_*.fits"), None)
+    return {**out, **exposure_state(obs_id, manifest["band"])}
+
+
+def exposure_state(obs_id: str, band: int) -> dict:
+    """SPHEREx's geocentric position and velocity at one exposure's mid-time, from its cached cutout header."""
+    cutout = next((CACHE_DIR / "cutouts").glob(f"{obs_id}_D{band}_*.fits"), None)
     if cutout is None:
-        return {**out, "available": False, "reason": f"the cutout of {obs_id} is not in the cache"}
+        return {"available": False, "reason": f"the cutout of {obs_id} is not in the cache"}
     h = fits.getheader(cutout, "IMAGE")
     if any(k not in h for k in STATE_KEYS + ("MJD-AVG",)):
-        return {**out, "available": False, "reason": f"{obs_id} has no spacecraft position in its header"}
-    return {**out, "available": True, "mjd": float(h["MJD-AVG"]),
+        return {"available": False, "reason": f"{obs_id} has no spacecraft position in its header"}
+    return {"available": True, "mjd": float(h["MJD-AVG"]),
             "xyz_km": [round(float(h[k]), 3) for k in STATE_KEYS[:3]],
             "vxyz_kms": [round(float(h[k]), 6) for k in STATE_KEYS[3:]],
             "system": f"{h.get('XYZ_SC_SYSTEM', '?')} (axes assumed ICRF)"}
@@ -137,40 +142,45 @@ def notes(spot: dict, pair: dict, star: dict | None) -> dict:
     return {"why": why, "what_else": else_, "confirm": confirm}
 
 
+def groups(zz: np.ndarray, limit: float):
+    """The spot rule: connected groups (8 neighbours) with sign × z >= limit; yields (sign, mask), brighter first."""
+    for sign in (1, -1):
+        labels, n = ndimage.label(sign * zz >= limit, structure=np.ones((3, 3)))
+        for k in range(1, n + 1):
+            yield sign, labels == k
+
+
 def spots_for_pair(pair: dict, gaia: dict | None, grid, size: int, limit: float) -> dict:
     z = np.array([[np.nan if v is None else v for v in row] for row in pair["z"]], float)
     striped = np.isnan(z)
     zz = np.nan_to_num(z)
     found = []
-    for sign in (1, -1):
-        labels, n = ndimage.label(sign * zz >= limit, structure=np.ones((3, 3)))
-        for k in range(1, n + 1):
-            mask = labels == k
-            ys, xs = np.nonzero(mask)
-            w = np.abs(zz[mask])
-            peak = int(np.argmax(w))
-            cx, cy = float((w * xs).sum() / w.sum()), float((w * ys).sum() / w.sum())
-            frame = pair["b"] if sign > 0 else pair["a"]
-            sky = grid.pixel_to_world(cx, size - 1 - cy)
-            grown = ndimage.binary_dilation(mask, structure=np.ones((3, 3)))
-            ratio = shape(zz, mask)
-            flags = []
-            if ratio is not None and ratio >= LONG_THIN_RATIO and mask.sum() >= LONG_THIN_MIN_PX:
-                flags.append(f"long and thin (axis ratio {ratio})")
-            if mask.sum() >= LARGE_PX:
-                flags.append(f"very large ({int(mask.sum())} pixels)")
-            if (grown & striped).any():
-                flags.append("next to flagged or no-value pixels")
-            if xs.min() == 0 or ys.min() == 0 or xs.max() == size - 1 or ys.max() == size - 1:
-                flags.append("touches the frame edge")
-            spot = {"sign": sign, "peak_sigma": round(float(zz[ys[peak], xs[peak]]), 1),
-                    "peak_xy": [int(xs[peak]), int(ys[peak])], "xy": [round(cx, 2), round(cy, 2)],
-                    "ra": round(float(sky.ra.deg), 6), "dec": round(float(sky.dec.deg), 6),
-                    "n_pixels": int(mask.sum()), "axis_ratio": ratio, "frame": frame, "artifact_flags": flags}
-            star = gaia_star(gaia, _index(gaia, frame), (cx, cy), mask) if gaia else None
-            spot["gaia_star"] = star
-            spot.update(notes(spot, pair, star))
-            found.append(spot)
+    for sign, mask in groups(zz, limit):
+        ys, xs = np.nonzero(mask)
+        w = np.abs(zz[mask])
+        peak = int(np.argmax(w))
+        cx, cy = float((w * xs).sum() / w.sum()), float((w * ys).sum() / w.sum())
+        frame = pair["b"] if sign > 0 else pair["a"]
+        sky = grid.pixel_to_world(cx, size - 1 - cy)
+        grown = ndimage.binary_dilation(mask, structure=np.ones((3, 3)))
+        ratio = shape(zz, mask)
+        flags = []
+        if ratio is not None and ratio >= LONG_THIN_RATIO and mask.sum() >= LONG_THIN_MIN_PX:
+            flags.append(f"long and thin (axis ratio {ratio})")
+        if mask.sum() >= LARGE_PX:
+            flags.append(f"very large ({int(mask.sum())} pixels)")
+        if (grown & striped).any():
+            flags.append("next to flagged or no-value pixels")
+        if xs.min() == 0 or ys.min() == 0 or xs.max() == size - 1 or ys.max() == size - 1:
+            flags.append("touches the frame edge")
+        spot = {"sign": sign, "peak_sigma": round(float(zz[ys[peak], xs[peak]]), 1),
+                "peak_xy": [int(xs[peak]), int(ys[peak])], "xy": [round(cx, 2), round(cy, 2)],
+                "ra": round(float(sky.ra.deg), 6), "dec": round(float(sky.dec.deg), 6),
+                "n_pixels": int(mask.sum()), "axis_ratio": ratio, "frame": frame, "artifact_flags": flags}
+        star = gaia_star(gaia, _index(gaia, frame), (cx, cy), mask) if gaia else None
+        spot["gaia_star"] = star
+        spot.update(notes(spot, pair, star))
+        found.append(spot)
     found.sort(key=lambda s: -abs(s["peak_sigma"]))
     return {"a": pair["a"], "b": pair["b"], "n_spots": len(found), "spots": found[:MAX_SPOTS]}
 

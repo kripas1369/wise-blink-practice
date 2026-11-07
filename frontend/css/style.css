@@ -437,6 +437,30 @@ html[lang="ne"] body { line-height: 1.65; }
   .sci-layout { grid-template-columns: minmax(0, 1fr); }
 }
 
+/* Inside one visit (js/visitflip.js) and the planted-mover card (js/recovery.js). */
+.iv-view { container-type: inline-size; }
+.iv-view > .help { margin: 0 0 0.8rem; }
+.iv-body { display: grid; gap: 0.9rem; }
+.iv-layout { display: grid; grid-template-columns: minmax(240px, 440px) minmax(260px, 1fr); gap: 1.25rem; align-items: start; }
+.iv-figure { margin: 0; display: grid; gap: 0.45rem; min-width: 0; }
+.iv-figure figcaption { margin: 0; font-size: 0.78rem; }
+.iv-side { display: grid; gap: 0.8rem; min-width: 0; }
+.iv-side .proof-card h4 { margin: 0 0 0.4rem; }
+.iv-side ul { margin: 0; padding-left: 1.1rem; font-size: 0.82rem; display: grid; gap: 0.25rem; }
+.iv-mark { outline-color: #ffd60a; }
+.iv-mark::after { color: #ffd60a; }
+#iv-method { margin: 0; }
+.rec-view { display: grid; gap: 0.5rem; }
+.rec-view .help, .rec-view .proof-verdict { margin: 0; }
+.rec-view .proof-verdict { font-size: 1rem; line-height: 1.4; }
+.rec-table tbody th { color: var(--text); font-family: var(--mono); font-weight: 600; white-space: nowrap; }
+.rec-table td { font-family: var(--mono); white-space: nowrap; }
+
+@container (max-width: 720px) {
+  .iv-layout { grid-template-columns: minmax(0, 1fr); }
+  .iv-figure { max-width: 460px; }
+}
+
 /* Light curve: SVG charts drawn by js/lightcurve.js. */
 #lc-body, #spec-body { display: grid; gap: 0.9rem; }
 #spec-view .help { margin: 0; }

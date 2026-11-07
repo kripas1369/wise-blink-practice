@@ -1,0 +1,1472 @@
+{
+ "format": "spherex-blink-visits/1",
+ "target": "eps_ind_b",
+ "band": 6,
+ "size_px": 29,
+ "scale": {
+  "vmin": 0.0311,
+  "vmax": 1.8241,
+  "unit": "MJy/sr",
+  "stretch": "linear",
+  "method": "linear, 1.0-99.5 percentile of good pixels of all frames (same scale for every frame)"
+ },
+ "residual": {
+  "sigma_range": 5.0,
+  "min_exposures": 3,
+  "rule": "exposure minus the median of the visit's other exposures, divided by the exposure's sigma (VARIANCE); flagged pixels left out"
+ },
+ "known_objects": "NASA JPL: small-body search (first pass) for candidates brighter than V 20.5 per group of exposures within 12 h, then Horizons positions at each exposure time seen from SPHEREx (its position in the exposure header)",
+ "known_v_max": 20.5,
+ "notes": [
+  "Each exposure is at a slightly different wavelength (SPHEREx's linear variable filter): a star that changes brightness between exposures may be changing colour, not brightness.",
+  "A single exposure has about √n times the noise of the visit frame made from n exposures.",
+  "Known-object positions are JPL predictions, not detections; an object fainter than SPHEREx's limit is marked but will not be seen.",
+  "A moving spot with no JPL object is not a new object: it can be a cosmic ray, an artefact or an object fainter in JPL's lists than here."
+ ],
+ "visits": [
+  {
+   "frame": 0,
+   "epoch_id": 0,
+   "date_iso": "2025-05-01 22:10 UTC",
+   "n_exposures": 21,
+   "span_hours": 505.593,
+   "exposures": [
+    {
+     "png": "visit0_exp0.png",
+     "flags_png": "visit0_exp0_flags.png",
+     "residual_png": "visit0_exp0_res.png",
+     "obs_id": "2025W18_1B_0081_2",
+     "mjd": 60794.065479,
+     "date_iso": "2025-04-29T01:34:17",
+     "hours_from_first": 0.0,
+     "wl_um": 4.4246,
+     "bw_um": 0.0366,
+     "pct_flagged": 0.71,
+     "pct_no_value": 0.59,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp1.png",
+     "flags_png": "visit0_exp1_flags.png",
+     "residual_png": "visit0_exp1_res.png",
+     "obs_id": "2025W18_1B_0081_3",
+     "mjd": 60794.066971,
+     "date_iso": "2025-04-29T01:36:26",
+     "hours_from_first": 0.036,
+     "wl_um": 4.4563,
+     "bw_um": 0.0358,
+     "pct_flagged": 0.83,
+     "pct_no_value": 0.48,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp2.png",
+     "flags_png": "visit0_exp2_flags.png",
+     "residual_png": "visit0_exp2_res.png",
+     "obs_id": "2025W18_1B_0081_4",
+     "mjd": 60794.068463,
+     "date_iso": "2025-04-29T01:38:35",
+     "hours_from_first": 0.072,
+     "wl_um": 4.4886,
+     "bw_um": 0.0356,
+     "pct_flagged": 0.83,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp3.png",
+     "flags_png": "visit0_exp3_flags.png",
+     "residual_png": "visit0_exp3_res.png",
+     "obs_id": "2025W18_1B_0091_1",
+     "mjd": 60794.132257,
+     "date_iso": "2025-04-29T03:10:27",
+     "hours_from_first": 1.603,
+     "wl_um": 4.5211,
+     "bw_um": 0.0357,
+     "pct_flagged": 2.5,
+     "pct_no_value": 0.24,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp4.png",
+     "flags_png": "visit0_exp4_flags.png",
+     "residual_png": "visit0_exp4_res.png",
+     "obs_id": "2025W18_1B_0091_2",
+     "mjd": 60794.13375,
+     "date_iso": "2025-04-29T03:12:35",
+     "hours_from_first": 1.638,
+     "wl_um": 4.5542,
+     "bw_um": 0.0359,
+     "pct_flagged": 0.83,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp5.png",
+     "flags_png": "visit0_exp5_flags.png",
+     "residual_png": "visit0_exp5_res.png",
+     "obs_id": "2025W18_1B_0091_3",
+     "mjd": 60794.135242,
+     "date_iso": "2025-04-29T03:14:44",
+     "hours_from_first": 1.674,
+     "wl_um": 4.5875,
+     "bw_um": 0.0364,
+     "pct_flagged": 0.95,
+     "pct_no_value": 0.48,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp6.png",
+     "flags_png": "visit0_exp6_flags.png",
+     "residual_png": "visit0_exp6_res.png",
+     "obs_id": "2025W18_1B_0091_4",
+     "mjd": 60794.136734,
+     "date_iso": "2025-04-29T03:16:53",
+     "hours_from_first": 1.71,
+     "wl_um": 4.6209,
+     "bw_um": 0.0369,
+     "pct_flagged": 0.83,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp7.png",
+     "flags_png": "visit0_exp7_flags.png",
+     "residual_png": "visit0_exp7_res.png",
+     "obs_id": "2025W18_1B_0175_1",
+     "mjd": 60794.679275,
+     "date_iso": "2025-04-29T16:18:09",
+     "hours_from_first": 14.731,
+     "wl_um": 4.6545,
+     "bw_um": 0.0372,
+     "pct_flagged": 0.71,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp8.png",
+     "flags_png": "visit0_exp8_flags.png",
+     "residual_png": "visit0_exp8_res.png",
+     "obs_id": "2025W18_1B_0175_2",
+     "mjd": 60794.680767,
+     "date_iso": "2025-04-29T16:20:18",
+     "hours_from_first": 14.767,
+     "wl_um": 4.6885,
+     "bw_um": 0.0375,
+     "pct_flagged": 0.48,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp9.png",
+     "flags_png": "visit0_exp9_flags.png",
+     "residual_png": "visit0_exp9_res.png",
+     "obs_id": "2025W18_1B_0238_1",
+     "mjd": 60795.083356,
+     "date_iso": "2025-04-30T02:00:01",
+     "hours_from_first": 24.429,
+     "wl_um": 4.7229,
+     "bw_um": 0.0367,
+     "pct_flagged": 0.48,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp10.png",
+     "flags_png": "visit0_exp10_flags.png",
+     "residual_png": "visit0_exp10_res.png",
+     "obs_id": "2025W18_1B_0238_2",
+     "mjd": 60795.084848,
+     "date_iso": "2025-04-30T02:02:10",
+     "hours_from_first": 24.465,
+     "wl_um": 4.7576,
+     "bw_um": 0.0359,
+     "pct_flagged": 7.25,
+     "pct_no_value": 0.48,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp11.png",
+     "flags_png": "visit0_exp11_flags.png",
+     "residual_png": "visit0_exp11_res.png",
+     "obs_id": "2025W18_1B_0238_3",
+     "mjd": 60795.08634,
+     "date_iso": "2025-04-30T02:04:19",
+     "hours_from_first": 24.501,
+     "wl_um": 4.7921,
+     "bw_um": 0.0358,
+     "pct_flagged": 4.28,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp12.png",
+     "flags_png": "visit0_exp12_flags.png",
+     "residual_png": "visit0_exp12_res.png",
+     "obs_id": "2025W18_1B_0238_4",
+     "mjd": 60795.087832,
+     "date_iso": "2025-04-30T02:06:28",
+     "hours_from_first": 24.536,
+     "wl_um": 4.8266,
+     "bw_um": 0.0358,
+     "pct_flagged": 1.66,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp13.png",
+     "flags_png": "visit0_exp13_flags.png",
+     "residual_png": "visit0_exp13_res.png",
+     "obs_id": "2025W18_1B_0363_1",
+     "mjd": 60795.902176,
+     "date_iso": "2025-04-30T21:39:08",
+     "hours_from_first": 44.081,
+     "wl_um": 4.9692,
+     "bw_um": 0.0367,
+     "pct_flagged": 0.83,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp14.png",
+     "flags_png": "visit0_exp14_flags.png",
+     "residual_png": "visit0_exp14_res.png",
+     "obs_id": "2025W18_2B_0011_2",
+     "mjd": 60796.581027,
+     "date_iso": "2025-05-01T13:56:40",
+     "hours_from_first": 60.373,
+     "wl_um": 4.4247,
+     "bw_um": 0.0365,
+     "pct_flagged": 0.48,
+     "pct_no_value": 0.48,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp15.png",
+     "flags_png": "visit0_exp15_flags.png",
+     "residual_png": "visit0_exp15_res.png",
+     "obs_id": "2025W18_2B_0011_3",
+     "mjd": 60796.582519,
+     "date_iso": "2025-05-01T13:58:49",
+     "hours_from_first": 60.409,
+     "wl_um": 4.4564,
+     "bw_um": 0.0358,
+     "pct_flagged": 0.83,
+     "pct_no_value": 0.59,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp16.png",
+     "flags_png": "visit0_exp16_flags.png",
+     "residual_png": "visit0_exp16_res.png",
+     "obs_id": "2025W18_2B_0011_4",
+     "mjd": 60796.584012,
+     "date_iso": "2025-05-01T14:00:58",
+     "hours_from_first": 60.445,
+     "wl_um": 4.4887,
+     "bw_um": 0.0356,
+     "pct_flagged": 0.71,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp17.png",
+     "flags_png": "visit0_exp17_flags.png",
+     "residual_png": "visit0_exp17_res.png",
+     "obs_id": "2025W19_1B_0274_1",
+     "mjd": 60801.740529,
+     "date_iso": "2025-05-06T17:46:21",
+     "hours_from_first": 184.201,
+     "wl_um": 4.9692,
+     "bw_um": 0.0367,
+     "pct_flagged": 4.76,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp18.png",
+     "flags_png": "visit0_exp18_flags.png",
+     "residual_png": "visit0_exp18_res.png",
+     "obs_id": "2025W19_1B_0344_3",
+     "mjd": 60802.218902,
+     "date_iso": "2025-05-07T05:15:13",
+     "hours_from_first": 195.682,
+     "wl_um": 4.4563,
+     "bw_um": 0.0358,
+     "pct_flagged": 4.04,
+     "pct_no_value": 0.48,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp19.png",
+     "flags_png": "visit0_exp19_flags.png",
+     "residual_png": "visit0_exp19_res.png",
+     "obs_id": "2025W19_1B_0344_4",
+     "mjd": 60802.220395,
+     "date_iso": "2025-05-07T05:17:22",
+     "hours_from_first": 195.718,
+     "wl_um": 4.4886,
+     "bw_um": 0.0356,
+     "pct_flagged": 4.99,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit0_exp20.png",
+     "flags_png": "visit0_exp20_flags.png",
+     "residual_png": "visit0_exp20_res.png",
+     "obs_id": "2025W21_1B_0227_1",
+     "mjd": 60815.131868,
+     "date_iso": "2025-05-20T03:09:53",
+     "hours_from_first": 505.593,
+     "wl_um": 4.5213,
+     "bw_um": 0.0356,
+     "pct_flagged": 0.59,
+     "pct_no_value": 0.59,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    }
+   ]
+  },
+  {
+   "frame": 1,
+   "epoch_id": 1,
+   "date_iso": "2025-10-06 20:13 UTC",
+   "n_exposures": 21,
+   "span_hours": 876.947,
+   "exposures": [
+    {
+     "png": "visit1_exp0.png",
+     "flags_png": "visit1_exp0_flags.png",
+     "residual_png": "visit1_exp0_res.png",
+     "obs_id": "2025W39_2A_0693_3",
+     "mjd": 60946.964777,
+     "date_iso": "2025-09-28T23:09:16",
+     "hours_from_first": 0.0,
+     "wl_um": 4.417,
+     "bw_um": 0.0373,
+     "pct_flagged": 5.59,
+     "pct_no_value": 0.48,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp1.png",
+     "flags_png": "visit1_exp1_flags.png",
+     "residual_png": "visit1_exp1_res.png",
+     "obs_id": "2025W39_2A_0693_4",
+     "mjd": 60946.96627,
+     "date_iso": "2025-09-28T23:11:25",
+     "hours_from_first": 0.036,
+     "wl_um": 4.4485,
+     "bw_um": 0.0365,
+     "pct_flagged": 0.48,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp2.png",
+     "flags_png": "visit1_exp2_flags.png",
+     "residual_png": "visit1_exp2_res.png",
+     "obs_id": "2025W40_1A_0067_1",
+     "mjd": 60947.302613,
+     "date_iso": "2025-09-29T07:15:45",
+     "hours_from_first": 8.108,
+     "wl_um": 4.5345,
+     "bw_um": 0.0356,
+     "pct_flagged": 1.55,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp3.png",
+     "flags_png": "visit1_exp3_flags.png",
+     "residual_png": "visit1_exp3_res.png",
+     "obs_id": "2025W40_1A_0067_2",
+     "mjd": 60947.304106,
+     "date_iso": "2025-09-29T07:17:54",
+     "hours_from_first": 8.144,
+     "wl_um": 4.5675,
+     "bw_um": 0.0356,
+     "pct_flagged": 0.83,
+     "pct_no_value": 0.48,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp4.png",
+     "flags_png": "visit1_exp4_flags.png",
+     "residual_png": "visit1_exp4_res.png",
+     "obs_id": "2025W40_1A_0067_3",
+     "mjd": 60947.305598,
+     "date_iso": "2025-09-29T07:20:03",
+     "hours_from_first": 8.18,
+     "wl_um": 4.6008,
+     "bw_um": 0.0358,
+     "pct_flagged": 0.95,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp5.png",
+     "flags_png": "visit1_exp5_flags.png",
+     "residual_png": "visit1_exp5_res.png",
+     "obs_id": "2025W40_1A_0067_4",
+     "mjd": 60947.30709,
+     "date_iso": "2025-09-29T07:22:12",
+     "hours_from_first": 8.216,
+     "wl_um": 4.6344,
+     "bw_um": 0.036,
+     "pct_flagged": 1.43,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp6.png",
+     "flags_png": "visit1_exp6_flags.png",
+     "residual_png": "visit1_exp6_res.png",
+     "obs_id": "2025W40_1A_0125_1",
+     "mjd": 60947.573138,
+     "date_iso": "2025-09-29T13:45:19",
+     "hours_from_first": 14.601,
+     "wl_um": 4.6685,
+     "bw_um": 0.0362,
+     "pct_flagged": 4.4,
+     "pct_no_value": 0.36,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp7.png",
+     "flags_png": "visit1_exp7_flags.png",
+     "residual_png": "visit1_exp7_res.png",
+     "obs_id": "2025W40_1A_0125_2",
+     "mjd": 60947.57463,
+     "date_iso": "2025-09-29T13:47:28",
+     "hours_from_first": 14.636,
+     "wl_um": 4.7027,
+     "bw_um": 0.0364,
+     "pct_flagged": 1.55,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp8.png",
+     "flags_png": "visit1_exp8_flags.png",
+     "residual_png": "visit1_exp8_res.png",
+     "obs_id": "2025W40_1A_0125_3",
+     "mjd": 60947.576122,
+     "date_iso": "2025-09-29T13:49:36",
+     "hours_from_first": 14.672,
+     "wl_um": 4.7369,
+     "bw_um": 0.0365,
+     "pct_flagged": 1.31,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp9.png",
+     "flags_png": "visit1_exp9_flags.png",
+     "residual_png": "visit1_exp9_res.png",
+     "obs_id": "2025W40_1A_0125_4",
+     "mjd": 60947.577614,
+     "date_iso": "2025-09-29T13:51:45",
+     "hours_from_first": 14.708,
+     "wl_um": 4.7712,
+     "bw_um": 0.0367,
+     "pct_flagged": 1.07,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp10.png",
+     "flags_png": "visit1_exp10_flags.png",
+     "residual_png": "visit1_exp10_res.png",
+     "obs_id": "2025W40_1A_0444_1",
+     "mjd": 60948.999947,
+     "date_iso": "2025-09-30T23:59:55",
+     "hours_from_first": 48.844,
+     "wl_um": 4.8057,
+     "bw_um": 0.0372,
+     "pct_flagged": 1.78,
+     "pct_no_value": 0.36,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp11.png",
+     "flags_png": "visit1_exp11_flags.png",
+     "residual_png": "visit1_exp11_res.png",
+     "obs_id": "2025W40_1A_0444_3",
+     "mjd": 60949.002931,
+     "date_iso": "2025-10-01T00:04:13",
+     "hours_from_first": 48.916,
+     "wl_um": 4.8758,
+     "bw_um": 0.0376,
+     "pct_flagged": 4.28,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp12.png",
+     "flags_png": "visit1_exp12_flags.png",
+     "residual_png": "visit1_exp12_res.png",
+     "obs_id": "2025W40_1A_0444_4",
+     "mjd": 60949.004423,
+     "date_iso": "2025-10-01T00:06:22",
+     "hours_from_first": 48.952,
+     "wl_um": 4.9117,
+     "bw_um": 0.0372,
+     "pct_flagged": 0.36,
+     "pct_no_value": 0.59,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp13.png",
+     "flags_png": "visit1_exp13_flags.png",
+     "residual_png": "visit1_exp13_res.png",
+     "obs_id": "2025W40_1A_0473_1",
+     "mjd": 60949.135706,
+     "date_iso": "2025-10-01T03:15:25",
+     "hours_from_first": 52.102,
+     "wl_um": 4.4803,
+     "bw_um": 0.0361,
+     "pct_flagged": 13.44,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp14.png",
+     "flags_png": "visit1_exp14_flags.png",
+     "residual_png": "visit1_exp14_res.png",
+     "obs_id": "2025W40_1A_0489_1",
+     "mjd": 60949.204794,
+     "date_iso": "2025-10-01T04:54:54",
+     "hours_from_first": 53.76,
+     "wl_um": 4.9474,
+     "bw_um": 0.0372,
+     "pct_flagged": 1.07,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp15.png",
+     "flags_png": "visit1_exp15_flags.png",
+     "residual_png": "visit1_exp15_res.png",
+     "obs_id": "2025W40_1A_0559_1",
+     "mjd": 60949.543145,
+     "date_iso": "2025-10-01T13:02:07",
+     "hours_from_first": 61.881,
+     "wl_um": 4.5021,
+     "bw_um": 0.0356,
+     "pct_flagged": 2.02,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp16.png",
+     "flags_png": "visit1_exp16_flags.png",
+     "residual_png": "visit1_exp16_res.png",
+     "obs_id": "2025W41_1A_0052_1",
+     "mjd": 60954.229607,
+     "date_iso": "2025-10-06T05:30:38",
+     "hours_from_first": 174.356,
+     "wl_um": 4.8401,
+     "bw_um": 0.0376,
+     "pct_flagged": 3.45,
+     "pct_no_value": 0.48,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp17.png",
+     "flags_png": "visit1_exp17_flags.png",
+     "residual_png": "visit1_exp17_res.png",
+     "obs_id": "2025W44_2B_0494_1",
+     "mjd": 60980.445239,
+     "date_iso": "2025-11-01T10:41:08",
+     "hours_from_first": 803.531,
+     "wl_um": 4.5018,
+     "bw_um": 0.0356,
+     "pct_flagged": 0.71,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp18.png",
+     "flags_png": "visit1_exp18_flags.png",
+     "residual_png": "visit1_exp18_res.png",
+     "obs_id": "2025W45_1A_0003_1",
+     "mjd": 60982.007719,
+     "date_iso": "2025-11-03T00:11:06",
+     "hours_from_first": 841.031,
+     "wl_um": 4.5344,
+     "bw_um": 0.0356,
+     "pct_flagged": 4.76,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp19.png",
+     "flags_png": "visit1_exp19_flags.png",
+     "residual_png": "visit1_exp19_res.png",
+     "obs_id": "2025W45_1A_0251_1",
+     "mjd": 60983.165052,
+     "date_iso": "2025-11-04T03:57:40",
+     "hours_from_first": 868.807,
+     "wl_um": 4.6006,
+     "bw_um": 0.0358,
+     "pct_flagged": 1.07,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit1_exp20.png",
+     "flags_png": "visit1_exp20_flags.png",
+     "residual_png": "visit1_exp20_res.png",
+     "obs_id": "2025W45_1A_0327_1",
+     "mjd": 60983.50422,
+     "date_iso": "2025-11-04T12:06:04",
+     "hours_from_first": 876.947,
+     "wl_um": 4.6342,
+     "bw_um": 0.036,
+     "pct_flagged": 0.36,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    }
+   ]
+  },
+  {
+   "frame": 2,
+   "epoch_id": 2,
+   "date_iso": "2026-04-29 23:10 UTC",
+   "n_exposures": 11,
+   "span_hours": 118.909,
+   "exposures": [
+    {
+     "png": "visit2_exp0.png",
+     "flags_png": "visit2_exp0_flags.png",
+     "residual_png": "visit2_exp0_res.png",
+     "obs_id": "2026W18_1A_0444_1",
+     "mjd": 61159.163064,
+     "date_iso": "2026-04-29T03:54:48",
+     "hours_from_first": 0.0,
+     "wl_um": 4.554,
+     "bw_um": 0.0359,
+     "pct_flagged": 15.58,
+     "pct_no_value": 0.12,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit2_exp1.png",
+     "flags_png": "visit2_exp1_flags.png",
+     "residual_png": "visit2_exp1_res.png",
+     "obs_id": "2026W18_1A_0457_2",
+     "mjd": 61159.232809,
+     "date_iso": "2026-04-29T05:35:14",
+     "hours_from_first": 1.674,
+     "wl_um": 4.7228,
+     "bw_um": 0.0367,
+     "pct_flagged": 6.18,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit2_exp2.png",
+     "flags_png": "visit2_exp2_flags.png",
+     "residual_png": "visit2_exp2_res.png",
+     "obs_id": "2026W18_1A_0475_1",
+     "mjd": 61159.299605,
+     "date_iso": "2026-04-29T07:11:25",
+     "hours_from_first": 3.277,
+     "wl_um": 4.7574,
+     "bw_um": 0.0359,
+     "pct_flagged": 4.64,
+     "pct_no_value": 0.48,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit2_exp3.png",
+     "flags_png": "visit2_exp3_flags.png",
+     "residual_png": "visit2_exp3_res.png",
+     "obs_id": "2026W18_1A_0475_2",
+     "mjd": 61159.301097,
+     "date_iso": "2026-04-29T07:13:34",
+     "hours_from_first": 3.313,
+     "wl_um": 4.7919,
+     "bw_um": 0.0357,
+     "pct_flagged": 9.87,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit2_exp4.png",
+     "flags_png": "visit2_exp4_flags.png",
+     "residual_png": "visit2_exp4_res.png",
+     "obs_id": "2026W18_1A_0490_1",
+     "mjd": 61159.366615,
+     "date_iso": "2026-04-29T08:47:55",
+     "hours_from_first": 4.885,
+     "wl_um": 4.8263,
+     "bw_um": 0.0358,
+     "pct_flagged": 3.21,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit2_exp5.png",
+     "flags_png": "visit2_exp5_flags.png",
+     "residual_png": "visit2_exp5_res.png",
+     "obs_id": "2026W18_1A_0490_2",
+     "mjd": 61159.368107,
+     "date_iso": "2026-04-29T08:50:04",
+     "hours_from_first": 4.921,
+     "wl_um": 4.8615,
+     "bw_um": 0.0363,
+     "pct_flagged": 4.64,
+     "pct_no_value": 0.36,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit2_exp6.png",
+     "flags_png": "visit2_exp6_flags.png",
+     "residual_png": "visit2_exp6_res.png",
+     "obs_id": "2026W18_1A_0502_1",
+     "mjd": 61159.43373,
+     "date_iso": "2026-04-29T10:24:34",
+     "hours_from_first": 6.496,
+     "wl_um": 4.8974,
+     "bw_um": 0.0372,
+     "pct_flagged": 3.92,
+     "pct_no_value": 1.55,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit2_exp7.png",
+     "flags_png": "visit2_exp7_flags.png",
+     "residual_png": "visit2_exp7_res.png",
+     "obs_id": "2026W18_1A_0516_1",
+     "mjd": 61159.504026,
+     "date_iso": "2026-04-29T12:05:47",
+     "hours_from_first": 8.183,
+     "wl_um": 4.9334,
+     "bw_um": 0.0376,
+     "pct_flagged": 3.33,
+     "pct_no_value": 0.48,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit2_exp8.png",
+     "flags_png": "visit2_exp8_flags.png",
+     "residual_png": "visit2_exp8_res.png",
+     "obs_id": "2026W18_1A_0529_1",
+     "mjd": 61159.568708,
+     "date_iso": "2026-04-29T13:38:56",
+     "hours_from_first": 9.735,
+     "wl_um": 4.8263,
+     "bw_um": 0.0358,
+     "pct_flagged": 7.61,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit2_exp9.png",
+     "flags_png": "visit2_exp9_flags.png",
+     "residual_png": "visit2_exp9_res.png",
+     "obs_id": "2026W18_2A_0174_2",
+     "mjd": 61161.268919,
+     "date_iso": "2026-05-01T06:27:14",
+     "hours_from_first": 50.541,
+     "wl_um": 4.4216,
+     "bw_um": 0.0361,
+     "pct_flagged": 1.9,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit2_exp10.png",
+     "flags_png": "visit2_exp10_flags.png",
+     "residual_png": "visit2_exp10_res.png",
+     "obs_id": "2026W19_1A_0041_1",
+     "mjd": 61164.117616,
+     "date_iso": "2026-05-04T02:49:22",
+     "hours_from_first": 118.909,
+     "wl_um": 4.6882,
+     "bw_um": 0.0375,
+     "pct_flagged": 0.83,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    }
+   ]
+  },
+  {
+   "frame": 3,
+   "epoch_id": 3,
+   "date_iso": "2026-09-26 06:51 UTC",
+   "n_exposures": 21,
+   "span_hours": 94.426,
+   "exposures": [
+    {
+     "png": "visit3_exp0.png",
+     "flags_png": "visit3_exp0_flags.png",
+     "residual_png": "visit3_exp0_res.png",
+     "obs_id": "2026W39_1A_0578_4",
+     "mjd": 61306.724961,
+     "date_iso": "2026-09-23T17:23:56",
+     "hours_from_first": 0.0,
+     "wl_um": 4.8616,
+     "bw_um": 0.037,
+     "pct_flagged": 0.71,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp1.png",
+     "flags_png": "visit3_exp1_flags.png",
+     "residual_png": "visit3_exp1_res.png",
+     "obs_id": "2026W39_2A_0155_1",
+     "mjd": 61308.215138,
+     "date_iso": "2026-09-25T05:09:47",
+     "hours_from_first": 35.764,
+     "wl_um": 4.897,
+     "bw_um": 0.0371,
+     "pct_flagged": 1.31,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp2.png",
+     "flags_png": "visit3_exp2_flags.png",
+     "residual_png": "visit3_exp2_res.png",
+     "obs_id": "2026W39_2A_0155_2",
+     "mjd": 61308.21663,
+     "date_iso": "2026-09-25T05:11:56",
+     "hours_from_first": 35.8,
+     "wl_um": 4.9329,
+     "bw_um": 0.0373,
+     "pct_flagged": 3.8,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp3.png",
+     "flags_png": "visit3_exp3_flags.png",
+     "residual_png": "visit3_exp3_res.png",
+     "obs_id": "2026W39_2A_0155_3",
+     "mjd": 61308.218122,
+     "date_iso": "2026-09-25T05:14:05",
+     "hours_from_first": 35.836,
+     "wl_um": 4.9688,
+     "bw_um": 0.0377,
+     "pct_flagged": 2.14,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp4.png",
+     "flags_png": "visit3_exp4_flags.png",
+     "residual_png": "visit3_exp4_res.png",
+     "obs_id": "2026W39_2A_0155_4",
+     "mjd": 61308.219614,
+     "date_iso": "2026-09-25T05:16:14",
+     "hours_from_first": 35.872,
+     "wl_um": 5.0048,
+     "bw_um": 0.0382,
+     "pct_flagged": 1.55,
+     "pct_no_value": 0.48,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp5.png",
+     "flags_png": "visit3_exp5_flags.png",
+     "residual_png": "visit3_exp5_res.png",
+     "obs_id": "2026W39_2A_0169_1",
+     "mjd": 61308.281934,
+     "date_iso": "2026-09-25T06:45:59",
+     "hours_from_first": 37.367,
+     "wl_um": 4.623,
+     "bw_um": 0.0366,
+     "pct_flagged": 0.12,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp6.png",
+     "flags_png": "visit3_exp6_flags.png",
+     "residual_png": "visit3_exp6_res.png",
+     "obs_id": "2026W39_2A_0169_2",
+     "mjd": 61308.283444,
+     "date_iso": "2026-09-25T06:48:09",
+     "hours_from_first": 37.404,
+     "wl_um": 4.6568,
+     "bw_um": 0.0368,
+     "pct_flagged": 0.12,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp7.png",
+     "flags_png": "visit3_exp7_flags.png",
+     "residual_png": "visit3_exp7_res.png",
+     "obs_id": "2026W39_2A_0312_3",
+     "mjd": 61308.963361,
+     "date_iso": "2026-09-25T23:07:14",
+     "hours_from_first": 53.722,
+     "wl_um": 4.4077,
+     "bw_um": 0.0377,
+     "pct_flagged": 2.14,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp8.png",
+     "flags_png": "visit3_exp8_flags.png",
+     "residual_png": "visit3_exp8_res.png",
+     "obs_id": "2026W39_2A_0312_4",
+     "mjd": 61308.964854,
+     "date_iso": "2026-09-25T23:09:23",
+     "hours_from_first": 53.757,
+     "wl_um": 4.4393,
+     "bw_um": 0.037,
+     "pct_flagged": 0.95,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp9.png",
+     "flags_png": "visit3_exp9_flags.png",
+     "residual_png": "visit3_exp9_res.png",
+     "obs_id": "2026W39_2A_0398_1",
+     "mjd": 61309.36794,
+     "date_iso": "2026-09-26T08:49:50",
+     "hours_from_first": 63.431,
+     "wl_um": 4.6951,
+     "bw_um": 0.0364,
+     "pct_flagged": 0.24,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp10.png",
+     "flags_png": "visit3_exp10_flags.png",
+     "residual_png": "visit3_exp10_res.png",
+     "obs_id": "2026W39_2A_0398_2",
+     "mjd": 61309.369432,
+     "date_iso": "2026-09-26T08:51:58",
+     "hours_from_first": 63.467,
+     "wl_um": 4.7294,
+     "bw_um": 0.0365,
+     "pct_flagged": 4.4,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp11.png",
+     "flags_png": "visit3_exp11_flags.png",
+     "residual_png": "visit3_exp11_res.png",
+     "obs_id": "2026W39_2A_0398_3",
+     "mjd": 61309.370925,
+     "date_iso": "2026-09-26T08:54:07",
+     "hours_from_first": 63.503,
+     "wl_um": 4.7635,
+     "bw_um": 0.0367,
+     "pct_flagged": 4.16,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp12.png",
+     "flags_png": "visit3_exp12_flags.png",
+     "residual_png": "visit3_exp12_res.png",
+     "obs_id": "2026W39_2A_0398_4",
+     "mjd": 61309.372417,
+     "date_iso": "2026-09-26T08:56:16",
+     "hours_from_first": 63.539,
+     "wl_um": 4.7979,
+     "bw_um": 0.0369,
+     "pct_flagged": 4.28,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp13.png",
+     "flags_png": "visit3_exp13_flags.png",
+     "residual_png": "visit3_exp13_res.png",
+     "obs_id": "2026W39_2A_0581_1",
+     "mjd": 61310.249419,
+     "date_iso": "2026-09-27T05:59:09",
+     "hours_from_first": 84.587,
+     "wl_um": 4.4706,
+     "bw_um": 0.0362,
+     "pct_flagged": 6.66,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp14.png",
+     "flags_png": "visit3_exp14_flags.png",
+     "residual_png": "visit3_exp14_res.png",
+     "obs_id": "2026W39_2A_0597_1",
+     "mjd": 61310.318027,
+     "date_iso": "2026-09-27T07:37:57",
+     "hours_from_first": 86.234,
+     "wl_um": 4.8323,
+     "bw_um": 0.0371,
+     "pct_flagged": 2.26,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp15.png",
+     "flags_png": "visit3_exp15_flags.png",
+     "residual_png": "visit3_exp15_res.png",
+     "obs_id": "2026W39_2A_0597_2",
+     "mjd": 61310.319519,
+     "date_iso": "2026-09-27T07:40:06",
+     "hours_from_first": 86.269,
+     "wl_um": 4.8673,
+     "bw_um": 0.0373,
+     "pct_flagged": 3.45,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp16.png",
+     "flags_png": "visit3_exp16_flags.png",
+     "residual_png": "visit3_exp16_res.png",
+     "obs_id": "2026W39_2A_0597_3",
+     "mjd": 61310.321011,
+     "date_iso": "2026-09-27T07:42:15",
+     "hours_from_first": 86.305,
+     "wl_um": 4.9033,
+     "bw_um": 0.0371,
+     "pct_flagged": 0.83,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp17.png",
+     "flags_png": "visit3_exp17_flags.png",
+     "residual_png": "visit3_exp17_res.png",
+     "obs_id": "2026W39_2A_0597_4",
+     "mjd": 61310.322504,
+     "date_iso": "2026-09-27T07:44:24",
+     "hours_from_first": 86.341,
+     "wl_um": 4.9393,
+     "bw_um": 0.037,
+     "pct_flagged": 2.73,
+     "pct_no_value": 0.95,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp18.png",
+     "flags_png": "visit3_exp18_flags.png",
+     "residual_png": "visit3_exp18_res.png",
+     "obs_id": "2026W39_2A_0647_1",
+     "mjd": 61310.589386,
+     "date_iso": "2026-09-27T14:08:42",
+     "hours_from_first": 92.746,
+     "wl_um": 4.4952,
+     "bw_um": 0.0356,
+     "pct_flagged": 19.26,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp19.png",
+     "flags_png": "visit3_exp19_flags.png",
+     "residual_png": "visit3_exp19_res.png",
+     "obs_id": "2026W39_2A_0659_1",
+     "mjd": 61310.65787,
+     "date_iso": "2026-09-27T15:47:19",
+     "hours_from_first": 94.39,
+     "wl_um": 4.9751,
+     "bw_um": 0.0373,
+     "pct_flagged": 16.17,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    },
+    {
+     "png": "visit3_exp20.png",
+     "flags_png": "visit3_exp20_flags.png",
+     "residual_png": "visit3_exp20_res.png",
+     "obs_id": "2026W39_2A_0659_2",
+     "mjd": 61310.659362,
+     "date_iso": "2026-09-27T15:49:28",
+     "hours_from_first": 94.426,
+     "wl_um": 5.0113,
+     "bw_um": 0.0376,
+     "pct_flagged": 15.81,
+     "pct_no_value": 0.0,
+     "known": {
+      "outcome": "none",
+      "objects": [],
+      "n_candidates": 0,
+      "problems": []
+     }
+    }
+   ]
+  }
+ ],
+ "made_by": "backend/app/visit_frames.py",
+ "made_at": "2026-11-07 12:17 UTC"
+}

@@ -5,6 +5,7 @@ Whoever makes the frames (`render.py` for the prepared targets, the `/api/frames
 Day 3 added three files next to each manifest: the per-visit data (`epoch<i>.fits`, section 8), the Gaia markers (`gaia.json`, section 6) and the difference maps (`diff.json`, section 7).
 Day 4 added the asinh brightness scale (section 3), every single exposure on the grid (`exposures.fits`, section 9) and the light curve (`lightcurve.json`, section 10).
 Day 5 added the proof panel (`proof.json`, section 11), the spots above 5σ (`spots.json`, section 12) and the spectrum across detectors (`spectrum.json` in the target's folder, section 13).
+Day 7 added the planted-mover test (`recovery.json`, section 14) and the single exposures inside each visit (`visits.json` and `visit<i>_exp<k>*.png`, section 15).
 
 The website refuses a manifest that breaks these rules (`frontend/js/frames.js`, `checkManifest`) and says why, instead of showing frames it cannot label honestly.
 
@@ -27,6 +28,9 @@ frontend/frames/
     lightcurve.json              the target's brightness in every exposure (section 10)
     proof.json                   measured motion vs Gaia, and the data it rests on (section 11; backend/app/proof.py)
     spots.json                   spots above 5σ in every difference, SPHEREx's position per visit (section 12; backend/app/spots.py)
+    recovery.json                how often the spot rule finds planted fake movers, per pair (section 14; backend/app/recovery.py)
+    visits.json                  every single exposure of each visit, with JPL's known objects (section 15; backend/app/visit_frames.py)
+    visit<i>_exp<k>.png          exposure k of visit i, in time order (+ _flags.png, and _res.png = minus the visit median)
 ```
 
 - `<target>` is the key from `backend/app/targets.py`: `barnard`, `eps_ind_b`, `wise0855`, `rw_aur`, `r_dra`.
@@ -251,3 +255,31 @@ Top level: `format`, `target`, `label`, `unit` (`"mJy"`), `detectors`, `visits`,
 - `warnings`: no aperture correction while the PSF width differs between detectors; detectors do not overlap; detectors without frames; detectors without points (with the reason); Gaia stars inside the circle.
 
 `GET /api/spectrum` (same location parameters as `/api/frames`; any `band` of the target) returns this file. A typed position's job writes one too, from the detectors made so far.
+
+---
+
+## 14. `recovery.json` (`spherex-blink-recovery/1`, made by `backend/app/recovery.py`)
+
+Fake moving point sources (same brightness in A and B, `step_px` apart) are added to copies of the two `epoch<i>.fits` frames; the difference and the 5σ spots are made again with the same code as sections 7 and 12.
+
+Top level: `format`, `target`, `band`, `limit_sigma`, `rules` (`levels_peak_sigma`, `per_level`, `step_px`, `found_px`, `fakes_per_map`, `separation_px`, `seed`, `source: "ours"`), `psf` (`sigma_px`, `fwhm_arcsec`, `n_stars`, `source` in words: measured on 5+ clean Gaia stars, else the `PSF_FWHM` header widened by the bilinear resampling), `method`, `limits` (list of texts), `pairs`, `made_by`, `made_at`.
+
+- `pairs`: the same pairs as `diff.json`: `a`, `b`, `wl_um`, `levels`, `half_found`.
+- Each level: `peak_sigma` (the fake's peak in the difference map, in σ of that pixel; 0 = nothing planted, the chance baseline), `n`, `found_pct` (a brighter-in-B spot centred within `found_px` of the fake), `both_ends_pct` (also the fainter-in-B spot at the old place), `lost` (`no_z_pct`: no usable value there, `blended_pct`: inside a bigger real spot, `too_faint_pct`), and above 0 `flux_mjy` and `ab_mag` (with the pair's typical noise and the PSF above).
+- `half_found`: where `found_pct` crosses 50% by straight lines (`peak_sigma`, `flux_mjy`, `ab_mag`), or `{"below_lowest": σ}`, or `null` when it never does.
+
+The website reads this file directly (`frontend/js/recovery.js`, card under the spot list).
+
+---
+
+## 15. `visits.json` (`spherex-blink-visits/1`, made by `backend/app/visit_frames.py`)
+
+Every single exposure in `exposures.fits` (section 9), grouped by visit and sorted by time; pictures use the manifest's own brightness scale.
+
+Top level: `format`, `target`, `band`, `size_px`, `scale`, `residual` (`sigma_range`, `min_exposures`, `rule`), `known_objects` (how they were found, in words), `known_v_max` (`null` with `--no-known`), `notes` (list of texts), `visits`, `made_by`, `made_at`.
+
+- `visits`: one per manifest frame: `frame`, `epoch_id`, `date_iso`, `n_exposures`, `span_hours`, `exposures`.
+- Each exposure: `png`, `flags_png`, `residual_png` (`null` below `min_exposures`), `obs_id`, `mjd`, `date_iso`, `hours_from_first`, `wl_um`, `bw_um`, `pct_flagged`, `pct_no_value`, `known`.
+- `known.outcome`: `objects` (with `objects`: `name`, `x`, `y` in PNG pixels, `ra`, `dec`, `mag`, `rate_arcsec_per_h`, `rate_east_north`, `distance_au`; plus `n_candidates` and `problems`), `none`, `unavailable` (with `reason`) or `not_asked`. Positions: candidates from JPL's small-body search (first pass, one request per group of exposures within 12 h, reused within 6 h), then JPL Horizons at each exposure time, moved from the Earth's centre to SPHEREx (`X_SC` … in the exposure header). Never "new object".
+
+The website reads this file directly (`frontend/js/visitflip.js`, "Inside one visit" panel).
