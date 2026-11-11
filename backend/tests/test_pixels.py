@@ -98,7 +98,10 @@ def test_the_618_mjy_wise0855_pixel_is_shown_as_transient_beside_the_ring():
     assert abs(i % nx - e["target_px"][0]) <= 1.5 and abs(i // nx - e["target_px"][1]) <= 1.5
 
 
-@needs_cache
+@pytest.mark.skipif(
+    not any((CACHE_DIR / "cutouts").glob("2025W35_1A_0146_1_D2_*.fits")),
+    reason="needs 2025W35_1A_0146_1 D2 in cutouts cache",
+)
 def test_kept_pixels_are_exactly_the_ones_clean_py_keeps():
     p = read(FRAMES / "barnard/d2/pixels0.json.gz")
     m = json.loads((FRAMES / "barnard/d2/manifest.json").read_text())
