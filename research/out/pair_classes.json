@@ -1,0 +1,921 @@
+{
+ "counts": {
+  "open": 11,
+  "answered by VSX + Gaia": 16,
+  "answered by VSX": 15,
+  "too close for SPHEREx": 26
+ },
+ "pairs": [
+  {
+   "a": "270622440",
+   "b": "270622446",
+   "sep": 133.9,
+   "P": 2.44506,
+   "class": "answered by VSX",
+   "answer": [
+    "270622446"
+   ],
+   "in_ttt": true,
+   "eclat": -28.5,
+   "depth_a": 0.002,
+   "depth_b": 0.153
+  },
+  {
+   "a": "202442974",
+   "b": "202442982",
+   "sep": 126.6,
+   "P": 2.73892,
+   "class": "answered by VSX",
+   "answer": [
+    "202442974"
+   ],
+   "in_ttt": true,
+   "eclat": 72.4,
+   "depth_a": 0.087,
+   "depth_b": 0.001
+  },
+  {
+   "a": "453828066",
+   "b": "453828065",
+   "sep": 108.5,
+   "P": 9.13452,
+   "class": "answered by VSX",
+   "answer": [
+    "453828066"
+   ],
+   "in_ttt": false,
+   "eclat": -18.5,
+   "depth_a": 0.086,
+   "depth_b": 0.292
+  },
+  {
+   "a": "259006174",
+   "b": "259006185",
+   "sep": 104.9,
+   "P": 1.93963,
+   "class": "answered by VSX",
+   "answer": [
+    "259006185"
+   ],
+   "in_ttt": false,
+   "eclat": 81.7,
+   "depth_a": 0.001,
+   "depth_b": 0.037
+  },
+  {
+   "a": "356015357",
+   "b": "356015361",
+   "sep": 96.2,
+   "P": 11.25949,
+   "class": "answered by VSX",
+   "answer": [
+    "356015357"
+   ],
+   "in_ttt": false,
+   "eclat": 83.7,
+   "depth_a": 0.18,
+   "depth_b": 0.005
+  },
+  {
+   "a": "146601322",
+   "b": "146601318",
+   "sep": 94.8,
+   "P": 0.987,
+   "class": "answered by VSX",
+   "answer": [
+    "146601322"
+   ],
+   "in_ttt": false,
+   "eclat": -13.0,
+   "depth_a": 0.246,
+   "depth_b": 0.017
+  },
+  {
+   "a": "238896431",
+   "b": "238896417",
+   "sep": 85.5,
+   "P": 16.24617,
+   "class": "answered by VSX",
+   "answer": [
+    "238896417"
+   ],
+   "in_ttt": false,
+   "eclat": -73.5,
+   "depth_a": 0.003,
+   "depth_b": 0.23
+  },
+  {
+   "a": "159864583",
+   "b": "159864610",
+   "sep": 74.2,
+   "P": 3.64049,
+   "class": "answered by VSX",
+   "answer": [
+    "159864583"
+   ],
+   "in_ttt": false,
+   "eclat": -22.9,
+   "depth_a": 0.063,
+   "depth_b": 0.004
+  },
+  {
+   "a": "279569718",
+   "b": "279569707",
+   "sep": 67.5,
+   "P": 3.9794,
+   "class": "answered by VSX",
+   "answer": [
+    "279569707"
+   ],
+   "in_ttt": false,
+   "eclat": -78.4,
+   "depth_a": 0.007,
+   "depth_b": 0.08
+  },
+  {
+   "a": "389754103",
+   "b": "389754101",
+   "sep": 63.9,
+   "P": 3.80347,
+   "class": "answered by VSX",
+   "answer": [
+    "389754101"
+   ],
+   "in_ttt": false,
+   "eclat": -35.5,
+   "depth_a": 0.045,
+   "depth_b": 0.211
+  },
+  {
+   "a": "294092960",
+   "b": "294092966",
+   "sep": 27.0,
+   "P": 0.90226,
+   "class": "answered by VSX",
+   "answer": [
+    "294092966"
+   ],
+   "in_ttt": false,
+   "eclat": -77.9,
+   "depth_a": 0.019,
+   "depth_b": 0.018
+  },
+  {
+   "a": "199574211",
+   "b": "199574208",
+   "sep": 26.4,
+   "P": 1.26839,
+   "class": "answered by VSX",
+   "answer": [
+    "199574208"
+   ],
+   "in_ttt": false,
+   "eclat": 76.3,
+   "depth_a": 6.369,
+   "depth_b": 0.434
+  },
+  {
+   "a": "48227278",
+   "b": "48227288",
+   "sep": 24.0,
+   "P": 2.89633,
+   "class": "answered by VSX",
+   "answer": [
+    "48227288"
+   ],
+   "in_ttt": false,
+   "eclat": -13.8,
+   "depth_a": 0.064,
+   "depth_b": 0.129
+  },
+  {
+   "a": "408651394",
+   "b": "408651399",
+   "sep": 15.9,
+   "P": 2.04813,
+   "class": "answered by VSX",
+   "answer": [
+    "408651394"
+   ],
+   "in_ttt": false,
+   "eclat": 9.2,
+   "depth_a": 0.309,
+   "depth_b": 0.127
+  },
+  {
+   "a": "48063034",
+   "b": "48063032",
+   "sep": 13.4,
+   "P": 0.58625,
+   "class": "answered by VSX",
+   "answer": [
+    "48063034"
+   ],
+   "in_ttt": false,
+   "eclat": -43.8,
+   "depth_a": 0.114,
+   "depth_b": 0.094
+  },
+  {
+   "a": "98853987",
+   "b": "98853990",
+   "sep": 113.5,
+   "P": 2.72842,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "98853987"
+   ],
+   "in_ttt": false,
+   "eclat": -33.5,
+   "depth_a": 0.321,
+   "depth_b": 0.013
+  },
+  {
+   "a": "260370454",
+   "b": "260370473",
+   "sep": 109.9,
+   "P": 0.7951,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "260370454"
+   ],
+   "in_ttt": false,
+   "eclat": -77.7,
+   "depth_a": 0.266,
+   "depth_b": 0.002
+  },
+  {
+   "a": "161687311",
+   "b": "161687316",
+   "sep": 87.8,
+   "P": 0.8166,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "161687311"
+   ],
+   "in_ttt": false,
+   "eclat": 72.3,
+   "depth_a": 0.179,
+   "depth_b": 0.004
+  },
+  {
+   "a": "92902951",
+   "b": "92902907",
+   "sep": 79.0,
+   "P": 2.24648,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "92902951"
+   ],
+   "in_ttt": false,
+   "eclat": -49.3,
+   "depth_a": 0.856,
+   "depth_b": 0.004
+  },
+  {
+   "a": "280033934",
+   "b": "280033918",
+   "sep": 71.6,
+   "P": 0.27877,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "280033934"
+   ],
+   "in_ttt": false,
+   "eclat": 79.3,
+   "depth_a": 0.087,
+   "depth_b": 0.002
+  },
+  {
+   "a": "55753802",
+   "b": "55753808",
+   "sep": 70.0,
+   "P": 0.41557,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "55753802"
+   ],
+   "in_ttt": false,
+   "eclat": 51.0,
+   "depth_a": 0.088,
+   "depth_b": 0.809
+  },
+  {
+   "a": "162585265",
+   "b": "162585282",
+   "sep": 68.8,
+   "P": 0.51233,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "162585265"
+   ],
+   "in_ttt": false,
+   "eclat": -46.3,
+   "depth_a": 0.399,
+   "depth_b": 0.242
+  },
+  {
+   "a": "164558072",
+   "b": "164558055",
+   "sep": 66.4,
+   "P": 2.42749,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "164558072"
+   ],
+   "in_ttt": false,
+   "eclat": 69.3,
+   "depth_a": 0.209,
+   "depth_b": 0.013
+  },
+  {
+   "a": "468958384",
+   "b": "468958374",
+   "sep": 64.1,
+   "P": 1.53517,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "468958374"
+   ],
+   "in_ttt": false,
+   "eclat": -14.4,
+   "depth_a": 0.307,
+   "depth_b": 0.416
+  },
+  {
+   "a": "220402294",
+   "b": "220402290",
+   "sep": 56.9,
+   "P": 0.78524,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "220402294"
+   ],
+   "in_ttt": false,
+   "eclat": -76.7,
+   "depth_a": 0.343,
+   "depth_b": 0.018
+  },
+  {
+   "a": "63972389",
+   "b": "63972440",
+   "sep": 52.2,
+   "P": 3.03768,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "63972440"
+   ],
+   "in_ttt": false,
+   "eclat": 56.7,
+   "depth_a": 0.055,
+   "depth_b": 0.863
+  },
+  {
+   "a": "159854358",
+   "b": "159854359",
+   "sep": 45.5,
+   "P": 0.32666,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "159854359"
+   ],
+   "in_ttt": false,
+   "eclat": 68.9,
+   "depth_a": 0.018,
+   "depth_b": 0.102
+  },
+  {
+   "a": "118271404",
+   "b": "118271395",
+   "sep": 35.0,
+   "P": 0.39975,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "118271395"
+   ],
+   "in_ttt": false,
+   "eclat": -33.3,
+   "depth_a": 0.03,
+   "depth_b": 0.113
+  },
+  {
+   "a": "276935987",
+   "b": "276935996",
+   "sep": 26.3,
+   "P": 4.25073,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "276935987"
+   ],
+   "in_ttt": false,
+   "eclat": -86.1,
+   "depth_a": 0.249,
+   "depth_b": 0.058
+  },
+  {
+   "a": "357398957",
+   "b": "357398958",
+   "sep": 14.4,
+   "P": 0.47777,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "357398958"
+   ],
+   "in_ttt": false,
+   "eclat": 48.6,
+   "depth_a": 0.574,
+   "depth_b": 0.427
+  },
+  {
+   "a": "59038877",
+   "b": "59038880",
+   "sep": 12.1,
+   "P": 0.30537,
+   "class": "answered by VSX + Gaia",
+   "answer": [
+    "59038877"
+   ],
+   "in_ttt": false,
+   "eclat": -7.0,
+   "depth_a": 0.143,
+   "depth_b": 0.255
+  },
+  {
+   "a": "16805617",
+   "b": "16805614",
+   "sep": 56.1,
+   "P": 8.49092,
+   "class": "open",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": 23.2,
+   "depth_a": 0.12,
+   "depth_b": 0.1
+  },
+  {
+   "a": "269696438",
+   "b": "269696430",
+   "sep": 49.5,
+   "P": 2.97891,
+   "class": "open",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": 77.9,
+   "depth_a": 0.001,
+   "depth_b": 0.057
+  },
+  {
+   "a": "258918831",
+   "b": "258918835",
+   "sep": 40.3,
+   "P": 5.9856,
+   "class": "open",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": 82.5,
+   "depth_a": 0.022,
+   "depth_b": 0.007
+  },
+  {
+   "a": "150101472",
+   "b": "150101476",
+   "sep": 31.3,
+   "P": 3.27852,
+   "class": "open",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": -86.6,
+   "depth_a": 0.002,
+   "depth_b": 0.023
+  },
+  {
+   "a": "233058265",
+   "b": "233058262",
+   "sep": 29.3,
+   "P": 26.28115,
+   "class": "open",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": 87.5,
+   "depth_a": 1.301,
+   "depth_b": 0.424
+  },
+  {
+   "a": "243391171",
+   "b": "243391162",
+   "sep": 23.8,
+   "P": 1.51699,
+   "class": "open",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": -32.6,
+   "depth_a": 0.028,
+   "depth_b": 0.013
+  },
+  {
+   "a": "140659980",
+   "b": "140659978",
+   "sep": 21.8,
+   "P": 9.44007,
+   "class": "open",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": -81.5,
+   "depth_a": 0.045,
+   "depth_b": 0.318
+  },
+  {
+   "a": "420114772",
+   "b": "420114776",
+   "sep": 19.8,
+   "P": 3.23506,
+   "class": "open",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": 79.5,
+   "depth_a": 0.023,
+   "depth_b": 0.188
+  },
+  {
+   "a": "356974629",
+   "b": "356974639",
+   "sep": 15.7,
+   "P": 1.93854,
+   "class": "open",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": 58.0,
+   "depth_a": 0.177,
+   "depth_b": 0.102
+  },
+  {
+   "a": "99028324",
+   "b": "99028319",
+   "sep": 14.6,
+   "P": 9.40434,
+   "class": "open",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": -22.8,
+   "depth_a": 0.559,
+   "depth_b": 0.093
+  },
+  {
+   "a": "124712820",
+   "b": "124712813",
+   "sep": 12.9,
+   "P": 0.82567,
+   "class": "open",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": -34.3,
+   "depth_a": 0.015,
+   "depth_b": 0.069
+  },
+  {
+   "a": "158582801",
+   "b": "158582802",
+   "sep": 11.4,
+   "P": 1.0801,
+   "class": "too close for SPHEREx",
+   "answer": [
+    "158582802"
+   ],
+   "in_ttt": false,
+   "eclat": -52.5,
+   "depth_a": 0.49,
+   "depth_b": 0.272
+  },
+  {
+   "a": "377192659",
+   "b": "377192658",
+   "sep": 10.6,
+   "P": 1.81724,
+   "class": "too close for SPHEREx",
+   "answer": [
+    "377192659"
+   ],
+   "in_ttt": false,
+   "eclat": 78.3,
+   "depth_a": 0.464,
+   "depth_b": 0.916
+  },
+  {
+   "a": "95525589",
+   "b": "95525590",
+   "sep": 10.5,
+   "P": 0.21801,
+   "class": "too close for SPHEREx",
+   "answer": [
+    "95525589",
+    "95525590"
+   ],
+   "in_ttt": false,
+   "eclat": 20.2,
+   "depth_a": 0.063,
+   "depth_b": 0.103
+  },
+  {
+   "a": "266769521",
+   "b": "266769522",
+   "sep": 8.6,
+   "P": 0.53617,
+   "class": "too close for SPHEREx",
+   "answer": [
+    "266769522"
+   ],
+   "in_ttt": false,
+   "eclat": -32.6,
+   "depth_a": 0.143,
+   "depth_b": 0.157
+  },
+  {
+   "a": "198242676",
+   "b": "198242678",
+   "sep": 8.3,
+   "P": 4.62979,
+   "class": "too close for SPHEREx",
+   "answer": [
+    "198242678"
+   ],
+   "in_ttt": false,
+   "eclat": 79.3,
+   "depth_a": 1.53,
+   "depth_b": 0.478
+  },
+  {
+   "a": "130158363",
+   "b": "130158361",
+   "sep": 8.2,
+   "P": 2.84985,
+   "class": "too close for SPHEREx",
+   "answer": [
+    "130158361",
+    "130158363"
+   ],
+   "in_ttt": false,
+   "eclat": 7.4,
+   "depth_a": 0.066,
+   "depth_b": 0.474
+  },
+  {
+   "a": "15445546",
+   "b": "15445551",
+   "sep": 8.1,
+   "P": 1.6828,
+   "class": "too close for SPHEREx",
+   "answer": [
+    "15445551"
+   ],
+   "in_ttt": false,
+   "eclat": -45.1,
+   "depth_a": 0.017,
+   "depth_b": 0.004
+  },
+  {
+   "a": "178284729",
+   "b": "178284730",
+   "sep": 7.2,
+   "P": 2.23598,
+   "class": "too close for SPHEREx",
+   "answer": [
+    "178284730"
+   ],
+   "in_ttt": false,
+   "eclat": -40.1,
+   "depth_a": 0.069,
+   "depth_b": 0.016
+  },
+  {
+   "a": "155884454",
+   "b": "155884449",
+   "sep": 6.1,
+   "P": 0.97978,
+   "class": "too close for SPHEREx",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": -44.5,
+   "depth_a": 0.008,
+   "depth_b": 0.023
+  },
+  {
+   "a": "77031414",
+   "b": "77031413",
+   "sep": 6.1,
+   "P": 1.38665,
+   "class": "too close for SPHEREx",
+   "answer": [
+    "77031414"
+   ],
+   "in_ttt": false,
+   "eclat": -29.2,
+   "depth_a": 0.015,
+   "depth_b": 0.02
+  },
+  {
+   "a": "92132777",
+   "b": "92132775",
+   "sep": 5.7,
+   "P": 13.92947,
+   "class": "too close for SPHEREx",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": 19.0,
+   "depth_a": 0.212,
+   "depth_b": 0.239
+  },
+  {
+   "a": "92938279",
+   "b": "92938280",
+   "sep": 4.8,
+   "P": 0.27504,
+   "class": "too close for SPHEREx",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": -45.9,
+   "depth_a": 0.09,
+   "depth_b": 0.049
+  },
+  {
+   "a": "11799874",
+   "b": "11799872",
+   "sep": 4.6,
+   "P": 4.25793,
+   "class": "too close for SPHEREx",
+   "answer": [
+    "11799874"
+   ],
+   "in_ttt": false,
+   "eclat": 32.6,
+   "depth_a": 0.008,
+   "depth_b": 0.01
+  },
+  {
+   "a": "55222620",
+   "b": "55222619",
+   "sep": 4.4,
+   "P": 5.19621,
+   "class": "too close for SPHEREx",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": -16.5,
+   "depth_a": 0.007,
+   "depth_b": 0.013
+  },
+  {
+   "a": "376891085",
+   "b": "376891083",
+   "sep": 3.7,
+   "P": 2.14179,
+   "class": "too close for SPHEREx",
+   "answer": [
+    "376891083"
+   ],
+   "in_ttt": false,
+   "eclat": 64.0,
+   "depth_a": 2.029,
+   "depth_b": 0.638
+  },
+  {
+   "a": "293689266",
+   "b": "293689267",
+   "sep": 3.7,
+   "P": 14.81044,
+   "class": "too close for SPHEREx",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": -66.6,
+   "depth_a": 0.002,
+   "depth_b": 0.003
+  },
+  {
+   "a": "307490686",
+   "b": "307435285",
+   "sep": 3.6,
+   "P": 1.95873,
+   "class": "too close for SPHEREx",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": -76.4,
+   "depth_a": 0.002,
+   "depth_b": 0.001
+  },
+  {
+   "a": "348759510",
+   "b": "348759511",
+   "sep": 3.5,
+   "P": 3.71613,
+   "class": "too close for SPHEREx",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": -33.2,
+   "depth_a": 0.027,
+   "depth_b": 0.027
+  },
+  {
+   "a": "128927089",
+   "b": "128927088",
+   "sep": 3.3,
+   "P": 1.88238,
+   "class": "too close for SPHEREx",
+   "answer": [
+    "128927089"
+   ],
+   "in_ttt": false,
+   "eclat": 43.6,
+   "depth_a": 0.016,
+   "depth_b": 0.03
+  },
+  {
+   "a": "305399325",
+   "b": "305399324",
+   "sep": 2.9,
+   "P": 6.1002,
+   "class": "too close for SPHEREx",
+   "answer": [
+    "305399325"
+   ],
+   "in_ttt": false,
+   "eclat": 70.3,
+   "depth_a": 0.045,
+   "depth_b": 0.049
+  },
+  {
+   "a": "235000060",
+   "b": "235000061",
+   "sep": 2.6,
+   "P": 0.35772,
+   "class": "too close for SPHEREx",
+   "answer": [
+    "235000060"
+   ],
+   "in_ttt": false,
+   "eclat": -51.6,
+   "depth_a": 0.543,
+   "depth_b": 0.112
+  },
+  {
+   "a": "283819432",
+   "b": "1102093577",
+   "sep": 1.7,
+   "P": 0.26782,
+   "class": "too close for SPHEREx",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": 60.5,
+   "depth_a": 0.118,
+   "depth_b": 0.1
+  },
+  {
+   "a": "664915372",
+   "b": "353129911",
+   "sep": 1.0,
+   "P": 2.97161,
+   "class": "too close for SPHEREx",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": 16.8,
+   "depth_a": 0.027,
+   "depth_b": 0.022
+  },
+  {
+   "a": "601366244",
+   "b": "191463077",
+   "sep": 0.6,
+   "P": 4.71852,
+   "class": "too close for SPHEREx",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": 37.6,
+   "depth_a": 0.56,
+   "depth_b": 0.466
+  },
+  {
+   "a": "1883519478",
+   "b": "424719589",
+   "sep": 0.3,
+   "P": 7.64075,
+   "class": "too close for SPHEREx",
+   "answer": [],
+   "in_ttt": false,
+   "eclat": 73.5,
+   "depth_a": 0.71,
+   "depth_b": 0.714
+  },
+  {
+   "a": "469979014",
+   "b": "471013508",
+   "sep": 0.1,
+   "P": 1.1626,
+   "class": "too close for SPHEREx",
+   "answer": [
+    "469979014",
+    "471013508"
+   ],
+   "in_ttt": false,
+   "eclat": -54.8,
+   "depth_a": 0.128,
+   "depth_b": 0.235
+  }
+ ]
+}

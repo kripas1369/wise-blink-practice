@@ -161,7 +161,8 @@ input[type="range"] { width: 100%; accent-color: var(--text); min-height: 32px; 
 .targets { display: grid; gap: 0.5rem; list-style: none; margin: 0; padding: 0; }
 
 .target {
-  display: grid; width: 100%; gap: 0.15rem; text-align: left;
+  display: grid; grid-template-columns: auto 1fr; column-gap: 0.5rem;
+  width: 100%; gap: 0.15rem; text-align: left;
   font: inherit; color: var(--text); cursor: pointer;
   background: var(--panel-2); border: 0; border-radius: var(--radius-sm);
   padding: 0.75rem 0.9rem;
@@ -171,7 +172,35 @@ input[type="range"] { width: 100%; accent-color: var(--text); min-height: 32px; 
 .target[aria-pressed="true"] { box-shadow: inset 0 0 0 1.5px var(--text); }
 .target-name { font-weight: 600; }
 .target-kind { color: var(--muted); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.target-timescale {
+  display: inline-block;
+  align-self: start;
+  border: 1px solid var(--muted);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-left: auto;
+  padding: 0.12rem 0.45rem;
+}
+.target .target-timescale { grid-column: 2; justify-self: end; margin-left: 0; }
+.target .target-name { grid-column: 1 / -1; }
+.target .target-hint, .target .target-dets { grid-column: 1 / -1; }
 .target-hint { color: var(--muted); font-size: 0.82rem; }
+.target-dets { display: flex; flex-wrap: wrap; gap: 0.3rem 0.8rem; margin-top: 0.35rem; }
+.det-group { display: inline-flex; align-items: center; gap: 0.25rem; }
+.det-group-label { color: var(--faint); font-size: 0.7rem; margin-right: 0.1rem; }
+.det-chip {
+  display: inline-block; font-family: var(--mono); font-size: 0.7rem; line-height: 1;
+  padding: 0.2rem 0.4rem; border-radius: 6px; border: 1px solid transparent; white-space: nowrap;
+}
+.det-recommended { background: var(--accent); color: var(--accent-text); font-weight: 600; }
+.det-try { border-color: var(--line-strong); color: var(--text); }
+.det-not { color: var(--faint); text-decoration: line-through; border-color: var(--line); }
+.selection dd.det-advice { font-family: var(--font); font-size: 0.82rem; color: var(--muted); }
+.selection dd.det-advice .det-chip { font-family: var(--font); margin-right: 0.3rem; }
+.selection dd.det-advice .det-not { text-decoration: none; }
 
 .selection { background: var(--panel-2); border-radius: var(--radius-sm); padding: 0.9rem; }
 .selection dl { display: grid; grid-template-columns: auto 1fr; gap: 0.35rem 0.9rem; margin: 0 0 0.8rem; font-size: 0.88rem; }

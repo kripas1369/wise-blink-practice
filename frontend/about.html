@@ -15,6 +15,7 @@
     </a>
     <nav class="site-nav" aria-label="Pages">
       <a href="./">Explore</a>
+      <a href="eclipse.html">Eclipse mode</a>
       <a href="about.html" aria-current="page">About</a>
       <span class="badge" title="Practice build, not the hackathon submission">Practice build · Day 6</span>
     </nav>
@@ -113,6 +114,84 @@
       <script type="module">import { initPlanetX } from "./js/planetx.js"; initPlanetX();</script>
     </section>
 
+    <section class="panel" aria-labelledby="ch4-about-title">
+      <h2 id="ch4-about-title" class="panel-title">Methane vision: how it works</h2>
+      <p>Brown dwarfs are too small to shine like stars and slowly cool. Below about 1300 K their air holds methane, which
+        swallows light around 3.3 µm, while 3.9–4.2 µm stays clear and they shine there. Backyard Worlds volunteers spot
+        such objects as orange movers in WISE's two broad colours; SPHEREx's narrow wavelengths see the methane band itself.</p>
+      <ol class="about-steps">
+        <li><strong>Exposures chosen by wavelength.</strong> SPHEREx's filter gives every exposure its own wavelength at the
+          target. Every D4 and D5 image of the position is downloaded from IRSA, and only those that saw the target at
+          3.15–3.50 µm (methane band) or 3.90–4.20 µm (window) are kept. The flipbook's own frames are not changed.</li>
+        <li><strong>A normal star made flat.</strong> Each exposure is multiplied by (wavelength / 4 µm)², so a normal star
+          (Rayleigh–Jeans, F<sub>ν</sub> ∝ λ<sup>−2</sup>) is equally bright in both windows. The field's own stars then
+          check this: k is the median of their 4 µm / 3.3 µm ratios when at least three are bright enough, and 1 otherwise.</li>
+        <li><strong>The subtraction.</strong> Per visit, flagged pixels left out: (4 µm − k × 3.3 µm) / noise. The noise
+          includes 5% of each star's predicted light, because a star's image is slightly different in the two detectors and
+          never cancels perfectly.</li>
+        <li><strong>A null test.</strong> The same measurement is repeated at every other pixel at least 10 pixels from the
+          target (closer, its own faint wings would count).
+          Neighbouring pixels share noise once the images are lined up, so it scatters more than the noise maps say; every
+          significance is divided by that scatter (at least 1).</li>
+        <li><strong>The verdict.</strong> The target glows if its 4 µm light is at least twice what a normal star with its
+          3.3 µm light would have and the difference is at least 5σ; it has a normal colour within 3σ. A target with no value
+          in its core in most exposures (saturated) is not tested. The proof panel's motion test is added: moving and glowing
+          is the signature of a nearby cold brown dwarf.</li>
+      </ol>
+      <ul class="about-list">
+        <li><strong>A colour is not an identification.</strong> Dusty young stars, red galaxies and a star blended with a
+          brown dwarf can glow too. A glow is a reason to look closer, and nothing is called a discovery.</li>
+        <li><strong>Not simultaneous.</strong> D4 and D5 see different patches of sky in one exposure, so the two windows of a
+          visit are hours to days apart. A brown dwarf that changes brightness in that time changes its colour here too.</li>
+      </ul>
+      <p class="help">Code: <code>backend/app/methane.py</code>; tests in <code>backend/tests/test_methane.py</code> check that a
+        fake normal star fades and a fake methane dwarf glows.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="eclipse-title">
+      <h2 id="eclipse-title" class="panel-title">Eclipse mode: how it works</h2>
+      <p>An eclipsing binary is two stars orbiting so that, seen from Earth, one passes in front of the other once per orbit.
+        NASA's TESS timed hundreds of them near the north ecliptic pole, the centre of the SPHEREx North deep field, where
+        SPHEREx looks thousands of times. Each SPHEREx exposure sees one wavelength at the star, so a single exposure can't
+        show a colour picture of an eclipse. Thousands of them, sorted by orbit, can.</p>
+      <ol class="about-steps">
+        <li><strong>The clock.</strong> TESS-EBs (Prša et al. 2022) lists each binary's period P and a time of primary eclipse
+          t₀ in BTJD (BJD<sub>TDB</sub> − 2457000). SPHEREx times are UTC (<code>MJD-AVG</code>, the middle of the exposure),
+          so each is converted to the solar-system barycentre with astropy: UTC to TDB, plus the light-travel time for the
+          star's direction. Phase φ = frac((BTJD − t₀)/P − prim_pos), shown from −0.5 to 0.5 with the primary eclipse at 0.
+          How far TESS's clock has drifted by 2026 is (N σ<sub>P</sub> + σ<sub>t₀</sub>)/P; binaries are shown only if it is
+          below 1% of an orbit.</li>
+        <li><strong>Before downloading.</strong> The archive's exposure times alone say how many exposures fall in each eclipse
+          (the coverage numbers on the page). Then a fixed number per detector is downloaded: in the primary eclipse, in the
+          secondary and outside, each spread evenly in phase.</li>
+        <li><strong>Brightness.</strong> As for the light curve: light inside 2 pixels minus the sky 10–14 pixels away, on the
+          same north-up grid. Any exposure with a flagged pixel in the circle is drawn hollow and not used.</li>
+        <li><strong>Normal brightness at every colour.</strong> A smooth curve S(λ) (cubic B-spline in ln λ, knots every two
+          resolution elements) through the exposures taken outside both eclipses, separately per detector. Each exposure is
+          then divided by S at its own wavelength, so 1 means "normal" whatever the colour.</li>
+        <li><strong>Depth.</strong> In each of two wavelength bins per detector: 1 − the weighted mean of the middle half of
+          the eclipse. Short-period binaries also brighten and fade between eclipses (stretched stars, reflected light); a
+          cosine baseline handles that when it is significant. Errors come from the noise maps plus a "jitter" chosen so the
+          out-of-eclipse exposures scatter as much as their errors say.</li>
+        <li><strong>Six checks.</strong> Quarter-phase exposures (held out of the fit) must show no eclipse; comparison stars
+          in the same pictures, folded on the binary's clock, must show none; in-eclipse minus out-of-eclipse pictures, paired
+          by wavelength, must be darkest on the binary; SPHEREx's depth at 0.75–1.09 µm should be close to TESS's at
+          0.6–1.0 µm; a period search on SPHEREx data alone should find TESS's period; and the middle of the eclipse, fitted
+          in SPHEREx data, should fall where TESS's clock says (a shift would mean the period is changing).</li>
+      </ol>
+      <ul class="about-list">
+        <li><strong>What it cannot tell you.</strong> These are known binaries: the eclipses are TESS's discovery. What SPHEREx
+          adds is how deep each eclipse is from 0.75 to 5 µm, which says how the two stars' colours (temperatures) differ.
+          The secondary-to-primary depth ratio is the ratio of the two stars' surface brightness and is not changed by light
+          from other stars; single depths are, and TESS's 21″ pixels and SPHEREx's 6.15″ pixels take in different neighbours.</li>
+        <li><strong>Exposures are not simultaneous.</strong> Each wavelength was seen on a different orbit. If the stars have
+          spots or the orbit changes over the 1.5 years, the depth at one wavelength can differ from another for that reason.</li>
+      </ul>
+      <p class="help">Code: <code>backend/app/eclipses.py</code> (catalogue, time, phase, coverage),
+        <code>backend/app/eclipse_depth.py</code> (the depth recipe), <code>backend/app/eclipse_build.py</code> (download,
+        measurement, pictures, checks); tests in <code>backend/tests/test_eclipse.py</code> recover known depths from fake binaries.</p>
+    </section>
+
     <section class="panel" aria-labelledby="credits-title">
       <h2 id="credits-title" class="panel-title">Credits</h2>
       <ul class="about-list">
@@ -120,6 +199,8 @@
           <a href="https://irsa.ipac.caltech.edu/Missions/spherex.html">NASA/IPAC Infrared Science Archive (IRSA)</a>.</li>
         <li><strong>Star positions and motions:</strong> ESA <a href="https://www.cosmos.esa.int/web/gaia/dr3">Gaia DR3</a>,
           queried at IRSA.</li>
+        <li><strong>Eclipse timings:</strong> TESS eclipsing binaries, Prša et al. 2022, ApJS 258, 16,
+          <a href="https://archive.stsci.edu/hlsp/tess-ebs">MAST high-level science product</a> (CC BY 4.0).</li>
         <li><strong>Names:</strong> <a href="https://simbad.cds.unistra.fr/simbad/">SIMBAD</a> (CDS, Strasbourg), with the Harvard mirror.</li>
         <li><strong>Known asteroids and comets:</strong> NASA JPL
           <a href="https://ssd-api.jpl.nasa.gov/doc/sb_ident.html">Small-Body Identification API</a>.</li>

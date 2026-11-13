@@ -1,0 +1,339 @@
+{
+ "format": "spherex-blink-methane/1",
+ "target": {
+  "colour": {
+   "testable": false
+  },
+  "verdict": {
+   "status": "not_testable",
+   "text": "The target is too bright: its core has no value (saturated) in 100% of the D4 exposures."
+  },
+  "blend": []
+ },
+ "label": "Barnard's Star",
+ "size_px": 29,
+ "pixel_arcsec": 6.15,
+ "ra": 269.4462685026598,
+ "dec": 4.768204478798888,
+ "fov_arcmin": 3.0,
+ "settings": {
+  "absorbed": {
+   "band": 4,
+   "range_um": [
+    3.15,
+    3.5
+   ],
+   "what": "methane (CH4) absorption band"
+  },
+  "window": {
+   "band": 5,
+   "range_um": [
+    3.9,
+    4.2
+   ],
+   "what": "4 µm window, short of CO2 at 4.26 µm"
+  },
+  "ref_um": 4.0,
+  "star_slope": 2.0,
+  "z_range": 10.0,
+  "glow_sigma": 5.0,
+  "methane_excess": 2.0,
+  "normal_sigma": 3.0,
+  "min_window_snr": 5.0,
+  "systematic": 0.05,
+  "aperture_px": 2.0,
+  "sky_annulus_px": [
+   5.0,
+   8.0
+  ],
+  "saturated_fraction": 0.5
+ },
+ "downloads": {
+  "D4": {
+   "n_in_archive": 59,
+   "n_considered": 59,
+   "n_failed": 0,
+   "n_off_grid": 0,
+   "n_outside_window": 47,
+   "cap": 150,
+   "n_in_window": 12,
+   "releases": [
+    "spherex_qr2",
+    "spherex_qr3"
+   ]
+  },
+  "D5": {
+   "n_in_archive": 61,
+   "n_considered": 61,
+   "n_failed": 0,
+   "n_off_grid": 0,
+   "n_outside_window": 33,
+   "cap": 150,
+   "n_in_window": 28,
+   "releases": [
+    "spherex_qr2",
+    "spherex_qr3"
+   ]
+  }
+ },
+ "picture_scale": {
+  "vmin": 0.0784,
+  "vmax": 142.4391,
+  "unit": "MJy/sr x (wavelength/4 µm)^2",
+  "stretch": "linear"
+ },
+ "calibration": {
+  "k": 1.0,
+  "rule": "only 1 field source(s) above 10 sigma in both windows (need 3), so a normal star is assumed to follow Rayleigh-Jeans exactly (k = 1)",
+  "n_sources": 1,
+  "spread": null,
+  "sources": [
+   {
+    "x": 18,
+    "y": 3,
+    "ratio": 1.07,
+    "absorbed_mjy": 7.0728,
+    "window_mjy": 7.5688
+   }
+  ]
+ },
+ "track_rule": "Gaia DR3 4472832130942575872 moved with its proper motion (no light curve to follow)",
+ "saturated_share": {
+  "D4": 1.0,
+  "D5": 0.04
+ },
+ "visits": [
+  {
+   "visit": 0,
+   "date": "2025-08-28",
+   "mjd_range": [
+    60911.49426,
+    60919.10371
+   ],
+   "methane_png": "visit0_methane.png",
+   "absorbed_png": "visit0_absorbed.png",
+   "window_png": "visit0_window.png",
+   "absorbed": {
+    "n": 4,
+    "obs_ids": [
+     "2025W35_2A_0611_2",
+     "2025W35_2A_0611_3",
+     "2025W35_2A_0611_4",
+     "2025W36_1A_0024_1"
+    ],
+    "wl_um": [
+     3.1831,
+     3.2703,
+     3.3592,
+     3.4494
+    ]
+   },
+   "window": {
+    "n": 9,
+    "obs_ids": [
+     "2025W34_2B_0557_3",
+     "2025W34_2B_0557_4",
+     "2025W35_1A_0444_1",
+     "2025W35_1A_0444_2",
+     "2025W35_1A_0444_3",
+     "2025W35_1A_0444_4",
+     "2025W35_2A_0221_1",
+     "2025W35_2A_0221_2",
+     "2025W35_2A_0221_3"
+    ],
+    "wl_um": [
+     3.9153,
+     3.9495,
+     3.9839,
+     4.0188,
+     4.054,
+     4.0894,
+     4.1248,
+     4.1606,
+     4.1966
+    ]
+   },
+   "target_xy": [
+    13.96,
+    14.58
+   ],
+   "glow_xy": null,
+   "colour": {
+    "testable": false
+   },
+   "null_test": {
+    "n_places": 65,
+    "scatter": 0.44,
+    "largest": 1.0,
+    "factor": 1.0
+   }
+  },
+  {
+   "visit": 1,
+   "date": "2026-03-16",
+   "mjd_range": [
+    61110.56874,
+    61121.22887
+   ],
+   "methane_png": "visit1_methane.png",
+   "absorbed_png": "visit1_absorbed.png",
+   "window_png": "visit1_window.png",
+   "absorbed": {
+    "n": 4,
+    "obs_ids": [
+     "2026W11_1A_0539_3",
+     "2026W11_1A_0539_4",
+     "2026W11_1A_0556_1",
+     "2026W11_1A_0556_2"
+    ],
+    "wl_um": [
+     3.1858,
+     3.2724,
+     3.3606,
+     3.452
+    ]
+   },
+   "window": {
+    "n": 10,
+    "obs_ids": [
+     "2026W11_2A_0513_1",
+     "2026W11_2A_0513_2",
+     "2026W11_2A_0513_3",
+     "2026W11_2A_0513_4",
+     "2026W12_1A_0311_1",
+     "2026W12_1A_0311_2",
+     "2026W12_1A_0311_3",
+     "2026W12_1A_0311_4",
+     "2026W12_2A_0371_4",
+     "2026W12_2A_0496_1"
+    ],
+    "wl_um": [
+     3.9344,
+     3.9686,
+     4.0035,
+     4.0385,
+     4.0737,
+     4.1093,
+     4.1451,
+     4.181,
+     3.9037,
+     3.9374
+    ]
+   },
+   "target_xy": [
+    14.03,
+    13.65
+   ],
+   "glow_xy": null,
+   "colour": {
+    "testable": false
+   },
+   "null_test": {
+    "n_places": 65,
+    "scatter": 0.44,
+    "largest": 1.0,
+    "factor": 1.0
+   }
+  },
+  {
+   "visit": 2,
+   "date": "2026-08-25",
+   "mjd_range": [
+    61273.51403,
+    61281.66425
+   ],
+   "methane_png": "visit2_methane.png",
+   "absorbed_png": "visit2_absorbed.png",
+   "window_png": "visit2_window.png",
+   "absorbed": {
+    "n": 4,
+    "obs_ids": [
+     "2026W35_1A_0375_1",
+     "2026W35_2A_0412_2",
+     "2026W35_2A_0412_3",
+     "2026W35_2A_0412_4"
+    ],
+    "wl_um": [
+     3.472,
+     3.2254,
+     3.3133,
+     3.4033
+    ]
+   },
+   "window": {
+    "n": 9,
+    "obs_ids": [
+     "2026W34_2A_0206_1",
+     "2026W34_2A_0206_2",
+     "2026W34_2A_0206_3",
+     "2026W34_2A_0206_4",
+     "2026W34_2A_0233_1",
+     "2026W34_2A_0233_2",
+     "2026W34_2A_0233_3",
+     "2026W34_2A_0233_4",
+     "2026W34_2A_0249_1"
+    ],
+    "wl_um": [
+     3.9038,
+     3.9377,
+     3.972,
+     4.0068,
+     4.0417,
+     4.077,
+     4.1125,
+     4.1483,
+     4.1839
+    ]
+   },
+   "target_xy": [
+    14.08,
+    12.91
+   ],
+   "glow_xy": null,
+   "colour": {
+    "testable": false
+   },
+   "null_test": {
+    "n_places": 64,
+    "scatter": 0.44,
+    "largest": 0.8,
+    "factor": 1.0
+   }
+  }
+ ],
+ "all": {
+  "methane_png": "all_methane.png",
+  "absorbed_png": "all_absorbed.png",
+  "window_png": "all_window.png",
+  "n_absorbed": 12,
+  "n_window": 28,
+  "glow_xy": null
+ },
+ "motion": {
+  "status": "agrees",
+  "band": 2,
+  "gaia_source_id": "4472832130942575872",
+  "expected_size_px": 1.67,
+  "measured_size_px": 1.59,
+  "visits": [
+   "2025-08-26",
+   "2026-08-21"
+  ]
+ },
+ "summary": "Methane vision cannot test this target; the motion test stands on its own.",
+ "null_test": {
+  "n_places": 55,
+  "scatter": 0.3,
+  "largest": 0.7,
+  "factor": 1.0
+ },
+ "other_glows": [],
+ "notes": [
+  "Too few field stars to measure k here, so the normal-star colour is the Rayleigh-Jeans assumption: a cool red star can look slightly redder than k = 1 without any methane.",
+  "A glow is a colour, not an identification: dusty young stars, red galaxies and a star blended with a brown dwarf can glow too. Nothing here is a discovery."
+ ],
+ "method": "each exposure x (wavelength/4 µm)^2, so a Rayleigh-Jeans star is equally bright at 3.15-3.5 µm (D4) and 3.9-4.2 µm (D5); 1/variance add-up per visit with the official flag mask; methane vision = (window - k x absorbed) / noise, noise including 5% of the predicted star light, shown from -10 to +10 sigma; target light in a 2 px circle minus the 5-8 px sky ring at the target's position that visit",
+ "made_by": "backend/app/methane.py",
+ "made_at": "2026-11-12 12:15 UTC",
+ "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx, ESA Gaia DR3"
+}

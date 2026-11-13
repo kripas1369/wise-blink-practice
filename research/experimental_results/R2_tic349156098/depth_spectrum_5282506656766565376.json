@@ -1,0 +1,134 @@
+{
+ "source_id": "5282506656766565376",
+ "centres": {
+  "primary": 0.98616,
+  "secondary": 0.48964
+ },
+ "half_window_phase": 0.02949743534109085,
+ "bins": [
+  {
+   "detector": 1,
+   "half": "short",
+   "wl_um": 0.807,
+   "primary": {
+    "depth": 0.0352,
+    "err": 0.0566,
+    "n": 4
+   },
+   "secondary": null
+  },
+  {
+   "detector": 1,
+   "half": "long",
+   "wl_um": 0.975,
+   "primary": null,
+   "secondary": null
+  },
+  {
+   "detector": 2,
+   "half": "short",
+   "wl_um": 1.234,
+   "primary": null,
+   "secondary": null
+  },
+  {
+   "detector": 2,
+   "half": "long",
+   "wl_um": 1.538,
+   "primary": {
+    "depth": 0.1942,
+    "err": 0.0785,
+    "n": 4
+   },
+   "secondary": {
+    "depth": 0.4344,
+    "err": 0.0562,
+    "n": 4
+   }
+  },
+  {
+   "detector": 3,
+   "half": "short",
+   "wl_um": 1.816,
+   "primary": null,
+   "secondary": null
+  },
+  {
+   "detector": 3,
+   "half": "long",
+   "wl_um": 2.172,
+   "primary": {
+    "depth": 0.195,
+    "err": 0.0469,
+    "n": 6
+   },
+   "secondary": {
+    "depth": 0.418,
+    "err": 0.0664,
+    "n": 3
+   }
+  },
+  {
+   "detector": 4,
+   "half": "short",
+   "wl_um": 2.742,
+   "primary": {
+    "depth": 0.2403,
+    "err": 0.058,
+    "n": 4
+   },
+   "secondary": null
+  },
+  {
+   "detector": 4,
+   "half": "long",
+   "wl_um": 3.315,
+   "primary": null,
+   "secondary": null
+  },
+  {
+   "detector": 5,
+   "half": "short",
+   "wl_um": 3.952,
+   "primary": null,
+   "secondary": null
+  },
+  {
+   "detector": 5,
+   "half": "long",
+   "wl_um": 4.283,
+   "primary": {
+    "depth": 0.1721,
+    "err": 0.1332,
+    "n": 4
+   },
+   "secondary": {
+    "depth": 0.5235,
+    "err": 0.1296,
+    "n": 3
+   }
+  },
+  {
+   "detector": 6,
+   "half": "short",
+   "wl_um": 4.546,
+   "primary": null,
+   "secondary": null
+  },
+  {
+   "detector": 6,
+   "half": "long",
+   "wl_um": 4.863,
+   "primary": {
+    "depth": 0.5993,
+    "err": 0.134,
+    "n": 6
+   },
+   "secondary": {
+    "depth": 0.3596,
+    "err": 0.1677,
+    "n": 3
+   }
+  }
+ ]
+}

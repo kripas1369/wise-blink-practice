@@ -1,0 +1,68 @@
+Blind periodicity search: stars with Lomb-Scargle Bonferroni FAP < 1e-3 (excluding the five target binaries)
+
+R1_lmc_tic179637488 4658741443927317376 G 14.05 LS 3.59967 d FAPb 5.0e-09 amp 39.52% cov 0.477 edge 2.7 px
+    VSX: [('Gaia DR3 4658741443927317376', 'E', '7.197400000000', '0.05')]; Gaia: var_flag VARIABLE, EB True, LPV False, classified True
+R1_lmc_tic179637488 4658741478287037312 G 14.95 LS 300.0 d FAPb 2.1e-04 amp 105.23% cov 0.482 edge 10.0 px
+    VSX: [('Gaia DR3 4658741478287037312', 'E', '1.081760000000', '0.05')]; Gaia: var_flag VARIABLE, EB True, LPV False, classified True
+R1_lmc_tic179637488 4658741615725930496 G 14.96 LS 0.43562 d FAPb 1.9e-10 amp 55.15% cov 0.797 edge 11.1 px
+    VSX: [('Gaia DR3 4658741615725930496', 'E', '0.871290000000', '0.04'), ('Gaia DR3 4658741611443452288', 'E', '0.940890000000', '5.53'), ('Gaia DR3 4658741611407759104', 'BE|GCAS|SDOR|WR', '', '7.20'), ('Gaia DR3 4658741547006455808', 'L', '', '7.71')]; Gaia: var_flag VARIABLE, EB True, LPV False, classified True
+R1_lmc_tic179637488 4658741615705820544 G 15.22 LS 268.92168 d FAPb 3.5e-09 amp 67.1% cov 0.797 edge 6.3 px
+    VSX: [('Gaia DR3 4658741615705820544', 'BE|GCAS|SDOR|WR', '', '0.05')]; Gaia: var_flag VARIABLE, EB False, LPV False, classified True
+R1_lmc_tic179637488 4658741581346199808 G 15.53 LS 300.0 d FAPb 6.4e-07 amp 111.28% cov 0.312 edge 11.9 px
+    VSX: [('Gaia DR3 4658741680162920832', 'E', '0.216775000000', '8.53'), ('Gaia DR3 4658741577110161536', 'BE|GCAS|SDOR|WR', '', '9.60')]; Gaia: var_flag NOT_AVAILABLE, EB --, LPV --, classified --
+R1_lmc_tic179637488 4658741753164873472 G 15.54 LS 0.15525 d FAPb 3.8e-04 amp 51.65% cov 0.97 edge 11.7 px
+    VSX: none; Gaia: var_flag NOT_AVAILABLE, EB --, LPV --, classified --
+R1_lmc_tic179637488 4658741443927323264 G 15.63 LS 84.7034 d FAPb 1.0e-24 amp 21.1% cov 0.953 edge 0.3 px
+    VSX: [('Gaia DR3 4658741443927323264', 'SR|M', '165.900000000000', '0.06')]; Gaia: var_flag VARIABLE, EB False, LPV True, classified True
+R1_lmc_tic179637488 4658743196273905536 G 15.65 LS 300.0 d FAPb 4.6e-05 amp 14.14% cov 0.959 edge 8.5 px
+    VSX: [('Gaia DR3 4658743196273905536', 'SR|M', '352.100000000000', '0.05')]; Gaia: var_flag VARIABLE, EB False, LPV True, classified True
+R2_tic349156098 5282509302466396928 G 14.54 LS 300.0 d FAPb 1.9e-06 amp 20.23% cov 0.964 edge 13.9 px
+    VSX: none; Gaia: var_flag NOT_AVAILABLE, EB --, LPV --, classified --
+R3_tic309659126 4761080447161537792 G 10.55 LS 300.0 d FAPb 2.3e-05 amp 12.34% cov 0.974 edge 18.9 px
+    VSX: [('ASAS J051801-6041.4', 'EC|ESD', '0.248268000000', '0.57')]; Gaia: var_flag NOT_AVAILABLE, EB --, LPV --, classified --
+R4_tic160195393 1724476686999945344 G 15.76 LS 0.115 d FAPb 3.7e-04 amp 23.31% cov 0.988 edge 12.5 px
+    VSX: none; Gaia: var_flag NOT_AVAILABLE, EB --, LPV --, classified --
+
+Split-half test of the two uncatalogued periodicities (a real signal should appear in both halves):
+  R1_lmc_tic179637488 4658741753164873472 first half: n=269, best period 0.11126 d, power at 0.15525 d = 0.080 (period 0.15525), FAP of that peak 1.18e-01
+  R1_lmc_tic179637488 4658741753164873472 second half: n=272, best period 0.62633 d, power at 0.15525 d = 0.076 (period 0.15510), FAP of that peak 2.08e-01
+  R1_lmc_tic179637488 4658741753164873472 all: n=541, best period 0.15525 d, power at 0.15525 d = 0.080 (period 0.15525), FAP of that peak 2.86e-06
+  window function peaks (d): [np.float64(177.1782), np.float64(171.3329), np.float64(183.4366), np.float64(190.1532), np.float64(165.8608)]
+  R4_tic160195393 1724476686999945344 first half: n=171, best period 0.30296 d, power at 0.115 d = 0.066 (period 0.11509), FAP of that peak 1.00e+00
+  R4_tic160195393 1724476686999945344 second half: n=172, best period 0.11499 d, power at 0.115 d = 0.240 (period 0.11499), FAP of that peak 1.34e-06
+  R4_tic160195393 1724476686999945344 all: n=343, best period 0.11500 d, power at 0.115 d = 0.112 (period 0.11500), FAP of that peak 4.58e-05
+  window function peaks (d): [np.float64(186.5906), np.float64(178.1713), np.float64(195.845), np.float64(170.479), np.float64(206.0654)]
+
+Candidate 4658741753164873472 {'source_id': '4658741753164873472', 'ra': '80.48265883104095', 'dec': '-67.9207893630313', 'phot_g_mean_mag': '15.53795', 'bp_rp': '-0.23213005', 'parallax': '0.005110866717008056', 'parallax_error': '0.027048914', 'pmra': '1.6923664883629004', 'pmdec': '0.18916361676676774', 'ruwe': '0.99317676', 'teff_gspphot': '21285.32', 'phot_variable_flag': 'NOT_AVAILABLE'}
+  LS semi-amplitude at 0.15525 d: 16.93 % ; star scatter 16.73 % ; jitter 13.23 % ; median error 9.35 %
+  D1 n=98 power 0.004 semi-amp 1.7%
+  D2 n=78 power 0.028 semi-amp 3.9%
+  D3 n=96 power 0.021 semi-amp 7.9%
+  D4 n=94 power 0.196 semi-amp 32.5%
+  D5 n=79 power 0.034 semi-amp 6.3%
+  D6 n=96 power 0.002 semi-amp 3.9%
+  SIMBAD within 5": []
+  VSX within 30": [('Gaia DR3 4658741748843205888', 'BE|GCAS|SDOR|WR', '', '24.14'), ('ASASSN-V J052158.53-675534.9', 'DCEPS', '1.648400000000', '25.15'), ('Gaia DR3 4658741684445409408', 'BE|GCAS|SDOR|WR', '', '25.70')]
+  OGLE-IV LMC ECL within 5": []
+
+Verdict on the two uncatalogued periodicities:
+  R4 1724476686999945344 (0.115 d): present only in the second half of the data (FAP 1e-6), absent in the first
+    (FAP 1.0) -> not a persistent periodic signal; rejected.
+  R1 4658741753164873472 (0.155 d): an LMC B star (BP-RP -0.23, Teff 21,300 K, parallax 0.005 +- 0.027 mas) -
+    a beta Cephei-type pulsation would be possible in principle, and the period appears in both halves; but the
+    signal is confined to detector D4 (2.4-3.8 um; semi-amplitude 32%, power 0.20) and absent in D1, D2, D6
+    (1.7-3.9%), which a stellar pulsation cannot do -> instrumental or nebular (3.3 um PAH emission in LH 47);
+    rejected.
+Recovered known variables (validation of the blind search, R1): 4658741443927317376 (Gaia/VSX E, P 7.1974 d;
+  SPHEREx LS 3.59967 = P/2), 4658741615725930496 (E, 0.87129 d; LS 0.43562 = P/2), 4658741443927323264 (SR, 165.9 d;
+  LS 84.7 d ~ P/2), 4658743196273905536 (SR, 352 d; LS at the 300-d search limit), 4658741615705820544
+  (BE|GCAS|SDOR|WR), 4658741478287037312 (E, 1.08176 d; SPHEREx shows only a trend, coverage 0.48).
+In R2, R3, R4 and R5 the top-ranked star of the blind search is the Gaia eclipsing binary, at exactly half its
+orbital period (0.60085, 0.12414, 0.28644, 1.31457 d) - found with no TESS information.
+
+Update 11:22 (reproducible script `research/blind_search.py` -> `blind_search_auto.txt`): rerun on the final data,
+including the R5 re-run (705 exposures). Same stars; R5 binary now LS 1.3144 d, FAPb 4e-12, still the only
+significant star in R5. Per-detector numbers identical; split-half powers differ slightly (power evaluated at the
+exact period instead of the nearest grid point: R4 second half 0.203 instead of 0.240), conclusions unchanged.
+R2 5282509302466396928 (300-d trend, uncatalogued): first half FAP 0.39, second half 8e-5 -> a slow trend, not a
+periodic signal; not interpreted.

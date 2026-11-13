@@ -2,8 +2,22 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 
 import { positionAt, separationArcsec, VIEW_EPOCH } from "../js/motion.js";
-import { TARGETS } from "../js/targets.js";
+import { detectorsRated, RATINGS, TARGETS } from "../js/targets.js";
 import { buildUrlState, readUrlState } from "../js/urlstate.js";
+
+test("every target rates all 6 detectors, with a reason, and never starts on a 'not recommended' one", () => {
+  for (const t of TARGETS) {
+    assert.deepEqual(Object.keys(t.detectors).map(Number), [1, 2, 3, 4, 5, 6], t.label);
+    for (const d of Object.values(t.detectors)) {
+      assert.ok(d.rating in RATINGS, `${t.label}: ${d.rating}`);
+      assert.ok(d.why.length > 10, t.label);
+    }
+    assert.notEqual(t.detectors[t.detector].rating, "not", t.label);
+  }
+  const wise = TARGETS.find((t) => t.key === "wise0855");
+  assert.deepEqual(detectorsRated(wise, "recommended"), [6]);
+  assert.deepEqual(detectorsRated(wise, "not"), [1, 2, 3, 4]);
+});
 
 // Positions at 2026.0 computed by the Python backend (notes/DAY1_REPORT.md, cache/day1_report.json).
 const BACKEND_2026 = {

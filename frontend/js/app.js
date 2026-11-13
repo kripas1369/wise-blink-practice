@@ -4,6 +4,7 @@ import { createDiffView } from "./diffview.js";
 import { createFiles } from "./files.js";
 import { createFlipbook } from "./flipbook.js";
 import { createLightCurve } from "./lightcurve.js";
+import { createMethane } from "./methane.js";
 import { positionAt, separationArcsec, VIEW_EPOCH } from "./motion.js";
 import { createProof } from "./proof.js";
 import { createRecovery } from "./recovery.js";
@@ -11,7 +12,7 @@ import { createScientistView } from "./scientist.js";
 import { createSpectrum } from "./spectrum.js";
 import { createSpotList } from "./spots.js";
 import { NameNotFound, resolveName } from "./resolve.js";
-import { TARGETS } from "./targets.js";
+import { detectorsRated, RATINGS, TARGETS } from "./targets.js";
 import { createTimeline } from "./timeline.js";
 import { buildUrlState, DETECTORS, readUrlState } from "./urlstate.js";
 import { createVisitFlip } from "./visitflip.js";
@@ -97,9 +98,32 @@ function setDetector(det) {
 
 // ---------- rendering ----------
 
+function chosenTarget() {
+  return TARGETS.find((t) => t.key === state.targetKey) || null;
+}
+
+/** The detector list; with an official target chosen, each option also says how it suits that target. */
 function renderDetectors() {
+  const target = chosenTarget();
   detSelect.innerHTML = Object.entries(DETECTORS)
-    .map(([n, range]) => `<option value="${n}">D${n} · ${range}</option>`)
+    .map(([n, range]) => {
+      const advice = target ? ` · ${RATINGS[target.detectors[n].rating]}` : "";
+      return `<option value="${n}">D${n} · ${range}${advice}</option>`;
+    })
+    .join("");
+  detSelect.value = String(state.det);
+}
+
+function detectorGuide(target) {
+  return Object.keys(RATINGS)
+    .map((rating) => {
+      const dets = detectorsRated(target, rating);
+      if (!dets.length) return "";
+      const chips = dets
+        .map((n) => `<span class="det-chip det-${rating}" title="D${n}: ${target.detectors[n].why}">D${n}</span>`)
+        .join("");
+      return `<span class="det-group"><span class="det-group-label">${RATINGS[rating]}</span>${chips}</span>`;
+    })
     .join("");
 }
 
@@ -116,10 +140,15 @@ function renderTargets() {
     button.className = "target";
     button.setAttribute("aria-pressed", "false");
     button.dataset.key = target.key;
+    const timescale = target.timescaleLabel
+      ? `<span class="target-timescale" title="Physical time span this target is meant to show">${target.timescaleLabel}</span>`
+      : "";
     button.innerHTML = `
       <span class="target-kind">${target.kind}</span>
+      ${timescale}
       <span class="target-name">${target.label}</span>
-      <span class="target-hint">${target.lookFor}</span>`;
+      <span class="target-hint">${target.lookFor}</span>
+      <span class="target-dets">${detectorGuide(target)}</span>`;
     button.addEventListener("click", () => chooseTarget(target));
     item.appendChild(button);
     targetsBox.appendChild(item);
@@ -130,12 +159,16 @@ function renderSelection() {
   for (const button of targetsBox.querySelectorAll(".target")) {
     button.setAttribute("aria-pressed", String(button.dataset.key === state.targetKey));
   }
+  renderDetectors();
   if (state.ra === null) return;
+  const target = chosenTarget();
+  const advice = target ? target.detectors[state.det] : null;
   selectionBox.innerHTML = `
     <dl>
       <dt>RA</dt><dd>${formatRa(state.ra)} · ${state.ra.toFixed(6)}°</dd>
       <dt>Dec</dt><dd>${formatDec(state.dec)} · ${state.dec.toFixed(6)}°</dd>
       <dt>View</dt><dd>${state.fov}′ square · D${state.det} (${DETECTORS[state.det]})</dd>
+      ${advice ? `<dt>D${state.det} here</dt><dd class="det-advice"><span class="det-chip det-${advice.rating}">${RATINGS[advice.rating]}</span> ${advice.why}</dd>` : ""}
       <dt>From</dt><dd></dd>
     </dl>
     <p class="note"></p>
@@ -199,7 +232,7 @@ function chooseTarget(target) {
     ra, dec,
     source: `Official target: ${target.label}`,
     note: `SIMBAD J2000 position moved to ${VIEW_EPOCH.toFixed(1)} with its proper motion (${moved.toFixed(1)}″). ` +
-      `Detector D${target.detector} suggested. ${target.lookFor}${oldMapWarning(moved)}`,
+      `${target.lookFor}${oldMapWarning(moved)}`,
     targetKey: target.key,
     queryText: target.label,
   });
@@ -353,11 +386,16 @@ function start() {
   const spotList = createSpotList({ onPick: (xy, i) => { diffView.pointAt(xy); askView.spot(i); } });
   const recovery = createRecovery();
   diffView = createDiffView({
-    onPair: (loaded, a, b) => { spotList.show(loaded, a, b); recovery.show(loaded, a, b); askView.pair(a, b); },
+    onPair: (loaded, a, b, pair) => {
+      spotList.show(loaded, a, b, pair);
+      recovery.show(loaded, a, b);
+      askView.pair(a, b);
+    },
   });
   const lightCurve = createLightCurve();
   const proofView = createProof();
   const spectrumView = createSpectrum();
+  const methaneView = createMethane();
   timeline = createTimeline({ onDetector: setDetector });
   const files = createFiles();
   const scientist = createScientistView();
@@ -371,6 +409,7 @@ function start() {
       visitFlip.show(loaded);
       askView.show(loaded);
       proofView.show(loaded); diffView.show(loaded); lightCurve.show(loaded); spectrumView.show(loaded);
+      methaneView.show(loaded);
     },
     onPixel: (p) => lightCurve.showPixel(p),
     onVisit: (i) => { scientist.visit(i); visitFlip.visit(i); askView.visit(i); },

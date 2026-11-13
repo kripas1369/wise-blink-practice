@@ -1,0 +1,108 @@
+{
+ "pair": [
+  "198242676",
+  "198242678"
+ ],
+ "sep_arcsec": 8.26,
+ "clock": {
+  "tess_id": "198242678",
+  "ra": 249.766582734884,
+  "dec": 60.699660489909,
+  "pmra": 22.2945,
+  "pmdec": -58.9879,
+  "tmag": 7.88674,
+  "bjd0": 1933.0752815887838,
+  "bjd0_err": 0.0001175220861568,
+  "period": 4.6297901793077285,
+  "period_err": 7.661932097668966e-06,
+  "morph": 0.5072452000000001,
+  "prim_pos": 0.9999735992601814,
+  "prim_width": 0.0927943812300208,
+  "prim_depth": 0.4778296588953927,
+  "sec_pos": 0.5047448285588806,
+  "sec_width": 0.0925654228798505,
+  "sec_depth": 0.1231944741261261,
+  "model": "pf",
+  "sec_phase": -0.4952287707013008
+ },
+ "fov_arcmin": 3.0,
+ "n_exposures": 152,
+ "n_images_archive": 166,
+ "year": 2026.543,
+ "stars": {
+  "198242676": {
+   "tmag": 9.14165,
+   "tess_depth": 1.5298479404324299,
+   "tess_sec_depth": 0.3875702224338981,
+   "period": 4.629789525096858,
+   "gaia": {
+    "source_id": "1624551077402644608",
+    "g_mag": 9.527960777282715,
+    "parallax": 6.5069
+   },
+   "gaia_sep_arcsec": 0.0,
+   "xy": [
+    13.94,
+    14.67
+   ],
+   "circle": {
+    "n_good": 19,
+    "scatter_pct": 3.7,
+    "primary": null,
+    "secondary": null
+   }
+  },
+  "198242678": {
+   "tmag": 7.88674,
+   "tess_depth": 0.4778296588953927,
+   "tess_sec_depth": 0.1231944741261261,
+   "period": 4.6297901793077285,
+   "gaia": {
+    "source_id": "1624551008683167616",
+    "g_mag": 8.407547950744629,
+    "parallax": 6.4798
+   },
+   "gaia_sep_arcsec": 0.0,
+   "xy": [
+    14.06,
+    13.33
+   ],
+   "circle": {
+    "n_good": 18,
+    "scatter_pct": 3.83,
+    "primary": null,
+    "secondary": null
+   }
+  }
+ },
+ "two_star_fit": {
+  "per_detector": {
+   "1": {
+    "n_pairs": 1,
+    "reason": "fewer than 3 wavelength-matched pairs"
+   },
+   "2": {
+    "n_pairs": 1,
+    "reason": "fewer than 3 wavelength-matched pairs"
+   },
+   "3": {
+    "n_pairs": 0,
+    "reason": "fewer than 3 wavelength-matched pairs"
+   },
+   "4": {
+    "n_pairs": 1,
+    "reason": "fewer than 3 wavelength-matched pairs"
+   },
+   "5": {
+    "n_pairs": 1,
+    "reason": "fewer than 3 wavelength-matched pairs"
+   },
+   "6": {
+    "n_pairs": 0,
+    "reason": "fewer than 3 wavelength-matched pairs"
+   }
+  },
+  "A": null,
+  "B": null
+ }
+}

@@ -1,0 +1,58 @@
+Blind periodicity search: Lomb–Scargle Bonferroni FAP < 0.001, all fitted Gaia stars
+
+R1_lmc_tic179637488 4658741443927317376 G 14.05 LS 3.59967 d FAPb 5.0e-09 amp 39.52% cov 0.477 edge 2.7 px
+    VSX within 10": [('Gaia DR3 4658741443927317376', 'E', '7.197400000000', '0.05')]
+R1_lmc_tic179637488 TARGET BINARY 4658741684445417856 G 14.30 LS 1.64856 d FAPb 5.2e-09 amp 28.81% cov 0.765 edge 17.5 px
+R1_lmc_tic179637488 4658741478287037312 G 14.95 LS 300.0 d FAPb 2.1e-04 amp 105.23% cov 0.482 edge 10.0 px
+    VSX within 10": [('Gaia DR3 4658741478287037312', 'E', '1.081760000000', '0.05')]
+R1_lmc_tic179637488 4658741615725930496 G 14.96 LS 0.43562 d FAPb 1.9e-10 amp 55.15% cov 0.797 edge 11.1 px
+    VSX within 10": [('Gaia DR3 4658741615725930496', 'E', '0.871290000000', '0.04'), ('Gaia DR3 4658741611443452288', 'E', '0.940890000000', '5.53'), ('Gaia DR3 4658741611407759104', 'BE|GCAS|SDOR|WR', '', '7.20'), ('Gaia DR3 4658741547006455808', 'L', '', '7.71')]
+R1_lmc_tic179637488 4658741615705820544 G 15.22 LS 268.92168 d FAPb 3.5e-09 amp 67.1% cov 0.797 edge 6.3 px
+    VSX within 10": [('Gaia DR3 4658741615705820544', 'BE|GCAS|SDOR|WR', '', '0.05')]
+R1_lmc_tic179637488 4658741581346199808 G 15.53 LS 300.0 d FAPb 6.4e-07 amp 111.28% cov 0.312 edge 11.9 px
+    VSX within 10": [('Gaia DR3 4658741680162920832', 'E', '0.216775000000', '8.53'), ('Gaia DR3 4658741577110161536', 'BE|GCAS|SDOR|WR', '', '9.60')]
+R1_lmc_tic179637488 4658741753164873472 G 15.54 LS 0.15525 d FAPb 3.8e-04 amp 51.65% cov 0.97 edge 11.7 px
+    VSX within 10": none
+    first half: n=269, best period 0.11126 d, power at 0.15525 d = 0.080, FAP of that power 1.21e-01
+    second half: n=272, best period 0.62633 d, power at 0.15525 d = 0.072, FAP of that power 3.27e-01
+    D1 n=98 power 0.004 semi-amp 1.7%
+    D2 n=78 power 0.028 semi-amp 3.9%
+    D3 n=96 power 0.021 semi-amp 7.9%
+    D4 n=94 power 0.196 semi-amp 32.5%
+    D5 n=79 power 0.034 semi-amp 6.3%
+    D6 n=96 power 0.002 semi-amp 3.9%
+R1_lmc_tic179637488 4658741443927323264 G 15.63 LS 84.7034 d FAPb 1.0e-24 amp 21.1% cov 0.953 edge 0.3 px
+    VSX within 10": [('Gaia DR3 4658741443927323264', 'SR|M', '165.900000000000', '0.06')]
+R1_lmc_tic179637488 4658743196273905536 G 15.65 LS 300.0 d FAPb 4.6e-05 amp 14.14% cov 0.959 edge 8.5 px
+    VSX within 10": [('Gaia DR3 4658743196273905536', 'SR|M', '352.100000000000', '0.05')]
+
+R2_tic349156098 5282509302466396928 G 14.54 LS 300.0 d FAPb 1.9e-06 amp 20.23% cov 0.964 edge 13.9 px
+    VSX within 10": none
+    first half: n=160, best period 0.51353 d, power at 300.0 d = 0.117, FAP of that power 3.88e-01
+    second half: n=163, best period 0.10158 d, power at 300.0 d = 0.210, FAP of that power 7.89e-05
+    D1 n=60 power 0.101 semi-amp 7.4%
+    D2 n=53 power 0.310 semi-amp 6.5%
+    D3 n=49 power 0.201 semi-amp 7.2%
+    D4 n=58 power 0.270 semi-amp 9.9%
+    D5 n=54 power 0.205 semi-amp 8.7%
+    D6 n=49 power 0.205 semi-amp 12.7%
+R2_tic349156098 TARGET BINARY 5282506656766565376 G 15.53 LS 0.60085 d FAPb 8.9e-24 amp 34.31% cov 0.949 edge 14.0 px
+
+R3_tic309659126 4761080447161537792 G 10.55 LS 300.0 d FAPb 2.3e-05 amp 12.34% cov 0.974 edge 18.9 px
+    VSX within 10": [('ASAS J051801-6041.4', 'EC|ESD', '0.248268000000', '0.57')]
+R3_tic309659126 TARGET BINARY 4761080447161537664 G 11.38 LS 0.12414 d FAPb 1.5e-69 amp 20.59% cov 0.975 edge 17.9 px
+
+R4_tic160195393 TARGET BINARY 1724476407826709504 G 12.21 LS 0.28644 d FAPb 8.4e-97 amp 21.62% cov 0.986 edge 13.6 px
+R4_tic160195393 1724476686999945344 G 15.76 LS 0.115 d FAPb 3.7e-04 amp 23.31% cov 0.988 edge 12.5 px
+    VSX within 10": none
+    first half: n=171, best period 0.30296 d, power at 0.115 d = 0.058, FAP of that power 1.00e+00
+    second half: n=172, best period 0.11499 d, power at 0.115 d = 0.203, FAP of that power 6.64e-05
+    D1 n=48 power 0.183 semi-amp 7.1%
+    D2 n=72 power 0.098 semi-amp 3.8%
+    D3 n=52 power 0.098 semi-amp 3.8%
+    D4 n=45 power 0.025 semi-amp 1.8%
+    D5 n=73 power 0.038 semi-amp 4.6%
+    D6 n=53 power 0.089 semi-amp 9.3%
+
+R5_sep_tic31511621 TARGET BINARY 4659556972307750528 G 16.19 LS 1.3144 d FAPb 4.1e-12 amp 41.9% cov 0.485 edge 21.6 px
+

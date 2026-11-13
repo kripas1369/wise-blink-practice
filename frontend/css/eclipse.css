@@ -1,0 +1,60 @@
+/* Eclipse mode (eclipse.html). Same black-and-white look as style.css; colours carry data:
+   wavelength (blue = short, red = long), primary white, secondary amber, TESS light blue. */
+
+.ec-clock { display: grid; gap: 0.7rem; }
+.ec-field { display: grid; }
+.ec-field input { font-family: var(--mono); }
+.ec-main { min-width: 0; }
+.ec-main > .flip-head .panel-title { margin: 0; }
+
+.ec-badge {
+  position: absolute; top: 0.6rem; left: 50%; transform: translateX(-50%);
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent-text); background: var(--accent); border-radius: 999px; padding: 0.2rem 0.7rem;
+}
+.ec-orbit { margin-top: 0.5rem; }
+.ec-orbit svg { width: 100%; height: auto; display: block; background: #0a0a0a; border-radius: var(--radius-sm); }
+
+.ec-band { fill: #ffffff12; }
+.ec-ring { fill: none; stroke: #fff; stroke-width: 2; }
+.ec-clickable .ec-pt { cursor: pointer; }
+.ec-pdm { opacity: 0.9; stroke-width: 1.5; }
+
+.ec-bar {
+  display: inline-block; width: 120px; height: 10px; border-radius: 4px;
+  background: linear-gradient(90deg, hsl(220, 90%, 30%), hsl(220, 90%, 88%));
+}
+.ec-key { white-space: nowrap; margin-left: 0.6rem; }
+.ec-key::before {
+  content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 0.3rem;
+  background: var(--key); border: 1.5px solid var(--key);
+}
+.ec-prim { --key: #f5f5f7; }
+.ec-sec { --key: #ffc04d; }
+.ec-null { --key: #86868b; }
+.ec-null::before { background: none; }
+.ec-tess { --key: #8fd3ff; }
+.ec-tess::before { border-radius: 2px; height: 3px; }
+
+.ec-diff { display: grid; grid-template-columns: minmax(200px, 300px) 1fr; gap: 1.25rem; align-items: start; }
+.ec-min {
+  position: absolute; width: 7%; aspect-ratio: 1; transform: translate(-50%, -50%);
+  border: 2px solid #fff; box-shadow: 0 0 0 1px #000; pointer-events: none;
+}
+.ec-method { margin-top: 2rem; padding-top: 1.2rem; border-top: 1px solid var(--line); }
+.ec-catalog { margin-top: 1.5rem; font-size: 0.85rem; }
+.ec-catalog summary { cursor: pointer; font-weight: 600; }
+.ec-fc-table td, .ec-fc-table th { text-align: right; }
+.ec-fc-table td:first-child, .ec-fc-table th:first-child { text-align: left; }
+
+.linklike {
+  font: inherit; color: var(--text); background: none; border: 0; padding: 0; cursor: pointer;
+  text-decoration: underline; text-underline-offset: 0.2em;
+}
+.proof-verdict[data-verdict="not-zero"], .proof-verdict[data-verdict="different"], .proof-verdict[data-verdict="no"] {
+  text-decoration: underline; text-underline-offset: 0.2em;
+}
+
+@media (max-width: 900px) {
+  .ec-diff { grid-template-columns: 1fr; }
+}

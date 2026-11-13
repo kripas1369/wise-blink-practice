@@ -1,0 +1,222 @@
+{
+ "pair": [
+  "269696430",
+  "269696438"
+ ],
+ "sep_arcsec": 49.04,
+ "clock": {
+  "tess_id": "269696438",
+  "ra": 301.607201697468,
+  "dec": 68.2910604014184,
+  "pmra": -6.47688,
+  "pmdec": -10.009,
+  "tmag": 8.725,
+  "bjd0": 1687.0646807354187,
+  "bjd0_err": 0.0017761653132311,
+  "period": 2.978909859771787,
+  "period_err": 1.2707755427054934e-05,
+  "morph": 0.29766083,
+  "prim_pos": 0.9972058376918498,
+  "prim_width": 0.0227830556737358,
+  "prim_depth": 0.0008647588925647,
+  "sec_pos": null,
+  "sec_width": null,
+  "sec_depth": null,
+  "model": "pf",
+  "sec_phase": null
+ },
+ "fov_arcmin": 3.0,
+ "n_exposures": 309,
+ "n_images_archive": 460,
+ "year": 2025.998,
+ "stars": {
+  "269696430": {
+   "tmag": 10.2369,
+   "tess_depth": 0.0565714332224018,
+   "tess_sec_depth": null,
+   "period": 2.9787944370358086,
+   "gaia": {
+    "source_id": "2249945865282128768",
+    "g_mag": 10.481870651245117,
+    "parallax": 2.8484
+   },
+   "gaia_sep_arcsec": 0.0,
+   "xy": [
+    12.57,
+    10.28
+   ],
+   "circle": {
+    "n_good": 251,
+    "scatter_pct": 1.85,
+    "primary": {
+     "depth": 0.0714,
+     "err": 0.0067,
+     "n": 10
+    },
+    "secondary": null
+   },
+   "psf": {
+    "n_good": 198,
+    "scatter_pct": 3.04,
+    "primary": {
+     "depth": 0.0762,
+     "err": 0.0209,
+     "n": 8
+    },
+    "secondary": null
+   }
+  },
+  "269696438": {
+   "tmag": 8.725,
+   "tess_depth": 0.0008647588925647,
+   "tess_sec_depth": null,
+   "period": 2.978909859771787,
+   "gaia": {
+    "source_id": "2249948927597309440",
+    "g_mag": 8.812141418457031,
+    "parallax": 2.5785
+   },
+   "gaia_sep_arcsec": 0.0,
+   "xy": [
+    15.43,
+    17.72
+   ],
+   "circle": {
+    "n_good": 147,
+    "scatter_pct": 2.18,
+    "primary": {
+     "depth": -0.0018,
+     "err": 0.014,
+     "n": 3
+    },
+    "secondary": null
+   },
+   "psf": {
+    "n_good": 198,
+    "scatter_pct": 2.63,
+    "primary": {
+     "depth": 0.0152,
+     "err": 0.0194,
+     "n": 8
+    },
+    "secondary": null
+   }
+  }
+ },
+ "collections": [
+  "spherex_dr1",
+  "spherex_dr1_deep",
+  "spherex_qr3",
+  "spherex_qr3_deep"
+ ],
+ "time_range_mjd": [
+  60828.19,
+  61246.49
+ ],
+ "two_star_fit": {
+  "per_detector": {
+   "1": {
+    "n_pairs": 0,
+    "reason": "fewer than 3 wavelength-matched pairs"
+   },
+   "2": {
+    "n_pairs": 5,
+    "wl_um": 1.355,
+    "sigma_px": 0.644,
+    "shift_px": [
+     -0.02,
+     0.0
+    ],
+    "chi2_out": 994.86,
+    "chi2_diff": 340.37,
+    "flux_A": 157.3963793888952,
+    "flux_B": 556.8280585602045,
+    "depth_A": 0.0683262242229917,
+    "err_A": 0.03350012646152986,
+    "depth_B": 0.08466862613563865,
+    "err_B": 0.03906194910892406,
+    "lost_A": 10.754300310012724,
+    "lost_A_err": 5.2727986141149215,
+    "lost_B": 47.14586671206745,
+    "lost_B_err": 21.750789285899693
+   },
+   "3": {
+    "n_pairs": 0,
+    "reason": "fewer than 3 wavelength-matched pairs"
+   },
+   "4": {
+    "n_pairs": 0,
+    "reason": "fewer than 3 wavelength-matched pairs"
+   },
+   "5": {
+    "n_pairs": 5,
+    "wl_um": 4.124,
+    "sigma_px": 0.717,
+    "shift_px": [
+     0.01,
+     -0.0
+    ],
+    "chi2_out": 38.9,
+    "chi2_diff": 11.86,
+    "flux_A": 28.83110756417675,
+    "flux_B": 93.2438334711101,
+    "depth_A": 0.04580844914606533,
+    "err_A": 0.02524950189273699,
+    "depth_B": -0.010985177789341206,
+    "err_B": 0.014202804070968576,
+    "lost_A": 1.32070832467833,
+    "lost_A_err": 0.7279711050113846,
+    "lost_B": -1.0243000884398688,
+    "lost_B_err": 1.3243238976161984
+   },
+   "6": {
+    "n_pairs": 0,
+    "reason": "fewer than 3 wavelength-matched pairs"
+   }
+  },
+  "A": {
+   "depth": 0.054,
+   "err": 0.0202,
+   "n_detectors": 2,
+   "chi2_red": 0.29
+  },
+  "B": {
+   "depth": 0.0002,
+   "err": 0.0307,
+   "n_detectors": 2,
+   "chi2_red": 5.3
+  }
+ },
+ "psf_shapes": {
+  "1": {
+   "dx": -0.009,
+   "dy": 0.016,
+   "sigma": 0.658
+  },
+  "2": {
+   "dx": -0.009,
+   "dy": 0.038,
+   "sigma": 0.649
+  },
+  "3": {
+   "dx": 0.021,
+   "dy": 0.002,
+   "sigma": 0.646
+  },
+  "4": {
+   "dx": -0.005,
+   "dy": 0.019,
+   "sigma": 0.735
+  },
+  "5": {
+   "dx": 0.015,
+   "dy": 0.007,
+   "sigma": 0.706
+  },
+  "6": {
+   "dx": 0.017,
+   "dy": -0.003,
+   "sigma": 0.734
+  }
+ }
+}

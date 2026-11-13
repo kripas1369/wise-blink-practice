@@ -1,0 +1,228 @@
+{
+ "name": "SJ01163354p6449243",
+ "note": "SIMULATED perturbations of real photometry; not an observation",
+ "bands": {
+  "H2O": {
+   "quantity": "tau",
+   "baseline_last_minus_first": 0.009940338633176254,
+   "trials": [
+    {
+     "kind": "none",
+     "value": 0.0,
+     "injected_change": 0.0,
+     "recovered_change_minus_baseline": 0.0,
+     "err": 0.026288793671338972,
+     "z_recovered_minus_baseline": 0.0,
+     "p_change": 0.6173255782344844,
+     "chi2r": 1.2843850039568603
+    },
+    {
+     "kind": "depth",
+     "value": 0.05,
+     "injected_change": 0.05,
+     "recovered_change_minus_baseline": 0.05108819573991451,
+     "err": 0.02647296441692184,
+     "z_recovered_minus_baseline": 1.9298252713722652,
+     "p_change": 0.008718575105605766,
+     "chi2r": 1.2829957759557202
+    },
+    {
+     "kind": "depth",
+     "value": 0.1,
+     "injected_change": 0.1,
+     "recovered_change_minus_baseline": 0.1014146785835719,
+     "err": 0.026626627916382543,
+     "z_recovered_minus_baseline": 3.8087691352450443,
+     "p_change": 2.3763332648454418e-06,
+     "chi2r": 1.2804705018823535
+    },
+    {
+     "kind": "depth",
+     "value": 0.2,
+     "injected_change": 0.2,
+     "recovered_change_minus_baseline": 0.2012863050009979,
+     "err": 0.026836764412364458,
+     "z_recovered_minus_baseline": 7.500393933788068,
+     "p_change": 9.343171836111611e-16,
+     "chi2r": 1.275738269452907
+    },
+    {
+     "kind": "depth",
+     "value": 0.3,
+     "injected_change": 0.3,
+     "recovered_change_minus_baseline": 0.300922013240853,
+     "err": 0.026969987580172067,
+     "z_recovered_minus_baseline": 11.15766228465327,
+     "p_change": 2.6978820565777136e-25,
+     "chi2r": 1.2722973281619268
+    },
+    {
+     "kind": "depth",
+     "value": 0.5,
+     "injected_change": 0.5,
+     "recovered_change_minus_baseline": 0.500256938258219,
+     "err": 0.02713876262237096,
+     "z_recovered_minus_baseline": 18.43329945506979,
+     "p_change": 3.2734824717865e-41,
+     "chi2r": 1.2680775719211703
+    },
+    {
+     "kind": "gray",
+     "value": 2.0,
+     "injected_change": 0.0,
+     "recovered_change_minus_baseline": -2.680188071479961e-09,
+     "err": 0.026288792132842926,
+     "z_recovered_minus_baseline": -1.019517388983257e-07,
+     "p_change": 0.6173255782256509,
+     "chi2r": 1.28438500395515
+    },
+    {
+     "kind": "gray",
+     "value": 0.5,
+     "injected_change": 0.0,
+     "recovered_change_minus_baseline": -2.162449566633917e-09,
+     "err": 0.02628879129954088,
+     "z_recovered_minus_baseline": -8.225747399317226e-08,
+     "p_change": 0.6173255782202104,
+     "chi2r": 1.2843850039546347
+    },
+    {
+     "kind": "colour",
+     "value": 1.0,
+     "injected_change": 0.0,
+     "recovered_change_minus_baseline": 2.0132103442649374e-08,
+     "err": 0.02628878970514289,
+     "z_recovered_minus_baseline": 7.658056406724164e-07,
+     "p_change": 0.6173255796429502,
+     "chi2r": 1.2843850039530469
+    },
+    {
+     "kind": "colour",
+     "value": -1.0,
+     "injected_change": 0.0,
+     "recovered_change_minus_baseline": -1.617067553472129e-08,
+     "err": 0.026288795310244313,
+     "z_recovered_minus_baseline": -6.151166435694314e-07,
+     "p_change": 0.6173255769402625,
+     "chi2r": 1.2843850039582405
+    },
+    {
+     "kind": "scatter",
+     "value": 0.3,
+     "injected_change": 0.0,
+     "recovered_change_minus_baseline": 0.05389394200508879,
+     "err": 0.024373920315027754,
+     "z_recovered_minus_baseline": 2.211131459712718,
+     "p_change": 0.001279900200383308,
+     "chi2r": 1.1452586274389542
+    }
+   ]
+  },
+  "CO2": {
+   "quantity": "ew_um",
+   "baseline_last_minus_first": 0.000312639918589536,
+   "trials": [
+    {
+     "kind": "none",
+     "value": 0.0,
+     "injected_change": 0.0,
+     "recovered_change_minus_baseline": 0.0,
+     "err": 0.0016728290542295766,
+     "z_recovered_minus_baseline": 0.0,
+     "p_change": 0.9650144790038626,
+     "chi2r": 0.9190445922016319
+    },
+    {
+     "kind": "depth",
+     "value": 0.5,
+     "injected_change": 0.017351788005767387,
+     "recovered_change_minus_baseline": 0.017180824498412177,
+     "err": 0.0016601725817431462,
+     "z_recovered_minus_baseline": 10.348818362228748,
+     "p_change": 7.424405471199884e-18,
+     "chi2r": 0.9121748399326023
+    },
+    {
+     "kind": "depth",
+     "value": 1.0,
+     "injected_change": 0.029923935531371987,
+     "recovered_change_minus_baseline": 0.02961968122140001,
+     "err": 0.0015317765011686987,
+     "z_recovered_minus_baseline": 19.33681656481941,
+     "p_change": 3.8580198427091545e-27,
+     "chi2r": 0.9072764226135909
+    },
+    {
+     "kind": "depth",
+     "value": 2.0,
+     "injected_change": 0.04632575090849795,
+     "recovered_change_minus_baseline": 0.04592705674549436,
+     "err": 0.0013516779547590263,
+     "z_recovered_minus_baseline": 33.97781001294951,
+     "p_change": 2.8275202689820767e-36,
+     "chi2r": 0.9022278138798411
+    },
+    {
+     "kind": "depth",
+     "value": 4.0,
+     "injected_change": 0.06280103831273405,
+     "recovered_change_minus_baseline": 0.06238710216161878,
+     "err": 0.0012705497618197019,
+     "z_recovered_minus_baseline": 49.102446859119446,
+     "p_change": 3.2916242177891367e-44,
+     "chi2r": 0.8988102419992356
+    },
+    {
+     "kind": "gray",
+     "value": 2.0,
+     "injected_change": 0.0,
+     "recovered_change_minus_baseline": -4.070123751920285e-11,
+     "err": 0.001672829131676079,
+     "z_recovered_minus_baseline": -2.4330779963415953e-08,
+     "p_change": 0.9650144790064684,
+     "chi2r": 0.9190445922015283
+    },
+    {
+     "kind": "gray",
+     "value": 0.5,
+     "injected_change": 0.0,
+     "recovered_change_minus_baseline": -1.081720043399903e-10,
+     "err": 0.001672829145716809,
+     "z_recovered_minus_baseline": -6.466410787793781e-08,
+     "p_change": 0.9650144790045503,
+     "chi2r": 0.919044592201505
+    },
+    {
+     "kind": "colour",
+     "value": 1.0,
+     "injected_change": 0.0,
+     "recovered_change_minus_baseline": -2.170878407592447e-11,
+     "err": 0.0016728290617925403,
+     "z_recovered_minus_baseline": -1.297728774072239e-08,
+     "p_change": 0.9650144789887513,
+     "chi2r": 0.9190445922007244
+    },
+    {
+     "kind": "colour",
+     "value": -1.0,
+     "injected_change": 0.0,
+     "recovered_change_minus_baseline": -8.773700342634694e-11,
+     "err": 0.0016728292088977637,
+     "z_recovered_minus_baseline": -5.244827323654716e-08,
+     "p_change": 0.9650144790172716,
+     "chi2r": 0.9190445922020115
+    },
+    {
+     "kind": "scatter",
+     "value": 0.3,
+     "injected_change": 0.0,
+     "recovered_change_minus_baseline": -0.002704502182713585,
+     "err": 0.0016462885972258375,
+     "z_recovered_minus_baseline": -1.6427874111932403,
+     "p_change": 0.10853545593571785,
+     "chi2r": 0.7688886047484137
+    }
+   ]
+  }
+ }
+}

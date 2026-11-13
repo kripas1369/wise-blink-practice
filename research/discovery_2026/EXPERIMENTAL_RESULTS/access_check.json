@@ -1,0 +1,842 @@
+{
+ "ra": 127.69444,
+ "dec": -39.1776,
+ "run_at": "2026-11-13T06:07:47+00:00",
+ "sia2": {
+  "spherex_dr1": {
+   "n": 411,
+   "columns": [
+    "s_ra",
+    "s_dec",
+    "facility_name",
+    "instrument_name",
+    "dataproduct_subtype",
+    "calib_level",
+    "dataproduct_type",
+    "energy_bandpassname",
+    "energy_emband",
+    "obs_id",
+    "s_resolution",
+    "em_min",
+    "em_max",
+    "em_res_power",
+    "proposal_title",
+    "access_url",
+    "access_format",
+    "access_estsize",
+    "t_exptime",
+    "s_region",
+    "obs_collection",
+    "obs_intent",
+    "algorithm_name",
+    "facility_keywords",
+    "instrument_keywords",
+    "environment_photometric",
+    "proposal_id",
+    "proposal_pi",
+    "proposal_project",
+    "target_name",
+    "target_type",
+    "target_standard",
+    "target_moving",
+    "target_keywords",
+    "obs_release_date",
+    "s_xel1",
+    "s_xel2",
+    "s_pixel_scale",
+    "position_timedependent",
+    "t_min",
+    "t_max",
+    "t_resolution",
+    "t_xel",
+    "obs_publisher_did",
+    "s_fov",
+    "em_xel",
+    "pol_states",
+    "pol_xel",
+    "cloud_access",
+    "o_ucd",
+    "upload_row_id"
+   ],
+   "t_min_range": [
+    60790.583635,
+    61174.285033
+   ],
+   "bands": [
+    "SPHEREx-D1",
+    "SPHEREx-D2",
+    "SPHEREx-D3",
+    "SPHEREx-D4",
+    "SPHEREx-D5",
+    "SPHEREx-D6"
+   ]
+  },
+  "spherex_dr1_deep": {
+   "n": 0,
+   "columns": [
+    "s_ra",
+    "s_dec",
+    "facility_name",
+    "instrument_name",
+    "dataproduct_subtype",
+    "calib_level",
+    "dataproduct_type",
+    "energy_bandpassname",
+    "energy_emband",
+    "obs_id",
+    "s_resolution",
+    "em_min",
+    "em_max",
+    "em_res_power",
+    "proposal_title",
+    "access_url",
+    "access_format",
+    "access_estsize",
+    "t_exptime",
+    "s_region",
+    "obs_collection",
+    "obs_intent",
+    "algorithm_name",
+    "facility_keywords",
+    "instrument_keywords",
+    "environment_photometric",
+    "proposal_id",
+    "proposal_pi",
+    "proposal_project",
+    "target_name",
+    "target_type",
+    "target_standard",
+    "target_moving",
+    "target_keywords",
+    "obs_release_date",
+    "s_xel1",
+    "s_xel2",
+    "s_pixel_scale",
+    "position_timedependent",
+    "t_min",
+    "t_max",
+    "t_resolution",
+    "t_xel",
+    "obs_publisher_did",
+    "s_fov",
+    "em_xel",
+    "pol_states",
+    "pol_xel",
+    "cloud_access",
+    "o_ucd",
+    "upload_row_id"
+   ]
+  },
+  "spherex_dr1_cube": {
+   "n": 1,
+   "columns": [
+    "s_ra",
+    "s_dec",
+    "facility_name",
+    "instrument_name",
+    "dataproduct_subtype",
+    "calib_level",
+    "dataproduct_type",
+    "energy_bandpassname",
+    "energy_emband",
+    "obs_id",
+    "s_resolution",
+    "em_min",
+    "em_max",
+    "em_res_power",
+    "proposal_title",
+    "access_url",
+    "access_format",
+    "access_estsize",
+    "t_exptime",
+    "s_region",
+    "obs_collection",
+    "obs_intent",
+    "algorithm_name",
+    "facility_keywords",
+    "instrument_keywords",
+    "environment_photometric",
+    "proposal_id",
+    "proposal_pi",
+    "proposal_project",
+    "target_name",
+    "target_type",
+    "target_standard",
+    "target_moving",
+    "target_keywords",
+    "obs_release_date",
+    "s_xel1",
+    "s_xel2",
+    "s_pixel_scale",
+    "position_timedependent",
+    "t_min",
+    "t_max",
+    "t_resolution",
+    "t_xel",
+    "obs_publisher_did",
+    "s_fov",
+    "em_xel",
+    "pol_states",
+    "pol_xel",
+    "cloud_access",
+    "o_ucd",
+    "upload_row_id"
+   ],
+   "t_min_range": [
+    60789.848,
+    60789.848
+   ],
+   "bands": [
+    "SPHEREx"
+   ]
+  },
+  "spherex_qr3": {
+   "n": 14,
+   "columns": [
+    "s_ra",
+    "s_dec",
+    "facility_name",
+    "instrument_name",
+    "dataproduct_subtype",
+    "calib_level",
+    "dataproduct_type",
+    "energy_bandpassname",
+    "energy_emband",
+    "obs_id",
+    "s_resolution",
+    "em_min",
+    "em_max",
+    "em_res_power",
+    "proposal_title",
+    "access_url",
+    "access_format",
+    "access_estsize",
+    "t_exptime",
+    "s_region",
+    "obs_collection",
+    "obs_intent",
+    "algorithm_name",
+    "facility_keywords",
+    "instrument_keywords",
+    "environment_photometric",
+    "proposal_id",
+    "proposal_pi",
+    "proposal_project",
+    "target_name",
+    "target_type",
+    "target_standard",
+    "target_moving",
+    "target_keywords",
+    "obs_release_date",
+    "s_xel1",
+    "s_xel2",
+    "s_pixel_scale",
+    "position_timedependent",
+    "t_min",
+    "t_max",
+    "t_resolution",
+    "t_xel",
+    "obs_publisher_did",
+    "s_fov",
+    "em_xel",
+    "pol_states",
+    "pol_xel",
+    "cloud_access",
+    "o_ucd",
+    "upload_row_id"
+   ],
+   "t_min_range": [
+    61181.143987,
+    61181.216433
+   ],
+   "bands": [
+    "SPHEREx-D1",
+    "SPHEREx-D4"
+   ]
+  },
+  "spherex_qr3_deep": {
+   "n": 0,
+   "columns": [
+    "s_ra",
+    "s_dec",
+    "facility_name",
+    "instrument_name",
+    "dataproduct_subtype",
+    "calib_level",
+    "dataproduct_type",
+    "energy_bandpassname",
+    "energy_emband",
+    "obs_id",
+    "s_resolution",
+    "em_min",
+    "em_max",
+    "em_res_power",
+    "proposal_title",
+    "access_url",
+    "access_format",
+    "access_estsize",
+    "t_exptime",
+    "s_region",
+    "obs_collection",
+    "obs_intent",
+    "algorithm_name",
+    "facility_keywords",
+    "instrument_keywords",
+    "environment_photometric",
+    "proposal_id",
+    "proposal_pi",
+    "proposal_project",
+    "target_name",
+    "target_type",
+    "target_standard",
+    "target_moving",
+    "target_keywords",
+    "obs_release_date",
+    "s_xel1",
+    "s_xel2",
+    "s_pixel_scale",
+    "position_timedependent",
+    "t_min",
+    "t_max",
+    "t_resolution",
+    "t_xel",
+    "obs_publisher_did",
+    "s_fov",
+    "em_xel",
+    "pol_states",
+    "pol_xel",
+    "cloud_access",
+    "o_ucd",
+    "upload_row_id"
+   ]
+  },
+  "spherex_qr2": {
+   "n": 0,
+   "columns": [
+    "s_ra",
+    "s_dec",
+    "facility_name",
+    "instrument_name",
+    "dataproduct_subtype",
+    "calib_level",
+    "dataproduct_type",
+    "energy_bandpassname",
+    "energy_emband",
+    "obs_id",
+    "s_resolution",
+    "em_min",
+    "em_max",
+    "em_res_power",
+    "proposal_title",
+    "access_url",
+    "access_format",
+    "access_estsize",
+    "t_exptime",
+    "s_region",
+    "obs_collection",
+    "obs_intent",
+    "algorithm_name",
+    "facility_keywords",
+    "instrument_keywords",
+    "environment_photometric",
+    "proposal_id",
+    "proposal_pi",
+    "proposal_project",
+    "target_name",
+    "target_type",
+    "target_standard",
+    "target_moving",
+    "target_keywords",
+    "obs_release_date",
+    "s_xel1",
+    "s_xel2",
+    "s_pixel_scale",
+    "position_timedependent",
+    "t_min",
+    "t_max",
+    "t_resolution",
+    "t_xel",
+    "obs_publisher_did",
+    "s_fov",
+    "em_xel",
+    "pol_states",
+    "pol_xel",
+    "cloud_access",
+    "o_ucd",
+    "upload_row_id"
+   ]
+  }
+ },
+ "tap": {
+  "per_collection": {
+   "spherex_dr1": {
+    "n": 410,
+    "mjd": [
+     60790.58363478,
+     61174.286365041
+    ]
+   },
+   "spherex_qr3": {
+    "n": 14,
+    "mjd": [
+     61181.143987326,
+     61181.217765145
+    ]
+   }
+  }
+ },
+ "files": {
+  "spherex_dr1": {
+   "file": "/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/discovery_2026/data/access_check/spherex_dr1_cutout_1.fits",
+   "sha256": "bd372398b7f64b352d48c55e432ade2adadf593c949e57d6a20f6237c920a71b",
+   "bytes": 3951360,
+   "extensions": [
+    {
+     "name": "PRIMARY",
+     "type": "PrimaryHDU",
+     "shape": null
+    },
+    {
+     "name": "IMAGE",
+     "type": "ImageHDU",
+     "shape": [
+      24,
+      29
+     ]
+    },
+    {
+     "name": "FLAGS",
+     "type": "ImageHDU",
+     "shape": [
+      24,
+      29
+     ]
+    },
+    {
+     "name": "VARIANCE",
+     "type": "ImageHDU",
+     "shape": [
+      24,
+      29
+     ]
+    },
+    {
+     "name": "ZODI",
+     "type": "ImageHDU",
+     "shape": [
+      24,
+      29
+     ]
+    },
+    {
+     "name": "EPSF",
+     "type": "BinTableHDU",
+     "shape": [
+      441
+     ]
+    },
+    {
+     "name": "WCS-WAVE",
+     "type": "BinTableHDU",
+     "shape": [
+      1
+     ]
+    }
+   ],
+   "primary_header": {
+    "VERSION": "7.0.5"
+   },
+   "image_header": {
+    "OBSID": "2025W18_1B_0162_1",
+    "DETECTOR": "4",
+    "MJD-AVG": "60794.594162972",
+    "MJD-BEG": "60794.593496782",
+    "MJD-END": "60794.594829161",
+    "DATE-AVG": "2025-04-29T14:15:35.681",
+    "TIMESYS": "UTC",
+    "BUNIT": "MJy / sr",
+    "PSF_FWHM": "8.672612363488842",
+    "CRPIX1A": "-761.0",
+    "CRPIX2A": "-2015.0",
+    "CTYPE1": "RA---TAN-SIP",
+    "CTYPE2": "DEC--TAN-SIP"
+   },
+   "target_pixel_xy": [
+    14.162243665998492,
+    13.579484237693023
+   ],
+   "pixel_scale_arcsec": [
+    6.165883155936001,
+    6.157742247414721
+   ],
+   "wcs_wave_at_target_um": [
+    2.406082237117395,
+    0.03783060291006347
+   ],
+   "parent_pixel_xy": [
+    776.1622436659985,
+    2029.5794842376931
+   ],
+   "image_stats_MJy_sr": {
+    "median": 0.29947513341903687,
+    "nan_frac": 0.0
+   },
+   "epsf": {
+    "columns": [
+     "BINX",
+     "BINY",
+     "XCENTER",
+     "YCENTER",
+     "XWIDTH",
+     "YWIDTH",
+     "NSTAR",
+     "NEFF_MEAN",
+     "CWAVE",
+     "CBAND",
+     "EPSF"
+    ],
+    "n_rows": 441,
+    "header": {
+     "OVSMPX": "5",
+     "OVSMPY": "5",
+     "TDIM11": "(33,33)",
+     "NAXIS2": "441"
+    },
+    "psf_shape": [
+     33,
+     33
+    ],
+    "zone_at_target": {
+     "row": 427,
+     "BINX": 7,
+     "BINY": 20,
+     "CWAVE": 2.420994281768799,
+     "NEFF_MEAN": 4.325934886932373,
+     "dist_px": 61.697792053222656,
+     "sum": 1.0
+    }
+   },
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/dr1/level2/2025W18_1B/l2b-v27-2026-196/4/level2_2025W18_1B_0162_1D4_spx_l2b-v27-2026-196.fits",
+   "rejected_target_off_detector": [
+    {
+     "obs_publisher_did": "ivo://irsa.ipac/spherex_dr1?2025W18_1B_0162_1/D1",
+     "parent_pixel_xy": [
+      770.0545857274191,
+      2041.4063787919513
+     ]
+    }
+   ],
+   "sia_row": {
+    "obs_id": "2025W18_1B_0162_1",
+    "obs_publisher_did": "ivo://irsa.ipac/spherex_dr1?2025W18_1B_0162_1/D4",
+    "t_min": "60794.593497",
+    "t_max": "60794.594829",
+    "em_min": "2.4027e-06",
+    "em_max": "3.8473e-06",
+    "energy_bandpassname": "SPHEREx-D4",
+    "obs_release_date": "2026-09-27 23:59:28"
+   },
+   "wcs_wave_vs_cwave": {
+    "url": "https://nasa-irsa-spherex.s3.us-east-1.amazonaws.com/dr1/spectral_wcs/cal-swcs-v5-2026-191/4/spectral_wcs_D4_spx_cal-swcs-v5-2026-191.fits",
+    "cwave_um": 2.402667760848999,
+    "cband_um": 0.04118731990456581,
+    "wcs_wave_um": 2.406082237117395,
+    "difference_nm": 3.4144762683960828
+   }
+  },
+  "spherex_qr3": {
+   "file": "/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/discovery_2026/data/access_check/spherex_qr3_cutout_0.fits",
+   "sha256": "55c2a58f8c4be88200609f87e2994ea88c704b7c71f0aef8d05d45d28e0c5ab2",
+   "bytes": 3962880,
+   "extensions": [
+    {
+     "name": "PRIMARY",
+     "type": "PrimaryHDU",
+     "shape": null
+    },
+    {
+     "name": "IMAGE",
+     "type": "ImageHDU",
+     "shape": [
+      29,
+      29
+     ]
+    },
+    {
+     "name": "FLAGS",
+     "type": "ImageHDU",
+     "shape": [
+      29,
+      29
+     ]
+    },
+    {
+     "name": "VARIANCE",
+     "type": "ImageHDU",
+     "shape": [
+      29,
+      29
+     ]
+    },
+    {
+     "name": "ZODI",
+     "type": "ImageHDU",
+     "shape": [
+      29,
+      29
+     ]
+    },
+    {
+     "name": "EPSF",
+     "type": "BinTableHDU",
+     "shape": [
+      441
+     ]
+    },
+    {
+     "name": "WCS-WAVE",
+     "type": "BinTableHDU",
+     "shape": [
+      1
+     ]
+    }
+   ],
+   "primary_header": {
+    "VERSION": "7.0.5"
+   },
+   "image_header": {
+    "OBSID": "2026W21_1A_0491_2",
+    "DETECTOR": "4",
+    "MJD-AVG": "61181.215606698",
+    "MJD-BEG": "61181.214940509",
+    "MJD-END": "61181.216272888",
+    "DATE-AVG": "2026-05-21T05:10:28.419",
+    "TIMESYS": "UTC",
+    "BUNIT": "MJy / sr",
+    "PSF_FWHM": "8.672612363488842",
+    "CRPIX1A": "-328.0",
+    "CRPIX2A": "-126.0",
+    "CTYPE1": "RA---TAN-SIP",
+    "CTYPE2": "DEC--TAN-SIP"
+   },
+   "target_pixel_xy": [
+    13.880788806210415,
+    13.535755005237217
+   ],
+   "pixel_scale_arcsec": [
+    6.164840842840774,
+    6.158772578474013
+   ],
+   "wcs_wave_at_target_um": [
+    3.717146044853635,
+    0.10429821370838066
+   ],
+   "parent_pixel_xy": [
+    342.88078880621043,
+    140.5357550052372
+   ],
+   "image_stats_MJy_sr": {
+    "median": 0.2140849530696869,
+    "nan_frac": 0.0
+   },
+   "epsf": {
+    "columns": [
+     "BINX",
+     "BINY",
+     "XCENTER",
+     "YCENTER",
+     "XWIDTH",
+     "YWIDTH",
+     "NSTAR",
+     "NEFF_MEAN",
+     "CWAVE",
+     "CBAND",
+     "EPSF"
+    ],
+    "n_rows": 441,
+    "header": {
+     "OVSMPX": "5",
+     "OVSMPY": "5",
+     "TDIM11": "(33,33)",
+     "NAXIS2": "441"
+    },
+    "psf_shape": [
+     33,
+     33
+    ],
+    "zone_at_target": {
+     "row": 24,
+     "BINX": 3,
+     "BINY": 1,
+     "CWAVE": 3.7138140201568604,
+     "NEFF_MEAN": 4.761913299560547,
+     "dist_px": 5.772211074829102,
+     "sum": 1.0
+    }
+   },
+   "access_url": "https://irsa.ipac.caltech.edu/ibe/data/spherex/qr3/level2/2026W21_1A/l2b-v27-2026-268/4/level2_2026W21_1A_0491_2D4_spx_l2b-v27-2026-268.fits",
+   "rejected_target_off_detector": [],
+   "sia_row": {
+    "obs_id": "2026W21_1A_0491_2",
+    "obs_publisher_did": "ivo://irsa.ipac/spherex_qr3?2026W21_1A_0491_2/D4",
+    "t_min": "61181.214941",
+    "t_max": "61181.216273",
+    "em_min": "2.4027e-06",
+    "em_max": "3.8473e-06",
+    "energy_bandpassname": "SPHEREx-D4",
+    "obs_release_date": "2026-10-10 15:57:41"
+   },
+   "wcs_wave_vs_cwave": {
+    "url": "https://nasa-irsa-spherex.s3.us-east-1.amazonaws.com/qr3/spectral_wcs/cal-swcs-v5-2026-191/4/spectral_wcs_D4_spx_cal-swcs-v5-2026-191.fits",
+    "cwave_um": 3.7170915603637695,
+    "cband_um": 0.10332808643579483,
+    "wcs_wave_um": 3.717146044853635,
+    "difference_nm": 0.054484489865558317
+   }
+  },
+  "spherex_dr1_full": {
+   "file": "/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/discovery_2026/data/access_check/spherex_dr1_full.fits",
+   "sha256": "3f66634edab7ff4d7de22d6b20c7cf1b49aca8919dcdf38ca4662d1b48b713ee",
+   "bytes": 60258240,
+   "extensions": [
+    {
+     "name": "PRIMARY",
+     "type": "PrimaryHDU",
+     "shape": null
+    },
+    {
+     "name": "IMAGE",
+     "type": "ImageHDU",
+     "shape": [
+      2040,
+      2040
+     ]
+    },
+    {
+     "name": "FLAGS",
+     "type": "CompImageHDU",
+     "shape": [
+      2040,
+      2040
+     ]
+    },
+    {
+     "name": "VARIANCE",
+     "type": "ImageHDU",
+     "shape": [
+      2040,
+      2040
+     ]
+    },
+    {
+     "name": "ZODI",
+     "type": "ImageHDU",
+     "shape": [
+      2040,
+      2040
+     ]
+    },
+    {
+     "name": "EPSF",
+     "type": "BinTableHDU",
+     "shape": [
+      441
+     ]
+    },
+    {
+     "name": "WCS-WAVE",
+     "type": "BinTableHDU",
+     "shape": [
+      1
+     ]
+    }
+   ],
+   "primary_header": {
+    "VERSION": "7.0.5"
+   },
+   "image_header": {
+    "OBSID": "2025W18_1B_0162_1",
+    "DETECTOR": "4",
+    "MJD-AVG": "60794.594162972",
+    "MJD-BEG": "60794.593496782",
+    "MJD-END": "60794.594829161",
+    "DATE-AVG": "2025-04-29T14:15:35.681",
+    "TIMESYS": "UTC",
+    "BUNIT": "MJy / sr",
+    "PSF_FWHM": "8.672612363488842",
+    "CRPIX1A": "1.0",
+    "CRPIX2A": "1.0",
+    "CTYPE1": "RA---TAN-SIP",
+    "CTYPE2": "DEC--TAN-SIP"
+   },
+   "target_pixel_xy": [
+    776.1622436659985,
+    2029.5794842376931
+   ],
+   "pixel_scale_arcsec": [
+    6.165883155936001,
+    6.157742247414721
+   ],
+   "wcs_wave_at_target_um": [
+    2.406082237117395,
+    0.03783060291006347
+   ],
+   "parent_pixel_xy": [
+    776.1622436659985,
+    2029.5794842376931
+   ],
+   "image_stats_MJy_sr": {
+    "median": 0.1913931965827942,
+    "nan_frac": 0.0005714148404459824
+   },
+   "epsf": {
+    "columns": [
+     "BINX",
+     "BINY",
+     "XCENTER",
+     "YCENTER",
+     "XWIDTH",
+     "YWIDTH",
+     "NSTAR",
+     "NEFF_MEAN",
+     "CWAVE",
+     "CBAND",
+     "EPSF"
+    ],
+    "n_rows": 441,
+    "header": {
+     "OVSMPX": "5",
+     "OVSMPY": "5",
+     "TDIM11": "(33,33)",
+     "NAXIS2": "441"
+    },
+    "psf_shape": [
+     33,
+     33
+    ],
+    "zone_at_target": {
+     "row": 427,
+     "BINX": 7,
+     "BINY": 20,
+     "CWAVE": 2.420994281768799,
+     "NEFF_MEAN": 4.325934886932373,
+     "dist_px": 61.697792053222656,
+     "sum": 1.0
+    }
+   },
+   "cutout_equals_parent_pixels": true,
+   "cutout_offset_in_parent": [
+    762,
+    2016
+   ],
+   "detector": 4,
+   "wcs_wave_vs_cwave": {
+    "url": "https://nasa-irsa-spherex.s3.us-east-1.amazonaws.com/dr1/spectral_wcs/cal-swcs-v5-2026-191/4/spectral_wcs_D4_spx_cal-swcs-v5-2026-191.fits",
+    "cwave_um": 2.402667760848999,
+    "cband_um": 0.04118731990456581,
+    "wcs_wave_um": 2.406082237117395,
+    "difference_nm": 3.4144762683960828
+   }
+  }
+ }
+}

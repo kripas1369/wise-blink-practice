@@ -1,0 +1,34 @@
+{
+ "source_id": "4659556972307750528",
+ "tic_clock": "31511621",
+ "period": 2.628869,
+ "tess_secondary_phase": -0.5,
+ "eclipses": {
+  "primary": {
+   "n": 117,
+   "n_boot": 1000,
+   "depth": 0.3348,
+   "depth_err": 0.0861,
+   "phase_offset": 0.01614,
+   "phase_offset_err": 0.00621,
+   "offset_minutes": 61.1,
+   "offset_minutes_err": 23.5,
+   "width_sigma_phase": 0.04128,
+   "tess_width_sigma_phase": 0.03773,
+   "clock_error_phase": 0.00365
+  },
+  "secondary": {
+   "n": 117,
+   "n_boot": 1000,
+   "depth": 0.3506,
+   "depth_err": 0.1058,
+   "phase_offset": 0.01966,
+   "phase_offset_err": 0.01067,
+   "offset_minutes": 74.4,
+   "offset_minutes_err": 40.4,
+   "width_sigma_phase": 0.06756,
+   "tess_width_sigma_phase": 0.03773,
+   "clock_error_phase": 0.00365
+  }
+ }
+}

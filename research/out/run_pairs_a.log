@@ -1,0 +1,82 @@
+
+=== TIC 140659978 / TIC 140659980: 635 images (DR1+QR3), 8 in primary, 26 in secondary, clock TIC 140659978 phase error 7e-05 [0 s]
+TIC 140659978 + TIC 140659980: 20.8″ apart, clock from TIC 140659978 (P 9.440095440989992 d, phase error 0.0001), field 3.0′, 635 SPHEREx images
+  downloading 334 cutouts
+  320 exposures on the grid
+  circle TIC 140659978: primary None, secondary {'depth': 0.1241, 'err': np.float64(0.061), 'n': 12}, scatter 3.03%
+  circle TIC 140659980: primary None, secondary {'depth': -0.104, 'err': np.float64(0.1679), 'n': 7}, scatter 2.66%
+  two-star fit, all detectors: A None, B None
+  per-exposure two-star fit TIC 140659978: primary None, secondary {'depth': 0.1881, 'err': 0.0185, 'n': 9}, scatter 3.69%
+  per-exposure two-star fit TIC 140659980: primary None, secondary {'depth': -0.0043, 'err': 0.0116, 'n': 9}, scatter 2.78%
+/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/out/pair_140659978_140659980/which_star.png
+  [910 s]
+
+=== TIC 150101476 / TIC 150101472: 6938 images (DR1+QR3), 266 in primary, 192 in secondary, clock TIC 150101472 phase error 0.0008 [309 s]
+TIC 150101476 + TIC 150101472: 32.2″ apart, clock from TIC 150101472 (P 3.2785241555933933 d, phase error 0.0007), field 3.0′, 6938 SPHEREx images
+  downloading 604 cutouts
+  599 exposures on the grid
+  circle TIC 150101476: primary {'depth': 0.0223, 'err': np.float64(0.0032), 'n': 71}, secondary {'depth': 0.0048, 'err': np.float64(0.0041), 'n': 44}, scatter 2.13%
+  circle TIC 150101472: primary {'depth': -0.0067, 'err': np.float64(0.0043), 'n': 81}, secondary {'depth': -0.0131, 'err': np.float64(0.0083), 'n': 37}, scatter 2.82%
+  D1 0.949 µm (22 pairs, σ 0.676 px): A 0.047 ± 0.032, B 0.070 ± 0.023
+  D2 1.263 µm (6 pairs, σ 0.653 px): A -0.005 ± 0.032, B -0.059 ± 0.025
+  D3 2.038 µm (19 pairs, σ 0.645 px): A 0.020 ± 0.022, B -0.059 ± 0.014
+  D4 3.164 µm (24 pairs, σ 0.738 px): A 0.001 ± 0.018, B -0.014 ± 0.009
+  D5 4.009 µm (6 pairs, σ 0.73 px): A 0.029 ± 0.023, B -0.026 ± 0.013
+  D6 4.742 µm (21 pairs, σ 0.733 px): A 0.021 ± 0.015, B 0.007 ± 0.007
+  two-star fit, all detectors: A {'depth': 0.0176, 'err': 0.0085, 'n_detectors': 6, 'chi2_red': 0.51}, B {'depth': -0.01, 'err': 0.0126, 'n_detectors': 6, 'chi2_red': 7.03}
+  per-exposure two-star fit TIC 150101476: primary {'depth': 0.024, 'err': np.float64(0.0061), 'n': 99}, secondary {'depth': 0.0015, 'err': 0.0084, 'n': 53}, scatter 4.13%
+  per-exposure two-star fit TIC 150101472: primary {'depth': -0.0013, 'err': np.float64(0.0066), 'n': 99}, secondary {'depth': 0.0009, 'err': np.float64(0.0064), 'n': 53}, scatter 4.29%
+/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/out/pair_150101476_150101472/which_star.png
+  [12030 s]
+
+=== TIC 243391171 / TIC 243391162: 360 images (DR1+QR3), 12 in primary, 142 in secondary, clock TIC 243391171 phase error 0.016 [268 s]
+TIC 243391171 + TIC 243391162: 23.7″ apart, clock from TIC 243391171 (P 1.5169916264992531 d, phase error 0.0144), field 3.0′, 360 SPHEREx images
+  downloading 334 cutouts
+  330 exposures on the grid
+  circle TIC 243391171: primary None, secondary {'depth': -0.0034, 'err': np.float64(0.0068), 'n': 16}, scatter 1.65%
+  circle TIC 243391162: primary None, secondary {'depth': 0.0005, 'err': 0.0058, 'n': 18}, scatter 2.44%
+  two-star fit, all detectors: A None, B None
+/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/which_star_pair.py:215: RuntimeWarning: All-NaN slice encountered
+  pk = lambda p: max(float(np.nanmax(np.where(np.hypot(xx - p[0], yy - p[1]) < 1.5, O, np.nan))), 1e-6) * 2 * np.pi
+  per-exposure two-star fit TIC 243391171: primary None, secondary {'depth': -0.0039, 'err': np.float64(0.0092), 'n': 19}, scatter 3.36%
+  per-exposure two-star fit TIC 243391162: primary None, secondary {'depth': 0.004, 'err': 0.0111, 'n': 19}, scatter 2.85%
+/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/out/pair_243391171_243391162/which_star.png
+  [1340 s]
+
+=== TIC 99028324 / TIC 99028319: 351 images (DR1+QR3), 10 in primary, 8 in secondary, clock TIC 99028324 phase error 0.01027 [192 s]
+TIC 99028324 + TIC 99028319: 14.6″ apart, clock from TIC 99028324 (P 9.404339992058796 d, phase error 0.0094), field 3.0′, 351 SPHEREx images
+  downloading 318 cutouts
+  315 exposures on the grid
+  circle TIC 99028324: primary None, secondary {'depth': -0.0552, 'err': 0.0347, 'n': 5}, scatter 7.76%
+  circle TIC 99028319: primary None, secondary {'depth': 0.0053, 'err': 0.0125, 'n': 6}, scatter 3.07%
+  two-star fit, all detectors: A None, B None
+  per-exposure two-star fit TIC 99028324: primary None, secondary {'depth': 0.0383, 'err': 0.0404, 'n': 6}, scatter 6.74%
+  per-exposure two-star fit TIC 99028319: primary None, secondary {'depth': -0.0164, 'err': 0.0185, 'n': 6}, scatter 4.71%
+/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/out/pair_99028324_99028319/which_star.png
+  [1207 s]
+
+=== TIC 124712820 / TIC 124712813: 323 images (DR1+QR3), 18 in primary, 32 in secondary, clock TIC 124712813 phase error 0.27336 [189 s]
+TIC 124712820 + TIC 124712813: 12.9″ apart, clock from TIC 124712813 (P 0.8256579979243542 d, phase error 0.2428), field 3.0′, 323 SPHEREx images
+  downloading 270 cutouts
+  270 exposures on the grid
+  circle TIC 124712820: primary None, secondary {'depth': -0.0038, 'err': np.float64(0.0084), 'n': 16}, scatter 1.72%
+  circle TIC 124712813: primary None, secondary {'depth': 0.0095, 'err': np.float64(0.0147), 'n': 15}, scatter 4.36%
+  two-star fit, all detectors: A None, B None
+  per-exposure two-star fit TIC 124712820: primary None, secondary {'depth': -0.0127, 'err': np.float64(0.0121), 'n': 18}, scatter 3.58%
+  per-exposure two-star fit TIC 124712813: primary None, secondary {'depth': 0.0129, 'err': np.float64(0.0192), 'n': 18}, scatter 6.58%
+/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/out/pair_124712820_124712813/which_star.png
+  [1014 s]
+
+=== TIC 280033934 / TIC 280033918: 492 images (DR1+QR3), 56 in primary, 0 in secondary, clock TIC 280033934 phase error 0.00099 [247 s]
+TIC 280033934 + TIC 280033918: 68.2″ apart, clock from TIC 280033934 (P 0.2787725099660905 d, phase error 0.0009), field 3.0′, 492 SPHEREx images
+  downloading 238 cutouts
+  332 exposures on the grid
+  circle TIC 280033934: primary {'depth': 0.2269, 'err': 0.0168, 'n': 19}, secondary None, scatter 7.37%
+  circle TIC 280033918: primary {'depth': -0.0019, 'err': 0.0064, 'n': 10}, secondary None, scatter 1.99%
+  D2 1.308 µm (10 pairs, σ 0.674 px): A 0.250 ± 0.017, B -0.004 ± 0.026
+  D5 4.07 µm (10 pairs, σ 0.728 px): A 0.213 ± 0.022, B -0.012 ± 0.017
+  two-star fit, all detectors: A {'depth': 0.2359, 'err': 0.018, 'n_detectors': 2, 'chi2_red': 1.8}, B {'depth': -0.0095, 'err': 0.0143, 'n_detectors': 2, 'chi2_red': 0.06}
+  per-exposure two-star fit TIC 280033934: primary {'depth': 0.2069, 'err': 0.0215, 'n': 11}, secondary None, scatter 7.72%
+  per-exposure two-star fit TIC 280033918: primary {'depth': -0.0119, 'err': 0.0103, 'n': 11}, secondary None, scatter 3.57%
+/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/out/pair_280033934_280033918/which_star.png
+  [947 s]

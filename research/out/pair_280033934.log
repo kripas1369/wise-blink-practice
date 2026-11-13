@@ -1,0 +1,8 @@
+TIC 280033934 + TIC 280033918: 68.1″ apart, clock from TIC 280033934 (P 0.2787725099660905 d, phase error 0.0009), field 3.0′, 170 SPHEREx images
+  downloading 152 cutouts
+  126 exposures on the grid
+  circle TIC 280033934: primary {'depth': 0.2589, 'err': 0.041, 'n': 3}, secondary None, scatter 7.15%
+  circle TIC 280033918: primary None, secondary None, scatter 1.6%
+  two-star fit, all detectors: A None, B None
+  per-exposure two-star fit TIC 280033934: primary None, secondary None, scatter 6.46%
+  per-exposure two-star fit TIC 280033918: primary None, secondary None, scatter 3.77%

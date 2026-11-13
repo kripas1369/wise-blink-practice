@@ -1,0 +1,20 @@
+{
+ "CTRL": {
+  "n_visits": 87,
+  "n_targets": 31,
+  "median_log10_ratio": 0.05226540332888081,
+  "robust_sigma_dex": 0.0882417252892769
+ },
+ "BGSTAR": {
+  "n_visits": 34,
+  "n_targets": 12,
+  "median_log10_ratio": 0.02163868751610595,
+  "robust_sigma_dex": 0.0575057177188143
+ },
+ "VAR": {
+  "n_visits": 94,
+  "n_targets": 35,
+  "median_log10_ratio": 0.09922692796835463,
+  "robust_sigma_dex": 0.3598667443304445
+ }
+}

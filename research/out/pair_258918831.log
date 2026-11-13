@@ -1,0 +1,8 @@
+TIC 258918831 + TIC 258918835: 40.8″ apart, clock from TIC 258918831 (P 5.985604384617206 d, phase error 0.0083), field 3.0′, 755 SPHEREx images
+  downloading 284 cutouts
+  271 exposures on the grid
+  circle TIC 258918831: primary {'depth': 0.0331, 'err': np.float64(0.0118), 'n': 9}, secondary None, scatter 2.6%
+  circle TIC 258918835: primary {'depth': 0.0077, 'err': np.float64(0.0183), 'n': 8}, secondary None, scatter 2.82%
+  D3 1.951 µm (3 pairs, σ 0.65 px): A -0.101 ± 0.034, B 0.092 ± 0.038
+  D6 4.679 µm (4 pairs, σ 0.759 px): A 0.059 ± 0.019, B -0.049 ± 0.027
+  two-star fit, all detectors: A {'depth': 0.0194, 'err': 0.0689, 'n_detectors': 2, 'chi2_red': 16.86}, B {'depth': -0.0018, 'err': 0.0666, 'n_detectors': 2, 'chi2_red': 9.06}

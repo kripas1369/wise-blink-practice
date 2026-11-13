@@ -14,9 +14,13 @@ from api.nasa.gov; the API here downloads through IRSA when a folder is not prep
     /api/lightcurve[&x=&y=]                    the target's light curve, or one measured at a clicked pixel
     /api/proof                                 measured motion vs Gaia, exposures used, data releases
     /api/spectrum                              brightness against wavelength per visit, all detectors with frames
+    /api/methane[&prepare=1]                   methane vision (3.3 µm vs 4 µm) of the target; prepare=1 downloads
+                                               the D4/D5 exposures at those wavelengths (HTTP 202 meanwhile)
     /api/known-objects&a=&b=&spot=             JPL known asteroids/comets near one spot of a difference map
     POST /api/ask (same location parameters)   Google Gemini explains the current view from our files only
                                                (body {"question", "view"}; needs GEMINI_API_KEY)
+    /api/eclipse?tic=                          a TESS eclipsing binary folded on its orbit (Eclipse mode): the
+                                               prepared folder's URL, or a background build (HTTP 202 meanwhile)
 """
 import json
 import math
@@ -33,7 +37,8 @@ from fastapi.responses import JSONResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
-from backend.app import archive
+from backend.app import archive, eclipses
+from backend.app.eclipse_build import build as eclipse_build
 from backend.app.ask import PER_MINUTE as ASK_PER_MINUTE, AskUnavailable, allow as allow_question, ask as ask_about
 from backend.app.config import CACHE_DIR, DETECTORS, REPO_ROOT
 from backend.app.coverage import coverage_answer
@@ -41,6 +46,7 @@ from backend.app.diff import write_diff
 from backend.app.gaia import write_gaia
 from backend.app.gif import write_gif
 from backend.app.lightcurve import lightcurve_at, write_lightcurve
+from backend.app.methane import NotTestable, write_methane
 from backend.app.motion import position_at, separation_arcsec
 from backend.app.known_objects import check as check_known
 from backend.app.originals import write_originals
@@ -345,6 +351,48 @@ def spectrum(loc: dict = Depends(location)):
     return json.loads(path.read_text())
 
 
+def _run_methane_job(target_dir: Path, folder: Path) -> None:
+    job = _jobs[str(folder)]
+    try:
+        job["stage"] = "asking NASA IRSA for every D4 and D5 image of this position"
+        write_methane(target_dir, log=lambda text: job.update(stage=f"downloading SPHEREx cutouts: {text}"))
+        job.update(status="ready", stage="done")
+    except NotTestable as exc:
+        job.update(status="none", error=str(exc))
+    except Exception as exc:
+        job.update(status="failed", error=f"{exc.__class__.__name__}: {exc}", failed_at=time.time())
+        traceback.print_exc()
+
+
+@app.get("/api/methane")
+def methane_view(loc: dict = Depends(location), prepare: bool = False):
+    """Methane vision for the target of these frames; prepare=1 starts the download if it is not made yet."""
+    target_dir = loc["folder"].parent
+    url = loc["url"][:loc["url"].rstrip("/").rfind("/") + 1] + "methane/"
+    folder = target_dir / "methane"
+    if (folder / "methane.json").exists():
+        return {**json.loads((folder / "methane.json").read_text()), "base_url": url}
+    with _jobs_lock:
+        job = _jobs.get(str(folder))
+        if job and job["status"] == "failed" and time.time() - job["failed_at"] > FAILED_JOB_RETRY_SECONDS:
+            job = None
+        if job is None and prepare:
+            job = {"status": "working", "stage": "waiting for the previous job", "warnings": [],
+                   "started_at": datetime.now(timezone.utc).strftime("%H:%M UTC")}
+            _jobs[str(folder)] = job
+            _pool.submit(_run_methane_job, target_dir, folder)
+    if job is None:
+        return JSONResponse({"error": "Methane vision is not prepared for this position yet.", "can_prepare": True},
+                            status_code=404)
+    if job["status"] == "working":
+        raise Working(f"Preparing methane vision (started {job['started_at']}): {job['stage']}.")
+    if job["status"] == "none":
+        raise ApiError(404, job["error"])
+    if job["status"] == "failed":
+        raise ApiError(502, f"Could not prepare methane vision: {job['error']}")
+    return {**json.loads((folder / "methane.json").read_text()), "base_url": url}
+
+
 @app.get("/api/known-objects")
 def known(loc: dict = Depends(location), a: int = Query(..., ge=0), b: int = Query(..., ge=0),
           spot: int = Query(..., ge=0)):
@@ -375,6 +423,66 @@ def ask_view(body: AskBody, request: Request, loc: dict = Depends(location)):
         raise ApiError(400, str(exc))
     except AskUnavailable as exc:
         raise ApiError(503, f"The AI explainer is unavailable: {exc}.")
+
+
+# ---------- Eclipse mode ----------
+
+ECLIPSE_PREPARED = PREPARED_DIR / "eclipse"
+ECLIPSE_JOBS = JOBS_DIR / "eclipse"
+ECLIPSE_LIVE_BUDGET = {"primary": 20, "secondary": 10, "outside": 25}   # ~330 cutouts, about half an hour
+ECLIPSE_MIN_IN_PRIMARY = 12
+
+
+def _run_eclipse_job(tess_id: str, folder: Path) -> None:
+    job = _jobs[str(folder)]
+    log = lambda text: job.update(stage=text.strip())
+    try:
+        eph = eclipses.by_tess_id(tess_id)
+        job["stage"] = "asking NASA IRSA which SPHEREx images contain the binary (a few minutes in the deep field)"
+        fc = eclipses.forecast(eph, eclipses.cached_images(eph))
+        if fc["n_primary"] < ECLIPSE_MIN_IN_PRIMARY:
+            job.update(status="none", error=f"SPHEREx has only {fc['n_primary']} exposures in the primary eclipse of "
+                                            f"TIC {tess_id} (need {ECLIPSE_MIN_IN_PRIMARY})")
+            return
+        archive.trim_cutout_cache()
+        job["stage"] = f"downloading up to {sum(ECLIPSE_LIVE_BUDGET.values()) * len(DETECTORS)} SPHEREx cutouts"
+        eclipse_build(tess_id, out_root=ECLIPSE_JOBS, budget=ECLIPSE_LIVE_BUDGET, log=log)
+        job.update(status="ready", stage="done")
+    except Exception as exc:
+        job.update(status="failed", error=f"{exc.__class__.__name__}: {exc}", failed_at=time.time())
+        traceback.print_exc()
+
+
+@app.get("/api/eclipse")
+def eclipse(tic: str = Query(..., pattern=r"^(?:[Tt][Ii][Cc])?\s*\d{1,12}$")):
+    """A TESS eclipsing binary seen by SPHEREx: ready folder URL, or start/poll a background build (HTTP 202)."""
+    tess_id = tic.lower().removeprefix("tic").strip()
+    try:
+        eph = eclipses.by_tess_id(tess_id)
+    except eclipses.CatalogUnavailable as exc:
+        raise ApiError(503, f"The TESS eclipsing-binary catalogue is unavailable: {exc}")
+    if eph is None:
+        raise ApiError(404, f"TIC {tess_id} is not in TESS-EBs v1.0 (Prša et al. 2022), so there is no eclipse clock")
+    for root, url in ((ECLIPSE_PREPARED, "/frames/eclipse/"), (ECLIPSE_JOBS, "/jobframes/eclipse/")):
+        if (root / f"tic{tess_id}" / "eclipse.json").exists():
+            return {"status": "ready", "url": f"{url}tic{tess_id}/", "key": f"tic{tess_id}"}
+    folder = ECLIPSE_JOBS / f"tic{tess_id}"
+    with _jobs_lock:
+        job = _jobs.get(str(folder))
+        if job and job["status"] == "failed" and time.time() - job["failed_at"] > FAILED_JOB_RETRY_SECONDS:
+            job = None
+        if job is None:
+            job = {"status": "working", "stage": "waiting for the previous job", "warnings": [],
+                   "started_at": datetime.now(timezone.utc).strftime("%H:%M UTC")}
+            _jobs[str(folder)] = job
+            _pool.submit(_run_eclipse_job, tess_id, folder)
+    if job["status"] == "working":
+        raise Working(f"Preparing TIC {tess_id} (started {job['started_at']}): {job['stage']}.")
+    if job["status"] == "none":
+        raise ApiError(404, job["error"])
+    if job["status"] == "failed":
+        raise ApiError(502, f"Could not prepare TIC {tess_id}: {job['error']}")
+    return {"status": "ready", "url": f"/jobframes/eclipse/tic{tess_id}/", "key": f"tic{tess_id}"}
 
 
 @app.get("/api/{rest:path}")

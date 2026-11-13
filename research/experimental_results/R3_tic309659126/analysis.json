@@ -1,0 +1,212 @@
+{
+ "name": "R3_tic309659126",
+ "tic": "309659126",
+ "n_exposures": 651,
+ "n_stars": 5,
+ "references_dropped_for_phase_signal": [],
+ "stars": [
+  {
+   "source_id": "4761080447161537792",
+   "g_mag": 10.554373741149902,
+   "x": 19.09,
+   "y": 18.92,
+   "merged": [],
+   "n": 634,
+   "coverage": 0.974,
+   "scatter_pct": 6.29,
+   "median_err_pct": 0.4,
+   "chi2_red": 334.21,
+   "chi2_excess_sigma": null,
+   "is_reference": true,
+   "von_neumann_eta": 1.801,
+   "ls_period_d": 300.0,
+   "ls_power": 0.0688,
+   "ls_fap": 4.555635449735602e-06,
+   "ls_fap_bonferroni": 2.277817724867801e-05,
+   "amplitude_pct": 12.34,
+   "variable_flag": false,
+   "jitter_pct": 6.26,
+   "primary": {
+    "depth": -0.0042,
+    "err": 0.0079,
+    "n": 92
+   },
+   "secondary": {
+    "depth": 0.0026,
+    "err": 0.0105,
+    "n": 94
+   },
+   "phase_scan": {
+    "snr": 1.96,
+    "phase": 0.145,
+    "depth": 0.0413,
+    "err": 0.0211,
+    "n": 9
+   }
+  },
+  {
+   "source_id": "4761080447161537664",
+   "g_mag": 11.380269050598145,
+   "x": 18.54,
+   "y": 20.06,
+   "merged": [],
+   "n": 635,
+   "coverage": 0.975,
+   "scatter_pct": 7.93,
+   "median_err_pct": 0.38,
+   "chi2_red": 574.51,
+   "chi2_excess_sigma": null,
+   "is_reference": false,
+   "von_neumann_eta": 1.71,
+   "ls_period_d": 0.12414,
+   "ls_power": 0.4187,
+   "ls_fap": 2.944765260472542e-70,
+   "ls_fap_bonferroni": 1.472382630236271e-69,
+   "amplitude_pct": 20.59,
+   "variable_flag": false,
+   "jitter_pct": 9.06,
+   "primary": {
+    "depth": 0.214,
+    "err": 0.0094,
+    "n": 93
+   },
+   "secondary": {
+    "depth": 0.1612,
+    "err": 0.0105,
+    "n": 92
+   },
+   "phase_scan": {
+    "snr": 16.48,
+    "phase": 0.01,
+    "depth": 0.2187,
+    "err": 0.0133,
+    "n": 47
+   }
+  },
+  {
+   "source_id": "4761083505178249344",
+   "g_mag": 13.416011810302734,
+   "x": 31.74,
+   "y": 37.54,
+   "merged": [],
+   "n": 626,
+   "coverage": 0.962,
+   "scatter_pct": 4.39,
+   "median_err_pct": 1.3,
+   "chi2_red": 15.28,
+   "chi2_excess_sigma": null,
+   "is_reference": true,
+   "von_neumann_eta": 1.962,
+   "ls_period_d": 0.30742,
+   "ls_power": 0.0553,
+   "ls_fap": 0.00048077686195284014,
+   "ls_fap_bonferroni": 0.0024038843097642006,
+   "amplitude_pct": 10.02,
+   "variable_flag": false,
+   "jitter_pct": 3.48,
+   "primary": {
+    "depth": -0.0225,
+    "err": 0.0066,
+    "n": 92
+   },
+   "secondary": {
+    "depth": -0.0029,
+    "err": 0.007,
+    "n": 91
+   },
+   "phase_scan": {
+    "snr": 1.98,
+    "phase": 0.735,
+    "depth": 0.0303,
+    "err": 0.0153,
+    "n": 7
+   }
+  },
+  {
+   "source_id": "4760989462574478080",
+   "g_mag": 15.91630744934082,
+   "x": 37.09,
+   "y": 5.14,
+   "merged": [],
+   "n": 626,
+   "coverage": 0.962,
+   "scatter_pct": 7.4,
+   "median_err_pct": 2.21,
+   "chi2_red": 12.28,
+   "chi2_excess_sigma": null,
+   "is_reference": true,
+   "von_neumann_eta": 1.993,
+   "ls_period_d": 0.25052,
+   "ls_power": 0.0411,
+   "ls_fap": 0.041141854025629754,
+   "ls_fap_bonferroni": 0.20570927012814877,
+   "amplitude_pct": 15.66,
+   "variable_flag": false,
+   "jitter_pct": 5.63,
+   "primary": {
+    "depth": -0.0224,
+    "err": 0.016,
+    "n": 92
+   },
+   "secondary": {
+    "depth": -0.003,
+    "err": 0.0098,
+    "n": 90
+   },
+   "phase_scan": {
+    "snr": 1.77,
+    "phase": 0.75,
+    "depth": 0.0409,
+    "err": 0.0231,
+    "n": 8
+   }
+  },
+  {
+   "source_id": "4761080344082324352",
+   "g_mag": 16.042041778564453,
+   "x": 14.97,
+   "y": 5.12,
+   "merged": [],
+   "n": 523,
+   "coverage": 0.803,
+   "scatter_pct": 11.36,
+   "median_err_pct": 4.81,
+   "chi2_red": 6.06,
+   "chi2_excess_sigma": null,
+   "is_reference": false,
+   "von_neumann_eta": 1.951,
+   "ls_period_d": 0.12353,
+   "ls_power": 0.0456,
+   "ls_fap": 0.09857538941708527,
+   "ls_fap_bonferroni": 0.49287694708542634,
+   "amplitude_pct": 26.66,
+   "variable_flag": false,
+   "jitter_pct": 10.43,
+   "primary": {
+    "depth": 0.0343,
+    "err": 0.0156,
+    "n": 75
+   },
+   "secondary": {
+    "depth": -0.0107,
+    "err": 0.0176,
+    "n": 76
+   },
+   "phase_scan": {
+    "snr": 2.58,
+    "phase": 0.12,
+    "depth": 0.1303,
+    "err": 0.0506,
+    "n": 6
+   }
+  }
+ ],
+ "clock": {
+  "tess_id": "309659126",
+  "period": 0.24827011515048703,
+  "bjd0": 1354.4034598349244,
+  "phase_error_2026": 0.00898,
+  "sec_phase": 0.4947210351741598,
+  "prim_width": 0.0948706350698347
+ }
+}

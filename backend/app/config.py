@@ -48,3 +48,10 @@ CACHE_DIR = REPO_ROOT / "cache"
 # IRSA answered "503 busy" when we sent 4+ cutout requests at once (31 Oct 2026).
 MAX_PARALLEL_DOWNLOADS = 3
 RETRIES = 4
+
+# The cutout service always sends the full PSF cube (121 x 101 x 101, ~4.9 MB) with each cutout and
+# cannot leave it out (IRSA cutout docs, checked 12 Nov 2026). Nothing here reads it (PSF_FWHM is an
+# IMAGE header keyword), so it is dropped before saving: ~5 MB -> ~0.1 MB per cutout.
+DROP_PSF_FROM_CUTOUTS = True
+# Live jobs remove the least recently used cutouts once the cache passes this size.
+CUTOUT_CACHE_MAX_GB = 10.0

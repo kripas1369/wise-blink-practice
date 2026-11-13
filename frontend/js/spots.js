@@ -3,6 +3,8 @@
 import { formatDec, formatRa } from "./coords.js";
 import { framesQuery, hasApi, loadExtra } from "./frames.js";
 import { percentAt } from "./sky.js";
+import { buildSpotEvidence, downloadSpotEvidence } from "./spotEvidence.js";
+import { targetBase } from "./spectrum.js";
 
 const $ = (id) => document.getElementById(id);
 
@@ -45,9 +47,9 @@ export function createSpotList({ onPick }) {
   const el = {
     box: $("spot-view"), count: $("spot-count"), list: $("spot-list"), detail: $("spot-detail"),
     title: $("spot-detail-title"), why: $("spot-why"), alt: $("spot-else"), confirm: $("spot-confirm"),
-    jpl: $("spot-jpl"), result: $("spot-jpl-result"), marks: $("diff-marks-d"),
+    jpl: $("spot-jpl"), exportBtn: $("spot-export"), result: $("spot-jpl-result"), marks: $("diff-marks-d"),
   };
-  let current = null; // { loaded, a, b, pair, index }
+  let current = null; // { loaded, a, b, pair, index, jpl, diffPair }
   let version = 0;
   let spotsFor = { base: null, data: null };
 
@@ -81,6 +83,7 @@ export function createSpotList({ onPick }) {
     fill(el.confirm, spot.confirm);
     el.result.replaceChildren();
     el.jpl.disabled = false;
+    if (el.exportBtn) el.exportBtn.disabled = false;
     onPick(spot.peak_xy, index);
   }
 
@@ -111,6 +114,7 @@ export function createSpotList({ onPick }) {
       return;
     }
     const { headline, lines } = knownText(body);
+    current.jpl = body;
     const strong = document.createElement("p");
     strong.className = "proof-verdict";
     strong.textContent = headline;
@@ -119,8 +123,34 @@ export function createSpotList({ onPick }) {
     el.result.replaceChildren(strong, ul);
   }
 
+  async function exportEvidence() {
+    if (!current || current.index === null) return;
+    el.exportBtn.disabled = true;
+    const { loaded, pair, index } = current;
+    const tb = targetBase(loaded.base);
+    const [spectrum, originals, diff] = await Promise.all([
+      loadExtra(tb, "spectrum.json").catch(() => null),
+      loadExtra(loaded.base, "originals.json").catch(() => null),
+      loadExtra(loaded.base, "diff.json").catch(() => null),
+    ]);
+    const diffPair = diff && diff.pairs.find((p) => p.a === current.a && p.b === current.b);
+    const bundle = buildSpotEvidence({
+      manifest: loaded.manifest,
+      base: loaded.base,
+      pair,
+      spotIndex: index,
+      jpl: current.jpl,
+      spectrum,
+      originals,
+      diffPair,
+    });
+    const slug = `${loaded.manifest.target || "target"}-d${loaded.manifest.band}-spot${index + 1}`;
+    downloadSpotEvidence(bundle, `spot-evidence-${slug}.json`);
+    el.exportBtn.disabled = false;
+  }
+
   /** Called by the difference view after it draws a pair (loaded = { manifest, base, where }). */
-  async function show(loaded, a, b) {
+  async function show(loaded, a, b, diffPair = null) {
     const v = ++version;
     current = null;
     el.detail.hidden = true;
@@ -145,7 +175,7 @@ export function createSpotList({ onPick }) {
       el.list.textContent = "No spot list was made for these frames yet.";
       return;
     }
-    current = { loaded, a, b, pair, index: null };
+    current = { loaded, a, b, pair, index: null, jpl: null, diffPair };
     el.box.hidden = false;
     el.count.textContent = pair.n_spots > pair.spots.length
       ? `${pair.spots.length} strongest of ${pair.n_spots}` : `${pair.n_spots} found`;
@@ -165,5 +195,6 @@ export function createSpotList({ onPick }) {
   }
 
   el.jpl.addEventListener("click", askJpl);
+  if (el.exportBtn) el.exportBtn.addEventListener("click", exportEvidence);
   return { show };
 }

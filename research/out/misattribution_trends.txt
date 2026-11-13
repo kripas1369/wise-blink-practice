@@ -1,0 +1,50 @@
+entries with a period-matched Gaia DR3 EB within 63": 1543; on another star: 278 (0.180)
+
+|galactic latitude| (deg)
+  [    0,     5): n=  272 other=  81 frac=0.298 ± 0.028
+  [    5,    10): n=  139 other=  39 frac=0.281 ± 0.038
+  [   10,    20): n=  287 other=  67 frac=0.233 ± 0.025
+  [   20,    30): n=  242 other=  40 frac=0.165 ± 0.024
+  [   30,    50): n=  352 other=  28 frac=0.080 ± 0.014
+  [   50,    91): n=  251 other=  23 frac=0.092 ± 0.018
+  chi2 test of equal fractions: chi2=78.3, dof=5, p=1.91e-15
+
+|ecliptic latitude| (deg)
+  [    0,    30): n=  305 other=  40 frac=0.131 ± 0.019
+  [   30,    60): n=  721 other= 162 frac=0.225 ± 0.016
+  [   60,    75): n=  330 other=  46 frac=0.139 ± 0.019
+  [   75,    91): n=  187 other=  30 frac=0.160 ± 0.027
+  chi2 test of equal fractions: chi2=18.8, dof=3, p=2.94e-04
+
+TESS magnitude
+  [    0,     8): n=  137 other=  15 frac=0.109 ± 0.027
+  [    8,     9): n=  170 other=  29 frac=0.171 ± 0.029
+  [    9,    10): n=  316 other=  63 frac=0.199 ± 0.022
+  [   10,    11): n=  335 other=  55 frac=0.164 ± 0.020
+  [   11,    12): n=  411 other=  31 frac=0.075 ± 0.013
+  [   12,    13): n=   96 other=  29 frac=0.302 ± 0.047
+  [   13,    20): n=   78 other=  56 frac=0.718 ± 0.051
+  chi2 test of equal fractions: chi2=199.0, dof=6, p=3.07e-40
+
+TESS primary depth
+  [    0,  0.01): n=  128 other= 123 frac=0.961 ± 0.017
+  [ 0.01,  0.03): n=   82 other=  46 frac=0.561 ± 0.055
+  [ 0.03,   0.1): n=  402 other=  44 frac=0.109 ± 0.016
+  [  0.1,   0.3): n=  526 other=  31 frac=0.059 ± 0.010
+  [  0.3,  1.01): n=  372 other=  14 frac=0.038 ± 0.010
+  chi2 test of equal fractions: chi2=755.9, dof=4, p=2.72e-162
+
+period (d)
+  [    0,   0.5): n=  470 other=  67 frac=0.143 ± 0.016
+  [  0.5,     1): n=  356 other=  76 frac=0.213 ± 0.022
+  [    1,     3): n=  490 other= 102 frac=0.208 ± 0.018
+  [    3,    10): n=  210 other=  32 frac=0.152 ± 0.025
+  [   10,  1000): n=   17 other=   1 frac=0.059 ± 0.057
+  chi2 test of equal fractions: chi2=12.6, dof=4, p=1.36e-02
+
+All TESS-EBs entries by depth (any class):
+  [0,0.01): n=801, other star=123 (0.154), same=5, no Gaia EB=673
+  [0.01,0.03): n=711, other star=46 (0.065), same=36, no Gaia EB=629
+  [0.03,0.1): n=1065, other star=44 (0.041), same=358, no Gaia EB=663
+  [0.1,0.3): n=1080, other star=31 (0.029), same=495, no Gaia EB=554
+  [0.3,1.01): n=713, other star=14 (0.020), same=358, no Gaia EB=341

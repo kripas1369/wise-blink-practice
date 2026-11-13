@@ -1,0 +1,11 @@
+R3_tic309659126: RA 79.50680 Dec -60.68990, 27783 DR1+QR3 images, 660 chosen
+  downloading 660 cutouts
+  651 exposures on the 39x39 grid
+  5 Gaia stars G <= 16.5
+  D1: sigma 0.566 px, wing 0.06 x 1.92 px, shift (+0.01, +0.01), co-add chi2 305.74
+  D2: sigma 0.528 px, wing 0.08 x 1.48 px, shift (-0.02, +0.02), co-add chi2 430.28
+  D3: sigma 0.549 px, wing 0.09 x 1.55 px, shift (-0.02, -0.00), co-add chi2 517.85
+  D4: sigma 0.630 px, wing 0.11 x 1.65 px, shift (+0.02, -0.01), co-add chi2 291.35
+  D5: sigma 0.594 px, wing 0.15 x 1.55 px, shift (-0.01, +0.02), co-add chi2 29.18
+  D6: sigma 0.620 px, wing 0.19 x 1.46 px, shift (-0.01, -0.01), co-add chi2 10.25
+  saved /Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/experimental_results/R3_tic309659126

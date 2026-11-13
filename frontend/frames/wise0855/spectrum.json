@@ -5,6 +5,32 @@
  "unit": "mJy",
  "detectors": [
   {
+   "band": 1,
+   "band_range_um": [
+    0.75,
+    1.09
+   ],
+   "method": "core",
+   "n_exposures": 20,
+   "position_rule": "follows SIMBAD WISEA J085510.74-071442.5 proper motion (not in Gaia DR3)",
+   "n_measured": 20,
+   "r_out_px": 2.0,
+   "neighbours": [
+    {
+     "source_id": "5756956644387831296",
+     "g_mag": 16.31,
+     "distance_px": 1.31
+    }
+   ],
+   "floor_pct": null,
+   "psf_fwhm": {
+    "median_arcsec": 5.25,
+    "min_arcsec": 5.25,
+    "max_arcsec": 5.25,
+    "n_exposures": 20
+   }
+  },
+  {
    "band": 2,
    "band_range_um": [
     1.1,
@@ -28,6 +54,58 @@
     "min_arcsec": 5.15,
     "max_arcsec": 5.15,
     "n_exposures": 30
+   }
+  },
+  {
+   "band": 3,
+   "band_range_um": [
+    1.63,
+    2.41
+   ],
+   "method": "core",
+   "n_exposures": 19,
+   "position_rule": "follows SIMBAD WISEA J085510.74-071442.5 proper motion (not in Gaia DR3)",
+   "n_measured": 18,
+   "r_out_px": 2.0,
+   "neighbours": [
+    {
+     "source_id": "5756956644387831296",
+     "g_mag": 16.31,
+     "distance_px": 1.26
+    }
+   ],
+   "floor_pct": null,
+   "psf_fwhm": {
+    "median_arcsec": 5.22,
+    "min_arcsec": 5.22,
+    "max_arcsec": 5.22,
+    "n_exposures": 19
+   }
+  },
+  {
+   "band": 4,
+   "band_range_um": [
+    2.42,
+    3.82
+   ],
+   "method": "core",
+   "n_exposures": 20,
+   "position_rule": "follows SIMBAD WISEA J085510.74-071442.5 proper motion (not in Gaia DR3)",
+   "n_measured": 20,
+   "r_out_px": 2.0,
+   "neighbours": [
+    {
+     "source_id": "5756956644387831296",
+     "g_mag": 16.31,
+     "distance_px": 1.31
+    }
+   ],
+   "floor_pct": null,
+   "psf_fwhm": {
+    "median_arcsec": 6.1,
+    "min_arcsec": 6.1,
+    "max_arcsec": 6.1,
+    "n_exposures": 20
    }
   },
   {
@@ -89,15 +167,62 @@
    "date": "2025-05-06",
    "mjd_range": [
     60800.70069,
-    60801.45078
+    60801.51932
    ],
    "bands": [
+    1,
     2,
+    3,
+    4,
     5,
     6
    ],
-   "n_points": 19,
+   "n_points": 29,
    "points": [
+    {
+     "band": 1,
+     "obs_id": "2025W19_1B_0241_1",
+     "mjd": 60801.51484,
+     "date_iso": "2025-05-06 12:21 UTC",
+     "wl_um": 0.9926,
+     "bw_um": 0.0263,
+     "flux_mjy": 0.5739,
+     "err_mjy": 0.0594,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2025W19_1B_0241_2",
+     "mjd": 60801.51634,
+     "date_iso": "2025-05-06 12:23 UTC",
+     "wl_um": 1.0163,
+     "bw_um": 0.0273,
+     "flux_mjy": 0.5613,
+     "err_mjy": 0.059,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2025W19_1B_0241_3",
+     "mjd": 60801.51783,
+     "date_iso": "2025-05-06 12:25 UTC",
+     "wl_um": 1.0407,
+     "bw_um": 0.0279,
+     "flux_mjy": 0.3998,
+     "err_mjy": 0.0577,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2025W19_1B_0241_4",
+     "mjd": 60801.51932,
+     "date_iso": "2025-05-06 12:27 UTC",
+     "wl_um": 1.0654,
+     "bw_um": 0.0286,
+     "flux_mjy": 0.3727,
+     "err_mjy": 0.2768,
+     "n_flagged": 0
+    },
     {
      "band": 2,
      "obs_id": "2025W19_1B_0231_1",
@@ -185,6 +310,72 @@
      "flux_mjy": 0.4511,
      "err_mjy": 0.0523,
      "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2025W19_1B_0138_1",
+     "mjd": 60800.8351,
+     "date_iso": "2025-05-05 20:02 UTC",
+     "wl_um": 2.2079,
+     "bw_um": 0.0553,
+     "flux_mjy": 0.197,
+     "err_mjy": 0.0451,
+     "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2025W19_1B_0116_1",
+     "mjd": 60800.70069,
+     "date_iso": "2025-05-05 16:49 UTC",
+     "wl_um": 2.3634,
+     "bw_um": 0.0586,
+     "flux_mjy": 0.3224,
+     "err_mjy": 0.0446,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2025W19_1B_0241_1",
+     "mjd": 60801.51484,
+     "date_iso": "2025-05-06 12:21 UTC",
+     "wl_um": 3.3579,
+     "bw_um": 0.0947,
+     "flux_mjy": 0.1609,
+     "err_mjy": 0.0386,
+     "n_flagged": 2
+    },
+    {
+     "band": 4,
+     "obs_id": "2025W19_1B_0241_2",
+     "mjd": 60801.51634,
+     "date_iso": "2025-05-06 12:23 UTC",
+     "wl_um": 3.4491,
+     "bw_um": 0.0969,
+     "flux_mjy": 0.1079,
+     "err_mjy": 0.0372,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2025W19_1B_0241_3",
+     "mjd": 60801.51783,
+     "date_iso": "2025-05-06 12:25 UTC",
+     "wl_um": 3.5422,
+     "bw_um": 0.0973,
+     "flux_mjy": 0.0879,
+     "err_mjy": 0.0378,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2025W19_1B_0241_4",
+     "mjd": 60801.51932,
+     "date_iso": "2025-05-06 12:27 UTC",
+     "wl_um": 3.6382,
+     "bw_um": 0.099,
+     "flux_mjy": 14.0163,
+     "err_mjy": 0.3583,
+     "n_flagged": 1
     },
     {
      "band": 5,
@@ -311,18 +502,109 @@
   },
   {
    "visit": 1,
-   "date": "2025-11-20",
+   "date": "2025-11-15",
    "mjd_range": [
-    60986.78347,
+    60979.78609,
     61022.36877
    ],
    "bands": [
+    1,
     2,
+    3,
+    4,
     5,
     6
    ],
-   "n_points": 47,
+   "n_points": 71,
    "points": [
+    {
+     "band": 1,
+     "obs_id": "2025W44_2B_0321_1",
+     "mjd": 60979.78609,
+     "date_iso": "2025-10-31 18:51 UTC",
+     "wl_um": 0.946,
+     "bw_um": 0.0245,
+     "flux_mjy": 0.8922,
+     "err_mjy": 0.0659,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2025W44_2B_0321_2",
+     "mjd": 60979.78758,
+     "date_iso": "2025-10-31 18:54 UTC",
+     "wl_um": 0.9684,
+     "bw_um": 0.0251,
+     "flux_mjy": 0.9967,
+     "err_mjy": 0.0679,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2025W44_2B_0322_1",
+     "mjd": 60979.7893,
+     "date_iso": "2025-10-31 18:56 UTC",
+     "wl_um": 0.9915,
+     "bw_um": 0.0261,
+     "flux_mjy": 0.9202,
+     "err_mjy": 0.067,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2025W44_2B_0322_2",
+     "mjd": 60979.7908,
+     "date_iso": "2025-10-31 18:58 UTC",
+     "wl_um": 1.0149,
+     "bw_um": 0.027,
+     "flux_mjy": 0.769,
+     "err_mjy": 0.066,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2025W44_2B_0322_3",
+     "mjd": 60979.79229,
+     "date_iso": "2025-10-31 19:00 UTC",
+     "wl_um": 1.0394,
+     "bw_um": 0.0276,
+     "flux_mjy": 0.7786,
+     "err_mjy": 0.066,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2025W44_2B_0322_4",
+     "mjd": 60979.79378,
+     "date_iso": "2025-10-31 19:03 UTC",
+     "wl_um": 1.0638,
+     "bw_um": 0.0282,
+     "flux_mjy": 0.8191,
+     "err_mjy": 0.3147,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2025W44_2B_0339_1",
+     "mjd": 60979.8574,
+     "date_iso": "2025-10-31 20:34 UTC",
+     "wl_um": 1.0892,
+     "bw_um": 0.0287,
+     "flux_mjy": 1.5139,
+     "err_mjy": 0.1693,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2025W44_2B_0339_2",
+     "mjd": 60979.85889,
+     "date_iso": "2025-10-31 20:36 UTC",
+     "wl_um": 1.1149,
+     "bw_um": 0.0292,
+     "flux_mjy": 1.0557,
+     "err_mjy": 0.0757,
+     "n_flagged": 2
+    },
     {
      "band": 2,
      "obs_id": "2025W45_2A_0278_1",
@@ -475,6 +757,182 @@
      "bw_um": 0.037,
      "flux_mjy": 0.8577,
      "err_mjy": 0.0622,
+     "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2025W46_2A_0214_2",
+     "mjd": 60993.50727,
+     "date_iso": "2025-11-14 12:10 UTC",
+     "wl_um": 2.0336,
+     "bw_um": 0.0507,
+     "flux_mjy": 0.5108,
+     "err_mjy": 0.051,
+     "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2025W46_2A_0214_3",
+     "mjd": 60993.50876,
+     "date_iso": "2025-11-14 12:12 UTC",
+     "wl_um": 2.081,
+     "bw_um": 0.0522,
+     "flux_mjy": 0.5031,
+     "err_mjy": 0.0498,
+     "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2025W46_2A_0214_4",
+     "mjd": 60993.51025,
+     "date_iso": "2025-11-14 12:14 UTC",
+     "wl_um": 2.1295,
+     "bw_um": 0.0538,
+     "flux_mjy": 0.5184,
+     "err_mjy": 0.0485,
+     "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2025W46_2A_0226_1",
+     "mjd": 60993.57492,
+     "date_iso": "2025-11-14 13:47 UTC",
+     "wl_um": 2.1787,
+     "bw_um": 0.0548,
+     "flux_mjy": 0.5925,
+     "err_mjy": 0.0515,
+     "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2025W46_2A_0226_2",
+     "mjd": 60993.57641,
+     "date_iso": "2025-11-14 13:50 UTC",
+     "wl_um": 2.2292,
+     "bw_um": 0.0556,
+     "flux_mjy": 0.4163,
+     "err_mjy": 0.05,
+     "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2025W46_2A_0226_3",
+     "mjd": 60993.5779,
+     "date_iso": "2025-11-14 13:52 UTC",
+     "wl_um": 2.2805,
+     "bw_um": 0.0567,
+     "flux_mjy": 0.4096,
+     "err_mjy": 0.0479,
+     "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2025W46_2A_0226_4",
+     "mjd": 60993.57939,
+     "date_iso": "2025-11-14 13:54 UTC",
+     "wl_um": 2.3329,
+     "bw_um": 0.0583,
+     "flux_mjy": 0.4203,
+     "err_mjy": 0.0475,
+     "n_flagged": 2
+    },
+    {
+     "band": 3,
+     "obs_id": "2025W46_2A_0289_1",
+     "mjd": 60993.91355,
+     "date_iso": "2025-11-14 21:55 UTC",
+     "wl_um": 2.3854,
+     "bw_um": 0.0591,
+     "flux_mjy": 0.5405,
+     "err_mjy": 0.0546,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2025W44_2B_0321_1",
+     "mjd": 60979.78609,
+     "date_iso": "2025-10-31 18:51 UTC",
+     "wl_um": 3.1796,
+     "bw_um": 0.0937,
+     "flux_mjy": 0.1926,
+     "err_mjy": 0.0386,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2025W44_2B_0321_2",
+     "mjd": 60979.78758,
+     "date_iso": "2025-10-31 18:54 UTC",
+     "wl_um": 3.2661,
+     "bw_um": 0.0954,
+     "flux_mjy": 0.2234,
+     "err_mjy": 0.0383,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2025W44_2B_0322_1",
+     "mjd": 60979.7893,
+     "date_iso": "2025-10-31 18:56 UTC",
+     "wl_um": 3.3542,
+     "bw_um": 0.0974,
+     "flux_mjy": 0.5178,
+     "err_mjy": 0.0788,
+     "n_flagged": 1
+    },
+    {
+     "band": 4,
+     "obs_id": "2025W44_2B_0322_2",
+     "mjd": 60979.7908,
+     "date_iso": "2025-10-31 18:58 UTC",
+     "wl_um": 3.444,
+     "bw_um": 0.0986,
+     "flux_mjy": 0.197,
+     "err_mjy": 0.0385,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2025W44_2B_0322_3",
+     "mjd": 60979.79229,
+     "date_iso": "2025-10-31 19:00 UTC",
+     "wl_um": 3.5368,
+     "bw_um": 0.1006,
+     "flux_mjy": 0.241,
+     "err_mjy": 0.04,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2025W44_2B_0322_4",
+     "mjd": 60979.79378,
+     "date_iso": "2025-10-31 19:03 UTC",
+     "wl_um": 3.6323,
+     "bw_um": 0.102,
+     "flux_mjy": 0.1944,
+     "err_mjy": 0.0402,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2025W44_2B_0339_1",
+     "mjd": 60979.8574,
+     "date_iso": "2025-10-31 20:34 UTC",
+     "wl_um": 3.7301,
+     "bw_um": 0.1016,
+     "flux_mjy": 0.162,
+     "err_mjy": 0.0416,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2025W44_2B_0339_2",
+     "mjd": 60979.85889,
+     "date_iso": "2025-10-31 20:36 UTC",
+     "wl_um": 3.8315,
+     "bw_um": 0.1012,
+     "flux_mjy": 0.1943,
+     "err_mjy": 0.0445,
      "n_flagged": 0
     },
     {
@@ -844,18 +1302,109 @@
   },
   {
    "visit": 2,
-   "date": "2026-04-29",
+   "date": "2026-04-30",
    "mjd_range": [
     61151.1986,
     61171.09702
    ],
    "bands": [
+    1,
     2,
+    3,
+    4,
     5,
     6
    ],
-   "n_points": 37,
+   "n_points": 61,
    "points": [
+    {
+     "band": 1,
+     "obs_id": "2026W18_2A_0424_4",
+     "mjd": 61162.33762,
+     "date_iso": "2026-05-02 08:06 UTC",
+     "wl_um": 0.7791,
+     "bw_um": 0.0192,
+     "flux_mjy": 1.1012,
+     "err_mjy": 0.0634,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2026W18_2A_0684_1",
+     "mjd": 61163.284,
+     "date_iso": "2026-05-03 06:48 UTC",
+     "wl_um": 0.7976,
+     "bw_um": 0.0198,
+     "flux_mjy": 1.0727,
+     "err_mjy": 0.0633,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2026W18_2A_0684_2",
+     "mjd": 61163.28549,
+     "date_iso": "2026-05-03 06:51 UTC",
+     "wl_um": 0.8163,
+     "bw_um": 0.0205,
+     "flux_mjy": 1.0454,
+     "err_mjy": 0.0639,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2026W18_2A_0684_3",
+     "mjd": 61163.28698,
+     "date_iso": "2026-05-03 06:53 UTC",
+     "wl_um": 0.8359,
+     "bw_um": 0.0208,
+     "flux_mjy": -0.7143,
+     "err_mjy": 0.1769,
+     "n_flagged": 1
+    },
+    {
+     "band": 1,
+     "obs_id": "2026W18_2A_0684_4",
+     "mjd": 61163.28847,
+     "date_iso": "2026-05-03 06:55 UTC",
+     "wl_um": 0.8555,
+     "bw_um": 0.0212,
+     "flux_mjy": 1.0668,
+     "err_mjy": 0.0622,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2026W19_1A_0227_1",
+     "mjd": 61164.63966,
+     "date_iso": "2026-05-04 15:21 UTC",
+     "wl_um": 0.8759,
+     "bw_um": 0.0219,
+     "flux_mjy": 1.0188,
+     "err_mjy": 0.0626,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2026W19_1A_0227_2",
+     "mjd": 61164.64115,
+     "date_iso": "2026-05-04 15:23 UTC",
+     "wl_um": 0.8966,
+     "bw_um": 0.0227,
+     "flux_mjy": 1.0964,
+     "err_mjy": 0.0641,
+     "n_flagged": 0
+    },
+    {
+     "band": 1,
+     "obs_id": "2026W19_1A_0201_1",
+     "mjd": 61164.57076,
+     "date_iso": "2026-05-04 13:41 UTC",
+     "wl_um": 0.9695,
+     "bw_um": 0.0251,
+     "flux_mjy": 1.2037,
+     "err_mjy": 0.0652,
+     "n_flagged": 0
+    },
     {
      "band": 2,
      "obs_id": "2026W18_2A_0247_3",
@@ -942,6 +1491,182 @@
      "bw_um": 0.0365,
      "flux_mjy": 0.9966,
      "err_mjy": 0.0635,
+     "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2026W17_1B_0634_3",
+     "mjd": 61153.44011,
+     "date_iso": "2026-04-23 10:33 UTC",
+     "wl_um": 1.9654,
+     "bw_um": 0.0476,
+     "flux_mjy": 0.6294,
+     "err_mjy": 0.0484,
+     "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2026W17_1B_0634_4",
+     "mjd": 61153.4416,
+     "date_iso": "2026-04-23 10:35 UTC",
+     "wl_um": 2.0111,
+     "bw_um": 0.0493,
+     "flux_mjy": 0.5392,
+     "err_mjy": 0.0487,
+     "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2026W17_2A_0609_1",
+     "mjd": 61156.15338,
+     "date_iso": "2026-04-26 03:40 UTC",
+     "wl_um": 2.057,
+     "bw_um": 0.0511,
+     "flux_mjy": 0.6571,
+     "err_mjy": 0.0491,
+     "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2026W17_2A_0609_2",
+     "mjd": 61156.15489,
+     "date_iso": "2026-04-26 03:43 UTC",
+     "wl_um": 2.1051,
+     "bw_um": 0.0523,
+     "flux_mjy": 0.5268,
+     "err_mjy": 0.0471,
+     "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2026W17_2A_0591_1",
+     "mjd": 61156.08618,
+     "date_iso": "2026-04-26 02:04 UTC",
+     "wl_um": 2.1536,
+     "bw_um": 0.0535,
+     "flux_mjy": 0.5295,
+     "err_mjy": 0.0541,
+     "n_flagged": 4
+    },
+    {
+     "band": 3,
+     "obs_id": "2026W18_2A_0065_1",
+     "mjd": 61160.77148,
+     "date_iso": "2026-04-30 18:30 UTC",
+     "wl_um": 2.1569,
+     "bw_um": 0.0543,
+     "flux_mjy": 0.5392,
+     "err_mjy": 0.0482,
+     "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2026W17_2A_0692_1",
+     "mjd": 61156.49385,
+     "date_iso": "2026-04-26 11:51 UTC",
+     "wl_um": 2.2584,
+     "bw_um": 0.0562,
+     "flux_mjy": 0.5275,
+     "err_mjy": 0.0474,
+     "n_flagged": 0
+    },
+    {
+     "band": 3,
+     "obs_id": "2026W17_2A_0692_2",
+     "mjd": 61156.49534,
+     "date_iso": "2026-04-26 11:53 UTC",
+     "wl_um": 2.3107,
+     "bw_um": 0.0574,
+     "flux_mjy": 0.5123,
+     "err_mjy": 0.0455,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2026W18_2A_0424_4",
+     "mjd": 61162.33762,
+     "date_iso": "2026-05-02 08:06 UTC",
+     "wl_um": 2.5428,
+     "bw_um": 0.0737,
+     "flux_mjy": 0.385,
+     "err_mjy": 0.04,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2026W18_2A_0684_1",
+     "mjd": 61163.284,
+     "date_iso": "2026-05-03 06:48 UTC",
+     "wl_um": 2.6113,
+     "bw_um": 0.075,
+     "flux_mjy": 0.3483,
+     "err_mjy": 0.0476,
+     "n_flagged": 1
+    },
+    {
+     "band": 4,
+     "obs_id": "2026W18_2A_0684_2",
+     "mjd": 61163.28549,
+     "date_iso": "2026-05-03 06:51 UTC",
+     "wl_um": 2.6825,
+     "bw_um": 0.0764,
+     "flux_mjy": 0.3169,
+     "err_mjy": 0.0379,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2026W18_2A_0684_3",
+     "mjd": 61163.28698,
+     "date_iso": "2026-05-03 06:53 UTC",
+     "wl_um": 2.7557,
+     "bw_um": 0.0773,
+     "flux_mjy": 0.2737,
+     "err_mjy": 0.0385,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2026W18_2A_0684_4",
+     "mjd": 61163.28847,
+     "date_iso": "2026-05-03 06:55 UTC",
+     "wl_um": 2.8306,
+     "bw_um": 0.0804,
+     "flux_mjy": 0.3199,
+     "err_mjy": 0.0375,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2026W19_1A_0227_1",
+     "mjd": 61164.63966,
+     "date_iso": "2026-05-04 15:21 UTC",
+     "wl_um": 2.9071,
+     "bw_um": 0.0844,
+     "flux_mjy": 0.2853,
+     "err_mjy": 0.04,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2026W19_1A_0227_2",
+     "mjd": 61164.64115,
+     "date_iso": "2026-05-04 15:23 UTC",
+     "wl_um": 2.9863,
+     "bw_um": 0.0848,
+     "flux_mjy": 0.3489,
+     "err_mjy": 0.0384,
+     "n_flagged": 0
+    },
+    {
+     "band": 4,
+     "obs_id": "2026W19_1A_0201_1",
+     "mjd": 61164.57076,
+     "date_iso": "2026-05-04 13:41 UTC",
+     "wl_um": 3.2686,
+     "bw_um": 0.0938,
+     "flux_mjy": 0.1982,
+     "err_mjy": 0.0371,
      "n_flagged": 0
     },
     {
@@ -1270,13 +1995,15 @@
  "warnings": [
   "Each point is one exposure: a 2.0 px circle around the target minus the sky, with no aperture correction. The PSF is not equally wide in every detector (median FWHM 5.15–6.61″ here), so the circle catches a different share of the light in each one: a step where two detectors meet can come from that, not from the star.",
   "The detectors' ranges do not overlap, so no wavelength is measured by two detectors to check them against each other.",
-  "No frames prepared for D1, D3, D4, so those wavelengths are missing.",
+  "D1: inside the circle as well: Gaia DR3 5756956644387831296 (G 16.31) at 1.31 px; its light is in these points.",
   "D2: inside the circle as well: Gaia DR3 5756956644387831296 (G 16.31) at 1.28 px; its light is in these points.",
+  "D3: inside the circle as well: Gaia DR3 5756956644387831296 (G 16.31) at 1.26 px; its light is in these points.",
+  "D4: inside the circle as well: Gaia DR3 5756956644387831296 (G 16.31) at 1.31 px; its light is in these points.",
   "D5: inside the circle as well: Gaia DR3 5756956644387831296 (G 16.31) at 1.28 px; its light is in these points.",
   "D6: inside the circle as well: Gaia DR3 5756956644387831296 (G 16.31) at 1.17 px; its light is in these points."
  ],
  "method": "every point comes from one detector's lightcurve.json (backend/app/lightcurve.py); points of all detectors grouped into visits by time",
  "made_by": "backend/app/spectrum.py",
- "made_at": "2026-11-01 07:28 UTC",
+ "made_at": "2026-11-07 12:23 UTC",
  "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx"
 }

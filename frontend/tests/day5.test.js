@@ -14,15 +14,16 @@ test("proof: Barnard's Star agrees with Gaia and says which limit is ours", () =
   const { verdict, lines } = motionText(load("barnard", 2, "proof.json"));
   assert.equal(verdict, "Agrees with Gaia DR3");
   assert.match(lines[0], /^Expected \(Gaia DR3 4472832130942575872, 2025-08-26 to 2026-08-21\): 1\.67 px \(10\.3″\) toward the north/);
-  assert.match(lines[1], /^Measured \(saturated-core centre\): 1\.59 px/);
-  assert.match(lines[2], /0\.18 px \(limit 0\.5 px, from our plan's C4 test\).*\(limit 30°, our choice\)/);
+  assert.match(lines[1], /^Measured shift \(saturated-core centre\): 1\.59 px/);
+  assert.match(lines[2], /^Discrepancy: 0\.18 px \(C4 limit 0\.5 px, 10\.8% of expected size; direction 5\.5° \(limit 30°\)\./);
 });
 
 test("proof: too-small and missing motions are not shown as a pass", () => {
   const rw = motionText(load("rw_aur", 2, "proof.json"));
   assert.equal(rw.verdict, "Too small to test");
   assert.ok(rw.lines.some((l) => l.includes("cannot test")));
-  assert.ok(!rw.lines.some((l) => l.startsWith("Difference")));
+  assert.ok(rw.lines.some((l) => l.includes("0.30 px threshold")));
+  assert.ok(!rw.lines.some((l) => l.startsWith("Discrepancy")));
   const wise = motionText(load("wise0855", 6, "proof.json"));
   assert.equal(wise.verdict, "Nothing to compare with");
   assert.deepEqual(wise.lines, [load("wise0855", 6, "proof.json").motion.reason]);
@@ -89,10 +90,10 @@ test("spectrum: file sits above the detector folders; every point drawn, one lin
 test("spectrum: detector lines and summary come from the file", () => {
   const spec = JSON.parse(readFileSync(new URL("wise0855/spectrum.json", FRAMES), "utf8"));
   const lines = detectorLines(spec);
-  assert.match(lines[0], /^D2 \(1\.10–1\.62 µm\): \d+ of \d+ exposures measured · PSF 5\.15″ wide/);
-  assert.match(lines[1], /^D5 \(3\.83–4\.41 µm\): \d+ of \d+ exposures measured · PSF 6\.06″ wide/);
-  assert.match(lines[2], /^D6 \(4\.42–5\.00 µm\): \d+ of \d+ exposures measured · PSF 6\.61″ wide/);
-  assert.match(spectrumSummary(spec), /^WISE 0855 · D2, D5, D6 · 3 visits · \d+ points$/);
+  assert.ok(lines.some((l) => /^D2 \(1\.10–1\.62 µm\): \d+ of \d+ exposures measured · PSF 5\.15″ wide/.test(l)));
+  assert.ok(lines.some((l) => /^D5 \(3\.83–4\.41 µm\): \d+ of \d+ exposures measured · PSF 6\.06″ wide/.test(l)));
+  assert.ok(lines.some((l) => /^D6 \(4\.42–5\.00 µm\): \d+ of \d+ exposures measured · PSF 6\.61″ wide/.test(l)));
+  assert.match(spectrumSummary(spec), /^WISE 0855 · D1, D2, D3, D4, D5, D6 · 3 visits · \d+ points$/);
   const none = { label: "Barnard's Star", visits: [], detectors: [{ band: 2, band_range_um: [1.1, 1.62], method: "none",
     reason: "Saturated core." }] };
   assert.deepEqual(detectorLines(none), ["D2 (1.10–1.62 µm): no points. Saturated core."]);

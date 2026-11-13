@@ -1,5 +1,6 @@
 """Ask NASA's IRSA archive which SPHEREx images cover a position, and download small cutouts."""
 import concurrent.futures as cf
+import io
 import time
 from dataclasses import asdict, dataclass
 from functools import lru_cache
@@ -11,7 +12,8 @@ import requests
 from astropy.io import fits
 
 from backend.app.config import (
-    CACHE_DIR, COLLECTIONS, CUTOUT_URL, DETECTORS, MAX_PARALLEL_DOWNLOADS, RETRIES, TAP_URL,
+    CACHE_DIR, COLLECTIONS, CUTOUT_CACHE_MAX_GB, CUTOUT_URL, DETECTORS, DROP_PSF_FROM_CUTOUTS,
+    MAX_PARALLEL_DOWNLOADS, RETRIES, TAP_URL,
 )
 from backend.app.coords import mjd_to_date
 from backend.app.flags import bad_pixel_bitmask, flag_bits
@@ -207,8 +209,9 @@ def cutout_file(image: SpherexImage, ra: float, dec: float, size_deg: float) -> 
 def download_cutout(image: SpherexImage, ra: float, dec: float, size_deg: float = 0.05) -> Path:
     """Download a small square (size_deg wide) of one image around (ra, dec); cached on disk.
 
-    The cutout keeps every extension (IMAGE, FLAGS, VARIANCE, ZODI, PSF, WCS-WAVE). Because the full
-    PSF cube comes along, each cutout is about 5 MB however small the picture is.
+    The service sends every extension (IMAGE, FLAGS, VARIANCE, ZODI, PSF, WCS-WAVE); the full PSF cube
+    makes each about 5 MB however small the picture is. With DROP_PSF_FROM_CUTOUTS the PSF is left out
+    of the saved file; the other extensions and all headers are kept byte for byte.
     """
     if image.path is None:
         raise ArchiveError("Call attach_paths() before downloading")
@@ -227,7 +230,10 @@ def download_cutout(image: SpherexImage, ra: float, dec: float, size_deg: float 
         else:
             if resp.status_code == 200 and resp.content[:6] == b"SIMPLE":
                 tmp = target.with_suffix(".part")
-                tmp.write_bytes(resp.content)
+                if DROP_PSF_FROM_CUTOUTS:
+                    _save_without_psf(resp.content, tmp)
+                else:
+                    tmp.write_bytes(resp.content)
                 tmp.rename(target)
                 return target
             if resp.status_code == 404:
@@ -235,6 +241,29 @@ def download_cutout(image: SpherexImage, ra: float, dec: float, size_deg: float 
             last = f"HTTP {resp.status_code}: {resp.text[:100]!r}"
         time.sleep(2 ** attempt)
     raise ArchiveError(f"Cutout failed after {RETRIES} tries for {image.did}: {last}")
+
+
+def _save_without_psf(content: bytes, path: Path) -> None:
+    with fits.open(io.BytesIO(content)) as hdul:
+        kept = fits.HDUList([h for h in hdul if h.name != "PSF"])
+        kept.writeto(path, overwrite=True, output_verify="silentfix")
+
+
+def trim_cutout_cache(max_gb: float = CUTOUT_CACHE_MAX_GB) -> int:
+    """Delete the least recently used cutouts until the cache is under max_gb; returns files removed."""
+    folder = CACHE_DIR / "cutouts"
+    if not folder.exists():
+        return 0
+    files = [(p, p.stat()) for p in folder.glob("*.fits")]
+    total = sum(s.st_size for _, s in files)
+    removed = 0
+    for path, st in sorted(files, key=lambda f: max(f[1].st_atime, f[1].st_mtime)):
+        if total <= max_gb * 1e9:
+            break
+        path.unlink(missing_ok=True)
+        total -= st.st_size
+        removed += 1
+    return removed
 
 
 def download_cutouts(

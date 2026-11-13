@@ -1,0 +1,1124 @@
+{
+ "name": "R5_sep_tic31511621",
+ "tic": "31511621",
+ "n_exposures": 705,
+ "n_stars": 30,
+ "references_dropped_for_phase_signal": [],
+ "stars": [
+  {
+   "source_id": "4659556899283028480",
+   "g_mag": 10.772689819335938,
+   "x": 40.83,
+   "y": 27.46,
+   "merged": [],
+   "n": 685,
+   "coverage": 0.972,
+   "scatter_pct": 4.05,
+   "median_err_pct": 0.41,
+   "chi2_red": 184.86,
+   "chi2_excess_sigma": null,
+   "is_reference": true,
+   "von_neumann_eta": 2.009,
+   "ls_period_d": 0.14329,
+   "ls_power": 0.0475,
+   "ls_fap": 0.001213360870635396,
+   "ls_fap_bonferroni": 0.036400826119061876,
+   "amplitude_pct": 9.8,
+   "variable_flag": false,
+   "jitter_pct": 4.26,
+   "primary": {
+    "depth": 0.0073,
+    "err": 0.0065,
+    "n": 103
+   },
+   "secondary": {
+    "depth": 0.004,
+    "err": 0.006,
+    "n": 100
+   },
+   "phase_scan": {
+    "snr": 2.92,
+    "phase": 0.55,
+    "depth": 0.0206,
+    "err": 0.007,
+    "n": 38
+   }
+  },
+  {
+   "source_id": "4659556869228537216",
+   "g_mag": 12.088518142700195,
+   "x": 23.9,
+   "y": 23.81,
+   "merged": [],
+   "n": 688,
+   "coverage": 0.976,
+   "scatter_pct": 3.71,
+   "median_err_pct": 0.54,
+   "chi2_red": 78.74,
+   "chi2_excess_sigma": null,
+   "is_reference": true,
+   "von_neumann_eta": 1.981,
+   "ls_period_d": 0.1604,
+   "ls_power": 0.0497,
+   "ls_fap": 0.0005422035552656797,
+   "ls_fap_bonferroni": 0.01626610665797039,
+   "amplitude_pct": 9.02,
+   "variable_flag": false,
+   "jitter_pct": 4.3,
+   "primary": {
+    "depth": 0.0015,
+    "err": 0.0054,
+    "n": 105
+   },
+   "secondary": {
+    "depth": 0.0059,
+    "err": 0.006,
+    "n": 101
+   },
+   "phase_scan": {
+    "snr": 3.21,
+    "phase": 0.45,
+    "depth": 0.0262,
+    "err": 0.0082,
+    "n": 30
+   }
+  },
+  {
+   "source_id": "4659556010235068672",
+   "g_mag": 13.859383583068848,
+   "x": 43.35,
+   "y": 2.33,
+   "merged": [],
+   "n": 686,
+   "coverage": 0.973,
+   "scatter_pct": 5.53,
+   "median_err_pct": 1.52,
+   "chi2_red": 27.19,
+   "chi2_excess_sigma": 0.77,
+   "is_reference": true,
+   "von_neumann_eta": 1.969,
+   "ls_period_d": 0.17522,
+   "ls_power": 0.024,
+   "ls_fap": 0.9692556615467646,
+   "ls_fap_bonferroni": 1.0,
+   "amplitude_pct": 13.18,
+   "variable_flag": false,
+   "jitter_pct": 3.75,
+   "primary": {
+    "depth": 0.0017,
+    "err": 0.007,
+    "n": 107
+   },
+   "secondary": {
+    "depth": -0.0005,
+    "err": 0.0068,
+    "n": 99
+   },
+   "phase_scan": {
+    "snr": 3.82,
+    "phase": 0.555,
+    "depth": 0.0273,
+    "err": 0.0071,
+    "n": 40
+   }
+  },
+  {
+   "source_id": "4659555323040308992",
+   "g_mag": 14.073104858398438,
+   "x": 30.86,
+   "y": 7.82,
+   "merged": [],
+   "n": 686,
+   "coverage": 0.973,
+   "scatter_pct": 4.44,
+   "median_err_pct": 0.9,
+   "chi2_red": 38.3,
+   "chi2_excess_sigma": 1.17,
+   "is_reference": true,
+   "von_neumann_eta": 1.974,
+   "ls_period_d": 0.10662,
+   "ls_power": 0.0481,
+   "ls_fap": 0.0010352506153100812,
+   "ls_fap_bonferroni": 0.031057518459302436,
+   "amplitude_pct": 10.24,
+   "variable_flag": false,
+   "jitter_pct": 4.56,
+   "primary": {
+    "depth": 0.0038,
+    "err": 0.0061,
+    "n": 106
+   },
+   "secondary": {
+    "depth": 0.0064,
+    "err": 0.0058,
+    "n": 100
+   },
+   "phase_scan": {
+    "snr": 2.31,
+    "phase": 0.975,
+    "depth": 0.022,
+    "err": 0.0095,
+    "n": 26
+   }
+  },
+  {
+   "source_id": "4659557178472822016",
+   "g_mag": 14.158365249633789,
+   "x": 14.03,
+   "y": 33.59,
+   "merged": [],
+   "n": 676,
+   "coverage": 0.959,
+   "scatter_pct": 5.06,
+   "median_err_pct": 1.71,
+   "chi2_red": 6.81,
+   "chi2_excess_sigma": -0.97,
+   "is_reference": true,
+   "von_neumann_eta": 2.012,
+   "ls_period_d": 27.83584,
+   "ls_power": 0.0449,
+   "ls_fap": 0.003680877955484983,
+   "ls_fap_bonferroni": 0.1104263386645495,
+   "amplitude_pct": 12.08,
+   "variable_flag": false,
+   "jitter_pct": 3.49,
+   "primary": {
+    "depth": 0.0088,
+    "err": 0.0061,
+    "n": 105
+   },
+   "secondary": {
+    "depth": 0.0031,
+    "err": 0.0063,
+    "n": 99
+   },
+   "phase_scan": {
+    "snr": 2.03,
+    "phase": 0.49,
+    "depth": 0.0152,
+    "err": 0.0075,
+    "n": 36
+   }
+  },
+  {
+   "source_id": "4659545358715948032",
+   "g_mag": 14.375967025756836,
+   "x": -0.07,
+   "y": 26.31,
+   "merged": [],
+   "n": 665,
+   "coverage": 0.943,
+   "scatter_pct": 7.18,
+   "median_err_pct": 1.28,
+   "chi2_red": 37.45,
+   "chi2_excess_sigma": 2.1,
+   "is_reference": false,
+   "von_neumann_eta": 2.011,
+   "ls_period_d": 0.35717,
+   "ls_power": 0.0375,
+   "ls_fap": 0.05635018114074674,
+   "ls_fap_bonferroni": 1.0,
+   "amplitude_pct": 13.08,
+   "variable_flag": false,
+   "jitter_pct": 6.69,
+   "primary": {
+    "depth": 0.0067,
+    "err": 0.0079,
+    "n": 101
+   },
+   "secondary": {
+    "depth": 0.0022,
+    "err": 0.0093,
+    "n": 100
+   },
+   "phase_scan": {
+    "snr": 4.07,
+    "phase": 0.965,
+    "depth": 0.0648,
+    "err": 0.0159,
+    "n": 20
+   }
+  },
+  {
+   "source_id": "4659556731771621888",
+   "g_mag": 14.481184005737305,
+   "x": 7.64,
+   "y": 25.81,
+   "merged": [],
+   "n": 682,
+   "coverage": 0.967,
+   "scatter_pct": 5.49,
+   "median_err_pct": 1.32,
+   "chi2_red": 16.88,
+   "chi2_excess_sigma": 0.68,
+   "is_reference": true,
+   "von_neumann_eta": 1.995,
+   "ls_period_d": 0.47679,
+   "ls_power": 0.0456,
+   "ls_fap": 0.002670195544625148,
+   "ls_fap_bonferroni": 0.08010586633875444,
+   "amplitude_pct": 10.45,
+   "variable_flag": false,
+   "jitter_pct": 5.21,
+   "primary": {
+    "depth": -0.0063,
+    "err": 0.006,
+    "n": 105
+   },
+   "secondary": {
+    "depth": -0.0069,
+    "err": 0.0074,
+    "n": 101
+   },
+   "phase_scan": {
+    "snr": 1.87,
+    "phase": 0.34,
+    "depth": 0.0418,
+    "err": 0.0224,
+    "n": 7
+   }
+  },
+  {
+   "source_id": "4659545530514633728",
+   "g_mag": 14.513145446777344,
+   "x": 0.06,
+   "y": 45.08,
+   "merged": [],
+   "n": 665,
+   "coverage": 0.943,
+   "scatter_pct": 7.49,
+   "median_err_pct": 1.48,
+   "chi2_red": 45.28,
+   "chi2_excess_sigma": 2.44,
+   "is_reference": false,
+   "von_neumann_eta": 2.013,
+   "ls_period_d": 0.20478,
+   "ls_power": 0.0479,
+   "ls_fap": 0.001846873525806374,
+   "ls_fap_bonferroni": 0.055406205774191225,
+   "amplitude_pct": 15.56,
+   "variable_flag": false,
+   "jitter_pct": 7.61,
+   "primary": {
+    "depth": -0.0312,
+    "err": 0.0113,
+    "n": 103
+   },
+   "secondary": {
+    "depth": -0.018,
+    "err": 0.0115,
+    "n": 96
+   },
+   "phase_scan": {
+    "snr": 1.61,
+    "phase": 0.68,
+    "depth": 0.0403,
+    "err": 0.0251,
+    "n": 11
+   }
+  },
+  {
+   "source_id": "4659557109746462592",
+   "g_mag": 14.627359390258789,
+   "x": 6.01,
+   "y": 28.29,
+   "merged": [],
+   "n": 674,
+   "coverage": 0.956,
+   "scatter_pct": 7.3,
+   "median_err_pct": 2.58,
+   "chi2_red": 8.74,
+   "chi2_excess_sigma": -0.57,
+   "is_reference": false,
+   "von_neumann_eta": 1.972,
+   "ls_period_d": 0.137,
+   "ls_power": 0.0388,
+   "ls_fap": 0.030351623531530744,
+   "ls_fap_bonferroni": 0.9105487059459223,
+   "amplitude_pct": 18.28,
+   "variable_flag": false,
+   "jitter_pct": 6.1,
+   "primary": {
+    "depth": -0.0052,
+    "err": 0.0095,
+    "n": 106
+   },
+   "secondary": {
+    "depth": 0.0044,
+    "err": 0.0085,
+    "n": 99
+   },
+   "phase_scan": {
+    "snr": 1.66,
+    "phase": 0.46,
+    "depth": 0.025,
+    "err": 0.0151,
+    "n": 24
+   }
+  },
+  {
+   "source_id": "4659557693861951744",
+   "g_mag": 14.665093421936035,
+   "x": 47.1,
+   "y": 37.19,
+   "merged": [],
+   "n": 685,
+   "coverage": 0.972,
+   "scatter_pct": 7.63,
+   "median_err_pct": 3.08,
+   "chi2_red": 7.91,
+   "chi2_excess_sigma": -0.67,
+   "is_reference": false,
+   "von_neumann_eta": 2.03,
+   "ls_period_d": 0.30899,
+   "ls_power": 0.0462,
+   "ls_fap": 0.0018875628600135898,
+   "ls_fap_bonferroni": 0.05662688580040769,
+   "amplitude_pct": 20.93,
+   "variable_flag": false,
+   "jitter_pct": 4.56,
+   "primary": {
+    "depth": -0.0101,
+    "err": 0.0084,
+    "n": 106
+   },
+   "secondary": {
+    "depth": -0.0074,
+    "err": 0.0091,
+    "n": 101
+   },
+   "phase_scan": {
+    "snr": 1.88,
+    "phase": 0.39,
+    "depth": 0.0364,
+    "err": 0.0194,
+    "n": 10
+   }
+  },
+  {
+   "source_id": "4659557247185407488",
+   "g_mag": 14.701583862304688,
+   "x": 8.68,
+   "y": 44.08,
+   "merged": [],
+   "n": 675,
+   "coverage": 0.957,
+   "scatter_pct": 5.01,
+   "median_err_pct": 1.13,
+   "chi2_red": 34.08,
+   "chi2_excess_sigma": 2.63,
+   "is_reference": true,
+   "von_neumann_eta": 1.951,
+   "ls_period_d": 0.2397,
+   "ls_power": 0.0323,
+   "ls_fap": 0.24507473305726044,
+   "ls_fap_bonferroni": 1.0,
+   "amplitude_pct": 9.8,
+   "variable_flag": false,
+   "jitter_pct": 4.7,
+   "primary": {
+    "depth": -0.022,
+    "err": 0.0073,
+    "n": 104
+   },
+   "secondary": {
+    "depth": -0.0099,
+    "err": 0.0056,
+    "n": 99
+   },
+   "phase_scan": {
+    "snr": 1.69,
+    "phase": 0.95,
+    "depth": 0.0236,
+    "err": 0.014,
+    "n": 14
+   }
+  },
+  {
+   "source_id": "4659557384624345344",
+   "g_mag": 14.80247688293457,
+   "x": 22.74,
+   "y": 39.21,
+   "merged": [],
+   "n": 689,
+   "coverage": 0.977,
+   "scatter_pct": 5.69,
+   "median_err_pct": 1.48,
+   "chi2_red": 14.1,
+   "chi2_excess_sigma": 0.55,
+   "is_reference": true,
+   "von_neumann_eta": 1.971,
+   "ls_period_d": 244.42246,
+   "ls_power": 0.042,
+   "ls_fap": 0.007996259949682635,
+   "ls_fap_bonferroni": 0.23988779849047906,
+   "amplitude_pct": 10.98,
+   "variable_flag": false,
+   "jitter_pct": 5.11,
+   "primary": {
+    "depth": 0.0145,
+    "err": 0.0226,
+    "n": 105
+   },
+   "secondary": {
+    "depth": 0.0029,
+    "err": 0.0063,
+    "n": 102
+   },
+   "phase_scan": {
+    "snr": 2.46,
+    "phase": 0.035,
+    "depth": 0.0245,
+    "err": 0.01,
+    "n": 33
+   }
+  },
+  {
+   "source_id": "4659555082522156544",
+   "g_mag": 14.869656562805176,
+   "x": 9.6,
+   "y": -0.14,
+   "merged": [],
+   "n": 678,
+   "coverage": 0.962,
+   "scatter_pct": 8.73,
+   "median_err_pct": 2.89,
+   "chi2_red": 7.51,
+   "chi2_excess_sigma": -0.78,
+   "is_reference": false,
+   "von_neumann_eta": 1.979,
+   "ls_period_d": 0.42706,
+   "ls_power": 0.0559,
+   "ls_fap": 8.035699282173718e-05,
+   "ls_fap_bonferroni": 0.0024107097846521154,
+   "amplitude_pct": 20.66,
+   "variable_flag": false,
+   "jitter_pct": 5.98,
+   "primary": {
+    "depth": 0.0219,
+    "err": 0.0112,
+    "n": 100
+   },
+   "secondary": {
+    "depth": -0.0294,
+    "err": 0.0128,
+    "n": 99
+   },
+   "phase_scan": {
+    "snr": 1.8,
+    "phase": 0.71,
+    "depth": 0.0543,
+    "err": 0.0302,
+    "n": 7
+   }
+  },
+  {
+   "source_id": "4659556182033752704",
+   "g_mag": 14.982186317443848,
+   "x": 49.22,
+   "y": 27.01,
+   "merged": [],
+   "n": 0,
+   "coverage": 0.0,
+   "scatter_pct": null,
+   "median_err_pct": null,
+   "chi2_red": null,
+   "chi2_excess_sigma": null,
+   "is_reference": false,
+   "jitter_pct": 0.0,
+   "primary": null,
+   "secondary": null,
+   "phase_scan": null
+  },
+  {
+   "source_id": "4659556731789594240",
+   "g_mag": 15.095574378967285,
+   "x": 9.68,
+   "y": 22.88,
+   "merged": [],
+   "n": 684,
+   "coverage": 0.97,
+   "scatter_pct": 6.8,
+   "median_err_pct": 3.0,
+   "chi2_red": 13.22,
+   "chi2_excess_sigma": 0.49,
+   "is_reference": true,
+   "von_neumann_eta": 1.963,
+   "ls_period_d": 0.16282,
+   "ls_power": 0.0331,
+   "ls_fap": 0.16129909938620846,
+   "ls_fap_bonferroni": 1.0,
+   "amplitude_pct": 20.45,
+   "variable_flag": false,
+   "jitter_pct": 4.51,
+   "primary": {
+    "depth": -0.0004,
+    "err": 0.0082,
+    "n": 106
+   },
+   "secondary": {
+    "depth": -0.0127,
+    "err": 0.0091,
+    "n": 99
+   },
+   "phase_scan": {
+    "snr": 3.02,
+    "phase": 0.065,
+    "depth": 0.0336,
+    "err": 0.0112,
+    "n": 31
+   }
+  },
+  {
+   "source_id": "4659555151241632128",
+   "g_mag": 15.24980640411377,
+   "x": 11.98,
+   "y": 0.76,
+   "merged": [],
+   "n": 691,
+   "coverage": 0.98,
+   "scatter_pct": 7.92,
+   "median_err_pct": 2.98,
+   "chi2_red": 10.19,
+   "chi2_excess_sigma": -0.11,
+   "is_reference": false,
+   "von_neumann_eta": 2.082,
+   "ls_period_d": 0.16601,
+   "ls_power": 0.0387,
+   "ls_fap": 0.022623288447767204,
+   "ls_fap_bonferroni": 0.6786986534330162,
+   "amplitude_pct": 20.28,
+   "variable_flag": false,
+   "jitter_pct": 5.15,
+   "primary": {
+    "depth": 0.0057,
+    "err": 0.0095,
+    "n": 106
+   },
+   "secondary": {
+    "depth": 0.0013,
+    "err": 0.01,
+    "n": 101
+   },
+   "phase_scan": {
+    "snr": 2.17,
+    "phase": 0.43,
+    "depth": 0.0325,
+    "err": 0.015,
+    "n": 21
+   }
+  },
+  {
+   "source_id": "4659556143368980864",
+   "g_mag": 15.343645095825195,
+   "x": 42.94,
+   "y": 15.25,
+   "merged": [],
+   "n": 688,
+   "coverage": 0.976,
+   "scatter_pct": 5.72,
+   "median_err_pct": 1.52,
+   "chi2_red": 24.25,
+   "chi2_excess_sigma": 1.81,
+   "is_reference": true,
+   "von_neumann_eta": 2.096,
+   "ls_period_d": 0.24981,
+   "ls_power": 0.0422,
+   "ls_fap": 0.007732265840681447,
+   "ls_fap_bonferroni": 0.2319679752204434,
+   "amplitude_pct": 11.47,
+   "variable_flag": false,
+   "jitter_pct": 4.88,
+   "primary": {
+    "depth": 0.0054,
+    "err": 0.0078,
+    "n": 107
+   },
+   "secondary": {
+    "depth": -0.0104,
+    "err": 0.008,
+    "n": 100
+   },
+   "phase_scan": {
+    "snr": 1.81,
+    "phase": 0.285,
+    "depth": 0.0391,
+    "err": 0.0216,
+    "n": 7
+   }
+  },
+  {
+   "source_id": "4659557281545148928",
+   "g_mag": 15.403278350830078,
+   "x": 5.23,
+   "y": 49.08,
+   "merged": [],
+   "n": 0,
+   "coverage": 0.0,
+   "scatter_pct": null,
+   "median_err_pct": null,
+   "chi2_red": null,
+   "chi2_excess_sigma": null,
+   "is_reference": false,
+   "jitter_pct": 0.0,
+   "primary": null,
+   "secondary": null,
+   "phase_scan": null
+  },
+  {
+   "source_id": "4659557418984082048",
+   "g_mag": 15.646818161010742,
+   "x": 21.34,
+   "y": 47.96,
+   "merged": [],
+   "n": 674,
+   "coverage": 0.956,
+   "scatter_pct": 12.97,
+   "median_err_pct": 4.63,
+   "chi2_red": 11.54,
+   "chi2_excess_sigma": 0.39,
+   "is_reference": false,
+   "von_neumann_eta": 1.944,
+   "ls_period_d": 0.11979,
+   "ls_power": 0.0407,
+   "ls_fap": 0.015967234669423888,
+   "ls_fap_bonferroni": 0.4790170400827166,
+   "amplitude_pct": 35.89,
+   "variable_flag": false,
+   "jitter_pct": 8.58,
+   "primary": {
+    "depth": -0.0298,
+    "err": 0.031,
+    "n": 105
+   },
+   "secondary": {
+    "depth": 0.0022,
+    "err": 0.0173,
+    "n": 98
+   },
+   "phase_scan": {
+    "snr": 2.5,
+    "phase": 0.09,
+    "depth": 0.1078,
+    "err": 0.0431,
+    "n": 7
+   }
+  },
+  {
+   "source_id": "4659557178465922432",
+   "g_mag": 15.662104606628418,
+   "x": 17.34,
+   "y": 38.02,
+   "merged": [],
+   "n": 682,
+   "coverage": 0.967,
+   "scatter_pct": 6.07,
+   "median_err_pct": 1.94,
+   "chi2_red": 10.66,
+   "chi2_excess_sigma": 0.1,
+   "is_reference": true,
+   "von_neumann_eta": 2.102,
+   "ls_period_d": 0.12098,
+   "ls_power": 0.0298,
+   "ls_fap": 0.4369420739910194,
+   "ls_fap_bonferroni": 1.0,
+   "amplitude_pct": 13.62,
+   "variable_flag": false,
+   "jitter_pct": 5.15,
+   "primary": {
+    "depth": -0.0266,
+    "err": 0.0103,
+    "n": 104
+   },
+   "secondary": {
+    "depth": -0.0115,
+    "err": 0.0087,
+    "n": 101
+   },
+   "phase_scan": {
+    "snr": 2.04,
+    "phase": 0.6,
+    "depth": 0.0353,
+    "err": 0.0173,
+    "n": 11
+   }
+  },
+  {
+   "source_id": "4659556559990909440",
+   "g_mag": 15.708090782165527,
+   "x": 6.25,
+   "y": 1.43,
+   "merged": [],
+   "n": 681,
+   "coverage": 0.966,
+   "scatter_pct": 9.88,
+   "median_err_pct": 4.61,
+   "chi2_red": 8.98,
+   "chi2_excess_sigma": -0.39,
+   "is_reference": false,
+   "von_neumann_eta": 2.067,
+   "ls_period_d": 0.29817,
+   "ls_power": 0.0329,
+   "ls_fap": 0.17860299750464972,
+   "ls_fap_bonferroni": 1.0,
+   "amplitude_pct": 32.77,
+   "variable_flag": false,
+   "jitter_pct": 6.26,
+   "primary": {
+    "depth": 0.0179,
+    "err": 0.0129,
+    "n": 106
+   },
+   "secondary": {
+    "depth": 0.0094,
+    "err": 0.0102,
+    "n": 100
+   },
+   "phase_scan": {
+    "snr": 2.62,
+    "phase": 0.005,
+    "depth": 0.0419,
+    "err": 0.016,
+    "n": 30
+   }
+  },
+  {
+   "source_id": "4659557208521062016",
+   "g_mag": 15.820276260375977,
+   "x": 21.04,
+   "y": 44.8,
+   "merged": [],
+   "n": 685,
+   "coverage": 0.972,
+   "scatter_pct": 12.49,
+   "median_err_pct": 4.3,
+   "chi2_red": 10.86,
+   "chi2_excess_sigma": 0.14,
+   "is_reference": false,
+   "von_neumann_eta": 2.074,
+   "ls_period_d": 0.10368,
+   "ls_power": 0.0336,
+   "ls_fap": 0.13467326401844087,
+   "ls_fap_bonferroni": 1.0,
+   "amplitude_pct": 32.82,
+   "variable_flag": false,
+   "jitter_pct": 9.15,
+   "primary": {
+    "depth": -0.0261,
+    "err": 0.0304,
+    "n": 105
+   },
+   "secondary": {
+    "depth": 0.0028,
+    "err": 0.0171,
+    "n": 97
+   },
+   "phase_scan": {
+    "snr": 1.71,
+    "phase": 0.09,
+    "depth": 0.0699,
+    "err": 0.0409,
+    "n": 9
+   }
+  },
+  {
+   "source_id": "4659555357400047104",
+   "g_mag": 16.084440231323242,
+   "x": 29.58,
+   "y": 13.04,
+   "merged": [],
+   "n": 562,
+   "coverage": 0.797,
+   "scatter_pct": 10.86,
+   "median_err_pct": 6.45,
+   "chi2_red": 8.51,
+   "chi2_excess_sigma": -0.37,
+   "is_reference": false,
+   "von_neumann_eta": 2.066,
+   "ls_period_d": 0.69646,
+   "ls_power": 0.0274,
+   "ls_fap": 0.9970013847649488,
+   "ls_fap_bonferroni": 1.0,
+   "amplitude_pct": 28.86,
+   "variable_flag": false,
+   "jitter_pct": 8.71,
+   "primary": {
+    "depth": 0.0325,
+    "err": 0.0191,
+    "n": 85
+   },
+   "secondary": {
+    "depth": 0.021,
+    "err": 0.0184,
+    "n": 84
+   },
+   "phase_scan": {
+    "snr": 2.05,
+    "phase": 0.305,
+    "depth": 0.0934,
+    "err": 0.0456,
+    "n": 6
+   }
+  },
+  {
+   "source_id": "4659556594350976384",
+   "g_mag": 16.159481048583984,
+   "x": 10.11,
+   "y": 12.65,
+   "merged": [],
+   "n": 680,
+   "coverage": 0.965,
+   "scatter_pct": 7.63,
+   "median_err_pct": 3.89,
+   "chi2_red": 4.09,
+   "chi2_excess_sigma": -2.43,
+   "is_reference": false,
+   "von_neumann_eta": 2.094,
+   "ls_period_d": 0.10246,
+   "ls_power": 0.04,
+   "ls_fap": 0.019186463543514568,
+   "ls_fap_bonferroni": 0.575593906305437,
+   "amplitude_pct": 23.85,
+   "variable_flag": false,
+   "jitter_pct": 5.43,
+   "primary": {
+    "depth": 0.0009,
+    "err": 0.0095,
+    "n": 105
+   },
+   "secondary": {
+    "depth": -0.0012,
+    "err": 0.012,
+    "n": 95
+   },
+   "phase_scan": {
+    "snr": 2.41,
+    "phase": 0.16,
+    "depth": 0.0475,
+    "err": 0.0197,
+    "n": 14
+   }
+  },
+  {
+   "source_id": "4659556555685787520",
+   "g_mag": 16.180164337158203,
+   "x": 7.83,
+   "y": 3.45,
+   "merged": [],
+   "n": 683,
+   "coverage": 0.969,
+   "scatter_pct": 6.5,
+   "median_err_pct": 3.03,
+   "chi2_red": 8.11,
+   "chi2_excess_sigma": -0.62,
+   "is_reference": true,
+   "von_neumann_eta": 1.959,
+   "ls_period_d": 0.13246,
+   "ls_power": 0.0443,
+   "ls_fap": 0.004082643511133217,
+   "ls_fap_bonferroni": 0.12247930533399651,
+   "amplitude_pct": 16.48,
+   "variable_flag": false,
+   "jitter_pct": 4.66,
+   "primary": {
+    "depth": 0.004,
+    "err": 0.0094,
+    "n": 106
+   },
+   "secondary": {
+    "depth": 0.001,
+    "err": 0.0087,
+    "n": 99
+   },
+   "phase_scan": {
+    "snr": 2.42,
+    "phase": 0.97,
+    "depth": 0.0325,
+    "err": 0.0134,
+    "n": 22
+   }
+  },
+  {
+   "source_id": "4659556972307750528",
+   "g_mag": 16.190309524536133,
+   "x": 25.7,
+   "y": 26.43,
+   "merged": [],
+   "n": 342,
+   "coverage": 0.485,
+   "scatter_pct": 17.97,
+   "median_err_pct": 15.07,
+   "chi2_red": 2.01,
+   "chi2_excess_sigma": -4.55,
+   "is_reference": false,
+   "von_neumann_eta": 1.722,
+   "ls_period_d": 1.3144,
+   "ls_power": 0.2097,
+   "ls_fap": 1.365380817466624e-13,
+   "ls_fap_bonferroni": 4.0961424523998724e-12,
+   "amplitude_pct": 41.9,
+   "variable_flag": false,
+   "jitter_pct": 13.41,
+   "primary": {
+    "depth": 0.322,
+    "err": 0.0271,
+    "n": 53
+   },
+   "secondary": {
+    "depth": 0.148,
+    "err": 0.037,
+    "n": 50
+   },
+   "phase_scan": {
+    "snr": 9.12,
+    "phase": 0.02,
+    "depth": 0.3783,
+    "err": 0.0415,
+    "n": 20
+   }
+  },
+  {
+   "source_id": "4659557418984070784",
+   "g_mag": 16.24130630493164,
+   "x": 28.54,
+   "y": 48.9,
+   "merged": [],
+   "n": 0,
+   "coverage": 0.0,
+   "scatter_pct": null,
+   "median_err_pct": null,
+   "chi2_red": null,
+   "chi2_excess_sigma": null,
+   "is_reference": false,
+   "jitter_pct": 0.0,
+   "primary": null,
+   "secondary": null,
+   "phase_scan": null
+  },
+  {
+   "source_id": "4659556800508801920",
+   "g_mag": 16.297075271606445,
+   "x": 18.08,
+   "y": 29.84,
+   "merged": [],
+   "n": 231,
+   "coverage": 0.328,
+   "scatter_pct": 20.12,
+   "median_err_pct": 18.09,
+   "chi2_red": 6.89,
+   "chi2_excess_sigma": -1.16,
+   "is_reference": false,
+   "von_neumann_eta": 2.013,
+   "ls_period_d": 0.24205,
+   "ls_power": 0.1309,
+   "ls_fap": 0.0016032227216259303,
+   "ls_fap_bonferroni": 0.04809668164877791,
+   "amplitude_pct": 59.09,
+   "variable_flag": false,
+   "jitter_pct": 13.14,
+   "primary": {
+    "depth": -0.0364,
+    "err": 0.0852,
+    "n": 36
+   },
+   "secondary": {
+    "depth": 0.0434,
+    "err": 0.0632,
+    "n": 33
+   },
+   "phase_scan": {
+    "snr": 4.0,
+    "phase": 0.53,
+    "depth": 0.2222,
+    "err": 0.0556,
+    "n": 15
+   }
+  },
+  {
+   "source_id": "4659557144106456832",
+   "g_mag": 16.357868194580078,
+   "x": 3.54,
+   "y": 34.24,
+   "merged": [],
+   "n": 680,
+   "coverage": 0.965,
+   "scatter_pct": 9.89,
+   "median_err_pct": 4.84,
+   "chi2_red": 14.52,
+   "chi2_excess_sigma": 1.74,
+   "is_reference": false,
+   "von_neumann_eta": 2.002,
+   "ls_period_d": 1.91726,
+   "ls_power": 0.0208,
+   "ls_fap": 0.9999823305426856,
+   "ls_fap_bonferroni": 1.0,
+   "amplitude_pct": 38.36,
+   "variable_flag": false,
+   "jitter_pct": 6.46,
+   "primary": {
+    "depth": -0.0079,
+    "err": 0.0236,
+    "n": 106
+   },
+   "secondary": {
+    "depth": 0.003,
+    "err": 0.0149,
+    "n": 98
+   },
+   "phase_scan": {
+    "snr": 3.79,
+    "phase": 0.09,
+    "depth": 0.1252,
+    "err": 0.0331,
+    "n": 9
+   }
+  },
+  {
+   "source_id": "4659544980759079680",
+   "g_mag": 16.496442794799805,
+   "x": 0.64,
+   "y": 19.15,
+   "merged": [],
+   "n": 678,
+   "coverage": 0.962,
+   "scatter_pct": 8.04,
+   "median_err_pct": 3.92,
+   "chi2_red": 8.82,
+   "chi2_excess_sigma": -0.43,
+   "is_reference": false,
+   "von_neumann_eta": 2.035,
+   "ls_period_d": 0.10175,
+   "ls_power": 0.0248,
+   "ls_fap": 0.9567525958730492,
+   "ls_fap_bonferroni": 1.0,
+   "amplitude_pct": 21.93,
+   "variable_flag": false,
+   "jitter_pct": 5.02,
+   "primary": {
+    "depth": 0.0071,
+    "err": 0.0224,
+    "n": 105
+   },
+   "secondary": {
+    "depth": -0.0154,
+    "err": 0.01,
+    "n": 98
+   },
+   "phase_scan": {
+    "snr": 2.44,
+    "phase": 0.99,
+    "depth": 0.0324,
+    "err": 0.0133,
+    "n": 29
+   }
+  }
+ ],
+ "clock": {
+  "tess_id": "31511621",
+  "period": 2.628869,
+  "bjd0": 1.2388,
+  "phase_error_2026": 0.00365,
+  "sec_phase": -0.5,
+  "prim_width": 0.1509030480486032
+ }
+}

@@ -1,0 +1,124 @@
+{
+ "name": "Elias29",
+ "n_exposures": 253,
+ "n_used": 28,
+ "cuts": {
+  "flagged core": 223,
+  "too few good pixels": 2
+ },
+ "floor": 0.02,
+ "bands": {
+  "H2O": {
+   "epochs": [
+    {
+     "epoch": "0",
+     "visit": 0,
+     "mjd": [
+      60894.042228712,
+      60921.350455252
+     ],
+     "collections": [
+      "spherex_dr1"
+     ],
+     "coverage_core_blue_red": [
+      0,
+      0,
+      0
+     ],
+     "complete": false
+    },
+    {
+     "epoch": "1",
+     "visit": 1,
+     "mjd": [
+      61103.099435171,
+      61141.045033805
+     ],
+     "collections": [
+      "spherex_dr1"
+     ],
+     "coverage_core_blue_red": [
+      0,
+      0,
+      0
+     ],
+     "complete": false
+    },
+    {
+     "epoch": "2",
+     "visit": 2,
+     "mjd": [
+      61252.140585946,
+      61257.976457798
+     ],
+     "collections": [
+      "spherex_qr3"
+     ],
+     "coverage_core_blue_red": [
+      0,
+      0,
+      0
+     ],
+     "complete": false
+    }
+   ],
+   "n_complete": 0
+  },
+  "CO2": {
+   "epochs": [
+    {
+     "epoch": "0",
+     "visit": 0,
+     "mjd": [
+      60894.042228712,
+      60921.350455252
+     ],
+     "collections": [
+      "spherex_dr1"
+     ],
+     "coverage_core_blue_red": [
+      0,
+      0,
+      0
+     ],
+     "complete": false
+    },
+    {
+     "epoch": "1",
+     "visit": 1,
+     "mjd": [
+      61103.099435171,
+      61141.045033805
+     ],
+     "collections": [
+      "spherex_dr1"
+     ],
+     "coverage_core_blue_red": [
+      0,
+      0,
+      0
+     ],
+     "complete": false
+    },
+    {
+     "epoch": "2",
+     "visit": 2,
+     "mjd": [
+      61252.140585946,
+      61257.976457798
+     ],
+     "collections": [
+      "spherex_qr3"
+     ],
+     "coverage_core_blue_red": [
+      0,
+      0,
+      0
+     ],
+     "complete": false
+    }
+   ],
+   "n_complete": 0
+  }
+ }
+}

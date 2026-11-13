@@ -6,6 +6,7 @@
   <title>SPHEREx Blink: see the infrared sky change</title>
   <meta name="description" content="Type a star name or a sky position and see NASA SPHEREx images of that patch of sky over time.">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/methane.css">
 </head>
 <body>
   <header class="site-header">
@@ -15,6 +16,7 @@
     </a>
     <nav class="site-nav" aria-label="Pages">
       <a href="./" aria-current="page">Explore</a>
+      <a href="eclipse.html">Eclipse mode</a>
       <a href="about.html">About</a>
       <span class="badge" title="Practice build, not the hackathon submission">Practice build · Day 6</span>
     </nav>
@@ -337,6 +339,76 @@
         <p id="proof-method" class="help"></p>
       </section>
 
+      <section id="ch4-view" class="diffview ch4-view" aria-labelledby="ch4-title" hidden>
+        <div class="flip-head">
+          <h3 id="ch4-title">Methane vision: is it a cold brown dwarf?</h3>
+          <span id="ch4-summary" class="flip-summary"></span>
+        </div>
+        <p class="help">Brown dwarfs colder than about 1300 K contain methane, which swallows their light at 3.3 µm,
+          while they shine at 4 µm. A normal star looks the same in both once its colour is allowed for. Methane vision
+          subtracts one picture from the other: ordinary stars fade away and cold brown dwarfs glow. Play the visits to
+          see whether the glow moves.</p>
+        <p id="ch4-message" class="help" hidden></p>
+        <button type="button" id="ch4-prepare" class="btn btn-small btn-primary" hidden>Prepare methane vision</button>
+        <div id="ch4-body" class="ch4-body" hidden>
+          <div class="proof-card">
+            <h4>Verdict</h4>
+            <p id="ch4-verdict" class="proof-verdict"></p>
+            <p id="ch4-combined" class="ch4-combined"></p>
+            <ul id="ch4-numbers"></ul>
+          </div>
+          <div class="inline-row">
+            <label class="inline-label" for="ch4-visit"><span>Show</span> <select id="ch4-visit"></select></label>
+            <button type="button" id="ch4-play" class="btn btn-small btn-primary">Play visits</button>
+            <button type="button" id="ch4-blink" class="btn btn-small">Blink 3.3 ↔ 4 µm</button>
+          </div>
+          <p id="ch4-caption" class="help" aria-live="polite"></p>
+          <div class="diff-grid">
+            <figure class="diff-panel">
+              <div class="flip-stage">
+                <img id="ch4-img-a" class="flip-layer" alt="SPHEREx picture in the methane band">
+                <div id="ch4-marks-a" class="gaia-layer" aria-hidden="true"></div>
+              </div>
+              <figcaption id="ch4-cap-a"></figcaption>
+            </figure>
+            <figure class="diff-panel">
+              <div class="flip-stage">
+                <img id="ch4-img-b" class="flip-layer" alt="SPHEREx picture in the 4 µm window">
+                <div id="ch4-marks-b" class="gaia-layer" aria-hidden="true"></div>
+              </div>
+              <figcaption id="ch4-cap-b"></figcaption>
+            </figure>
+            <figure class="diff-panel">
+              <div class="flip-stage">
+                <img id="ch4-img-m" class="flip-layer" alt="Methane vision: window minus methane band, in noise units">
+                <div id="ch4-marks-m" class="gaia-layer" aria-hidden="true"></div>
+              </div>
+              <figcaption>Methane vision: 4 µm − k × 3.3 µm, in σ</figcaption>
+            </figure>
+          </div>
+          <div class="diff-legend" aria-label="Methane vision brightness">
+            <span>−10σ</span><span class="ch4-bar" aria-hidden="true"></span><span>+10σ: glows</span>
+            <span class="diff-stripes" aria-hidden="true"></span><span>no value</span>
+          </div>
+          <p class="help">Both photos use one brightness scale after the colour correction, so a normal star looks the
+            same in both and stays still when you blink them; a methane brown dwarf switches on and off. The dashed ring
+            is where the target should be that visit.</p>
+          <div id="ch4-others" class="lc-list">
+            <strong>Other glowing spots in this field (places to look, not discoveries)</strong>
+            <ul></ul>
+          </div>
+          <div id="ch4-warnings" class="flip-cautions">
+            <strong>Before you trust a glow</strong>
+            <ul></ul>
+          </div>
+          <details class="sci-how">
+            <summary>Which exposures, and how</summary>
+            <ul id="ch4-downloads" class="about-list"></ul>
+            <p id="ch4-method" class="help"></p>
+          </details>
+        </div>
+      </section>
+
       <section id="diff-view" class="diffview" aria-labelledby="diff-title" hidden>
         <div class="flip-head">
           <h3 id="diff-title">Before / After / Difference</h3>
@@ -408,6 +480,7 @@
               <strong class="spot-sub">What would confirm it</strong>
               <ul id="spot-confirm"></ul>
               <button type="button" id="spot-jpl" class="btn btn-small">Check known asteroids and comets (NASA JPL)</button>
+              <button type="button" id="spot-export" class="btn btn-small" disabled>Download spot evidence (JSON)</button>
               <div id="spot-jpl-result" class="spot-jpl-result" aria-live="polite"></div>
             </div>
           </div>

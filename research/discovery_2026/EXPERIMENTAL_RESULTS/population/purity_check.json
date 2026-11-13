@@ -1,0 +1,58 @@
+{
+ "excluded": {
+  "SJ20313267p3752317": "IRAS 20296+3742 (Mi*)",
+  "SJ07142692m1203589": "IRAS 07121-1158 (PN?)",
+  "SJ17555845m1624393": "G 154-34 (PM*)",
+  "SJ19224465p1959065": "ZTF J192244.80+195912.8 (LP*)",
+  "SJ18522549p0054061": "IRAS 18498+0050 (AB?)",
+  "SJ07375689m2556589": "V* V445 Pup (No*)",
+  "SJ19534386p3146371": "ZTF J195343.66+314628.8 (Mi*)",
+  "SJ18561192p0753394": "2MASS J18561197+0753381 (LP?)",
+  "SJ15051679m5511105": "WRAY 16-162 (PN)",
+  "SJ18090746m1923037": "2MASS J18090735-1922547 (AB?)",
+  "SJ05352186m0429389": "HD  37017 (SB*)"
+ },
+ "n_excluded_var": 2,
+ "n_excluded_ctrl": 9,
+ "ice_detection_rate": {
+  "H2O": {
+   "VAR": "23/32",
+   "CTRL": "7/23",
+   "fisher_p_two_sided": 0.0030215013081161444,
+   "fisher_p_var_greater": 0.0026118559409023345
+  },
+  "CO2": {
+   "VAR": "25/34",
+   "CTRL": "5/26",
+   "fisher_p_two_sided": 6.318223421545623e-05,
+   "fisher_p_var_greater": 3.159111710772811e-05
+  }
+ },
+ "var_vs_ctrl_detected_quality": {
+  "H2O": {
+   "n_var": 34,
+   "n_ctrl": 5,
+   "median_absz_var": 1.0625199484936285,
+   "median_absz_ctrl": 0.245890700490443,
+   "mannwhitney_p": 0.019409229935545724
+  },
+  "CO2": {
+   "n_var": 41,
+   "n_ctrl": 19,
+   "median_absz_var": 0.4132452558613481,
+   "median_absz_ctrl": 0.73715132871134,
+   "mannwhitney_p": 0.9827223267661747
+  }
+ },
+ "h2o_apparent_scatter_var": {
+  "n_pairs": 34,
+  "s_mle": 0.164,
+  "s_upper95": 0.2275
+ },
+ "co2_column_var": {
+  "n_pairs": 41,
+  "mle": 0.0,
+  "upper95": 0.0805,
+  "delta_chi2_at_h2o_s": 10.055051223547125
+ }
+}

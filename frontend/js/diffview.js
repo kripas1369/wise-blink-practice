@@ -30,9 +30,15 @@ export function pairFacts(pair, fa, fb) {
     `MJy/sr removed · ${pair.pct_flagged}% flagged and ${pair.pct_no_value}% without a value in either visit (striped)`;
 }
 
+/** One line for judges: peak σ on the difference map (not the proof motion test). */
+export function pairSignificanceLine(pair) {
+  return `Difference map: strongest +${pair.max_sigma}σ / ${pair.min_sigma}σ; noise scatter on good pixels ${pair.scatter_sigma}× ` +
+    `(values above ${SCATTER_WARN}× mean σ may be optimistic for spot finding).`;
+}
+
 /** Plain warnings a visitor must read before trusting a coloured spot. */
 export function pairWarnings(pair, fa, fb) {
-  const out = [];
+  const out = [pairSignificanceLine(pair)];
   if (pair.scatter_sigma > SCATTER_WARN) {
     out.push(`The difference scatters ${pair.scatter_sigma}× more than the files' noise predicts, so large σ ` +
       "values here are not a detection by themselves (bright-star halos, wavelength and PSF differences all add to it).");
@@ -168,7 +174,7 @@ export function createDiffView({ onPair = () => {} } = {}) {
       const [which, delta] = button.dataset.step.split(":");
       button.disabled = stepPair(ids, a, b, which, Number(delta)) === null;
     }
-    onPair(state, a, b);
+    onPair(state, a, b, pair);
   }
 
   /** Put the shared cursor on a pixel, as if pointed at. */

@@ -1,0 +1,952 @@
+{
+ "150101476": {
+  "partner": "150101472",
+  "field": "SEP",
+  "period": 3.278575439383096,
+  "tmag": 11.0576,
+  "prim_depth": 0.0230807683043945,
+  "sec_depth": 0.0059482051880603,
+  "per_detector": {
+   "1": {
+    "n_images": 400,
+    "n_primary": 16,
+    "n_secondary": 3,
+    "n_primary_central": 7
+   },
+   "2": {
+    "n_images": 59,
+    "n_primary": 2,
+    "n_secondary": 4,
+    "n_primary_central": 2
+   },
+   "3": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "4": {
+    "n_images": 395,
+    "n_primary": 16,
+    "n_secondary": 3,
+    "n_primary_central": 7
+   },
+   "5": {
+    "n_images": 57,
+    "n_primary": 2,
+    "n_secondary": 4,
+    "n_primary_central": 2
+   },
+   "6": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   }
+  },
+  "n_primary": 36,
+  "n_secondary": 14,
+  "phase_error": 0.00606,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "276935987": {
+  "partner": "276935996",
+  "field": "SEP",
+  "period": 4.250727202623738,
+  "tmag": 11.8457,
+  "prim_depth": 0.2486532224258907,
+  "sec_depth": 0.1262418434436588,
+  "per_detector": {
+   "1": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "2": {
+    "n_images": 42,
+    "n_primary": 4,
+    "n_secondary": 4,
+    "n_primary_central": 4
+   },
+   "3": {
+    "n_images": 272,
+    "n_primary": 37,
+    "n_secondary": 3,
+    "n_primary_central": 23
+   },
+   "4": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "5": {
+    "n_images": 41,
+    "n_primary": 4,
+    "n_secondary": 4,
+    "n_primary_central": 4
+   },
+   "6": {
+    "n_images": 268,
+    "n_primary": 37,
+    "n_secondary": 3,
+    "n_primary_central": 23
+   }
+  },
+  "n_primary": 82,
+  "n_secondary": 14,
+  "phase_error": 0.01504,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "140659978": {
+  "partner": "140659980",
+  "field": "SEP",
+  "period": 9.440095440989992,
+  "tmag": 10.7434,
+  "prim_depth": 0.3177081166997046,
+  "sec_depth": 0.1890766469741853,
+  "per_detector": {
+   "1": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "2": {
+    "n_images": 18,
+    "n_primary": 0,
+    "n_secondary": 1,
+    "n_primary_central": 0
+   },
+   "3": {
+    "n_images": 45,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "4": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "5": {
+    "n_images": 18,
+    "n_primary": 0,
+    "n_secondary": 1,
+    "n_primary_central": 0
+   },
+   "6": {
+    "n_images": 44,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   }
+  },
+  "n_primary": 0,
+  "n_secondary": 2,
+  "phase_error": 7e-05,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "279569707": {
+  "partner": "279569718",
+  "field": "SEP",
+  "period": 3.9794091103150064,
+  "tmag": 9.0634,
+  "prim_depth": 0.0797643120088655,
+  "sec_depth": 0.0128936731474478,
+  "per_detector": {
+   "1": {
+    "n_images": 31,
+    "n_primary": 3,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "2": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "3": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "4": {
+    "n_images": 31,
+    "n_primary": 3,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "5": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "6": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   }
+  },
+  "n_primary": 6,
+  "n_secondary": 0,
+  "phase_error": 0.00021,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "258918831": {
+  "partner": "258918835",
+  "field": "NEP",
+  "period": 5.985604384617206,
+  "tmag": 11.7065,
+  "prim_depth": 0.0217823608035416,
+  "sec_depth": null,
+  "per_detector": {
+   "1": {
+    "n_images": 175,
+    "n_primary": 6,
+    "n_secondary": 0,
+    "n_primary_central": 2
+   },
+   "2": {
+    "n_images": 29,
+    "n_primary": 2,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "3": {
+    "n_images": 176,
+    "n_primary": 7,
+    "n_secondary": 0,
+    "n_primary_central": 4
+   },
+   "4": {
+    "n_images": 167,
+    "n_primary": 5,
+    "n_secondary": 0,
+    "n_primary_central": 1
+   },
+   "5": {
+    "n_images": 30,
+    "n_primary": 2,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "6": {
+    "n_images": 178,
+    "n_primary": 7,
+    "n_secondary": 0,
+    "n_primary_central": 4
+   }
+  },
+  "n_primary": 29,
+  "n_secondary": 0,
+  "phase_error": 0.00957,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "420114776": {
+  "partner": "420114772",
+  "field": "NEP",
+  "period": 3.2350874356223143,
+  "tmag": 13.3119,
+  "prim_depth": 0.1881282981339898,
+  "sec_depth": null,
+  "per_detector": {
+   "1": {
+    "n_images": 22,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "2": {
+    "n_images": 37,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "3": {
+    "n_images": 33,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "4": {
+    "n_images": 22,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "5": {
+    "n_images": 37,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "6": {
+    "n_images": 34,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   }
+  },
+  "n_primary": 0,
+  "n_secondary": 0,
+  "phase_error": 0.00901,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "280033934": {
+  "partner": "280033918",
+  "field": "NEP",
+  "period": 0.2787725099660905,
+  "tmag": 10.5193,
+  "prim_depth": 0.0874202686530303,
+  "sec_depth": null,
+  "per_detector": {
+   "1": {
+    "n_images": 30,
+    "n_primary": 2,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "2": {
+    "n_images": 31,
+    "n_primary": 2,
+    "n_secondary": 0,
+    "n_primary_central": 1
+   },
+   "3": {
+    "n_images": 23,
+    "n_primary": 1,
+    "n_secondary": 0,
+    "n_primary_central": 1
+   },
+   "4": {
+    "n_images": 33,
+    "n_primary": 2,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "5": {
+    "n_images": 30,
+    "n_primary": 2,
+    "n_secondary": 0,
+    "n_primary_central": 1
+   },
+   "6": {
+    "n_images": 23,
+    "n_primary": 1,
+    "n_secondary": 0,
+    "n_primary_central": 1
+   }
+  },
+  "n_primary": 10,
+  "n_secondary": 0,
+  "phase_error": 0.00099,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "198242676": {
+  "partner": "198242678",
+  "field": "NEP",
+  "period": 4.629789525096858,
+  "tmag": 9.14165,
+  "prim_depth": 1.5298479404324299,
+  "sec_depth": 0.3875702224338981,
+  "per_detector": {
+   "1": {
+    "n_images": 38,
+    "n_primary": 4,
+    "n_secondary": 1,
+    "n_primary_central": 1
+   },
+   "2": {
+    "n_images": 24,
+    "n_primary": 2,
+    "n_secondary": 0,
+    "n_primary_central": 2
+   },
+   "3": {
+    "n_images": 21,
+    "n_primary": 7,
+    "n_secondary": 4,
+    "n_primary_central": 3
+   },
+   "4": {
+    "n_images": 38,
+    "n_primary": 4,
+    "n_secondary": 1,
+    "n_primary_central": 1
+   },
+   "5": {
+    "n_images": 24,
+    "n_primary": 2,
+    "n_secondary": 0,
+    "n_primary_central": 2
+   },
+   "6": {
+    "n_images": 21,
+    "n_primary": 7,
+    "n_secondary": 4,
+    "n_primary_central": 3
+   }
+  },
+  "n_primary": 26,
+  "n_secondary": 10,
+  "phase_error": 0.00129,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "377192658": {
+  "partner": "377192659",
+  "field": "NEP",
+  "period": 1.8172360470933728,
+  "tmag": 9.1254,
+  "prim_depth": 0.9164557341927756,
+  "sec_depth": 0.3950634811485425,
+  "per_detector": {
+   "1": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "2": {
+    "n_images": 4,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "3": {
+    "n_images": 36,
+    "n_primary": 3,
+    "n_secondary": 6,
+    "n_primary_central": 0
+   },
+   "4": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "5": {
+    "n_images": 4,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "6": {
+    "n_images": 35,
+    "n_primary": 2,
+    "n_secondary": 6,
+    "n_primary_central": 0
+   }
+  },
+  "n_primary": 5,
+  "n_secondary": 12,
+  "phase_error": 0.00156,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "220402294": {
+  "partner": "220402290",
+  "field": "south",
+  "period": 0.7852426816322957,
+  "tmag": 11.2216,
+  "prim_depth": 0.3426125105013168,
+  "sec_depth": 0.0972354777374137,
+  "per_detector": {
+   "1": {
+    "n_images": 37,
+    "n_primary": 0,
+    "n_secondary": 2,
+    "n_primary_central": 0
+   },
+   "2": {
+    "n_images": 151,
+    "n_primary": 23,
+    "n_secondary": 16,
+    "n_primary_central": 14
+   },
+   "3": {
+    "n_images": 301,
+    "n_primary": 38,
+    "n_secondary": 40,
+    "n_primary_central": 26
+   },
+   "4": {
+    "n_images": 36,
+    "n_primary": 0,
+    "n_secondary": 2,
+    "n_primary_central": 0
+   },
+   "5": {
+    "n_images": 152,
+    "n_primary": 23,
+    "n_secondary": 17,
+    "n_primary_central": 14
+   },
+   "6": {
+    "n_images": 299,
+    "n_primary": 38,
+    "n_secondary": 39,
+    "n_primary_central": 26
+   }
+  },
+  "n_primary": 122,
+  "n_secondary": 116,
+  "phase_error": 0.00758,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "161687311": {
+  "partner": "161687316",
+  "field": "north",
+  "period": 0.8166027883368868,
+  "tmag": 9.2246,
+  "prim_depth": 0.1792762850164635,
+  "sec_depth": 0.0312231708020083,
+  "per_detector": {
+   "1": {
+    "n_images": 27,
+    "n_primary": 4,
+    "n_secondary": 5,
+    "n_primary_central": 0
+   },
+   "2": {
+    "n_images": 19,
+    "n_primary": 1,
+    "n_secondary": 9,
+    "n_primary_central": 0
+   },
+   "3": {
+    "n_images": 37,
+    "n_primary": 11,
+    "n_secondary": 5,
+    "n_primary_central": 1
+   },
+   "4": {
+    "n_images": 26,
+    "n_primary": 4,
+    "n_secondary": 5,
+    "n_primary_central": 0
+   },
+   "5": {
+    "n_images": 19,
+    "n_primary": 1,
+    "n_secondary": 9,
+    "n_primary_central": 0
+   },
+   "6": {
+    "n_images": 38,
+    "n_primary": 11,
+    "n_secondary": 5,
+    "n_primary_central": 1
+   }
+  },
+  "n_primary": 32,
+  "n_secondary": 38,
+  "phase_error": 0.00043,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "55753808": {
+  "partner": "55753802",
+  "field": "north",
+  "period": 0.4155584744120035,
+  "tmag": 15.136,
+  "prim_depth": 0.8089716374595171,
+  "sec_depth": 0.7200317316760131,
+  "per_detector": {
+   "1": {
+    "n_images": 6,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "2": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "3": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "4": {
+    "n_images": 5,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "5": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "6": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   }
+  },
+  "n_primary": 0,
+  "n_secondary": 0,
+  "phase_error": 0.00095,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "159854359": {
+  "partner": "159854358",
+  "field": "north",
+  "period": 0.3266553418699965,
+  "tmag": 10.0188,
+  "prim_depth": 0.1021440631560253,
+  "sec_depth": null,
+  "per_detector": {
+   "1": {
+    "n_images": 19,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "2": {
+    "n_images": 20,
+    "n_primary": 4,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "3": {
+    "n_images": 19,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "4": {
+    "n_images": 19,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "5": {
+    "n_images": 20,
+    "n_primary": 4,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "6": {
+    "n_images": 24,
+    "n_primary": 1,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   }
+  },
+  "n_primary": 9,
+  "n_secondary": 0,
+  "phase_error": 0.001,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "164558072": {
+  "partner": "164558055",
+  "field": "north",
+  "period": 2.427492975418058,
+  "tmag": 10.5097,
+  "prim_depth": 0.2089794789565595,
+  "sec_depth": 0.2073086725019046,
+  "per_detector": {
+   "1": {
+    "n_images": 14,
+    "n_primary": 4,
+    "n_secondary": 0,
+    "n_primary_central": 4
+   },
+   "2": {
+    "n_images": 19,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "3": {
+    "n_images": 25,
+    "n_primary": 3,
+    "n_secondary": 0,
+    "n_primary_central": 3
+   },
+   "4": {
+    "n_images": 14,
+    "n_primary": 4,
+    "n_secondary": 0,
+    "n_primary_central": 4
+   },
+   "5": {
+    "n_images": 19,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "6": {
+    "n_images": 25,
+    "n_primary": 3,
+    "n_secondary": 0,
+    "n_primary_central": 3
+   }
+  },
+  "n_primary": 14,
+  "n_secondary": 0,
+  "phase_error": 0.00364,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "294092960": {
+  "partner": "294092966",
+  "field": "south",
+  "period": 0.9022574627499684,
+  "tmag": 10.2755,
+  "prim_depth": 0.0190229791660971,
+  "sec_depth": null,
+  "per_detector": {
+   "1": {
+    "n_images": 23,
+    "n_primary": 7,
+    "n_secondary": 0,
+    "n_primary_central": 4
+   },
+   "2": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "3": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "4": {
+    "n_images": 23,
+    "n_primary": 7,
+    "n_secondary": 0,
+    "n_primary_central": 4
+   },
+   "5": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "6": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   }
+  },
+  "n_primary": 14,
+  "n_secondary": 0,
+  "phase_error": 0.00053,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "199574208": {
+  "partner": "199574211",
+  "field": "north",
+  "period": 1.2683892362949518,
+  "tmag": 10.1645,
+  "prim_depth": 0.4335987502500837,
+  "sec_depth": 0.4145042423159988,
+  "per_detector": {
+   "1": {
+    "n_images": 23,
+    "n_primary": 1,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "2": {
+    "n_images": 33,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "3": {
+    "n_images": 24,
+    "n_primary": 0,
+    "n_secondary": 2,
+    "n_primary_central": 0
+   },
+   "4": {
+    "n_images": 24,
+    "n_primary": 1,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "5": {
+    "n_images": 33,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "6": {
+    "n_images": 23,
+    "n_primary": 0,
+    "n_secondary": 2,
+    "n_primary_central": 0
+   }
+  },
+  "n_primary": 2,
+  "n_secondary": 4,
+  "phase_error": 7e-05,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "269696430": {
+  "partner": "269696438",
+  "field": "north",
+  "period": 2.9787944370358086,
+  "tmag": 10.2369,
+  "prim_depth": 0.0565714332224018,
+  "sec_depth": null,
+  "per_detector": {
+   "1": {
+    "n_images": 32,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "2": {
+    "n_images": 19,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "3": {
+    "n_images": 30,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "4": {
+    "n_images": 32,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "5": {
+    "n_images": 19,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "6": {
+    "n_images": 30,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   }
+  },
+  "n_primary": 0,
+  "n_secondary": 0,
+  "phase_error": 0.00426,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "202442974": {
+  "partner": "202442982",
+  "field": "north",
+  "period": 2.7389209783871493,
+  "tmag": 7.9464,
+  "prim_depth": 0.0868749806644177,
+  "sec_depth": 0.0284355257224599,
+  "per_detector": {
+   "1": {
+    "n_images": 20,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "2": {
+    "n_images": 19,
+    "n_primary": 4,
+    "n_secondary": 0,
+    "n_primary_central": 4
+   },
+   "3": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "4": {
+    "n_images": 20,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "5": {
+    "n_images": 17,
+    "n_primary": 3,
+    "n_secondary": 0,
+    "n_primary_central": 3
+   },
+   "6": {
+    "n_images": 0,
+    "n_primary": 0,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   }
+  },
+  "n_primary": 7,
+  "n_secondary": 0,
+  "phase_error": 0.00155,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ },
+ "259006185": {
+  "partner": "259006174",
+  "field": "north",
+  "period": 1.9396542079525358,
+  "tmag": 9.11642,
+  "prim_depth": 0.0370421098354825,
+  "sec_depth": null,
+  "per_detector": {
+   "1": {
+    "n_images": 199,
+    "n_primary": 19,
+    "n_secondary": 0,
+    "n_primary_central": 14
+   },
+   "2": {
+    "n_images": 29,
+    "n_primary": 4,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "3": {
+    "n_images": 132,
+    "n_primary": 4,
+    "n_secondary": 0,
+    "n_primary_central": 1
+   },
+   "4": {
+    "n_images": 194,
+    "n_primary": 19,
+    "n_secondary": 0,
+    "n_primary_central": 14
+   },
+   "5": {
+    "n_images": 29,
+    "n_primary": 4,
+    "n_secondary": 0,
+    "n_primary_central": 0
+   },
+   "6": {
+    "n_images": 129,
+    "n_primary": 4,
+    "n_secondary": 0,
+    "n_primary_central": 1
+   }
+  },
+  "n_primary": 54,
+  "n_secondary": 0,
+  "phase_error": 0.00107,
+  "phase_error_rule": "(N \u03c3_P + \u03c3_T0) / P at the last SPHEREx exposure; usable below 0.01"
+ }
+}

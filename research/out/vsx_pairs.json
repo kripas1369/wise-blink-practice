@@ -1,0 +1,1504 @@
+[
+ {
+  "a": "150101472",
+  "b": "150101476",
+  "P": 3.27852,
+  "sep": 31.3,
+  "vsx": []
+ },
+ {
+  "a": "276935987",
+  "b": "276935996",
+  "P": 4.25073,
+  "sep": 26.3,
+  "vsx": [
+   {
+    "name": "Gaia DR3 4657274489310834176",
+    "type": "E",
+    "period": "4.250820000000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 26.3
+   },
+   {
+    "name": "Gaia DR3 4657274489309635328",
+    "type": "E",
+    "period": "0.493621000000",
+    "period_match": false,
+    "sep_a": 27.6,
+    "sep_b": 34.7
+   },
+   {
+    "name": "Gaia DR3 4657275206492291968",
+    "type": "L",
+    "period": "",
+    "period_match": false,
+    "sep_a": 52.9,
+    "sep_b": 27.8
+   },
+   {
+    "name": "Gaia DR3 4657275245229341568",
+    "type": "E",
+    "period": "96.000000000000",
+    "period_match": false,
+    "sep_a": 61.2,
+    "sep_b": 45.0
+   },
+   {
+    "name": "Gaia DR3 4657274867266791040",
+    "type": "L",
+    "period": "",
+    "period_match": false,
+    "sep_a": 45.3,
+    "sep_b": 65.0
+   },
+   {
+    "name": "Gaia DR3 4657274351870709760",
+    "type": "VAR",
+    "period": "0.014335900000",
+    "period_match": false,
+    "sep_a": 59.0,
+    "sep_b": 54.6
+   },
+   {
+    "name": "Gaia DR3 4657274489309728640",
+    "type": "E",
+    "period": "1.601620000000",
+    "period_match": false,
+    "sep_a": 51.7,
+    "sep_b": 72.4
+   },
+   {
+    "name": "Gaia DR3 4657275210864062080",
+    "type": "BE|GCAS|SDOR|WR",
+    "period": "",
+    "period_match": false,
+    "sep_a": 77.1,
+    "sep_b": 52.0
+   },
+   {
+    "name": "Gaia DR3 4657274901626533760",
+    "type": "L",
+    "period": "",
+    "period_match": false,
+    "sep_a": 64.1,
+    "sep_b": 83.0
+   },
+   {
+    "name": "Gaia DR3 4657274798547374720",
+    "type": "BE|GCAS|SDOR|WR",
+    "period": "",
+    "period_match": false,
+    "sep_a": 60.5,
+    "sep_b": 86.6
+   },
+   {
+    "name": "Gaia DR3 4657274794209851904",
+    "type": "RRC",
+    "period": "0.409346000000",
+    "period_match": false,
+    "sep_a": 60.5,
+    "sep_b": 86.8
+   },
+   {
+    "name": "Gaia DR3 4657275623145409152",
+    "type": "E",
+    "period": "0.629780000000",
+    "period_match": false,
+    "sep_a": 83.8,
+    "sep_b": 72.4
+   },
+   {
+    "name": "Gaia DR3 4657275172204033792",
+    "type": "S",
+    "period": "",
+    "period_match": false,
+    "sep_a": 92.0,
+    "sep_b": 65.7
+   },
+   {
+    "name": "Gaia DR3 4657275069100167936",
+    "type": "L",
+    "period": "",
+    "period_match": false,
+    "sep_a": 98.4,
+    "sep_b": 81.4
+   },
+   {
+    "name": "Gaia DR3 4657274420590286848",
+    "type": "BE|GCAS|SDOR|WR",
+    "period": "",
+    "period_match": false,
+    "sep_a": 81.1,
+    "sep_b": 100.0
+   },
+   {
+    "name": "Gaia DR3 4657274897288887424",
+    "type": "RR",
+    "period": "",
+    "period_match": false,
+    "sep_a": 91.3,
+    "sep_b": 101.8
+   },
+   {
+    "name": "Gaia DR3 4657274798547417728",
+    "type": "SR|M",
+    "period": "432.800000000000",
+    "period_match": false,
+    "sep_a": 86.2,
+    "sep_b": 112.3
+   },
+   {
+    "name": "Gaia DR3 4657274420590307584",
+    "type": "L",
+    "period": "",
+    "period_match": false,
+    "sep_a": 90.1,
+    "sep_b": 112.5
+   },
+   {
+    "name": "Gaia DR3 4657274351870777856",
+    "type": "L",
+    "period": "",
+    "period_match": false,
+    "sep_a": 100.4,
+    "sep_b": 105.2
+   },
+   {
+    "name": "Gaia DR3 4657274386230539008",
+    "type": "SR|M",
+    "period": "444.800000000000",
+    "period_match": false,
+    "sep_a": 98.6,
+    "sep_b": 108.6
+   },
+   {
+    "name": "Gaia DR3 4657274416291101312",
+    "type": "RRAB",
+    "period": "0.549130000000",
+    "period_match": false,
+    "sep_a": 99.4,
+    "sep_b": 120.7
+   },
+   {
+    "name": "Gaia DR3 4657275069125000704",
+    "type": "RRAB",
+    "period": "0.626060000000",
+    "period_match": false,
+    "sep_a": 120.9,
+    "sep_b": 100.9
+   },
+   {
+    "name": "Gaia DR3 4657275687602630784",
+    "type": "E",
+    "period": "1.279620000000",
+    "period_match": false,
+    "sep_a": 120.1,
+    "sep_b": 108.4
+   },
+   {
+    "name": "Gaia DR3 4657275309605287040",
+    "type": "RRAB",
+    "period": "0.390914000000",
+    "period_match": false,
+    "sep_a": 127.8,
+    "sep_b": 108.3
+   },
+   {
+    "name": "Gaia DR3 4657274381931356800",
+    "type": "RR",
+    "period": "",
+    "period_match": false,
+    "sep_a": 110.6,
+    "sep_b": 126.6
+   },
+   {
+    "name": "Gaia DR3 4657275004705749376",
+    "type": "E",
+    "period": "0.335892000000",
+    "period_match": false,
+    "sep_a": 111.0,
+    "sep_b": 127.8
+   }
+  ]
+ },
+ {
+  "a": "294092960",
+  "b": "294092966",
+  "P": 0.90226,
+  "sep": 27.0,
+  "vsx": [
+   {
+    "name": "ASAS J070922-5729.8",
+    "type": "EB",
+    "period": "0.902260000000",
+    "period_match": true,
+    "sep_a": 27.0,
+    "sep_b": 0.0
+   }
+  ]
+ },
+ {
+  "a": "279569718",
+  "b": "279569707",
+  "P": 3.9794,
+  "sep": 67.5,
+  "vsx": [
+   {
+    "name": "HD 54011",
+    "type": "EA",
+    "period": "3.979480000000",
+    "period_match": true,
+    "sep_a": 67.6,
+    "sep_b": 0.1
+   }
+  ]
+ },
+ {
+  "a": "92902951",
+  "b": "92902907",
+  "P": 2.24648,
+  "sep": 79.0,
+  "vsx": [
+   {
+    "name": "V0646 Cen",
+    "type": "EA/SD",
+    "period": "2.246573400000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 78.9
+   },
+   {
+    "name": "Gaia DR3 5345504648651165184",
+    "type": "E",
+    "period": "0.357567000000",
+    "period_match": false,
+    "sep_a": 109.9,
+    "sep_b": 38.9
+   }
+  ]
+ },
+ {
+  "a": "140659980",
+  "b": "140659978",
+  "P": 9.44007,
+  "sep": 21.8,
+  "vsx": []
+ },
+ {
+  "a": "162585265",
+  "b": "162585282",
+  "P": 0.51233,
+  "sep": 68.8,
+  "vsx": [
+   {
+    "name": "ASAS J112122-4736.1",
+    "type": "EA",
+    "period": "0.512329000000",
+    "period_match": true,
+    "sep_a": 0.1,
+    "sep_b": 68.8
+   },
+   {
+    "name": "Gaia DR3 5374520558649921920",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 125.7,
+    "sep_b": 58.8
+   },
+   {
+    "name": "Gaia DR3 5374520558649923072",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 127.7,
+    "sep_b": 61.6
+   }
+  ]
+ },
+ {
+  "a": "15445546",
+  "b": "15445551",
+  "P": 1.6828,
+  "sep": 8.1,
+  "vsx": [
+   {
+    "name": "WASP-87",
+    "type": "EP",
+    "period": "1.682795000000",
+    "period_match": true,
+    "sep_a": 8.1,
+    "sep_b": 0.0
+   },
+   {
+    "name": "Gaia DR3 6077185282828505728",
+    "type": "ROT",
+    "period": "7.824900000000",
+    "period_match": false,
+    "sep_a": 65.0,
+    "sep_b": 65.6
+   },
+   {
+    "name": "Gaia DR3 6077185420267469824",
+    "type": "ROT",
+    "period": "17.644000000000",
+    "period_match": false,
+    "sep_a": 83.9,
+    "sep_b": 84.4
+   },
+   {
+    "name": "Gaia DR3 6077185420267471744",
+    "type": "RRAB",
+    "period": "0.593170000000",
+    "period_match": false,
+    "sep_a": 91.6,
+    "sep_b": 91.5
+   },
+   {
+    "name": "ASASSN-V J122108.16-524935.6",
+    "type": "SRD",
+    "period": "198.000000000000",
+    "period_match": false,
+    "sep_a": 109.9,
+    "sep_b": 102.4
+   }
+  ]
+ },
+ {
+  "a": "99028324",
+  "b": "99028319",
+  "P": 9.40434,
+  "sep": 14.6,
+  "vsx": []
+ },
+ {
+  "a": "159864583",
+  "b": "159864610",
+  "P": 3.64049,
+  "sep": 74.2,
+  "vsx": [
+   {
+    "name": "SSS_J144535.6-400131",
+    "type": "EW",
+    "period": "0.326390000000",
+    "period_match": false,
+    "sep_a": 26.9,
+    "sep_b": 51.8
+   },
+   {
+    "name": "EVRJ221.4063-40.0304",
+    "type": "EA",
+    "period": "3.640970000000",
+    "period_match": true,
+    "sep_a": 0.1,
+    "sep_b": 74.2
+   },
+   {
+    "name": "Gaia DR3 6102207002068300032",
+    "type": "E",
+    "period": "0.254522000000",
+    "period_match": false,
+    "sep_a": 87.9,
+    "sep_b": 83.3
+   },
+   {
+    "name": "Gaia DR3 6102207281244138880",
+    "type": "DSCT|GDOR|SXPHE",
+    "period": "",
+    "period_match": false,
+    "sep_a": 118.6,
+    "sep_b": 130.7
+   }
+  ]
+ },
+ {
+  "a": "243391171",
+  "b": "243391162",
+  "P": 1.51699,
+  "sep": 23.8,
+  "vsx": []
+ },
+ {
+  "a": "48227278",
+  "b": "48227288",
+  "P": 2.89633,
+  "sep": 24.0,
+  "vsx": [
+   {
+    "name": "HD 130922",
+    "type": "EA",
+    "period": "5.792790000000",
+    "period_match": true,
+    "sep_a": 24.1,
+    "sep_b": 0.1
+   }
+  ]
+ },
+ {
+  "a": "220402294",
+  "b": "220402290",
+  "P": 0.78524,
+  "sep": 56.9,
+  "vsx": [
+   {
+    "name": "BD Dor",
+    "type": "EA",
+    "period": "0.785242000000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 56.8
+   }
+  ]
+ },
+ {
+  "a": "118271404",
+  "b": "118271395",
+  "P": 0.39975,
+  "sep": 35.0,
+  "vsx": [
+   {
+    "name": "V0870 Ara",
+    "type": "EW",
+    "period": "0.399773000000",
+    "period_match": true,
+    "sep_a": 35.1,
+    "sep_b": 0.1
+   }
+  ]
+ },
+ {
+  "a": "164558072",
+  "b": "164558055",
+  "P": 2.42749,
+  "sep": 66.4,
+  "vsx": [
+   {
+    "name": "T-Lyr1-00687",
+    "type": "EA",
+    "period": "2.427494820000",
+    "period_match": true,
+    "sep_a": 0.1,
+    "sep_b": 66.3
+   }
+  ]
+ },
+ {
+  "a": "280033934",
+  "b": "280033918",
+  "P": 0.27877,
+  "sep": 71.6,
+  "vsx": [
+   {
+    "name": "V0607 Dra",
+    "type": "EW",
+    "period": "0.278773200000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 71.6
+   },
+   {
+    "name": "Gaia DR3 2251183369916322304",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 95.9,
+    "sep_b": 119.1
+   }
+  ]
+ },
+ {
+  "a": "259006174",
+  "b": "259006185",
+  "P": 1.93963,
+  "sep": 104.9,
+  "vsx": [
+   {
+    "name": "HD 182935",
+    "type": "EA",
+    "period": "1.939650000000",
+    "period_match": true,
+    "sep_a": 104.9,
+    "sep_b": 0.0
+   }
+  ]
+ },
+ {
+  "a": "202442974",
+  "b": "202442982",
+  "P": 2.73892,
+  "sep": 126.6,
+  "vsx": [
+   {
+    "name": "NO Dra",
+    "type": "EA",
+    "period": "5.477980000000",
+    "period_match": true,
+    "sep_a": 0.1,
+    "sep_b": 126.6
+   }
+  ]
+ },
+ {
+  "a": "1883519478",
+  "b": "424719589",
+  "P": 7.64075,
+  "sep": 0.3,
+  "vsx": [
+   {
+    "name": "V1143 Cyg",
+    "type": "EA/DM",
+    "period": "7.640753000000",
+    "period_match": true,
+    "sep_a": 0.1,
+    "sep_b": 0.3
+   },
+   {
+    "name": "Gaia DR3 2138545378679479168",
+    "type": "E",
+    "period": "2.951220000000",
+    "period_match": false,
+    "sep_a": 96.9,
+    "sep_b": 96.7
+   }
+  ]
+ },
+ {
+  "a": "198242676",
+  "b": "198242678",
+  "P": 4.62979,
+  "sep": 8.3,
+  "vsx": [
+   {
+    "name": "WW Dra",
+    "type": "EA/AR/RS",
+    "period": "4.629623800000",
+    "period_match": true,
+    "sep_a": 8.2,
+    "sep_b": 0.0
+   }
+  ]
+ },
+ {
+  "a": "269696438",
+  "b": "269696430",
+  "P": 2.97891,
+  "sep": 49.5,
+  "vsx": []
+ },
+ {
+  "a": "420114772",
+  "b": "420114776",
+  "P": 3.23506,
+  "sep": 19.8,
+  "vsx": []
+ },
+ {
+  "a": "356015357",
+  "b": "356015361",
+  "P": 11.25949,
+  "sep": 96.2,
+  "vsx": [
+   {
+    "name": "PMAK V52",
+    "type": "EA",
+    "period": "11.259490000000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 96.2
+   }
+  ]
+ },
+ {
+  "a": "377192659",
+  "b": "377192658",
+  "P": 1.81724,
+  "sep": 10.6,
+  "vsx": [
+   {
+    "name": "BH Dra",
+    "type": "EA/SD:",
+    "period": "1.817238570000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 10.6
+   }
+  ]
+ },
+ {
+  "a": "356974629",
+  "b": "356974639",
+  "P": 1.93854,
+  "sep": 15.7,
+  "vsx": [
+   {
+    "name": "ZTF J205717.70+444344.4",
+    "type": "RS",
+    "period": "1.561208100000",
+    "period_match": false,
+    "sep_a": 15.3,
+    "sep_b": 9.8
+   },
+   {
+    "name": "V1608 Cyg",
+    "type": "UVN",
+    "period": "",
+    "period_match": false,
+    "sep_a": 18.3,
+    "sep_b": 2.9
+   },
+   {
+    "name": "Gaia DR3 2163021813198726528",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 80.9,
+    "sep_b": 80.4
+   },
+   {
+    "name": "Gaia DR3 2163023393746733440",
+    "type": "L",
+    "period": "",
+    "period_match": false,
+    "sep_a": 91.9,
+    "sep_b": 82.3
+   }
+  ]
+ },
+ {
+  "a": "161687311",
+  "b": "161687316",
+  "P": 0.8166,
+  "sep": 87.8,
+  "vsx": [
+   {
+    "name": "Gaia DR3 1602056787485486720",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 87.8,
+    "sep_b": 0.0
+   },
+   {
+    "name": "FX Dra",
+    "type": "EB",
+    "period": "0.816599000000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 87.8
+   }
+  ]
+ },
+ {
+  "a": "55753802",
+  "b": "55753808",
+  "P": 0.41557,
+  "sep": 70.0,
+  "vsx": [
+   {
+    "name": "NSVS 2657878",
+    "type": "EB|EW",
+    "period": "0.415547000000",
+    "period_match": true,
+    "sep_a": 0.1,
+    "sep_b": 70.0
+   }
+  ]
+ },
+ {
+  "a": "199574211",
+  "b": "199574208",
+  "P": 1.26839,
+  "sep": 26.4,
+  "vsx": [
+   {
+    "name": "CM Dra",
+    "type": "EA+UV+BY",
+    "period": "1.268389650000",
+    "period_match": true,
+    "sep_a": 26.4,
+    "sep_b": 0.0
+   }
+  ]
+ },
+ {
+  "a": "305399325",
+  "b": "305399324",
+  "P": 6.1002,
+  "sep": 2.9,
+  "vsx": [
+   {
+    "name": "MNIC V110",
+    "type": "EA/RS",
+    "period": "6.100200000000",
+    "period_match": true,
+    "sep_a": 0.4,
+    "sep_b": 3.3
+   }
+  ]
+ },
+ {
+  "a": "159854358",
+  "b": "159854359",
+  "P": 0.32666,
+  "sep": 45.5,
+  "vsx": [
+   {
+    "name": "V0550 Dra",
+    "type": "EW",
+    "period": "0.326651000000",
+    "period_match": true,
+    "sep_a": 45.5,
+    "sep_b": 0.0
+   }
+  ]
+ },
+ {
+  "a": "128927089",
+  "b": "128927088",
+  "P": 1.88238,
+  "sep": 3.3,
+  "vsx": [
+   {
+    "name": "Gaia DR3 1932218276515653888",
+    "type": "E",
+    "period": "1.882400000000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 3.3
+   },
+   {
+    "name": "Gaia DR3 1932219101149372288",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 86.6,
+    "sep_b": 89.1
+   }
+  ]
+ },
+ {
+  "a": "283819432",
+  "b": "1102093577",
+  "P": 0.26782,
+  "sep": 1.7,
+  "vsx": [
+   {
+    "name": "i Boo",
+    "type": "EW/KW",
+    "period": "0.267815950000",
+    "period_match": true,
+    "sep_a": 0.9,
+    "sep_b": 0.8
+   },
+   {
+    "name": "NSV 20241",
+    "type": "CST",
+    "period": "",
+    "period_match": false,
+    "sep_a": 1.3,
+    "sep_b": 3.0
+   }
+  ]
+ },
+ {
+  "a": "376891085",
+  "b": "376891083",
+  "P": 2.14179,
+  "sep": 3.7,
+  "vsx": [
+   {
+    "name": "Gaia DR3 2224986268433642624",
+    "type": "DSCT|GDOR|SXPHE",
+    "period": "3.009500000000",
+    "period_match": false,
+    "sep_a": 0.0,
+    "sep_b": 3.7
+   },
+   {
+    "name": "ZZ Cep",
+    "type": "EA/DM",
+    "period": "2.141798000000",
+    "period_match": true,
+    "sep_a": 3.7,
+    "sep_b": 0.1
+   },
+   {
+    "name": "Mis V1258",
+    "type": "M",
+    "period": "327.817112100000",
+    "period_match": false,
+    "sep_a": 42.3,
+    "sep_b": 44.6
+   }
+  ]
+ },
+ {
+  "a": "63972389",
+  "b": "63972440",
+  "P": 3.03768,
+  "sep": 52.2,
+  "vsx": [
+   {
+    "name": "ZTF J223026.06+543730.6",
+    "type": "EW",
+    "period": "0.309806800000",
+    "period_match": false,
+    "sep_a": 29.8,
+    "sep_b": 24.3
+   },
+   {
+    "name": "TW Lac",
+    "type": "EA/SD",
+    "period": "3.037417000000",
+    "period_match": true,
+    "sep_a": 52.3,
+    "sep_b": 0.1
+   },
+   {
+    "name": "ZTF J223033.41+543607.8",
+    "type": "EW",
+    "period": "0.302949800000",
+    "period_match": false,
+    "sep_a": 134.4,
+    "sep_b": 85.4
+   },
+   {
+    "name": "ZTF J223035.16+543842.5",
+    "type": "BY",
+    "period": "2.478378400000",
+    "period_match": false,
+    "sep_a": 106.9,
+    "sep_b": 123.4
+   }
+  ]
+ },
+ {
+  "a": "601366244",
+  "b": "191463077",
+  "P": 4.71852,
+  "sep": 0.6,
+  "vsx": [
+   {
+    "name": "V0355 And",
+    "type": "EA",
+    "period": "4.718410000000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 0.5
+   }
+  ]
+ },
+ {
+  "a": "408651394",
+  "b": "408651399",
+  "P": 2.04813,
+  "sep": 15.9,
+  "vsx": [
+   {
+    "name": "CCDM J04404+3127B",
+    "type": "EA",
+    "period": "2.048135000000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 15.8
+   },
+   {
+    "name": "Gaia DR3 159648027497889664",
+    "type": "RS",
+    "period": "",
+    "period_match": false,
+    "sep_a": 33.0,
+    "sep_b": 20.8
+   }
+  ]
+ },
+ {
+  "a": "664915372",
+  "b": "353129911",
+  "P": 2.97161,
+  "sep": 1.0,
+  "vsx": [
+   {
+    "name": "V0491 Per",
+    "type": "BY",
+    "period": "7.370000000000",
+    "period_match": false,
+    "sep_a": 0.1,
+    "sep_b": 1.0
+   },
+   {
+    "name": "NSV 1463",
+    "type": "",
+    "period": "",
+    "period_match": false,
+    "sep_a": 2.0,
+    "sep_b": 1.0
+   }
+  ]
+ },
+ {
+  "a": "130158363",
+  "b": "130158361",
+  "P": 2.84985,
+  "sep": 8.2,
+  "vsx": [
+   {
+    "name": "V0514 Gem",
+    "type": "EA",
+    "period": "2.849947000000",
+    "period_match": true,
+    "sep_a": 0.1,
+    "sep_b": 8.1
+   }
+  ]
+ },
+ {
+  "a": "11799874",
+  "b": "11799872",
+  "P": 4.25793,
+  "sep": 4.6,
+  "vsx": [
+   {
+    "name": "NSV 3202",
+    "type": "EA+ROT",
+    "period": "4.258000000000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 4.6
+   }
+  ]
+ },
+ {
+  "a": "16805617",
+  "b": "16805614",
+  "P": 8.49092,
+  "sep": 56.1,
+  "vsx": [
+   {
+    "name": "Gaia DR3 811719273865422336",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 56.1,
+    "sep_b": 0.0
+   }
+  ]
+ },
+ {
+  "a": "55222620",
+  "b": "55222619",
+  "P": 5.19621,
+  "sep": 4.4,
+  "vsx": []
+ },
+ {
+  "a": "48063034",
+  "b": "48063032",
+  "P": 0.58625,
+  "sep": 13.4,
+  "vsx": [
+   {
+    "name": "Gaia DR3 5438289621720227584",
+    "type": "VAR",
+    "period": "0.293130000000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 13.4
+   },
+   {
+    "name": "Gaia DR3 5438289656078998784",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 71.8,
+    "sep_b": 70.9
+   }
+  ]
+ },
+ {
+  "a": "357398957",
+  "b": "357398958",
+  "P": 0.47777,
+  "sep": 14.4,
+  "vsx": [
+   {
+    "name": "GK Boo",
+    "type": "EA",
+    "period": "0.477771740000",
+    "period_match": true,
+    "sep_a": 14.4,
+    "sep_b": 0.0
+   }
+  ]
+ },
+ {
+  "a": "92132777",
+  "b": "92132775",
+  "P": 13.92947,
+  "sep": 5.7,
+  "vsx": []
+ },
+ {
+  "a": "95525589",
+  "b": "95525590",
+  "P": 0.21801,
+  "sep": 10.5,
+  "vsx": [
+   {
+    "name": "V0749 Vir",
+    "type": "EW",
+    "period": "0.218013600000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 10.5
+   },
+   {
+    "name": "Gaia DR3 3739687638773677696",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 103.2,
+    "sep_b": 94.2
+   }
+  ]
+ },
+ {
+  "a": "258918831",
+  "b": "258918835",
+  "P": 5.9856,
+  "sep": 40.3,
+  "vsx": [
+   {
+    "name": "Gaia DR3 2262123373174116480",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 40.3,
+    "sep_b": 0.0
+   }
+  ]
+ },
+ {
+  "a": "270622440",
+  "b": "270622446",
+  "P": 2.44506,
+  "sep": 133.9,
+  "vsx": [
+   {
+    "name": "AL Scl",
+    "type": "EA/DM",
+    "period": "2.445088000000",
+    "period_match": true,
+    "sep_a": 133.9,
+    "sep_b": 0.0
+   }
+  ]
+ },
+ {
+  "a": "389754103",
+  "b": "389754101",
+  "P": 3.80347,
+  "sep": 63.9,
+  "vsx": [
+   {
+    "name": "DP Gru",
+    "type": "EA",
+    "period": "3.803500000000",
+    "period_match": true,
+    "sep_a": 63.8,
+    "sep_b": 0.1
+   }
+  ]
+ },
+ {
+  "a": "453828066",
+  "b": "453828065",
+  "P": 9.13452,
+  "sep": 108.5,
+  "vsx": [
+   {
+    "name": "TIC 453828066",
+    "type": "EA",
+    "period": "9.134881000000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 108.5
+   }
+  ]
+ },
+ {
+  "a": "98853987",
+  "b": "98853990",
+  "P": 2.72842,
+  "sep": 113.5,
+  "vsx": [
+   {
+    "name": "CW Eri",
+    "type": "EA/DM",
+    "period": "2.728373700000",
+    "period_match": true,
+    "sep_a": 0.1,
+    "sep_b": 113.5
+   }
+  ]
+ },
+ {
+  "a": "178284729",
+  "b": "178284730",
+  "P": 2.23598,
+  "sep": 7.2,
+  "vsx": [
+   {
+    "name": "WASP-140",
+    "type": "EP+BY",
+    "period": "2.235983500000",
+    "period_match": true,
+    "sep_a": 7.2,
+    "sep_b": 0.0
+   }
+  ]
+ },
+ {
+  "a": "238896431",
+  "b": "238896417",
+  "P": 16.24617,
+  "sep": 85.5,
+  "vsx": [
+   {
+    "name": "VSSP J061443.13-501239.9",
+    "type": "EA",
+    "period": "16.244260000000",
+    "period_match": true,
+    "sep_a": 85.6,
+    "sep_b": 0.1
+   }
+  ]
+ },
+ {
+  "a": "155884454",
+  "b": "155884449",
+  "P": 0.97978,
+  "sep": 6.1,
+  "vsx": [
+   {
+    "name": "Gaia DR3 5694357358625536768",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 6.1,
+    "sep_b": 0.0
+   },
+   {
+    "name": "Gaia DR3 5694357358625535744",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 0.0,
+    "sep_b": 6.1
+   },
+   {
+    "name": "Gaia DR3 5694357461704747264",
+    "type": "E",
+    "period": "0.980080000000",
+    "period_match": true,
+    "sep_a": 32.8,
+    "sep_b": 37.7
+   },
+   {
+    "name": "Gaia DR3 5694357461704748416",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 35.8,
+    "sep_b": 41.7
+   },
+   {
+    "name": "Gaia DR3 5694360416642248320",
+    "type": "ROT",
+    "period": "4.742720000000",
+    "period_match": false,
+    "sep_a": 44.4,
+    "sep_b": 49.7
+   },
+   {
+    "name": "Gaia DR3 5694360416642250880",
+    "type": "ROT",
+    "period": "0.766090000000",
+    "period_match": false,
+    "sep_a": 75.6,
+    "sep_b": 79.1
+   },
+   {
+    "name": "Gaia DR3 5694356877589221248",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 119.4,
+    "sep_b": 113.3
+   }
+  ]
+ },
+ {
+  "a": "468958384",
+  "b": "468958374",
+  "P": 1.53517,
+  "sep": 64.1,
+  "vsx": [
+   {
+    "name": "BX CMi",
+    "type": "EA",
+    "period": "1.535092000000",
+    "period_match": true,
+    "sep_a": 64.2,
+    "sep_b": 0.1
+   },
+   {
+    "name": "ZTF J071047.81+075559.6",
+    "type": "EW",
+    "period": "0.457023600000",
+    "period_match": false,
+    "sep_a": 103.7,
+    "sep_b": 131.3
+   }
+  ]
+ },
+ {
+  "a": "124712820",
+  "b": "124712813",
+  "P": 0.82567,
+  "sep": 12.9,
+  "vsx": [
+   {
+    "name": "Gaia DR3 3045955037836526208",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 0.0,
+    "sep_b": 12.9
+   }
+  ]
+ },
+ {
+  "a": "146601322",
+  "b": "146601318",
+  "P": 0.987,
+  "sep": 94.8,
+  "vsx": [
+   {
+    "name": "ASAS J095707-0120.7",
+    "type": "EA",
+    "period": "0.987045000000",
+    "period_match": true,
+    "sep_a": 0.1,
+    "sep_b": 94.9
+   }
+  ]
+ },
+ {
+  "a": "348759510",
+  "b": "348759511",
+  "P": 3.71613,
+  "sep": 3.5,
+  "vsx": []
+ },
+ {
+  "a": "233058265",
+  "b": "233058262",
+  "P": 26.28115,
+  "sep": 29.3,
+  "vsx": [
+   {
+    "name": "Gaia DR3 1439929777880400640",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 82.0,
+    "sep_b": 53.8
+   }
+  ]
+ },
+ {
+  "a": "235000060",
+  "b": "235000061",
+  "P": 0.35772,
+  "sep": 2.6,
+  "vsx": [
+   {
+    "name": "FN Tuc",
+    "type": "EW",
+    "period": "0.357725000000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 2.6
+   }
+  ]
+ },
+ {
+  "a": "469979014",
+  "b": "471013508",
+  "P": 1.1626,
+  "sep": 0.1,
+  "vsx": []
+ },
+ {
+  "a": "158582801",
+  "b": "158582802",
+  "P": 1.0801,
+  "sep": 11.4,
+  "vsx": [
+   {
+    "name": "ASAS J012726-4928.4",
+    "type": "EA",
+    "period": "2.160250000000",
+    "period_match": true,
+    "sep_a": 11.0,
+    "sep_b": 0.5
+   }
+  ]
+ },
+ {
+  "a": "266769521",
+  "b": "266769522",
+  "P": 0.53617,
+  "sep": 8.6,
+  "vsx": [
+   {
+    "name": "AA Cet",
+    "type": "EB",
+    "period": "0.536168700000",
+    "period_match": true,
+    "sep_a": 8.6,
+    "sep_b": 0.1
+   }
+  ]
+ },
+ {
+  "a": "260370454",
+  "b": "260370473",
+  "P": 0.7951,
+  "sep": 109.9,
+  "vsx": [
+   {
+    "name": "PX Car",
+    "type": "EB/KE",
+    "period": "0.795100000000",
+    "period_match": true,
+    "sep_a": 0.1,
+    "sep_b": 109.8
+   }
+  ]
+ },
+ {
+  "a": "59038877",
+  "b": "59038880",
+  "P": 0.30537,
+  "sep": 12.1,
+  "vsx": [
+   {
+    "name": "BD+12 511B",
+    "type": "ROT",
+    "period": "",
+    "period_match": false,
+    "sep_a": 12.1,
+    "sep_b": 0.0
+   },
+   {
+    "name": "V1128 Tau",
+    "type": "EW",
+    "period": "0.305371700000",
+    "period_match": true,
+    "sep_a": 0.1,
+    "sep_b": 12.2
+   },
+   {
+    "name": "Gaia DR3 37142709674641792",
+    "type": "ROT",
+    "period": "4.601550000000",
+    "period_match": false,
+    "sep_a": 105.3,
+    "sep_b": 110.7
+   }
+  ]
+ },
+ {
+  "a": "92938279",
+  "b": "92938280",
+  "P": 0.27504,
+  "sep": 4.8,
+  "vsx": [
+   {
+    "name": "SSS_J053431.2-223832",
+    "type": "EW",
+    "period": "0.275040000000",
+    "period_match": true,
+    "sep_a": 21.4,
+    "sep_b": 26.1
+   }
+  ]
+ },
+ {
+  "a": "77031414",
+  "b": "77031413",
+  "P": 1.38665,
+  "sep": 6.1,
+  "vsx": [
+   {
+    "name": "WASP-173A",
+    "type": "EP",
+    "period": "1.386653180000",
+    "period_match": true,
+    "sep_a": 0.0,
+    "sep_b": 6.1
+   }
+  ]
+ },
+ {
+  "a": "307490686",
+  "b": "307435285",
+  "P": 1.95873,
+  "sep": 3.6,
+  "vsx": [
+   {
+    "name": "Gaia DR3 5221765919298914432",
+    "type": "RS",
+    "period": "",
+    "period_match": false,
+    "sep_a": 116.6,
+    "sep_b": 116.3
+   }
+  ]
+ },
+ {
+  "a": "293689266",
+  "b": "293689267",
+  "P": 14.81044,
+  "sep": 3.7,
+  "vsx": [
+   {
+    "name": "NSV 3023",
+    "type": "",
+    "period": "",
+    "period_match": false,
+    "sep_a": 0.1,
+    "sep_b": 3.7
+   },
+   {
+    "name": "Gaia DR3 5568872329916385408",
+    "type": "VAR",
+    "period": "0.024355200000",
+    "period_match": false,
+    "sep_a": 34.1,
+    "sep_b": 31.1
+   },
+   {
+    "name": "Gaia DR3 5568875422292830336",
+    "type": "RS",
+    "period": "",
+    "period_match": false,
+    "sep_a": 76.4,
+    "sep_b": 79.3
+   }
+  ]
+ }
+]

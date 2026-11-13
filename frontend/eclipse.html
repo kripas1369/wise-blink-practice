@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Eclipse mode · SPHEREx Blink</title>
+  <meta name="description" content="TESS timed these eclipsing binaries; SPHEREx photographed them thousands of times at different infrared wavelengths. Sorted by orbit instead of date, the eclipse appears colour by colour.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/eclipse.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">SPHEREx Blink</span>
+    </a>
+    <nav class="site-nav" aria-label="Pages">
+      <a href="./">Explore</a>
+      <a href="eclipse.html" aria-current="page">Eclipse mode</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <section class="hero" aria-labelledby="hero-title">
+    <p class="eyebrow">TESS's clock × SPHEREx's colours</p>
+    <h1 id="hero-title" class="hero-title">Watch a star eclipse its partner, colour by colour.</h1>
+    <p class="hero-sub">NASA's TESS timed these eclipsing binaries. SPHEREx photographed them thousands of times, each time at a
+      different infrared wavelength. Sort SPHEREx's pictures by where the stars are in their orbit, not by date, and the eclipse appears.</p>
+  </section>
+
+  <main class="layout">
+    <section class="panel controls" aria-labelledby="pick-title">
+      <h2 id="pick-title" class="panel-title">1. Pick a binary</h2>
+      <ul id="ec-showcase" class="targets" aria-label="Prepared binaries"></ul>
+      <p id="ec-status" class="status" role="status" aria-live="polite"></p>
+
+      <h2 class="panel-title">2. The orbit's clock</h2>
+      <form id="ec-clock" class="ec-clock" autocomplete="off">
+        <label class="ec-field"><span class="label">Period P (days)</span>
+          <input id="ec-period" type="text" inputmode="decimal" spellcheck="false"></label>
+        <label class="ec-field"><span class="label">Primary eclipse t₀ (BTJD)</span>
+          <input id="ec-t0" type="text" inputmode="decimal" spellcheck="false"></label>
+        <div class="inline-row">
+          <button type="submit" class="btn btn-small btn-primary">Fold</button>
+          <button type="button" id="ec-reset" class="btn btn-small">TESS values</button>
+          <button type="button" id="ec-share" class="btn btn-small">Copy link</button>
+        </div>
+        <p class="help">From TESS-EBs (Prša et al. 2022). BTJD = BJD<sub>TDB</sub> − 2457000. Every SPHEREx exposure time
+          (UTC) is converted to the same clock before folding. Change the numbers to see the eclipse smear out.</p>
+      </form>
+
+      <h2 class="panel-title">3. What SPHEREx has</h2>
+      <div id="ec-forecast" class="selection"><p class="muted">Pick a binary.</p></div>
+
+      <details class="ec-catalog">
+        <summary>All TESS binaries near the north ecliptic pole</summary>
+        <p id="ec-catalog-note" class="help"></p>
+        <div class="sci-table-wrap">
+          <table id="ec-catalog" class="sci-table">
+            <thead><tr><th>TIC</th><th>From pole</th><th>T mag</th><th>P (d)</th><th>Depth</th><th>SPHEREx images</th><th>In eclipse</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </details>
+    </section>
+
+    <section class="panel ec-main" aria-labelledby="ec-title">
+      <div class="flip-head">
+        <h2 id="ec-title" class="panel-title">Phase flipbook</h2>
+        <span id="ec-summary" class="flip-summary"></span>
+      </div>
+
+      <div class="flip-body">
+        <div>
+          <div id="ec-stage" class="flip-stage">
+            <img id="ec-img" class="flip-layer" alt="">
+            <span class="flip-target" aria-hidden="true"></span>
+            <span class="flip-compass" aria-hidden="true">N ↑ &nbsp;E ←</span>
+            <span id="ec-badge" class="ec-badge" hidden></span>
+            <p id="ec-message" class="flip-message">Pick a binary to see its eclipse.</p>
+          </div>
+          <div id="ec-orbit" class="ec-orbit" aria-hidden="true"></div>
+        </div>
+        <div class="flip-side">
+          <p id="ec-label" class="flip-label" aria-live="polite"></p>
+          <div class="inline-row">
+            <label class="inline-label" for="ec-det"><span>Detector</span> <select id="ec-det"></select></label>
+          </div>
+          <div class="flip-modes" role="group" aria-label="Picture">
+            <button type="button" id="ec-view-norm" class="tab" aria-pressed="true">Colour-corrected</button>
+            <button type="button" id="ec-view-raw" class="tab" aria-pressed="false">As measured</button>
+          </div>
+          <p class="help" id="ec-view-help"></p>
+          <div class="button-row">
+            <button type="button" id="ec-prev" class="btn btn-small" aria-label="Previous exposure">◀</button>
+            <button type="button" id="ec-play" class="btn btn-small btn-primary">Play</button>
+            <button type="button" id="ec-next" class="btn btn-small" aria-label="Next exposure">▶</button>
+          </div>
+          <label class="label" for="ec-slider"><span>Orbital phase</span> <output id="ec-pos" for="ec-slider">–</output></label>
+          <input id="ec-slider" type="range" min="0" max="0" step="1" value="0">
+          <p class="help">Frames are sorted by orbital phase: 0 = middle of the primary eclipse, ±0.5 = opposite side of the
+            orbit. They were taken on different days over more than a year; only the orbit lines them up.</p>
+        </div>
+      </div>
+
+      <section class="diffview" aria-labelledby="fold-title">
+        <div class="flip-head">
+          <h3 id="fold-title">Folded light curve</h3>
+          <span id="fold-summary" class="flip-summary"></span>
+        </div>
+        <figure class="lc-figure">
+          <figcaption>Every SPHEREx exposure, brightness divided by the binary's normal brightness at that exposure's own
+            wavelength, against orbital phase. Colour = wavelength (<span class="lc-blue">0.75 µm</span> to
+            <span class="lc-red">5 µm</span>); hollow = not used (a flagged pixel in the circle, or too faint). Shaded:
+            where TESS says the eclipses are. Click a point to show its frame.</figcaption>
+          <div id="fold-chart"></div>
+        </figure>
+      </section>
+
+      <section class="diffview" aria-labelledby="map-title">
+        <div class="flip-head">
+          <h3 id="map-title">Phase × wavelength</h3>
+        </div>
+        <figure class="lc-figure">
+          <figcaption>Each exposure is one dot: across = orbital phase, up = wavelength. Dark = fainter than normal. An
+            eclipse is a dark vertical stripe; if it is darker at some wavelengths than others, the two stars have
+            different colours.</figcaption>
+          <div id="map-chart"></div>
+          <div class="diff-legend"><span>30% fainter</span><span class="ec-bar" aria-hidden="true"></span><span>normal</span></div>
+        </figure>
+      </section>
+
+      <section class="diffview" aria-labelledby="depth-title">
+        <div class="flip-head">
+          <h3 id="depth-title">Eclipse depth spectrum</h3>
+          <span id="depth-summary" class="flip-summary"></span>
+        </div>
+        <figure class="lc-figure">
+          <figcaption>How much light is lost in the middle of each eclipse, at each wavelength (two bins per detector).
+            <span class="ec-key ec-prim">primary</span> <span class="ec-key ec-sec">secondary</span>
+            <span class="ec-key ec-null">quarter phase (should be 0)</span> <span class="ec-key ec-tess">TESS depth, 0.6–1.0 µm</span></figcaption>
+          <div id="depth-chart"></div>
+        </figure>
+        <figure class="lc-figure" id="ratio-figure">
+          <figcaption>Secondary ÷ primary depth. It equals the ratio of the two stars' surface brightness, so it does not
+            depend on light from other stars mixed in. Flat = twins; rising to the red = the eclipsed-in-secondary star is cooler.</figcaption>
+          <div id="ratio-chart"></div>
+        </figure>
+      </section>
+
+      <section class="diffview" aria-labelledby="checks-title">
+        <div class="flip-head">
+          <h3 id="checks-title">Is it real? Six checks</h3>
+        </div>
+        <div id="ec-checks" class="proof-grid"></div>
+      </section>
+
+      <section class="diffview" aria-labelledby="period-title">
+        <div class="flip-head">
+          <h3 id="period-title">Find the period yourself</h3>
+          <span id="period-summary" class="flip-summary"></span>
+        </div>
+        <p class="help">Drag the period. The scatter score θ (phase dispersion minimisation, Stellingwerf 1978) is low when
+          the exposures line up into a clean curve. The folded light curve above follows the slider.</p>
+        <label class="label" for="period-slider"><span>Trial period</span> <output id="period-value" for="period-slider">–</output></label>
+        <input id="period-slider" type="range" min="0" max="1000" step="1" value="500">
+        <div class="inline-row">
+          <label class="inline-label" for="period-span"><span>Range</span>
+            <select id="period-span">
+              <option value="0.001">± 0.1%</option>
+              <option value="0.01" selected>± 1%</option>
+              <option value="0.1">± 10%</option>
+              <option value="0.6">± 60%</option>
+            </select></label>
+          <button type="button" id="period-best" class="btn btn-small">Jump to the lowest θ</button>
+        </div>
+        <div id="pdm-chart"></div>
+      </section>
+
+      <section class="diffview" aria-labelledby="diffimg-title">
+        <div class="flip-head">
+          <h3 id="diffimg-title">During eclipse minus outside eclipse</h3>
+          <span id="diffimg-summary" class="flip-summary"></span>
+        </div>
+        <div class="ec-diff">
+          <div class="flip-stage">
+            <img id="diffimg" class="flip-layer" alt="">
+            <span class="flip-target" aria-hidden="true"></span>
+            <span id="diffimg-min" class="ec-min" hidden></span>
+          </div>
+          <div>
+            <p id="diffimg-facts" class="help"></p>
+            <div class="diff-legend" aria-label="Difference colours">
+              <span>−5σ fainter in eclipse</span><span class="diff-bar" aria-hidden="true"></span><span>+5σ brighter</span>
+            </div>
+            <p class="help">If the dimming comes from the binary, the blue spot sits inside the dashed circle. A blue spot on
+              a neighbouring star instead would mean TESS's eclipse belongs to that star (TESS pixels are 21″, SPHEREx's 6.15″).</p>
+          </div>
+        </div>
+      </section>
+
+      <p id="ec-method" class="help ec-method"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Data: SPHEREx images from NASA/IPAC Infrared Science Archive (IRSA). Eclipse timings: TESS eclipsing binaries
+      (Prša et al. 2022, MAST high-level science product, CC BY 4.0). Star positions: ESA Gaia DR3 (via IRSA).
+      Team Not42 · NASA Space Apps 2026 practice.</p>
+  </footer>
+
+  <script type="module" src="js/eclipse.js"></script>
+</body>
+</html>

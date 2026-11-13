@@ -1,0 +1,10 @@
+R1_lmc_tic179637488: RA 80.51578 Dec -67.92467, 8381 DR1+QR3 images, 566 chosen
+  558 exposures on the 39x39 grid
+  134 Gaia stars G <= 16.5
+  D1: sigma 0.560 px, wing 0.42 x 5.22 px, shift (-0.00, -0.03), co-add chi2 1658.44
+  D2: sigma 0.557 px, wing 0.38 x 5.30 px, shift (-0.00, -0.01), co-add chi2 2047.16
+  D3: sigma 0.562 px, wing 0.45 x 5.21 px, shift (+0.00, -0.00), co-add chi2 3176.23
+  D4: sigma 0.663 px, wing 0.60 x 4.81 px, shift (-0.02, -0.06), co-add chi2 3262.16
+  D5: sigma 0.714 px, wing 0.60 x 4.28 px, shift (-0.03, -0.09), co-add chi2 620.02
+  D6: sigma 0.870 px, wing 0.60 x 4.09 px, shift (-0.09, -0.15), co-add chi2 486.83
+  saved /Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/experimental_results/R1_lmc_tic179637488

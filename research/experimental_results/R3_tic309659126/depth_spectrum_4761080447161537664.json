@@ -1,0 +1,186 @@
+{
+ "source_id": "4761080447161537664",
+ "centres": {
+  "primary": 0.99891,
+  "secondary": 0.4924710351741598
+ },
+ "half_window_phase": 0.023717658767458676,
+ "bins": [
+  {
+   "detector": 1,
+   "half": "short",
+   "wl_um": 0.831,
+   "primary": {
+    "depth": 0.2462,
+    "err": 0.037,
+    "n": 6
+   },
+   "secondary": {
+    "depth": 0.0671,
+    "err": 0.0832,
+    "n": 5
+   }
+  },
+  {
+   "detector": 1,
+   "half": "long",
+   "wl_um": 1.005,
+   "primary": {
+    "depth": 0.2905,
+    "err": 0.0322,
+    "n": 10
+   },
+   "secondary": {
+    "depth": 0.179,
+    "err": 0.0405,
+    "n": 5
+   }
+  },
+  {
+   "detector": 2,
+   "half": "short",
+   "wl_um": 1.251,
+   "primary": {
+    "depth": 0.2527,
+    "err": 0.032,
+    "n": 8
+   },
+   "secondary": {
+    "depth": 0.2067,
+    "err": 0.0343,
+    "n": 7
+   }
+  },
+  {
+   "detector": 2,
+   "half": "long",
+   "wl_um": 1.521,
+   "primary": {
+    "depth": 0.2651,
+    "err": 0.0384,
+    "n": 8
+   },
+   "secondary": {
+    "depth": 0.2138,
+    "err": 0.0405,
+    "n": 5
+   }
+  },
+  {
+   "detector": 3,
+   "half": "short",
+   "wl_um": 1.8,
+   "primary": {
+    "depth": 0.2093,
+    "err": 0.037,
+    "n": 6
+   },
+   "secondary": {
+    "depth": 0.138,
+    "err": 0.0444,
+    "n": 5
+   }
+  },
+  {
+   "detector": 3,
+   "half": "long",
+   "wl_um": 2.158,
+   "primary": {
+    "depth": 0.1762,
+    "err": 0.0339,
+    "n": 9
+   },
+   "secondary": {
+    "depth": 0.1746,
+    "err": 0.0849,
+    "n": 5
+   }
+  },
+  {
+   "detector": 4,
+   "half": "short",
+   "wl_um": 2.719,
+   "primary": {
+    "depth": 0.1784,
+    "err": 0.0302,
+    "n": 9
+   },
+   "secondary": {
+    "depth": 0.1405,
+    "err": 0.037,
+    "n": 6
+   }
+  },
+  {
+   "detector": 4,
+   "half": "long",
+   "wl_um": 3.345,
+   "primary": {
+    "depth": 0.1875,
+    "err": 0.0406,
+    "n": 5
+   },
+   "secondary": null
+  },
+  {
+   "detector": 5,
+   "half": "short",
+   "wl_um": 3.966,
+   "primary": {
+    "depth": 0.1879,
+    "err": 0.0263,
+    "n": 12
+   },
+   "secondary": {
+    "depth": 0.234,
+    "err": 0.0605,
+    "n": 3
+   }
+  },
+  {
+   "detector": 5,
+   "half": "long",
+   "wl_um": 4.288,
+   "primary": {
+    "depth": 0.143,
+    "err": 0.0456,
+    "n": 4
+   },
+   "secondary": {
+    "depth": 0.2097,
+    "err": 0.0304,
+    "n": 9
+   }
+  },
+  {
+   "detector": 6,
+   "half": "short",
+   "wl_um": 4.576,
+   "primary": {
+    "depth": 0.2225,
+    "err": 0.035,
+    "n": 7
+   },
+   "secondary": {
+    "depth": 0.1773,
+    "err": 0.0457,
+    "n": 4
+   }
+  },
+  {
+   "detector": 6,
+   "half": "long",
+   "wl_um": 4.826,
+   "primary": {
+    "depth": 0.168,
+    "err": 0.0326,
+    "n": 8
+   },
+   "secondary": {
+    "depth": 0.1082,
+    "err": 0.046,
+    "n": 4
+   }
+  }
+ ]
+}

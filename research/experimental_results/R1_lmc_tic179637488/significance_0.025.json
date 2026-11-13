@@ -1,0 +1,43 @@
+{
+ "centre": 0.025,
+ "half_width": 0.024704867951202237,
+ "n_trials": 1000,
+ "stars": {
+  "4658741684445417856": {
+   "g_mag": 14.3,
+   "depth": 0.1152,
+   "n_in": 57,
+   "trials_mean": -0.0263,
+   "trials_std": 0.0552,
+   "z_empirical": 2.56,
+   "fap_empirical": 0.000999000999000999
+  },
+  "4658741684445420032": {
+   "g_mag": 12.71,
+   "depth": -0.0146,
+   "n_in": 74,
+   "trials_mean": -0.0192,
+   "trials_std": 0.0316,
+   "z_empirical": 0.15,
+   "fap_empirical": 0.46653346653346656
+  },
+  "4658741203409052416": {
+   "g_mag": 14.27,
+   "depth": -0.0193,
+   "n_in": 75,
+   "trials_mean": -0.0031,
+   "trials_std": 0.0529,
+   "z_empirical": -0.31,
+   "fap_empirical": 0.6373626373626373
+  },
+  "4658741650085636352": {
+   "g_mag": 14.36,
+   "depth": 0.0048,
+   "n_in": 74,
+   "trials_mean": -0.0089,
+   "trials_std": 0.0345,
+   "z_empirical": 0.4,
+   "fap_empirical": 0.38961038961038963
+  }
+ }
+}

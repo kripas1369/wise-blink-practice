@@ -1,0 +1,47 @@
+ 
+ SPHEREx Data Releases - SPHEREx Archive at IRSA 
+ Skip to article frontmatter Skip to article content Site not loading correctly? 
+This may be due to an incorrect BASE_URL configuration. See the MyST Documentation for reference. 
+ Open Menu 
+ Made with MyST 
+ Search 
+ CTRL ⌘ K 
+ SPHEREx Archive at IRSA SPHEREx Data Releases SPHEREx Data Products SPHEREx Data Access 
+ Made with MyST 
+ SPHEREx Archive at IRSA 
+ SPHEREx Data Releases 
+SPHEREx Archive at IRSA 
+ Downloads Download 
+SPHEREx Data Releases 
+ Caltech/IPAC-IRSA 
+ November 12, 2026 
+This page describes the SPHEREx Data Releases (DR) and Quick Releases (QR) available at IRSA. 
+ SPHEREx Data Release 1 (DR1) ¶ 
+DR1 contains all Survey 1 and Survey 2 data, reprocessed with the same improved pipeline and calibrations as QR3.
+It also includes a new product, the All-Sky Cube, which is a set of spectral data cubes covering the whole sky, built from the DR1 Spectral Images.
+IRSA released DR1 in November 2026. 
+ SPHEREx Quick Release 3 (QR3) ¶ 
+QR3 contains Survey 3 and Survey 4 data.
+IRSA began releasing QR3 data on a weekly basis in September 2026.
+QR3 versions of the data observed from May 16, 2026 to July 19, 2026 are released together with DR1. 
+ SPHEREx Quick Release 2 (QR2) ¶ 
+QR2 contains SPHEREx Spectral Image data processed with substantially improved calibrations, including reprocessed versions of all QR1 images.
+IRSA began releasing QR2 data on a weekly basis in October 2025.
+On March 31, 2026, the QR2 headers were updated to correct PSF extension header errors. 
+DR1 + QR3 supersede QR2 
+Together, DR1 and QR3 supersede QR2.
+Use DR1 and QR3 for new work.
+QR2 data are no longer searchable and remain available for direct download through February 2027 (see Browsable Directories ).
+Because the calibrations changed, use caution when combining QR2 data with DR1 or QR3 data. 
+ SPHEREx Quick Release 1 (QR1) ¶ 
+QR1 contains SPHEREx Spectral Image data.
+QR1 was superseded by QR2, which included reprocessed versions of all QR1 images.
+IRSA began releasing QR1 data on a weekly basis in July 2025.
+QR1 was retired in February 2026 and is no longer available from IRSA. 
+ Release Timeline ¶ 
+ Figure  1 : Timeline of SPHEREx Data Releases and Quick Releases, and the surveys each covers. 
+A detailed description of SPHEREx data releases and the data products available to the public is provided in the SPHEREx Explanatory Supplement 
+ . 
+SPHEREx Archive at IRSA SPHEREx Archive at IRSA 
+SPHEREx Archive at IRSA SPHEREx Data Products 
+ 

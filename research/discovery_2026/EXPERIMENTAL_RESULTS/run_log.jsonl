@@ -1,0 +1,270 @@
+{"name": "V1647Ori", "step": "stamps", "n_found": 261, "n_ok": 252, "seconds": 41.5, "at": "2026-11-13T06:52:58+00:00"}
+{"name": "V1647Ori", "step": "phot", "n": 252, "n_ok": 250, "target": "J054613.13-000604.8", "seconds": 27.7, "at": "2026-11-13T06:53:26+00:00"}
+{"name": "V1647Ori", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 6.860885469790531e-08}, "CO2": {"n_complete": 3, "p_change": 0.0734249725365366}}, "seconds": 69.6, "at": "2026-11-13T06:53:26+00:00"}
+{"name": "Elias29", "step": "stamps", "n_found": 279, "n_ok": 253, "seconds": 44.8, "at": "2026-11-13T06:54:11+00:00"}
+{"name": "Elias29", "step": "phot", "n": 253, "n_ok": 251, "target": "J162709.42-243719.1", "seconds": 37.6, "at": "2026-11-13T06:54:49+00:00"}
+{"name": "Elias29", "step": "ice", "bands": {"H2O": {"n_complete": 0, "p_change": null}, "CO2": {"n_complete": 0, "p_change": null}}, "seconds": 82.4, "at": "2026-11-13T06:54:49+00:00"}
+{"name": "Elias16", "step": "stamps", "n_found": 220, "n_ok": 219, "seconds": 36.4, "at": "2026-11-13T06:55:25+00:00"}
+{"name": "Elias16", "step": "phot", "n": 219, "n_ok": 219, "target": "J043938.90+261126.7", "seconds": 37.6, "at": "2026-11-13T06:56:03+00:00"}
+{"name": "Elias16", "step": "ice", "bands": {"H2O": {"n_complete": 0, "p_change": null}, "CO2": {"n_complete": 0, "p_change": null}}, "seconds": 74.1, "at": "2026-11-13T06:56:03+00:00"}
+{"name": "SJ06583066m0827593", "step": "stamps", "n_found": 223, "n_ok": 221, "seconds": 70.2, "at": "2026-11-13T07:00:53+00:00"}
+{"name": "SJ06171967p2451250", "step": "stamps", "n_found": 225, "n_ok": 224, "seconds": 70.2, "at": "2026-11-13T07:00:54+00:00"}
+{"name": "SJ06583066m0827593", "step": "phot", "n": 221, "n_ok": 219, "target": "J065830.66-082759.3", "seconds": 8.9, "at": "2026-11-13T07:01:01+00:00"}
+{"name": "SJ06583066m0827593", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.17971780189770073}, "CO2": {"n_complete": 3, "p_change": 0.521234056576935}}, "seconds": 79.5, "at": "2026-11-13T07:01:02+00:00"}
+{"name": "SJ06171967p2451250", "step": "phot", "n": 224, "n_ok": 221, "target": "J061719.67+245125.0", "seconds": 17.3, "at": "2026-11-13T07:01:11+00:00"}
+{"name": "SJ06171967p2451250", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.2847431200641426}, "CO2": {"n_complete": 3, "p_change": 0.7747258609255913}}, "seconds": 88.0, "at": "2026-11-13T07:01:11+00:00"}
+{"name": "SJ10364897m5840107", "step": "stamps", "n_found": 359, "n_ok": 338, "seconds": 100.1, "at": "2026-11-13T07:01:23+00:00"}
+{"name": "SJ06583066m0827593", "step": "phot", "n": 221, "n_ok": 219, "target": "J065830.66-082759.3", "seconds": 4.2, "at": "2026-11-13T07:02:56+00:00"}
+{"name": "SJ06171967p2451250", "step": "phot", "n": 224, "n_ok": 221, "target": "J061719.67+245125.0", "seconds": 3.6, "at": "2026-11-13T07:03:18+00:00"}
+{"name": "SJ06583066m0827593", "step": "phot", "n": 221, "n_ok": 219, "target": "J065830.66-082759.3", "seconds": 4.0, "at": "2026-11-13T07:03:19+00:00"}
+{"name": "SJ06171967p2451250", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.2847431200641426}, "CO2": {"n_complete": 3, "p_change": 0.7747258609255913}}, "seconds": 4.0, "at": "2026-11-13T07:03:19+00:00"}
+{"name": "SJ06583066m0827593", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.17971780189770073}, "CO2": {"n_complete": 3, "p_change": 0.521234056576935}}, "seconds": 4.4, "at": "2026-11-13T07:03:19+00:00"}
+{"name": "SJ06583066m0827593", "step": "phot", "n": 221, "n_ok": 219, "target": "J065830.66-082759.3", "seconds": 4.1, "at": "2026-11-13T07:09:21+00:00"}
+{"name": "SJ06171967p2451250", "step": "phot", "n": 224, "n_ok": 221, "target": "J061719.67+245125.0", "seconds": 3.6, "at": "2026-11-13T07:09:21+00:00"}
+{"name": "SJ06583066m0827593", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.17971780189770073}, "CO2": {"n_complete": 3, "p_change": 0.521234056576935}}, "seconds": 4.5, "at": "2026-11-13T07:09:22+00:00"}
+{"name": "SJ06171967p2451250", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.2847431200641426}, "CO2": {"n_complete": 3, "p_change": 0.7747258609255913}}, "seconds": 4.0, "at": "2026-11-13T07:09:22+00:00"}
+{"name": "SJ17261620m3432089", "step": "stamps", "n_found": 222, "n_ok": 221, "seconds": 60.5, "at": "2026-11-13T07:10:22+00:00"}
+{"name": "SJ14295522m5751563", "step": "stamps", "n_found": 229, "n_ok": 229, "seconds": 60.9, "at": "2026-11-13T07:10:22+00:00"}
+{"name": "SJ18150908m1710076", "step": "stamps", "n_found": 220, "n_ok": 220, "seconds": 69.0, "at": "2026-11-13T07:10:27+00:00"}
+{"name": "SJ17261620m3432089", "step": "phot", "n": 221, "n_ok": 216, "target": "J172616.20-343208.9", "seconds": 24.4, "at": "2026-11-13T07:10:47+00:00"}
+{"name": "SJ17261620m3432089", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.7514705550695533}, "CO2": {"n_complete": 3, "p_change": 0.08361289632387728}}, "seconds": 85.2, "at": "2026-11-13T07:10:47+00:00"}
+{"name": "SJ14295522m5751563", "step": "phot", "n": 229, "n_ok": 228, "target": "J142955.22-575156.3", "seconds": 50.6, "at": "2026-11-13T07:11:13+00:00"}
+{"name": "SJ14295522m5751563", "step": "error", "error": "ValueError('expected a nonnegative input, got -5.102316703008042e-34')", "tb": "Traceback (most recent call last):\n  File \"/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/discovery_2026/scripts/run_targets.py\", line 56, in main\n    res = one(name, float(r[\"ra\"]), float(r[\"dec\"]), a.workers)\n  File \"/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/discovery_2026/scripts/run_targets.py\", line 38, in one\n    res, pts = ice_fit.analyse(name)\n               ~~~~~~~~~~~~~~~^^^^^^\n  File \"/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/discovery_2026/scripts/ice_fit.py\", line 302, in analyse\n    b[\"fit_nodrift\"] = clean(joint_fit(good, bname, drift=False)) if bname == \"H2O\" else None\n                             ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/discovery_2026/scripts/ice_fit.py\", line 236, in joint_fit\n    \"shape_err\": [float(math.sqrt(cov[i, i])) for i in range(ns)], \"epochs\": []}\n                        ~~~~~~~~~^^^^^^^^^^^\nValueError: expected a nonnegative input, got -5.102316703008042e-34\n", "at": "2026-11-13T07:11:13+00:00"}
+{"name": "SJ18150908m1710076", "step": "phot", "n": 220, "n_ok": 217, "target": "J181509.08-171007.6", "seconds": 48.7, "at": "2026-11-13T07:11:16+00:00"}
+{"name": "SJ18150908m1710076", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.8967423078787906}, "CO2": {"n_complete": 3, "p_change": 0.49272317112095765}}, "seconds": 118.2, "at": "2026-11-13T07:11:17+00:00"}
+{"name": "SJ16264420m2434487", "step": "stamps", "n_found": 298, "n_ok": 294, "seconds": 90.4, "at": "2026-11-13T07:12:17+00:00"}
+{"name": "SJ20503803p4418447", "step": "stamps", "n_found": 289, "n_ok": 288, "seconds": 82.5, "at": "2026-11-13T07:12:36+00:00"}
+{"name": "SJ18040753m2254116", "step": "stamps", "n_found": 216, "n_ok": 215, "seconds": 83.9, "at": "2026-11-13T07:12:40+00:00"}
+{"name": "SJ16264420m2434487", "step": "phot", "n": 294, "n_ok": 292, "target": "J162644.20-243448.7", "seconds": 44.2, "at": "2026-11-13T07:13:01+00:00"}
+{"name": "SJ16264420m2434487", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.03184639507339759}, "CO2": {"n_complete": 3, "p_change": 0.14434036946180917}}, "seconds": 134.8, "at": "2026-11-13T07:13:02+00:00"}
+{"name": "SJ18040753m2254116", "step": "phot", "n": 215, "n_ok": 213, "target": "J180407.53-225411.6", "seconds": 22.4, "at": "2026-11-13T07:13:03+00:00"}
+{"name": "SJ18040753m2254116", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.5751650983230183}, "CO2": {"n_complete": 3, "p_change": 0.9986013286662982}}, "seconds": 106.5, "at": "2026-11-13T07:13:03+00:00"}
+{"name": "SJ20503803p4418447", "step": "phot", "n": 288, "n_ok": 283, "target": "J205038.03+441844.7", "seconds": 31.2, "at": "2026-11-13T07:13:07+00:00"}
+{"name": "SJ20503803p4418447", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.1699082018752522}, "CO2": {"n_complete": 3, "p_change": 0.04608368093465062}}, "seconds": 113.9, "at": "2026-11-13T07:13:07+00:00"}
+{"name": "SJ17432125m3638215", "step": "stamps", "n_found": 229, "n_ok": 229, "seconds": 59.4, "at": "2026-11-13T07:14:01+00:00"}
+{"name": "SJ20313267p3752317", "step": "stamps", "n_found": 232, "n_ok": 232, "seconds": 61.8, "at": "2026-11-13T07:14:09+00:00"}
+{"name": "SJ18173932m1648009", "step": "stamps", "n_found": 224, "n_ok": 223, "seconds": 67.1, "at": "2026-11-13T07:14:10+00:00"}
+{"name": "SJ17432125m3638215", "step": "phot", "n": 229, "n_ok": 224, "target": "J174321.25-363821.5", "seconds": 32.2, "at": "2026-11-13T07:14:33+00:00"}
+{"name": "SJ17432125m3638215", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.7747640764087241}, "CO2": {"n_complete": 3, "p_change": 0.6393393484983156}}, "seconds": 91.8, "at": "2026-11-13T07:14:33+00:00"}
+{"name": "SJ20313267p3752317", "step": "phot", "n": 232, "n_ok": 230, "target": "J203132.67+375231.7", "seconds": 29.6, "at": "2026-11-13T07:14:38+00:00"}
+{"name": "SJ20313267p3752317", "step": "ice", "bands": {"H2O": {"n_complete": 0, "p_change": null}, "CO2": {"n_complete": 0, "p_change": null}}, "seconds": 91.4, "at": "2026-11-13T07:14:38+00:00"}
+{"name": "SJ18173932m1648009", "step": "phot", "n": 223, "n_ok": 220, "target": "J181739.32-164800.9", "seconds": 48.3, "at": "2026-11-13T07:14:58+00:00"}
+{"name": "SJ18173932m1648009", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.9999999997850566}, "CO2": {"n_complete": 3, "p_change": 0.4187181336744919}}, "seconds": 115.6, "at": "2026-11-13T07:14:59+00:00"}
+{"name": "SJ08440061m4116407", "step": "stamps", "n_found": 243, "n_ok": 241, "seconds": 75.9, "at": "2026-11-13T07:15:49+00:00"}
+{"name": "SJ20573116p4402374", "step": "stamps", "n_found": 322, "n_ok": 322, "seconds": 82.5, "at": "2026-11-13T07:16:01+00:00"}
+{"name": "SJ18022024m2301578", "step": "stamps", "n_found": 214, "n_ok": 212, "seconds": 72.5, "at": "2026-11-13T07:16:11+00:00"}
+{"name": "SJ08440061m4116407", "step": "phot", "n": 241, "n_ok": 239, "target": "J084400.61-411640.7", "seconds": 22.5, "at": "2026-11-13T07:16:12+00:00"}
+{"name": "SJ08440061m4116407", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.7435772527255728}, "CO2": {"n_complete": 2, "p_change": 0.2385359582858643}}, "seconds": 98.6, "at": "2026-11-13T07:16:12+00:00"}
+{"name": "SJ20573116p4402374", "step": "phot", "n": 322, "n_ok": 318, "target": "J205731.16+440237.4", "seconds": 32.1, "at": "2026-11-13T07:16:33+00:00"}
+{"name": "SJ20573116p4402374", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 3.98319586469527e-05}, "CO2": {"n_complete": 3, "p_change": 0.35890306847391246}}, "seconds": 114.9, "at": "2026-11-13T07:16:33+00:00"}
+{"name": "SJ06314874p0419487", "step": "stamps", "n_found": 258, "n_ok": 258, "seconds": 61.4, "at": "2026-11-13T07:17:13+00:00"}
+{"name": "SJ18022024m2301578", "step": "phot", "n": 212, "n_ok": 206, "target": "J180220.24-230157.8", "seconds": 66.3, "at": "2026-11-13T07:17:18+00:00"}
+{"name": "SJ18022024m2301578", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.9631194855260425}, "CO2": {"n_complete": 3, "p_change": 0.9517058018730259}}, "seconds": 139.1, "at": "2026-11-13T07:17:18+00:00"}
+{"name": "SJ17555845m1624393", "step": "stamps", "n_found": 233, "n_ok": 223, "seconds": 52.5, "at": "2026-11-13T07:17:26+00:00"}
+{"name": "SJ06314874p0419487", "step": "phot", "n": 258, "n_ok": 255, "target": "J063148.74+041948.7", "seconds": 38.9, "at": "2026-11-13T07:17:52+00:00"}
+{"name": "SJ06314874p0419487", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.9789806404461885}, "CO2": {"n_complete": 3, "p_change": 0.5689097081351406}}, "seconds": 100.6, "at": "2026-11-13T07:17:53+00:00"}
+{"name": "SJ17555845m1624393", "step": "phot", "n": 223, "n_ok": 221, "target": "J175558.45-162439.3", "seconds": 51.5, "at": "2026-11-13T07:18:17+00:00"}
+{"name": "SJ17555845m1624393", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.07782990192307258}, "CO2": {"n_complete": 3, "p_change": 0.6316119974047458}}, "seconds": 104.2, "at": "2026-11-13T07:18:17+00:00"}
+{"name": "SJ16394521m4715259", "step": "stamps", "n_found": 242, "n_ok": 241, "seconds": 66.5, "at": "2026-11-13T07:18:24+00:00"}
+{"name": "SJ08145121m3532211", "step": "stamps", "n_found": 221, "n_ok": 219, "seconds": 47.8, "at": "2026-11-13T07:18:40+00:00"}
+{"name": "SJ16394521m4715259", "step": "phot", "n": 241, "n_ok": 239, "target": "J163945.21-471525.9", "seconds": 32.2, "at": "2026-11-13T07:18:56+00:00"}
+{"name": "SJ16394521m4715259", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.9496460009774701}, "CO2": {"n_complete": 3, "p_change": 0.019087582865289558}}, "seconds": 98.8, "at": "2026-11-13T07:18:57+00:00"}
+{"name": "SJ08145121m3532211", "step": "phot", "n": 219, "n_ok": 217, "target": "J081451.21-353221.1", "seconds": 21.4, "at": "2026-11-13T07:19:02+00:00"}
+{"name": "SJ08145121m3532211", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.9348501321116102}, "CO2": {"n_complete": 2, "p_change": 0.5026849878388248}}, "seconds": 69.3, "at": "2026-11-13T07:19:02+00:00"}
+{"name": "SJ00255685p6452319", "step": "stamps", "n_found": 290, "n_ok": 287, "seconds": 66.9, "at": "2026-11-13T07:19:24+00:00"}
+{"name": "SJ00255685p6452319", "step": "phot", "n": 287, "n_ok": 285, "target": "J002556.85+645231.9", "seconds": 37.1, "at": "2026-11-13T07:20:01+00:00"}
+{"name": "SJ00255685p6452319", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.5084024854709603}, "CO2": {"n_complete": 3, "p_change": 0.1482762989900096}}, "seconds": 104.2, "at": "2026-11-13T07:20:02+00:00"}
+{"name": "SJ18015952m2306347", "step": "stamps", "n_found": 214, "n_ok": 212, "seconds": 70.3, "at": "2026-11-13T07:20:07+00:00"}
+{"name": "SJ18522549p0054061", "step": "stamps", "n_found": 288, "n_ok": 285, "seconds": 74.5, "at": "2026-11-13T07:20:16+00:00"}
+{"name": "SJ18522549p0054061", "step": "phot", "n": 285, "n_ok": 282, "target": "J185225.49+005406.1", "seconds": 43.8, "at": "2026-11-13T07:21:00+00:00"}
+{"name": "SJ18015952m2306347", "step": "phot", "n": 212, "n_ok": 210, "target": "J180159.52-230634.7", "seconds": 53.5, "at": "2026-11-13T07:21:00+00:00"}
+{"name": "SJ18522549p0054061", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.99818860695777}, "CO2": {"n_complete": 4, "p_change": 0.9700287773343884}}, "seconds": 118.5, "at": "2026-11-13T07:21:00+00:00"}
+{"name": "SJ16003591m5244283", "step": "stamps", "n_found": 271, "n_ok": 269, "seconds": 59.0, "at": "2026-11-13T07:21:01+00:00"}
+{"name": "SJ18015952m2306347", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.9957430446303314}, "CO2": {"n_complete": 2, "p_change": 0.4597715711474846}}, "seconds": 124.1, "at": "2026-11-13T07:21:01+00:00"}
+{"name": "SJ16003591m5244283", "step": "phot", "n": 269, "n_ok": 267, "target": "J160035.91-524428.3", "seconds": 34.8, "at": "2026-11-13T07:21:35+00:00"}
+{"name": "SJ16003591m5244283", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.12253755070342388}, "CO2": {"n_complete": 3, "p_change": 0.28267225859562484}}, "seconds": 94.1, "at": "2026-11-13T07:21:36+00:00"}
+{"name": "SJ06135925p1743210", "step": "stamps", "n_found": 222, "n_ok": 222, "seconds": 53.3, "at": "2026-11-13T07:21:54+00:00"}
+{"name": "SJ18024892m2245419", "step": "stamps", "n_found": 214, "n_ok": 214, "seconds": 63.3, "at": "2026-11-13T07:22:04+00:00"}
+{"name": "SJ06135925p1743210", "step": "phot", "n": 222, "n_ok": 219, "target": "J061359.25+174321.0", "seconds": 19.5, "at": "2026-11-13T07:22:13+00:00"}
+{"name": "SJ06135925p1743210", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 1.260853261404204e-05}, "CO2": {"n_complete": 3, "p_change": 0.06923600119098462}}, "seconds": 73.0, "at": "2026-11-13T07:22:14+00:00"}
+{"name": "SJ07375689m2556589", "step": "stamps", "n_found": 168, "n_ok": 167, "seconds": 40.0, "at": "2026-11-13T07:22:16+00:00"}
+{"name": "SJ18024892m2245419", "step": "phot", "n": 214, "n_ok": 212, "target": "J180248.92-224541.9", "seconds": 36.2, "at": "2026-11-13T07:22:40+00:00"}
+{"name": "SJ18024892m2245419", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.10096845826882817}, "CO2": {"n_complete": 3, "p_change": 0.011679390054130469}}, "seconds": 99.7, "at": "2026-11-13T07:22:40+00:00"}
+{"name": "SJ07375689m2556589", "step": "phot", "n": 167, "n_ok": 166, "target": "J073756.89-255658.9", "seconds": 57.6, "at": "2026-11-13T07:23:13+00:00"}
+{"name": "SJ07375689m2556589", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.37415709976670547}, "CO2": {"n_complete": 2, "p_change": 0.6610375958973747}}, "seconds": 97.8, "at": "2026-11-13T07:23:14+00:00"}
+{"name": "SJ16314285m4834221", "step": "stamps", "n_found": 268, "n_ok": 237, "seconds": 65.8, "at": "2026-11-13T07:23:19+00:00"}
+{"name": "SJ18241972m1233024", "step": "stamps", "n_found": 224, "n_ok": 224, "seconds": 65.5, "at": "2026-11-13T07:23:46+00:00"}
+{"name": "SJ16314285m4834221", "step": "phot", "n": 237, "n_ok": 234, "target": "J163142.85-483422.1", "seconds": 39.0, "at": "2026-11-13T07:23:58+00:00"}
+{"name": "SJ16314285m4834221", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.9532797379424932}, "CO2": {"n_complete": 3, "p_change": 0.5179067236352158}}, "seconds": 105.1, "at": "2026-11-13T07:23:59+00:00"}
+{"name": "SJ18241972m1233024", "step": "phot", "n": 224, "n_ok": 221, "target": "J182419.72-123302.4", "seconds": 18.7, "at": "2026-11-13T07:24:05+00:00"}
+{"name": "SJ18241972m1233024", "step": "error", "error": "ValueError('expected a nonnegative input, got -6.990389474300122e-32')", "tb": "Traceback (most recent call last):\n  File \"/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/discovery_2026/scripts/run_targets.py\", line 56, in main\n    res = one(name, float(r[\"ra\"]), float(r[\"dec\"]), a.workers)\n  File \"/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/discovery_2026/scripts/run_targets.py\", line 38, in one\n    res, pts = ice_fit.analyse(name)\n               ~~~~~~~~~~~~~~~^^^^^^\n  File \"/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/discovery_2026/scripts/ice_fit.py\", line 302, in analyse\n    b[\"fit\"] = clean(h1)\n    \n  File \"/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/discovery_2026/scripts/ice_fit.py\", line 236, in joint_fit\n    out = {\"n\": int(len(y)), \"chi2\": chi2, \"dof\": dof, \"chi2r\": chi2r, \"shape\": [float(v) for v in shape],\n                               ^^^^^^^^^^^^^^^^^^^^\nValueError: expected a nonnegative input, got -6.990389474300122e-32\n", "at": "2026-11-13T07:24:05+00:00"}
+{"name": "SJ01163354p6449243", "step": "stamps", "n_found": 294, "n_ok": 294, "seconds": 82.8, "at": "2026-11-13T07:24:36+00:00"}
+{"name": "SJ06511370m1531304", "step": "stamps", "n_found": 216, "n_ok": 213, "seconds": 61.0, "at": "2026-11-13T07:25:00+00:00"}
+{"name": "SJ01163354p6449243", "step": "phot", "n": 294, "n_ok": 290, "target": "J011633.54+644924.3", "seconds": 32.2, "at": "2026-11-13T07:25:08+00:00"}
+{"name": "SJ01163354p6449243", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.6173255782344844}, "CO2": {"n_complete": 3, "p_change": 0.9650144790038626}}, "seconds": 115.2, "at": "2026-11-13T07:25:09+00:00"}
+{"name": "SJ16483873m4450311", "step": "stamps", "n_found": 240, "n_ok": 239, "seconds": 76.2, "at": "2026-11-13T07:25:21+00:00"}
+{"name": "SJ06511370m1531304", "step": "phot", "n": 213, "n_ok": 213, "target": "J065113.70-153130.4", "seconds": 23.5, "at": "2026-11-13T07:25:23+00:00"}
+{"name": "SJ06511370m1531304", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.5284641916112917}, "CO2": {"n_complete": 3, "p_change": 0.016128988677126532}}, "seconds": 84.7, "at": "2026-11-13T07:25:23+00:00"}
+{"name": "SJ16483873m4450311", "step": "phot", "n": 239, "n_ok": 236, "target": "J164838.73-445031.1", "seconds": 28.9, "at": "2026-11-13T07:25:50+00:00"}
+{"name": "SJ16483873m4450311", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.8437694710789846}, "CO2": {"n_complete": 3, "p_change": 0.7899707330373444}}, "seconds": 105.4, "at": "2026-11-13T07:25:50+00:00"}
+{"name": "SJ01123512p6322196", "step": "stamps", "n_found": 222, "n_ok": 222, "seconds": 56.9, "at": "2026-11-13T07:26:06+00:00"}
+{"name": "SJ03273490p5847485", "step": "stamps", "n_found": 292, "n_ok": 292, "seconds": 75.2, "at": "2026-11-13T07:26:39+00:00"}
+{"name": "SJ01123512p6322196", "step": "phot", "n": 222, "n_ok": 221, "target": "J011235.12+632219.6", "seconds": 43.1, "at": "2026-11-13T07:26:49+00:00"}
+{"name": "SJ01123512p6322196", "step": "error", "error": "ValueError('expected a nonnegative input, got -1.479418759602653e-35')", "tb": "Traceback (most recent call last):\n  File \"/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/discovery_2026/scripts/run_targets.py\", line 56, in main\n    res = one(name, float(r[\"ra\"]), float(r[\"dec\"]), a.workers)\n  File \"/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/discovery_2026/scripts/run_targets.py\", line 38, in one\n    res, pts = ice_fit.analyse(name)\n               ~~~~~~~~~~~~~~~^^^^^^\n  File \"/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/discovery_2026/scripts/ice_fit.py\", line 302, in analyse\n    b[\"fit\"] = clean(h1)\n    \n  File \"/Users/kripaskhatiwadaicloud.com/wise-blink-practice/research/discovery_2026/scripts/ice_fit.py\", line 236, in joint_fit\n    out = {\"n\": int(len(y)), \"chi2\": chi2, \"dof\": dof, \"chi2r\": chi2r, \"shape\": [float(v) for v in shape],\n                               ^^^^^^^^^^^^^^^^^^^^\nValueError: expected a nonnegative input, got -1.479418759602653e-35\n", "at": "2026-11-13T07:26:49+00:00"}
+{"name": "SJ03273490p5847485", "step": "phot", "n": 292, "n_ok": 286, "target": "J032734.90+584748.5", "seconds": 25.8, "at": "2026-11-13T07:27:04+00:00"}
+{"name": "SJ03273490p5847485", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.0649912585606663}, "CO2": {"n_complete": 3, "p_change": 0.10577352487088937}}, "seconds": 101.3, "at": "2026-11-13T07:27:05+00:00"}
+{"name": "SJ18181445m1651259", "step": "stamps", "n_found": 279, "n_ok": 274, "seconds": 91.9, "at": "2026-11-13T07:27:22+00:00"}
+{"name": "SJ17042614m3843539", "step": "stamps", "n_found": 231, "n_ok": 229, "seconds": 60.1, "at": "2026-11-13T07:27:49+00:00"}
+{"name": "SJ18181445m1651259", "step": "phot", "n": 274, "n_ok": 269, "target": "J181814.45-165125.9", "seconds": 30.9, "at": "2026-11-13T07:27:53+00:00"}
+{"name": "SJ18181445m1651259", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.7625905650182411}, "CO2": {"n_complete": 3, "p_change": 0.438017703142721}}, "seconds": 123.1, "at": "2026-11-13T07:27:53+00:00"}
+{"name": "SJ18570951p0210407", "step": "stamps", "n_found": 268, "n_ok": 266, "seconds": 64.0, "at": "2026-11-13T07:28:09+00:00"}
+{"name": "SJ17042614m3843539", "step": "phot", "n": 229, "n_ok": 225, "target": "J170426.14-384353.9", "seconds": 21.2, "at": "2026-11-13T07:28:10+00:00"}
+{"name": "SJ17042614m3843539", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.6816889458669175}, "CO2": {"n_complete": 3, "p_change": 0.9405051772794291}}, "seconds": 81.5, "at": "2026-11-13T07:28:10+00:00"}
+{"name": "SJ18570951p0210407", "step": "phot", "n": 266, "n_ok": 264, "target": "J185709.51+021040.7", "seconds": 55.9, "at": "2026-11-13T07:29:05+00:00"}
+{"name": "SJ18570951p0210407", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 4.259326266995783e-06}, "CO2": {"n_complete": 3, "p_change": 0.9601949956402059}}, "seconds": 120.2, "at": "2026-11-13T07:29:05+00:00"}
+{"name": "SJ18010471m2248371", "step": "stamps", "n_found": 212, "n_ok": 210, "seconds": 74.0, "at": "2026-11-13T07:29:07+00:00"}
+{"name": "SJ18010471m2248371", "step": "phot", "n": 210, "n_ok": 208, "target": "J180104.71-224837.1", "seconds": 39.7, "at": "2026-11-13T07:29:47+00:00"}
+{"name": "SJ18010471m2248371", "step": "ice", "bands": {"H2O": {"n_complete": 1, "p_change": null}, "CO2": {"n_complete": 3, "p_change": 0.2133917523358527}}, "seconds": 113.8, "at": "2026-11-13T07:29:47+00:00"}
+{"name": "SJ20432825p4249002", "step": "stamps", "n_found": 331, "n_ok": 329, "seconds": 98.0, "at": "2026-11-13T07:29:48+00:00"}
+{"name": "SJ20432825p4249002", "step": "phot", "n": 329, "n_ok": 324, "target": "J204328.25+424900.2", "seconds": 23.5, "at": "2026-11-13T07:30:12+00:00"}
+{"name": "SJ20432825p4249002", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.1648443958746572}, "CO2": {"n_complete": 3, "p_change": 0.313910223224799}}, "seconds": 121.7, "at": "2026-11-13T07:30:12+00:00"}
+{"name": "SJ02252243p6207294", "step": "stamps", "n_found": 234, "n_ok": 234, "seconds": 70.8, "at": "2026-11-13T07:30:16+00:00"}
+{"name": "SJ02252243p6207294", "step": "phot", "n": 234, "n_ok": 232, "target": "J022522.43+620729.4", "seconds": 42.4, "at": "2026-11-13T07:30:58+00:00"}
+{"name": "SJ02252243p6207294", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.9943258516632641}, "CO2": {"n_complete": 3, "p_change": 0.7466899801722581}}, "seconds": 113.5, "at": "2026-11-13T07:30:58+00:00"}
+{"name": "SJ18222168m1329322", "step": "stamps", "n_found": 250, "n_ok": 241, "seconds": 74.0, "at": "2026-11-13T07:31:01+00:00"}
+{"name": "SJ18273242m0837545", "step": "stamps", "n_found": 259, "n_ok": 258, "seconds": 58.9, "at": "2026-11-13T07:31:11+00:00"}
+{"name": "SJ18222168m1329322", "step": "phot", "n": 241, "n_ok": 239, "target": "J182221.68-132932.2", "seconds": 34.8, "at": "2026-11-13T07:31:36+00:00"}
+{"name": "SJ18222168m1329322", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.2603942953161271}, "CO2": {"n_complete": 3, "p_change": 0.026095665513257933}}, "seconds": 109.0, "at": "2026-11-13T07:31:36+00:00"}
+{"name": "SJ18273242m0837545", "step": "phot", "n": 258, "n_ok": 253, "target": "J182732.42-083754.5", "seconds": 27.8, "at": "2026-11-13T07:31:39+00:00"}
+{"name": "SJ18273242m0837545", "step": "ice", "bands": {"H2O": {"n_complete": 1, "p_change": null}, "CO2": {"n_complete": 1, "p_change": null}}, "seconds": 86.8, "at": "2026-11-13T07:31:39+00:00"}
+{"name": "SJ10364897m5840107", "step": "phot", "n": 338, "n_ok": 336, "target": "J103648.97-584010.7", "seconds": 19.6, "at": "2026-11-13T07:32:05+00:00"}
+{"name": "SJ10364897m5840107", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.7574060997536457}, "CO2": {"n_complete": 3, "p_change": 0.6781387640011214}}, "seconds": 20.1, "at": "2026-11-13T07:32:05+00:00"}
+{"name": "SJ20582317p4349146", "step": "stamps", "n_found": 316, "n_ok": 313, "seconds": 73.9, "at": "2026-11-13T07:32:12+00:00"}
+{"name": "SJ18110219m2409340", "step": "stamps", "n_found": 210, "n_ok": 207, "seconds": 52.8, "at": "2026-11-13T07:32:32+00:00"}
+{"name": "SJ07041643m1016550", "step": "stamps", "n_found": 173, "n_ok": 172, "seconds": 45.8, "at": "2026-11-13T07:32:51+00:00"}
+{"name": "SJ18110219m2409340", "step": "phot", "n": 207, "n_ok": 205, "target": "J181102.19-240934.0", "seconds": 22.6, "at": "2026-11-13T07:32:54+00:00"}
+{"name": "SJ18110219m2409340", "step": "ice", "bands": {"H2O": {"n_complete": 0, "p_change": null}, "CO2": {"n_complete": 3, "p_change": 0.38991334603571515}}, "seconds": 75.5, "at": "2026-11-13T07:32:54+00:00"}
+{"name": "SJ07041643m1016550", "step": "phot", "n": 172, "n_ok": 164, "target": "J070416.43-101655.0", "seconds": 6.7, "at": "2026-11-13T07:32:58+00:00"}
+{"name": "SJ07041643m1016550", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.2766204959083467}, "CO2": {"n_complete": 2, "p_change": 0.7727168419973637}}, "seconds": 52.7, "at": "2026-11-13T07:32:58+00:00"}
+{"name": "SJ20582317p4349146", "step": "phot", "n": 313, "n_ok": 309, "target": "J205823.17+434914.6", "seconds": 47.1, "at": "2026-11-13T07:32:59+00:00"}
+{"name": "SJ20582317p4349146", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.08206997955215703}, "CO2": {"n_complete": 3, "p_change": 0.6360738468580812}}, "seconds": 121.3, "at": "2026-11-13T07:32:59+00:00"}
+{"name": "SJ15315679m5532126", "step": "stamps", "n_found": 256, "n_ok": 253, "seconds": 72.2, "at": "2026-11-13T07:34:06+00:00"}
+{"name": "SJ07004057m0838494", "step": "stamps", "n_found": 221, "n_ok": 220, "seconds": 67.5, "at": "2026-11-13T07:34:07+00:00"}
+{"name": "SJ16032016m3341310", "step": "stamps", "n_found": 233, "n_ok": 228, "seconds": 71.1, "at": "2026-11-13T07:34:09+00:00"}
+{"name": "SJ16032016m3341310", "step": "phot", "n": 228, "n_ok": 224, "target": "J160320.16-334131.0", "seconds": 30.8, "at": "2026-11-13T07:34:40+00:00"}
+{"name": "SJ16032016m3341310", "step": "ice", "bands": {"H2O": {"n_complete": 0, "p_change": null}, "CO2": {"n_complete": 3, "p_change": 0.470388769638815}}, "seconds": 102.0, "at": "2026-11-13T07:34:40+00:00"}
+{"name": "SJ07004057m0838494", "step": "phot", "n": 220, "n_ok": 218, "target": "J070040.57-083849.4", "seconds": 34.9, "at": "2026-11-13T07:34:42+00:00"}
+{"name": "SJ07004057m0838494", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.7893775734976974}, "CO2": {"n_complete": 2, "p_change": 0.46770895549344654}}, "seconds": 102.6, "at": "2026-11-13T07:34:42+00:00"}
+{"name": "SJ15315679m5532126", "step": "phot", "n": 253, "n_ok": 248, "target": "J153156.79-553212.6", "seconds": 37.8, "at": "2026-11-13T07:34:44+00:00"}
+{"name": "SJ15315679m5532126", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.5249448845686242}, "CO2": {"n_complete": 3, "p_change": 0.38455958356865977}}, "seconds": 110.1, "at": "2026-11-13T07:34:44+00:00"}
+{"name": "SJ07142692m1203589", "step": "stamps", "n_found": 152, "n_ok": 152, "seconds": 44.3, "at": "2026-11-13T07:35:24+00:00"}
+{"name": "SJ17211076m3500350", "step": "stamps", "n_found": 232, "n_ok": 232, "seconds": 76.6, "at": "2026-11-13T07:35:59+00:00"}
+{"name": "SJ07142692m1203589", "step": "phot", "n": 152, "n_ok": 150, "target": "J071426.92-120358.9", "seconds": 39.1, "at": "2026-11-13T07:36:04+00:00"}
+{"name": "SJ07142692m1203589", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.0018431012648530809}, "CO2": {"n_complete": 2, "p_change": 0.14717531144504514}}, "seconds": 83.6, "at": "2026-11-13T07:36:04+00:00"}
+{"name": "SJ20574553p4353223", "step": "stamps", "n_found": 289, "n_ok": 288, "seconds": 82.8, "at": "2026-11-13T07:36:07+00:00"}
+{"name": "SJ17211076m3500350", "step": "phot", "n": 232, "n_ok": 229, "target": "J172110.76-350035.0", "seconds": 34.0, "at": "2026-11-13T07:36:33+00:00"}
+{"name": "SJ17211076m3500350", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.8552080998475914}, "CO2": {"n_complete": 3, "p_change": 0.07583159739083441}}, "seconds": 110.8, "at": "2026-11-13T07:36:33+00:00"}
+{"name": "SJ20574553p4353223", "step": "phot", "n": 288, "n_ok": 283, "target": "J205745.53+435322.3", "seconds": 34.0, "at": "2026-11-13T07:36:41+00:00"}
+{"name": "SJ20574553p4353223", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.5707676352254952}, "CO2": {"n_complete": 3, "p_change": 0.49460467722817575}}, "seconds": 116.9, "at": "2026-11-13T07:36:41+00:00"}
+{"name": "SJ15100222m5840252", "step": "stamps", "n_found": 340, "n_ok": 336, "seconds": 78.5, "at": "2026-11-13T07:37:22+00:00"}
+{"name": "SJ18090746m1923037", "step": "stamps", "n_found": 258, "n_ok": 246, "seconds": 68.0, "at": "2026-11-13T07:37:41+00:00"}
+{"name": "SJ15100222m5840252", "step": "phot", "n": 336, "n_ok": 330, "target": "J151002.22-584025.2", "seconds": 38.0, "at": "2026-11-13T07:38:00+00:00"}
+{"name": "SJ15100222m5840252", "step": "ice", "bands": {"H2O": {"n_complete": 1, "p_change": null}, "CO2": {"n_complete": 2, "p_change": 0.8724321052413633}}, "seconds": 116.7, "at": "2026-11-13T07:38:00+00:00"}
+{"name": "SJ18090746m1923037", "step": "phot", "n": 246, "n_ok": 243, "target": "J180907.46-192303.7", "seconds": 25.3, "at": "2026-11-13T07:38:06+00:00"}
+{"name": "SJ18090746m1923037", "step": "ice", "bands": {"H2O": {"n_complete": 1, "p_change": null}, "CO2": {"n_complete": 1, "p_change": null}}, "seconds": 93.4, "at": "2026-11-13T07:38:06+00:00"}
+{"name": "SJ10520220m5611584", "step": "stamps", "n_found": 287, "n_ok": 287, "seconds": 70.1, "at": "2026-11-13T07:39:16+00:00"}
+{"name": "SJ09032826m4829423", "step": "stamps", "n_found": 341, "n_ok": 339, "seconds": 80.0, "at": "2026-11-13T07:39:20+00:00"}
+{"name": "SJ09032826m4829423", "step": "phot", "n": 339, "n_ok": 335, "target": "J090328.26-482942.3", "seconds": 35.2, "at": "2026-11-13T07:39:55+00:00"}
+{"name": "SJ09032826m4829423", "step": "ice", "bands": {"H2O": {"n_complete": 0, "p_change": null}, "CO2": {"n_complete": 3, "p_change": 0.1303865650501601}}, "seconds": 115.3, "at": "2026-11-13T07:39:56+00:00"}
+{"name": "SJ10520220m5611584", "step": "phot", "n": 287, "n_ok": 285, "target": "J105202.20-561158.4", "seconds": 39.9, "at": "2026-11-13T07:39:56+00:00"}
+{"name": "SJ10520220m5611584", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.21387519828880122}, "CO2": {"n_complete": 3, "p_change": 0.5309504264837015}}, "seconds": 110.3, "at": "2026-11-13T07:39:57+00:00"}
+{"name": "SJ06572675m0418268", "step": "stamps", "n_found": 220, "n_ok": 218, "seconds": 55.9, "at": "2026-11-13T07:40:52+00:00"}
+{"name": "SJ19224465p1959065", "step": "stamps", "n_found": 284, "n_ok": 281, "seconds": 69.6, "at": "2026-11-13T07:41:05+00:00"}
+{"name": "SJ06572675m0418268", "step": "phot", "n": 218, "n_ok": 216, "target": "J065726.75-041826.8", "seconds": 19.2, "at": "2026-11-13T07:41:12+00:00"}
+{"name": "SJ06572675m0418268", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.9999999906711474}, "CO2": {"n_complete": 2, "p_change": 0.535438385883876}}, "seconds": 75.3, "at": "2026-11-13T07:41:12+00:00"}
+{"name": "SJ19224465p1959065", "step": "phot", "n": 281, "n_ok": 278, "target": "J192244.65+195906.5", "seconds": 30.2, "at": "2026-11-13T07:41:35+00:00"}
+{"name": "SJ19224465p1959065", "step": "ice", "bands": {"H2O": {"n_complete": 0, "p_change": null}, "CO2": {"n_complete": 3, "p_change": 0.9508706229359049}}, "seconds": 100.0, "at": "2026-11-13T07:41:36+00:00"}
+{"name": "SJ06065483p2039162", "step": "stamps", "n_found": 238, "n_ok": 237, "seconds": 56.2, "at": "2026-11-13T07:42:08+00:00"}
+{"name": "SJ03562777p5353380", "step": "stamps", "n_found": 246, "n_ok": 245, "seconds": 58.4, "at": "2026-11-13T07:42:34+00:00"}
+{"name": "SJ03562777p5353380", "step": "phot", "n": 245, "n_ok": 242, "target": "J035627.77+535338.0", "seconds": 17.2, "at": "2026-11-13T07:42:51+00:00"}
+{"name": "SJ03562777p5353380", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.16049964227198196}, "CO2": {"n_complete": 3, "p_change": 0.46898873819515846}}, "seconds": 75.8, "at": "2026-11-13T07:42:51+00:00"}
+{"name": "SJ06065483p2039162", "step": "phot", "n": 237, "n_ok": 233, "target": "J060654.83+203916.2", "seconds": 43.7, "at": "2026-11-13T07:42:52+00:00"}
+{"name": "SJ06065483p2039162", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.10738834857388915}, "CO2": {"n_complete": 3, "p_change": 0.7979881750201699}}, "seconds": 100.1, "at": "2026-11-13T07:42:52+00:00"}
+{"name": "SJ03073814p5831319", "step": "stamps", "n_found": 232, "n_ok": 232, "seconds": 54.7, "at": "2026-11-13T07:43:47+00:00"}
+{"name": "SJ22502358p6015131", "step": "stamps", "n_found": 253, "n_ok": 252, "seconds": 58.2, "at": "2026-11-13T07:43:50+00:00"}
+{"name": "SJ03073814p5831319", "step": "phot", "n": 232, "n_ok": 230, "target": "J030738.14+583131.9", "seconds": 20.3, "at": "2026-11-13T07:44:07+00:00"}
+{"name": "SJ03073814p5831319", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.9650112482805826}, "CO2": {"n_complete": 3, "p_change": 0.7624656873303098}}, "seconds": 75.2, "at": "2026-11-13T07:44:07+00:00"}
+{"name": "SJ22502358p6015131", "step": "phot", "n": 252, "n_ok": 250, "target": "J225023.58+601513.1", "seconds": 22.2, "at": "2026-11-13T07:44:12+00:00"}
+{"name": "SJ22502358p6015131", "step": "ice", "bands": {"H2O": {"n_complete": 0, "p_change": null}, "CO2": {"n_complete": 2, "p_change": 0.7442053336612484}}, "seconds": 80.5, "at": "2026-11-13T07:44:12+00:00"}
+{"name": "SJ06583955m0141309", "step": "stamps", "n_found": 184, "n_ok": 183, "seconds": 50.8, "at": "2026-11-13T07:45:03+00:00"}
+{"name": "SJ03285842p3122175", "step": "stamps", "n_found": 243, "n_ok": 241, "seconds": 62.2, "at": "2026-11-13T07:45:09+00:00"}
+{"name": "SJ03285842p3122175", "step": "phot", "n": 241, "n_ok": 238, "target": "J032858.42+312217.5", "seconds": 37.1, "at": "2026-11-13T07:45:47+00:00"}
+{"name": "SJ03285842p3122175", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.9174249962309817}, "CO2": {"n_complete": 3, "p_change": 0.6259508268151144}}, "seconds": 99.5, "at": "2026-11-13T07:45:47+00:00"}
+{"name": "SJ06583955m0141309", "step": "phot", "n": 183, "n_ok": 182, "target": "J065839.55-014130.9", "seconds": 44.7, "at": "2026-11-13T07:45:47+00:00"}
+{"name": "SJ06583955m0141309", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.9060407470813466}, "CO2": {"n_complete": 2, "p_change": 0.7942001639997712}}, "seconds": 95.6, "at": "2026-11-13T07:45:48+00:00"}
+{"name": "SJ19534386p3146371", "step": "stamps", "n_found": 257, "n_ok": 257, "seconds": 68.0, "at": "2026-11-13T07:46:55+00:00"}
+{"name": "SJ19084266p0748568", "step": "stamps", "n_found": 307, "n_ok": 299, "seconds": 76.6, "at": "2026-11-13T07:47:03+00:00"}
+{"name": "SJ19534386p3146371", "step": "phot", "n": 257, "n_ok": 251, "target": "J195343.86+314637.1", "seconds": 56.3, "at": "2026-11-13T07:47:52+00:00"}
+{"name": "SJ19534386p3146371", "step": "ice", "bands": {"H2O": {"n_complete": 1, "p_change": null}, "CO2": {"n_complete": 1, "p_change": null}}, "seconds": 124.4, "at": "2026-11-13T07:47:52+00:00"}
+{"name": "SJ19084266p0748568", "step": "phot", "n": 299, "n_ok": 294, "target": "J190842.66+074856.8", "seconds": 50.9, "at": "2026-11-13T07:47:54+00:00"}
+{"name": "SJ19084266p0748568", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.8963662997392691}, "CO2": {"n_complete": 4, "p_change": 0.11753346428235996}}, "seconds": 127.8, "at": "2026-11-13T07:47:55+00:00"}
+{"name": "SJ08455593m3209397", "step": "stamps", "n_found": 236, "n_ok": 234, "seconds": 74.3, "at": "2026-11-13T07:49:36+00:00"}
+{"name": "SJ00381870p6306053", "step": "stamps", "n_found": 246, "n_ok": 246, "seconds": 75.5, "at": "2026-11-13T07:49:38+00:00"}
+{"name": "SJ00014878p6708406", "step": "stamps", "n_found": 321, "n_ok": 320, "seconds": 91.3, "at": "2026-11-13T07:49:55+00:00"}
+{"name": "SJ08455593m3209397", "step": "phot", "n": 234, "n_ok": 232, "target": null, "seconds": 35.0, "at": "2026-11-13T07:50:11+00:00"}
+{"name": "SJ08455593m3209397", "step": "ice", "bands": {"H2O": {"n_complete": 0, "p_change": null}, "CO2": {"n_complete": 0, "p_change": null}}, "seconds": 109.5, "at": "2026-11-13T07:50:12+00:00"}
+{"name": "SJ00381870p6306053", "step": "phot", "n": 246, "n_ok": 243, "target": "J003818.70+630605.3", "seconds": 35.0, "at": "2026-11-13T07:50:13+00:00"}
+{"name": "SJ00381870p6306053", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.0034963940698081535}, "CO2": {"n_complete": 3, "p_change": 0.768243247197216}}, "seconds": 110.9, "at": "2026-11-13T07:50:14+00:00"}
+{"name": "SJ00014878p6708406", "step": "phot", "n": 320, "n_ok": 317, "target": "J000148.78+670840.6", "seconds": 27.8, "at": "2026-11-13T07:50:23+00:00"}
+{"name": "SJ00014878p6708406", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.7726786375920414}, "CO2": {"n_complete": 3, "p_change": 0.9353078600744396}}, "seconds": 119.6, "at": "2026-11-13T07:50:23+00:00"}
+{"name": "SJ20175069p3648158", "step": "stamps", "n_found": 244, "n_ok": 241, "seconds": 77.0, "at": "2026-11-13T07:51:29+00:00"}
+{"name": "SJ18180951m1650090", "step": "stamps", "n_found": 277, "n_ok": 272, "seconds": 81.2, "at": "2026-11-13T07:51:44+00:00"}
+{"name": "SJ18561192p0753394", "step": "stamps", "n_found": 326, "n_ok": 319, "seconds": 92.3, "at": "2026-11-13T07:51:46+00:00"}
+{"name": "SJ20175069p3648158", "step": "phot", "n": 241, "n_ok": 237, "target": "J201750.69+364815.8", "seconds": 33.2, "at": "2026-11-13T07:52:02+00:00"}
+{"name": "SJ20175069p3648158", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.8539182361317433}, "CO2": {"n_complete": 1, "p_change": null}}, "seconds": 110.3, "at": "2026-11-13T07:52:02+00:00"}
+{"name": "SJ18561192p0753394", "step": "phot", "n": 319, "n_ok": 317, "target": "J185611.92+075339.4", "seconds": 27.0, "at": "2026-11-13T07:52:13+00:00"}
+{"name": "SJ18561192p0753394", "step": "ice", "bands": {"H2O": {"n_complete": 4, "p_change": 0.31716634070209404}, "CO2": {"n_complete": 4, "p_change": 0.8118159994853873}}, "seconds": 119.8, "at": "2026-11-13T07:52:13+00:00"}
+{"name": "SJ18180951m1650090", "step": "phot", "n": 272, "n_ok": 268, "target": "J181809.51-165009.0", "seconds": 33.1, "at": "2026-11-13T07:52:17+00:00"}
+{"name": "SJ18180951m1650090", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.87529510952852}, "CO2": {"n_complete": 2, "p_change": 0.056378231081537035}}, "seconds": 114.5, "at": "2026-11-13T07:52:18+00:00"}
+{"name": "SJ08410316m4137570", "step": "stamps", "n_found": 243, "n_ok": 240, "seconds": 71.5, "at": "2026-11-13T07:53:25+00:00"}
+{"name": "SJ20380669p4238398", "step": "stamps", "n_found": 304, "n_ok": 300, "seconds": 90.2, "at": "2026-11-13T07:53:32+00:00"}
+{"name": "SJ04364550p5439044", "step": "stamps", "n_found": 311, "n_ok": 309, "seconds": 86.4, "at": "2026-11-13T07:53:44+00:00"}
+{"name": "SJ08410316m4137570", "step": "phot", "n": 240, "n_ok": 237, "target": "J084103.16-413757.0", "seconds": 26.0, "at": "2026-11-13T07:53:51+00:00"}
+{"name": "SJ08410316m4137570", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.7825510114616964}, "CO2": {"n_complete": 2, "p_change": 0.7300302617086316}}, "seconds": 97.6, "at": "2026-11-13T07:53:51+00:00"}
+{"name": "SJ04364550p5439044", "step": "phot", "n": 309, "n_ok": 303, "target": "J043645.50+543904.4", "seconds": 16.9, "at": "2026-11-13T07:54:01+00:00"}
+{"name": "SJ04364550p5439044", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.8922839298201888}, "CO2": {"n_complete": 3, "p_change": 0.03967599167577086}}, "seconds": 103.5, "at": "2026-11-13T07:54:01+00:00"}
+{"name": "SJ20380669p4238398", "step": "phot", "n": 300, "n_ok": 269, "target": "J203806.69+423839.8", "seconds": 31.5, "at": "2026-11-13T07:54:04+00:00"}
+{"name": "SJ20380669p4238398", "step": "ice", "bands": {"H2O": {"n_complete": 1, "p_change": null}, "CO2": {"n_complete": 3, "p_change": 0.4134420949217125}}, "seconds": 121.8, "at": "2026-11-13T07:54:04+00:00"}
+{"name": "SJ17133001m3833232", "step": "stamps", "n_found": 270, "n_ok": 269, "seconds": 76.6, "at": "2026-11-13T07:55:08+00:00"}
+{"name": "SJ23155741p6122411", "step": "stamps", "n_found": 261, "n_ok": 261, "seconds": 79.0, "at": "2026-11-13T07:55:20+00:00"}
+{"name": "SJ20322220p4019560", "step": "stamps", "n_found": 302, "n_ok": 300, "seconds": 86.5, "at": "2026-11-13T07:55:30+00:00"}
+{"name": "SJ17133001m3833232", "step": "phot", "n": 269, "n_ok": 260, "target": "J171330.01-383323.2", "seconds": 28.0, "at": "2026-11-13T07:55:36+00:00"}
+{"name": "SJ17133001m3833232", "step": "ice", "bands": {"H2O": {"n_complete": 0, "p_change": null}, "CO2": {"n_complete": 3, "p_change": 0.6902557000477914}}, "seconds": 104.7, "at": "2026-11-13T07:55:36+00:00"}
+{"name": "SJ23155741p6122411", "step": "phot", "n": 261, "n_ok": 257, "target": "J231557.41+612241.1", "seconds": 33.9, "at": "2026-11-13T07:55:54+00:00"}
+{"name": "SJ23155741p6122411", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.9834399674733508}, "CO2": {"n_complete": 3, "p_change": 0.07784865204069907}}, "seconds": 113.1, "at": "2026-11-13T07:55:54+00:00"}
+{"name": "SJ20322220p4019560", "step": "phot", "n": 300, "n_ok": 295, "target": "J203222.20+401956.0", "seconds": 24.0, "at": "2026-11-13T07:55:54+00:00"}
+{"name": "SJ20322220p4019560", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.6526139555864529}, "CO2": {"n_complete": 2, "p_change": 0.49431676484863946}}, "seconds": 110.6, "at": "2026-11-13T07:55:54+00:00"}
+{"name": "SJ22280291p6901168", "step": "stamps", "n_found": 248, "n_ok": 246, "seconds": 74.7, "at": "2026-11-13T07:56:50+00:00"}
+{"name": "SJ22280291p6901168", "step": "phot", "n": 246, "n_ok": 244, "target": "J222802.91+690116.8", "seconds": 8.1, "at": "2026-11-13T07:56:59+00:00"}
+{"name": "SJ22280291p6901168", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 2.3177687438931603e-07}, "CO2": {"n_complete": 2, "p_change": 0.0020408884827396515}}, "seconds": 82.9, "at": "2026-11-13T07:56:59+00:00"}
+{"name": "SJ05442898p3025430", "step": "stamps", "n_found": 221, "n_ok": 219, "seconds": 65.2, "at": "2026-11-13T07:57:00+00:00"}
+{"name": "SJ06123374p1749238", "step": "stamps", "n_found": 223, "n_ok": 221, "seconds": 71.6, "at": "2026-11-13T07:57:06+00:00"}
+{"name": "SJ05442898p3025430", "step": "phot", "n": 219, "n_ok": 216, "target": "J054428.98+302543.0", "seconds": 44.7, "at": "2026-11-13T07:57:44+00:00"}
+{"name": "SJ05442898p3025430", "step": "ice", "bands": {"H2O": {"n_complete": 1, "p_change": null}, "CO2": {"n_complete": 3, "p_change": 0.8182833063081918}}, "seconds": 110.1, "at": "2026-11-13T07:57:45+00:00"}
+{"name": "SJ06123374p1749238", "step": "phot", "n": 221, "n_ok": 218, "target": "J061233.74+174923.8", "seconds": 39.3, "at": "2026-11-13T07:57:45+00:00"}
+{"name": "SJ06123374p1749238", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.003750131620874802}, "CO2": {"n_complete": 3, "p_change": 0.200103763813154}}, "seconds": 111.1, "at": "2026-11-13T07:57:45+00:00"}
+{"name": "SJ15051679m5511105", "step": "stamps", "n_found": 271, "n_ok": 266, "seconds": 71.7, "at": "2026-11-13T07:58:10+00:00"}
+{"name": "SJ07051097m1105081", "step": "stamps", "n_found": 177, "n_ok": 174, "seconds": 52.4, "at": "2026-11-13T07:58:37+00:00"}
+{"name": "SJ13311273m6252481", "step": "stamps", "n_found": 251, "n_ok": 250, "seconds": 69.7, "at": "2026-11-13T07:58:55+00:00"}
+{"name": "SJ15051679m5511105", "step": "phot", "n": 266, "n_ok": 262, "target": "J150516.79-551110.5", "seconds": 45.6, "at": "2026-11-13T07:58:56+00:00"}
+{"name": "SJ15051679m5511105", "step": "ice", "bands": {"H2O": {"n_complete": 3, "p_change": 0.7646530081340257}, "CO2": {"n_complete": 3, "p_change": 0.6326701648044633}}, "seconds": 117.6, "at": "2026-11-13T07:58:56+00:00"}
+{"name": "SJ07051097m1105081", "step": "phot", "n": 174, "n_ok": 170, "target": "J070510.97-110508.1", "seconds": 21.4, "at": "2026-11-13T07:58:58+00:00"}
+{"name": "SJ07051097m1105081", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.0009458213772776834}, "CO2": {"n_complete": 2, "p_change": 0.2528374132322554}}, "seconds": 73.9, "at": "2026-11-13T07:58:58+00:00"}
+{"name": "SJ13311273m6252481", "step": "phot", "n": 250, "n_ok": 248, "target": "J133112.73-625248.1", "seconds": 28.5, "at": "2026-11-13T07:59:23+00:00"}
+{"name": "SJ13311273m6252481", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.43270192305620975}, "CO2": {"n_complete": 2, "p_change": 0.9498009605328509}}, "seconds": 98.3, "at": "2026-11-13T07:59:24+00:00"}
+{"name": "SJ05352186m0429389", "step": "stamps", "n_found": 281, "n_ok": 280, "seconds": 79.1, "at": "2026-11-13T08:00:18+00:00"}
+{"name": "SJ07042744m1029224", "step": "stamps", "n_found": 174, "n_ok": 173, "seconds": 59.8, "at": "2026-11-13T08:00:23+00:00"}
+{"name": "SJ07042744m1029224", "step": "phot", "n": 173, "n_ok": 169, "target": "J070427.44-102922.4", "seconds": 32.5, "at": "2026-11-13T08:00:56+00:00"}
+{"name": "SJ07042744m1029224", "step": "ice", "bands": {"H2O": {"n_complete": 2, "p_change": 0.22433376149825188}, "CO2": {"n_complete": 2, "p_change": 0.7339667192382916}}, "seconds": 92.4, "at": "2026-11-13T08:00:56+00:00"}
+{"name": "SJ05352186m0429389", "step": "phot", "n": 280, "n_ok": 275, "target": "J053521.86-042938.9", "seconds": 41.4, "at": "2026-11-13T08:00:59+00:00"}
+{"name": "SJ05352186m0429389", "step": "ice", "bands": {"H2O": {"n_complete": 0, "p_change": null}, "CO2": {"n_complete": 3, "p_change": 0.9137134287235132}}, "seconds": 120.6, "at": "2026-11-13T08:00:59+00:00"}

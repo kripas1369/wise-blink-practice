@@ -1,0 +1,125 @@
+{
+ "name": "SJ08455593m3209397",
+ "n_exposures": 234,
+ "n_used": 42,
+ "cuts": {
+  "flagged core": 187,
+  "too few good pixels": 2,
+  "non-positive flux": 3
+ },
+ "floor": 0.02,
+ "bands": {
+  "H2O": {
+   "epochs": [
+    {
+     "epoch": "0",
+     "visit": 0,
+     "mjd": [
+      60796.086753828,
+      60797.993160842
+     ],
+     "collections": [
+      "spherex_dr1"
+     ],
+     "coverage_core_blue_red": [
+      0,
+      0,
+      0
+     ],
+     "complete": false
+    },
+    {
+     "epoch": "1",
+     "visit": 1,
+     "mjd": [
+      60990.990419141,
+      61027.046013168
+     ],
+     "collections": [
+      "spherex_dr1"
+     ],
+     "coverage_core_blue_red": [
+      0,
+      0,
+      0
+     ],
+     "complete": false
+    },
+    {
+     "epoch": "2",
+     "visit": 2,
+     "mjd": [
+      61159.42294715,
+      61164.51311678
+     ],
+     "collections": [
+      "spherex_dr1"
+     ],
+     "coverage_core_blue_red": [
+      0,
+      0,
+      0
+     ],
+     "complete": false
+    }
+   ],
+   "n_complete": 0
+  },
+  "CO2": {
+   "epochs": [
+    {
+     "epoch": "0",
+     "visit": 0,
+     "mjd": [
+      60796.086753828,
+      60797.993160842
+     ],
+     "collections": [
+      "spherex_dr1"
+     ],
+     "coverage_core_blue_red": [
+      0,
+      0,
+      0
+     ],
+     "complete": false
+    },
+    {
+     "epoch": "1",
+     "visit": 1,
+     "mjd": [
+      60990.990419141,
+      61027.046013168
+     ],
+     "collections": [
+      "spherex_dr1"
+     ],
+     "coverage_core_blue_red": [
+      0,
+      0,
+      0
+     ],
+     "complete": false
+    },
+    {
+     "epoch": "2",
+     "visit": 2,
+     "mjd": [
+      61159.42294715,
+      61164.51311678
+     ],
+     "collections": [
+      "spherex_dr1"
+     ],
+     "coverage_core_blue_red": [
+      0,
+      0,
+      0
+     ],
+     "complete": false
+    }
+   ],
+   "n_complete": 0
+  }
+ }
+}

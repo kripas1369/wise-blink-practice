@@ -1,0 +1,160 @@
+{
+ "source_id": "4658741684445417856",
+ "centres": {
+  "primary": 0.00694,
+  "secondary": 0.49969245592317785
+ },
+ "half_window_phase": 0.024704867951202237,
+ "bins": [
+  {
+   "detector": 1,
+   "half": "short",
+   "wl_um": 0.819,
+   "primary": {
+    "depth": 0.2014,
+    "err": 0.0361,
+    "n": 6
+   },
+   "secondary": {
+    "depth": 0.1268,
+    "err": 0.0461,
+    "n": 6
+   }
+  },
+  {
+   "detector": 1,
+   "half": "long",
+   "wl_um": 1.001,
+   "primary": {
+    "depth": 0.1247,
+    "err": 0.0468,
+    "n": 8
+   },
+   "secondary": {
+    "depth": 0.0691,
+    "err": 0.0539,
+    "n": 8
+   }
+  },
+  {
+   "detector": 2,
+   "half": "short",
+   "wl_um": 1.196,
+   "primary": {
+    "depth": 0.2217,
+    "err": 0.0577,
+    "n": 5
+   },
+   "secondary": {
+    "depth": 0.0758,
+    "err": 0.0575,
+    "n": 4
+   }
+  },
+  {
+   "detector": 2,
+   "half": "long",
+   "wl_um": 1.569,
+   "primary": {
+    "depth": 0.1456,
+    "err": 0.0311,
+    "n": 9
+   },
+   "secondary": {
+    "depth": 0.1087,
+    "err": 0.0371,
+    "n": 6
+   }
+  },
+  {
+   "detector": 3,
+   "half": "short",
+   "wl_um": 1.869,
+   "primary": {
+    "depth": -0.0076,
+    "err": 0.13,
+    "n": 6
+   },
+   "secondary": {
+    "depth": 0.0842,
+    "err": 0.0529,
+    "n": 7
+   }
+  },
+  {
+   "detector": 3,
+   "half": "long",
+   "wl_um": 2.178,
+   "primary": {
+    "depth": 0.1046,
+    "err": 0.0515,
+    "n": 9
+   },
+   "secondary": {
+    "depth": 0.1146,
+    "err": 0.0423,
+    "n": 8
+   }
+  },
+  {
+   "detector": 4,
+   "half": "short",
+   "wl_um": 2.704,
+   "primary": {
+    "depth": 0.1695,
+    "err": 0.0527,
+    "n": 8
+   },
+   "secondary": {
+    "depth": 0.0525,
+    "err": 0.0374,
+    "n": 9
+   }
+  },
+  {
+   "detector": 4,
+   "half": "long",
+   "wl_um": 3.341,
+   "primary": {
+    "depth": 0.0022,
+    "err": 0.1188,
+    "n": 6
+   },
+   "secondary": {
+    "depth": 0.1544,
+    "err": 0.0701,
+    "n": 3
+   }
+  },
+  {
+   "detector": 5,
+   "half": "short",
+   "wl_um": 3.906,
+   "primary": {
+    "depth": -0.374,
+    "err": 0.3265,
+    "n": 4
+   },
+   "secondary": {
+    "depth": -0.0856,
+    "err": 0.0966,
+    "n": 4
+   }
+  },
+  {
+   "detector": 5,
+   "half": "long",
+   "wl_um": 4.345,
+   "primary": {
+    "depth": 0.2042,
+    "err": 0.0965,
+    "n": 7
+   },
+   "secondary": {
+    "depth": 0.0421,
+    "err": 0.1133,
+    "n": 6
+   }
+  }
+ ]
+}

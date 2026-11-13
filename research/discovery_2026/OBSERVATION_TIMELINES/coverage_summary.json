@@ -1,0 +1,90 @@
+{
+ "VAR": {
+  "targets": 36,
+  "exposures_median": 241.0,
+  "exposures_range": [
+   152,
+   339
+  ],
+  "visits": {
+   "2": 1,
+   "3": 35
+  },
+  "targets_with_multi_pass_visit": 18,
+  "h2o_sweep_days_median": 25.1,
+  "h2o_sweep_days_range": [
+   0.0,
+   56.3
+  ],
+  "co2_sweep_days_median": 7.9,
+  "h2o_epoch_hist": "2/0/11/23",
+  "co2_epoch_hist": "0/1/11/24"
+ },
+ "CTRL": {
+  "targets": 36,
+  "exposures_median": 255.0,
+  "exposures_range": [
+   218,
+   338
+  ],
+  "visits": {
+   "3": 35,
+   "4": 1
+  },
+  "targets_with_multi_pass_visit": 24,
+  "h2o_sweep_days_median": 27.25,
+  "h2o_sweep_days_range": [
+   3.5,
+   50.7
+  ],
+  "co2_sweep_days_median": 8.6,
+  "h2o_epoch_hist": "7/6/4/19",
+  "co2_epoch_hist": "2/3/6/25"
+ },
+ "BGSTAR": {
+  "targets": 12,
+  "exposures_median": 221.5,
+  "exposures_range": [
+   210,
+   274
+  ],
+  "visits": {
+   "3": 12
+  },
+  "targets_with_multi_pass_visit": 6,
+  "h2o_sweep_days_median": 14.2,
+  "h2o_sweep_days_range": [
+   6.8,
+   47.2
+  ],
+  "co2_sweep_days_median": 5.85,
+  "h2o_epoch_hist": "0/2/5/5",
+  "co2_epoch_hist": "0/0/1/11"
+ },
+ "VALIDATION": {
+  "targets": 2,
+  "exposures_median": 266.0,
+  "exposures_range": [
+   252,
+   280
+  ],
+  "visits": {
+   "3": 2
+  },
+  "targets_with_multi_pass_visit": 2,
+  "h2o_sweep_days_median": 24.049999999999997,
+  "h2o_sweep_days_range": [
+   12.2,
+   49.1
+  ],
+  "co2_sweep_days_median": 16.65,
+  "h2o_epoch_hist": "0/0/0/2",
+  "co2_epoch_hist": "0/0/0/2"
+ },
+ "visit_rows_by_release": {
+  "dr1": 178,
+  "qr3": 80,
+  "dr1+qr3": 6
+ },
+ "visit_rows": 264
+}

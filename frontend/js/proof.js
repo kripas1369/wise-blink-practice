@@ -16,6 +16,15 @@ const VERDICTS = {
 
 const arcsec = (px, scale) => `${(px * scale).toFixed(1)}″`;
 
+function pxLine(label, sizePx, dirPx, scale, uncPx = null) {
+  const dir = sizePx >= 0.05 && Array.isArray(dirPx) ? ` toward the ${directionText(...dirPx)}.` : ".";
+  if (uncPx !== null && Number.isFinite(uncPx)) {
+    return `${label}: ${sizePx.toFixed(2)} ± ${uncPx.toFixed(2)} px ` +
+      `(${arcsec(sizePx, scale)} ± ${arcsec(uncPx, scale)})${dir}`;
+  }
+  return `${label}: ${sizePx.toFixed(2)} px (${arcsec(sizePx, scale)})${dir}`;
+}
+
 /** { verdict, lines } for the motion card. */
 export function motionText(proof) {
   const m = proof.motion;
@@ -23,19 +32,26 @@ export function motionText(proof) {
   if (!("expected_px" in m)) return { verdict, lines: [m.reason] };
   const s = proof.pixel_arcsec;
   const [d0, d1] = m.visits;
+  const unc = m.measured_size_sigma_px;
   const lines = [
     `Expected (Gaia DR3 ${m.gaia_source_id}, ${d0} to ${d1}): ${m.expected_size_px.toFixed(2)} px ` +
       `(${arcsec(m.expected_size_px, s)})` +
       (m.expected_size_px >= 0.05 ? ` toward the ${directionText(...m.expected_px)}.` : "."),
   ];
   if ("measured_px" in m) {
-    lines.push(`Measured (${m.method}): ${m.measured_size_px.toFixed(2)} px (${arcsec(m.measured_size_px, s)})` +
-      (m.measured_size_px >= 0.05 ? ` toward the ${directionText(...m.measured_px)}.` : "."));
+    lines.push(pxLine(`Measured shift (${m.method})`, m.measured_size_px, m.measured_px, s,
+      typeof unc === "number" ? unc : null));
+  }
+  if (m.status === "too_small" && m.limits) {
+    lines.push(`Motion below ${m.limits.min_testable_px.toFixed(2)} px threshold (too small to test / stationary).`);
   }
   if (m.status === "agrees" || m.status === "disagrees") {
     const l = m.limits;
-    lines.push(`Difference: ${m.difference_px.toFixed(2)} px (limit ${l.max_error_px} px, from our plan's C4 test) and ` +
-      `${m.direction_difference_deg}° in direction (limit ${l.max_direction_deg}°, our choice).`);
+    const pct = m.expected_size_px > 0 ? (m.difference_px / m.expected_size_px) * 100 : null;
+    let discrepancy = `Discrepancy: ${m.difference_px.toFixed(2)} px (C4 limit ${l.max_error_px} px`;
+    if (pct !== null) discrepancy += `, ${pct.toFixed(1)}% of expected size`;
+    discrepancy += `; direction ${m.direction_difference_deg}° (limit ${l.max_direction_deg}°).`;
+    lines.push(discrepancy);
   }
   if (m.reason) lines.push(m.reason);
   return { verdict, lines };

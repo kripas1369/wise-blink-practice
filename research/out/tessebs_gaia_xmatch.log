@@ -1,0 +1,19 @@
+4582 TESS-EBs entries uploaded
+  rows 0-400: 211 Gaia EBs
+  rows 400-800: 183 Gaia EBs
+  rows 800-1200: 202 Gaia EBs
+  rows 1200-1600: 223 Gaia EBs
+  rows 1600-2000: 233 Gaia EBs
+  rows 2000-2400: 153 Gaia EBs
+  rows 2400-2800: 147 Gaia EBs
+  rows 2800-3200: 135 Gaia EBs
+  rows 3200-3600: 147 Gaia EBs
+  rows 3600-4000: 276 Gaia EBs
+  rows 4000-4400: 107 Gaia EBs
+  rows 4400-4582: 103 Gaia EBs
+2120 Gaia EBs within 63.0″ of an entry
+{
+ "no Gaia EB": 3039,
+ "same star": 1265,
+ "other star": 278
+}

@@ -1,0 +1,54 @@
+{
+ "eclipse_used": "deepest dip of the blind scan (phase 0.01)",
+ "centre_phase": 0.015,
+ "tic_star": "1724476790079160704",
+ "controls": [
+  "1724464661091513600",
+  "1724476480841513344"
+ ],
+ "difference": {
+  "D1": {
+   "pairs": 6,
+   "z_at_eb": -7.38,
+   "z_at_tic": 0.85
+  },
+  "D2": {
+   "pairs": 18,
+   "z_at_eb": -17.08,
+   "z_at_tic": 1.93
+  },
+  "D4": {
+   "pairs": 5,
+   "z_at_eb": -3.14,
+   "z_at_tic": 3.09
+  },
+  "D5": {
+   "pairs": 20,
+   "z_at_eb": -3.79,
+   "z_at_tic": -0.41
+  },
+  "all": {
+   "pairs": 49,
+   "z_at_eb": -10.29,
+   "z_at_tic": 1.99
+  }
+ },
+ "n_pairs": 53,
+ "difference_centroid": {
+  "x": 22.828,
+  "y": 13.536,
+  "x_err": 1.538,
+  "y_err": 0.386,
+  "amplitudes": {
+   "D1": -0.2463,
+   "D2": -0.1788,
+   "D4": -0.103,
+   "D5": -0.0624
+  },
+  "n_pairs": 53,
+  "dist_to_gaia_eb_px": 0.025,
+  "dist_to_gaia_eb_sigma": 0.0,
+  "dist_to_tic_star_px": 6.315,
+  "dist_to_tic_star_sigma": 4.0
+ }
+}

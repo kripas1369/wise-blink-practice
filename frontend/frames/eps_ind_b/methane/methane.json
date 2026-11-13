@@ -1,0 +1,312 @@
+{
+ "format": "spherex-blink-methane/1",
+ "target": {
+  "colour": {
+   "testable": true,
+   "absorbed_mjy": 7.2198,
+   "absorbed_err_mjy": 0.026,
+   "window_mjy": 53.5224,
+   "window_err_mjy": 0.1097,
+   "glow_sigma": 47.5,
+   "window_snr": 488.0,
+   "excess": 7.71,
+   "excess_err": 0.81,
+   "excess_is_lower_limit": false
+  },
+  "verdict": {
+   "status": "glows",
+   "text": "Glows: 7.71x the 4 µm light a normal star with its 3.3 µm light would have (47.5 sigma). That is the colour of methane absorption, as in cold brown dwarfs."
+  },
+  "blend": []
+ },
+ "label": "Epsilon Indi B",
+ "size_px": 29,
+ "pixel_arcsec": 6.15,
+ "ra": 331.09664385226796,
+ "dec": -56.80066020400499,
+ "fov_arcmin": 3.0,
+ "settings": {
+  "absorbed": {
+   "band": 4,
+   "range_um": [
+    3.15,
+    3.5
+   ],
+   "what": "methane (CH4) absorption band"
+  },
+  "window": {
+   "band": 5,
+   "range_um": [
+    3.9,
+    4.2
+   ],
+   "what": "4 µm window, short of CO2 at 4.26 µm"
+  },
+  "ref_um": 4.0,
+  "star_slope": 2.0,
+  "z_range": 10.0,
+  "glow_sigma": 5.0,
+  "methane_excess": 2.0,
+  "normal_sigma": 3.0,
+  "min_window_snr": 5.0,
+  "systematic": 0.105,
+  "aperture_px": 2.0,
+  "sky_annulus_px": [
+   5.0,
+   8.0
+  ],
+  "saturated_fraction": 0.5
+ },
+ "downloads": {
+  "D4": {
+   "n_in_archive": 43,
+   "n_considered": 43,
+   "n_failed": 0,
+   "n_off_grid": 0,
+   "n_outside_window": 36,
+   "cap": 150,
+   "n_in_window": 7,
+   "releases": [
+    "spherex_qr2"
+   ]
+  },
+  "D5": {
+   "n_in_archive": 80,
+   "n_considered": 80,
+   "n_failed": 0,
+   "n_off_grid": 0,
+   "n_outside_window": 44,
+   "cap": 150,
+   "n_in_window": 36,
+   "releases": [
+    "spherex_qr2",
+    "spherex_qr3"
+   ]
+  }
+ },
+ "picture_scale": {
+  "vmin": 0.0267,
+  "vmax": 1.5758,
+  "unit": "MJy/sr x (wavelength/4 µm)^2",
+  "stretch": "linear"
+ },
+ "calibration": {
+  "k": 0.961,
+  "rule": "median of 3 field sources detected above 10 sigma in both windows (the target left out)",
+  "n_sources": 3,
+  "spread": 0.101,
+  "sources": [
+   {
+    "x": 25,
+    "y": 14,
+    "ratio": 0.961,
+    "absorbed_mjy": 0.7381,
+    "window_mjy": 0.7091
+   },
+   {
+    "x": 14,
+    "y": 23,
+    "ratio": 1.261,
+    "absorbed_mjy": 0.379,
+    "window_mjy": 0.4778
+   },
+   {
+    "x": 16,
+    "y": 25,
+    "ratio": 0.893,
+    "absorbed_mjy": 0.3301,
+    "window_mjy": 0.2948
+   }
+  ]
+ },
+ "track_rule": "a straight line through the light curves' target positions (Gaia DR3 or SIMBAD proper motion)",
+ "saturated_share": {
+  "D4": 0.0,
+  "D5": 0.0
+ },
+ "visits": [
+  {
+   "visit": 0,
+   "date": "2025-10-20",
+   "mjd_range": [
+    60950.01887,
+    60987.37424
+   ],
+   "methane_png": "visit0_methane.png",
+   "absorbed_png": "visit0_absorbed.png",
+   "window_png": "visit0_window.png",
+   "absorbed": {
+    "n": 3,
+    "obs_ids": [
+     "2025W40_2B_0659_1",
+     "2025W40_2B_0659_3",
+     "2025W41_2B_0200_1"
+    ],
+    "wl_um": [
+     3.2277,
+     3.405,
+     3.4969
+    ]
+   },
+   "window": {
+    "n": 11,
+    "obs_ids": [
+     "2025W40_1A_0661_1",
+     "2025W40_1A_0661_3",
+     "2025W40_1A_0661_4",
+     "2025W40_1A_0675_2",
+     "2025W40_1A_0675_3",
+     "2025W40_2B_0107_1",
+     "2025W41_1A_0081_1",
+     "2025W41_1A_0108_1",
+     "2025W45_2A_0214_1",
+     "2025W45_2A_0315_1",
+     "2025W45_2A_0404_1"
+    ],
+    "wl_um": [
+     3.9242,
+     3.9931,
+     4.0281,
+     4.1343,
+     4.1702,
+     4.0632,
+     3.9583,
+     4.0983,
+     3.9239,
+     3.9582,
+     3.9928
+    ]
+   },
+   "target_xy": [
+    14.13,
+    13.92
+   ],
+   "glow_xy": [
+    14.08,
+    14.16
+   ],
+   "colour": {
+    "testable": true,
+    "absorbed_mjy": 7.5598,
+    "absorbed_err_mjy": 0.0413,
+    "window_mjy": 52.3734,
+    "window_err_mjy": 0.1264,
+    "glow_sigma": 35.7,
+    "window_snr": 414.5,
+    "excess": 7.21,
+    "excess_err": 0.76,
+    "excess_is_lower_limit": false
+   },
+   "null_test": {
+    "n_places": 65,
+    "scatter": 1.63,
+    "largest": 2.4,
+    "factor": 1.63
+   }
+  },
+  {
+   "visit": 1,
+   "date": "2026-04-23",
+   "mjd_range": [
+    61151.83226,
+    61155.09649
+   ],
+   "methane_png": "visit1_methane.png",
+   "absorbed_png": "visit1_absorbed.png",
+   "window_png": "visit1_window.png",
+   "absorbed": {
+    "n": 4,
+    "obs_ids": [
+     "2026W17_1B_0337_2",
+     "2026W17_1B_0337_3",
+     "2026W17_1B_0337_4",
+     "2026W17_1B_0351_1"
+    ],
+    "wl_um": [
+     3.2121,
+     3.2998,
+     3.3895,
+     3.4808
+    ]
+   },
+   "window": {
+    "n": 4,
+    "obs_ids": [
+     "2026W17_2A_0355_1",
+     "2026W17_2A_0355_2",
+     "2026W17_2A_0355_3",
+     "2026W17_2A_0355_4"
+    ],
+    "wl_um": [
+     4.0617,
+     4.0971,
+     4.1327,
+     4.1684
+    ]
+   },
+   "target_xy": [
+    13.8,
+    14.13
+   ],
+   "glow_xy": [
+    13.75,
+    14.12
+   ],
+   "colour": {
+    "testable": true,
+    "absorbed_mjy": 6.9965,
+    "absorbed_err_mjy": 0.0334,
+    "window_mjy": 57.0322,
+    "window_err_mjy": 0.2208,
+    "glow_sigma": 67.9,
+    "window_snr": 258.3,
+    "excess": 8.48,
+    "excess_err": 0.89,
+    "excess_is_lower_limit": false
+   },
+   "null_test": {
+    "n_places": 65,
+    "scatter": 0.89,
+    "largest": 2.0,
+    "factor": 1.0
+   }
+  }
+ ],
+ "all": {
+  "methane_png": "all_methane.png",
+  "absorbed_png": "all_absorbed.png",
+  "window_png": "all_window.png",
+  "n_absorbed": 7,
+  "n_window": 36,
+  "glow_xy": [
+   14.03,
+   14.19
+  ]
+ },
+ "motion": {
+  "status": "agrees",
+  "band": 5,
+  "gaia_source_id": "6412596012146801152",
+  "expected_size_px": 1.09,
+  "measured_size_px": 1.03,
+  "visits": [
+   "2025-04-27",
+   "2026-10-01"
+  ]
+ },
+ "summary": "Moves the way Gaia DR3 predicts and glows in methane vision: the signature of a nearby cold brown dwarf. Check SIMBAD before calling it new; this tool claims no discovery.",
+ "null_test": {
+  "n_places": 64,
+  "scatter": 1.33,
+  "largest": 1.7,
+  "factor": 1.33
+ },
+ "other_glows": [],
+ "notes": [
+  "A glow is a colour, not an identification: dusty young stars, red galaxies and a star blended with a brown dwarf can glow too. Nothing here is a discovery."
+ ],
+ "method": "each exposure x (wavelength/4 µm)^2, so a Rayleigh-Jeans star is equally bright at 3.15-3.5 µm (D4) and 3.9-4.2 µm (D5); 1/variance add-up per visit with the official flag mask; methane vision = (window - k x absorbed) / noise, noise including 11% of the predicted star light, shown from -10 to +10 sigma; target light in a 2 px circle minus the 5-8 px sky ring at the target's position that visit",
+ "made_by": "backend/app/methane.py",
+ "made_at": "2026-11-12 12:14 UTC",
+ "data_credit": "NASA/IPAC Infrared Science Archive (IRSA), SPHEREx, ESA Gaia DR3"
+}

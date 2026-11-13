@@ -1,0 +1,66 @@
+{
+ "eclipse_used": "deepest dip of the blind scan (phase 0.01)",
+ "centre_phase": 0.01,
+ "tic_star": "4761080447161537792",
+ "controls": [
+  "4761083505178249344",
+  "4760989462574478080"
+ ],
+ "difference": {
+  "D1": {
+   "pairs": 20,
+   "z_at_eb": -1.18,
+   "z_at_tic": -1.41
+  },
+  "D2": {
+   "pairs": 20,
+   "z_at_eb": -12.1,
+   "z_at_tic": -8.64
+  },
+  "D3": {
+   "pairs": 24,
+   "z_at_eb": -8.31,
+   "z_at_tic": -6.64
+  },
+  "D4": {
+   "pairs": 20,
+   "z_at_eb": -6.18,
+   "z_at_tic": -5.92
+  },
+  "D5": {
+   "pairs": 20,
+   "z_at_eb": -4.8,
+   "z_at_tic": -4.89
+  },
+  "D6": {
+   "pairs": 24,
+   "z_at_eb": -4.14,
+   "z_at_tic": 0.66
+  },
+  "all": {
+   "pairs": 128,
+   "z_at_eb": -8.31,
+   "z_at_tic": -1.75
+  }
+ },
+ "n_pairs": 128,
+ "difference_centroid": {
+  "x": 18.475,
+  "y": 20.206,
+  "x_err": 0.072,
+  "y_err": 0.062,
+  "amplitudes": {
+   "D1": -0.5051,
+   "D2": -0.3868,
+   "D3": -0.2783,
+   "D4": -0.3834,
+   "D5": -0.157,
+   "D6": -0.1453
+  },
+  "n_pairs": 128,
+  "dist_to_gaia_eb_px": 0.165,
+  "dist_to_gaia_eb_sigma": 1.7,
+  "dist_to_tic_star_px": 1.422,
+  "dist_to_tic_star_sigma": 15.0
+ }
+}

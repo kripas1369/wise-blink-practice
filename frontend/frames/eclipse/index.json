@@ -1,0 +1,37 @@
+{
+ "format": "spherex-eclipse/1-index",
+ "binaries": [
+  {
+   "key": "tic219900027",
+   "label": "TIC 219900027",
+   "period": 0.5152647090536011,
+   "tmag": 11.2024,
+   "n_points": 557,
+   "n_primary": 96,
+   "primary": {
+    "n_bins": 12,
+    "chi2": 954.78,
+    "combined": 0.17143,
+    "combined_err": 0.00559
+   },
+   "null": 0.01255,
+   "distance_from_nep_deg": 3.13
+  },
+  {
+   "key": "tic233208885",
+   "label": "TIC 233208885",
+   "period": 0.4937367748480371,
+   "tmag": 11.332,
+   "n_points": 570,
+   "n_primary": 107,
+   "primary": {
+    "n_bins": 12,
+    "chi2": 3679.88,
+    "combined": 0.39915,
+    "combined_err": 0.00659
+   },
+   "null": 0.00445,
+   "distance_from_nep_deg": 3.07
+  }
+ ]
+}

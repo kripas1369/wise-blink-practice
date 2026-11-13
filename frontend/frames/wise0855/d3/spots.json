@@ -1,0 +1,142 @@
+{
+ "format": "spherex-blink-spots/1",
+ "target": "wise0855",
+ "band": 3,
+ "limit_sigma": 5.0,
+ "rules": {
+  "max_spots_per_pair": 10,
+  "near_gaia_px": 1.5,
+  "long_thin_ratio": 3.0,
+  "large_px": 20,
+  "source": "ours"
+ },
+ "observers": [
+  {
+   "epoch_id": 0,
+   "obs_id": "2025W19_1B_0116_2",
+   "exposures_mjd_range": [
+    60800.70069,
+    60800.8351
+   ],
+   "exposures_span_hours": 3.23,
+   "available": true,
+   "mjd": 60800.702186907,
+   "xyz_km": [
+    -4483.018,
+    5138.445,
+    -1751.362
+   ],
+   "vxyz_kms": [
+    2.008703,
+    -0.689219,
+    -7.215502
+   ],
+   "system": "GEOCENTER (axes assumed ICRF)"
+  },
+  {
+   "epoch_id": 1,
+   "obs_id": "2025W46_2A_0226_4",
+   "exposures_mjd_range": [
+    60993.50727,
+    60993.91355
+   ],
+   "exposures_span_hours": 9.75,
+   "available": true,
+   "mjd": 60993.579392821,
+   "xyz_km": [
+    -4910.863,
+    4287.597,
+    2639.246
+   ],
+   "vxyz_kms": [
+    2.861288,
+    -0.99066,
+    6.891685
+   ],
+   "system": "GEOCENTER (axes assumed ICRF)"
+  },
+  {
+   "epoch_id": 2,
+   "obs_id": "2026W17_2A_0609_1",
+   "exposures_mjd_range": [
+    61153.44011,
+    61160.77148
+   ],
+   "exposures_span_hours": 175.95,
+   "available": true,
+   "mjd": 61156.153381895,
+   "xyz_km": [
+    -3699.556,
+    5984.547,
+    115.028
+   ],
+   "vxyz_kms": [
+    0.802781,
+    0.650428,
+    -7.453038
+   ],
+   "system": "GEOCENTER (axes assumed ICRF)"
+  }
+ ],
+ "pairs": [
+  {
+   "a": 0,
+   "b": 1,
+   "n_spots": 0,
+   "spots": []
+  },
+  {
+   "a": 0,
+   "b": 2,
+   "n_spots": 0,
+   "spots": []
+  },
+  {
+   "a": 1,
+   "b": 2,
+   "n_spots": 1,
+   "spots": [
+    {
+     "sign": 1,
+     "peak_sigma": 6.4,
+     "peak_xy": [
+      17,
+      28
+     ],
+     "xy": [
+      17.47,
+      28.0
+     ],
+     "ra": 133.753785,
+     "dec": -7.266103,
+     "n_pixels": 2,
+     "axis_ratio": null,
+     "frame": 2,
+     "artifact_flags": [
+      "touches the frame edge"
+     ],
+     "gaia_star": {
+      "source_id": "5756956197710296704",
+      "g_mag": 19.85,
+      "distance_px": 6.68,
+      "target": false,
+      "inside": false,
+      "chosen": "nearest"
+     },
+     "why": "2 pixels at +6.4σ: brighter in B than in A by more than 5σ of the noise the files give (VARIANCE).",
+     "what_else": [
+      "No Gaia DR3 star within 1.5 px on visit B's date.",
+      "It could be a solar-system object, a source too faint or too red for Gaia that changed, a cosmic ray or detector artifact that survived the add-up, or noise."
+     ],
+     "confirm": [
+      "It appears in several single exposures of visit B (click the pixel in the flipbook for its light curve).",
+      "It appears in another detector on the same visit.",
+      "For a solar-system object: a known object at this place and time (check below), and a shift between the exposures of one visit."
+     ]
+    }
+   ]
+  }
+ ],
+ "made_by": "backend/app/spots.py",
+ "made_at": "2026-11-07 12:15 UTC"
+}
