@@ -1,0 +1,52 @@
+{
+ "name": "ctrl_barnard",
+ "made_at": "2026-11-13T17:16:32+00:00",
+ "calibration": {
+  "n_controls": 14,
+  "err_scale": 0.536,
+  "applied_scale": 1.0,
+  "threshold_sigma": 5.0,
+  "max_control_z_scaled": 2.4,
+  "frac_controls_above_5": 0.0,
+  "frac_controls_above_3": 0.0,
+  "long_baseline_n_stars": 53,
+  "long_baseline_floor_arcsec": 0.308,
+  "long_baseline_robust_scatter_arcsec": 0.344,
+  "long_baseline_median_offset_arcsec": [
+   0.103,
+   -0.042
+  ],
+  "long_n_gaia_checks": 27,
+  "long_err_scale": 1.0,
+  "long_threshold_sigma": 5.25
+ },
+ "n_sources": 119,
+ "n_with_motion_fit": 89,
+ "n_gaia_matched": 117,
+ "n_catwise_matched": 98,
+ "n_unmatched_both": 0,
+ "class_counts_sources": {
+  "0": 111,
+  "1": 0,
+  "2": 0,
+  "3": 0,
+  "4": 0,
+  "5": 0,
+  "6": 6,
+  "7": 2
+ },
+ "n_one_visit": 7,
+ "n_one_visit_checked": 0,
+ "class_counts_one_visit": {
+  "0": 0,
+  "1": 0,
+  "2": 0,
+  "3": 0,
+  "4": 0,
+  "5": 0,
+  "6": 0,
+  "7": 0
+ },
+ "n_gaia_field": 3236,
+ "n_catwise_field": 2674
+}

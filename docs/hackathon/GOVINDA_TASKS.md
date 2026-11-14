@@ -1,28 +1,44 @@
-# Friend's tasks: Space Apps 2026, "Planet X and SPHEREx"
+# Govinda's tasks: Space Apps 2026, "Planet X and SPHEREx"
 
 You own the **data pipeline**: finding SPHEREx images, reading the pixels from AWS, cleaning, lining up, adding up, and every measurement file the website shows. Kripas owns the API (`main.py`), the website and the final checks. He reviews and merges every pull request you open.
 
 ## How to use this file
-1. Each block is 2 hours: **20 min study** (read the old files listed and answer the questions for yourself), **70 min** pasting the prompt into Antigravity and working through it with the agent, and **30 min** running the tests, opening the pull request and fixing what Kripas asks.
-2. Paste the **Session prompt** below once at the start of every new Antigravity chat, then paste the block's prompt.
+1. Each block is 2 hours: **20 min study** (read the old files listed and answer the questions for yourself), **70 min** pasting the prompt into the agent and working through it, and **30 min** running the tests, opening the pull request and fixing what Kripas asks.
+2. Paste the **Session prompt** below once at the start of every new agent chat, then paste the block's prompt.
 3. Before you push, read every changed file yourself. You must be able to explain it if a judge asks.
 4. Write the commit messages yourself, short and in your own words ("port flags reader for QR3 headers").
 5. Put the answers to the block's study questions in the pull request description.
 6. If something in a prompt is wrong (a file is missing, a test cannot pass), stop and tell Kripas. Don't guess around it.
 
-Replace `<OLD>` with the path of `wise-blink-practice` on your machine, for example `/Users/you/wise-blink-practice`.
+## Two repos, side by side
+Clone both into the same parent folder:
+```
+<parent>/wise-blink-practice   this repo: the prompts (docs/hackathon/) and the old code. Read only.
+<parent>/blinkit               the hackathon repo. All new code, tests and docs go here.
+```
+- Read the prompts here, in `wise-blink-practice/docs/hackathon/`. Run `git pull` in this repo at the start of every block; Kripas may update the prompts.
+- Open the agent in the **`blinkit`** folder. From there the old repo is `../wise-blink-practice`, which is how every prompt below refers to it.
+- If the agent is opened in `wise-blink-practice` instead, paste this line first in every new chat, before the session prompt:
+  ```text
+  You are opened in wise-blink-practice, which is the OLD repo: read only, never edit it. The NEW repo is
+  ../blinkit: create and edit files only there and run every command from there (cd ../blinkit first).
+  In the prompts below, "../wise-blink-practice" means this folder and "this folder" means ../blinkit.
+  ```
+- Never commit or push anything to `wise-blink-practice`. Your branches and pull requests are in `blinkit` only.
 
 ---
 
-## Session prompt (paste once per Antigravity chat)
+## Session prompt (paste once per agent chat)
 ```text
 Project: NASA Space Apps 2026 "Planet X and SPHEREx". A public web tool that shows a SPHEREx
 flipbook of any sky position (RA/Dec) so people can spot moving and changing objects.
 
 Two repos:
-- OLD (reference, read only): <OLD>   (our own practice repo "wise-blink-practice")
+- OLD (reference, read only): ../wise-blink-practice   (our own practice repo). Never edit, commit
+  or push anything there; only read and copy from it.
 - NEW (this folder, repo "blinkit"): the hackathon repo. backend/ (Python FastAPI + pipeline), frontend/ (plain JS),
-  docs/ (FACTS.md, FRAMES_FORMAT.md, API.md, VALIDATION.md).
+  docs/ (VALIDATION.md, FRAMES_FORMAT.md; created when first needed). Facts and formats to follow:
+  ../wise-blink-practice/docs/plan/FACTS.md and FRAMES_FORMAT.md.
 
 My role: the data pipeline in backend/app/ and scripts/. I must NOT edit backend/app/main.py,
 backend/app/resolve.py, backend/app/targets.py or anything in frontend/ (Kripas owns those).
@@ -48,19 +64,20 @@ Rules:
 # PHASE 1 (Sat 14 Nov): a flipbook for every detector
 
 ## B0, 11:00 to 11:30: setup (no prompt)
-- Accept Kripas's GitHub invite and clone the new repo `blinkit`.
-- `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt`
-- Read `docs/API.md`, the challenge page, and `<OLD>/docs/plan/FRAMES_FORMAT.md` sections 1–3.
+- Accept Kripas's GitHub invite. Make sure `wise-blink-practice` and `blinkit` are cloned side by side (see "Two repos" above), then `git pull` in both.
+- In `blinkit`: `python3 -m venv .venv && .venv/bin/pip install -r requirements.txt`
+- Do not copy the old frames into `blinkit`. All frames are made fresh from QR3/DR1 by your pipeline (B2 onwards).
+- Read the challenge page, the endpoint list at the top of `../wise-blink-practice/backend/app/main.py`, and `../wise-blink-practice/docs/plan/FRAMES_FORMAT.md` sections 1–3.
 
 ## B1, 11:30 to 13:30: find the data
-**Study (20 min):** `<OLD>/backend/app/config.py`, `archive.py` (functions `find_images`, `group_epochs`, `download_cutout`), `flags.py`, `coverage.py`; `<OLD>/docs/plan/FACTS.md` sections 1–3; `<OLD>/research/discovery_2026/DATA_RELEASE_AND_ACCESS_AUDIT.md` sections 1 and 4.
+**Study (20 min):** `../wise-blink-practice/backend/app/config.py`, `archive.py` (functions `find_images`, `group_epochs`, `download_cutout`), `flags.py`, `coverage.py`; `../wise-blink-practice/docs/plan/FACTS.md` sections 1–3; `../wise-blink-practice/research/discovery_2026/DATA_RELEASE_AND_ACCESS_AUDIT.md` sections 1 and 4.
 
 **Prompt:**
 ```text
-Block B1 (find the data). Branch: friend/b1-data.
+Block B1 (find the data). Branch: govinda/b1-data.
 
-1. Read <OLD>/backend/app/config.py, coords.py, motion.py, flags.py, archive.py, coverage.py and
-   <OLD>/docs/plan/FACTS.md sections 1-3. Explain them to me in 6 bullet points before changing anything.
+1. Read ../wise-blink-practice/backend/app/config.py, coords.py, motion.py, flags.py, archive.py, coverage.py and
+   ../wise-blink-practice/docs/plan/FACTS.md sections 1-3. Explain them to me in 6 bullet points before changing anything.
 2. Copy those 6 files into backend/app/ (create backend/app/__init__.py and backend/__init__.py if missing).
 3. config.py:
    - COLLECTIONS = ("spherex_qr3", "spherex_qr3_deep", "spherex_dr1", "spherex_dr1_deep")
@@ -74,17 +91,17 @@ Block B1 (find the data). Branch: friend/b1-data.
    - releases(): for each collection, image count and first/last observation date (MJD-AVG based
      column of obscore), cached 1 hour. Return a list of dicts.
    - find_images() must also return each image's S3 key. Look at how
-     <OLD>/research/discovery_2026/scripts/spx_s3.py gets it (the cloud_access column,
+     ../wise-blink-practice/research/discovery_2026/scripts/spx_s3.py gets it (the cloud_access column,
      json -> ["aws"]["key"]). Check whether spherex.obscore has cloud_access; if not, use the SIA2
      route from spx_s3.py. Add an s3_key field to SpherexImage.
 5. flags.py: keep both header styles (MP_* and MSKN*/MSKM*). If neither is in the FLAGS header,
    raise an error; never treat all pixels as good.
 6. Remove any import of eclipses, methane or ask.
-7. Copy <OLD>/backend/tests/test_flags.py, test_coverage.py, test_motion_archive.py, test_coords.py
+7. Copy ../wise-blink-practice/backend/tests/test_flags.py, test_coverage.py, test_motion_archive.py, test_coords.py
    into backend/tests/ and make them pass. Add one test for the SPHEREX_COLLECTIONS override and
    one for discover_collections filtering (_cal removed), using a fake query result.
-8. Run once, live, and write the numbers in docs/VALIDATION.md under "B1":
-   - a QR2 search for Barnard's Star at the "ra"/"dec" of <OLD>/frontend/frames/barnard/d2/manifest.json
+8. Run once, live, and write the numbers in docs/VALIDATION.md (create it if missing) under "B1":
+   - a QR2 search for Barnard's Star at the "ra"/"dec" of ../wise-blink-practice/frontend/frames/barnard/d2/manifest.json
      (the position already moved for proper motion): expected 0 rows;
    - Barnard's Star coverage per collection and per detector with the new COLLECTIONS;
    - releases() output;
@@ -93,10 +110,10 @@ Do not touch main.py, resolve.py, targets.py or frontend/.
 ```
 **Study questions (answer in the pull request):** Why MJD-AVG and not DATE? Why is SOURCE not a bad flag? What is a "visit" in `group_epochs` (gap and span rules)? Why does each SPHEREx exposure see a different wavelength?
 
-**Done when:** `pytest backend/tests` passes; VALIDATION.md "B1" is filled in; pull request `friend/b1-data` is open.
+**Done when:** `pytest backend/tests` passes; VALIDATION.md "B1" is filled in; pull request `govinda/b1-data` is open.
 
 ## B2, 14:00 to 16:00: clean images and make per-detector frames
-**Study (20 min):** `<OLD>/backend/app/clean.py`, `align.py`, `coadd.py`, `render.py`; `<OLD>/docs/plan/FRAMES_FORMAT.md` sections 2, 3, 8, 9; `<OLD>/research/discovery_2026/scripts/spx_s3.py` (functions `get_range`, `read_header`, `read_rows`, `stamp`); DATA_RELEASE_AND_ACCESS_AUDIT.md sections 2 and 5.
+**Study (20 min):** `../wise-blink-practice/backend/app/clean.py`, `align.py`, `coadd.py`, `render.py`; `../wise-blink-practice/docs/plan/FRAMES_FORMAT.md` sections 2, 3, 8, 9; `../wise-blink-practice/research/discovery_2026/scripts/spx_s3.py` (functions `get_range`, `read_header`, `read_rows`, `stamp`); DATA_RELEASE_AND_ACCESS_AUDIT.md sections 2 and 5.
 
 **Needs from Kripas's B1 (already merged by 14:00):** `backend/app/resolve.py` and `targets.py`, because `render.py` imports them. If they are not merged yet, pull Kripas's branch.
 
@@ -104,24 +121,25 @@ Do not touch main.py, resolve.py, targets.py or frontend/.
 
 **Prompt:**
 ```text
-Block B2 (frames). Branch: friend/b2-frames.
+Block B2 (frames). Branch: govinda/b2-frames.
 
 Part A, working frames first (cutout route):
-1. Copy <OLD>/backend/app/clean.py, align.py, coadd.py, render.py, frame_notes.py into backend/app/.
+1. Copy ../wise-blink-practice/backend/app/clean.py, align.py, coadd.py, render.py, frame_notes.py into backend/app/.
 2. frame_notes.py: keep the structure, but replace every note with
    "Not yet re-measured on DR1/QR3 data." (the old notes were measured on QR2 frames).
 3. render.py: each frame in manifest.json also gets
    - "release" (e.g. "QR3" or "DR1", from the images used),
    - "flag_counts": {flag name: number of flagged pixels} using the official BAD_FLAG_NAMES,
    - "pixel_source": "aws-s3" or "irsa-cutout".
-   The manifest gets "collections_checked" and "newest_obs_date". Update docs/FRAMES_FORMAT.md
+   The manifest gets "collections_checked" and "newest_obs_date". If docs/FRAMES_FORMAT.md is
+   missing, copy ../wise-blink-practice/docs/plan/FRAMES_FORMAT.md without section 16 (/api/ask). Update docs/FRAMES_FORMAT.md
    section 3 with these fields.
-4. Copy <OLD>/backend/tests/test_pipeline.py and make it pass. Then run
+4. Copy ../wise-blink-practice/backend/tests/test_pipeline.py and make it pass. Then run
    python -m backend.app.render barnard 2 --out frontend/frames
    and tell me the frames, dates and n_images. Stop and tell me so I can push a draft PR.
 
 Part B, pixels from AWS:
-5. Create backend/app/s3_reader.py based on <OLD>/research/discovery_2026/scripts/spx_s3.py
+5. Create backend/app/s3_reader.py based on ../wise-blink-practice/research/discovery_2026/scripts/spx_s3.py
    (get_range, read_header, hdu_end, read_rows incl. the row-tiled RICE_1 decode).
    read_box(s3_key, ra, dec, size_deg) -> astropy HDUList with IMAGE, FLAGS, VARIANCE, ZODI
    (only the rows covering the box, columns cropped, CRPIX1/CRPIX2 shifted so the WCS stays right)
@@ -145,13 +163,13 @@ Do not touch main.py, resolve.py, targets.py or frontend/ code (frontend/frames 
 **If S3 is not ready by 16:00:** push Part A, keep the cutout route for B3, and finish Part B in B4 (it must be done before B5).
 
 ## B3, 16:00 to 18:00: all 5 targets in all 6 detectors, Gaia and WISE
-**Study (20 min):** `<OLD>/backend/app/gaia.py`, `motion.py`; FRAMES_FORMAT.md section 6; `<OLD>/research/wanderers/common.py` (functions `catwise`, `gaia_xy_at`); the CatWISE note: proper motions are in arcsec/yr, positions at MJD 57170.
+**Study (20 min):** `../wise-blink-practice/backend/app/gaia.py`, `motion.py`; FRAMES_FORMAT.md section 6; `../wise-blink-practice/research/wanderers/common.py` (functions `catwise`, `gaia_xy_at`); the CatWISE note: proper motions are in arcsec/yr, positions at MJD 57170.
 
 **Prompt:**
 ```text
-Block B3 (all targets, overlays). Branch: friend/b3-targets.
+Block B3 (all targets, overlays). Branch: govinda/b3-targets.
 
-1. Copy <OLD>/backend/app/gaia.py into backend/app/ (write_gaia makes gaia.json).
+1. Copy ../wise-blink-practice/backend/app/gaia.py into backend/app/ (write_gaia makes gaia.json).
 2. New backend/app/wise.py with write_wise(folder): CatWISE2020 sources (IRSA TAP table catwise_2020)
    inside the frame, moved with their proper motion (pmra/pmdec in arcsec/yr, reference epoch
    MJD 57170 = 2015.4) to every visit date of the manifest. Write wise.json in the same shape as
@@ -166,9 +184,9 @@ Block B3 (all targets, overlays). Branch: friend/b3-targets.
    then write_gaia and write_wise for each folder, then write_index.
 6. Validation in docs/VALIDATION.md under "B3":
    - table: target x detector -> visits, n_images per visit, pixel_source, align_offset_px;
-   - old vs new: compare <OLD>/frontend/frames/*/d*/manifest.json (QR2) with the new ones
+   - old vs new: compare ../wise-blink-practice/frontend/frames/*/d*/manifest.json (QR2) with the new ones
      (visit dates, n_images, pct_flagged);
-   - QR2 vs DR1 on AWS: take 5 exposures listed in <OLD>/frontend/frames/barnard/d2/originals.json,
+   - QR2 vs DR1 on AWS: take 5 exposures listed in ../wise-blink-practice/frontend/frames/barnard/d2/originals.json,
      read them from qr2/level2/ on S3, find the same exposure in DR1 (same obs_id), and compare
      MJD-AVG, WCS centre, flagged-pixel fraction and the median pixel difference. Describe any
      difference; do not hide it.
@@ -179,13 +197,13 @@ Block B3 (all targets, overlays). Branch: friend/b3-targets.
 **Done when:** 30 frame folders exist; gaia.json and wise.json are in each; VALIDATION.md "B3" is filled in; every frame has `pixel_source = aws-s3` (unless S3 moved to B4).
 
 ## B4, 18:30 to 20:30: add and subtract visits
-**Study (20 min):** `<OLD>/backend/app/diff.py`, `measure.py`, `proof.py`; FRAMES_FORMAT.md sections 7, 8, 11.
+**Study (20 min):** `../wise-blink-practice/backend/app/diff.py`, `measure.py`, `proof.py`; FRAMES_FORMAT.md sections 7, 8, 11.
 
 **Prompt:**
 ```text
-Block B4 (add and subtract visits). Branch: friend/b4-diff.
+Block B4 (add and subtract visits). Branch: govinda/b4-diff.
 
-1. Copy <OLD>/backend/app/diff.py, measure.py, proof.py. Copy <OLD>/backend/tests/test_day3.py and
+1. Copy ../wise-blink-practice/backend/app/diff.py, measure.py, proof.py. Copy ../wise-blink-practice/backend/tests/test_day3.py and
    the proof tests from test_day5.py (skip parts that need spots/spectrum; those come later).
 2. Minus-median frames (WiseView-style difference): in diff.py add write_minus_median(folder):
    median.fits/png = per-pixel median of all visit frames (only pixels good in at least 2 visits);
@@ -206,7 +224,7 @@ Block B4 (add and subtract visits). Branch: friend/b4-diff.
 ## B5, 20:30 to 22:30: Phase 1 sign-off (with Kripas)
 **Prompt:**
 ```text
-Block B5 (sign-off). Branch: friend/b5-signoff.
+Block B5 (sign-off). Branch: govinda/b5-signoff.
 1. Write scripts/check_frames.py: for every frontend/frames/<target>/d<det>/ folder print visits,
    n_images, pixel_source, release, align_offset_px, pct_flagged, and fail if any file required by
    docs/FRAMES_FORMAT.md is missing or pixel_source != "aws-s3".
@@ -223,14 +241,14 @@ Block B5 (sign-off). Branch: friend/b5-signoff.
 # PHASE 2 (Sat night and Sun): learn from WiseView, then the 102 bands
 
 ## P2-1, Sat 22:45 to 00:45: WiseView study (no coding)
-Use `docs/tasks/WISEVIEW_STUDY_TEMPLATE.md`. You do the **hands-on** part: every control, what it does, which settings make each mover easiest to see, and how long spotting takes for WISE 0855, Epsilon Indi B and Barnard's Star. Record only what you see or read. Then decide with Kripas the adopt / adapt / skip table.
+Copy `../wise-blink-practice/docs/hackathon/WISEVIEW_STUDY_TEMPLATE.md` to `blinkit/docs/WISEVIEW_STUDY.md` and fill it in there (Kripas fills his half in the same file). You do the **hands-on** part: every control, what it does, which settings make each mover easiest to see, and how long spotting takes for WISE 0855, Epsilon Indi B and Barnard's Star. Record only what you see or read. Then decide with Kripas the adopt / adapt / skip table.
 
 ## P2-2, Sun 07:00 to 09:00: signal-to-noise per detector (NASA's suggestion)
 **Study:** NASA's sentence: "separately add together all the data taken by each of the six detector arrays to improve the signal-to-noise". Read `render.py` (`max_per_visit`) and the B2 timings.
 
 **Prompt:**
 ```text
-Block P2-2 (signal-to-noise). Branch: friend/p2-snr.
+Block P2-2 (signal-to-noise). Branch: govinda/p2-snr.
 1. render.py: default max_per_visit = all exposures of the visit (safety cap 200 per detector),
    for prepared targets and for API jobs (Kripas will change JOB_EXPOSURES_PER_VISIT in main.py).
 2. Each frame records "noise_per_pixel" (median sigma of good pixels) and
@@ -248,12 +266,12 @@ Block P2-2 (signal-to-noise). Branch: friend/p2-snr.
 **Done when:** the measured gain is in VALIDATION.md and the bands files exist for the 5 targets.
 
 ## P2-3, Sun 09:00 to 11:00: spectra on the fly and the 102 bands
-**Study:** `<OLD>/backend/app/lightcurve.py`, `spectrum.py`, `pixels.py`; FRAMES_FORMAT.md sections 10 and 13; the AWS file `qr3/spectral_channels/cal-sch-v2-2026-229/spectral_channels_spx_cal-sch-v2-2026-229.fits` (also in `dr1/spectral_channels/`).
+**Study:** `../wise-blink-practice/backend/app/lightcurve.py`, `spectrum.py`, `pixels.py`; FRAMES_FORMAT.md sections 10 and 13; the AWS file `qr3/spectral_channels/cal-sch-v2-2026-229/spectral_channels_spx_cal-sch-v2-2026-229.fits` (also in `dr1/spectral_channels/`).
 
 **Prompt:**
 ```text
-Block P2-3 (live spectra, 102 bands). Branch: friend/p2-spectra.
-1. Copy <OLD>/backend/app/lightcurve.py, spectrum.py, pixels.py and tests test_day4.py,
+Block P2-3 (live spectra, 102 bands). Branch: govinda/p2-spectra.
+1. Copy ../wise-blink-practice/backend/app/lightcurve.py, spectrum.py, pixels.py and tests test_day4.py,
    test_pixels.py; make them pass.
 2. New backend/app/channels.py: download (once, cached under cache/calib/) the spectral_channels
    file from S3 for the release of each image; print its HDUs and columns first and show me.
@@ -270,11 +288,11 @@ Block P2-3 (live spectra, 102 bands). Branch: friend/p2-spectra.
 ## P2-4, Sun 11:00 to 13:00: creative band views (in this order; stop at 13:00)
 Pick the next item, paste its prompt, and push each one as soon as it works.
 1. **102-band contact sheet:** `lens.py` `write_contact_sheet(target_dir)`: one image per official band (6 rows × 17), built from the exposures whose band number matches, 1/variance weighted; empty bands marked. Output `contact.json` and `contact_b<n>.png`.
-2. **Spectral Lens + methane:** `lens.py` `lens_image(target_dir, wavelength, width)` and molecule maps `(band − k × continuum) / noise`, with k calibrated on field stars exactly as `<OLD>/backend/app/methane.py` does. Preset CH4: 3.15–3.50 µm vs 3.90–4.20 µm. Validation: WISE 0855 and Epsilon Indi B glow, Barnard does not, and field stars average about 0.
+2. **Spectral Lens + methane:** `lens.py` `lens_image(target_dir, wavelength, width)` and molecule maps `(band − k × continuum) / noise`, with k calibrated on field stars exactly as `../wise-blink-practice/backend/app/methane.py` does. Preset CH4: 3.15–3.50 µm vs 3.90–4.20 µm. Validation: WISE 0855 and Epsilon Indi B glow, Barnard does not, and field stars average about 0.
 3. Other presets: H2O ice 3.05, CO2 4.27, CO 4.67, PAH 3.29, Paschen-α 1.87, Brackett-α 4.05 µm (state the band and continuum used for each).
 4. Wavelength movie: one visit, about 16 wavelengths from 0.75 to 5 µm.
-5. PSF-fit spectrum: port the forced ePSF photometry from `<OLD>/research/discovery_2026/scripts/phot.py` (ePSF files from AWS `{dr1,qr3}/epsf/`); keep the 2 px circle as a cross-check.
-6. `movers.json` for the 5 fields from `<OLD>/research/wanderers/` results (`results/ctrl_*`).
+5. PSF-fit spectrum: port the forced ePSF photometry from `../wise-blink-practice/research/discovery_2026/scripts/phot.py` (ePSF files from AWS `{dr1,qr3}/epsf/`); keep the 2 px circle as a cross-check.
+6. `movers.json` for the 5 fields from `../wise-blink-practice/research/wanderers/` results (`results/ctrl_*`).
 7. `scripts/build_showcase.py`: about 50 famous objects, positions from SIMBAD, SPHEREx coverage counts, best detector, saturation note.
 8. Evidence: port `spots.py`, `known_objects.py`, `field_objects.py`, `recovery.py`, `visit_frames.py`, `gif.py`, `originals.py` and their tests (`test_day5`, `test_day6`, `test_day7`).
 

@@ -4,11 +4,11 @@ NASA's Resources tab links WiseView as "a similar tool made for viewing data fro
 
 **Goal:** learn what really helps people spot moving objects, then copy what works into our SPHEREx tool. No coding in this block. Write down only what you see on screen or read in WiseView's own pages or code, never from memory.
 
-**Output:** fill in this file, then save it as `docs/WISEVIEW_STUDY.md` in the new repo.
+**Output:** copy this file to `blinkit/docs/WISEVIEW_STUDY.md` and fill it in there. Leave this template unchanged.
 
 ---
 
-## 1. Basics (Friend)
+## 1. Basics (Govinda)
 - WiseView address used:
 - Date and time of the study:
 - Is the source code public? Where? (link)
@@ -16,7 +16,7 @@ NASA's Resources tab links WiseView as "a similar tool made for viewing data fro
 - What data does it show (which WISE products, how many epochs, co-adds or single frames)?
 - How does it get the data (from the browser directly, through a server, pre-built tiles)?
 
-## 2. Every control (Friend)
+## 2. Every control (Govinda)
 One row per control you can see.
 
 | Control | What it does (observed) | Default | Helps spot movers? (yes / no / sometimes) | Notes |
@@ -25,7 +25,7 @@ One row per control you can see.
 
 Make sure you check: position input (formats accepted), field of view or size, zoom, blink or animation speed, epochs (all, first/last, choosing), bands (W1, W2, colour), contrast and stretch (min/max, linear or other), difference mode, scan direction or parallax option, overlays (catalogues, known objects), links to other services, the URL (which settings go into it), and keyboard shortcuts.
 
-## 3. Timed test on 3 movers (Friend)
+## 3. Timed test on 3 movers (Govinda)
 For each target, start from an empty WiseView page and time how long it takes until you can point at the moving object.
 
 | Target | Settings that worked best | Time to spot it | What made it obvious | What got in the way |

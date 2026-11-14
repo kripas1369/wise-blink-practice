@@ -1,0 +1,52 @@
+{
+ "name": "ctrl_eps_ind_b",
+ "made_at": "2026-11-13T16:43:05+00:00",
+ "calibration": {
+  "n_controls": 32,
+  "err_scale": 0.964,
+  "applied_scale": 1.0,
+  "threshold_sigma": 5.0,
+  "max_control_z_scaled": 2.04,
+  "frac_controls_above_5": 0.0,
+  "frac_controls_above_3": 0.0,
+  "long_baseline_n_stars": 24,
+  "long_baseline_floor_arcsec": 0.398,
+  "long_baseline_robust_scatter_arcsec": 0.44,
+  "long_baseline_median_offset_arcsec": [
+   0.132,
+   0.076
+  ],
+  "long_n_gaia_checks": 34,
+  "long_err_scale": 1.0,
+  "long_threshold_sigma": 7.45
+ },
+ "n_sources": 144,
+ "n_with_motion_fit": 130,
+ "n_gaia_matched": 99,
+ "n_catwise_matched": 124,
+ "n_unmatched_both": 3,
+ "class_counts_sources": {
+  "0": 129,
+  "1": 1,
+  "2": 0,
+  "3": 0,
+  "4": 0,
+  "5": 0,
+  "6": 14,
+  "7": 0
+ },
+ "n_one_visit": 29,
+ "n_one_visit_checked": 0,
+ "class_counts_one_visit": {
+  "0": 0,
+  "1": 0,
+  "2": 0,
+  "3": 0,
+  "4": 0,
+  "5": 0,
+  "6": 0,
+  "7": 0
+ },
+ "n_gaia_field": 410,
+ "n_catwise_field": 1718
+}

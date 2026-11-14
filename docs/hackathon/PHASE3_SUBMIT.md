@@ -12,7 +12,7 @@ The deadline is **Sun 15 Nov, 23:59 local time**; check whether the local event 
     - how to run it;
     - how to add a new data release (`scripts/refresh_release.py`, the `SPHEREX_COLLECTIONS` override);
     - the AI disclosure.
-- **Friend:** `scripts/refresh_release.py`, the IRSA status probe, and the last fixes from the review.
+- **Govinda:** `scripts/refresh_release.py`, the IRSA status probe, and the last fixes from the review.
 - **Both:**
   - tick all 8 of NASA's considerations in VALIDATION.md, each with one line saying how to see it in the tool, plus an example URL;
   - full tests (`pytest backend/tests`, `npm test` in `frontend/`);
@@ -21,7 +21,7 @@ The deadline is **Sun 15 Nov, 23:59 local time**; check whether the local event 
 ## 15:00 to 17:00: deploy (Kripas)
 - Choose the hosting and domain (the Space Apps offers: a free domain and hosting). No paid plan without asking each other first.
 - One server runs FastAPI and serves `frontend/`. Copy the prepared frames for the 5 targets onto it (they are not in git).
-- Pre-warm the cache for the 5 targets (Friend).
+- Pre-warm the cache for the 5 targets (Govinda).
 - Test from a phone and from another network: search, all 6 detectors, a typed RA/Dec, an empty position.
 - Keep the old practice tool running locally as a backup demo.
 

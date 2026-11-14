@@ -1,0 +1,76 @@
+{
+ "name": "ctrl_barnard",
+ "ra": 269.44627,
+ "dec": 4.7682,
+ "fov_arcmin": 8.0,
+ "grid_size": 79,
+ "pixel_arcsec": 6.15,
+ "made_at": "2026-11-13T17:06:58+00:00",
+ "collections": [
+  "spherex_dr1",
+  "spherex_dr1_deep",
+  "spherex_qr3",
+  "spherex_qr3_deep"
+ ],
+ "n_images_listed": 358,
+ "n_visits": 3,
+ "visits": [
+  {
+   "id": 0,
+   "date": "2025-08-29",
+   "mjd_min": 60902.865381,
+   "mjd_max": 60949.2665805,
+   "n_images": 118
+  },
+  {
+   "id": 1,
+   "date": "2026-03-20",
+   "mjd_min": 61110.092069,
+   "mjd_max": 61165.083638,
+   "n_images": 121
+  },
+  {
+   "id": 2,
+   "date": "2026-08-22",
+   "mjd_min": 61268.631478,
+   "mjd_max": 61305.628687,
+   "n_images": 119
+  }
+ ],
+ "n_cutouts_used": 106,
+ "n_detector_epochs": 18,
+ "n_master": 119,
+ "n_transients": 7,
+ "header_versions": {
+  "1": {
+   "L2 N_OVERFLOW": "1011"
+  },
+  "2": {
+   "L2 N_OVERFLOW": "1770"
+  },
+  "3": {
+   "L2 N_OVERFLOW": "1535"
+  },
+  "4": {
+   "L2 N_OVERFLOW": "3693"
+  },
+  "5": {
+   "L2 N_OVERFLOW": "2117"
+  },
+  "6": {
+   "L2 N_OVERFLOW": "2061"
+  }
+ },
+ "n_gaia": 3236,
+ "n_gaia_ref_pool": 1110,
+ "max_per_detector_epoch": 6,
+ "settings": {
+  "DETECT_SNR": 5.0,
+  "TRANSIENT_SNR": 6.0,
+  "BOX": 4,
+  "BG_SIZE": 15,
+  "REF_MAX_PM": 100.0,
+  "REF_MAX_G": 19.0,
+  "MATCH_PX": 1.0
+ }
+}

@@ -1,26 +1,21 @@
 # Kripas's tasks: Space Apps 2026, "Planet X and SPHEREx"
 
-You own the **repo, the API (`backend/app/main.py`), the website (`frontend/`) and validation**. Your friend owns the pipeline (see `FRIEND_TASKS.md`). You review and merge every pull request, by hand on GitHub.
+You own the **repo, the API (`backend/app/main.py`), the website (`frontend/`) and validation**. Govinda owns the pipeline (see `GOVINDA_TASKS.md`). You review and merge every pull request, by hand on GitHub.
 
 The old repo `wise-blink-practice` is the reference. You copy files from it and change only what is listed here.
+
+**Two repos, side by side.** Both of you clone `wise-blink-practice` and `blinkit` into the same parent folder. The prompts live here in `wise-blink-practice/docs/hackathon/` (one copy only; `git pull` at the start of every block). The agent is always opened in `blinkit`, where the old repo is `../wise-blink-practice`. All new code, branches and pull requests go to `blinkit`.
 
 ---
 
 ## B0, 11:15 to 11:30: create the repo (by hand)
 1. **Ask the local lead** (message, keep the answer): "We practised on SPHEREx before the event in our own repo. May we reuse that code in our hackathon repo if we say so in the README?"
-2. On GitHub, create the repo `blinkit`. Start it private; make it public before submitting. Add your friend as a collaborator.
-3. Clone it and make the folders inside `blinkit/`:
-   ```
-   backend/app/      backend/tests/
-   frontend/js/      frontend/css/      frontend/tests/      frontend/data/
-   docs/             docs/tasks/        scripts/
-   ```
+2. On GitHub, create the repo `blinkit`. Start it private; make it public before submitting. Add Govinda as a collaborator.
+3. Clone it. The first push is code only, no docs or README: other folders appear when their first file is copied in (B1 and later).
 4. Copy these from the old repo:
    - `requirements.txt` → `requirements.txt`
-   - `docs/plan/FACTS.md` → `docs/FACTS.md`
-   - `docs/plan/FRAMES_FORMAT.md` → `docs/FRAMES_FORMAT.md`
-   - `docs/hackathon/*.md` → `docs/tasks/`
    - `frontend/package.json` → `frontend/package.json`
+   - empty `backend/__init__.py` and `backend/app/__init__.py`
 5. `.gitignore`:
    ```
    .venv/
@@ -31,11 +26,9 @@ The old repo `wise-blink-practice` is the reference. You copy files from it and 
    frontend/frames/
    ```
    `frontend/frames/` stays out of git until Phase 3 (the deploy decides how frames get to the server).
-6. Copy the old `frontend/frames/` folder into the new repo **for local use only** (git ignores it). You build the website against it until your friend's new frames arrive.
-7. `docs/API.md`: copy the endpoint list from the docstring at the top of the old `backend/app/main.py`, without `/api/methane`, `/api/ask` and `/api/eclipse`, and add `/api/releases`, `/api/wise`, `/api/stack`.
-8. `docs/VALIDATION.md` with one heading per block (B1 … B5, P2-2 …), empty.
-9. A README stub: the project name, one sentence, "Built for NASA Space Apps 2026 (Planet X and SPHEREx)".
-10. First commit and push (you, by hand). Send your friend `docs/tasks/FRIEND_TASKS.md`.
+6. Do not copy the old frames. `blinkit` holds code only; frames are made fresh by Govinda's pipeline (B2 onwards).
+7. Docs come later, each when it is first needed: `docs/VALIDATION.md` when the first block writes results (B1), `docs/FRAMES_FORMAT.md` when Govinda changes the manifest (B2, copied from the old `docs/plan/FRAMES_FORMAT.md` without section 16), the README in B5.
+8. First commit and push (you, by hand). Tell Govinda to `git pull` in `wise-blink-practice` and in `blinkit`, then open `wise-blink-practice/docs/hackathon/GOVINDA_TASKS.md`.
 
 **Git routine for every block (by hand):**
 ```
@@ -43,7 +36,7 @@ git checkout main && git pull
 git checkout -b kripas/b1-api
 # ... work, commit small steps in your own words ...
 git push -u origin kripas/b1-api
-# open the pull request on GitHub, review your friend's PR, merge both on GitHub
+# open the pull request on GitHub, review Govinda's PR, merge both on GitHub
 ```
 
 ---
@@ -67,16 +60,16 @@ git push -u origin kripas/b1-api
 | `frontend/js/spots.js`, `spotEvidence.js`, `recovery.js`, `visitflip.js`, `files.js`, `planetx.js` | same | P2-4 | none |
 | `frontend/tests/*.test.js` | same | with each file | skip `ask`, `methane`, `eclipse` tests |
 
-**Not ported:** `eclipse*.py`, `eclipses.py`, `ask.py`, `rebuild.py`, `methane.py` (it becomes the friend's `lens.py` in Phase 2), `eclipse.html`, `eclipse.js`, `ask.js`, `methane.js`, `eclipse.css`, `methane.css`.
+**Not ported:** `eclipse*.py`, `eclipses.py`, `ask.py`, `rebuild.py`, `methane.py` (it becomes Govinda's `lens.py` in Phase 2), `eclipse.html`, `eclipse.js`, `ask.js`, `methane.js`, `eclipse.css`, `methane.css`.
 
 ---
 
 # PHASE 1 (Sat): a flipbook for every detector
 
 ## B1, 11:30 to 13:30: API base, search, URL
-**Build** (you can paste this into Cursor):
+**Build** (paste this into the agent, opened in `blinkit`):
 ```text
-Block B1. Old repo: /Users/kripaskhatiwadaicloud.com/wise-blink-practice. New repo: this folder (blinkit).
+Block B1. Old repo: ../wise-blink-practice (read only, never edit it). New repo: this folder (blinkit).
 1. Copy backend/app/resolve.py, targets.py and backend/tests/test_network.py unchanged.
 2. Copy backend/app/main.py but keep only: imports that exist now (archive, config, coverage,
    motion, resolve, targets), ApiError/Working and their handlers, /api/health, /api/resolve,
@@ -93,9 +86,10 @@ Block B1. Old repo: /Users/kripaskhatiwadaicloud.com/wise-blink-practice. New re
    switch (degrees / h:m:s and d:m:s), a live preview line ("= 269.452°, +4.693°") or a plain
    error ("Dec must be between -90 and +90"), using coords.js. Pasted text like
    "RA=133.79 Dec=-7.24" fills both fields.
-6. Copy frontend tests coords.test.js and motion_targets_url.test.js; npm test must pass.
+6. Copy the frontend tests coords.test.js and motion_targets_url.test.js; npm test (in frontend/)
+   must pass. Create docs/VALIDATION.md with a "B1" heading for the results.
 ```
-**Review your friend's `friend/b1-data`:**
+**Review Govinda's `govinda/b1-data`:**
 - [ ] `pytest backend/tests` passes on your machine.
 - [ ] `config.COLLECTIONS` is QR3 + DR1, and `SPHEREX_COLLECTIONS` overrides it.
 - [ ] VALIDATION.md "B1": the QR2 search returned 0 rows; Barnard's coverage per collection and detector; every image has an `s3_key`.
@@ -115,9 +109,9 @@ ensure_ready, _read), location() dependency and GET /api/frames. _pipeline_after
 call steps that exist (none yet besides render; add gaia in B3, diff/proof/stack in B4).
 Copy frontend/js/frames.js, player.js, flipbook.js, sky.js, timeline.js and their tests
 (frames_player.test.js, timeline.test.js, the frames parts of day3.test.js). Wire them in app.js.
-Test against the old frames in frontend/frames (not in git).
+Test against the Barnard D2 frames Govinda makes in Part A of his B2 (not in git).
 ```
-**Review `friend/b2-frames`:**
+**Review `govinda/b2-frames`:**
 - [ ] Barnard D2 frames in `frontend/frames/barnard/d2/` open in **your** flipbook.
 - [ ] `manifest.json` has `release`, `flag_counts`, `pixel_source`, `collections_checked`, `newest_obs_date`, and FRAMES_FORMAT.md documents them.
 - [ ] VALIDATION.md "B2": the S3 vs cutout max difference is 0 for 3 exposures; the timings at 3′, 10′, 20′ and 30′.
@@ -127,16 +121,16 @@ Test against the old frames in frontend/frames (not in git).
 
 ## B3, 16:00 to 18:00: every detector, overlays, metadata
 **Build:**
-- D1–D6 buttons: each opens that detector's flipbook (all 30 folders exist after your friend's B3).
+- D1–D6 buttons: each opens that detector's flipbook (all 30 folders exist after Govinda's B3).
 - Frame label: date, detector, **wavelength range used** (`wl_target_range_um`), `n_images` of `n_images_in_epoch`, % flagged, **release badge**, and an `align_offset_px` warning above 0.5 px.
 - Flags toggle and **flag legend** under the frame: name, pixel count (`flag_counts`), one-line meaning (from FACTS.md section 2). SOURCE is shown as "label, not a defect".
 - `/api/gaia` and `/api/wise`; marker toggles in two colours.
 - Aladin: Gaia DR3 (VizieR `I/355/gaiadr3`) and AllWISE (`II/328/allwise`) catalogue layers with on/off switches, plus the field-of-view square.
-- Field of view up to 30′ (`FOV_MAX` in `urlstate.js` and the slider). Above 15′, show "slower: about N MB, about M min" using your friend's B2 timings, and add a "Fast mover (30′)" preset.
+- Field of view up to 30′ (`FOV_MAX` in `urlstate.js` and the slider). Above 15′, show "slower: about N MB, about M min" using Govinda's B2 timings, and add a "Fast mover (30′)" preset.
 - A "Data" panel from `/api/releases`: "Data as of …, releases: DR1 (…), QR3 (…)".
 - Empty state ("SPHEREx has no images here yet") and error states with what to try next.
 
-**Review `friend/b3-targets`:**
+**Review `govinda/b3-targets`:**
 - [ ] 30 folders; open 5 at random in your flipbook.
 - [ ] `gaia.json` and `wise.json` load, and the markers sit on stars.
 - [ ] VALIDATION.md "B3": the target × detector table, old vs new, QR2 vs DR1 on AWS.
@@ -153,7 +147,7 @@ Break 18:00 to 18:30.
 - Flipbook mode switch: **Images / Minus median / Add visits / Difference**. "Add visits" shows checkboxes per visit and the stacked image with its noise ratio.
 - The URL keeps the mode and the chosen visits.
 
-**Review `friend/b4-diff`:**
+**Review `govinda/b4-diff`:**
 - [ ] Barnard's measured shift vs Gaia is within 0.5 px (VALIDATION.md "B4").
 - [ ] The stack noise ratio is close to sqrt(number of visits).
 - [ ] Minus-median frames: fixed stars mostly gone; Barnard's Star leaves a dark and bright pair.
@@ -166,15 +160,15 @@ For each of the 5 targets, in every detector D1–D6, check and tick in VALIDATI
 - [ ] **RW Aur and R Dra:** brightness changes between visits. Check the frame's wavelength range first, because a different range can look like a change.
 - [ ] **A random RA/Dec:** a job starts, shows progress, then plays.
 - [ ] **An empty position** (for example an RA/Dec with no images yet): an honest "no data" message.
-- [ ] `scripts/check_frames.py` (your friend's) passes.
+- [ ] `scripts/check_frames.py` (Govinda's) passes.
 - [ ] Every frame has `pixel_source = aws-s3`.
 
 Then:
-- Put your friend's measured detector ratings into `frontend/js/targets.js`.
+- Put Govinda's measured detector ratings into `frontend/js/targets.js`.
 - README draft:
   - what the tool does and how to run it;
   - data: SPHEREx from NASA IRSA, read from IRSA's public AWS copy; Gaia DR3 (ESA); CatWISE2020 and AllWISE; SIMBAD; Aladin Lite (CDS); astropy, astroquery, pyvo, reproject;
-  - **AI disclosure:** "Code ported from our own pre-event practice repo; written with help from Cursor and Antigravity."
+  - **AI disclosure:** "Code ported from our own pre-event practice repo; written with help from AI coding assistants."
 - Merge, then tag `phase1` on GitHub.
 
 ---
@@ -182,15 +176,15 @@ Then:
 # PHASE 2 (Sat night and Sun)
 
 ## P2-1, Sat 22:45 to 00:45: WiseView study
-Use `WISEVIEW_STUDY_TEMPLATE.md`. Your part is the **user experience**: the screen flow, defaults, how motion is made obvious, keyboard and mouse use, and what confuses a first-time user. Then do the same 3 targets in our tool and compare. Decide the adopt / adapt / skip table together.
+Fill in `blinkit/docs/WISEVIEW_STUDY.md` (Govinda copies it from `WISEVIEW_STUDY_TEMPLATE.md` in this folder). Your part is the **user experience**: the screen flow, defaults, how motion is made obvious, keyboard and mouse use, and what confuses a first-time user. Then do the same 3 targets in our tool and compare. Decide the adopt / adapt / skip table together.
 
 ## P2-2, Sun 07:00 to 09:00: signal-to-noise and the Six Eyes
-- `main.py`: `JOB_EXPOSURES_PER_VISIT` → all exposures (the same cap as your friend's).
+- `main.py`: `JOB_EXPOSURES_PER_VISIT` → all exposures (the same cap as Govinda's).
 - Each frame label shows "N exposures, noise X× lower than one exposure".
 - `/api/bands`; the **Six Eyes flipbook** (6 small flipbooks D1–D6 playing in sync with the main player), the **colour flipbook**, and a Per-visit / Deep switch.
 - The top "adopt" items from the WiseView study.
 
-**Review `friend/p2-snr`:** the measured gain is close to sqrt(n); WISE 0855 is red in colour.
+**Review `govinda/p2-snr`:** the measured gain is close to sqrt(n); WISE 0855 is red in colour.
 
 ## P2-3, Sun 09:00 to 11:00: live spectra and light curves
 - `/api/lightcurve` (with x, y), `/api/spectrum?x=&y=` (live).
@@ -198,7 +192,7 @@ Use `WISEVIEW_STUDY_TEMPLATE.md`. Your part is the **user experience**: the scre
 - Click a pixel: light curve plus spectrum, "computed live from N exposures", the 102-band binned view, a CSV download.
 - A "Prepare all 6 detectors" button for typed positions (6 jobs, with progress).
 
-## P2-4, Sun 11:00 to 13:00: creative band views (same order as your friend's)
+## P2-4, Sun 11:00 to 13:00: creative band views (same order as Govinda's)
 1. The 102-band contact sheet (6 × 17 tiles; clicking a tile opens that band).
 2. The Spectral Lens: a slider snapping to the 102 bands ("Band 57 of 102: 3.30 µm, D4"), molecule presets with plain one-line explanations, and "a glow is a colour, not an identification".
 3. The wavelength movie player.
